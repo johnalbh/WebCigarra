@@ -12,31 +12,6 @@ const nextConfig: NextConfig = {
         port: '1337',
         pathname: '/uploads/**',
       },
-      {
-        protocol: 'https',
-        hostname: '*.cigarra.org',
-        pathname: '/uploads/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cigarra.org',
-        pathname: '/wp-content/uploads/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'i.pravatar.cc',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        pathname: '/**',
-      },
     ],
   },
 };

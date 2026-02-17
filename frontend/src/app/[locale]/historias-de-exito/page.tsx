@@ -19,7 +19,7 @@ const stories = [
     role: 'Líder comunitario',
     quote: 'En la Fundación descubrí que el arte puede cambiar comunidades enteras.',
     achievement: 'Gestor cultural, líder de proyectos sociales',
-    image: 'https://cigarra.org/wp-content/uploads/2025/04/JuanDavidHernandez.jpg',
+    image: '/images/stories/juan-david.jpg',
     accentColor: '#4facfe',
     icon: HiHeart,
   },
@@ -28,7 +28,7 @@ const stories = [
     role: 'Emprendedor social',
     quote: 'Los valores que aprendí en la Fundación guían mi emprendimiento cada día.',
     achievement: 'Emprendedor, mentor de jóvenes',
-    image: 'https://cigarra.org/wp-content/uploads/2023/09/AndreyRuiz-1024x1024.jpeg',
+    image: '/images/stories/andrey-ruiz.jpg',
     accentColor: '#43e97b',
     icon: HiStar,
   },
@@ -37,7 +37,7 @@ const stories = [
     role: 'Educadora',
     quote: 'Hoy regreso a la comunidad como educadora para abrir las mismas puertas.',
     achievement: 'Licenciada en educación, voluntaria activa',
-    image: 'https://cigarra.org/wp-content/uploads/2025/02/YuryKarina.png',
+    image: '/images/stories/yuri-karina.png',
     accentColor: '#fa709a',
     icon: HiAcademicCap,
   },
@@ -46,7 +46,7 @@ const stories = [
     role: 'Profesional',
     quote: 'Con esfuerzo y dedicación todo es posible. La Fundación me lo demostró.',
     achievement: 'Profesional en administración, mentora',
-    image: 'https://cigarra.org/wp-content/uploads/2025/02/Anyie.png',
+    image: '/images/stories/anyie.png',
     accentColor: '#a18cd1',
     icon: HiSparkles,
   },
@@ -54,12 +54,12 @@ const stories = [
 
 /* ---------- impact gallery images ---------- */
 const impactImages = [
-  'https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_GL_1.jpg',
-  'https://cigarra.org/wp-content/uploads/2022/06/QH_Musica_GL_5.jpg',
-  'https://cigarra.org/wp-content/uploads/2022/06/QH_Tecnologia_GL_2.jpg',
-  'https://cigarra.org/wp-content/uploads/2025/04/ApoyoEscolar.jpg',
-  'https://cigarra.org/wp-content/uploads/2025/04/Recreacion.jpg',
-  'https://cigarra.org/wp-content/uploads/2025/04/Musica.jpg',
+  '/images/news/festival-arte.jpg',
+  '/images/gallery/musica.jpg',
+  '/images/gallery/tecnologia.jpg',
+  '/images/engagement/apoyo-escolar.jpg',
+  '/images/engagement/recreacion.jpg',
+  '/images/engagement/musica.jpg',
 ];
 
 /* ---------- story card ---------- */
@@ -188,7 +188,7 @@ export default function SuccessStoriesPage() {
                 <div className="space-y-4">
                   <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                     <Image
-                      src="https://cigarra.org/wp-content/uploads/2025/04/JuanDavidHernandez.jpg"
+                      src="/images/stories/juan-david.jpg"
                       alt="Juan David"
                       fill
                       sizes="25vw"
@@ -197,7 +197,7 @@ export default function SuccessStoriesPage() {
                   </div>
                   <div className="relative aspect-square overflow-hidden rounded-2xl">
                     <Image
-                      src="https://cigarra.org/wp-content/uploads/2025/02/Anyie.png"
+                      src="/images/stories/anyie.png"
                       alt="Anyie"
                       fill
                       sizes="25vw"
@@ -208,7 +208,7 @@ export default function SuccessStoriesPage() {
                 <div className="mt-8 space-y-4">
                   <div className="relative aspect-square overflow-hidden rounded-2xl">
                     <Image
-                      src="https://cigarra.org/wp-content/uploads/2023/09/AndreyRuiz-1024x1024.jpeg"
+                      src="/images/stories/andrey-ruiz.jpg"
                       alt="Andrey"
                       fill
                       sizes="25vw"
@@ -217,7 +217,7 @@ export default function SuccessStoriesPage() {
                   </div>
                   <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                     <Image
-                      src="https://cigarra.org/wp-content/uploads/2025/02/YuryKarina.png"
+                      src="/images/stories/yuri-karina.png"
                       alt="Yuri Karina"
                       fill
                       sizes="25vw"

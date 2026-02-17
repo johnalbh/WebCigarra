@@ -274,7 +274,7 @@ export default function AboutPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="https://cigarra.org/wp-content/uploads/2022/09/QH_Equipo_DEC_1.jpg"
+                src="/images/about/equipo.jpg"
                 alt="Equipo Fundacion Cigarra"
                 fill
                 priority
@@ -294,7 +294,7 @@ export default function AboutPage() {
             <ScrollReveal direction="left" className="relative h-full min-h-[400px] md:min-h-[600px]">
               <div className="absolute inset-0 overflow-hidden">
                 <Image
-                  src="https://cigarra.org/wp-content/uploads/2022/06/QS_Mision_DEC_1-1024x682.jpg"
+                  src="/images/about/mision.jpg"
                   alt="Misión Fundación Cigarra"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -397,7 +397,7 @@ export default function AboutPage() {
             >
               <div className="absolute inset-0 overflow-hidden">
                 <Image
-                  src="https://cigarra.org/wp-content/uploads/2022/06/QS_Vision_DEC_1-1024x682.jpg"
+                  src="/images/about/vision.jpg"
                   alt="Visión Fundación Cigarra"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

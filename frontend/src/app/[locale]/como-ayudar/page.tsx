@@ -67,21 +67,21 @@ const waysToHelp = [
   {
     titleKey: 'sponsorTitle' as const,
     descKey: 'sponsorDescription' as const,
-    image: 'https://cigarra.org/wp-content/uploads/2025/04/ApoyoEscolar.jpg',
+    image: '/images/engagement/apoyo-escolar.jpg',
     icon: HiUserGroup,
     gradient: 'from-primary-600/90 to-primary-900/80',
   },
   {
     titleKey: 'volunteerTitle' as const,
     descKey: 'volunteerDescription' as const,
-    image: 'https://cigarra.org/wp-content/uploads/2025/04/Recreacion.jpg',
+    image: '/images/engagement/recreacion.jpg',
     icon: HiHand,
     gradient: 'from-accent-600/90 to-accent-900/80',
   },
   {
     titleKey: 'nutritionTitle' as const,
     descKey: 'nutritionCost' as const,
-    image: 'https://cigarra.org/wp-content/uploads/2025/02/Nutricion_2.jpg',
+    image: '/images/news/campana-nutricion.jpg',
     icon: HiHeart,
     gradient: 'from-green-600/90 to-green-900/80',
     extra: '$7.045 COP',
@@ -257,7 +257,7 @@ export default function HowToHelpPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="https://cigarra.org/wp-content/uploads/2025/04/Musica.jpg"
+                src="/images/engagement/musica.jpg"
                 alt="Children receiving help"
                 fill
                 className="object-cover"

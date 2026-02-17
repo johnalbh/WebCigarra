@@ -5,16 +5,16 @@ import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 
 const partners = [
-  { name: 'Saint George School', logo: 'https://cigarra.org/wp-content/uploads/2022/06/San-Jorge-de-Inglaterra-150x150.png' },
-  { name: 'Microsoft', logo: 'https://cigarra.org/wp-content/uploads/2022/06/Microsoft-150x150.png' },
-  { name: 'Ecopetrol', logo: 'https://cigarra.org/wp-content/uploads/2022/06/Ecopetrol-150x150.png' },
-  { name: 'CWA', logo: 'https://cigarra.org/wp-content/uploads/2022/06/CWA-150x150.png' },
-  { name: 'Karelsie Foundation', logo: 'https://cigarra.org/wp-content/uploads/2022/10/The-Karelsie-Foundation-150x150.png' },
-  { name: 'Aqualogic', logo: 'https://cigarra.org/wp-content/uploads/2022/06/Aqualogic_logo-150x150.png' },
-  { name: 'Chocolates Bora', logo: 'https://cigarra.org/wp-content/uploads/2025/02/Chocolates-Bora-150x150.png' },
-  { name: 'Opperar', logo: 'https://cigarra.org/wp-content/uploads/2025/03/Opperar.png' },
-  { name: 'HomeCenter', logo: 'https://cigarra.org/wp-content/uploads/2025/11/HomeCENTER.jpg' },
-  { name: 'Makri', logo: 'https://cigarra.org/wp-content/uploads/2025/11/makri.jpg' },
+  { name: 'Saint George School', logo: '/images/partners/san-jorge.png' },
+  { name: 'Microsoft', logo: '/images/partners/microsoft.png' },
+  { name: 'Ecopetrol', logo: '/images/partners/ecopetrol.png' },
+  { name: 'CWA', logo: '/images/partners/cwa.png' },
+  { name: 'Karelsie Foundation', logo: '/images/partners/karelsie.png' },
+  { name: 'Aqualogic', logo: '/images/partners/aqualogic.png' },
+  { name: 'Chocolates Bora', logo: '/images/partners/chocolates-bora.png' },
+  { name: 'Opperar', logo: '/images/partners/opperar.png' },
+  { name: 'HomeCenter', logo: '/images/partners/homecenter.jpg' },
+  { name: 'Makri', logo: '/images/partners/makri.jpg' },
 ];
 
 export default function PartnersMarquee() {

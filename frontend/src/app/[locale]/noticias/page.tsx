@@ -10,12 +10,12 @@ import { HiCalendar, HiArrowRight, HiMail } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
 
 const articleImages: Record<string, string> = {
-  'celebramos-22-anos': 'https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_1-1024x683.jpg',
-  'nuevos-talleres-musica': 'https://cigarra.org/wp-content/uploads/2025/04/Sinfonica1-1024x768.jpg',
-  'alianza-microsoft': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Tecnologia_GL_3.jpg',
-  'graduacion-pre-icfes': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Apoyo_escolar_HED.jpg',
-  'festival-arte-cultura': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_GL_1.jpg',
-  'campana-nutricion': 'https://cigarra.org/wp-content/uploads/2025/02/Nutricion_2.jpg',
+  'celebramos-22-anos': '/images/news/celebramos-22-anos.jpg',
+  'nuevos-talleres-musica': '/images/news/talleres-musica.jpg',
+  'alianza-microsoft': '/images/news/alianza-microsoft.jpg',
+  'graduacion-pre-icfes': '/images/programs/refuerzo-escolar.jpg',
+  'festival-arte-cultura': '/images/news/festival-arte.jpg',
+  'campana-nutricion': '/images/news/campana-nutricion.jpg',
 };
 
 const articles = [
@@ -90,7 +90,7 @@ export default function NewsPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_1-1024x683.jpg"
+                src="/images/news/celebramos-22-anos.jpg"
                 alt="Eventos Fundacion Cigarra"
                 fill
                 className="object-cover"

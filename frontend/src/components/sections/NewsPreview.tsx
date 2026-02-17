@@ -13,21 +13,21 @@ const defaultArticles = [
     excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes de la comunidad, brindando esperanza y oportunidades a cientos de familias.',
     date: '2024-06-15',
     slug: 'celebramos-22-anos',
-    image: 'https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_1-1024x683.jpg',
+    image: '/images/news/celebramos-22-anos.jpg',
   },
   {
     title: 'Nuevos talleres de música abiertos para la comunidad',
     excerpt: 'Ampliamos nuestra oferta de programas musicales con nuevos instrumentos y profesores calificados.',
     date: '2024-05-20',
     slug: 'nuevos-talleres-musica',
-    image: 'https://cigarra.org/wp-content/uploads/2025/04/Sinfonica1-1024x768.jpg',
+    image: '/images/news/talleres-musica.jpg',
   },
   {
     title: 'Alianza con Microsoft para formación en tecnología',
     excerpt: 'Gracias a la alianza con Microsoft, nuestros jóvenes acceden a programas de formación tecnológica de vanguardia.',
     date: '2024-04-10',
     slug: 'alianza-microsoft',
-    image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Tecnologia_GL_3.jpg',
+    image: '/images/news/alianza-microsoft.jpg',
   },
 ];
 

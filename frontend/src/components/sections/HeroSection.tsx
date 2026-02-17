@@ -85,7 +85,7 @@ export default function HeroSection() {
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
               <Image
-                src="https://cigarra.org/wp-content/uploads/2022/09/Fundacion_ninos.png"
+                src="/images/hero/fundacion-ninos.png"
                 alt="Niños de la Fundación Cigarra"
                 fill
                 priority

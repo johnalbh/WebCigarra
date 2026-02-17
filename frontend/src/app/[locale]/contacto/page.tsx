@@ -147,7 +147,7 @@ export default function ContactPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="https://cigarra.org/wp-content/uploads/2025/04/Recreacion.jpg"
+                src="/images/engagement/recreacion.jpg"
                 alt="Comunidad Fundacion Cigarra"
                 fill
                 className="object-cover"

@@ -38,7 +38,7 @@ const engagementPaths = [
     href: DONATION_LINK_COP,
     external: true,
     color: 'bg-red-500',
-    image: 'https://cigarra.org/wp-content/uploads/2025/04/Musica.jpg',
+    image: '/images/engagement/musica.jpg',
   },
   {
     icon: HiUserGroup,
@@ -48,7 +48,7 @@ const engagementPaths = [
     href: '/como-ayudar',
     external: false,
     color: 'bg-primary-500',
-    image: 'https://cigarra.org/wp-content/uploads/2025/04/ApoyoEscolar.jpg',
+    image: '/images/engagement/apoyo-escolar.jpg',
   },
   {
     icon: HiHand,
@@ -58,7 +58,7 @@ const engagementPaths = [
     href: '/contacto',
     external: false,
     color: 'bg-accent-500',
-    image: 'https://cigarra.org/wp-content/uploads/2025/04/Recreacion.jpg',
+    image: '/images/engagement/recreacion.jpg',
   },
   {
     icon: HiShare,
@@ -68,7 +68,7 @@ const engagementPaths = [
     href: 'https://wa.me/?text=Conoce%20la%20Fundación%20Cigarra%20y%20su%20increíble%20labor%20con%20niños%20en%20Ciudad%20Bolívar%20🦗%20https://cigarra.org',
     external: true,
     color: 'bg-green-500',
-    image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_GL_1.jpg',
+    image: '/images/news/festival-arte.jpg',
   },
 ];
 

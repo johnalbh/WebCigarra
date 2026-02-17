@@ -8,12 +8,12 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import { HiArrowRight } from 'react-icons/hi';
 
 const programs = [
-  { name: 'Música', slug: 'musica', image: 'https://cigarra.org/wp-content/uploads/2022/09/QH_Musica_HED.jpg', description: 'Formación en instrumentos de cuerda, viento y percusión' },
-  { name: 'Danza', slug: 'danza', image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_HED.jpg', description: 'Danza folclórica y contemporánea' },
-  { name: 'Artes Plásticas', slug: 'artes-plasticas', image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Musica_GL_2.jpg', description: 'Pintura, dibujo y escultura' },
-  { name: 'Refuerzo Escolar', slug: 'refuerzo-escolar', image: 'https://cigarra.org/wp-content/uploads/2022/09/QH_Apoyo_escolar_HED.jpg', description: 'Apoyo en matemáticas, español y ciencias' },
-  { name: 'Teatro', slug: 'teatro', image: 'https://cigarra.org/wp-content/uploads/2022/09/QH_Teatro_HED.jpg', description: 'Artes escénicas y expresión' },
-  { name: 'Emprendimiento', slug: 'emprendimiento', image: 'https://cigarra.org/wp-content/uploads/2022/09/QH_Centro_comunitario_HED.jpg', description: 'Habilidades empresariales para jóvenes' },
+  { name: 'Música', slug: 'musica', image: '/images/programs/musica.jpg', description: 'Formación en instrumentos de cuerda, viento y percusión' },
+  { name: 'Danza', slug: 'danza', image: '/images/programs/danza.jpg', description: 'Danza folclórica y contemporánea' },
+  { name: 'Artes Plásticas', slug: 'artes-plasticas', image: '/images/programs/artes-plasticas.jpg', description: 'Pintura, dibujo y escultura' },
+  { name: 'Refuerzo Escolar', slug: 'refuerzo-escolar', image: '/images/programs/refuerzo-escolar.jpg', description: 'Apoyo en matemáticas, español y ciencias' },
+  { name: 'Teatro', slug: 'teatro', image: '/images/programs/teatro.jpg', description: 'Artes escénicas y expresión' },
+  { name: 'Emprendimiento', slug: 'emprendimiento', image: '/images/programs/emprendimiento.jpg', description: 'Habilidades empresariales para jóvenes' },
 ];
 
 const morePrograms = [

@@ -33,20 +33,20 @@ const programs = [
 ];
 
 const programImageMap: Record<string, string> = {
-  'musica': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Musica_HED.jpg',
-  'artes-plasticas': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Musica_GL_2.jpg',
-  'refuerzo-escolar': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Apoyo_escolar_HED.jpg',
-  'danza': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_HED.jpg',
-  'teatro': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Teatro_HED.jpg',
-  'emprendimiento': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Centro_comunitario_HED.jpg',
-  'ingles': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Ingles_HED.jpg',
-  'valores-y-liderazgo': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Psicologia_HED.jpg',
-  'fotografia': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Tecnologia_GL_1.jpg',
-  'recreacion': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Recrecion_y_deporte_HED.jpg',
-  'escuela-de-padres': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Taller_Padres_HED.jpg',
-  'pre-icfes': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Biblioteca_HED.jpg',
-  'manualidades': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Ropero_HED.jpg',
-  'sistemas': 'https://cigarra.org/wp-content/uploads/2022/05/QH_tecnologia_HED.jpg',
+  'musica': '/images/programs/musica.jpg',
+  'artes-plasticas': '/images/programs/artes-plasticas.jpg',
+  'refuerzo-escolar': '/images/programs/refuerzo-escolar.jpg',
+  'danza': '/images/programs/danza.jpg',
+  'teatro': '/images/programs/teatro.jpg',
+  'emprendimiento': '/images/programs/emprendimiento.jpg',
+  'ingles': '/images/programs/ingles.jpg',
+  'valores-y-liderazgo': '/images/programs/valores-liderazgo.jpg',
+  'fotografia': '/images/programs/fotografia.jpg',
+  'recreacion': '/images/programs/recreacion.jpg',
+  'escuela-de-padres': '/images/programs/escuela-padres.jpg',
+  'pre-icfes': '/images/programs/pre-icfes.jpg',
+  'manualidades': '/images/programs/manualidades.jpg',
+  'sistemas': '/images/programs/sistemas.jpg',
 };
 
 const stats = [
@@ -123,7 +123,7 @@ export default function ProgramsPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_GL_1.jpg"
+                src="/images/news/festival-arte.jpg"
                 alt="Ninos en programas de la Fundacion Cigarra"
                 fill
                 className="object-cover"
