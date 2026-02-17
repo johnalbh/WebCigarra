@@ -5,12 +5,16 @@ import { motion } from 'motion/react';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { HiArrowRight } from 'react-icons/hi';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-primary-900">
+      {/* Animated SVG background */}
+      <HeroWaves />
+
       {/* Single subtle glow */}
       <div className="pointer-events-none absolute -top-32 right-0 h-[500px] w-[500px] rounded-full bg-primary-500/10 blur-[120px]" />
 

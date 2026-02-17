@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import { HiHeart } from 'react-icons/hi';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
 const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-now';
@@ -31,8 +32,9 @@ export default function DonationCTA() {
   }, []);
 
   return (
-    <section className="bg-primary-500 py-20 md:py-28">
-      <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+    <section className="relative overflow-hidden bg-primary-500 py-20 md:py-28">
+      <HeroWaves />
+      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-8">
         {/* Heart icon */}
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}

@@ -6,6 +6,7 @@ import { useInView } from '@/hooks/useInView';
 import { useCountUp } from '@/hooks/useCountUp';
 import { Link } from '@/i18n/routing';
 import { HiArrowRight } from 'react-icons/hi';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 const stats = [
   { key: 'children', value: 180, suffix: '+', label: 'Niños Atendidos' },
@@ -24,8 +25,9 @@ export default function ImpactCounters() {
   const { ref, isInView } = useInView({ threshold: 0.2 });
 
   return (
-    <section id="impact" className="bg-primary-900 py-20 md:py-28">
-      <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section id="impact" className="relative overflow-hidden bg-primary-900 py-20 md:py-28">
+      <HeroWaves />
+      <div ref={ref} className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

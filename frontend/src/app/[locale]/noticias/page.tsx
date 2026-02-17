@@ -7,6 +7,7 @@ import { Link } from '@/i18n/routing';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
 import { HiCalendar, HiArrowRight, HiMail } from 'react-icons/hi';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 const articleImages: Record<string, string> = {
   'celebramos-22-anos': 'https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_1-1024x683.jpg',
@@ -45,6 +46,7 @@ export default function NewsPage() {
     <>
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-primary-900">
+        <HeroWaves />
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
@@ -227,8 +229,9 @@ export default function NewsPage() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="bg-primary-500 py-24">
-        <div className="mx-auto max-w-3xl px-4 text-center lg:px-8">
+      <section className="relative overflow-hidden bg-primary-500 py-24">
+        <HeroWaves />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 text-center lg:px-8">
           <ScrollReveal>
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-white/20">
               <HiMail className="h-8 w-8 text-white" />

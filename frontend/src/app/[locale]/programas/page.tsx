@@ -13,6 +13,7 @@ import {
   HiColorSwatch, HiDesktopComputer,
   HiArrowRight,
 } from 'react-icons/hi';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 const programs = [
   { name: 'Música', slug: 'musica', icon: HiMusicNote, color: '#E74C3C', description: 'Formación musical con instrumentos de cuerda, viento y percusión. Desarrollo del talento artístico y la disciplina.' },
@@ -63,6 +64,7 @@ export default function ProgramsPage() {
     <>
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-primary-900">
+        <HeroWaves />
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
@@ -209,8 +211,9 @@ export default function ProgramsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-primary-500 py-24">
-        <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
+      <section className="relative overflow-hidden bg-primary-500 py-24">
+        <HeroWaves />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center lg:px-8">
           <ScrollReveal>
             <span className="mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-5 py-1.5 text-sm font-semibold text-white">
               Haz parte del cambio

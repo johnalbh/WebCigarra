@@ -7,6 +7,7 @@ import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { HiLocationMarker, HiPhone, HiMail, HiClock, HiCheckCircle, HiXCircle } from 'react-icons/hi';
 import { FaWhatsapp } from 'react-icons/fa';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
@@ -102,6 +103,7 @@ export default function ContactPage() {
     <>
       {/* ===== HERO SECTION ===== */}
       <section className="relative overflow-hidden bg-primary-900">
+        <HeroWaves />
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 

@@ -16,6 +16,7 @@ import {
   HiGlobeAlt,
   HiStar,
 } from 'react-icons/hi';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 /* ---------- timeline data ---------- */
 const timeline = [
@@ -226,6 +227,7 @@ export default function AboutPage() {
     <>
       {/* ========== HERO SECTION ========== */}
       <section className="relative overflow-hidden bg-primary-900">
+        <HeroWaves />
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
@@ -490,8 +492,9 @@ export default function AboutPage() {
       </section>
 
       {/* ========== BOTTOM CTA ========== */}
-      <section className="bg-primary-500">
-        <div className="mx-auto max-w-4xl px-4 py-20 text-center lg:px-8">
+      <section className="relative overflow-hidden bg-primary-500">
+        <HeroWaves />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center lg:px-8">
           <ScrollReveal>
             <h2 className="mb-6 font-heading text-3xl font-bold text-white md:text-4xl">
               Se parte de esta historia

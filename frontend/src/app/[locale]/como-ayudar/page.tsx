@@ -17,6 +17,7 @@ import {
   HiShieldCheck,
   HiGlobeAlt,
 } from 'react-icons/hi';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
 const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-now';
@@ -188,6 +189,7 @@ export default function HowToHelpPage() {
     <>
       {/* ===== HERO SECTION ===== */}
       <section className="relative overflow-hidden bg-primary-900">
+        <HeroWaves />
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
@@ -379,7 +381,8 @@ export default function HowToHelpPage() {
 
       {/* ===== WAYS TO HELP SECTION ===== */}
       <section className="relative section-padding bg-primary-900 overflow-hidden">
-        <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+        <HeroWaves />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal>
             <div className="mb-16 text-center">
               <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">
@@ -469,8 +472,9 @@ export default function HowToHelpPage() {
       </section>
 
       {/* ===== FINAL CTA SECTION ===== */}
-      <section className="bg-primary-500 py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
+      <section className="relative overflow-hidden bg-primary-500 py-20">
+        <HeroWaves />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center lg:px-8">
           <ScrollReveal>
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-white/20">
               <HiHeart className="h-8 w-8 text-white" />

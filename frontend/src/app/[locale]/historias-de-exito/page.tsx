@@ -6,6 +6,7 @@ import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
 import { HiStar, HiHeart, HiSparkles, HiAcademicCap } from 'react-icons/hi';
+import HeroWaves from '@/components/shared/HeroWaves';
 
 const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
 const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-now';
@@ -130,6 +131,7 @@ export default function SuccessStoriesPage() {
     <>
       {/* ========== HERO ========== */}
       <section className="relative overflow-hidden bg-primary-900">
+        <HeroWaves />
         <div className="pointer-events-none absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-accent-500/8 blur-[120px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
@@ -303,8 +305,9 @@ export default function SuccessStoriesPage() {
       </section>
 
       {/* ========== EMOTIONAL CTA ========== */}
-      <section className="bg-primary-500">
-        <div className="mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
+      <section className="relative overflow-hidden bg-primary-500">
+        <HeroWaves />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
           <ScrollReveal>
             <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
               <HiHeart className="h-8 w-8 text-white" />
