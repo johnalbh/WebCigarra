@@ -81,7 +81,7 @@ const timeline = [
     year: '2024',
     title: 'Actualidad',
     description:
-      '14 programas activos atendiendo a mas de 180 ninos y jovenes.',
+      '14 programas activos atendiendo a más de 1.877 niños y jóvenes.',
     icon: HiAcademicCap,
     color: 'from-accent-400 to-accent-600',
   },
@@ -383,7 +383,7 @@ export default function AboutPage() {
                       <HiGlobeAlt className="h-5 w-5 text-accent-600" />
                     </div>
                     <p className="text-sm font-medium text-accent-700">
-                      14 programas transformando comunidades
+                      23 años y 14 programas transformando comunidades
                     </p>
                   </div>
                 </div>

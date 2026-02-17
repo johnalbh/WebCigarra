@@ -9,7 +9,7 @@ import { HiCalendar, HiArrowRight } from 'react-icons/hi';
 
 const defaultArticles = [
   {
-    title: 'Celebramos 22 años transformando vidas en Ciudad Bolívar',
+    title: 'Celebramos 23 años transformando vidas en Ciudad Bolívar',
     excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes de la comunidad, brindando esperanza y oportunidades a cientos de familias.',
     date: '2024-06-15',
     slug: 'celebramos-22-anos',

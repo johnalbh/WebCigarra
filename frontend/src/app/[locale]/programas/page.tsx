@@ -51,8 +51,8 @@ const programImageMap: Record<string, string> = {
 
 const stats = [
   { value: '14', label: 'Programas' },
-  { value: '180+', label: 'Niños' },
-  { value: '7', label: 'Categorías' },
+  { value: '1.877+', label: 'Niños' },
+  { value: '23', label: 'Años' },
 ];
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;

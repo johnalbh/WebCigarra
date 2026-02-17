@@ -165,8 +165,8 @@ export default function SuccessStoriesPage() {
               {/* Mini stats */}
               <motion.div variants={itemVariants} className="mt-12 flex gap-10">
                 {[
-                  { n: '22+', l: 'Años' },
-                  { n: '1,500+', l: 'Beneficiados' },
+                  { n: '23', l: 'Años' },
+                  { n: '1.877+', l: 'Niños Ayudados' },
                   { n: '100%', l: 'Compromiso' },
                 ].map((s) => (
                   <div key={s.l}>

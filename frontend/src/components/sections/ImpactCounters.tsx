@@ -9,10 +9,10 @@ import { HiArrowRight } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
 
 const stats = [
-  { key: 'children', value: 180, suffix: '+', label: 'Niños Atendidos' },
-  { key: 'years', value: 22, suffix: '+', label: 'Años de Servicio' },
-  { key: 'programs', value: 14, suffix: '', label: 'Programas Activos' },
-  { key: 'families', value: 100, suffix: '+', label: 'Familias Beneficiadas' },
+  { key: 'children', value: 1877, suffix: '+', label: 'Niños Ayudados' },
+  { key: 'years', value: 23, suffix: '', label: 'Años de Servicio' },
+  { key: 'jobs', value: 100, suffix: '+', label: 'Empleos Generados' },
+  { key: 'families', value: 190, suffix: '+', label: 'Familias Beneficiadas' },
 ];
 
 function Counter({ end, suffix, enabled }: { end: number; suffix: string; enabled: boolean }) {

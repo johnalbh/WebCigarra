@@ -19,7 +19,7 @@ const articleImages: Record<string, string> = {
 };
 
 const articles = [
-  { title: 'Celebramos 22 años transformando vidas en Ciudad Bolívar', excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes de la localidad, brindando esperanza y oportunidades a cientos de familias.', date: '2024-06-15', slug: 'celebramos-22-anos', featured: true },
+  { title: 'Celebramos 23 años transformando vidas en Ciudad Bolívar', excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes de la localidad, brindando esperanza y oportunidades a cientos de familias.', date: '2024-06-15', slug: 'celebramos-22-anos', featured: true },
   { title: 'Nuevos talleres de música abiertos para la comunidad', excerpt: 'Ampliamos nuestra oferta de programas musicales con nuevos instrumentos y profesores calificados.', date: '2024-05-20', slug: 'nuevos-talleres-musica', featured: false },
   { title: 'Alianza con Microsoft para formación en tecnología', excerpt: 'Nuestros jóvenes acceden a programas de formación tecnológica gracias a esta alianza.', date: '2024-04-10', slug: 'alianza-microsoft', featured: false },
   { title: 'Graduación de la primera cohorte de Pre-ICFES', excerpt: 'Celebramos la graduación de 25 jóvenes que completaron nuestro programa de preparación.', date: '2024-03-15', slug: 'graduacion-pre-icfes', featured: false },

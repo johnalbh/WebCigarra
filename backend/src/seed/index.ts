@@ -430,29 +430,29 @@ async function seedImpactStatistics(strapi: Core.Strapi) {
       sectionTitle: 'Nuestro Impacto',
       stats: [
         {
-          label: 'Niños beneficiados',
-          value: 180,
+          label: 'Niños ayudados',
+          value: 1877,
           suffix: '+',
           icon: 'HiUserGroup',
           order: 1,
         },
         {
           label: 'Años de servicio',
-          value: 22,
-          suffix: '+',
+          value: 23,
+          suffix: '',
           icon: 'HiCalendar',
           order: 2,
         },
         {
-          label: 'Programas activos',
-          value: 14,
-          suffix: '',
+          label: 'Empleos generados',
+          value: 100,
+          suffix: '+',
           icon: 'HiBookOpen',
           order: 3,
         },
         {
-          label: 'Familias impactadas',
-          value: 100,
+          label: 'Familias beneficiadas',
+          value: 190,
           suffix: '+',
           icon: 'HiHome',
           order: 4,
@@ -608,7 +608,7 @@ async function seedAboutPage(strapi: Core.Strapi) {
       vision:
         'Ser la fundación referente en transformación social a través del arte y la educación en las comunidades más vulnerables de Colombia, reconocida por el impacto sostenible en la vida de las familias y por formar ciudadanos íntegros, creativos y comprometidos con su comunidad.',
       history:
-        'La Fundación Cigarra nació en 2002 en el barrio Lucero Alto de Ciudad Bolívar, Bogotá, cuando un grupo de vecinos decidió abrir un espacio seguro donde los niños del sector pudieran aprender, crear y soñar. Lo que empezó como clases de música en un pequeño salón comunal se convirtió en una organización que hoy ofrece 14 programas y beneficia a más de 180 niños y sus familias.\n\nA lo largo de más de dos décadas, la Cigarra ha sobrevivido gracias al compromiso de su comunidad, el trabajo de voluntarios apasionados y el apoyo de aliados nacionales e internacionales que creen en el poder transformador de la educación y el arte.',
+        'La Fundación Cigarra nació en 2002 en el barrio Lucero Alto de Ciudad Bolívar, Bogotá, cuando un grupo de vecinos decidió abrir un espacio seguro donde los niños del sector pudieran aprender, crear y soñar. Lo que empezó como clases de música en un pequeño salón comunal se convirtió en una organización que hoy ofrece 14 programas, ha ayudado a más de 1.877 niños, generado más de 100 empleos y beneficiado a más de 190 familias.\n\nA lo largo de 23 años, la Cigarra ha sobrevivido gracias al compromiso de su comunidad, el trabajo de voluntarios apasionados y el apoyo de aliados nacionales e internacionales que creen en el poder transformador de la educación y el arte.',
       foundedYear: 2002,
       timeline: [
         {
@@ -645,7 +645,7 @@ async function seedAboutPage(strapi: Core.Strapi) {
           year: '2022',
           title: '20 años de servicio',
           description:
-            'Celebramos 20 años transformando vidas con 14 programas activos y más de 180 niños beneficiados.',
+            'Celebramos 23 años transformando vidas con 14 programas activos y más de 1.877 niños ayudados.',
         },
         {
           year: '2025',

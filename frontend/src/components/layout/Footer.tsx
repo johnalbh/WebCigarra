@@ -43,7 +43,7 @@ export default function Footer() {
             </div>
             <p className="mb-4 text-sm leading-relaxed text-primary-200">
               Transformando vidas en Ciudad Bolívar desde 2002. Educación, arte
-              y cultura para más de 180 niños y jóvenes.
+              y cultura para más de 1.877 niños y jóvenes.
             </p>
             <p className="text-sm text-primary-300">
               {t('nit')}: 830.114.318-9

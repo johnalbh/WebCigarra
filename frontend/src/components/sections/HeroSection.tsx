@@ -37,8 +37,8 @@ export default function HeroSection() {
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-primary-200/80">
-              Más de 180 niños y jóvenes en Ciudad Bolívar encuentran en
-              nuestros 14 programas un camino hacia un futuro mejor.
+              Más de 1.877 niños y jóvenes en Ciudad Bolívar encuentran en
+              nuestros programas un camino hacia un futuro mejor.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -60,8 +60,8 @@ export default function HeroSection() {
             {/* Stats */}
             <div className="mt-14 flex gap-10">
               {[
-                { number: '180+', label: 'Niños' },
-                { number: '22', label: 'Años' },
+                { number: '1.877+', label: 'Niños' },
+                { number: '23', label: 'Años' },
                 { number: '14', label: 'Programas' },
               ].map((stat) => (
                 <div key={stat.label}>

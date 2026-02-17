@@ -9,10 +9,10 @@ import { HiArrowLeft, HiCalendar, HiShare } from 'react-icons/hi';
 
 const articlesData: Record<string, { title: string; date: string; content: string; author: string }> = {
   'celebramos-22-anos': {
-    title: 'Celebramos 22 años transformando vidas en Ciudad Bolívar',
+    title: 'Celebramos 23 años transformando vidas en Ciudad Bolívar',
     date: '2024-06-15',
     author: 'Fundación Cigarra',
-    content: 'Este año marca un hito especial para nuestra fundación: 22 años de labor ininterrumpida al servicio de los niños y jóvenes de Ciudad Bolívar en Bogotá.\n\nDesde nuestros humildes comienzos en 2002, hemos crecido hasta atender a más de 180 niños y jóvenes a través de 14 programas de educación, arte y cultura.\n\nNuestro compromiso sigue siendo el mismo: brindar oportunidades de desarrollo integral a quienes más lo necesitan, creando un espacio seguro donde los sueños de nuestros niños puedan florecer.\n\nAgradecemos a todos nuestros donantes, voluntarios y aliados que hacen posible esta labor. Juntos, seguiremos transformando vidas.',
+    content: 'Este año marca un hito especial para nuestra fundación: 23 años de labor ininterrumpida al servicio de los niños y jóvenes de Ciudad Bolívar en Bogotá.\n\nDesde nuestros humildes comienzos en 2002, hemos crecido hasta ayudar a más de 1.877 niños y jóvenes a través de 14 programas de educación, arte y cultura, generando más de 100 empleos y beneficiando a más de 190 familias.\n\nNuestro compromiso sigue siendo el mismo: brindar oportunidades de desarrollo integral a quienes más lo necesitan, creando un espacio seguro donde los sueños de nuestros niños puedan florecer.\n\nAgradecemos a todos nuestros donantes, voluntarios y aliados que hacen posible esta labor. Juntos, seguiremos transformando vidas.',
   },
   'nuevos-talleres-musica': {
     title: 'Nuevos talleres de música abiertos para la comunidad',
