@@ -2,10 +2,69 @@
 
 import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
-import { HiLocationMarker, HiPhone, HiMail, HiClock } from 'react-icons/hi';
+import { HiLocationMarker, HiPhone, HiMail, HiClock, HiCheckCircle, HiXCircle } from 'react-icons/hi';
 import { FaWhatsapp } from 'react-icons/fa';
+
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+const springEase = [0.34, 1.56, 0.64, 1] as const;
+
+const contactInfo = [
+  {
+    icon: HiLocationMarker,
+    labelKey: 'address',
+    content: (
+      <>
+        Cra 18M #75-25 Sur
+        <br />
+        Ciudad Bolivar, Bogota D.C.
+        <br />
+        Colombia
+      </>
+    ),
+    href: undefined as string | undefined,
+    color: 'from-primary-500 to-primary-600',
+    bgColor: 'bg-primary-50',
+    textColor: 'text-primary-600',
+  },
+  {
+    icon: HiPhone,
+    labelKey: 'phone' as const,
+    label: 'Telefono',
+    content: '+57 321 246 5421',
+    href: 'tel:+573212465421',
+    color: 'from-blue-500 to-blue-600',
+    bgColor: 'bg-blue-50',
+    textColor: 'text-blue-600',
+  },
+  {
+    icon: HiMail,
+    labelKey: 'email' as const,
+    label: 'Email',
+    content: 'info@cigarra.org',
+    href: 'mailto:info@cigarra.org',
+    color: 'from-accent-500 to-accent-600',
+    bgColor: 'bg-accent-50',
+    textColor: 'text-accent-600',
+  },
+  {
+    icon: HiClock,
+    labelKey: 'hours',
+    content: (
+      <>
+        Lunes a Viernes: 8:00 AM - 5:00 PM
+        <br />
+        Sabados: 8:00 AM - 12:00 PM
+      </>
+    ),
+    href: undefined as string | undefined,
+    color: 'from-green-500 to-green-600',
+    bgColor: 'bg-green-50',
+    textColor: 'text-green-600',
+  },
+];
 
 export default function ContactPage() {
   const t = useTranslations('contact');
@@ -17,6 +76,10 @@ export default function ContactPage() {
     subject: '',
     message: '',
   });
+
+  const { scrollY } = useScroll();
+  const heroImageY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroOverlayOpacity = useTransform(scrollY, [0, 300], [0.6, 0.85]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -41,210 +104,379 @@ export default function ContactPage() {
     }
   };
 
+  const inputClasses =
+    'w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 transition-all duration-300 focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 focus:outline-none hover:border-gray-300';
+
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[40vh] items-center bg-gradient-to-br from-primary-800 to-primary-900 pt-20">
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 lg:px-8">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-heading text-4xl font-bold text-white md:text-5xl"
-          >
-            {t('title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-4 max-w-2xl text-lg text-primary-200"
-          >
-            {t('subtitle')}
-          </motion.p>
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative flex min-h-[65vh] items-center overflow-hidden">
+        {/* Parallax background image */}
+        <motion.div className="absolute inset-0 z-0" style={{ y: heroImageY }}>
+          <Image
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80"
+            alt="Community gathering"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </motion.div>
+
+        {/* Gradient overlay */}
+        <motion.div
+          className="absolute inset-0 z-[1] bg-gradient-to-br from-primary-950/80 via-primary-900/70 to-primary-800/60"
+          style={{ opacity: heroOverlayOpacity }}
+        />
+
+        {/* Mesh animation */}
+        <div className="absolute inset-0 z-[2] opacity-20 mesh-gradient animate-gradient" style={{ backgroundSize: '400% 400%' }} />
+
+        {/* Floating decorations */}
+        <div className="absolute top-20 right-[20%] z-[2] h-48 w-48 rounded-full bg-primary-400/10 blur-3xl animate-float" />
+        <div className="absolute bottom-16 left-[15%] z-[2] h-40 w-40 rounded-full bg-accent-400/10 blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-32 lg:px-8">
+          <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: springEase }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 backdrop-blur-sm border border-white/20"
+            >
+              <HiMail className="h-4 w-4 text-accent-400" />
+              <span className="text-sm font-medium text-white/90">Estamos para ti</span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: smoothEase }}
+              className="font-heading text-5xl font-bold text-white md:text-6xl lg:text-7xl leading-tight"
+            >
+              {t('title')}
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: smoothEase }}
+              className="mt-6 max-w-2xl font-body text-xl text-white/85 leading-relaxed"
+            >
+              {t('subtitle')}
+            </motion.p>
+          </div>
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-5">
-            {/* Contact Info */}
+      {/* ===== CONTACT SECTION ===== */}
+      <section className="relative section-padding overflow-hidden">
+        {/* Decorative background blobs */}
+        <div className="absolute top-0 left-[5%] h-96 w-96 rounded-full bg-primary-50 blur-3xl opacity-50" />
+        <div className="absolute bottom-0 right-[5%] h-80 w-80 rounded-full bg-accent-50 blur-3xl opacity-40" />
+
+        {/* Dot pattern decoration */}
+        <div className="absolute top-20 right-20 opacity-[0.04]">
+          <div className="grid grid-cols-8 gap-4">
+            {Array.from({ length: 64 }).map((_, i) => (
+              <div key={i} className="h-2 w-2 rounded-full bg-primary-900" />
+            ))}
+          </div>
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="grid gap-16 lg:grid-cols-5">
+            {/* ===== LEFT: Contact Info ===== */}
             <div className="lg:col-span-2">
               <ScrollReveal direction="left">
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary-100">
-                      <HiLocationMarker className="h-5 w-5 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-semibold text-gray-900">{t('address')}</h3>
-                      <p className="text-sm text-gray-600">
-                        Cra 18M #75-25 Sur<br />
-                        Ciudad Bolívar, Bogotá D.C.<br />
-                        Colombia
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary-100">
-                      <HiPhone className="h-5 w-5 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-semibold text-gray-900">Teléfono</h3>
-                      <a href="tel:+573212465421" className="text-sm text-primary-600 hover:underline">
-                        +57 321 246 5421
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary-100">
-                      <HiMail className="h-5 w-5 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-semibold text-gray-900">Email</h3>
-                      <a href="mailto:info@cigarra.org" className="text-sm text-primary-600 hover:underline">
-                        info@cigarra.org
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary-100">
-                      <HiClock className="h-5 w-5 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-semibold text-gray-900">{t('hours')}</h3>
-                      <p className="text-sm text-gray-600">
-                        Lunes a Viernes: 8:00 AM - 5:00 PM<br />
-                        Sábados: 8:00 AM - 12:00 PM
-                      </p>
-                    </div>
-                  </div>
+                <div className="space-y-5">
+                  {contactInfo.map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                      <ScrollReveal key={item.labelKey} delay={index * 0.1}>
+                        <div className="glass group rounded-2xl border border-white bg-white/80 p-5 shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary-100/50 hover:-translate-y-0.5">
+                          <div className="flex items-start gap-4">
+                            <div
+                              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.color} shadow-md transition-transform duration-300 group-hover:scale-110`}
+                            >
+                              <Icon className="h-6 w-6 text-white" />
+                            </div>
+                            <div className="min-w-0">
+                              <h3 className="font-heading text-sm font-semibold text-gray-900 mb-1">
+                                {item.label || t(item.labelKey)}
+                              </h3>
+                              {item.href ? (
+                                <a
+                                  href={item.href}
+                                  className="text-sm text-primary-600 transition-colors hover:text-primary-700 hover:underline"
+                                >
+                                  {item.content}
+                                </a>
+                              ) : (
+                                <p className="text-sm text-gray-600 leading-relaxed">{item.content}</p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </ScrollReveal>
+                    );
+                  })}
 
                   {/* WhatsApp CTA */}
-                  <a
-                    href="https://wa.me/573212465421"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-xl bg-green-50 p-4 transition-colors hover:bg-green-100"
-                  >
-                    <FaWhatsapp className="h-6 w-6 text-green-600" />
-                    <div>
-                      <p className="font-semibold text-green-800">{t('whatsapp')}</p>
-                      <p className="text-xs text-green-600">+57 321 246 5421</p>
-                    </div>
-                  </a>
+                  <ScrollReveal delay={0.5}>
+                    <motion.a
+                      href="https://wa.me/573212465421"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group relative flex items-center gap-4 overflow-hidden rounded-2xl bg-gradient-to-r from-green-500 to-green-600 p-5 shadow-lg shadow-green-500/20 transition-shadow duration-300 hover:shadow-xl hover:shadow-green-500/30"
+                    >
+                      {/* Animated pulse ring */}
+                      <div className="absolute inset-0 rounded-2xl animate-pulse-soft opacity-20 bg-white" />
+
+                      <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30">
+                        <FaWhatsapp className="h-7 w-7 text-white" />
+                      </div>
+                      <div className="relative">
+                        <p className="font-heading font-bold text-white text-lg">{t('whatsapp')}</p>
+                        <p className="text-sm text-green-100">+57 321 246 5421</p>
+                      </div>
+
+                      {/* Arrow */}
+                      <div className="relative ml-auto">
+                        <svg
+                          className="h-6 w-6 text-white/70 transition-transform duration-300 group-hover:translate-x-1"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </motion.a>
+                  </ScrollReveal>
 
                   {/* Google Maps */}
-                  <div className="overflow-hidden rounded-xl">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0!2d-74.15!3d4.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzQnMTIuMCJOIDc0wrAwOScwMC4wIlc!5e0!3m2!1ses!2sco!4v1"
-                      width="100%"
-                      height="200"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="Fundación Cigarra location"
-                    />
-                  </div>
+                  <ScrollReveal delay={0.6}>
+                    <div className="overflow-hidden rounded-2xl border border-gray-100 shadow-lg shadow-gray-200/50">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0!2d-74.15!3d4.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzQnMTIuMCJOIDc0wrAwOScwMC4wIlc!5e0!3m2!1ses!2sco!4v1"
+                        width="100%"
+                        height="220"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Fundacion Cigarra location"
+                        className="grayscale transition-[filter] duration-500 hover:grayscale-0"
+                      />
+                    </div>
+                  </ScrollReveal>
                 </div>
               </ScrollReveal>
             </div>
 
-            {/* Contact Form */}
+            {/* ===== RIGHT: Contact Form ===== */}
             <div className="lg:col-span-3">
               <ScrollReveal direction="right">
-                <form onSubmit={handleSubmit} className="rounded-2xl bg-gray-50 p-8">
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <div>
-                      <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
-                        {t('name')} *
-                      </label>
-                      <input
-                        id="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-700">
-                        {t('email')} *
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-700">
-                        {t('phone')}
-                      </label>
-                      <input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="subject" className="mb-2 block text-sm font-medium text-gray-700">
-                        {t('subject')} *
-                      </label>
-                      <input
-                        id="subject"
-                        type="text"
-                        required
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
-                      />
-                    </div>
-                    <div className="md:col-span-2">
-                      <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700">
-                        {t('message')} *
-                      </label>
-                      <textarea
-                        id="message"
-                        required
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
-                      />
-                    </div>
-                  </div>
+                <div className="relative">
+                  {/* Decorative floating blobs behind form */}
+                  <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-primary-100/60 blur-3xl animate-float" />
+                  <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-accent-100/50 blur-3xl animate-float" style={{ animationDelay: '4s' }} />
 
-                  <div className="mt-6">
-                    <button
-                      type="submit"
-                      disabled={formState === 'sending'}
-                      className="w-full rounded-full bg-primary-600 py-3 font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60 md:w-auto md:px-8"
-                    >
-                      {formState === 'sending' ? t('sending') : t('send')}
-                    </button>
-                  </div>
+                  {/* Form card */}
+                  <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl shadow-gray-200/50">
+                    {/* Gradient top border */}
+                    <div className="h-1.5 w-full bg-gradient-to-r from-primary-500 via-accent-400 to-primary-500 animate-gradient" style={{ backgroundSize: '200% auto' }} />
 
-                  {formState === 'success' && (
-                    <p className="mt-4 rounded-lg bg-green-50 p-3 text-sm text-green-700">
-                      {t('success')}
-                    </p>
-                  )}
-                  {formState === 'error' && (
-                    <p className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">
-                      {t('error')}
-                    </p>
-                  )}
-                </form>
+                    <form onSubmit={handleSubmit} className="p-8 md:p-10">
+                      <div className="mb-8">
+                        <h3 className="font-heading text-2xl font-bold text-gray-900">
+                          Envianos un mensaje
+                        </h3>
+                        <p className="mt-2 text-sm text-gray-500">
+                          Completa el formulario y te responderemos lo mas pronto posible.
+                        </p>
+                      </div>
+
+                      <div className="grid gap-6 md:grid-cols-2">
+                        <div className="group">
+                          <label
+                            htmlFor="name"
+                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                          >
+                            {t('name')} *
+                          </label>
+                          <input
+                            id="name"
+                            type="text"
+                            required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            placeholder="Tu nombre completo"
+                            className={inputClasses}
+                          />
+                        </div>
+                        <div className="group">
+                          <label
+                            htmlFor="email"
+                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                          >
+                            {t('email')} *
+                          </label>
+                          <input
+                            id="email"
+                            type="email"
+                            required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            placeholder="tu@email.com"
+                            className={inputClasses}
+                          />
+                        </div>
+                        <div className="group">
+                          <label
+                            htmlFor="phone"
+                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                          >
+                            {t('phone')}
+                          </label>
+                          <input
+                            id="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            placeholder="+57 300 000 0000"
+                            className={inputClasses}
+                          />
+                        </div>
+                        <div className="group">
+                          <label
+                            htmlFor="subject"
+                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                          >
+                            {t('subject')} *
+                          </label>
+                          <input
+                            id="subject"
+                            type="text"
+                            required
+                            value={formData.subject}
+                            onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                            placeholder="Asunto de tu mensaje"
+                            className={inputClasses}
+                          />
+                        </div>
+                        <div className="group md:col-span-2">
+                          <label
+                            htmlFor="message"
+                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                          >
+                            {t('message')} *
+                          </label>
+                          <textarea
+                            id="message"
+                            required
+                            rows={5}
+                            value={formData.message}
+                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                            placeholder="Escribe tu mensaje aqui..."
+                            className={`${inputClasses} resize-none`}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Submit button */}
+                      <div className="mt-8">
+                        <motion.button
+                          type="submit"
+                          disabled={formState === 'sending'}
+                          whileHover={{ scale: formState === 'sending' ? 1 : 1.02 }}
+                          whileTap={{ scale: formState === 'sending' ? 1 : 0.98 }}
+                          className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 py-4 font-heading font-semibold text-white shadow-lg shadow-primary-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/30 disabled:opacity-70 disabled:cursor-not-allowed md:w-auto md:px-12"
+                        >
+                          <span className="relative z-10 flex items-center justify-center gap-2">
+                            {formState === 'sending' ? (
+                              <>
+                                {/* Spinning loader */}
+                                <svg
+                                  className="h-5 w-5 animate-spin"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                >
+                                  <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                  />
+                                  <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                                  />
+                                </svg>
+                                {t('sending')}
+                              </>
+                            ) : (
+                              <>
+                                <HiMail className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
+                                {t('send')}
+                              </>
+                            )}
+                          </span>
+
+                          {/* Hover shimmer */}
+                          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                        </motion.button>
+                      </div>
+
+                      {/* Status messages */}
+                      <AnimatePresence mode="wait">
+                        {formState === 'success' && (
+                          <motion.div
+                            key="success"
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                            transition={{ duration: 0.4, ease: smoothEase }}
+                            className="mt-6 flex items-center gap-3 rounded-2xl border border-green-200 bg-green-50 p-4"
+                          >
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-100">
+                              <HiCheckCircle className="h-6 w-6 text-green-600" />
+                            </div>
+                            <div>
+                              <p className="font-semibold text-green-800">Mensaje enviado</p>
+                              <p className="text-sm text-green-600">{t('success')}</p>
+                            </div>
+                          </motion.div>
+                        )}
+                        {formState === 'error' && (
+                          <motion.div
+                            key="error"
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                            transition={{ duration: 0.4, ease: smoothEase }}
+                            className="mt-6 flex items-center gap-3 rounded-2xl border border-red-200 bg-red-50 p-4"
+                          >
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-100">
+                              <HiXCircle className="h-6 w-6 text-red-600" />
+                            </div>
+                            <div>
+                              <p className="font-semibold text-red-800">Error</p>
+                              <p className="text-sm text-red-600">{t('error')}</p>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </form>
+                  </div>
+                </div>
               </ScrollReveal>
             </div>
           </div>

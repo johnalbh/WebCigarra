@@ -1,7 +1,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
+import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
@@ -10,6 +12,7 @@ import {
   HiCube, HiLightBulb, HiGlobe, HiHeart,
   HiCamera, HiStar, HiUsers, HiAcademicCap,
   HiColorSwatch, HiDesktopComputer,
+  HiArrowRight,
 } from 'react-icons/hi';
 
 const programs = [
@@ -29,68 +32,271 @@ const programs = [
   { name: 'Sistemas', slug: 'sistemas', icon: HiDesktopComputer, color: '#2196F3', description: 'Formación en herramientas informáticas y habilidades digitales para el siglo XXI.' },
 ];
 
+const programImageMap: Record<string, string> = {
+  'musica': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Musica_HED.jpg',
+  'artes-plasticas': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Musica_GL_2.jpg',
+  'refuerzo-escolar': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Apoyo_escolar_HED.jpg',
+  'danza': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_HED.jpg',
+  'teatro': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Teatro_HED.jpg',
+  'emprendimiento': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Centro_comunitario_HED.jpg',
+  'ingles': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Ingles_HED.jpg',
+  'valores-y-liderazgo': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Psicologia_HED.jpg',
+  'fotografia': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Tecnologia_GL_1.jpg',
+  'recreacion': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Recrecion_y_deporte_HED.jpg',
+  'escuela-de-padres': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Taller_Padres_HED.jpg',
+  'pre-icfes': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Biblioteca_HED.jpg',
+  'manualidades': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Ropero_HED.jpg',
+  'sistemas': 'https://cigarra.org/wp-content/uploads/2022/05/QH_tecnologia_HED.jpg',
+};
+
+const stats = [
+  { value: '14', label: 'Programas' },
+  { value: '180+', label: 'Niños' },
+  { value: '7', label: 'Categorías' },
+];
+
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
 export default function ProgramsPage() {
   const t = useTranslations('programs');
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const heroImageY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const heroOverlayOpacity = useTransform(scrollYProgress, [0, 1], [0.55, 0.8]);
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[50vh] items-center bg-gradient-to-br from-primary-800 to-primary-900 pt-20">
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 lg:px-8">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+      {/* ───────────────────── Hero Section ───────────────────── */}
+      <section ref={heroRef} className="relative flex min-h-[75vh] items-end overflow-hidden">
+        {/* Parallax background */}
+        <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
+          <Image
+            src="https://cigarra.org/wp-content/uploads/2025/04/Musica.jpg"
+            alt="Niños en programas de la Fundación Cigarra"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </motion.div>
+
+        {/* Animated gradient overlay */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/80 to-primary-800/40"
+          style={{ opacity: heroOverlayOpacity }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/60 via-transparent to-accent-900/20" />
+
+        {/* Decorative mesh */}
+        <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-accent-500/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-primary-400/10 blur-3xl" />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-32 pt-40 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-heading text-4xl font-bold text-white md:text-5xl"
+            transition={{ duration: 0.6, ease: smoothEase }}
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm"
+          >
+            <span className="h-2 w-2 animate-pulse rounded-full bg-accent-400" />
+            Fundación Cigarra
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: smoothEase }}
+            className="font-heading text-5xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl"
           >
             {t('title')}
           </motion.h1>
+
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-4 max-w-2xl text-lg text-primary-200"
+            transition={{ duration: 0.8, delay: 0.3, ease: smoothEase }}
+            className="mt-5 max-w-2xl text-lg leading-relaxed text-primary-100/90 md:text-xl"
           >
             {t('subtitle')}
           </motion.p>
         </div>
+
+        {/* Stats glassmorphism bar - anchored at the bottom */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.55, ease: smoothEase }}
+          className="absolute bottom-0 left-0 right-0 z-20"
+        >
+          <div className="mx-auto max-w-5xl px-4 lg:px-8">
+            <div className="glass -mb-8 flex items-center justify-center divide-x divide-white/15 rounded-2xl border border-white/20 px-4 py-5 shadow-2xl backdrop-blur-xl md:px-8 md:py-6">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 + i * 0.1, ease: smoothEase }}
+                  className="flex flex-1 flex-col items-center px-4 md:px-8"
+                >
+                  <span className="font-heading text-2xl font-extrabold text-white md:text-3xl">
+                    {stat.value}
+                  </span>
+                  <span className="mt-1 text-xs font-medium tracking-wider text-primary-200/80 uppercase md:text-sm">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </section>
 
-      {/* Programs Grid */}
-      <section className="section-padding">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* ───────────────────── Programs Grid ───────────────────── */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-24 pb-20">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, black 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+
+        <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-14 text-center">
+              <span className="mb-3 inline-block rounded-full bg-primary-100 px-4 py-1 text-sm font-semibold text-primary-700">
+                Explora
+              </span>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+                Nuestros <span className="text-gradient">Programas</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-500">
+                Cada programa es una puerta abierta al conocimiento, la creatividad y el desarrollo integral de nuestros beneficiarios.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <StaggerContainer staggerDelay={0.06} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {programs.map((program) => (
               <StaggerItem key={program.slug}>
                 <Link href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}>
                   <motion.article
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm transition-shadow hover:shadow-xl"
+                    whileHover={{ y: -10 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                    className="group relative h-full overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200/60 ring-1 ring-gray-100 transition-shadow duration-500 hover:shadow-2xl hover:shadow-gray-300/40"
                   >
+                    {/* Colored accent strip at top */}
                     <div
-                      className="absolute top-0 left-0 h-1.5 w-full"
+                      className="h-1 w-full transition-all duration-500 group-hover:h-1.5"
                       style={{ backgroundColor: program.color }}
                     />
-                    <div
-                      className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl"
-                      style={{ backgroundColor: `${program.color}15` }}
-                    >
-                      <program.icon className="h-7 w-7" style={{ color: program.color }} />
+
+                    {/* Image container */}
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={`${programImageMap[program.slug]}`}
+                        alt={program.name}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+
+                      {/* Color overlay that intensifies on hover */}
+                      <div
+                        className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-70"
+                        style={{
+                          background: `linear-gradient(135deg, ${program.color}40 0%, ${program.color}20 100%)`,
+                          opacity: 0.3,
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                      {/* Floating icon badge */}
+                      <motion.div
+                        className="absolute top-3 right-3 flex h-11 w-11 items-center justify-center rounded-xl shadow-lg backdrop-blur-sm transition-transform duration-300 group-hover:scale-110"
+                        style={{ backgroundColor: `${program.color}dd` }}
+                      >
+                        <program.icon className="h-5 w-5 text-white" />
+                      </motion.div>
+
+                      {/* Program name overlay on image */}
+                      <div className="absolute bottom-3 left-4 right-4">
+                        <h2 className="font-heading text-lg font-bold text-white drop-shadow-md">
+                          {program.name}
+                        </h2>
+                      </div>
                     </div>
-                    <h2 className="mb-3 font-heading text-xl font-bold text-gray-900">
-                      {program.name}
-                    </h2>
-                    <p className="text-sm leading-relaxed text-gray-600">
-                      {program.description}
-                    </p>
-                    <div className="mt-4 text-sm font-medium text-primary-600 opacity-0 transition-opacity group-hover:opacity-100">
-                      {t('learnMore')} →
+
+                    {/* Card body */}
+                    <div className="p-5">
+                      <p className="line-clamp-3 text-sm leading-relaxed text-gray-600">
+                        {program.description}
+                      </p>
+
+                      {/* Learn more link */}
+                      <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold transition-all duration-300 group-hover:gap-3"
+                        style={{ color: program.color }}
+                      >
+                        {t('learnMore')}
+                        <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </div>
                     </div>
                   </motion.article>
                 </Link>
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ───────────────────── CTA Section ───────────────────── */}
+      <section className="relative overflow-hidden bg-primary-900 py-24">
+        {/* Decorative blobs */}
+        <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-accent-500/15 blur-3xl" />
+        <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-primary-400/15 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-400/5 blur-2xl" />
+
+        <div className="relative mx-auto max-w-4xl px-4 text-center lg:px-8">
+          <ScrollReveal>
+            <motion.span
+              className="mb-4 inline-block rounded-full border border-accent-400/30 bg-accent-400/10 px-5 py-1.5 text-sm font-semibold text-accent-300"
+            >
+              Haz parte del cambio
+            </motion.span>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
+              Cada aporte construye un{' '}
+              <span className="bg-gradient-to-r from-accent-300 to-accent-500 bg-clip-text text-transparent">
+                futuro mejor
+              </span>
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-200/80">
+              Tu apoyo permite que mas ninos y jovenes de Ciudad Bolivar accedan a
+              educacion de calidad, arte y cultura. Juntos podemos transformar vidas.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/como-ayudar"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-sm font-bold tracking-wide text-white uppercase shadow-lg shadow-accent-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/40"
+              >
+                Quiero Ayudar
+                <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/contacto"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 font-heading text-sm font-bold tracking-wide text-white uppercase backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10"
+              >
+                Contáctanos
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </>

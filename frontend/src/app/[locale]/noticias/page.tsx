@@ -1,14 +1,25 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
+import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
-import { HiCalendar, HiArrowRight } from 'react-icons/hi';
+import { HiCalendar, HiArrowRight, HiMail } from 'react-icons/hi';
+
+const articleImages: Record<string, string> = {
+  'celebramos-22-anos': 'https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_1-1024x683.jpg',
+  'nuevos-talleres-musica': 'https://cigarra.org/wp-content/uploads/2025/04/Sinfonica1-1024x768.jpg',
+  'alianza-microsoft': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Tecnologia_GL_3.jpg',
+  'graduacion-pre-icfes': 'https://cigarra.org/wp-content/uploads/2022/09/QH_Apoyo_escolar_HED.jpg',
+  'festival-arte-cultura': 'https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_GL_1.jpg',
+  'campana-nutricion': 'https://cigarra.org/wp-content/uploads/2025/02/Nutricion_2.jpg',
+};
 
 const articles = [
-  { title: 'Celebramos 22 años transformando vidas en Ciudad Bolívar', excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes.', date: '2024-06-15', slug: 'celebramos-22-anos', featured: true },
+  { title: 'Celebramos 22 años transformando vidas en Ciudad Bolívar', excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes de la localidad, brindando esperanza y oportunidades a cientos de familias.', date: '2024-06-15', slug: 'celebramos-22-anos', featured: true },
   { title: 'Nuevos talleres de música abiertos para la comunidad', excerpt: 'Ampliamos nuestra oferta de programas musicales con nuevos instrumentos y profesores calificados.', date: '2024-05-20', slug: 'nuevos-talleres-musica', featured: false },
   { title: 'Alianza con Microsoft para formación en tecnología', excerpt: 'Nuestros jóvenes acceden a programas de formación tecnológica gracias a esta alianza.', date: '2024-04-10', slug: 'alianza-microsoft', featured: false },
   { title: 'Graduación de la primera cohorte de Pre-ICFES', excerpt: 'Celebramos la graduación de 25 jóvenes que completaron nuestro programa de preparación.', date: '2024-03-15', slug: 'graduacion-pre-icfes', featured: false },
@@ -16,82 +27,265 @@ const articles = [
   { title: 'Campaña de nutrición: Resultados del primer trimestre', excerpt: 'Compartimos los avances de nuestro programa de alimentación nutritiva.', date: '2024-01-30', slug: 'campana-nutricion', featured: false },
 ];
 
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('es-CO', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
 export default function NewsPage() {
   const t = useTranslations('news');
-  const featured = articles.find((a) => a.featured);
+  const featured = articles.find((a) => a.featured)!;
   const rest = articles.filter((a) => !a.featured);
+
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const heroImageY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const heroOverlayOpacity = useTransform(scrollYProgress, [0, 1], [0.5, 0.8]);
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[40vh] items-center bg-gradient-to-br from-primary-800 to-primary-900 pt-20">
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 lg:px-8">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+      {/* ───────────────────── Hero Section ───────────────────── */}
+      <section ref={heroRef} className="relative flex min-h-[60vh] items-center overflow-hidden">
+        {/* Parallax background */}
+        <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
+          <Image
+            src="https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_4.jpg"
+            alt="Eventos Fundación Cigarra"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </motion.div>
+
+        {/* Gradient overlays */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/70 to-primary-800/30"
+          style={{ opacity: heroOverlayOpacity }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/50 via-transparent to-transparent" />
+
+        {/* Decorative */}
+        <div className="absolute top-0 right-0 h-80 w-80 rounded-full bg-accent-500/10 blur-3xl" />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-40 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-heading text-4xl font-bold text-white md:text-5xl"
+            transition={{ duration: 0.6, ease: smoothEase }}
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm"
+          >
+            <span className="h-2 w-2 animate-pulse rounded-full bg-accent-400" />
+            Últimas Noticias
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: smoothEase }}
+            className="font-heading text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl"
           >
             {t('title')}
           </motion.h1>
+
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-4 max-w-2xl text-lg text-primary-200"
+            transition={{ duration: 0.8, delay: 0.3, ease: smoothEase }}
+            className="mt-5 max-w-2xl text-lg leading-relaxed text-primary-100/90 md:text-xl"
           >
             {t('subtitle')}
           </motion.p>
         </div>
       </section>
 
-      <section className="section-padding">
+      {/* ───────────────────── Featured Article ───────────────────── */}
+      <section className="relative bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          {/* Featured article */}
-          {featured && (
-            <ScrollReveal>
-              <Link href={{ pathname: '/noticias/[slug]', params: { slug: featured.slug } }}>
-                <article className="group mb-12 overflow-hidden rounded-2xl bg-white shadow-md transition-shadow hover:shadow-xl md:flex">
-                  <div className="h-64 bg-gradient-to-br from-primary-200 to-primary-300 md:h-auto md:w-1/2" />
-                  <div className="flex flex-col justify-center p-8 md:w-1/2">
-                    <div className="mb-3 flex items-center gap-2 text-xs text-gray-500">
-                      <HiCalendar className="h-3.5 w-3.5" />
-                      <time>{new Date(featured.date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-                    </div>
-                    <h2 className="mb-3 font-heading text-2xl font-bold text-gray-900 transition-colors group-hover:text-primary-600 md:text-3xl">
-                      {featured.title}
-                    </h2>
-                    <p className="mb-4 text-gray-600">{featured.excerpt}</p>
-                    <span className="inline-flex items-center gap-1 font-medium text-primary-600">
-                      {t('readMore')} <HiArrowRight className="h-4 w-4" />
+          <ScrollReveal>
+            <Link href={{ pathname: '/noticias/[slug]', params: { slug: featured.slug } }}>
+              <motion.article
+                whileHover={{ y: -6 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                className="group relative overflow-hidden rounded-3xl bg-gray-900 shadow-2xl shadow-gray-300/50 ring-1 ring-gray-200 md:flex md:min-h-[420px]"
+              >
+                {/* Image side */}
+                <div className="relative h-72 overflow-hidden md:h-auto md:w-3/5">
+                  <Image
+                    src={articleImages[featured.slug]}
+                    alt={featured.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 60vw"
+                    priority
+                  />
+                  {/* Gradient overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-gray-900/80 max-md:hidden" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent md:hidden" />
+
+                  {/* Featured badge */}
+                  <div className="absolute top-5 left-5 z-10">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-500 px-4 py-1.5 text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-accent-500/30">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
+                      Destacado
                     </span>
                   </div>
-                </article>
-              </Link>
-            </ScrollReveal>
-          )}
+                </div>
 
-          {/* Grid of rest */}
-          <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {/* Content side */}
+                <div className="relative flex flex-col justify-center p-8 md:w-2/5 md:p-12">
+                  <div className="mb-4 inline-flex items-center gap-2 text-sm text-gray-400">
+                    <HiCalendar className="h-4 w-4 text-accent-400" />
+                    <time className="font-medium">{formatDate(featured.date)}</time>
+                  </div>
+
+                  <h2 className="font-heading text-2xl font-bold leading-snug text-white transition-colors duration-300 group-hover:text-accent-300 md:text-3xl lg:text-4xl">
+                    {featured.title}
+                  </h2>
+
+                  <p className="mt-4 text-base leading-relaxed text-gray-400 md:text-lg">
+                    {featured.excerpt}
+                  </p>
+
+                  <div className="mt-8">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-accent-500 group-hover:shadow-lg group-hover:shadow-accent-500/25">
+                      {t('readMore')}
+                      <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </div>
+              </motion.article>
+            </Link>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ───────────────────── Articles Grid ───────────────────── */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white py-16 md:py-20">
+        {/* Subtle dot pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, black 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+
+        <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-12 text-center">
+              <span className="mb-3 inline-block rounded-full bg-primary-100 px-4 py-1 text-sm font-semibold text-primary-700">
+                Mantente informado
+              </span>
+              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+                Más <span className="text-gradient">Noticias</span>
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <StaggerContainer staggerDelay={0.08} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((article) => (
               <StaggerItem key={article.slug}>
                 <Link href={{ pathname: '/noticias/[slug]', params: { slug: article.slug } }}>
-                  <article className="group overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
-                    <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200" />
-                    <div className="p-6">
-                      <div className="mb-3 flex items-center gap-2 text-xs text-gray-500">
-                        <HiCalendar className="h-3.5 w-3.5" />
-                        <time>{new Date(article.date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                  <motion.article
+                    whileHover={{ y: -8 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                    className="group h-full overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200/60 ring-1 ring-gray-100 transition-shadow duration-500 hover:shadow-2xl hover:shadow-gray-300/40"
+                  >
+                    {/* Image */}
+                    <div className="relative h-52 overflow-hidden">
+                      <Image
+                        src={articleImages[article.slug]}
+                        alt={article.title}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                      {/* Date badge overlapping image bottom */}
+                      <div className="absolute bottom-3 left-4">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-md backdrop-blur-sm">
+                          <HiCalendar className="h-3.5 w-3.5 text-primary-500" />
+                          {formatDate(article.date)}
+                        </span>
                       </div>
-                      <h3 className="mb-2 font-heading text-lg font-semibold text-gray-900 transition-colors group-hover:text-primary-600">
+                    </div>
+
+                    {/* Body */}
+                    <div className="p-6">
+                      <h3 className="mb-3 font-heading text-lg font-bold leading-snug text-gray-900 transition-colors duration-300 group-hover:text-primary-600">
                         {article.title}
                       </h3>
-                      <p className="line-clamp-2 text-sm text-gray-600">{article.excerpt}</p>
+                      <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">
+                        {article.excerpt}
+                      </p>
+
+                      <div className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 transition-all duration-300 group-hover:gap-3">
+                        {t('readMore')}
+                        <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </div>
                     </div>
-                  </article>
+                  </motion.article>
                 </Link>
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ───────────────────── Newsletter CTA ───────────────────── */}
+      <section className="relative overflow-hidden bg-primary-900 py-24">
+        {/* Decorative blurs */}
+        <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent-400/10 blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-primary-400/10 blur-3xl" />
+
+        <div className="relative mx-auto max-w-3xl px-4 text-center lg:px-8">
+          <ScrollReveal>
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-500/20">
+              <HiMail className="h-8 w-8 text-accent-400" />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">
+              No te pierdas ninguna{' '}
+              <span className="bg-gradient-to-r from-accent-300 to-accent-500 bg-clip-text text-transparent">
+                novedad
+              </span>
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-primary-200/80">
+              Suscribete a nuestro boletin y recibe las ultimas noticias, eventos y logros de la Fundacion Cigarra directamente en tu correo.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <div className="relative w-full max-w-md">
+                <input
+                  type="email"
+                  placeholder="Tu correo electrónico"
+                  className="w-full rounded-full border border-white/15 bg-white/10 px-6 py-4 pr-40 text-sm text-white placeholder-primary-300/50 backdrop-blur-sm transition-all duration-300 focus:border-accent-400/50 focus:bg-white/15 focus:ring-2 focus:ring-accent-400/20 focus:outline-none"
+                />
+                <button
+                  type="button"
+                  className="absolute top-1.5 right-1.5 inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent-500/30 transition-all duration-300 hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/40"
+                >
+                  Suscribirme
+                  <HiArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+            <p className="mt-4 text-xs text-primary-300/50">
+              Sin spam. Puedes cancelar cuando quieras.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
     </>
