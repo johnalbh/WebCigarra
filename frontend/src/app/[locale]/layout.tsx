@@ -7,6 +7,7 @@ import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
+import FloatingSocialBar from '@/components/shared/FloatingSocialBar';
 import DonationFloatingCTA from '@/components/layout/DonationFloatingCTA';
 
 const inter = Inter({
@@ -70,6 +71,7 @@ export default async function LocaleLayout({
           <main className="min-h-screen">{children}</main>
           <Footer />
           <WhatsAppButton />
+          <FloatingSocialBar />
           <DonationFloatingCTA />
         </NextIntlClientProvider>
       </body>

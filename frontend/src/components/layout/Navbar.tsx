@@ -5,24 +5,16 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi';
-import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
+import { HiMenu, HiX, HiChevronDown, HiBriefcase } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'motion/react';
 import { usePathname as useNextPathname } from 'next/navigation';
 
-/* ── Social links ── */
-const socialLinks = [
-  { icon: FaFacebookF, href: 'https://www.facebook.com/fundacioncigarra', label: 'Facebook', color: 'hover:bg-blue-600 hover:text-white' },
-  { icon: FaInstagram, href: 'https://www.instagram.com/fundacioncigarra', label: 'Instagram', color: 'hover:bg-pink-600 hover:text-white' },
-  { icon: FaYoutube, href: 'https://www.youtube.com/@fundacioncigarra', label: 'YouTube', color: 'hover:bg-red-600 hover:text-white' },
-  { icon: FaLinkedinIn, href: 'https://www.linkedin.com/company/fundacion-cigarra', label: 'LinkedIn', color: 'hover:bg-blue-700 hover:text-white' },
-];
-
 /* ── Nav structure with dropdowns ── */
+type NavChild = { href: string; key: string; highlight?: boolean };
 type NavItem = {
   href?: string;
   key: string;
-  children?: { href: string; key: string }[];
+  children?: NavChild[];
 };
 
 const navItems: NavItem[] = [
@@ -42,7 +34,7 @@ const navItems: NavItem[] = [
       { href: '/como-ayudar', key: 'howToHelp' },
       { href: '/plan-padrino', key: 'planPadrino' },
       { href: '/voluntariado', key: 'volunteer' },
-      { href: '/impacto-empresarial', key: 'corporateImpact' },
+      { href: '/impacto-empresarial', key: 'corporateImpact', highlight: true },
     ],
   },
   { href: '/noticias', key: 'news' },
@@ -59,7 +51,7 @@ function DesktopDropdown({
   t,
 }: {
   label: string;
-  children: { href: string; key: string }[];
+  children: NavChild[];
   scrolled: boolean;
   pathWithoutLocale: string;
   t: (key: string) => string;
@@ -109,7 +101,7 @@ function DesktopDropdown({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-0 top-full mt-1 z-50 min-w-[200px] overflow-hidden rounded-xl border border-gray-100 bg-white py-2 shadow-xl"
+            className="absolute left-0 top-full mt-1 z-50 min-w-[220px] overflow-hidden rounded-xl border border-gray-100 bg-white py-2 shadow-xl"
           >
             {children.map((child) => (
               <Link
@@ -117,13 +109,22 @@ function DesktopDropdown({
                 href={child.href as '/'}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  'block px-4 py-2.5 text-sm font-medium transition-colors',
+                  'flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors',
+                  child.highlight && 'border-l-2 border-accent-500',
                   pathWithoutLocale === child.href
                     ? 'bg-primary-50 text-primary-600'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-primary-600'
+                    : child.highlight
+                      ? 'text-gray-700 hover:bg-accent-50 hover:text-accent-700'
+                      : 'text-gray-700 hover:bg-gray-50 hover:text-primary-600'
                 )}
               >
+                {child.highlight && <HiBriefcase className="h-4 w-4 text-accent-500" />}
                 {t(child.key)}
+                {child.highlight && (
+                  <span className="ml-auto rounded-full bg-accent-100 px-2 py-0.5 text-[10px] font-semibold text-accent-700">
+                    Empresas
+                  </span>
+                )}
               </Link>
             ))}
           </motion.div>
@@ -220,29 +221,8 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Right side: Social + Language + Donate */}
+        {/* Right side: Language + Donate */}
         <div className="hidden items-center gap-2 lg:flex">
-          {/* Social icons */}
-          <div className="flex items-center gap-1 mr-2">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className={cn(
-                  'flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300',
-                  scrolled
-                    ? `bg-gray-100 text-gray-500 ${social.color}`
-                    : `bg-white/10 text-white/80 ${social.color}`
-                )}
-              >
-                <social.icon className="h-3.5 w-3.5" />
-              </a>
-            ))}
-          </div>
-
           <a
             href={switchLocaleHref}
             className={cn(
@@ -323,13 +303,21 @@ export default function Navbar() {
                                 key={child.key}
                                 href={child.href as '/'}
                                 className={cn(
-                                  'block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors',
+                                  'flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors',
                                   pathWithoutLocale === child.href
                                     ? 'bg-primary-50 text-primary-600'
-                                    : 'text-gray-600 hover:bg-gray-50 hover:text-primary-600'
+                                    : child.highlight
+                                      ? 'text-accent-700 hover:bg-accent-50'
+                                      : 'text-gray-600 hover:bg-gray-50 hover:text-primary-600'
                                 )}
                               >
+                                {child.highlight && <HiBriefcase className="h-4 w-4 text-accent-500" />}
                                 {t(child.key)}
+                                {child.highlight && (
+                                  <span className="ml-auto rounded-full bg-accent-100 px-2 py-0.5 text-[10px] font-semibold text-accent-700">
+                                    Empresas
+                                  </span>
+                                )}
                               </Link>
                             ))}
                           </div>
@@ -353,22 +341,7 @@ export default function Navbar() {
                 )
               )}
 
-              {/* Social icons in mobile */}
               <div className="border-t pt-4 mt-2">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      className={`flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-all duration-300 ${social.color}`}
-                    >
-                      <social.icon className="h-4 w-4" />
-                    </a>
-                  ))}
-                </div>
                 <div className="flex items-center gap-3">
                   <a
                     href={switchLocaleHref}

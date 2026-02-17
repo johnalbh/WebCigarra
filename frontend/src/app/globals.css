@@ -132,3 +132,58 @@ h1, h2, h3, h4, h5, h6 {
 .animate-hero-float-reverse { animation: hero-float-reverse 8s ease-in-out infinite; }
 .animate-hero-dot-1 { animation: hero-dot-1 6s ease-in-out infinite; }
 .animate-hero-dot-2 { animation: hero-dot-2 5s ease-in-out infinite; }
+
+/* Filled wave animations — larger translateX for ocean-like flow */
+@keyframes hero-wave-fill-1 {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-50px) translateY(6px); }
+}
+@keyframes hero-wave-fill-2 {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(40px) translateY(-8px); }
+}
+@keyframes hero-wave-fill-3 {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-35px) translateY(10px); }
+}
+.animate-hero-wave-fill-1 { animation: hero-wave-fill-1 14s ease-in-out infinite; }
+.animate-hero-wave-fill-2 { animation: hero-wave-fill-2 11s ease-in-out infinite; }
+.animate-hero-wave-fill-3 { animation: hero-wave-fill-3 9s ease-in-out infinite; }
+
+/* Glow pulse */
+@keyframes hero-glow-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+.animate-hero-glow-pulse { animation: hero-glow-pulse 8s ease-in-out infinite; }
+
+/* Rotating geometric rings */
+@keyframes hero-ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes hero-ring-rotate-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+.animate-hero-ring-rotate { animation: hero-ring-rotate 30s linear infinite; }
+.animate-hero-ring-rotate-reverse { animation: hero-ring-rotate-reverse 40s linear infinite; }
+
+/* Shimmer / sparkle effect */
+@keyframes hero-shimmer {
+  0%, 100% { opacity: 0.04; transform: scale(0.8); }
+  50% { opacity: 0.20; transform: scale(1.6); }
+}
+.animate-hero-shimmer { animation: hero-shimmer 4s ease-in-out infinite; }
+
+/* Flowing dash animation */
+@keyframes hero-dash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -72; }
+}
+@keyframes hero-dash-reverse {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 56; }
+}
+.animate-hero-dash { animation: hero-dash 6s linear infinite; }
+.animate-hero-dash-reverse { animation: hero-dash-reverse 8s linear infinite; }
