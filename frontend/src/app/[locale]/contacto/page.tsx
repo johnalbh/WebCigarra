@@ -2,14 +2,13 @@
 
 import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { HiLocationMarker, HiPhone, HiMail, HiClock, HiCheckCircle, HiXCircle } from 'react-icons/hi';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
-const springEase = [0.34, 1.56, 0.64, 1] as const;
 
 const contactInfo = [
   {
@@ -77,10 +76,6 @@ export default function ContactPage() {
     message: '',
   });
 
-  const { scrollY } = useScroll();
-  const heroImageY = useTransform(scrollY, [0, 500], [0, 150]);
-  const heroOverlayOpacity = useTransform(scrollY, [0, 300], [0.6, 0.85]);
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setFormState('sending');
@@ -110,63 +105,59 @@ export default function ContactPage() {
   return (
     <>
       {/* ===== HERO SECTION ===== */}
-      <section className="relative flex min-h-[65vh] items-center overflow-hidden">
-        {/* Parallax background image */}
-        <motion.div className="absolute inset-0 z-0" style={{ y: heroImageY }}>
-          <Image
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80"
-            alt="Community gathering"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-        </motion.div>
+      <section className="relative overflow-hidden bg-primary-950">
+        {/* Subtle accent glow */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
-        {/* Gradient overlay */}
-        <motion.div
-          className="absolute inset-0 z-[1] bg-gradient-to-br from-primary-950/80 via-primary-900/70 to-primary-800/60"
-          style={{ opacity: heroOverlayOpacity }}
-        />
-
-        {/* Mesh animation */}
-        <div className="absolute inset-0 z-[2] opacity-20 mesh-gradient animate-gradient" style={{ backgroundSize: '400% 400%' }} />
-
-        {/* Floating decorations */}
-        <div className="absolute top-20 right-[20%] z-[2] h-48 w-48 rounded-full bg-primary-400/10 blur-3xl animate-float" />
-        <div className="absolute bottom-16 left-[15%] z-[2] h-40 w-40 rounded-full bg-accent-400/10 blur-3xl animate-float" style={{ animationDelay: '3s' }} />
-
-        {/* Content */}
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-32 lg:px-8">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: springEase }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 backdrop-blur-sm border border-white/20"
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-28 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-36">
+          {/* Text side */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: smoothEase }}
+              className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
             >
-              <HiMail className="h-4 w-4 text-accent-400" />
-              <span className="text-sm font-medium text-white/90">Estamos para ti</span>
-            </motion.div>
+              Estamos para ti
+            </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: smoothEase }}
-              className="font-heading text-5xl font-bold text-white md:text-6xl lg:text-7xl leading-tight"
+              transition={{ duration: 0.7, delay: 0.1, ease: smoothEase }}
+              className="font-heading text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
             >
               {t('title')}
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: smoothEase }}
-              className="mt-6 max-w-2xl font-body text-xl text-white/85 leading-relaxed"
+              transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
+              className="mt-6 max-w-xl text-lg leading-relaxed text-primary-200/80"
             >
               {t('subtitle')}
             </motion.p>
           </div>
+
+          {/* Image side */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: smoothEase }}
+            className="hidden lg:block"
+          >
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="https://cigarra.org/wp-content/uploads/2025/04/Recreacion.jpg"
+                alt="Comunidad Fundacion Cigarra"
+                fill
+                className="object-cover"
+                priority
+                sizes="50vw"
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 

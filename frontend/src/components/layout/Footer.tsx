@@ -1,12 +1,13 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 
 const socialLinks = [
   { icon: FaFacebookF, href: 'https://www.facebook.com/fundacioncigarra', label: 'Facebook' },
   { icon: FaInstagram, href: 'https://www.instagram.com/fundacioncigarra', label: 'Instagram' },
   { icon: FaYoutube, href: 'https://www.youtube.com/@fundacioncigarra', label: 'YouTube' },
+  { icon: FaLinkedinIn, href: 'https://www.linkedin.com/company/fundacion-cigarra', label: 'LinkedIn' },
 ];
 
 const quickLinks = [

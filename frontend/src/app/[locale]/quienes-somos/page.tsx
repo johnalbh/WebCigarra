@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef, useMemo } from 'react';
+import { motion, useScroll } from 'motion/react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
@@ -137,58 +137,6 @@ const values = [
   },
 ];
 
-/* ---------- animated particles for hero ---------- */
-function HeroParticles({ count = 25 }: { count?: number }) {
-  const dots = useMemo(
-    () =>
-      Array.from({ length: count }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: 2 + Math.random() * 3,
-        duration: 14 + Math.random() * 18,
-        delay: Math.random() * 6,
-        opacity: 0.12 + Math.random() * 0.28,
-      })),
-    [count],
-  );
-
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {dots.map((d) => (
-        <motion.span
-          key={d.id}
-          className="absolute rounded-full bg-white"
-          style={{
-            width: d.size,
-            height: d.size,
-            left: `${d.x}%`,
-            top: `${d.y}%`,
-            opacity: d.opacity,
-          }}
-          animate={{
-            y: [0, -25, 12, -18, 0],
-            x: [0, 12, -8, 4, 0],
-            opacity: [
-              d.opacity,
-              d.opacity * 1.5,
-              d.opacity * 0.5,
-              d.opacity * 1.2,
-              d.opacity,
-            ],
-          }}
-          transition={{
-            duration: d.duration,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: d.delay,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 /* ---------- animated timeline line ---------- */
 function TimelineLine() {
   const lineRef = useRef<HTMLDivElement>(null);
@@ -291,149 +239,71 @@ function TimelineNode({
   );
 }
 
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
 /* ---------- main page component ---------- */
 export default function AboutPage() {
   const t = useTranslations('about');
-  const heroRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
-  const heroImgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.6, 0.9]);
-  const heroTextY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-
-  /* stagger text entrance */
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-    },
-  };
-  const textVariants = {
-    hidden: { opacity: 0, y: 40, filter: 'blur(8px)' },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
-    },
-  };
 
   return (
     <>
       {/* ========== HERO SECTION ========== */}
-      <section
-        ref={heroRef}
-        className="relative flex min-h-[85vh] items-center justify-center overflow-hidden"
-      >
-        {/* Parallax background image */}
-        <motion.div className="absolute inset-0" style={{ y: heroImgY }}>
-          <Image
-            src="https://cigarra.org/wp-content/uploads/2022/09/QH_Equipo_DEC_1.jpg"
-            alt="Equipo Fundación Cigarra"
-            fill
-            priority
-            sizes="100vw"
-            className="scale-110 object-cover"
-          />
-        </motion.div>
+      <section className="relative overflow-hidden bg-primary-950">
+        {/* Subtle accent glow */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
-        {/* Animated gradient overlay */}
-        <motion.div className="absolute inset-0" style={{ opacity: overlayOpacity }}>
-          <div
-            className="absolute inset-0 animate-gradient"
-            style={{
-              backgroundSize: '200% 200%',
-              background:
-                'linear-gradient(135deg, rgba(19,45,65,0.92) 0%, rgba(22,123,174,0.80) 35%, rgba(245,158,11,0.40) 70%, rgba(19,45,65,0.90) 100%)',
-            }}
-          />
-        </motion.div>
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-28 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-36">
+          {/* Text side */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: smoothEase }}
+              className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
+            >
+              {t('foundedIn')} 2002 &mdash; Ciudad Bolivar, Bogota
+            </motion.p>
 
-        {/* Blobs */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: smoothEase }}
+              className="font-heading text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
+            >
+              {t('title')}
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
+              className="mt-6 max-w-xl text-lg leading-relaxed text-primary-200/80"
+            >
+              Mas de dos decadas dedicadas a transformar vidas a traves del arte,
+              la educacion y la cultura en una de las comunidades mas necesitadas
+              de Bogota.
+            </motion.p>
+          </div>
+
+          {/* Image side */}
           <motion.div
-            className="absolute -top-32 -left-32 h-[400px] w-[400px] rounded-full bg-accent-500/15 blur-3xl"
-            animate={{
-              x: [0, 50, -30, 20, 0],
-              y: [0, -40, 25, -15, 0],
-              scale: [1, 1.1, 0.9, 1.05, 1],
-            }}
-            transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute top-1/3 right-0 h-[350px] w-[350px] rounded-full bg-primary-400/15 blur-3xl"
-            animate={{
-              x: [0, -40, 30, -15, 0],
-              y: [0, 35, -50, 15, 0],
-              scale: [1, 0.9, 1.1, 0.95, 1],
-            }}
-            transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-          />
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: smoothEase }}
+            className="hidden lg:block"
+          >
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="https://cigarra.org/wp-content/uploads/2022/09/QH_Equipo_DEC_1.jpg"
+                alt="Equipo Fundacion Cigarra"
+                fill
+                priority
+                sizes="50vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
         </div>
-
-        {/* Particles */}
-        <HeroParticles count={30} />
-
-        {/* Content */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="relative z-10 mx-auto max-w-7xl px-4 py-32 text-center lg:px-8"
-          style={{ y: heroTextY }}
-        >
-          <motion.p
-            variants={textVariants}
-            className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-accent-400 drop-shadow-lg"
-          >
-            {t('foundedIn')} 2002 &mdash; Ciudad Bolivar, Bogota
-          </motion.p>
-
-          <motion.h1
-            variants={textVariants}
-            className="mx-auto mb-8 max-w-4xl font-heading text-4xl font-extrabold leading-[1.1] text-white drop-shadow-xl sm:text-5xl md:text-6xl lg:text-7xl"
-          >
-            {t('title')}
-          </motion.h1>
-
-          <motion.p
-            variants={textVariants}
-            className="mx-auto max-w-2xl text-lg font-light leading-relaxed text-primary-100/90 md:text-xl"
-          >
-            Mas de dos decadas dedicadas a transformar vidas a traves del arte,
-            la educacion y la cultura en una de las comunidades mas necesitadas
-            de Bogota.
-          </motion.p>
-
-          {/* Decorative divider */}
-          <motion.div
-            variants={textVariants}
-            className="mx-auto mt-10 flex items-center justify-center gap-2"
-          >
-            <span className="h-0.5 w-12 rounded-full bg-accent-400/60" />
-            <span className="h-2 w-2 rounded-full bg-accent-400" />
-            <span className="h-0.5 w-12 rounded-full bg-accent-400/60" />
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-            className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-white/30 p-1.5"
-          >
-            <motion.div className="h-2 w-1 rounded-full bg-white/70" />
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* ========== MISSION SECTION ========== */}

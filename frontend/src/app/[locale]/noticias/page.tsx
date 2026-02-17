@@ -1,8 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import ScrollReveal from '@/components/shared/ScrollReveal';
@@ -42,69 +41,62 @@ export default function NewsPage() {
   const featured = articles.find((a) => a.featured)!;
   const rest = articles.filter((a) => !a.featured);
 
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
-  const heroImageY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const heroOverlayOpacity = useTransform(scrollYProgress, [0, 1], [0.5, 0.8]);
-
   return (
     <>
       {/* ───────────────────── Hero Section ───────────────────── */}
-      <section ref={heroRef} className="relative flex min-h-[60vh] items-center overflow-hidden">
-        {/* Parallax background */}
-        <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
-          <Image
-            src="https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_4.jpg"
-            alt="Eventos Fundación Cigarra"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-        </motion.div>
+      <section className="relative overflow-hidden bg-primary-950">
+        {/* Subtle accent glow */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
-        {/* Gradient overlays */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/70 to-primary-800/30"
-          style={{ opacity: heroOverlayOpacity }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/50 via-transparent to-transparent" />
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-28 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-36">
+          {/* Text side */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: smoothEase }}
+              className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
+            >
+              Ultimas Noticias
+            </motion.p>
 
-        {/* Decorative */}
-        <div className="absolute top-0 right-0 h-80 w-80 rounded-full bg-accent-500/10 blur-3xl" />
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: smoothEase }}
+              className="font-heading text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
+            >
+              {t('title')}
+            </motion.h1>
 
-        {/* Content */}
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-40 lg:px-8">
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
+              className="mt-6 max-w-xl text-lg leading-relaxed text-primary-200/80"
+            >
+              {t('subtitle')}
+            </motion.p>
+          </div>
+
+          {/* Image side */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: smoothEase }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: smoothEase }}
+            className="hidden lg:block"
           >
-            <span className="h-2 w-2 animate-pulse rounded-full bg-accent-400" />
-            Últimas Noticias
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_1-1024x683.jpg"
+                alt="Eventos Fundacion Cigarra"
+                fill
+                className="object-cover"
+                priority
+                sizes="50vw"
+              />
+            </div>
           </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: smoothEase }}
-            className="font-heading text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl"
-          >
-            {t('title')}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: smoothEase }}
-            className="mt-5 max-w-2xl text-lg leading-relaxed text-primary-100/90 md:text-xl"
-          >
-            {t('subtitle')}
-          </motion.p>
         </div>
       </section>
 

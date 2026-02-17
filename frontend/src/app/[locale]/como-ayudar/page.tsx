@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
@@ -188,81 +188,53 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
 export default function HowToHelpPage() {
   const t = useTranslations('donation');
   const tFaq = useTranslations('faq');
-  const { scrollY } = useScroll();
-  const heroImageY = useTransform(scrollY, [0, 600], [0, 200]);
-  const heroOverlayOpacity = useTransform(scrollY, [0, 400], [0.5, 0.8]);
 
   return (
     <>
       {/* ===== HERO SECTION ===== */}
-      <section className="relative flex min-h-[85vh] items-center overflow-hidden">
-        {/* Parallax background image */}
-        <motion.div className="absolute inset-0 z-0" style={{ y: heroImageY }}>
-          <Image
-            src="https://cigarra.org/wp-content/uploads/2025/04/Musica.jpg"
-            alt="Children receiving help"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-        </motion.div>
+      <section className="relative overflow-hidden bg-primary-950">
+        {/* Subtle accent glow */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
-        {/* Animated gradient overlay */}
-        <motion.div
-          className="absolute inset-0 z-[1] bg-gradient-to-br from-accent-900/70 via-primary-900/60 to-primary-950/80"
-          style={{ opacity: heroOverlayOpacity }}
-        />
-
-        {/* Animated mesh pattern */}
-        <div className="absolute inset-0 z-[2] opacity-30 mesh-gradient animate-gradient" style={{ backgroundSize: '400% 400%' }} />
-
-        {/* Decorative floating circles */}
-        <div className="absolute top-20 right-[15%] z-[2] h-64 w-64 rounded-full bg-accent-400/10 blur-3xl animate-float" />
-        <div className="absolute bottom-20 left-[10%] z-[2] h-48 w-48 rounded-full bg-primary-400/10 blur-3xl animate-float" style={{ animationDelay: '3s' }} />
-
-        {/* Hero content */}
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-32 lg:px-8">
-          <div className="max-w-3xl">
-            {/* Pulsing heart icon */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: springEase }}
-              className="mb-8"
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-28 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-36">
+          {/* Text side */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: smoothEase }}
+              className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
             >
-              <div className="inline-flex items-center justify-center rounded-2xl bg-white/10 p-4 backdrop-blur-sm border border-white/20 animate-pulse-soft">
-                <HiHeart className="h-10 w-10 text-accent-400" />
-              </div>
-            </motion.div>
+              Fundacion Cigarra
+            </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: smoothEase }}
-              className="font-heading text-5xl font-bold text-white md:text-6xl lg:text-7xl leading-tight"
+              transition={{ duration: 0.7, delay: 0.1, ease: smoothEase }}
+              className="font-heading text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
             >
               {t('title')}
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: smoothEase }}
-              className="mt-6 max-w-2xl font-body text-xl text-white/90 leading-relaxed md:text-2xl"
+              transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
+              className="mt-6 max-w-xl text-lg leading-relaxed text-primary-200/80"
             >
               {t('subtitle')}
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: smoothEase }}
+              transition={{ duration: 0.7, delay: 0.35, ease: smoothEase }}
               className="mt-10 flex flex-wrap gap-4"
             >
               <a
                 href="#donation-tiers"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading font-semibold text-white shadow-xl shadow-accent-500/30 transition-all duration-300 hover:bg-accent-400 hover:shadow-2xl hover:shadow-accent-500/40 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading font-semibold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:-translate-y-0.5"
               >
                 <HiHeart className="h-5 w-5 transition-transform group-hover:scale-110" />
                 {t('donateCOP')}
@@ -271,36 +243,33 @@ export default function HowToHelpPage() {
                 href={DONATION_LINK_USD}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 font-heading font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/50"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-8 py-4 font-heading font-semibold text-white transition-all duration-300 hover:bg-white/5 hover:border-white/30"
               >
                 <HiCurrencyDollar className="h-5 w-5" />
                 {t('donateUSD')}
               </a>
             </motion.div>
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
-        >
+          {/* Image side */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="flex flex-col items-center gap-2"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: smoothEase }}
+            className="hidden lg:block"
           >
-            <div className="h-10 w-6 rounded-full border-2 border-white/40 p-1">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                className="h-2 w-2 rounded-full bg-white/80"
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="https://cigarra.org/wp-content/uploads/2025/04/Musica.jpg"
+                alt="Children receiving help"
+                fill
+                className="object-cover"
+                priority
+                sizes="50vw"
               />
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ===== DONATION TIERS SECTION ===== */}
