@@ -16,6 +16,9 @@ const quickLinks = [
   { href: '/programas' as const, key: 'programs' },
   { href: '/como-ayudar' as const, key: 'howToHelp' },
   { href: '/noticias' as const, key: 'news' },
+  { href: '/historias-de-exito' as const, key: 'successStories' },
+  { href: '/equipo' as const, key: 'team' },
+  { href: '/himno' as const, key: 'anthem' },
   { href: '/contacto' as const, key: 'contact' },
 ];
 

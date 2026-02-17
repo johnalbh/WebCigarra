@@ -38,6 +38,14 @@ export const routing = defineRouting({
       es: '/contacto',
       en: '/contact',
     },
+    '/himno': {
+      es: '/himno',
+      en: '/anthem',
+    },
+    '/equipo': {
+      es: '/equipo',
+      en: '/team',
+    },
   },
 });
 
