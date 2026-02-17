@@ -13,7 +13,12 @@
     "contact": "Contacto",
     "anthem": "Himno",
     "team": "Equipo",
-    "donate": "Dona Ahora"
+    "donate": "Dona Ahora",
+    "planPadrino": "Plan Padrino",
+    "volunteer": "Voluntariado",
+    "corporateImpact": "Impacto Empresarial",
+    "aboutUs": "Nosotros",
+    "getInvolved": "Participa"
   },
   "hero": {
     "tagline": "Desde 2002 transformando vidas",

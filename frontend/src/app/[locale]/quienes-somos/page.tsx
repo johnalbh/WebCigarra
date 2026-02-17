@@ -492,6 +492,45 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ========== NUESTRO EQUIPO PREVIEW ========== */}
+      <section className="section-padding relative overflow-hidden">
+        <div className="mx-auto max-w-5xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="rounded-2xl border border-gray-100 bg-white p-8 md:p-12">
+              <div className="grid items-center gap-8 md:grid-cols-2">
+                <div>
+                  <span className="mb-4 inline-block rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-primary-700">
+                    {t('team')}
+                  </span>
+                  <h2 className="mb-4 font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+                    Conoce a nuestro equipo
+                  </h2>
+                  <p className="mb-6 text-lg leading-relaxed text-gray-600">
+                    Mas de 33 profesionales comprometidos con la transformacion social. Educadores, artistas, psicologos y administradores que hacen posible nuestros 14 programas.
+                  </p>
+                  <Link
+                    href={'/equipo' as '/equipo'}
+                    className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-primary-600"
+                  >
+                    <HiUserGroup className="h-5 w-5" />
+                    Ver Todo el Equipo
+                  </Link>
+                </div>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                  <Image
+                    src="/images/about/equipo.jpg"
+                    alt="Equipo Fundación Cigarra"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ========== BOTTOM CTA ========== */}
       <section className="relative overflow-hidden bg-primary-500">
         <HeroWaves />
@@ -520,20 +559,18 @@ export default function AboutPage() {
                 Dona Ahora
               </a>
               <Link
-                href="/contacto"
+                href={'/voluntariado' as '/voluntariado'}
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 <HiUserGroup className="h-5 w-5" />
                 Se Voluntario
               </Link>
-              <a
-                href="https://www.instagram.com/fundacioncigarra/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={'/equipo' as '/equipo'}
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Siguenos
-              </a>
+                Nuestro Equipo
+              </Link>
             </div>
           </ScrollReveal>
         </div>

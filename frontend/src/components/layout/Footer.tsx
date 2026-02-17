@@ -15,6 +15,9 @@ const quickLinks = [
   { href: '/quienes-somos' as const, key: 'about' },
   { href: '/programas' as const, key: 'programs' },
   { href: '/como-ayudar' as const, key: 'howToHelp' },
+  { href: '/plan-padrino' as const, key: 'planPadrino' },
+  { href: '/voluntariado' as const, key: 'volunteer' },
+  { href: '/impacto-empresarial' as const, key: 'corporateImpact' },
   { href: '/noticias' as const, key: 'news' },
   { href: '/historias-de-exito' as const, key: 'successStories' },
   { href: '/equipo' as const, key: 'team' },
@@ -107,9 +110,9 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="text-primary-300 transition-colors hover:text-accent-400"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-300 hover:bg-accent-500 hover:scale-110"
                   >
-                    <social.icon className="h-4 w-4" />
+                    <social.icon className="h-5 w-5" />
                   </a>
                 ))}
               </div>

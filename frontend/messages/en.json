@@ -13,7 +13,12 @@
     "contact": "Contact",
     "anthem": "Anthem",
     "team": "Team",
-    "donate": "Donate Now"
+    "donate": "Donate Now",
+    "planPadrino": "Sponsor a Child",
+    "volunteer": "Volunteer",
+    "corporateImpact": "Corporate Impact",
+    "aboutUs": "About",
+    "getInvolved": "Get Involved"
   },
   "hero": {
     "tagline": "Transforming lives since 2002",

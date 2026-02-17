@@ -46,6 +46,18 @@ export const routing = defineRouting({
       es: '/equipo',
       en: '/team',
     },
+    '/plan-padrino': {
+      es: '/plan-padrino',
+      en: '/sponsor-a-child',
+    },
+    '/voluntariado': {
+      es: '/voluntariado',
+      en: '/volunteer',
+    },
+    '/impacto-empresarial': {
+      es: '/impacto-empresarial',
+      en: '/corporate-impact',
+    },
   },
 });
 

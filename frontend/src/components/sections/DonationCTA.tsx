@@ -45,7 +45,7 @@ const engagementPaths = [
     title: 'Apadrina un Niño',
     description: 'El Plan Padrino cubre educación + alimentación de un niño. Recibe reportes de su progreso.',
     cta: 'Conoce el Plan',
-    href: '/como-ayudar',
+    href: '/plan-padrino',
     external: false,
     color: 'bg-primary-500',
     image: '/images/engagement/apoyo-escolar.jpg',
@@ -55,7 +55,7 @@ const engagementPaths = [
     title: 'Sé Voluntario',
     description: 'Comparte tu tiempo y talento. Buscamos profesores, artistas, mentores y gestores.',
     cta: 'Quiero Ayudar',
-    href: '/contacto',
+    href: '/voluntariado',
     external: false,
     color: 'bg-accent-500',
     image: '/images/engagement/recreacion.jpg',
@@ -176,7 +176,7 @@ export default function DonationCTA() {
                         </a>
                       ) : (
                         <Link
-                          href={path.href as '/como-ayudar' | '/contacto'}
+                          href={path.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}
                           className={btnClass}
                         >
                           {path.cta}

@@ -7,6 +7,7 @@ export default async function seed(strapi: Core.Strapi) {
   await seedSuccessStories(strapi);
   await seedPartners(strapi);
   await seedArticles(strapi);
+  await seedTeamMembers(strapi);
   await seedHero(strapi);
   await seedImpactStatistics(strapi);
   await seedGlobalSettings(strapi);
@@ -391,6 +392,101 @@ async function seedArticles(strapi: Core.Strapi) {
 }
 
 // ---------------------------------------------------------------------------
+// Team Members
+// ---------------------------------------------------------------------------
+async function seedTeamMembers(strapi: Core.Strapi) {
+  const existing = await strapi
+    .documents('api::team-member.team-member')
+    .findMany();
+  if (existing.length > 0) {
+    strapi.log.info('Team members already seeded, skipping.');
+    return;
+  }
+
+  const members = [
+    {
+      name: 'Martha Lucía Gómez',
+      role: 'Directora General',
+      bio: 'Fundadora de la Cigarra con más de 23 años dedicados a la transformación social en Ciudad Bolívar.',
+      department: 'direction',
+      order: 1,
+    },
+    {
+      name: 'Carlos Andrés Ruiz',
+      role: 'Coordinador de Programas',
+      bio: 'Licenciado en educación con experiencia en gestión de proyectos sociales y comunitarios.',
+      department: 'direction',
+      order: 2,
+    },
+    {
+      name: 'Ana María Torres',
+      role: 'Coordinadora Académica',
+      bio: 'Pedagoga especialista en innovación educativa y desarrollo infantil.',
+      department: 'education',
+      order: 3,
+    },
+    {
+      name: 'Diego Alejandro Vargas',
+      role: 'Director de Música',
+      bio: 'Músico profesional egresado de la Universidad Nacional. Dirige el programa de música desde 2010.',
+      department: 'arts',
+      order: 4,
+    },
+    {
+      name: 'Paola Andrea Méndez',
+      role: 'Trabajadora Social',
+      bio: 'Acompaña a las familias beneficiarias y gestiona la red de apoyo comunitario.',
+      department: 'administration',
+      order: 5,
+    },
+    {
+      name: 'Julián Esteban Peña',
+      role: 'Instructor de Artes Plásticas',
+      bio: 'Artista visual con énfasis en pedagogía del arte para comunidades vulnerables.',
+      department: 'arts',
+      order: 6,
+    },
+    {
+      name: 'Sandra Milena Castillo',
+      role: 'Psicóloga',
+      bio: 'Brinda acompañamiento psicosocial a los niños, jóvenes y sus familias.',
+      department: 'administration',
+      order: 7,
+    },
+    {
+      name: 'Roberto Carlos Díaz',
+      role: 'Instructor de Danza',
+      bio: 'Bailarín profesional especializado en danzas folclóricas colombianas.',
+      department: 'arts',
+      order: 8,
+    },
+    {
+      name: 'Luisa Fernanda Ospina',
+      role: 'Coordinadora de Voluntariado',
+      bio: 'Gestiona la red de más de 50 voluntarios que apoyan los programas de la fundación.',
+      department: 'volunteers',
+      order: 9,
+    },
+    {
+      name: 'Andrés Felipe Moreno',
+      role: 'Instructor de Sistemas',
+      bio: 'Ingeniero de sistemas que lidera los programas de tecnología y alfabetización digital.',
+      department: 'education',
+      order: 10,
+    },
+  ];
+
+  for (const member of members) {
+    await strapi.documents('api::team-member.team-member').create({
+      data: member as any,
+      status: 'published',
+    });
+  }
+
+  strapi.log.info(`Seeded ${members.length} team members.`);
+}
+
+// ---------------------------------------------------------------------------
 // Hero (single type)
 // ---------------------------------------------------------------------------
 async function seedHero(strapi: Core.Strapi) {
@@ -480,7 +576,7 @@ async function seedGlobalSettings(strapi: Core.Strapi) {
   await strapi.documents('api::global-setting.global-setting').create({
     data: {
       siteName: 'Fundación Cigarra',
-      nit: '830.123.456-7',
+      nit: '830.114.318-9',
       operatingHours: 'Lunes a Viernes: 8:00 AM - 5:00 PM\nSábados: 8:00 AM - 12:00 PM',
       contact: {
         phone: '+573212465421',
@@ -492,7 +588,7 @@ async function seedGlobalSettings(strapi: Core.Strapi) {
       socialLinks: [
         {
           platform: 'facebook',
-          url: 'https://www.facebook.com/FundacionCigarra',
+          url: 'https://www.facebook.com/fundacioncigarra',
         },
         {
           platform: 'instagram',
@@ -500,17 +596,26 @@ async function seedGlobalSettings(strapi: Core.Strapi) {
         },
         {
           platform: 'youtube',
-          url: 'https://www.youtube.com/@FundacionCigarra',
+          url: 'https://www.youtube.com/@fundacioncigarra',
+        },
+        {
+          platform: 'linkedin',
+          url: 'https://www.linkedin.com/company/fundacion-cigarra',
         },
       ],
       navLinks: [
         { label: 'Inicio', url: '/', order: 1 },
         { label: 'Quiénes Somos', url: '/quienes-somos', order: 2 },
-        { label: 'Programas', url: '/programas', order: 3 },
-        { label: 'Historias de Éxito', url: '/historias-de-exito', order: 4 },
-        { label: 'Noticias', url: '/noticias', order: 5 },
-        { label: 'Cómo Ayudar', url: '/como-ayudar', order: 6 },
-        { label: 'Contacto', url: '/contacto', order: 7 },
+        { label: 'Equipo', url: '/equipo', order: 3 },
+        { label: 'Himno', url: '/himno', order: 4 },
+        { label: 'Programas', url: '/programas', order: 5 },
+        { label: 'Historias de Éxito', url: '/historias-de-exito', order: 6 },
+        { label: 'Noticias', url: '/noticias', order: 7 },
+        { label: 'Cómo Ayudar', url: '/como-ayudar', order: 8 },
+        { label: 'Plan Padrino', url: '/plan-padrino', order: 9 },
+        { label: 'Voluntariado', url: '/voluntariado', order: 10 },
+        { label: 'Impacto Empresarial', url: '/impacto-empresarial', order: 11 },
+        { label: 'Contacto', url: '/contacto', order: 12 },
       ],
     } as any,
   });
@@ -535,8 +640,8 @@ async function seedWaysToHelp(strapi: Core.Strapi) {
       heroTitle: 'Cómo Puedes Ayudar',
       heroSubtitle:
         'Tu aporte transforma la vida de niños y jóvenes en Ciudad Bolívar. Cada donación, por pequeña que sea, genera un impacto enorme.',
-      donationLinkCOP: 'https://donate.cigarra.org/cop',
-      donationLinkUSD: 'https://donate.cigarra.org/usd',
+      donationLinkCOP: 'https://www.donaronline.org/fundacion-cigarra/dona-ahora',
+      donationLinkUSD: 'https://www.donaronline.org/fundacion-cigarra/donate-now',
       nutritionCostCOP: 150000,
       sponsorChildTitle: 'Apadrina un Niño',
       sponsorChildDescription:
@@ -546,39 +651,57 @@ async function seedWaysToHelp(strapi: Core.Strapi) {
         'Comparte tu talento y tu tiempo con nuestros niños. Necesitamos voluntarios en áreas como música, artes, inglés, tecnología y refuerzo escolar. Tu experiencia puede inspirar a una nueva generación.',
       donationTiers: [
         {
-          name: 'Amigo',
-          amountCOP: 50000,
-          amountUSD: 15,
+          name: 'Plan Mensual',
+          amountCOP: 65000,
+          period: 'mes',
           description:
-            'Cubre materiales escolares para un niño durante un mes.',
-          impact: 'Materiales para 1 niño',
+            'Apadrina a un niño con educación, alimentación y acceso a todos los programas durante un mes.',
+          impact: '1 niño / 1 mes',
           highlighted: false,
         },
         {
-          name: 'Colaborador',
-          amountCOP: 150000,
-          amountUSD: 40,
+          name: 'Plan Semestral',
+          amountCOP: 330000,
+          period: 'semestre',
           description:
-            'Financia la alimentación nutritiva de un niño durante un mes completo.',
-          impact: 'Alimentación para 1 niño',
+            'Seis meses de apadrinamiento integral para un niño.',
+          impact: '1 niño / 6 meses',
+          highlighted: false,
+        },
+        {
+          name: 'Plan Anual',
+          amountCOP: 650000,
+          period: 'año',
+          description:
+            'Un año completo de apadrinamiento integral: educación, alimentación y todos los programas.',
+          impact: '1 niño / 1 año',
           highlighted: true,
         },
         {
-          name: 'Padrino',
-          amountCOP: 300000,
-          amountUSD: 80,
+          name: 'Plan Dorado',
+          amountCOP: 1200000,
+          period: 'año',
           description:
-            'Apadrina integralmente a un niño: educación, alimentación y acceso a todos los programas.',
-          impact: 'Apadrinamiento integral',
+            'Apadrina a dos niños durante un año completo con cobertura integral.',
+          impact: '2 niños / 1 año',
           highlighted: false,
         },
         {
-          name: 'Transformador',
-          amountCOP: 500000,
-          amountUSD: 130,
+          name: 'Plan Platino',
+          amountCOP: 1650000,
+          period: 'año',
           description:
-            'Apoya el sostenimiento de un programa completo durante un mes.',
-          impact: 'Sostenimiento de 1 programa',
+            'Apadrina a tres niños durante un año completo con cobertura integral.',
+          impact: '3 niños / 1 año',
+          highlighted: false,
+        },
+        {
+          name: 'Plan Ultra',
+          amountCOP: 2100000,
+          period: 'año',
+          description:
+            'Apadrina a cuatro niños durante un año con el máximo nivel de cobertura.',
+          impact: '4 niños / 1 año',
           highlighted: false,
         },
       ],

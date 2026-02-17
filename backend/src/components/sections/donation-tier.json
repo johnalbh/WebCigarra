@@ -17,6 +17,9 @@
     "amountUSD": {
       "type": "integer"
     },
+    "period": {
+      "type": "string"
+    },
     "description": {
       "type": "text",
       "required": true

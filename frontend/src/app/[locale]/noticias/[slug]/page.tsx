@@ -97,7 +97,7 @@ const ctaCards = [
     title: 'Apadrina',
     description: 'Acompaña a un niño en su camino.',
     cta: 'Plan Padrino',
-    href: '/como-ayudar',
+    href: '/plan-padrino',
     external: false,
     color: 'bg-primary-50 text-primary-600',
     iconBg: 'bg-primary-100',
@@ -107,7 +107,7 @@ const ctaCards = [
     title: 'Voluntariado',
     description: 'Comparte tu tiempo y talento.',
     cta: 'Ser Voluntario',
-    href: '/contacto',
+    href: '/voluntariado',
     external: false,
     color: 'bg-accent-50 text-accent-600',
     iconBg: 'bg-accent-100',
@@ -427,7 +427,7 @@ export default function ArticleDetailPage() {
                       {content}
                     </a>
                   ) : (
-                    <Link key={card.title} href={card.href as '/como-ayudar' | '/contacto'}>
+                    <Link key={card.title} href={card.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}>
                       {content}
                     </Link>
                   );
@@ -462,7 +462,7 @@ export default function ArticleDetailPage() {
                         {inner}
                       </a>
                     ) : (
-                      <Link key={card.title} href={card.href as '/como-ayudar' | '/contacto'}>
+                      <Link key={card.title} href={card.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}>
                         {inner}
                       </Link>
                     );

@@ -56,45 +56,65 @@ const impactOptions = [
   },
 ];
 
-/* ── Donation tiers ── */
+/* ── Donation tiers (Plan Padrino real pricing) ── */
 const donationTiers = [
   {
-    name: 'Amigo',
-    amountCOP: 50000,
-    amountUSD: 12,
-    impact: 'Materiales escolares para 1 nino por un mes',
+    name: 'Plan Mensual',
+    amountCOP: 65000,
+    period: 'mes',
+    impact: 'Apadrina 1 nino con educacion y alimentacion por un mes',
     highlighted: false,
     icon: HiHeart,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
   },
   {
-    name: 'Protector',
-    amountCOP: 100000,
-    amountUSD: 25,
-    impact: 'Alimentacion nutritiva para 1 nino por un mes',
-    highlighted: true,
-    icon: HiShieldCheck,
-    color: 'border-accent-300 ring-2 ring-accent-200',
-    iconBg: 'bg-accent-100 text-accent-600',
-  },
-  {
-    name: 'Padrino',
-    amountCOP: 200000,
-    amountUSD: 50,
-    impact: 'Programa completo: educacion + alimentacion para 1 nino',
+    name: 'Plan Semestral',
+    amountCOP: 330000,
+    period: 'semestre',
+    impact: 'Apadrina 1 nino durante 6 meses continuos',
     highlighted: false,
-    icon: HiStar,
+    icon: HiShieldCheck,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
   },
   {
-    name: 'Benefactor',
-    amountCOP: 500000,
-    amountUSD: 125,
-    impact: 'Sostenimiento mensual de un programa completo',
+    name: 'Plan Anual',
+    amountCOP: 650000,
+    period: 'ano',
+    impact: 'Apadrina 1 nino durante todo un ano academico',
+    highlighted: true,
+    icon: HiStar,
+    color: 'border-accent-300 ring-2 ring-accent-200',
+    iconBg: 'bg-accent-100 text-accent-600',
+  },
+  {
+    name: 'Plan Dorado',
+    amountCOP: 1200000,
+    period: 'ano',
+    impact: 'Apadrina 2 ninos durante todo un ano academico',
+    highlighted: false,
+    icon: HiSparkles,
+    color: 'border-primary-200 hover:border-primary-400',
+    iconBg: 'bg-accent-100 text-accent-600',
+  },
+  {
+    name: 'Plan Platino',
+    amountCOP: 1650000,
+    period: 'ano',
+    impact: 'Apadrina 3 ninos durante todo un ano academico',
     highlighted: false,
     icon: HiGlobeAlt,
+    color: 'border-primary-200 hover:border-primary-400',
+    iconBg: 'bg-primary-100 text-primary-600',
+  },
+  {
+    name: 'Plan Ultra',
+    amountCOP: 2100000,
+    period: 'ano',
+    impact: 'Apadrina 4 ninos durante todo un ano academico',
+    highlighted: false,
+    icon: HiStar,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
   },
@@ -545,16 +565,15 @@ export default function HowToHelpPage() {
                     El Plan Padrino cubre educacion + alimentacion de un nino. Recibes reportes de su progreso.
                   </p>
                   <div className="mb-5 inline-flex w-fit items-center gap-1 rounded-full bg-white/15 px-3 py-1.5">
-                    <span className="text-sm font-bold text-accent-300">$200.000 COP/mes</span>
-                    <span className="text-xs text-white/60">(~$50 USD)</span>
+                    <span className="text-sm font-bold text-accent-300">Desde $65.000 COP/mes</span>
                   </div>
-                  <a
-                    href="#plan-padrino"
+                  <Link
+                    href={'/plan-padrino' as '/plan-padrino'}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 font-heading font-semibold text-primary-700 transition-all duration-300 hover:bg-primary-50"
                   >
                     Conocer el Plan Padrino
                     <HiArrowRight className="h-4 w-4" />
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             </ScrollReveal>
@@ -588,7 +607,7 @@ export default function HowToHelpPage() {
                     Comparte tu tiempo y talento. Buscamos docentes, artistas, mentores y mas.
                   </p>
                   <Link
-                    href={'/contacto' as '/contacto'}
+                    href={'/voluntariado' as '/voluntariado'}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-green-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-green-400"
                   >
                     Quiero Ser Voluntario
@@ -627,7 +646,7 @@ export default function HowToHelpPage() {
                       <HiHeart className="h-5 w-5 text-accent-600" />
                     </div>
                     <p className="text-sm font-medium text-gray-700">
-                      <span className="font-bold text-primary-700">+22 anos</span> transformando vidas en Ciudad Bolivar
+                      <span className="font-bold text-primary-700">+23 anos</span> transformando vidas en Ciudad Bolivar
                     </p>
                   </div>
                 </div>
@@ -664,13 +683,20 @@ export default function HowToHelpPage() {
                 <div className="mt-8 rounded-xl border border-accent-200 bg-accent-50 p-6">
                   <div className="flex items-baseline gap-2">
                     <span className="font-heading text-4xl font-bold text-accent-700">
-                      $200.000
+                      $65.000
                     </span>
                     <span className="text-lg font-medium text-accent-600">COP/mes</span>
                   </div>
                   <p className="mt-1 text-sm text-accent-600/70">
-                    Aproximadamente $50 USD al mes
+                    Planes desde mensual hasta anual. Ver todos los planes.
                   </p>
+                  <Link
+                    href={'/plan-padrino' as '/plan-padrino'}
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700"
+                  >
+                    Ver planes detallados
+                    <HiArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
 
                 {/* CTA */}
@@ -748,7 +774,7 @@ export default function HowToHelpPage() {
                         <span className="text-sm font-medium text-gray-400"> COP</span>
                       </div>
                       <p className="text-xs text-gray-400">
-                        ~${tier.amountUSD} USD / {t('monthly')}
+                        / {tier.period}
                       </p>
                     </div>
 
