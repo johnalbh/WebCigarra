@@ -128,6 +128,24 @@ const impactNumbers = [
   { number: '10+', label: 'Aliados Corporativos', icon: FaHandshake },
 ];
 
+/* ── Partner logos (static — replace with Strapi fetch later) ── */
+const partners = [
+  { name: 'Microsoft', logo: '/images/partners/microsoft.png', tier: 'platinum' as const },
+  { name: 'Ecopetrol', logo: '/images/partners/ecopetrol.png', tier: 'platinum' as const },
+  { name: 'Saint George School', logo: '/images/partners/san-jorge.png', tier: 'gold' as const },
+  { name: 'Charles Wright Academy', logo: '/images/partners/cwa.png', tier: 'gold' as const },
+  { name: 'Karelsie Foundation', logo: '/images/partners/karelsie.png', tier: 'gold' as const },
+  { name: 'HomeCenter', logo: '/images/partners/homecenter.jpg', tier: 'gold' as const },
+  { name: 'Aqualogic', logo: '/images/partners/aqualogic.png', tier: 'silver' as const },
+  { name: 'Chocolates Bora', logo: '/images/partners/chocolates-bora.png', tier: 'silver' as const },
+  { name: 'Opperar', logo: '/images/partners/opperar.png', tier: 'silver' as const },
+  { name: 'Makri', logo: '/images/partners/makri.jpg', tier: 'silver' as const },
+];
+
+const platinumPartners = partners.filter((p) => p.tier === 'platinum');
+const goldPartners = partners.filter((p) => p.tier === 'gold');
+const silverPartners = partners.filter((p) => p.tier === 'silver');
+
 /* ══════════════════════════════════════════════════════════════
    MAIN PAGE COMPONENT
    ══════════════════════════════════════════════════════════════ */
@@ -503,6 +521,80 @@ export default function ImpactoEmpresarialPage() {
               </p>
             </div>
           </ScrollReveal>
+
+          {/* ── Partner logo grid ── */}
+          <ScrollReveal>
+            <div className="mt-14 space-y-10">
+              {/* Platinum */}
+              <div>
+                <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+                  Aliados Platinum
+                </p>
+                <StaggerContainer className="flex flex-wrap items-center justify-center gap-10" staggerDelay={0.08}>
+                  {platinumPartners.map((p) => (
+                    <StaggerItem key={p.name}>
+                      <div className="group relative h-16 w-40 md:h-20 md:w-48 grayscale transition-all duration-500 hover:grayscale-0">
+                        <Image
+                          src={p.logo}
+                          alt={p.name}
+                          fill
+                          className="object-contain"
+                          sizes="192px"
+                        />
+                      </div>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+              </div>
+
+              {/* Gold */}
+              <div>
+                <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+                  Aliados Gold
+                </p>
+                <StaggerContainer className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
+                  {goldPartners.map((p) => (
+                    <StaggerItem key={p.name}>
+                      <div className="group relative h-12 w-32 md:h-16 md:w-40 grayscale transition-all duration-500 hover:grayscale-0">
+                        <Image
+                          src={p.logo}
+                          alt={p.name}
+                          fill
+                          className="object-contain"
+                          sizes="160px"
+                        />
+                      </div>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+              </div>
+
+              {/* Silver */}
+              <div>
+                <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+                  Aliados Silver
+                </p>
+                <StaggerContainer className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
+                  {silverPartners.map((p) => (
+                    <StaggerItem key={p.name}>
+                      <div className="group relative h-10 w-28 md:h-12 md:w-32 grayscale transition-all duration-500 hover:grayscale-0">
+                        <Image
+                          src={p.logo}
+                          alt={p.name}
+                          fill
+                          className="object-contain"
+                          sizes="128px"
+                        />
+                      </div>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Separator */}
+          <div className="mx-auto mt-14 mb-0 h-px w-1/2 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
 
           <ScrollReveal>
             <div className="mt-14 rounded-2xl border border-gray-200 bg-white p-8 md:p-12">
