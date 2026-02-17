@@ -1,0 +1,71 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_settings",
+  "info": {
+    "singularName": "global-setting",
+    "pluralName": "global-settings",
+    "displayName": "Global Setting",
+    "description": "Site-wide settings"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
+    "contact": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.contact-info",
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.social-link",
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
+    "navLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.nav-link",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "nit": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
+    "operatingHours": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    }
+  }
+}

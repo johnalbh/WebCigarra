@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_layout_nav_links",
+  "info": {
+    "displayName": "Nav Link",
+    "icon": "layer",
+    "description": "Navigation menu link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "children": {
+      "type": "json"
+    }
+  }
+}

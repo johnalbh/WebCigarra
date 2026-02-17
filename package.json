@@ -1,0 +1,17 @@
+{
+  "name": "web-cigarra",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fundación Cigarra - Website with Strapi v5 + Next.js 14",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run develop",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "start:frontend": "cd frontend && npm start",
+    "seed": "cd backend && SEED_DATA=true npm run develop"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

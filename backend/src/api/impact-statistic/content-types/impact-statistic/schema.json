@@ -1,0 +1,42 @@
+{
+  "kind": "singleType",
+  "collectionName": "impact_statistics",
+  "info": {
+    "singularName": "impact-statistic",
+    "pluralName": "impact-statistics",
+    "displayName": "Impact Statistics",
+    "description": "Impact numbers section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.stat-card",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    }
+  }
+}

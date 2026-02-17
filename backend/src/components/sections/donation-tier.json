@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_donation_tiers",
+  "info": {
+    "displayName": "Donation Tier",
+    "icon": "heart",
+    "description": "Donation level with impact description"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "amountCOP": {
+      "type": "integer"
+    },
+    "amountUSD": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "impact": {
+      "type": "string"
+    },
+    "highlighted": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

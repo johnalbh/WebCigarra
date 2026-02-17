@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_stat_cards",
+  "info": {
+    "displayName": "Stat Card",
+    "icon": "chartBubble",
+    "description": "Impact statistic card"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "integer",
+      "required": true
+    },
+    "suffix": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

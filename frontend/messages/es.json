@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "title": "Fundación Cigarra - Transformando vidas en Ciudad Bolívar",
+    "description": "Desde 2002, la Fundación Cigarra atiende a más de 180 niños con programas de educación, arte y cultura en Ciudad Bolívar, Bogotá."
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Quiénes Somos",
+    "programs": "Programas",
+    "howToHelp": "Cómo Ayudar",
+    "news": "Noticias",
+    "successStories": "Historias de Éxito",
+    "contact": "Contacto",
+    "donate": "Dona Ahora"
+  },
+  "hero": {
+    "tagline": "Desde 2002 transformando vidas",
+    "cta_donate": "Dona Ahora",
+    "cta_programs": "Conoce Nuestros Programas",
+    "scroll": "Descubre más"
+  },
+  "impact": {
+    "title": "Nuestro Impacto",
+    "children": "Niños Atendidos",
+    "years": "Años de Servicio",
+    "programs": "Programas Activos",
+    "families": "Familias Beneficiadas"
+  },
+  "programs": {
+    "title": "Nuestros Programas",
+    "subtitle": "14 programas de educación, arte y cultura para los niños de Ciudad Bolívar",
+    "viewAll": "Ver Todos los Programas",
+    "learnMore": "Conocer más",
+    "ageRange": "Edades",
+    "schedule": "Horario",
+    "relatedPrograms": "Programas Relacionados"
+  },
+  "stories": {
+    "title": "Historias de Éxito",
+    "subtitle": "Conoce a quienes han transformado sus vidas gracias a la Fundación",
+    "readMore": "Leer historia completa",
+    "achievement": "Logro"
+  },
+  "donation": {
+    "title": "Tu Donación Transforma Vidas",
+    "subtitle": "Con tan solo $7.045 COP al día, un niño recibe alimentación nutritiva",
+    "donateCOP": "Donar en Pesos (COP)",
+    "donateUSD": "Donar en Dólares (USD)",
+    "monthly": "mensual",
+    "impact": "Tu impacto",
+    "sponsorTitle": "Plan Padrino",
+    "sponsorDescription": "Apadrina a un niño y sigue su progreso durante todo el año",
+    "volunteerTitle": "Voluntariado",
+    "volunteerDescription": "Dona tu tiempo y talento. Buscamos voluntarios en educación, arte y deportes",
+    "nutritionTitle": "Programa de Nutrición",
+    "nutritionCost": "Costo diario por niño"
+  },
+  "news": {
+    "title": "Noticias",
+    "subtitle": "Mantente informado sobre nuestras actividades y logros",
+    "readMore": "Leer más",
+    "latest": "Últimas Noticias",
+    "share": "Compartir",
+    "relatedArticles": "Artículos Relacionados",
+    "noArticles": "No hay artículos disponibles"
+  },
+  "about": {
+    "title": "Quiénes Somos",
+    "mission": "Nuestra Misión",
+    "vision": "Nuestra Visión",
+    "history": "Nuestra Historia",
+    "team": "Nuestro Equipo",
+    "gallery": "Galería",
+    "foundedIn": "Fundada en"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes preguntas? Nos encantaría escucharte",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado! Nos pondremos en contacto pronto.",
+    "error": "Error al enviar el mensaje. Por favor intenta de nuevo.",
+    "whatsapp": "Escríbenos por WhatsApp",
+    "address": "Dirección",
+    "hours": "Horarios"
+  },
+  "partners": {
+    "title": "Nuestros Aliados",
+    "subtitle": "Organizaciones que hacen posible nuestra labor"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados",
+    "nit": "NIT",
+    "quickLinks": "Enlaces Rápidos",
+    "contactInfo": "Información de Contacto",
+    "followUs": "Síguenos"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "backToHome": "Volver al inicio",
+    "language": "Idioma"
+  }
+}

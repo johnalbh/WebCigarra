@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "title": "Cigarra Foundation - Transforming Lives in Ciudad Bolívar",
+    "description": "Since 2002, the Cigarra Foundation has served 180+ children with education, art, and culture programs in Ciudad Bolívar, Bogotá."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "programs": "Programs",
+    "howToHelp": "How to Help",
+    "news": "News",
+    "successStories": "Success Stories",
+    "contact": "Contact",
+    "donate": "Donate Now"
+  },
+  "hero": {
+    "tagline": "Transforming lives since 2002",
+    "cta_donate": "Donate Now",
+    "cta_programs": "Explore Our Programs",
+    "scroll": "Discover more"
+  },
+  "impact": {
+    "title": "Our Impact",
+    "children": "Children Served",
+    "years": "Years of Service",
+    "programs": "Active Programs",
+    "families": "Families Benefited"
+  },
+  "programs": {
+    "title": "Our Programs",
+    "subtitle": "14 education, art, and culture programs for the children of Ciudad Bolívar",
+    "viewAll": "View All Programs",
+    "learnMore": "Learn more",
+    "ageRange": "Ages",
+    "schedule": "Schedule",
+    "relatedPrograms": "Related Programs"
+  },
+  "stories": {
+    "title": "Success Stories",
+    "subtitle": "Meet those whose lives have been transformed through the Foundation",
+    "readMore": "Read full story",
+    "achievement": "Achievement"
+  },
+  "donation": {
+    "title": "Your Donation Transforms Lives",
+    "subtitle": "With just $1.70 USD per day, a child receives nutritious meals",
+    "donateCOP": "Donate in COP",
+    "donateUSD": "Donate in USD",
+    "monthly": "monthly",
+    "impact": "Your impact",
+    "sponsorTitle": "Sponsor a Child",
+    "sponsorDescription": "Sponsor a child and follow their progress throughout the year",
+    "volunteerTitle": "Volunteer",
+    "volunteerDescription": "Donate your time and talent. We need volunteers in education, art, and sports",
+    "nutritionTitle": "Nutrition Program",
+    "nutritionCost": "Daily cost per child"
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Stay updated on our activities and achievements",
+    "readMore": "Read more",
+    "latest": "Latest News",
+    "share": "Share",
+    "relatedArticles": "Related Articles",
+    "noArticles": "No articles available"
+  },
+  "about": {
+    "title": "About Us",
+    "mission": "Our Mission",
+    "vision": "Our Vision",
+    "history": "Our History",
+    "team": "Our Team",
+    "gallery": "Gallery",
+    "foundedIn": "Founded in"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions? We'd love to hear from you",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent! We'll get back to you soon.",
+    "error": "Error sending message. Please try again.",
+    "whatsapp": "Message us on WhatsApp",
+    "address": "Address",
+    "hours": "Hours"
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle": "Organizations that make our work possible"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "nit": "Tax ID",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Information",
+    "followUs": "Follow Us"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "backToHome": "Back to home",
+    "language": "Language"
+  }
+}

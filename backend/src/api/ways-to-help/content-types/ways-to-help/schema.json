@@ -1,0 +1,91 @@
+{
+  "kind": "singleType",
+  "collectionName": "ways_to_helps",
+  "info": {
+    "singularName": "ways-to-help",
+    "pluralName": "ways-to-helps",
+    "displayName": "Ways to Help",
+    "description": "How to help / donation page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "heroTitle": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "heroSubtitle": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "donationTiers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.donation-tier",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "donationLinkCOP": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
+    "donationLinkUSD": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
+    "sponsorChildTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "sponsorChildDescription": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "volunteerTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "volunteerDescription": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    },
+    "nutritionCostCOP": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.faq-item",
+      "pluginOptions": {
+        "i18n": { "localized": true }
+      }
+    }
+  }
+}
