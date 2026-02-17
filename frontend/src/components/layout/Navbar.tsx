@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'motion/react';
 import { usePathname as useNextPathname } from 'next/navigation';
@@ -53,6 +54,13 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/images/logo.png"
+            alt="Fundación Cigarra"
+            width={36}
+            height={36}
+            className="h-9 w-9"
+          />
           <span
             className={cn(
               'font-heading text-xl font-bold transition-colors',

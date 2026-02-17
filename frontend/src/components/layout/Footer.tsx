@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 
@@ -28,9 +29,18 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-3">
           {/* Column 1: Info */}
           <div>
-            <h3 className="mb-4 font-heading text-xl font-bold">
-              Fundación Cigarra
-            </h3>
+            <div className="mb-4 flex items-center gap-3">
+              <Image
+                src="/images/logo.png"
+                alt="Fundación Cigarra"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+              <h3 className="font-heading text-xl font-bold">
+                Fundación Cigarra
+              </h3>
+            </div>
             <p className="mb-4 text-sm leading-relaxed text-primary-200">
               Transformando vidas en Ciudad Bolívar desde 2002. Educación, arte
               y cultura para más de 180 niños y jóvenes.
