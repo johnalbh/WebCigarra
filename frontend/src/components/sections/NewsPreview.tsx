@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { motion } from 'motion/react';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
@@ -36,21 +35,13 @@ export default function NewsPreview() {
   const t = useTranslations('news');
 
   return (
-    <section className="section-padding relative overflow-hidden bg-gray-50">
-      {/* Decorative background */}
-      <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-primary-100/40 blur-3xl" />
-      <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-accent-100/30 blur-3xl" />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+    <section className="section-padding bg-gray-50">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <ScrollReveal>
           <div className="mb-16 text-center">
-            <span className="mb-3 inline-block rounded-full bg-primary-100 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary-600">
-              Blog
-            </span>
             <h2 className="mb-4 font-heading text-4xl font-bold text-gray-900 md:text-5xl">
               {t('latest')}
             </h2>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-accent-400" />
           </div>
         </ScrollReveal>
 
@@ -58,22 +49,17 @@ export default function NewsPreview() {
           {defaultArticles.map((article) => (
             <StaggerItem key={article.slug}>
               <Link href={{ pathname: '/noticias/[slug]', params: { slug: article.slug } }}>
-                <motion.article
-                  whileHover={{ y: -10 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  className="group h-full overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow hover:shadow-2xl"
-                >
+                <article className="group h-full overflow-hidden rounded-lg border border-gray-100 bg-white transition-transform duration-300 hover:-translate-y-1">
                   {/* Image */}
-                  <div className="relative h-56 overflow-hidden">
+                  <div className="relative h-52 overflow-hidden">
                     <Image
                       src={article.image}
                       alt={article.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
                       unoptimized
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
 
                   <div className="p-6">
@@ -91,14 +77,27 @@ export default function NewsPreview() {
 
                     <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600">
                       {t('readMore')}
-                      <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
+                      <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
                   </div>
-                </motion.article>
+                </article>
               </Link>
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+        {/* Donation nudge */}
+        <div className="mt-14 text-center">
+          <p className="text-gray-500">
+            Tu apoyo nos permite compartir estas historias.{' '}
+            <Link
+              href="/como-ayudar"
+              className="font-medium text-primary-600 underline underline-offset-2 transition-colors hover:text-primary-700"
+            >
+              Colabora con nosotros
+            </Link>
+          </p>
+        </div>
       </div>
     </section>
   );

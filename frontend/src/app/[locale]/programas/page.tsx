@@ -61,8 +61,8 @@ export default function ProgramsPage() {
 
   return (
     <>
-      {/* ───────────────────── Hero Section ───────────────────── */}
-      <section className="relative overflow-hidden bg-primary-950">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-primary-900">
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
@@ -133,19 +133,16 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* ───────────────────── Programs Grid ───────────────────── */}
+      {/* Programs Grid */}
       <section className="relative bg-gradient-to-b from-gray-50 to-white pt-24 pb-20">
-        {/* Subtle background texture */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, black 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-
-        <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block rounded-full bg-primary-100 px-4 py-1 text-sm font-semibold text-primary-700">
                 Explora
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Nuestros <span className="text-gradient">Programas</span>
+                Nuestros <span className="text-primary-600">Programas</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-gray-500">
                 Cada programa es una puerta abierta al conocimiento, la creatividad y el desarrollo integral de nuestros beneficiarios.
@@ -158,43 +155,28 @@ export default function ProgramsPage() {
               <StaggerItem key={program.slug}>
                 <Link href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}>
                   <motion.article
-                    whileHover={{ y: -10 }}
+                    whileHover={{ y: -4 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                    className="group relative h-full overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200/60 ring-1 ring-gray-100 transition-shadow duration-500 hover:shadow-2xl hover:shadow-gray-300/40"
+                    className="group relative h-full overflow-hidden rounded-xl border border-gray-100 bg-white transition-colors duration-300 hover:border-gray-200"
                   >
-                    {/* Colored accent strip at top */}
-                    <div
-                      className="h-1 w-full transition-all duration-500 group-hover:h-1.5"
-                      style={{ backgroundColor: program.color }}
-                    />
-
                     {/* Image container */}
                     <div className="relative h-48 overflow-hidden">
                       <Image
                         src={`${programImageMap[program.slug]}`}
                         alt={program.name}
                         fill
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      />
-
-                      {/* Color overlay that intensifies on hover */}
-                      <div
-                        className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-70"
-                        style={{
-                          background: `linear-gradient(135deg, ${program.color}40 0%, ${program.color}20 100%)`,
-                          opacity: 0.3,
-                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
                       {/* Floating icon badge */}
-                      <motion.div
-                        className="absolute top-3 right-3 flex h-11 w-11 items-center justify-center rounded-xl shadow-lg backdrop-blur-sm transition-transform duration-300 group-hover:scale-110"
+                      <div
+                        className="absolute top-3 right-3 flex h-11 w-11 items-center justify-center rounded-xl shadow-sm"
                         style={{ backgroundColor: `${program.color}dd` }}
                       >
                         <program.icon className="h-5 w-5 text-white" />
-                      </motion.div>
+                      </div>
 
                       {/* Program name overlay on image */}
                       <div className="absolute bottom-3 left-4 right-4">
@@ -226,33 +208,23 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* ───────────────────── CTA Section ───────────────────── */}
-      <section className="relative overflow-hidden bg-primary-900 py-24">
-        {/* Decorative blobs */}
-        <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-accent-500/15 blur-3xl" />
-        <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-primary-400/15 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-400/5 blur-2xl" />
-
-        <div className="relative mx-auto max-w-4xl px-4 text-center lg:px-8">
+      {/* CTA Section */}
+      <section className="bg-primary-500 py-24">
+        <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
           <ScrollReveal>
-            <motion.span
-              className="mb-4 inline-block rounded-full border border-accent-400/30 bg-accent-400/10 px-5 py-1.5 text-sm font-semibold text-accent-300"
-            >
+            <span className="mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-5 py-1.5 text-sm font-semibold text-white">
               Haz parte del cambio
-            </motion.span>
+            </span>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
-              Cada aporte construye un{' '}
-              <span className="bg-gradient-to-r from-accent-300 to-accent-500 bg-clip-text text-transparent">
-                futuro mejor
-              </span>
+              Cada aporte construye un futuro mejor
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-200/80">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
               Tu apoyo permite que mas ninos y jovenes de Ciudad Bolivar accedan a
               educacion de calidad, arte y cultura. Juntos podemos transformar vidas.
             </p>
@@ -262,14 +234,14 @@ export default function ProgramsPage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/como-ayudar"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-sm font-bold tracking-wide text-white uppercase shadow-lg shadow-accent-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/40"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-heading text-sm font-bold tracking-wide text-primary-600 uppercase transition-colors duration-300 hover:bg-gray-50"
               >
                 Quiero Ayudar
                 <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/contacto"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 font-heading text-sm font-bold tracking-wide text-white uppercase backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold tracking-wide text-white uppercase transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 Contáctanos
               </Link>

@@ -46,7 +46,7 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-white/95 shadow-md backdrop-blur-sm'
+          ? 'bg-white/95 backdrop-blur-sm border-b border-gray-100'
           : 'bg-transparent'
       )}
     >
@@ -100,7 +100,7 @@ export default function Navbar() {
           </a>
           <Link
             href="/como-ayudar"
-            className="rounded-full bg-accent-500 px-5 py-2 text-sm font-semibold text-white shadow-lg transition-all hover:bg-accent-600 hover:shadow-accent-500/25"
+            className="rounded-full bg-accent-500 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
           >
             {t('donate')}
           </Link>

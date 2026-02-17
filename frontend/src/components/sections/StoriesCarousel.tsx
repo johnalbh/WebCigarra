@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'motion/react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import Image from 'next/image';
@@ -16,7 +17,6 @@ const defaultStories = [
     quote: 'En la Fundación descubrí que el arte puede cambiar comunidades enteras. Me enseñaron a liderar con el ejemplo.',
     achievement: 'Líder comunitario',
     image: 'https://cigarra.org/wp-content/uploads/2025/04/JuanDavidHernandez.jpg',
-    gradient: 'from-[#4facfe] to-[#00f2fe]',
   },
   {
     name: 'Andrey Ruíz',
@@ -24,7 +24,6 @@ const defaultStories = [
     quote: 'Cada día en la Fundación fue una oportunidad para crecer como persona y como profesional. Hoy tengo mi propio negocio.',
     achievement: 'Emprendedor social',
     image: 'https://cigarra.org/wp-content/uploads/2023/09/AndreyRuiz-1024x1024.jpeg',
-    gradient: 'from-[#43e97b] to-[#38f9d7]',
   },
   {
     name: 'Yuri Karina Poveda',
@@ -32,7 +31,6 @@ const defaultStories = [
     quote: 'La educación que recibí me abrió puertas que nunca imaginé posibles. Ahora quiero abrir esas puertas para otros.',
     achievement: 'Educadora',
     image: 'https://cigarra.org/wp-content/uploads/2025/02/YuryKarina.png',
-    gradient: 'from-[#fa709a] to-[#fee140]',
   },
   {
     name: 'Anyie Tatiana',
@@ -40,7 +38,6 @@ const defaultStories = [
     quote: 'La Fundación me enseñó que con esfuerzo y dedicación todo es posible. Soy prueba viviente de que los sueños se cumplen.',
     achievement: 'Profesional',
     image: 'https://cigarra.org/wp-content/uploads/2025/02/Anyie.png',
-    gradient: 'from-[#a18cd1] to-[#fbc2eb]',
   },
   {
     name: 'Alison Zapata',
@@ -48,7 +45,6 @@ const defaultStories = [
     quote: 'La Fundación Cigarra me dio las herramientas para soñar en grande y trabajar por mis metas. Cada día fue una oportunidad de crecimiento.',
     achievement: 'Profesional destacada',
     image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Musica_GL_1.jpg',
-    gradient: 'from-[#667eea] to-[#764ba2]',
   },
   {
     name: 'Leider Quiñones',
@@ -56,7 +52,6 @@ const defaultStories = [
     quote: 'Gracias a la música aprendí disciplina y encontré mi pasión. Hoy la música es mi vida y puedo compartirla con mi comunidad.',
     achievement: 'Músico profesional',
     image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Musica_GL_3.jpg',
-    gradient: 'from-[#f093fb] to-[#f5576c]',
   },
 ];
 
@@ -69,13 +64,11 @@ export default function StoriesCarousel() {
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startAutoplay = useCallback(() => {
-    // Clear existing timers
     if (timerRef.current) clearInterval(timerRef.current);
     if (progressRef.current) clearInterval(progressRef.current);
 
     setProgress(0);
 
-    // Progress bar updates every 50ms
     const progressStep = 50 / AUTOPLAY_DURATION;
     progressRef.current = setInterval(() => {
       setProgress((prev) => {
@@ -84,7 +77,6 @@ export default function StoriesCarousel() {
       });
     }, 50);
 
-    // Slide advance
     timerRef.current = setInterval(() => {
       setDirection(1);
       setCurrent((prev) => (prev + 1) % defaultStories.length);
@@ -124,44 +116,27 @@ export default function StoriesCarousel() {
     enter: (dir: number) => ({
       x: dir > 0 ? 300 : -300,
       opacity: 0,
-      scale: 0.9,
     }),
     center: {
       x: 0,
       opacity: 1,
-      scale: 1,
     },
     exit: (dir: number) => ({
       x: dir > 0 ? -300 : 300,
       opacity: 0,
-      scale: 0.9,
     }),
   };
 
   return (
-    <section className="section-padding relative overflow-hidden bg-white">
-      {/* Subtle background decoration */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-primary-600 blur-3xl" />
-        <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-accent-500 blur-3xl" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+    <section className="section-padding bg-white">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
         {/* Section header */}
         <ScrollReveal>
           <div className="mb-16 text-center">
-            <span className="mb-4 inline-block rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold tracking-wide text-accent-700 uppercase">
-              {t('title')}
-            </span>
             <h2 className="mb-4 font-heading text-4xl font-bold text-gray-900 md:text-5xl">
               {t('title')}
             </h2>
-            <div className="mx-auto mt-4 flex items-center justify-center gap-2">
-              <span className="h-1 w-8 rounded-full bg-accent-300" />
-              <span className="h-1 w-16 rounded-full bg-accent-500" />
-              <span className="h-1 w-8 rounded-full bg-accent-300" />
-            </div>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
+            <p className="mx-auto max-w-2xl text-lg text-gray-600">
               {t('subtitle')}
             </p>
           </div>
@@ -172,21 +147,21 @@ export default function StoriesCarousel() {
           {/* Navigation arrows */}
           <button
             onClick={prev}
-            className="absolute top-1/2 -left-2 z-20 -translate-y-1/2 rounded-full bg-white p-3 shadow-xl ring-1 ring-black/5 transition-all hover:scale-110 hover:bg-gray-50 hover:shadow-2xl md:-left-16"
+            className="absolute top-1/2 -left-2 z-20 -translate-y-1/2 rounded-full border border-gray-200 bg-white p-3 transition-colors hover:bg-gray-50 md:-left-16"
             aria-label="Previous story"
           >
-            <HiChevronLeft className="h-6 w-6 text-gray-700" />
+            <HiChevronLeft className="h-5 w-5 text-gray-600" />
           </button>
           <button
             onClick={next}
-            className="absolute top-1/2 -right-2 z-20 -translate-y-1/2 rounded-full bg-white p-3 shadow-xl ring-1 ring-black/5 transition-all hover:scale-110 hover:bg-gray-50 hover:shadow-2xl md:-right-16"
+            className="absolute top-1/2 -right-2 z-20 -translate-y-1/2 rounded-full border border-gray-200 bg-white p-3 transition-colors hover:bg-gray-50 md:-right-16"
             aria-label="Next story"
           >
-            <HiChevronRight className="h-6 w-6 text-gray-700" />
+            <HiChevronRight className="h-5 w-5 text-gray-600" />
           </button>
 
           {/* Story card */}
-          <div className="overflow-hidden rounded-3xl">
+          <div className="overflow-hidden rounded-xl border border-gray-100">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={current}
@@ -201,7 +176,7 @@ export default function StoriesCarousel() {
                   damping: 30,
                   mass: 0.8,
                 }}
-                className="relative rounded-3xl overflow-hidden md:flex md:min-h-[400px]"
+                className="bg-white md:flex md:min-h-[380px]"
               >
                 {/* Image side */}
                 <div className="relative h-64 md:h-auto md:w-2/5">
@@ -212,41 +187,25 @@ export default function StoriesCarousel() {
                     sizes="(max-width: 768px) 100vw, 40vw"
                     className="object-cover"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-r ${story.gradient} opacity-30`} />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 max-md:hidden" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:hidden" />
                 </div>
 
                 {/* Content side */}
-                <div className={`relative bg-gradient-to-br ${story.gradient} px-8 py-10 md:w-3/5 md:px-12 md:py-14`}>
-                  {/* Decorative large quote mark */}
-                  <span className="pointer-events-none absolute top-2 left-6 font-accent text-[100px] leading-none text-white/10 select-none md:text-[140px]">
-                    &ldquo;
-                  </span>
-                  <span className="pointer-events-none absolute right-6 bottom-0 font-accent text-[100px] leading-none text-white/10 select-none md:text-[140px]">
-                    &rdquo;
-                  </span>
+                <div className="flex flex-col justify-center px-8 py-10 md:w-3/5 md:px-12 md:py-14">
+                  {/* Quote */}
+                  <blockquote className="mb-8 font-accent text-xl leading-relaxed text-gray-800 md:text-2xl">
+                    &ldquo;{story.quote}&rdquo;
+                  </blockquote>
 
-                  <div className="relative z-10 flex flex-col justify-center h-full">
-                    {/* Quote */}
-                    <blockquote className="mb-8 font-accent text-xl leading-relaxed text-white md:text-2xl lg:text-3xl">
-                      {story.quote}
-                    </blockquote>
+                  {/* Divider */}
+                  <div className="mb-5 h-px w-12 bg-primary-500" />
 
-                    {/* Divider */}
-                    <div className="mb-6 h-px w-16 bg-white/40" />
-
-                    {/* Name and role */}
-                    <p className="font-heading text-xl font-bold text-white">
-                      {story.name}
-                    </p>
-                    <p className="mt-1 text-sm font-medium tracking-wide text-white/80 uppercase">
-                      {story.role}
-                    </p>
-                    <span className="mt-3 inline-block w-fit rounded-full bg-white/20 px-4 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                      {story.achievement}
-                    </span>
-                  </div>
+                  {/* Name and role */}
+                  <p className="font-heading text-lg font-bold text-gray-900">
+                    {story.name}
+                  </p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    {story.role} &middot; {story.achievement}
+                  </p>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -282,6 +241,19 @@ export default function StoriesCarousel() {
               </button>
             ))}
           </div>
+        </div>
+
+        {/* Donation nudge */}
+        <div className="mt-14 text-center">
+          <p className="text-gray-500">
+            Ayuda a escribir mas historias de exito.{' '}
+            <Link
+              href="/como-ayudar"
+              className="font-medium text-primary-600 underline underline-offset-2 transition-colors hover:text-primary-700"
+            >
+              Descubre como apoyar
+            </Link>
+          </p>
         </div>
       </div>
     </section>

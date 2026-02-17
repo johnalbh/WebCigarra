@@ -93,7 +93,6 @@ const values = [
     description:
       'El amor como motor fundamental de nuestra labor. Cada accion nace del compromiso genuino con nuestros ninos.',
     gradient: 'from-rose-500 to-pink-600',
-    bg: 'bg-rose-50',
   },
   {
     icon: HiAcademicCap,
@@ -101,7 +100,6 @@ const values = [
     description:
       'Creemos que la educacion es la herramienta mas poderosa para transformar realidades y construir futuros.',
     gradient: 'from-primary-500 to-primary-700',
-    bg: 'bg-primary-50',
   },
   {
     icon: HiUserGroup,
@@ -109,7 +107,6 @@ const values = [
     description:
       'Trabajamos de la mano con las familias y la comunidad para generar un impacto verdadero y duradero.',
     gradient: 'from-accent-500 to-amber-600',
-    bg: 'bg-accent-50',
   },
   {
     icon: HiSparkles,
@@ -117,7 +114,6 @@ const values = [
     description:
       'El arte y la cultura son vehiculos de expresion, sanacion y empoderamiento para nuestros jovenes.',
     gradient: 'from-violet-500 to-purple-600',
-    bg: 'bg-violet-50',
   },
   {
     icon: HiGlobeAlt,
@@ -125,7 +121,6 @@ const values = [
     description:
       'Gestionamos los recursos con responsabilidad, rindiendo cuentas a nuestros aliados y benefactores.',
     gradient: 'from-emerald-500 to-teal-600',
-    bg: 'bg-emerald-50',
   },
   {
     icon: HiEye,
@@ -133,7 +128,6 @@ const values = [
     description:
       'Abrimos las puertas a todos sin distincion, garantizando igualdad de oportunidades para cada nino y joven.',
     gradient: 'from-sky-500 to-cyan-600',
-    bg: 'bg-sky-50',
   },
 ];
 
@@ -186,15 +180,10 @@ function TimelineNode({
             className="relative"
           >
             <div
-              className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${item.color} shadow-lg`}
+              className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${item.color} shadow-sm`}
             >
               <Icon className="h-5 w-5 text-white" />
             </div>
-            <motion.div
-              className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.color} opacity-40`}
-              animate={{ scale: [1, 1.8, 1], opacity: [0.4, 0, 0.4] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            />
           </motion.div>
         </div>
 
@@ -205,33 +194,21 @@ function TimelineNode({
           }`}
         >
           <ScrollReveal direction={isEven ? 'left' : 'right'}>
-            <motion.div
-              whileHover={{ y: -4, scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-md ring-1 ring-gray-100 transition-shadow duration-300 hover:shadow-xl"
-            >
-              {/* Decorative top gradient bar */}
-              <div
-                className={`absolute top-0 left-0 h-1 w-full bg-gradient-to-r ${item.color}`}
-              />
-
+            <div className="rounded-xl border border-gray-100 bg-white p-6 transition-colors duration-300 hover:border-gray-200">
               {/* Year badge */}
               <span
-                className={`mb-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${item.color} px-4 py-1.5 text-sm font-bold text-white shadow-sm`}
+                className={`mb-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${item.color} px-4 py-1.5 text-sm font-bold text-white`}
               >
                 {item.year}
               </span>
 
-              <h3 className="mb-2 font-heading text-xl font-bold text-gray-900 transition-colors group-hover:text-primary-600">
+              <h3 className="mb-2 font-heading text-xl font-bold text-gray-900">
                 {item.title}
               </h3>
               <p className="text-sm leading-relaxed text-gray-600">
                 {item.description}
               </p>
-
-              {/* Hover glow */}
-              <div className="pointer-events-none absolute -right-8 -bottom-8 h-24 w-24 rounded-full bg-primary-500/5 transition-transform duration-500 group-hover:scale-[3]" />
-            </motion.div>
+            </div>
           </ScrollReveal>
         </div>
       </div>
@@ -248,7 +225,7 @@ export default function AboutPage() {
   return (
     <>
       {/* ========== HERO SECTION ========== */}
-      <section className="relative overflow-hidden bg-primary-950">
+      <section className="relative overflow-hidden bg-primary-900">
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
@@ -318,7 +295,7 @@ export default function AboutPage() {
                   alt="Misión Fundación Cigarra"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/80 md:to-white" />
                 <div className="absolute inset-0 bg-primary-900/20" />
@@ -328,17 +305,9 @@ export default function AboutPage() {
             {/* Content side */}
             <div className="relative z-10 px-6 py-16 md:-ml-20 md:py-20 lg:px-16">
               <ScrollReveal direction="right">
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                  className="glass-dark rounded-3xl p-8 shadow-2xl md:bg-white/95 md:p-10 md:shadow-xl md:backdrop-blur-xl md:border md:border-gray-100"
-                  style={{
-                    background: 'rgba(255,255,255,0.92)',
-                    backdropFilter: 'blur(20px)',
-                  }}
-                >
+                <div className="rounded-xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
                   {/* Icon badge */}
-                  <div className="mb-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 p-4 shadow-lg shadow-primary-500/25">
+                  <div className="mb-6 inline-flex items-center justify-center rounded-xl bg-primary-500 p-4">
                     <HiLightBulb className="h-8 w-8 text-white" />
                   </div>
 
@@ -368,7 +337,7 @@ export default function AboutPage() {
                       Mas de 180 ninos atendidos actualmente
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </ScrollReveal>
             </div>
           </div>
@@ -382,18 +351,9 @@ export default function AboutPage() {
             {/* Content side (reversed) */}
             <div className="relative z-10 order-2 px-6 py-16 md:order-1 md:-mr-20 md:py-20 lg:px-16">
               <ScrollReveal direction="left">
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                  className="rounded-3xl p-8 shadow-xl md:p-10"
-                  style={{
-                    background: 'rgba(255,255,255,0.95)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(0,0,0,0.05)',
-                  }}
-                >
+                <div className="rounded-xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
                   {/* Icon badge */}
-                  <div className="mb-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-accent-400 to-accent-600 p-4 shadow-lg shadow-accent-500/25">
+                  <div className="mb-6 inline-flex items-center justify-center rounded-xl bg-accent-500 p-4">
                     <HiEye className="h-8 w-8 text-white" />
                   </div>
 
@@ -423,7 +383,7 @@ export default function AboutPage() {
                       14 programas transformando comunidades
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </ScrollReveal>
             </div>
 
@@ -438,7 +398,7 @@ export default function AboutPage() {
                   alt="Visión Fundación Cigarra"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-gray-50/80 md:to-gray-50" />
                 <div className="absolute inset-0 bg-accent-900/10" />
@@ -450,22 +410,7 @@ export default function AboutPage() {
 
       {/* ========== TIMELINE SECTION ========== */}
       <section className="section-padding relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute top-0 left-1/4 h-[600px] w-[600px] rounded-full bg-primary-50 opacity-50 blur-3xl" />
-          <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-accent-50 opacity-40 blur-3xl" />
-          {/* Dot grid pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle, #167BAE 1px, transparent 1px)',
-              backgroundSize: '40px 40px',
-            }}
-          />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-5xl px-4 lg:px-8">
+        <div className="mx-auto max-w-5xl px-4 lg:px-8">
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="mb-4 inline-block rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-primary-700">
@@ -499,13 +444,7 @@ export default function AboutPage() {
 
       {/* ========== VALUES SECTION ========== */}
       <section className="section-padding relative overflow-hidden bg-gray-50">
-        {/* Decorative background */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-20 -right-20 h-[400px] w-[400px] rounded-full bg-accent-100 opacity-40 blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 h-[400px] w-[400px] rounded-full bg-primary-100 opacity-40 blur-3xl" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="mb-4 inline-block rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-accent-700">
@@ -527,19 +466,10 @@ export default function AboutPage() {
               const Icon = value.icon;
               return (
                 <StaggerItem key={value.title}>
-                  <motion.div
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100 transition-all duration-300 hover:shadow-xl hover:ring-transparent"
-                  >
-                    {/* Top gradient accent on hover */}
-                    <div
-                      className={`absolute top-0 left-0 h-1 w-0 bg-gradient-to-r ${value.gradient} transition-all duration-500 group-hover:w-full`}
-                    />
-
+                  <div className="group h-full rounded-xl border border-gray-100 bg-white p-8 transition-colors duration-300 hover:border-gray-200">
                     {/* Icon */}
                     <div
-                      className={`mb-5 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br ${value.gradient} p-3.5 shadow-md transition-transform duration-300 group-hover:scale-110`}
+                      className={`mb-5 inline-flex items-center justify-center rounded-xl bg-gradient-to-br ${value.gradient} p-3.5`}
                     >
                       <Icon className="h-7 w-7 text-white" />
                     </div>
@@ -551,10 +481,7 @@ export default function AboutPage() {
                     <p className="text-sm leading-relaxed text-gray-600">
                       {value.description}
                     </p>
-
-                    {/* Hover glow */}
-                    <div className="pointer-events-none absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-primary-500/5 transition-transform duration-500 group-hover:scale-[4]" />
-                  </motion.div>
+                  </div>
                 </StaggerItem>
               );
             })}
@@ -563,19 +490,13 @@ export default function AboutPage() {
       </section>
 
       {/* ========== BOTTOM CTA ========== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-800 via-primary-900 to-primary-950">
-        {/* Decorative blobs */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -left-20 h-60 w-60 rounded-full bg-accent-500/10 blur-3xl" />
-          <div className="absolute -right-20 -bottom-20 h-60 w-60 rounded-full bg-primary-400/10 blur-3xl" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center lg:px-8">
+      <section className="bg-primary-500">
+        <div className="mx-auto max-w-4xl px-4 py-20 text-center lg:px-8">
           <ScrollReveal>
             <h2 className="mb-6 font-heading text-3xl font-bold text-white md:text-4xl">
               Se parte de esta historia
             </h2>
-            <p className="mx-auto mb-10 max-w-2xl text-lg text-primary-200">
+            <p className="mx-auto mb-10 max-w-2xl text-lg text-white/80">
               Cada nino que pasa por nuestras puertas lleva consigo la semilla
               del cambio. Unete a nosotros y ayuda a escribir el proximo
               capitulo de esta historia de transformacion.
@@ -585,7 +506,7 @@ export default function AboutPage() {
                 href="https://www.donaronline.org/fundacion-cigarra/dona-ahora"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-bold text-white shadow-lg shadow-accent-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-400/40"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
               >
                 <HiHeart className="h-5 w-5" />
                 Dona Ahora

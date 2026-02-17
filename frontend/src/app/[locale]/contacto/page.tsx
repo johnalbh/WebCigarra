@@ -24,9 +24,8 @@ const contactInfo = [
       </>
     ),
     href: undefined as string | undefined,
-    color: 'from-primary-500 to-primary-600',
+    color: 'text-primary-600',
     bgColor: 'bg-primary-50',
-    textColor: 'text-primary-600',
   },
   {
     icon: HiPhone,
@@ -34,9 +33,8 @@ const contactInfo = [
     label: 'Telefono',
     content: '+57 321 246 5421',
     href: 'tel:+573212465421',
-    color: 'from-blue-500 to-blue-600',
+    color: 'text-blue-600',
     bgColor: 'bg-blue-50',
-    textColor: 'text-blue-600',
   },
   {
     icon: HiMail,
@@ -44,9 +42,8 @@ const contactInfo = [
     label: 'Email',
     content: 'info@cigarra.org',
     href: 'mailto:info@cigarra.org',
-    color: 'from-accent-500 to-accent-600',
+    color: 'text-accent-600',
     bgColor: 'bg-accent-50',
-    textColor: 'text-accent-600',
   },
   {
     icon: HiClock,
@@ -59,9 +56,8 @@ const contactInfo = [
       </>
     ),
     href: undefined as string | undefined,
-    color: 'from-green-500 to-green-600',
+    color: 'text-green-600',
     bgColor: 'bg-green-50',
-    textColor: 'text-green-600',
   },
 ];
 
@@ -105,7 +101,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ===== HERO SECTION ===== */}
-      <section className="relative overflow-hidden bg-primary-950">
+      <section className="relative overflow-hidden bg-primary-900">
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
@@ -162,21 +158,8 @@ export default function ContactPage() {
       </section>
 
       {/* ===== CONTACT SECTION ===== */}
-      <section className="relative section-padding overflow-hidden">
-        {/* Decorative background blobs */}
-        <div className="absolute top-0 left-[5%] h-96 w-96 rounded-full bg-primary-50 blur-3xl opacity-50" />
-        <div className="absolute bottom-0 right-[5%] h-80 w-80 rounded-full bg-accent-50 blur-3xl opacity-40" />
-
-        {/* Dot pattern decoration */}
-        <div className="absolute top-20 right-20 opacity-[0.04]">
-          <div className="grid grid-cols-8 gap-4">
-            {Array.from({ length: 64 }).map((_, i) => (
-              <div key={i} className="h-2 w-2 rounded-full bg-primary-900" />
-            ))}
-          </div>
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+      <section className="section-padding">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-5">
             {/* ===== LEFT: Contact Info ===== */}
             <div className="lg:col-span-2">
@@ -186,12 +169,12 @@ export default function ContactPage() {
                     const Icon = item.icon;
                     return (
                       <ScrollReveal key={item.labelKey} delay={index * 0.1}>
-                        <div className="glass group rounded-2xl border border-white bg-white/80 p-5 shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary-100/50 hover:-translate-y-0.5">
+                        <div className="rounded-xl border border-gray-100 bg-white p-5 transition-colors duration-300 hover:border-gray-200">
                           <div className="flex items-start gap-4">
                             <div
-                              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.color} shadow-md transition-transform duration-300 group-hover:scale-110`}
+                              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${item.bgColor}`}
                             >
-                              <Icon className="h-6 w-6 text-white" />
+                              <Icon className={`h-6 w-6 ${item.color}`} />
                             </div>
                             <div className="min-w-0">
                               <h3 className="font-heading text-sm font-semibold text-gray-900 mb-1">
@@ -216,27 +199,22 @@ export default function ContactPage() {
 
                   {/* WhatsApp CTA */}
                   <ScrollReveal delay={0.5}>
-                    <motion.a
+                    <a
                       href="https://wa.me/573212465421"
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="group relative flex items-center gap-4 overflow-hidden rounded-2xl bg-gradient-to-r from-green-500 to-green-600 p-5 shadow-lg shadow-green-500/20 transition-shadow duration-300 hover:shadow-xl hover:shadow-green-500/30"
+                      className="group flex items-center gap-4 rounded-xl bg-green-500 p-5 transition-colors duration-300 hover:bg-green-600"
                     >
-                      {/* Animated pulse ring */}
-                      <div className="absolute inset-0 rounded-2xl animate-pulse-soft opacity-20 bg-white" />
-
-                      <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/20 border border-white/30">
                         <FaWhatsapp className="h-7 w-7 text-white" />
                       </div>
-                      <div className="relative">
+                      <div>
                         <p className="font-heading font-bold text-white text-lg">{t('whatsapp')}</p>
                         <p className="text-sm text-green-100">+57 321 246 5421</p>
                       </div>
 
                       {/* Arrow */}
-                      <div className="relative ml-auto">
+                      <div className="ml-auto">
                         <svg
                           className="h-6 w-6 text-white/70 transition-transform duration-300 group-hover:translate-x-1"
                           fill="none"
@@ -246,12 +224,12 @@ export default function ContactPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </div>
-                    </motion.a>
+                    </a>
                   </ScrollReveal>
 
                   {/* Google Maps */}
                   <ScrollReveal delay={0.6}>
-                    <div className="overflow-hidden rounded-2xl border border-gray-100 shadow-lg shadow-gray-200/50">
+                    <div className="overflow-hidden rounded-lg border border-gray-100">
                       <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0!2d-74.15!3d4.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzQnMTIuMCJOIDc0wrAwOScwMC4wIlc!5e0!3m2!1ses!2sco!4v1"
                         width="100%"
@@ -272,201 +250,190 @@ export default function ContactPage() {
             {/* ===== RIGHT: Contact Form ===== */}
             <div className="lg:col-span-3">
               <ScrollReveal direction="right">
-                <div className="relative">
-                  {/* Decorative floating blobs behind form */}
-                  <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-primary-100/60 blur-3xl animate-float" />
-                  <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-accent-100/50 blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+                {/* Form card */}
+                <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+                  {/* Simple top accent */}
+                  <div className="h-1 w-full bg-primary-500" />
 
-                  {/* Form card */}
-                  <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl shadow-gray-200/50">
-                    {/* Gradient top border */}
-                    <div className="h-1.5 w-full bg-gradient-to-r from-primary-500 via-accent-400 to-primary-500 animate-gradient" style={{ backgroundSize: '200% auto' }} />
+                  <form onSubmit={handleSubmit} className="p-8 md:p-10">
+                    <div className="mb-8">
+                      <h3 className="font-heading text-2xl font-bold text-gray-900">
+                        Envianos un mensaje
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-500">
+                        Completa el formulario y te responderemos lo mas pronto posible.
+                      </p>
+                    </div>
 
-                    <form onSubmit={handleSubmit} className="p-8 md:p-10">
-                      <div className="mb-8">
-                        <h3 className="font-heading text-2xl font-bold text-gray-900">
-                          Envianos un mensaje
-                        </h3>
-                        <p className="mt-2 text-sm text-gray-500">
-                          Completa el formulario y te responderemos lo mas pronto posible.
-                        </p>
-                      </div>
-
-                      <div className="grid gap-6 md:grid-cols-2">
-                        <div className="group">
-                          <label
-                            htmlFor="name"
-                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
-                          >
-                            {t('name')} *
-                          </label>
-                          <input
-                            id="name"
-                            type="text"
-                            required
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            placeholder="Tu nombre completo"
-                            className={inputClasses}
-                          />
-                        </div>
-                        <div className="group">
-                          <label
-                            htmlFor="email"
-                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
-                          >
-                            {t('email')} *
-                          </label>
-                          <input
-                            id="email"
-                            type="email"
-                            required
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            placeholder="tu@email.com"
-                            className={inputClasses}
-                          />
-                        </div>
-                        <div className="group">
-                          <label
-                            htmlFor="phone"
-                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
-                          >
-                            {t('phone')}
-                          </label>
-                          <input
-                            id="phone"
-                            type="tel"
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            placeholder="+57 300 000 0000"
-                            className={inputClasses}
-                          />
-                        </div>
-                        <div className="group">
-                          <label
-                            htmlFor="subject"
-                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
-                          >
-                            {t('subject')} *
-                          </label>
-                          <input
-                            id="subject"
-                            type="text"
-                            required
-                            value={formData.subject}
-                            onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                            placeholder="Asunto de tu mensaje"
-                            className={inputClasses}
-                          />
-                        </div>
-                        <div className="group md:col-span-2">
-                          <label
-                            htmlFor="message"
-                            className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
-                          >
-                            {t('message')} *
-                          </label>
-                          <textarea
-                            id="message"
-                            required
-                            rows={5}
-                            value={formData.message}
-                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            placeholder="Escribe tu mensaje aqui..."
-                            className={`${inputClasses} resize-none`}
-                          />
-                        </div>
-                      </div>
-
-                      {/* Submit button */}
-                      <div className="mt-8">
-                        <motion.button
-                          type="submit"
-                          disabled={formState === 'sending'}
-                          whileHover={{ scale: formState === 'sending' ? 1 : 1.02 }}
-                          whileTap={{ scale: formState === 'sending' ? 1 : 0.98 }}
-                          className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 py-4 font-heading font-semibold text-white shadow-lg shadow-primary-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/30 disabled:opacity-70 disabled:cursor-not-allowed md:w-auto md:px-12"
+                    <div className="grid gap-6 md:grid-cols-2">
+                      <div className="group">
+                        <label
+                          htmlFor="name"
+                          className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
                         >
-                          <span className="relative z-10 flex items-center justify-center gap-2">
-                            {formState === 'sending' ? (
-                              <>
-                                {/* Spinning loader */}
-                                <svg
-                                  className="h-5 w-5 animate-spin"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                >
-                                  <circle
-                                    className="opacity-25"
-                                    cx="12"
-                                    cy="12"
-                                    r="10"
-                                    stroke="currentColor"
-                                    strokeWidth="4"
-                                  />
-                                  <path
-                                    className="opacity-75"
-                                    fill="currentColor"
-                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                                  />
-                                </svg>
-                                {t('sending')}
-                              </>
-                            ) : (
-                              <>
-                                <HiMail className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
-                                {t('send')}
-                              </>
-                            )}
-                          </span>
-
-                          {/* Hover shimmer */}
-                          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                        </motion.button>
+                          {t('name')} *
+                        </label>
+                        <input
+                          id="name"
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          placeholder="Tu nombre completo"
+                          className={inputClasses}
+                        />
                       </div>
+                      <div className="group">
+                        <label
+                          htmlFor="email"
+                          className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                        >
+                          {t('email')} *
+                        </label>
+                        <input
+                          id="email"
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          placeholder="tu@email.com"
+                          className={inputClasses}
+                        />
+                      </div>
+                      <div className="group">
+                        <label
+                          htmlFor="phone"
+                          className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                        >
+                          {t('phone')}
+                        </label>
+                        <input
+                          id="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="+57 300 000 0000"
+                          className={inputClasses}
+                        />
+                      </div>
+                      <div className="group">
+                        <label
+                          htmlFor="subject"
+                          className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                        >
+                          {t('subject')} *
+                        </label>
+                        <input
+                          id="subject"
+                          type="text"
+                          required
+                          value={formData.subject}
+                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                          placeholder="Asunto de tu mensaje"
+                          className={inputClasses}
+                        />
+                      </div>
+                      <div className="group md:col-span-2">
+                        <label
+                          htmlFor="message"
+                          className="mb-2 block text-sm font-semibold text-gray-700 transition-colors group-focus-within:text-primary-600"
+                        >
+                          {t('message')} *
+                        </label>
+                        <textarea
+                          id="message"
+                          required
+                          rows={5}
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          placeholder="Escribe tu mensaje aqui..."
+                          className={`${inputClasses} resize-none`}
+                        />
+                      </div>
+                    </div>
 
-                      {/* Status messages */}
-                      <AnimatePresence mode="wait">
-                        {formState === 'success' && (
-                          <motion.div
-                            key="success"
-                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                            transition={{ duration: 0.4, ease: smoothEase }}
-                            className="mt-6 flex items-center gap-3 rounded-2xl border border-green-200 bg-green-50 p-4"
-                          >
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-100">
-                              <HiCheckCircle className="h-6 w-6 text-green-600" />
-                            </div>
-                            <div>
-                              <p className="font-semibold text-green-800">Mensaje enviado</p>
-                              <p className="text-sm text-green-600">{t('success')}</p>
-                            </div>
-                          </motion.div>
-                        )}
-                        {formState === 'error' && (
-                          <motion.div
-                            key="error"
-                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                            transition={{ duration: 0.4, ease: smoothEase }}
-                            className="mt-6 flex items-center gap-3 rounded-2xl border border-red-200 bg-red-50 p-4"
-                          >
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-100">
-                              <HiXCircle className="h-6 w-6 text-red-600" />
-                            </div>
-                            <div>
-                              <p className="font-semibold text-red-800">Error</p>
-                              <p className="text-sm text-red-600">{t('error')}</p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </form>
-                  </div>
+                    {/* Submit button */}
+                    <div className="mt-8">
+                      <button
+                        type="submit"
+                        disabled={formState === 'sending'}
+                        className="w-full rounded-full bg-primary-500 py-4 font-heading font-semibold text-white transition-colors duration-300 hover:bg-primary-600 disabled:opacity-70 disabled:cursor-not-allowed md:w-auto md:px-12"
+                      >
+                        <span className="flex items-center justify-center gap-2">
+                          {formState === 'sending' ? (
+                            <>
+                              {/* Spinning loader */}
+                              <svg
+                                className="h-5 w-5 animate-spin"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                              >
+                                <circle
+                                  className="opacity-25"
+                                  cx="12"
+                                  cy="12"
+                                  r="10"
+                                  stroke="currentColor"
+                                  strokeWidth="4"
+                                />
+                                <path
+                                  className="opacity-75"
+                                  fill="currentColor"
+                                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                                />
+                              </svg>
+                              {t('sending')}
+                            </>
+                          ) : (
+                            <>
+                              <HiMail className="h-5 w-5" />
+                              {t('send')}
+                            </>
+                          )}
+                        </span>
+                      </button>
+                    </div>
+
+                    {/* Status messages */}
+                    <AnimatePresence mode="wait">
+                      {formState === 'success' && (
+                        <motion.div
+                          key="success"
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                          transition={{ duration: 0.4, ease: smoothEase }}
+                          className="mt-6 flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-4"
+                        >
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-100">
+                            <HiCheckCircle className="h-6 w-6 text-green-600" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-green-800">Mensaje enviado</p>
+                            <p className="text-sm text-green-600">{t('success')}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                      {formState === 'error' && (
+                        <motion.div
+                          key="error"
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                          transition={{ duration: 0.4, ease: smoothEase }}
+                          className="mt-6 flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 p-4"
+                        >
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-100">
+                            <HiXCircle className="h-6 w-6 text-red-600" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-red-800">Error</p>
+                            <p className="text-sm text-red-600">{t('error')}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </form>
                 </div>
               </ScrollReveal>
             </div>

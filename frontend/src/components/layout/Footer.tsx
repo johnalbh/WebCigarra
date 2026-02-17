@@ -23,7 +23,7 @@ export default function Footer() {
   const tNav = useTranslations('nav');
 
   return (
-    <footer className="bg-primary-900 text-white">
+    <footer className="bg-primary-800 text-white">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Column 1: Info */}
@@ -94,7 +94,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-800 text-primary-200 transition-colors hover:bg-accent-500 hover:text-white"
+                    className="text-primary-300 transition-colors hover:text-accent-400"
                   >
                     <social.icon className="h-4 w-4" />
                   </a>
@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 border-t border-primary-800 pt-8 text-center text-sm text-primary-300">
+        <div className="mt-12 border-t border-primary-700 pt-8 text-center text-sm text-primary-300">
           <p>
             &copy; {new Date().getFullYear()} Fundación Cigarra.{' '}
             {t('rights')}.

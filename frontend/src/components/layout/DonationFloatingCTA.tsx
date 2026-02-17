@@ -50,10 +50,9 @@ export default function DonationFloatingCTA() {
             onMouseLeave={() => setExpanded(false)}
           >
             <div className="relative">
-              <span className="absolute inset-0 animate-pulse-soft rounded-full bg-accent-400/30" />
-              <div className="relative flex items-center gap-2 rounded-full bg-accent-500 px-5 py-3 text-white shadow-xl shadow-accent-500/20">
+              <div className="flex items-center gap-2 rounded-full bg-accent-500 px-5 py-3 text-white">
                 <HiHeart className="h-5 w-5" />
-                <span className="font-semibold">{t('title').split(' ').slice(0, 3).join(' ')}</span>
+                <span className="font-semibold text-sm">Dona ahora</span>
                 <button
                   onClick={handleDismiss}
                   className="ml-1 rounded-full p-0.5 hover:bg-accent-600"
@@ -66,16 +65,16 @@ export default function DonationFloatingCTA() {
               <AnimatePresence>
                 {expanded && (
                   <motion.div
-                    initial={{ opacity: 0, y: 5, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                    className="absolute right-0 bottom-full mb-2 flex flex-col gap-2 rounded-xl bg-white p-3 shadow-xl"
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 5 }}
+                    className="absolute right-0 bottom-full mb-2 flex flex-col gap-2 rounded-xl border border-gray-100 bg-white p-3"
                   >
                     <a
                       href={DONATION_LINK_COP}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="whitespace-nowrap rounded-lg bg-primary-600 px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-primary-700"
+                      className="whitespace-nowrap rounded-lg bg-primary-500 px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-primary-600"
                     >
                       {t('donateCOP')}
                     </a>
@@ -100,14 +99,14 @@ export default function DonationFloatingCTA() {
             exit={{ y: '100%' }}
             className="fixed right-0 bottom-0 left-0 z-40 md:hidden"
           >
-            <div className="flex items-center gap-2 bg-gradient-to-r from-primary-600 to-accent-500 px-4 py-3">
+            <div className="flex items-center gap-2 bg-primary-500 px-4 py-3">
               <HiHeart className="h-5 w-5 flex-shrink-0 text-white" />
               <div className="flex flex-1 gap-2">
                 <a
                   href={DONATION_LINK_COP}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 rounded-full bg-white/20 py-2 text-center text-xs font-semibold text-white backdrop-blur-sm"
+                  className="flex-1 rounded-full bg-white/20 py-2 text-center text-xs font-semibold text-white"
                 >
                   COP
                 </a>

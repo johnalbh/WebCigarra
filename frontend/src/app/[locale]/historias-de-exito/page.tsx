@@ -67,9 +67,9 @@ function StoryCard({ story }: { story: (typeof stories)[number] }) {
 
   return (
     <motion.article
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -4 }}
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 transition-shadow duration-300 hover:shadow-xl hover:ring-transparent"
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white transition-colors duration-300 hover:border-gray-200"
     >
       {/* Image */}
       <div className="relative h-64 overflow-hidden">
@@ -129,7 +129,7 @@ export default function SuccessStoriesPage() {
   return (
     <>
       {/* ========== HERO ========== */}
-      <section className="relative overflow-hidden bg-primary-950">
+      <section className="relative overflow-hidden bg-primary-900">
         <div className="pointer-events-none absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-accent-500/8 blur-[120px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
@@ -249,6 +249,24 @@ export default function SuccessStoriesPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Subtle donation nudge after stories */}
+          <ScrollReveal>
+            <div className="mt-16 rounded-xl border border-primary-100 bg-primary-50/50 p-8 text-center">
+              <p className="text-gray-700">
+                Estas historias son posibles gracias a personas como tu.{' '}
+                <a
+                  href={DONATION_LINK_COP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-primary-600 underline underline-offset-2 hover:text-primary-700"
+                >
+                  Dona ahora
+                </a>{' '}
+                y ayuda a escribir mas historias de exito.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -269,19 +287,15 @@ export default function SuccessStoriesPage() {
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
             {impactImages.map((img, i) => (
               <ScrollReveal key={img} delay={i * 0.06}>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative aspect-[4/3] overflow-hidden rounded-xl"
-                >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                   <Image
                     src={img}
                     alt={`Impacto ${i + 1}`}
                     fill
                     sizes="(max-width: 768px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover"
                   />
-                </motion.div>
+                </div>
               </ScrollReveal>
             ))}
           </div>
@@ -289,23 +303,17 @@ export default function SuccessStoriesPage() {
       </section>
 
       {/* ========== EMOTIONAL CTA ========== */}
-      <section className="relative overflow-hidden bg-primary-950">
-        <div className="pointer-events-none absolute top-0 left-1/2 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-accent-500/8 blur-[120px]" />
-
-        <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
+      <section className="bg-primary-500">
+        <div className="mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
           <ScrollReveal>
-            <motion.div
-              animate={{ scale: [1, 1.15, 1] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-              className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/15"
-            >
-              <HiHeart className="h-8 w-8 text-accent-400" />
-            </motion.div>
+            <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
+              <HiHeart className="h-8 w-8 text-white" />
+            </div>
 
             <h2 className="mb-5 font-heading text-3xl font-bold text-white md:text-5xl">
               Ayuda a escribir más historias de éxito
             </h2>
-            <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-primary-200/70">
+            <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/80">
               Cada donación abre una puerta. Hoy puedes ser parte de la historia
               de un niño que mañana transformará su comunidad.
             </p>
@@ -315,7 +323,7 @@ export default function SuccessStoriesPage() {
                 href={DONATION_LINK_COP}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-3.5 font-heading text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-400 hover:shadow-lg hover:shadow-accent-500/25 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-heading text-sm font-semibold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
               >
                 <HiHeart className="h-4 w-4" />
                 Dona Ahora
@@ -324,16 +332,16 @@ export default function SuccessStoriesPage() {
                 href={DONATION_LINK_USD}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-white/20 px-8 py-3.5 font-heading text-sm font-semibold text-white transition-all duration-300 hover:bg-white/10"
+                className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 font-heading text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/10"
               >
                 Donate in USD
               </a>
             </div>
 
-            <div className="mt-12 flex items-center justify-center gap-8 text-sm text-primary-300/50">
+            <div className="mt-12 flex items-center justify-center gap-8 text-sm text-white/60">
               {['100% Transparente', 'Deducible de impuestos', 'Donación segura'].map((t) => (
                 <span key={t} className="flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent-500/50" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
                   {t}
                 </span>
               ))}

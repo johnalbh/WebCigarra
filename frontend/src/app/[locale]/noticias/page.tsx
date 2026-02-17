@@ -43,8 +43,8 @@ export default function NewsPage() {
 
   return (
     <>
-      {/* ───────────────────── Hero Section ───────────────────── */}
-      <section className="relative overflow-hidden bg-primary-950">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-primary-900">
         {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
@@ -100,15 +100,15 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* ───────────────────── Featured Article ───────────────────── */}
+      {/* Featured Article */}
       <section className="relative bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal>
             <Link href={{ pathname: '/noticias/[slug]', params: { slug: featured.slug } }}>
               <motion.article
-                whileHover={{ y: -6 }}
+                whileHover={{ y: -4 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                className="group relative overflow-hidden rounded-3xl bg-gray-900 shadow-2xl shadow-gray-300/50 ring-1 ring-gray-200 md:flex md:min-h-[420px]"
+                className="group relative overflow-hidden rounded-xl border border-gray-200 bg-gray-900 md:flex md:min-h-[420px]"
               >
                 {/* Image side */}
                 <div className="relative h-72 overflow-hidden md:h-auto md:w-3/5">
@@ -126,7 +126,7 @@ export default function NewsPage() {
 
                   {/* Featured badge */}
                   <div className="absolute top-5 left-5 z-10">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-500 px-4 py-1.5 text-xs font-bold tracking-wider text-white uppercase shadow-lg shadow-accent-500/30">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-500 px-4 py-1.5 text-xs font-bold tracking-wider text-white uppercase">
                       <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
                       Destacado
                     </span>
@@ -149,7 +149,7 @@ export default function NewsPage() {
                   </p>
 
                   <div className="mt-8">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-accent-500 group-hover:shadow-lg group-hover:shadow-accent-500/25">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 group-hover:bg-accent-500">
                       {t('readMore')}
                       <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
@@ -161,19 +161,16 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* ───────────────────── Articles Grid ───────────────────── */}
+      {/* Articles Grid */}
       <section className="relative bg-gradient-to-b from-gray-50 to-white py-16 md:py-20">
-        {/* Subtle dot pattern */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, black 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-
-        <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal>
             <div className="mb-12 text-center">
               <span className="mb-3 inline-block rounded-full bg-primary-100 px-4 py-1 text-sm font-semibold text-primary-700">
                 Mantente informado
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Más <span className="text-gradient">Noticias</span>
+                Más <span className="text-primary-600">Noticias</span>
               </h2>
             </div>
           </ScrollReveal>
@@ -183,9 +180,9 @@ export default function NewsPage() {
               <StaggerItem key={article.slug}>
                 <Link href={{ pathname: '/noticias/[slug]', params: { slug: article.slug } }}>
                   <motion.article
-                    whileHover={{ y: -8 }}
+                    whileHover={{ y: -4 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                    className="group h-full overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200/60 ring-1 ring-gray-100 transition-shadow duration-500 hover:shadow-2xl hover:shadow-gray-300/40"
+                    className="group h-full overflow-hidden rounded-lg border border-gray-100 bg-white transition-colors duration-300 hover:border-gray-200"
                   >
                     {/* Image */}
                     <div className="relative h-52 overflow-hidden">
@@ -193,14 +190,14 @@ export default function NewsPage() {
                         src={articleImages[article.slug]}
                         alt={article.title}
                         fill
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
                       {/* Date badge overlapping image bottom */}
                       <div className="absolute bottom-3 left-4">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-md backdrop-blur-sm">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-sm">
                           <HiCalendar className="h-3.5 w-3.5 text-primary-500" />
                           {formatDate(article.date)}
                         </span>
@@ -229,30 +226,23 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* ───────────────────── Newsletter CTA ───────────────────── */}
-      <section className="relative overflow-hidden bg-primary-900 py-24">
-        {/* Decorative blurs */}
-        <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent-400/10 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-primary-400/10 blur-3xl" />
-
-        <div className="relative mx-auto max-w-3xl px-4 text-center lg:px-8">
+      {/* Newsletter CTA */}
+      <section className="bg-primary-500 py-24">
+        <div className="mx-auto max-w-3xl px-4 text-center lg:px-8">
           <ScrollReveal>
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-500/20">
-              <HiMail className="h-8 w-8 text-accent-400" />
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-white/20">
+              <HiMail className="h-8 w-8 text-white" />
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">
-              No te pierdas ninguna{' '}
-              <span className="bg-gradient-to-r from-accent-300 to-accent-500 bg-clip-text text-transparent">
-                novedad
-              </span>
+              No te pierdas ninguna novedad
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-primary-200/80">
+            <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/80">
               Suscribete a nuestro boletin y recibe las ultimas noticias, eventos y logros de la Fundacion Cigarra directamente en tu correo.
             </p>
           </ScrollReveal>
@@ -263,18 +253,18 @@ export default function NewsPage() {
                 <input
                   type="email"
                   placeholder="Tu correo electrónico"
-                  className="w-full rounded-full border border-white/15 bg-white/10 px-6 py-4 pr-40 text-sm text-white placeholder-primary-300/50 backdrop-blur-sm transition-all duration-300 focus:border-accent-400/50 focus:bg-white/15 focus:ring-2 focus:ring-accent-400/20 focus:outline-none"
+                  className="w-full rounded-full border border-white/20 bg-white/10 px-6 py-4 pr-40 text-sm text-white placeholder-white/50 transition-all duration-300 focus:border-white/40 focus:bg-white/15 focus:ring-2 focus:ring-white/20 focus:outline-none"
                 />
                 <button
                   type="button"
-                  className="absolute top-1.5 right-1.5 inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent-500/30 transition-all duration-300 hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/40"
+                  className="absolute top-1.5 right-1.5 inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-bold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
                 >
                   Suscribirme
                   <HiArrowRight className="h-4 w-4" />
                 </button>
               </div>
             </div>
-            <p className="mt-4 text-xs text-primary-300/50">
+            <p className="mt-4 text-xs text-white/50">
               Sin spam. Puedes cancelar cuando quieras.
             </p>
           </ScrollReveal>
