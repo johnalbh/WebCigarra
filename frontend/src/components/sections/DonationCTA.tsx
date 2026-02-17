@@ -3,8 +3,17 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
-import { HiHeart } from 'react-icons/hi';
+import { Link } from '@/i18n/routing';
+import Image from 'next/image';
+import {
+  HiHeart,
+  HiUserGroup,
+  HiHand,
+  HiShare,
+  HiArrowRight,
+} from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
+import ScrollReveal from '@/components/shared/ScrollReveal';
 
 const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
 const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-now';
@@ -20,6 +29,49 @@ function formatCOP(amount: number) {
   }).format(amount);
 }
 
+const engagementPaths = [
+  {
+    icon: HiHeart,
+    title: 'Dona',
+    description: 'Cada peso transforma una vida. Tu donación financia educación, alimentación y materiales.',
+    cta: 'Dona Ahora',
+    href: DONATION_LINK_COP,
+    external: true,
+    color: 'bg-red-500',
+    image: 'https://cigarra.org/wp-content/uploads/2025/04/Musica.jpg',
+  },
+  {
+    icon: HiUserGroup,
+    title: 'Apadrina un Niño',
+    description: 'El Plan Padrino cubre educación + alimentación de un niño. Recibe reportes de su progreso.',
+    cta: 'Conoce el Plan',
+    href: '/como-ayudar',
+    external: false,
+    color: 'bg-primary-500',
+    image: 'https://cigarra.org/wp-content/uploads/2025/04/ApoyoEscolar.jpg',
+  },
+  {
+    icon: HiHand,
+    title: 'Sé Voluntario',
+    description: 'Comparte tu tiempo y talento. Buscamos profesores, artistas, mentores y gestores.',
+    cta: 'Quiero Ayudar',
+    href: '/contacto',
+    external: false,
+    color: 'bg-accent-500',
+    image: 'https://cigarra.org/wp-content/uploads/2025/04/Recreacion.jpg',
+  },
+  {
+    icon: HiShare,
+    title: 'Comparte',
+    description: 'Difunde nuestra labor en tus redes. Una voz más puede abrir nuevas puertas.',
+    cta: 'Compartir',
+    href: 'https://wa.me/?text=Conoce%20la%20Fundación%20Cigarra%20y%20su%20increíble%20labor%20con%20niños%20en%20Ciudad%20Bolívar%20🦗%20https://cigarra.org',
+    external: true,
+    color: 'bg-green-500',
+    image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Danza_GL_1.jpg',
+  },
+];
+
 export default function DonationCTA() {
   const t = useTranslations('donation');
   const [progressWidth, setProgressWidth] = useState(0);
@@ -32,77 +84,145 @@ export default function DonationCTA() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-primary-500 py-20 md:py-28">
-      <HeroWaves />
-      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-8">
-        {/* Heart icon */}
-        <motion.div
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-          className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-white/15"
-        >
-          <HiHeart className="h-7 w-7 text-white" />
-        </motion.div>
+    <>
+      {/* Progress + headline section */}
+      <section className="relative overflow-hidden bg-primary-900 py-20 md:py-28">
+        <HeroWaves />
+        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-8">
+          <motion.div
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+            className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-accent-500/20"
+          >
+            <HiHeart className="h-7 w-7 text-accent-400" />
+          </motion.div>
 
-        <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">
-          {t('title')}
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/85">
-          {t('subtitle')}
-        </p>
+          <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
+            Hay muchas formas de <span className="text-accent-400">cambiar vidas</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-primary-200/80">
+            No se trata solo de dinero. Tu tiempo, tus habilidades y tu voz también transforman comunidades.
+          </p>
 
-        {/* Progress bar */}
-        <div className="mx-auto mt-10 max-w-md">
-          <div className="mb-2 flex items-center justify-between text-sm text-white/80">
-            <span>{formatCOP(CURRENT_AMOUNT)} recaudados</span>
-            <span className="font-semibold text-white">
-              Meta: {formatCOP(MONTHLY_GOAL)}
+          {/* Progress bar */}
+          <div className="mx-auto mt-10 max-w-lg">
+            <div className="mb-2 flex items-center justify-between text-sm text-primary-200/70">
+              <span>{formatCOP(CURRENT_AMOUNT)} recaudados</span>
+              <span className="font-semibold text-white">
+                Meta: {formatCOP(MONTHLY_GOAL)}
+              </span>
+            </div>
+            <div className="h-2.5 overflow-hidden rounded-full bg-white/10">
+              <motion.div
+                className="h-full rounded-full bg-gradient-to-r from-accent-400 to-accent-500"
+                initial={{ width: '0%' }}
+                animate={{ width: `${progressWidth}%` }}
+                transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
+              />
+            </div>
+            <p className="mt-2 text-sm text-primary-300/50">
+              {Math.round((CURRENT_AMOUNT / MONTHLY_GOAL) * 100)}% de la meta mensual
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4 engagement paths */}
+      <section className="section-padding">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {engagementPaths.map((path, i) => {
+              const Icon = path.icon;
+              const btnClass = "group/btn inline-flex items-center gap-2 rounded-full bg-primary-500 px-5 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-primary-600";
+
+              return (
+                <ScrollReveal key={path.title} delay={i * 0.1}>
+                  <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white transition-all duration-300 hover:border-gray-200 hover:-translate-y-1">
+                    {/* Image */}
+                    <div className="relative h-44 overflow-hidden">
+                      <Image
+                        src={path.image}
+                        alt={path.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+                      {/* Icon badge */}
+                      <div className={`absolute top-4 left-4 flex h-10 w-10 items-center justify-center rounded-xl ${path.color}`}>
+                        <Icon className="h-5 w-5 text-white" />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex flex-1 flex-col p-5">
+                      <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
+                        {path.title}
+                      </h3>
+                      <p className="mb-5 flex-1 text-sm leading-relaxed text-gray-500">
+                        {path.description}
+                      </p>
+
+                      {path.external ? (
+                        <a
+                          href={path.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={btnClass}
+                        >
+                          {path.cta}
+                          <HiArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
+                        </a>
+                      ) : (
+                        <Link
+                          href={path.href as '/como-ayudar' | '/contacto'}
+                          className={btnClass}
+                        >
+                          {path.cta}
+                          <HiArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+
+          {/* USD option */}
+          <ScrollReveal>
+            <div className="mt-10 text-center">
+              <p className="mb-3 text-sm text-gray-400">International donors</p>
+              <a
+                href={DONATION_LINK_USD}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-primary-200 px-6 py-3 text-sm font-semibold text-primary-600 transition-colors hover:bg-primary-50"
+              >
+                {t('donateUSD')}
+                <HiArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </ScrollReveal>
+
+          {/* Trust badges */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
+            <span className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
+              100% seguro
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-400" />
+              Deducible de impuestos
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent-400" />
+              Transparencia total
             </span>
           </div>
-          <div className="h-2 overflow-hidden rounded-full bg-white/20">
-            <motion.div
-              className="h-full rounded-full bg-accent-400"
-              initial={{ width: '0%' }}
-              animate={{ width: `${progressWidth}%` }}
-              transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
-            />
-          </div>
-          <p className="mt-2 text-sm text-white/60">
-            {Math.round((CURRENT_AMOUNT / MONTHLY_GOAL) * 100)}% de la meta
-            mensual
-          </p>
         </div>
-
-        {/* CTA Buttons */}
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href={DONATION_LINK_COP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-heading text-sm font-semibold text-primary-700 transition-colors hover:bg-white/90"
-          >
-            <HiHeart className="h-4 w-4 text-red-500" />
-            {t('donateCOP')}
-          </a>
-          <a
-            href={DONATION_LINK_USD}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 font-heading text-sm font-semibold text-white transition-colors hover:bg-white/10"
-          >
-            {t('donateUSD')}
-          </a>
-        </div>
-
-        {/* Trust badges */}
-        <div className="mt-8 flex items-center justify-center gap-6 text-xs text-white/50">
-          <span>100% seguro</span>
-          <span className="h-3 w-px bg-white/20" />
-          <span>Deducible de impuestos</span>
-          <span className="h-3 w-px bg-white/20" />
-          <span>Transparencia total</span>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

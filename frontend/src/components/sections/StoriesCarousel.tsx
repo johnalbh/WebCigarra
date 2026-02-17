@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'motion/react';
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { HiChevronLeft, HiChevronRight, HiHeart, HiArrowRight } from 'react-icons/hi';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 
@@ -42,14 +42,14 @@ const defaultStories = [
   {
     name: 'Alison Zapata',
     role: 'Egresada',
-    quote: 'La Fundación Cigarra me dio las herramientas para soñar en grande y trabajar por mis metas. Cada día fue una oportunidad de crecimiento.',
+    quote: 'La Fundación Cigarra me dio las herramientas para soñar en grande y trabajar por mis metas.',
     achievement: 'Profesional destacada',
     image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Musica_GL_1.jpg',
   },
   {
     name: 'Leider Quiñones',
     role: 'Estudiante de Música',
-    quote: 'Gracias a la música aprendí disciplina y encontré mi pasión. Hoy la música es mi vida y puedo compartirla con mi comunidad.',
+    quote: 'Gracias a la música aprendí disciplina y encontré mi pasión. Hoy la música es mi vida.',
     achievement: 'Músico profesional',
     image: 'https://cigarra.org/wp-content/uploads/2022/06/QH_Musica_GL_3.jpg',
   },
@@ -133,6 +133,9 @@ export default function StoriesCarousel() {
         {/* Section header */}
         <ScrollReveal>
           <div className="mb-16 text-center">
+            <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-accent-500">
+              Vidas transformadas
+            </p>
             <h2 className="mb-4 font-heading text-4xl font-bold text-gray-900 md:text-5xl">
               {t('title')}
             </h2>
@@ -176,10 +179,10 @@ export default function StoriesCarousel() {
                   damping: 30,
                   mass: 0.8,
                 }}
-                className="bg-white md:flex md:min-h-[380px]"
+                className="bg-white md:flex md:min-h-[400px]"
               >
                 {/* Image side */}
-                <div className="relative h-64 md:h-auto md:w-2/5">
+                <div className="relative h-72 md:h-auto md:w-2/5">
                   <Image
                     src={story.image}
                     alt={story.name}
@@ -187,17 +190,29 @@ export default function StoriesCarousel() {
                     sizes="(max-width: 768px) 100vw, 40vw"
                     className="object-cover"
                   />
+                  {/* Overlay counter */}
+                  <div className="absolute top-4 left-4 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                    {current + 1} / {defaultStories.length}
+                  </div>
                 </div>
 
                 {/* Content side */}
                 <div className="flex flex-col justify-center px-8 py-10 md:w-3/5 md:px-12 md:py-14">
+                  {/* Large quote mark */}
+                  <div className="mb-4 font-accent text-6xl leading-none text-primary-200">
+                    &ldquo;
+                  </div>
+
                   {/* Quote */}
                   <blockquote className="mb-8 font-accent text-xl leading-relaxed text-gray-800 md:text-2xl">
-                    &ldquo;{story.quote}&rdquo;
+                    {story.quote}
                   </blockquote>
 
                   {/* Divider */}
-                  <div className="mb-5 h-px w-12 bg-primary-500" />
+                  <div className="mb-5 flex items-center gap-2">
+                    <div className="h-px w-8 bg-primary-500" />
+                    <div className="h-px w-4 bg-primary-300" />
+                  </div>
 
                   {/* Name and role */}
                   <p className="font-heading text-lg font-bold text-gray-900">
@@ -243,18 +258,40 @@ export default function StoriesCarousel() {
           </div>
         </div>
 
-        {/* Donation nudge */}
-        <div className="mt-14 text-center">
-          <p className="text-gray-500">
-            Ayuda a escribir mas historias de exito.{' '}
-            <Link
-              href="/como-ayudar"
-              className="font-medium text-primary-600 underline underline-offset-2 transition-colors hover:text-primary-700"
-            >
-              Descubre como apoyar
-            </Link>
-          </p>
-        </div>
+        {/* Sponsorship CTA - emotionally driven */}
+        <ScrollReveal>
+          <div className="mx-auto mt-16 max-w-3xl rounded-xl bg-primary-900 p-8 md:p-10">
+            <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
+              <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-accent-500/20">
+                <HiHeart className="h-8 w-8 text-accent-400" />
+              </div>
+              <div className="flex-1">
+                <h3 className="mb-2 font-heading text-xl font-bold text-white">
+                  Tú puedes ser parte de su historia
+                </h3>
+                <p className="text-sm leading-relaxed text-primary-200/70">
+                  Con el Plan Padrino cubres educación y alimentación de un niño durante todo el año.
+                  Recibe reportes personalizados de su progreso.
+                </p>
+              </div>
+              <div className="flex flex-shrink-0 flex-col gap-2 sm:flex-row">
+                <Link
+                  href="/como-ayudar"
+                  className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-400"
+                >
+                  Apadrina un niño
+                  <HiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+                <Link
+                  href="/historias-de-exito"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5"
+                >
+                  Ver más historias
+                </Link>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

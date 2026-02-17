@@ -11,7 +11,7 @@ import {
   HiCube, HiLightBulb, HiGlobe, HiHeart,
   HiCamera, HiStar, HiUsers, HiAcademicCap,
   HiColorSwatch, HiDesktopComputer,
-  HiArrowRight,
+  HiArrowRight, HiUserGroup,
 } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
 
@@ -215,38 +215,34 @@ export default function ProgramsPage() {
         <HeroWaves />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center lg:px-8">
           <ScrollReveal>
-            <span className="mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-5 py-1.5 text-sm font-semibold text-white">
-              Haz parte del cambio
-            </span>
-          </ScrollReveal>
+            <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
+              <HiUserGroup className="h-8 w-8 text-white" />
+            </div>
 
-          <ScrollReveal delay={0.1}>
-            <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
-              Cada aporte construye un futuro mejor
+            <h2 className="mb-5 font-heading text-3xl font-bold text-white md:text-5xl">
+              Comparte tu talento con quienes mas lo necesitan
             </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
-              Tu apoyo permite que mas ninos y jovenes de Ciudad Bolivar accedan a
-              educacion de calidad, arte y cultura. Juntos podemos transformar vidas.
+            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/80">
+              Nuestros programas necesitan personas apasionadas que quieran
+              compartir sus conocimientos. Tu tiempo y talento pueden abrir
+              puertas que cambian vidas.
             </p>
-          </ScrollReveal>
 
-          <ScrollReveal delay={0.3}>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/como-ayudar"
+                href="/contacto"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-heading text-sm font-bold tracking-wide text-primary-600 uppercase transition-colors duration-300 hover:bg-gray-50"
               >
-                Quiero Ayudar
+                <HiUserGroup className="h-4 w-4" />
+                Se Voluntario
                 <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/contacto"
+                href="/como-ayudar"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold tracking-wide text-white uppercase transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Contáctanos
+                Conoce como ayudar
+                <HiArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </ScrollReveal>

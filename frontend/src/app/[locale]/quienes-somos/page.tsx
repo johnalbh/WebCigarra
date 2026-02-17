@@ -16,6 +16,7 @@ import {
   HiGlobeAlt,
   HiStar,
 } from 'react-icons/hi';
+import { Link } from '@/i18n/routing';
 import HeroWaves from '@/components/shared/HeroWaves';
 
 /* ---------- timeline data ---------- */
@@ -496,23 +497,42 @@ export default function AboutPage() {
         <HeroWaves />
         <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center lg:px-8">
           <ScrollReveal>
+            <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
+              <HiUserGroup className="h-8 w-8 text-white" />
+            </div>
+
             <h2 className="mb-6 font-heading text-3xl font-bold text-white md:text-4xl">
-              Se parte de esta historia
+              Unite a la familia Cigarra
             </h2>
             <p className="mx-auto mb-10 max-w-2xl text-lg text-white/80">
-              Cada nino que pasa por nuestras puertas lleva consigo la semilla
-              del cambio. Unete a nosotros y ayuda a escribir el proximo
-              capitulo de esta historia de transformacion.
+              Hay muchas formas de ser parte de esta comunidad que transforma
+              vidas. Dona, comparte tu tiempo o simplemente acompananos en
+              este camino.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <a
                 href="https://www.donaronline.org/fundacion-cigarra/dona-ahora"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-heading text-sm font-bold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
               >
                 <HiHeart className="h-5 w-5" />
                 Dona Ahora
+              </a>
+              <Link
+                href="/contacto"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
+              >
+                <HiUserGroup className="h-5 w-5" />
+                Se Voluntario
+              </Link>
+              <a
+                href="https://www.instagram.com/fundacioncigarra/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
+              >
+                Siguenos
               </a>
             </div>
           </ScrollReveal>

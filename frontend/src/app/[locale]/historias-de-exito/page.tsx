@@ -5,7 +5,8 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
-import { HiStar, HiHeart, HiSparkles, HiAcademicCap } from 'react-icons/hi';
+import { HiStar, HiHeart, HiSparkles, HiAcademicCap, HiUserGroup, HiArrowRight } from 'react-icons/hi';
+import { Link } from '@/i18n/routing';
 import HeroWaves from '@/components/shared/HeroWaves';
 
 const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
@@ -310,42 +311,41 @@ export default function SuccessStoriesPage() {
         <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
           <ScrollReveal>
             <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
-              <HiHeart className="h-8 w-8 text-white" />
+              <HiUserGroup className="h-8 w-8 text-white" />
             </div>
 
             <h2 className="mb-5 font-heading text-3xl font-bold text-white md:text-5xl">
-              Ayuda a escribir más historias de éxito
+              Apadrina un nino y escribe el proximo capitulo
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/80">
-              Cada donación abre una puerta. Hoy puedes ser parte de la historia
-              de un niño que mañana transformará su comunidad.
+              Con el Plan Padrino acompanas el crecimiento de un nino o joven,
+              garantizando su acceso a educacion, arte y oportunidades que
+              transforman su vida.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <a
-                href={DONATION_LINK_COP}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/como-ayudar"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-heading text-sm font-semibold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
               >
                 <HiHeart className="h-4 w-4" />
-                Dona Ahora
-              </a>
-              <a
-                href={DONATION_LINK_USD}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 font-heading text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/10"
+                Apadrina un Nino
+                <HiArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/contacto"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 font-heading text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/10"
               >
-                Donate in USD
-              </a>
+                <HiUserGroup className="h-4 w-4" />
+                Se Voluntario
+              </Link>
             </div>
 
             <div className="mt-12 flex items-center justify-center gap-8 text-sm text-white/60">
-              {['100% Transparente', 'Deducible de impuestos', 'Donación segura'].map((t) => (
-                <span key={t} className="flex items-center gap-1.5">
+              {['Plan Padrino', 'Voluntariado', 'Impacto directo'].map((label) => (
+                <span key={label} className="flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
-                  {t}
+                  {label}
                 </span>
               ))}
             </div>
