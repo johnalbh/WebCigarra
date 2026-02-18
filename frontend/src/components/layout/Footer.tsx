@@ -56,10 +56,18 @@ export default function Footer() {
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex flex-col items-center text-center"
         >
-          {/* Logo with white bg and radial glow */}
+          {/* Logo with white bg and animated radial glow */}
           <div className="relative mb-8">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-white/12 blur-[100px]" />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-52 w-52 rounded-full bg-white/8 blur-[60px]" />
+            <motion.div
+              animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.95, 1.05, 0.95] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-white/12 blur-[100px]"
+            />
+            <motion.div
+              animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.08, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-52 w-52 rounded-full bg-white/8 blur-[60px]"
+            />
             <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-white shadow-2xl shadow-white/10">
               <Image
                 src="/images/logo.png"
