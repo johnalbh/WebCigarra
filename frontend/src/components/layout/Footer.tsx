@@ -56,22 +56,23 @@ export default function Footer() {
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex flex-col items-center text-center"
         >
-          {/* Logo */}
+          {/* Logo with radial glow */}
           <div className="relative mb-8">
-            <div className="absolute -inset-8 rounded-full bg-white/5 blur-2xl" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-white/15 blur-[80px]" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-48 w-48 rounded-full bg-white/10 blur-[50px]" />
             <Image
               src="/images/logo.png"
               alt="Fundación Cigarra"
-              width={120}
-              height={120}
-              className="relative h-28 w-28"
+              width={160}
+              height={160}
+              className="relative h-40 w-40"
             />
           </div>
 
           <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             Fundación Cigarra
           </h2>
-          <p className="mt-2 font-accent text-lg text-accent-400">
+          <p className="mt-2 font-accent text-xl italic text-accent-400">
             El resurgir de una esperanza
           </p>
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-primary-300">
