@@ -146,9 +146,8 @@ export default function Navbar() {
   const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
   const isHome = pathWithoutLocale === '/';
 
-  /* On home page: white logo at top, original on scroll.
-     On other pages: always original color. */
-  const showWhiteLogo = isHome && !scrolled;
+  /* White logo at top (all pages have dark hero), original on scroll. */
+  const showWhiteLogo = !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);

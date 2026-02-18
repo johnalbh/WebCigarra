@@ -157,11 +157,19 @@ function BottomProgramsBar({ currentSlug }: { currentSlug: string }) {
                 data-active={isActive}
                 className={`flex flex-shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-primary-500 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? 'text-white shadow-sm'
+                    : 'text-gray-700 hover:shadow-sm'
                 }`}
+                style={
+                  isActive
+                    ? { backgroundColor: p.color }
+                    : { backgroundColor: `${p.color}15` }
+                }
               >
-                <Icon className="h-3.5 w-3.5" />
+                <Icon
+                  className="h-3.5 w-3.5"
+                  style={isActive ? undefined : { color: p.color }}
+                />
                 {p.name}
               </Link>
             );
