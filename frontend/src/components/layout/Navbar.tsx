@@ -76,7 +76,7 @@ function DesktopDropdown({
       <button
         onClick={() => setOpen(!open)}
         className={cn(
-          'flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+          'flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-500 ease-out',
           isActive
             ? scrolled
               ? 'bg-primary-50 text-primary-600'
@@ -89,7 +89,7 @@ function DesktopDropdown({
         {label}
         <HiChevronDown
           className={cn(
-            'h-3.5 w-3.5 transition-transform duration-200',
+            'h-3.5 w-3.5 transition-transform duration-300 ease-out',
             open && 'rotate-180'
           )}
         />
@@ -100,8 +100,8 @@ function DesktopDropdown({
             initial={{ opacity: 0, y: 8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
-            transition={{ duration: 0.2 }}
-            className="absolute left-0 top-full mt-1 z-50 min-w-[220px] overflow-hidden rounded-xl border border-gray-100 bg-white py-2 shadow-xl"
+            transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="absolute left-0 top-full mt-1 z-50 min-w-[220px] overflow-hidden rounded-xl border border-gray-100 bg-white/95 backdrop-blur-xl py-2 shadow-xl"
           >
             {children.map((child) => (
               <Link
@@ -109,7 +109,7 @@ function DesktopDropdown({
                 href={child.href as '/'}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  'flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors',
+                  'flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all duration-300',
                   child.highlight && 'border-l-2 border-accent-500',
                   pathWithoutLocale === child.href
                     ? 'bg-primary-50 text-primary-600'
@@ -144,6 +144,11 @@ export default function Navbar() {
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
   const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
+  const isHome = pathWithoutLocale === '/';
+
+  /* On home page: white logo at top, original on scroll.
+     On other pages: always original color. */
+  const showWhiteLogo = isHome && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -162,30 +167,28 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out',
         scrolled
-          ? 'bg-white/95 backdrop-blur-sm border-b border-gray-100'
+          ? 'bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm'
           : 'bg-transparent'
       )}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8 lg:py-5">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/logo.png"
+            src="/images/logo-principal.png"
             alt="Fundación Cigarra"
-            width={36}
-            height={36}
-            className="h-9 w-9"
-          />
-          <span
+            width={200}
+            height={56}
+            priority
             className={cn(
-              'font-heading text-xl font-bold transition-colors',
-              scrolled ? 'text-primary-600' : 'text-white'
+              'h-12 w-auto transition-all duration-700 ease-out',
+              showWhiteLogo
+                ? 'brightness-0 invert'
+                : ''
             )}
-          >
-            Fundación Cigarra
-          </span>
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -205,7 +208,7 @@ export default function Navbar() {
                 key={item.key}
                 href={item.href as '/'}
                 className={cn(
-                  'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                  'rounded-lg px-3 py-2 text-sm font-medium transition-all duration-500 ease-out',
                   pathWithoutLocale === item.href
                     ? scrolled
                       ? 'bg-primary-50 text-primary-600'
@@ -226,7 +229,7 @@ export default function Navbar() {
           <a
             href={switchLocaleHref}
             className={cn(
-              'rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
+              'rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-500 ease-out',
               scrolled
                 ? 'text-gray-600 hover:bg-gray-100'
                 : 'text-white/90 hover:bg-white/10'
@@ -236,7 +239,7 @@ export default function Navbar() {
           </a>
           <Link
             href="/como-ayudar"
-            className="rounded-full bg-accent-500 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
+            className="rounded-full bg-accent-500 px-5 py-2 text-sm font-semibold text-white transition-all duration-500 ease-out hover:bg-accent-600 hover:shadow-lg hover:shadow-accent-500/25"
           >
             {t('donate')}
           </Link>
@@ -249,9 +252,9 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           {mobileOpen ? (
-            <HiX className={cn('h-6 w-6', scrolled ? 'text-gray-800' : 'text-white')} />
+            <HiX className={cn('h-6 w-6 transition-colors duration-500', scrolled ? 'text-gray-800' : 'text-white')} />
           ) : (
-            <HiMenu className={cn('h-6 w-6', scrolled ? 'text-gray-800' : 'text-white')} />
+            <HiMenu className={cn('h-6 w-6 transition-colors duration-500', scrolled ? 'text-gray-800' : 'text-white')} />
           )}
         </button>
       </nav>
@@ -263,7 +266,8 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t bg-white lg:hidden"
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="overflow-hidden border-t bg-white/95 backdrop-blur-xl lg:hidden"
           >
             <div className="space-y-1 px-4 py-4">
               {navItems.map((item) =>
@@ -274,7 +278,7 @@ export default function Navbar() {
                         setMobileSubmenu(mobileSubmenu === item.key ? null : item.key)
                       }
                       className={cn(
-                        'flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium transition-colors',
+                        'flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium transition-all duration-300',
                         item.children.some((c) => pathWithoutLocale === c.href)
                           ? 'bg-primary-50 text-primary-600'
                           : 'text-gray-700 hover:bg-gray-50'
@@ -283,7 +287,7 @@ export default function Navbar() {
                       {t(item.key)}
                       <HiChevronDown
                         className={cn(
-                          'h-4 w-4 transition-transform duration-200',
+                          'h-4 w-4 transition-transform duration-300 ease-out',
                           mobileSubmenu === item.key && 'rotate-180'
                         )}
                       />
@@ -294,7 +298,7 @@ export default function Navbar() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
+                          transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                           className="overflow-hidden"
                         >
                           <div className="ml-4 space-y-1 border-l-2 border-primary-100 py-1 pl-4">
@@ -303,7 +307,7 @@ export default function Navbar() {
                                 key={child.key}
                                 href={child.href as '/'}
                                 className={cn(
-                                  'flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors',
+                                  'flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300',
                                   pathWithoutLocale === child.href
                                     ? 'bg-primary-50 text-primary-600'
                                     : child.highlight
@@ -330,7 +334,7 @@ export default function Navbar() {
                     key={item.key}
                     href={item.href as '/'}
                     className={cn(
-                      'block rounded-lg px-4 py-3 text-sm font-medium transition-colors',
+                      'block rounded-lg px-4 py-3 text-sm font-medium transition-all duration-300',
                       pathWithoutLocale === item.href
                         ? 'bg-primary-50 text-primary-600'
                         : 'text-gray-700 hover:bg-gray-50'
@@ -345,13 +349,13 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
                   <a
                     href={switchLocaleHref}
-                    className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+                    className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300"
                   >
                     {locale === 'es' ? 'English' : 'Español'}
                   </a>
                   <Link
                     href="/como-ayudar"
-                    className="flex-1 rounded-full bg-accent-500 py-2.5 text-center text-sm font-semibold text-white"
+                    className="flex-1 rounded-full bg-accent-500 py-2.5 text-center text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-600"
                   >
                     {t('donate')}
                   </Link>

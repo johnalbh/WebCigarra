@@ -30,7 +30,7 @@ export default function HeroSection() {
               Desde 2002 transformando vidas
             </p>
 
-            <h1 className="font-heading text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
               Transformamos vidas a través del{' '}
               <span className="text-accent-400">arte, la educación</span> y la
               cultura
