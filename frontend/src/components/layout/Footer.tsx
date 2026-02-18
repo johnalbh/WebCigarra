@@ -56,17 +56,19 @@ export default function Footer() {
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex flex-col items-center text-center"
         >
-          {/* Logo with radial glow */}
+          {/* Logo with white bg and radial glow */}
           <div className="relative mb-8">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-white/15 blur-[80px]" />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-48 w-48 rounded-full bg-white/10 blur-[50px]" />
-            <Image
-              src="/images/logo.png"
-              alt="Fundación Cigarra"
-              width={160}
-              height={160}
-              className="relative h-40 w-40"
-            />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-white/12 blur-[100px]" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-52 w-52 rounded-full bg-white/8 blur-[60px]" />
+            <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-white shadow-2xl shadow-white/10">
+              <Image
+                src="/images/logo.png"
+                alt="Fundación Cigarra"
+                width={160}
+                height={160}
+                className="h-36 w-36"
+              />
+            </div>
           </div>
 
           <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
