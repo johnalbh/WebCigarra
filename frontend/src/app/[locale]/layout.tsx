@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import FloatingSocialBar from '@/components/shared/FloatingSocialBar';
 import DonationFloatingCTA from '@/components/layout/DonationFloatingCTA';
+import { SITE_URL, SITE_NAME } from '@/lib/seo';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -38,15 +39,40 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'metadata' });
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t('title'),
-      template: `%s | Fundación Cigarra`,
+      template: `%s | ${SITE_NAME}`,
     },
     description: t('description'),
+    keywords: [
+      'fundación cigarra',
+      'Ciudad Bolívar',
+      'Bogotá',
+      'educación',
+      'arte',
+      'cultura',
+      'niños',
+      'ONG Colombia',
+    ],
+    authors: [{ name: SITE_NAME }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
     openGraph: {
       type: 'website',
       locale: locale === 'es' ? 'es_CO' : 'en_US',
-      siteName: 'Fundación Cigarra',
+      siteName: SITE_NAME,
+      images: [
+        {
+          url: '/og-default.png',
+          width: 1200,
+          height: 630,
+          alt: SITE_NAME,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
     },
   };
 }

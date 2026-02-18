@@ -37,6 +37,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#E74C3C',
       order: 1,
       featured: true,
+      seo: { metaTitle: 'Programa de Música | Fundación Cigarra', metaDescription: 'Clases de instrumentos, canto y teoría musical para niños en Ciudad Bolívar. Descubre el talento artístico con la Fundación Cigarra.' },
     },
     {
       name: 'Artes Plásticas',
@@ -47,6 +48,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#3498DB',
       order: 2,
       featured: true,
+      seo: { metaTitle: 'Artes Plásticas | Fundación Cigarra', metaDescription: 'Pintura, dibujo y escultura para fomentar la creatividad de los niños en Ciudad Bolívar, Bogotá.' },
     },
     {
       name: 'Refuerzo Escolar',
@@ -57,6 +59,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#2ECC71',
       order: 3,
       featured: true,
+      seo: { metaTitle: 'Refuerzo Escolar | Fundación Cigarra', metaDescription: 'Acompañamiento académico para fortalecer competencias escolares de niños en Ciudad Bolívar.' },
     },
     {
       name: 'Danza',
@@ -67,6 +70,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#F39C12',
       order: 4,
       featured: true,
+      seo: { metaTitle: 'Programa de Danza | Fundación Cigarra', metaDescription: 'Danzas folclóricas y contemporáneas para niños. Expresión corporal y ritmo en Ciudad Bolívar.' },
     },
     {
       name: 'Teatro',
@@ -77,6 +81,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#9B59B6',
       order: 5,
       featured: false,
+      seo: { metaTitle: 'Programa de Teatro | Fundación Cigarra', metaDescription: 'Artes escénicas para desarrollar habilidades comunicativas en niños de Ciudad Bolívar.' },
     },
     {
       name: 'Emprendimiento',
@@ -87,6 +92,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#1ABC9C',
       order: 6,
       featured: false,
+      seo: { metaTitle: 'Emprendimiento Juvenil | Fundación Cigarra', metaDescription: 'Formación de jóvenes emprendedores con herramientas para crear proyectos productivos en Ciudad Bolívar.' },
     },
     {
       name: 'Inglés',
@@ -97,6 +103,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#E67E22',
       order: 7,
       featured: true,
+      seo: { metaTitle: 'Programa de Inglés | Fundación Cigarra', metaDescription: 'Enseñanza de inglés como segunda lengua para ampliar oportunidades de jóvenes en Ciudad Bolívar.' },
     },
     {
       name: 'Valores y Liderazgo',
@@ -107,6 +114,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#E91E63',
       order: 8,
       featured: false,
+      seo: { metaTitle: 'Valores y Liderazgo | Fundación Cigarra', metaDescription: 'Formación en valores, convivencia y liderazgo para niños y jóvenes en Ciudad Bolívar, Bogotá.' },
     },
     {
       name: 'Fotografía',
@@ -117,6 +125,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#00BCD4',
       order: 9,
       featured: false,
+      seo: { metaTitle: 'Programa de Fotografía | Fundación Cigarra', metaDescription: 'Técnicas fotográficas para capturar historias y realidades de Ciudad Bolívar con la Fundación Cigarra.' },
     },
     {
       name: 'Recreación',
@@ -127,6 +136,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#FF5722',
       order: 10,
       featured: false,
+      seo: { metaTitle: 'Recreación y Deporte | Fundación Cigarra', metaDescription: 'Actividades lúdicas y deportivas que promueven el bienestar de niños en Ciudad Bolívar.' },
     },
     {
       name: 'Escuela de Padres',
@@ -137,6 +147,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#4CAF50',
       order: 11,
       featured: false,
+      seo: { metaTitle: 'Escuela de Padres | Fundación Cigarra', metaDescription: 'Talleres de crianza positiva y acompañamiento familiar para padres en Ciudad Bolívar, Bogotá.' },
     },
     {
       name: 'Pre-ICFES',
@@ -147,6 +158,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#673AB7',
       order: 12,
       featured: false,
+      seo: { metaTitle: 'Pre-ICFES | Fundación Cigarra', metaDescription: 'Preparación para pruebas de estado ICFES con simulacros y refuerzo en áreas clave.' },
     },
     {
       name: 'Manualidades',
@@ -157,6 +169,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#FF9800',
       order: 13,
       featured: false,
+      seo: { metaTitle: 'Manualidades | Fundación Cigarra', metaDescription: 'Creación artesanal que estimula la motricidad fina y la expresión creativa de los niños.' },
     },
     {
       name: 'Sistemas',
@@ -167,6 +180,7 @@ async function seedPrograms(strapi: Core.Strapi) {
       color: '#2196F3',
       order: 14,
       featured: true,
+      seo: { metaTitle: 'Sistemas e Informática | Fundación Cigarra', metaDescription: 'Formación en informática y tecnología para preparar jóvenes de Ciudad Bolívar para el mundo digital.' },
     },
   ];
 
@@ -201,6 +215,7 @@ async function seedSuccessStories(strapi: Core.Strapi) {
         'La Fundación Cigarra me dio las bases musicales que hoy me permiten estudiar lo que amo en la universidad.',
       achievement: 'Admitida en la Universidad Pedagógica Nacional en el programa de Licenciatura en Música',
       featured: true,
+      seo: { metaTitle: 'Alison Zapata | Historias de Éxito', metaDescription: 'Alison Zapata, egresada de la Fundación Cigarra, hoy estudia Licenciatura en Música en la Universidad Pedagógica.' },
     },
     {
       name: 'Leider Quiñones',
@@ -210,6 +225,7 @@ async function seedSuccessStories(strapi: Core.Strapi) {
         'Gracias a la Cigarra descubrí mi pasión por la danza y hoy puedo enseñarle a otros niños lo que a mí me enseñaron.',
       achievement: 'Fundó su propia escuela de danza en Ciudad Bolívar',
       featured: true,
+      seo: { metaTitle: 'Leider Quiñones | Historias de Éxito', metaDescription: 'Leider Quiñones fundó su propia escuela de danza en Ciudad Bolívar gracias a la Fundación Cigarra.' },
     },
     {
       name: 'Juan David Hernández',
@@ -219,6 +235,7 @@ async function seedSuccessStories(strapi: Core.Strapi) {
         'En la Cigarra aprendí que la tecnología puede transformar comunidades. Hoy trabajo para hacer eso realidad.',
       achievement: 'Graduado como Ingeniero de Sistemas con beca completa',
       featured: true,
+      seo: { metaTitle: 'Juan David Hernández | Historias de Éxito', metaDescription: 'Juan David Hernández, egresado de la Cigarra, se graduó como Ingeniero de Sistemas con beca completa.' },
     },
     {
       name: 'Andrey Ruíz',
@@ -228,6 +245,7 @@ async function seedSuccessStories(strapi: Core.Strapi) {
         'El programa de emprendimiento me enseñó a soñar en grande y a trabajar con disciplina para lograrlo.',
       achievement: 'Creó una empresa de servicios tecnológicos que emplea a jóvenes de la comunidad',
       featured: false,
+      seo: { metaTitle: 'Andrey Ruíz | Historias de Éxito', metaDescription: 'Andrey Ruíz creó una empresa de servicios tecnológicos que emplea a jóvenes de Ciudad Bolívar.' },
     },
     {
       name: 'Yuri Karina Poveda',
@@ -237,6 +255,7 @@ async function seedSuccessStories(strapi: Core.Strapi) {
         'Cada trazo que les enseño a mis estudiantes lleva un poco de lo que la Cigarra sembró en mí.',
       achievement: 'Licenciada en Artes Visuales y docente en colegio público de Bogotá',
       featured: true,
+      seo: { metaTitle: 'Yuri Karina Poveda | Historias de Éxito', metaDescription: 'Yuri Karina Poveda es Licenciada en Artes Visuales y docente en colegio público de Bogotá.' },
     },
     {
       name: 'Angie Tatiana Poveda',
@@ -246,6 +265,7 @@ async function seedSuccessStories(strapi: Core.Strapi) {
         'La fotografía me abrió los ojos a una nueva forma de ver mi barrio y mi gente. Todo empezó en la Cigarra.',
       achievement: 'Expuso su trabajo fotográfico en la Galería Santa Fe de Bogotá',
       featured: false,
+      seo: { metaTitle: 'Angie Tatiana Poveda | Historias de Éxito', metaDescription: 'Angie Tatiana Poveda expuso su trabajo fotográfico en la Galería Santa Fe de Bogotá.' },
     },
   ];
 
@@ -318,6 +338,7 @@ async function seedArticles(strapi: Core.Strapi) {
       author: 'Fundación Cigarra',
       tags: ['música', 'infraestructura', 'alianzas'],
       featured: true,
+      seo: { metaTitle: 'Nueva Aula de Música | Fundación Cigarra', metaDescription: 'Gracias a Microsoft y Saint George School, la Fundación Cigarra inaugura un espacio renovado para clases de música.' },
     },
     {
       title: 'Resultados del Pre-ICFES 2025',
@@ -330,6 +351,7 @@ async function seedArticles(strapi: Core.Strapi) {
       author: 'Equipo Académico',
       tags: ['educación', 'pre-icfes', 'resultados'],
       featured: false,
+      seo: { metaTitle: 'Resultados Pre-ICFES 2025 | Fundación Cigarra', metaDescription: 'Estudiantes de la Fundación Cigarra mejoran sus puntajes en un 25% con el programa de preparación Pre-ICFES.' },
     },
     {
       title: 'Festival de Danza Folclórica 2025',
@@ -342,6 +364,7 @@ async function seedArticles(strapi: Core.Strapi) {
       author: 'Fundación Cigarra',
       tags: ['danza', 'cultura', 'eventos'],
       featured: true,
+      seo: { metaTitle: 'Festival de Danza 2025 | Fundación Cigarra', metaDescription: '80 niños celebran la cultura colombiana en el Festival de Danza Folclórica 2025 de la Fundación Cigarra.' },
     },
     {
       title: 'Alianza con Ecopetrol para becas educativas',
@@ -354,6 +377,7 @@ async function seedArticles(strapi: Core.Strapi) {
       author: 'Dirección',
       tags: ['becas', 'alianzas', 'educación superior'],
       featured: false,
+      seo: { metaTitle: 'Becas Ecopetrol | Fundación Cigarra', metaDescription: 'Ecopetrol se une a la Fundación Cigarra para financiar becas universitarias para egresados destacados.' },
     },
     {
       title: 'Taller de fotografía: "Mi barrio en imágenes"',
@@ -366,6 +390,7 @@ async function seedArticles(strapi: Core.Strapi) {
       author: 'Programa de Fotografía',
       tags: ['fotografía', 'exposición', 'comunidad'],
       featured: true,
+      seo: { metaTitle: 'Mi Barrio en Imágenes | Fundación Cigarra', metaDescription: 'Exposición fotográfica de jóvenes de Ciudad Bolívar que capturan la vida cotidiana de su comunidad.' },
     },
     {
       title: 'Escuela de Padres: crianza positiva en tiempos digitales',
@@ -378,6 +403,7 @@ async function seedArticles(strapi: Core.Strapi) {
       author: 'Programa Escuela de Padres',
       tags: ['padres', 'tecnología', 'crianza'],
       featured: false,
+      seo: { metaTitle: 'Crianza Positiva Digital | Fundación Cigarra', metaDescription: 'Taller sobre retos de crianza en la era digital y uso responsable de tecnología para familias.' },
     },
   ];
 
@@ -733,6 +759,7 @@ async function seedAboutPage(strapi: Core.Strapi) {
       history:
         'La Fundación Cigarra nació en 2002 en el barrio Lucero Alto de Ciudad Bolívar, Bogotá, cuando un grupo de vecinos decidió abrir un espacio seguro donde los niños del sector pudieran aprender, crear y soñar. Lo que empezó como clases de música en un pequeño salón comunal se convirtió en una organización que hoy ofrece 14 programas, ha ayudado a más de 1.877 niños, generado más de 100 empleos y beneficiado a más de 190 familias.\n\nA lo largo de 23 años, la Cigarra ha sobrevivido gracias al compromiso de su comunidad, el trabajo de voluntarios apasionados y el apoyo de aliados nacionales e internacionales que creen en el poder transformador de la educación y el arte.',
       foundedYear: 2002,
+      seo: { metaTitle: 'Quiénes Somos | Fundación Cigarra', metaDescription: 'Desde 2002, la Fundación Cigarra transforma vidas de niños en Ciudad Bolívar a través del arte y la educación.' },
       timeline: [
         {
           year: '2002',

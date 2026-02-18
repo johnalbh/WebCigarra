@@ -115,5 +115,61 @@
     "error": "Something went wrong",
     "backToHome": "Back to home",
     "language": "Language"
+  },
+  "seo": {
+    "home": {
+      "title": "Cigarra Foundation - Transforming Lives in Ciudad Bolívar",
+      "description": "Since 2002, the Cigarra Foundation has served 180+ children with education, art, and culture programs in Ciudad Bolívar, Bogotá."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Learn about the mission, vision, and history of the Cigarra Foundation. Over 23 years transforming lives in Ciudad Bolívar."
+    },
+    "programs": {
+      "title": "Programs",
+      "description": "14 education, art, and culture programs for children and youth in Ciudad Bolívar, Bogotá."
+    },
+    "howToHelp": {
+      "title": "How to Help",
+      "description": "Discover how you can support the Cigarra Foundation: donations, child sponsorship, volunteering, and more."
+    },
+    "news": {
+      "title": "News",
+      "description": "Latest news and activities from the Cigarra Foundation in Ciudad Bolívar."
+    },
+    "successStories": {
+      "title": "Success Stories",
+      "description": "Meet those whose lives have been transformed through the Cigarra Foundation programs."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with the Cigarra Foundation. We are located in Ciudad Bolívar, Bogotá."
+    },
+    "anthem": {
+      "title": "Foundation Anthem",
+      "description": "Listen to the official Cigarra Foundation anthem, a symbol of hope and transformation."
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Meet the team of professionals and volunteers who make the Cigarra Foundation's work possible."
+    },
+    "planPadrino": {
+      "title": "Sponsor a Child",
+      "description": "Sponsor a child at the Cigarra Foundation and support their development throughout the year."
+    },
+    "volunteer": {
+      "title": "Volunteer",
+      "description": "Join the Cigarra Foundation as a volunteer. Share your talent and time with the children of Ciudad Bolívar."
+    },
+    "corporateImpact": {
+      "title": "Corporate Impact",
+      "description": "Corporate partnerships with the Cigarra Foundation. Social responsibility in Ciudad Bolívar."
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "heading": "404",
+    "message": "Sorry, the page you are looking for does not exist or has been moved.",
+    "cta": "Back to Home"
   }
 }

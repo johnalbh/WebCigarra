@@ -151,6 +151,7 @@ export async function getSuccessStories(locale: string) {
     query: {
       populate: {
         photo: { fields: ['url', 'alternativeText', 'width', 'height'] },
+        seo: { populate: '*' },
       },
     },
   });
@@ -177,6 +178,7 @@ export async function getTeamMembers(locale: string) {
     query: {
       populate: {
         photo: { fields: ['url', 'alternativeText', 'width', 'height'] },
+        seo: { populate: '*' },
       },
       sort: ['order:asc'],
     },

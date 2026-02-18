@@ -115,5 +115,61 @@
     "error": "Algo salió mal",
     "backToHome": "Volver al inicio",
     "language": "Idioma"
+  },
+  "seo": {
+    "home": {
+      "title": "Fundación Cigarra - Transformando Vidas en Ciudad Bolívar",
+      "description": "Desde 2002, la Fundación Cigarra atiende a más de 180 niños con programas de educación, arte y cultura en Ciudad Bolívar, Bogotá."
+    },
+    "about": {
+      "title": "Quiénes Somos",
+      "description": "Conoce la misión, visión e historia de la Fundación Cigarra. Más de 23 años transformando vidas en Ciudad Bolívar."
+    },
+    "programs": {
+      "title": "Programas",
+      "description": "14 programas de educación, arte y cultura para niños y jóvenes en Ciudad Bolívar, Bogotá."
+    },
+    "howToHelp": {
+      "title": "Cómo Ayudar",
+      "description": "Descubre cómo puedes apoyar a la Fundación Cigarra: donaciones, Plan Padrino, voluntariado y más."
+    },
+    "news": {
+      "title": "Noticias",
+      "description": "Últimas noticias y actividades de la Fundación Cigarra en Ciudad Bolívar."
+    },
+    "successStories": {
+      "title": "Historias de Éxito",
+      "description": "Conoce a quienes han transformado sus vidas gracias a los programas de la Fundación Cigarra."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Ponte en contacto con la Fundación Cigarra. Estamos en Ciudad Bolívar, Bogotá."
+    },
+    "anthem": {
+      "title": "Himno de la Fundación",
+      "description": "Escucha el himno oficial de la Fundación Cigarra, símbolo de esperanza y transformación."
+    },
+    "team": {
+      "title": "Nuestro Equipo",
+      "description": "Conoce al equipo de profesionales y voluntarios que hacen posible la labor de la Fundación Cigarra."
+    },
+    "planPadrino": {
+      "title": "Plan Padrino",
+      "description": "Apadrina a un niño de la Fundación Cigarra y acompáñalo en su desarrollo integral durante todo el año."
+    },
+    "volunteer": {
+      "title": "Voluntariado",
+      "description": "Únete como voluntario a la Fundación Cigarra. Comparte tu talento y tiempo con los niños de Ciudad Bolívar."
+    },
+    "corporateImpact": {
+      "title": "Impacto Empresarial",
+      "description": "Alianzas corporativas con la Fundación Cigarra. Responsabilidad social empresarial en Ciudad Bolívar."
+    }
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "heading": "404",
+    "message": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "cta": "Volver al inicio"
   }
 }
