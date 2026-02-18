@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { notFound } from 'next/navigation';
-import { buildPageMetadata, SITE_URL } from '@/lib/seo';
+import { buildPageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
 import { getProgramBySlug } from '@/lib/queries';
 import { getStrapiMedia } from '@/lib/strapi';
 import { getBreadcrumbSchema } from '@/lib/structured-data';
@@ -25,24 +24,37 @@ interface StrapiResponse {
   data?: StrapiProgram[] | StrapiProgram;
 }
 
+async function fetchProgram(slug: string, locale: string): Promise<StrapiProgram | null> {
+  try {
+    const res = (await getProgramBySlug(slug, locale)) as StrapiResponse;
+    return Array.isArray(res?.data) ? res.data[0] || null : res?.data || null;
+  } catch {
+    return null;
+  }
+}
+
+function formatSlug(slug: string) {
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const res = (await getProgramBySlug(slug, locale)) as StrapiResponse;
-  const program = Array.isArray(res?.data) ? res.data[0] : res?.data;
+  const program = await fetchProgram(slug, locale);
 
-  if (!program) return {};
-
-  const seo = program.seo;
-  const title = seo?.metaTitle || program.name || '';
-  const description = seo?.metaDescription || program.shortDescription || '';
+  const seo = program?.seo;
+  const title = seo?.metaTitle || program?.name || formatSlug(slug);
+  const description =
+    seo?.metaDescription ||
+    program?.shortDescription ||
+    `Programa ${formatSlug(slug)} de la ${SITE_NAME}`;
   const ogImage = seo?.metaImage?.url
-    ? getStrapiMedia(seo.metaImage.url) ?? undefined
-    : program.coverImage?.url
-      ? getStrapiMedia(program.coverImage.url) ?? undefined
+    ? (getStrapiMedia(seo.metaImage.url) ?? undefined)
+    : program?.coverImage?.url
+      ? (getStrapiMedia(program.coverImage.url) ?? undefined)
       : undefined;
 
   return buildPageMetadata({
@@ -62,13 +74,11 @@ export default async function Layout({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const res = (await getProgramBySlug(slug, locale)) as StrapiResponse;
-  const program = Array.isArray(res?.data) ? res.data[0] : res?.data;
-
-  if (!program) notFound();
+  const program = await fetchProgram(slug, locale);
 
   const home = locale === 'es' ? 'Inicio' : 'Home';
   const programsLabel = locale === 'es' ? 'Programas' : 'Programs';
+  const programName = program?.name || formatSlug(slug);
 
   return (
     <>
@@ -76,21 +86,18 @@ export default async function Layout({
         data={getBreadcrumbSchema([
           { name: home, url: `${SITE_URL}/${locale}` },
           { name: programsLabel, url: `${SITE_URL}/${locale}/programas` },
-          {
-            name: program.name || slug,
-            url: `${SITE_URL}/${locale}/programas/${slug}`,
-          },
+          { name: programName, url: `${SITE_URL}/${locale}/programas/${slug}` },
         ])}
       />
       <JsonLd
         data={{
           '@context': 'https://schema.org',
           '@type': 'EducationalOccupationalProgram',
-          name: program.name,
-          description: program.shortDescription,
+          name: programName,
+          description: program?.shortDescription || `Programa de la ${SITE_NAME}`,
           provider: {
             '@type': 'Organization',
-            name: 'Fundación Cigarra',
+            name: SITE_NAME,
           },
         }}
       />
