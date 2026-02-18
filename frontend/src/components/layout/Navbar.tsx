@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { HiMenu, HiX, HiChevronDown, HiBriefcase } from 'react-icons/hi';
+import { HiMenu, HiX, HiChevronDown, HiBriefcase, HiHeart } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'motion/react';
 import { usePathname as useNextPathname } from 'next/navigation';
 
@@ -15,6 +15,7 @@ type NavItem = {
   href?: string;
   key: string;
   children?: NavChild[];
+  featured?: boolean;
 };
 
 const navItems: NavItem[] = [
@@ -30,6 +31,7 @@ const navItems: NavItem[] = [
   { href: '/programas', key: 'programs' },
   {
     key: 'getInvolved',
+    featured: true,
     children: [
       { href: '/como-ayudar', key: 'howToHelp' },
       { href: '/plan-padrino', key: 'planPadrino' },
@@ -49,12 +51,14 @@ function DesktopDropdown({
   scrolled,
   pathWithoutLocale,
   t,
+  featured,
 }: {
   label: string;
   children: NavChild[];
   scrolled: boolean;
   pathWithoutLocale: string;
   t: (key: string) => string;
+  featured?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -77,16 +81,34 @@ function DesktopDropdown({
         onClick={() => setOpen(!open)}
         className={cn(
           'flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-500 ease-out',
-          isActive
+          featured
             ? scrolled
-              ? 'bg-primary-50 text-primary-600'
-              : 'bg-white/20 text-white'
-            : scrolled
-              ? 'text-gray-700 hover:bg-gray-100'
-              : 'text-white/90 hover:bg-white/10 hover:text-white'
+              ? 'bg-accent-50 text-accent-700 hover:bg-accent-100'
+              : 'bg-white/15 text-white hover:bg-white/25'
+            : isActive
+              ? scrolled
+                ? 'bg-primary-50 text-primary-600'
+                : 'bg-white/20 text-white'
+              : scrolled
+                ? 'text-gray-700 hover:bg-gray-100'
+                : 'text-white/90 hover:bg-white/10 hover:text-white'
         )}
       >
+        {featured && (
+          <motion.span
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <HiHeart className={cn('h-4 w-4', scrolled ? 'text-accent-500' : 'text-accent-400')} />
+          </motion.span>
+        )}
         {label}
+        {featured && (
+          <span className="relative ml-0.5 flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
+          </span>
+        )}
         <HiChevronDown
           className={cn(
             'h-3.5 w-3.5 transition-transform duration-300 ease-out',
@@ -201,6 +223,7 @@ export default function Navbar() {
                 scrolled={scrolled}
                 pathWithoutLocale={pathWithoutLocale}
                 t={t}
+                featured={item.featured}
               />
             ) : (
               <Link
@@ -278,12 +301,30 @@ export default function Navbar() {
                       }
                       className={cn(
                         'flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium transition-all duration-300',
-                        item.children.some((c) => pathWithoutLocale === c.href)
-                          ? 'bg-primary-50 text-primary-600'
-                          : 'text-gray-700 hover:bg-gray-50'
+                        item.featured
+                          ? 'bg-accent-50 text-accent-700'
+                          : item.children.some((c) => pathWithoutLocale === c.href)
+                            ? 'bg-primary-50 text-primary-600'
+                            : 'text-gray-700 hover:bg-gray-50'
                       )}
                     >
-                      {t(item.key)}
+                      <span className="flex items-center gap-2">
+                        {item.featured && (
+                          <motion.span
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                          >
+                            <HiHeart className="h-4 w-4 text-accent-500" />
+                          </motion.span>
+                        )}
+                        {t(item.key)}
+                        {item.featured && (
+                          <span className="relative flex h-2 w-2">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-75" />
+                            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
+                          </span>
+                        )}
+                      </span>
                       <HiChevronDown
                         className={cn(
                           'h-4 w-4 transition-transform duration-300 ease-out',
