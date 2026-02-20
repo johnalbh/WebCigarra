@@ -935,6 +935,8 @@
     "failedMessage": "Hubo un error procesando tu pago. Por favor, intenta de nuevo.",
     "reference": "Referencia: {ref}",
     "tryAgain": "Intentar de nuevo",
-    "backHome": "Volver al inicio"
+    "backHome": "Volver al inicio",
+    "verifyingPayment": "Verificando tu pago...",
+    "transactionId": "ID transacción: {id}"
   }
 }

@@ -65,7 +65,7 @@ export default function DonationCheckout({
   preselectedAmount,
 }: DonationCheckoutProps) {
   const t = useTranslations('donationCheckout');
-  const { openCheckout, isLoaded } = useEpayco();
+  const { openCheckout, isLoaded, method } = useEpayco();
 
   const [step, setStep] = useState(preselectedAmount ? 2 : 1);
   const [selectedAmount, setSelectedAmount] = useState<number>(preselectedAmount || 0);

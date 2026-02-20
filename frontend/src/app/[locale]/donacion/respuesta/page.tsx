@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
@@ -15,6 +15,8 @@ import {
 import { Link } from '@/i18n/routing';
 import { EASE_APPLE } from '@/lib/animation-config';
 
+// ── Types ──
+
 interface TransactionStatus {
   status: string;
   amount: number;
@@ -24,6 +26,8 @@ interface TransactionStatus {
   transactionDate: string;
 }
 
+// ── Helpers ──
+
 function formatCOP(amount: number): string {
   return new Intl.NumberFormat('es-CO', {
     style: 'currency',
@@ -32,6 +36,44 @@ function formatCOP(amount: number): string {
     maximumFractionDigits: 0,
   }).format(amount);
 }
+
+function mapEpaycoCode(code: string | number): string {
+  const c = String(code);
+  if (c === '1') return 'Approved';
+  if (c === '2') return 'Rejected';
+  if (c === '3') return 'Pending';
+  return 'Failed';
+}
+
+const EPAYCO_VALIDATION_URL = 'https://secure.epayco.co/validation/v1/reference';
+
+// ── Data fetchers ──
+
+async function fetchFromEpayco(refPayco: string): Promise<TransactionStatus> {
+  const res = await fetch(`${EPAYCO_VALIDATION_URL}/${refPayco}`);
+  if (!res.ok) throw new Error('ePayco API error');
+  const json = await res.json();
+  if (!json.success) throw new Error(json.message || 'ePayco validation failed');
+
+  const d = json.data;
+  return {
+    status: mapEpaycoCode(d.x_cod_response),
+    amount: parseFloat(d.x_amount) || 0,
+    referenceCode: d.x_id_invoice || refPayco,
+    donorName: [d.x_customer_name, d.x_customer_lastname].filter(Boolean).join(' '),
+    approvedDate: d.x_approval_code ? d.x_transaction_date : null,
+    transactionDate: d.x_transaction_date || new Date().toISOString(),
+  };
+}
+
+async function fetchFromBackend(ref: string): Promise<TransactionStatus> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${apiUrl}/api/donations/${ref}/status`);
+  if (!res.ok) throw new Error('Backend API error');
+  return res.json();
+}
+
+// ── Status UI Config ──
 
 const STATUS_CONFIG = {
   Approved: {
@@ -66,6 +108,8 @@ const STATUS_CONFIG = {
   },
 } as const;
 
+// ── Component ──
+
 export default function DonationResponsePage() {
   const t = useTranslations('donationResponse');
   const searchParams = useSearchParams();
@@ -73,65 +117,75 @@ export default function DonationResponsePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    const ref =
-      searchParams.get('ref_payco') ||
-      searchParams.get('x_id_invoice') ||
-      searchParams.get('ref');
+  const fetchStatus = useCallback(async (refPayco: string, backendRef: string, attempt: number) => {
+    const MAX_ATTEMPTS = 5;
+    const RETRY_INTERVAL = 3000;
 
-    if (!ref) {
+    try {
+      // Query both sources in parallel
+      const [epaycoResult, backendResult] = await Promise.allSettled([
+        fetchFromEpayco(refPayco),
+        fetchFromBackend(backendRef),
+      ]);
+
+      // Prefer ePayco result (authoritative source)
+      let result: TransactionStatus | null = null;
+
+      if (epaycoResult.status === 'fulfilled') {
+        result = epaycoResult.value;
+      } else if (backendResult.status === 'fulfilled') {
+        result = backendResult.value;
+      }
+
+      if (!result) {
+        throw new Error(
+          epaycoResult.status === 'rejected'
+            ? (epaycoResult.reason as Error).message
+            : 'No se pudo obtener el estado'
+        );
+      }
+
+      setTxStatus(result);
+
+      // If still pending, retry
+      const isPending = result.status === 'PendingCheckout' || result.status === 'Pending';
+      if (isPending && attempt < MAX_ATTEMPTS) {
+        setTimeout(() => fetchStatus(refPayco, backendRef, attempt + 1), RETRY_INTERVAL);
+      } else {
+        setLoading(false);
+      }
+    } catch (err) {
+      if (attempt < MAX_ATTEMPTS) {
+        setTimeout(() => fetchStatus(refPayco, backendRef, attempt + 1), RETRY_INTERVAL);
+      } else {
+        setError(err instanceof Error ? err.message : 'Error desconocido');
+        setLoading(false);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const refPayco = searchParams.get('ref_payco');
+    const backendRef =
+      searchParams.get('x_id_invoice') ||
+      searchParams.get('ref') ||
+      refPayco;
+
+    if (!refPayco && !backendRef) {
       setError('No se encontro referencia de pago');
       setLoading(false);
       return;
     }
 
-    // Poll a few times in case the webhook hasn't arrived yet
-    let attempts = 0;
-    const maxAttempts = 5;
-    const interval = 3000;
+    fetchStatus(refPayco || backendRef!, backendRef || refPayco!, 0);
+  }, [searchParams, fetchStatus]);
 
-    const fetchStatus = async () => {
-      try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
-        const res = await fetch(`${apiUrl}/api/donations/${ref}/status`);
-        if (!res.ok) {
-          if (res.status === 404) {
-            throw new Error('Transaccion no encontrada');
-          }
-          throw new Error('Error al consultar estado');
-        }
-        const data: TransactionStatus = await res.json();
-        setTxStatus(data);
-
-        // If still pending and we have attempts left, retry
-        if (
-          (data.status === 'PendingCheckout' || data.status === 'Pending') &&
-          attempts < maxAttempts
-        ) {
-          attempts++;
-          setTimeout(fetchStatus, interval);
-        } else {
-          setLoading(false);
-        }
-      } catch (err) {
-        if (attempts < maxAttempts) {
-          attempts++;
-          setTimeout(fetchStatus, interval);
-        } else {
-          setError(err instanceof Error ? err.message : 'Error desconocido');
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchStatus();
-  }, [searchParams]);
+  // ── Render ──
 
   const statusKey = txStatus?.status as keyof typeof STATUS_CONFIG;
   const config = STATUS_CONFIG[statusKey] || STATUS_CONFIG.Failed;
   const Icon = config.icon;
 
-  // Map status to translation keys
   const getStatusTranslationKey = (status: string) => {
     switch (status) {
       case 'Approved': return 'approved';
@@ -153,7 +207,7 @@ export default function DonationResponsePage() {
         {loading ? (
           <div className="flex flex-col items-center gap-4 text-center">
             <div className="h-16 w-16 animate-spin rounded-full border-4 border-primary-200 border-t-primary-500" />
-            <p className="text-neutral-600">{t('pending')}</p>
+            <p className="text-neutral-600">{t('verifyingPayment')}</p>
           </div>
         ) : error ? (
           <div className="rounded-2xl border-2 border-red-200 bg-red-50 p-8 text-center">
