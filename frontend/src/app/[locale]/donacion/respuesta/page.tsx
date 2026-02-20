@@ -66,11 +66,24 @@ async function fetchFromEpayco(refPayco: string): Promise<TransactionStatus> {
   };
 }
 
-async function fetchFromBackend(ref: string): Promise<TransactionStatus> {
+async function fetchFromBackendProxy(refPayco: string): Promise<TransactionStatus> {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
-  const res = await fetch(`${apiUrl}/api/donations/${ref}/status`);
-  if (!res.ok) throw new Error('Backend API error');
-  return res.json();
+  const res = await fetch(`${apiUrl}/api/donations/epayco-status/${refPayco}`);
+  if (!res.ok) throw new Error('Backend proxy error');
+  const data = await res.json();
+
+  const statusMap: Record<string, string> = {
+    Approved: 'Approved', Rejected: 'Rejected', Pending: 'Pending',
+  };
+
+  return {
+    status: statusMap[data.status] || (data.isApproved ? 'Approved' : 'Failed'),
+    amount: data.amount || 0,
+    referenceCode: data.refPayco || refPayco,
+    donorName: '',
+    approvedDate: data.isApproved ? new Date().toISOString() : null,
+    transactionDate: new Date().toISOString(),
+  };
 }
 
 // ── Status UI Config ──
@@ -117,15 +130,15 @@ export default function DonationResponsePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const fetchStatus = useCallback(async (refPayco: string, backendRef: string, attempt: number) => {
+  const fetchStatus = useCallback(async (refPayco: string, attempt: number) => {
     const MAX_ATTEMPTS = 5;
     const RETRY_INTERVAL = 3000;
 
     try {
-      // Query both sources in parallel
-      const [epaycoResult, backendResult] = await Promise.allSettled([
+      // Query ePayco directly, use backend proxy as CORS fallback
+      const [epaycoResult, proxyResult] = await Promise.allSettled([
         fetchFromEpayco(refPayco),
-        fetchFromBackend(backendRef),
+        fetchFromBackendProxy(refPayco),
       ]);
 
       // Prefer ePayco result (authoritative source)
@@ -133,8 +146,8 @@ export default function DonationResponsePage() {
 
       if (epaycoResult.status === 'fulfilled') {
         result = epaycoResult.value;
-      } else if (backendResult.status === 'fulfilled') {
-        result = backendResult.value;
+      } else if (proxyResult.status === 'fulfilled') {
+        result = proxyResult.value;
       }
 
       if (!result) {
@@ -150,13 +163,13 @@ export default function DonationResponsePage() {
       // If still pending, retry
       const isPending = result.status === 'PendingCheckout' || result.status === 'Pending';
       if (isPending && attempt < MAX_ATTEMPTS) {
-        setTimeout(() => fetchStatus(refPayco, backendRef, attempt + 1), RETRY_INTERVAL);
+        setTimeout(() => fetchStatus(refPayco, attempt + 1), RETRY_INTERVAL);
       } else {
         setLoading(false);
       }
     } catch (err) {
       if (attempt < MAX_ATTEMPTS) {
-        setTimeout(() => fetchStatus(refPayco, backendRef, attempt + 1), RETRY_INTERVAL);
+        setTimeout(() => fetchStatus(refPayco, attempt + 1), RETRY_INTERVAL);
       } else {
         setError(err instanceof Error ? err.message : 'Error desconocido');
         setLoading(false);
@@ -166,18 +179,14 @@ export default function DonationResponsePage() {
 
   useEffect(() => {
     const refPayco = searchParams.get('ref_payco');
-    const backendRef =
-      searchParams.get('x_id_invoice') ||
-      searchParams.get('ref') ||
-      refPayco;
 
-    if (!refPayco && !backendRef) {
+    if (!refPayco) {
       setError('No se encontro referencia de pago');
       setLoading(false);
       return;
     }
 
-    fetchStatus(refPayco || backendRef!, backendRef || refPayco!, 0);
+    fetchStatus(refPayco, 0);
   }, [searchParams, fetchStatus]);
 
   // ── Render ──
