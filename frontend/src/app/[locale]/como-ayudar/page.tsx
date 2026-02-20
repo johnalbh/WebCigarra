@@ -20,7 +20,6 @@ import {
   HiAcademicCap,
   HiCheckCircle,
   HiArrowRight,
-  HiLightningBolt,
   HiClipboardCheck,
   HiDocumentReport,
 } from 'react-icons/hi';
@@ -32,14 +31,6 @@ const DONATION_LINK_COP = '#donar';
 const DONATION_LINK_USD = '#donar';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
-
-/* ── Impact calculator data (config only) ── */
-const impactOptions = [
-  { amount: 30000, label: '$30.000', key: '30000' },
-  { amount: 50000, label: '$50.000', key: '50000' },
-  { amount: 100000, label: '$100.000', key: '100000' },
-  { amount: 200000, label: '$200.000', key: '200000' },
-];
 
 /* ── Donation tiers config (Plan Padrino real pricing) ── */
 const donationTiers = [
@@ -215,18 +206,7 @@ export default function HowToHelpPage() {
   const tFaq = useTranslations('faq');
   const tContact = useTranslations('contact');
   const locale = useLocale();
-  const [selectedAmount, setSelectedAmount] = useState(1); // index into impactOptions
-  const [customAmount, setCustomAmount] = useState('');
-  const [showCustom, setShowCustom] = useState(false);
-
   const numberLocale = locale === 'en' ? 'en-US' : 'es-CO';
-
-  const activeImpact = showCustom
-    ? t('customImpact', { amount: Number(customAmount || 0).toLocaleString(numberLocale) })
-    : t('presetImpact', {
-        label: impactOptions[selectedAmount].label,
-        impact: t(`impactOptions.${impactOptions[selectedAmount].key}`),
-      });
 
   return (
     <>
@@ -313,116 +293,9 @@ export default function HowToHelpPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          2. QUICK IMPACT CALCULATOR
+          2. DONATION CHECKOUT (ePayco)
           ═══════════════════════════════════════════════════════ */}
       <section className="relative section-padding overflow-hidden bg-gray-50">
-        <div className="mx-auto max-w-4xl px-4 lg:px-8">
-          <ScrollReveal>
-            <div className="mb-10 text-center">
-              <span className="inline-block rounded-full bg-accent-100 px-5 py-2 font-heading text-sm font-semibold text-accent-700 mb-4">
-                {t('impactCalculator')}
-              </span>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                {t('impactTitle')}{' '}
-                <span className="text-primary-600">{t('impactHighlight')}</span>
-              </h2>
-              <p className="mx-auto mt-3 max-w-xl text-gray-500">
-                {t('impactSubtitle')}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal>
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-10">
-              {/* Amount buttons */}
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:gap-4">
-                {impactOptions.map((option, idx) => (
-                  <button
-                    key={option.amount}
-                    onClick={() => {
-                      setSelectedAmount(idx);
-                      setShowCustom(false);
-                    }}
-                    className={`rounded-xl border-2 px-4 py-4 font-heading text-lg font-bold transition-all duration-300 ${
-                      !showCustom && selectedAmount === idx
-                        ? 'border-accent-500 bg-accent-50 text-accent-700 shadow-sm'
-                        : 'border-gray-200 text-gray-600 hover:border-primary-300 hover:bg-primary-50'
-                    }`}
-                  >
-                    {option.label}
-                    <span className="block text-xs font-medium opacity-60">COP</span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Custom amount toggle */}
-              <div className="mt-4 flex items-center justify-center">
-                <button
-                  onClick={() => setShowCustom(!showCustom)}
-                  className="text-sm font-medium text-primary-600 underline decoration-primary-300 underline-offset-4 hover:text-primary-700"
-                >
-                  {showCustom ? t('presetAmount') : t('customAmount')}
-                </button>
-              </div>
-
-              {/* Custom amount input */}
-              <AnimatePresence>
-                {showCustom && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: smoothEase }}
-                    className="overflow-hidden"
-                  >
-                    <div className="mt-4 flex items-center justify-center gap-2">
-                      <span className="text-lg font-bold text-gray-400">$</span>
-                      <input
-                        type="number"
-                        placeholder={t('customPlaceholder')}
-                        value={customAmount}
-                        onChange={(e) => setCustomAmount(e.target.value)}
-                        className="w-48 rounded-xl border-2 border-gray-200 px-4 py-3 text-center font-heading text-lg font-bold text-gray-800 placeholder:text-gray-300 focus:border-accent-500 focus:outline-none"
-                      />
-                      <span className="text-lg font-bold text-gray-400">COP</span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Impact display */}
-              <motion.div
-                key={showCustom ? `custom-${customAmount}` : `preset-${selectedAmount}`}
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, ease: smoothEase }}
-                className="mt-8 rounded-xl bg-primary-50 p-6 text-center"
-              >
-                <HiLightningBolt className="mx-auto mb-2 h-8 w-8 text-accent-500" />
-                <p className="text-lg font-medium text-primary-800 leading-relaxed">
-                  {activeImpact}
-                </p>
-              </motion.div>
-
-              {/* Donate button */}
-              <div className="mt-8 flex flex-col items-center gap-3">
-                <a
-                  href={DONATION_LINK_COP}
-                  className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
-                >
-                  <HiHeart className="h-5 w-5" />
-                  {t('donateNowBtn')}
-                </a>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════
-          2.5. DONATION CHECKOUT (ePayco)
-          ═══════════════════════════════════════════════════════ */}
-      <section className="relative section-padding overflow-hidden bg-white">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal>
             <DonationCheckout />
@@ -921,18 +794,7 @@ export default function HowToHelpPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          9. DONATION CHECKOUT (ePayco)
-          ═══════════════════════════════════════════════════════ */}
-      <section className="section-padding bg-white">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <ScrollReveal>
-            <DonationCheckout />
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════
-          10. FINAL CTA SECTION
+          9. FINAL CTA SECTION
           ═══════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-gradient-to-br from-accent-500 via-accent-600 to-accent-700 py-24">
         <HeroWaves />

@@ -894,8 +894,9 @@
     "cta": "Back to Home"
   },
   "donationCheckout": {
-    "title": "Make a donation",
-    "selectAmount": "Select an amount",
+    "title": "Your gift transforms lives",
+    "subtitle": "Every donation feeds, educates, and protects a child in Ciudad Bolivar.",
+    "selectAmount": "Choose your gift",
     "customAmount": "Other amount",
     "enterAmount": "Enter the amount in pesos",
     "minAmount": "Minimum amount: $1,000 COP",
@@ -912,7 +913,16 @@
     "processing": "Processing...",
     "errorCreating": "Error processing your donation. Please try again.",
     "securePayment": "Secure payment with ePayco",
-    "step": "Step {current} of {total}"
+    "step": "Step {current} of {total}",
+    "impact30000": "Nutritious snacks for 4 children for a week",
+    "impact50000": "School supplies for 1 child for 1 month",
+    "impact100000": "Nutritious meals for 1 child for a full month",
+    "impact200000": "Complete education + meals program for 1 child",
+    "impact500000": "Full educational scholarship for 1 child for a semester",
+    "impactCustom": "Every peso counts to transform a life",
+    "reviewTitle": "Your donation summary",
+    "editAmount": "Change amount",
+    "editInfo": "Edit info"
   },
   "donationResponse": {
     "approved": "Thank you for your donation!",

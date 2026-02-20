@@ -894,8 +894,9 @@
     "cta": "Volver al inicio"
   },
   "donationCheckout": {
-    "title": "Haz tu donación",
-    "selectAmount": "Selecciona un monto",
+    "title": "Tu aporte transforma vidas",
+    "subtitle": "Cada donación alimenta, educa y protege a un niño en Ciudad Bolívar.",
+    "selectAmount": "Elige tu aporte",
     "customAmount": "Otro monto",
     "enterAmount": "Ingresa el monto en pesos",
     "minAmount": "Monto mínimo: $1,000 COP",
@@ -912,7 +913,16 @@
     "processing": "Procesando...",
     "errorCreating": "Error al procesar tu donación. Intenta de nuevo.",
     "securePayment": "Pago seguro con ePayco",
-    "step": "Paso {current} de {total}"
+    "step": "Paso {current} de {total}",
+    "impact30000": "Refrigerios nutritivos para 4 niños durante una semana",
+    "impact50000": "Materiales escolares para 1 niño por 1 mes",
+    "impact100000": "Alimentación nutritiva para 1 niño por un mes completo",
+    "impact200000": "Programa completo de educación + alimentación para 1 niño",
+    "impact500000": "Beca educativa integral para 1 niño por un semestre",
+    "impactCustom": "Cada peso cuenta para transformar una vida",
+    "reviewTitle": "Resumen de tu donación",
+    "editAmount": "Cambiar monto",
+    "editInfo": "Editar datos"
   },
   "donationResponse": {
     "approved": "¡Gracias por tu donación!",

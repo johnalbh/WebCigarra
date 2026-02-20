@@ -99,7 +99,7 @@ export function useEpayco() {
       name: data.name,
       description: data.description,
       invoice: data.invoice,
-      currency: data.currency,
+      currency: data.currency.toLowerCase(),
       amount: data.amount,
       tax_base: data.taxBase,
       tax: data.tax,
