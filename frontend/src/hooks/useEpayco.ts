@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 interface SmartCheckoutData {
   publicKey: string;
@@ -31,65 +31,19 @@ interface SmartCheckoutData {
   extra3?: string;
 }
 
-declare global {
-  interface Window {
-    ePayco?: {
-      checkout: {
-        configure(config: Record<string, unknown>): void;
-        openNew(): void;
-      };
-    };
-  }
-}
-
+/**
+ * Creates an ePayco checkout session and redirects to the payment page.
+ *
+ * Why not use checkout.js handler.open()?
+ * The SDK has an internal bug where V2's handler.open() corrupts field
+ * validation ("epaycoCurrency isEnum" error). Instead, we call the same
+ * session-creation API the SDK uses internally, then redirect to the
+ * checkout page — simple, reliable, no SDK version conflicts.
+ */
 export function useEpayco() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const scriptRef = useRef<HTMLScriptElement | undefined>(undefined);
-
-  useEffect(() => {
-    if (window.ePayco) {
-      setIsLoaded(true);
-      return;
-    }
-
-    const existingScript = document.querySelector(
-      'script[src="https://checkout.epayco.co/checkout.js"]'
-    );
-    if (existingScript) {
-      existingScript.addEventListener('load', () => {
-        if (window.ePayco) setIsLoaded(true);
-      });
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://checkout.epayco.co/checkout.js';
-    script.async = true;
-    script.onload = () => {
-      if (window.ePayco) setIsLoaded(true);
-    };
-    script.onerror = () => {
-      console.error('Failed to load ePayco checkout script');
-    };
-    document.body.appendChild(script);
-    scriptRef.current = script;
-
-    return () => {
-      if (scriptRef.current && document.body.contains(scriptRef.current)) {
-        document.body.removeChild(scriptRef.current);
-      }
-    };
-  }, []);
-
   const openCheckout = useCallback(async (data: SmartCheckoutData) => {
-    if (!window.ePayco) {
-      throw new Error('ePayco not loaded yet');
-    }
-
-    // Build epayco-prefixed payload (same format the SDK uses internally
-    // after its i() mapping function). Bypasses handler.open() which has
-    // a bug that corrupts field validation.
-    const epaycoData: Record<string, string> = {
+    // Build the epayco-prefixed payload (same format the SDK sends internally)
+    const payload: Record<string, string> = {
       epaycoKey: data.publicKey,
       epaycoTest: String(data.test),
       epaycoName: data.name,
@@ -102,33 +56,33 @@ export function useEpayco() {
       epaycoTaxIco: '0',
       epaycoCountry: data.country.toUpperCase(),
       epaycoLang: data.lang,
-      epaycoExternal: 'false',
+      epaycoExternal: 'true',
       epaycoResponse: data.responseUrl,
       epaycoConfirmation: data.confirmationUrl,
       epaycoMethod: data.methodConfirmation || 'POST',
       epaycoConfig: '{}',
     };
 
-    if (data.customerName) epaycoData.epaycoNameBilling = data.customerName;
-    if (data.customerLastName) epaycoData.epaycoLastNameBilling = data.customerLastName;
-    if (data.customerEmail) epaycoData.epaycoEmailBilling = data.customerEmail;
-    if (data.customerPhone) epaycoData.epaycoMobilephoneBilling = data.customerPhone;
-    if (data.customerDocType) epaycoData.epaycoTypeDocBilling = data.customerDocType;
-    if (data.customerDocNumber) epaycoData.epaycoNumberDocBilling = data.customerDocNumber;
-    if (data.customerAddress) epaycoData.epaycoAddressBilling = data.customerAddress;
-    if (data.customerCity) epaycoData.epaycoCityBilling = data.customerCity;
-    if (data.extra1) epaycoData.epaycoExtra1 = data.extra1;
-    if (data.extra2) epaycoData.epaycoExtra2 = data.extra2;
-    if (data.extra3) epaycoData.epaycoExtra3 = data.extra3;
+    if (data.customerName) payload.epaycoNameBilling = data.customerName;
+    if (data.customerLastName) payload.epaycoLastNameBilling = data.customerLastName;
+    if (data.customerEmail) payload.epaycoEmailBilling = data.customerEmail;
+    if (data.customerPhone) payload.epaycoMobilephoneBilling = data.customerPhone;
+    if (data.customerDocType) payload.epaycoTypeDocBilling = data.customerDocType;
+    if (data.customerDocNumber) payload.epaycoNumberDocBilling = data.customerDocNumber;
+    if (data.customerAddress) payload.epaycoAddressBilling = data.customerAddress;
+    if (data.customerCity) payload.epaycoCityBilling = data.customerCity;
+    if (data.extra1) payload.epaycoExtra1 = data.extra1;
+    if (data.extra2) payload.epaycoExtra2 = data.extra2;
+    if (data.extra3) payload.epaycoExtra3 = data.extra3;
 
-    // Create session directly via ePayco API (bypassing handler.open() bug)
+    // Create session via ePayco API (same endpoint the SDK calls internally)
     const token = crypto.randomUUID();
     const res = await fetch(
       `https://secure.epayco.co/create/transaction/${data.publicKey}/${token}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `fname=${encodeURIComponent(JSON.stringify(epaycoData))}`,
+        body: `fname=${encodeURIComponent(JSON.stringify(payload))}`,
       }
     );
 
@@ -137,15 +91,12 @@ export function useEpayco() {
       throw new Error(result.message || 'Error al crear sesion de pago');
     }
 
-    // Open checkout with pre-created session (skips SDK data processing)
-    window.ePayco.checkout.configure({
-      sessionId: result.data.id_session,
-      external: false,
-    });
-    window.ePayco.checkout.openNew();
+    // Redirect to ePayco checkout page
+    window.location.href = `https://checkout.epayco.co/payment/methods?transaction=${result.data.id_session}`;
   }, []);
 
-  return { openCheckout, isLoaded };
+  // isLoaded is always true — we don't depend on checkout.js script
+  return { openCheckout, isLoaded: true };
 }
 
 export type { SmartCheckoutData };
