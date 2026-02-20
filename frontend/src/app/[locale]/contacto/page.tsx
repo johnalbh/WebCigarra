@@ -11,57 +11,6 @@ import HeroWaves from '@/components/shared/HeroWaves';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
-const contactInfo = [
-  {
-    icon: HiLocationMarker,
-    labelKey: 'address',
-    content: (
-      <>
-        Cra 18M #75-25 Sur
-        <br />
-        Ciudad Bolivar, Bogota D.C.
-        <br />
-        Colombia
-      </>
-    ),
-    href: undefined as string | undefined,
-    color: 'text-primary-600',
-    bgColor: 'bg-primary-50',
-  },
-  {
-    icon: HiPhone,
-    labelKey: 'phone' as const,
-    label: 'Telefono',
-    content: '+57 321 246 5421',
-    href: 'tel:+573212465421',
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-50',
-  },
-  {
-    icon: HiMail,
-    labelKey: 'email' as const,
-    label: 'Email',
-    content: 'info@cigarra.org',
-    href: 'mailto:info@cigarra.org',
-    color: 'text-accent-600',
-    bgColor: 'bg-accent-50',
-  },
-  {
-    icon: HiClock,
-    labelKey: 'hours',
-    content: (
-      <>
-        Lunes a Viernes: 8:00 AM - 5:00 PM
-        <br />
-        Sabados: 8:00 AM - 12:00 PM
-      </>
-    ),
-    href: undefined as string | undefined,
-    color: 'text-green-600',
-    bgColor: 'bg-green-50',
-  },
-];
-
 export default function ContactPage() {
   const t = useTranslations('contact');
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -99,6 +48,55 @@ export default function ContactPage() {
   const inputClasses =
     'w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 transition-all duration-300 focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 focus:outline-none hover:border-gray-300';
 
+  const contactInfo = [
+    {
+      icon: HiLocationMarker,
+      labelKey: 'address' as const,
+      content: (
+        <>
+          {t('addressLine1')}
+          <br />
+          {t('addressLine2')}
+          <br />
+          {t('addressLine3')}
+        </>
+      ),
+      href: undefined as string | undefined,
+      color: 'text-primary-600',
+      bgColor: 'bg-primary-50',
+    },
+    {
+      icon: HiPhone,
+      labelKey: 'phone' as const,
+      content: '+57 321 246 5421',
+      href: 'tel:+573212465421',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+    },
+    {
+      icon: HiMail,
+      labelKey: 'email' as const,
+      content: 'info@cigarra.org',
+      href: 'mailto:info@cigarra.org',
+      color: 'text-accent-600',
+      bgColor: 'bg-accent-50',
+    },
+    {
+      icon: HiClock,
+      labelKey: 'hours' as const,
+      content: (
+        <>
+          {t('hoursWeekday')}
+          <br />
+          {t('hoursSaturday')}
+        </>
+      ),
+      href: undefined as string | undefined,
+      color: 'text-green-600',
+      bgColor: 'bg-green-50',
+    },
+  ];
+
   return (
     <>
       {/* ===== HERO SECTION ===== */}
@@ -116,7 +114,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6, ease: smoothEase }}
               className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
             >
-              Estamos para ti
+              {t('heroTagline')}
             </motion.p>
 
             <motion.h1
@@ -180,7 +178,7 @@ export default function ContactPage() {
                             </div>
                             <div className="min-w-0">
                               <h3 className="font-heading text-sm font-semibold text-gray-900 mb-1">
-                                {item.label || t(item.labelKey)}
+                                {t(item.labelKey)}
                               </h3>
                               {item.href ? (
                                 <a
@@ -260,10 +258,10 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="p-8 md:p-10">
                     <div className="mb-8">
                       <h3 className="font-heading text-2xl font-bold text-gray-900">
-                        Envianos un mensaje
+                        {t('formTitle')}
                       </h3>
                       <p className="mt-2 text-sm text-gray-500">
-                        Completa el formulario y te responderemos lo mas pronto posible.
+                        {t('formSubtitle')}
                       </p>
                     </div>
 
@@ -281,7 +279,7 @@ export default function ContactPage() {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Tu nombre completo"
+                          placeholder={t('namePlaceholder')}
                           className={inputClasses}
                         />
                       </div>
@@ -298,7 +296,7 @@ export default function ContactPage() {
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="tu@email.com"
+                          placeholder={t('emailPlaceholder')}
                           className={inputClasses}
                         />
                       </div>
@@ -314,7 +312,7 @@ export default function ContactPage() {
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+57 300 000 0000"
+                          placeholder={t('phonePlaceholder')}
                           className={inputClasses}
                         />
                       </div>
@@ -331,7 +329,7 @@ export default function ContactPage() {
                           required
                           value={formData.subject}
                           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                          placeholder="Asunto de tu mensaje"
+                          placeholder={t('subjectPlaceholder')}
                           className={inputClasses}
                         />
                       </div>
@@ -348,7 +346,7 @@ export default function ContactPage() {
                           rows={5}
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          placeholder="Escribe tu mensaje aqui..."
+                          placeholder={t('messagePlaceholder')}
                           className={`${inputClasses} resize-none`}
                         />
                       </div>
@@ -411,7 +409,7 @@ export default function ContactPage() {
                             <HiCheckCircle className="h-6 w-6 text-green-600" />
                           </div>
                           <div>
-                            <p className="font-semibold text-green-800">Mensaje enviado</p>
+                            <p className="font-semibold text-green-800">{t('successTitle')}</p>
                             <p className="text-sm text-green-600">{t('success')}</p>
                           </div>
                         </motion.div>
@@ -429,7 +427,7 @@ export default function ContactPage() {
                             <HiXCircle className="h-6 w-6 text-red-600" />
                           </div>
                           <div>
-                            <p className="font-semibold text-red-800">Error</p>
+                            <p className="font-semibold text-red-800">{t('errorTitle')}</p>
                             <p className="text-sm text-red-600">{t('error')}</p>
                           </div>
                         </motion.div>

@@ -7,58 +7,65 @@ import { Link } from '@/i18n/routing';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
 import {
-  HiMusicNote, HiPencil, HiBookOpen, HiSparkles,
-  HiCube, HiLightBulb, HiGlobe, HiHeart,
-  HiCamera, HiStar, HiUsers, HiAcademicCap,
-  HiColorSwatch, HiDesktopComputer,
-  HiArrowRight, HiUserGroup,
+  HiMusicNote, HiBookOpen, HiSparkles,
+  HiCube, HiGlobe, HiHeart,
+  HiStar, HiUsers, HiAcademicCap,
+  HiDesktopComputer, HiHome, HiSun,
+  HiArrowRight, HiUserGroup, HiShoppingBag,
 } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
+import { IconType } from 'react-icons';
 
-const programs = [
-  { name: 'Música', slug: 'musica', icon: HiMusicNote, color: '#E74C3C', description: 'Formación musical con instrumentos de cuerda, viento y percusión. Desarrollo del talento artístico y la disciplina.' },
-  { name: 'Artes Plásticas', slug: 'artes-plasticas', icon: HiPencil, color: '#3498DB', description: 'Pintura, dibujo y escultura como herramientas de expresión creativa y desarrollo de habilidades motoras.' },
-  { name: 'Refuerzo Escolar', slug: 'refuerzo-escolar', icon: HiBookOpen, color: '#2ECC71', description: 'Apoyo académico en matemáticas, español y ciencias para mejorar el rendimiento escolar.' },
-  { name: 'Danza', slug: 'danza', icon: HiSparkles, color: '#F39C12', description: 'Danza folclórica y contemporánea. Expresión corporal, coordinación y valoración cultural.' },
-  { name: 'Teatro', slug: 'teatro', icon: HiCube, color: '#9B59B6', description: 'Artes escénicas como medio de expresión, comunicación y desarrollo de la confianza.' },
-  { name: 'Emprendimiento', slug: 'emprendimiento', icon: HiLightBulb, color: '#1ABC9C', description: 'Formación en habilidades empresariales y proyectos productivos para jóvenes.' },
-  { name: 'Inglés', slug: 'ingles', icon: HiGlobe, color: '#E67E22', description: 'Aprendizaje del idioma inglés como herramienta de acceso a oportunidades globales.' },
-  { name: 'Valores y Liderazgo', slug: 'valores-y-liderazgo', icon: HiHeart, color: '#E91E63', description: 'Formación en valores éticos, liderazgo juvenil y resolución de conflictos.' },
-  { name: 'Fotografía', slug: 'fotografia', icon: HiCamera, color: '#00BCD4', description: 'Captura de imágenes como forma de documentar la realidad y expresar la creatividad.' },
-  { name: 'Recreación', slug: 'recreacion', icon: HiStar, color: '#FF5722', description: 'Actividades lúdicas y deportivas para el desarrollo físico y la sana convivencia.' },
-  { name: 'Escuela de Padres', slug: 'escuela-de-padres', icon: HiUsers, color: '#4CAF50', description: 'Talleres para padres y cuidadores sobre crianza, comunicación y acompañamiento escolar.' },
-  { name: 'Pre-ICFES', slug: 'pre-icfes', icon: HiAcademicCap, color: '#673AB7', description: 'Preparación para las pruebas Saber 11 con simulacros y refuerzo en áreas clave.' },
-  { name: 'Manualidades', slug: 'manualidades', icon: HiColorSwatch, color: '#FF9800', description: 'Creación de objetos artísticos y funcionales desarrollando creatividad y motricidad fina.' },
-  { name: 'Sistemas', slug: 'sistemas', icon: HiDesktopComputer, color: '#2196F3', description: 'Formación en herramientas informáticas y habilidades digitales para el siglo XXI.' },
+interface ProgramConfig {
+  slug: string;
+  icon: IconType;
+  color: string;
+}
+
+const programs: ProgramConfig[] = [
+  { slug: 'refuerzo-escolar', icon: HiAcademicCap, color: '#2ECC71' },
+  { slug: 'biblioteca', icon: HiBookOpen, color: '#3498DB' },
+  { slug: 'centro-comunitario', icon: HiHome, color: '#1ABC9C' },
+  { slug: 'danza', icon: HiSparkles, color: '#F39C12' },
+  { slug: 'grupo-adultos-mayores', icon: HiUsers, color: '#E91E63' },
+  { slug: 'ingles', icon: HiGlobe, color: '#E67E22' },
+  { slug: 'musica', icon: HiMusicNote, color: '#E74C3C' },
+  { slug: 'primera-infancia', icon: HiSun, color: '#FF9800' },
+  { slug: 'psicologia', icon: HiHeart, color: '#673AB7' },
+  { slug: 'recreacion-y-deportes', icon: HiStar, color: '#FF5722' },
+  { slug: 'ropero', icon: HiShoppingBag, color: '#00BCD4' },
+  { slug: 'escuela-de-padres', icon: HiUserGroup, color: '#4CAF50' },
+  { slug: 'teatro', icon: HiCube, color: '#9B59B6' },
+  { slug: 'tecnologia', icon: HiDesktopComputer, color: '#2196F3' },
 ];
 
 const programImageMap: Record<string, string> = {
-  'musica': '/images/programs/musica.jpg',
-  'artes-plasticas': '/images/programs/artes-plasticas.jpg',
   'refuerzo-escolar': '/images/programs/refuerzo-escolar.jpg',
+  'biblioteca': '/images/programs/biblioteca.jpg',
+  'centro-comunitario': '/images/programs/centro-comunitario.jpg',
   'danza': '/images/programs/danza.jpg',
-  'teatro': '/images/programs/teatro.jpg',
-  'emprendimiento': '/images/programs/emprendimiento.jpg',
+  'grupo-adultos-mayores': '/images/programs/grupo-adultos-mayores.jpg',
   'ingles': '/images/programs/ingles.jpg',
-  'valores-y-liderazgo': '/images/programs/valores-liderazgo.jpg',
-  'fotografia': '/images/programs/fotografia.jpg',
-  'recreacion': '/images/programs/recreacion.jpg',
+  'musica': '/images/programs/musica.jpg',
+  'primera-infancia': '/images/programs/primera-infancia.jpg',
+  'psicologia': '/images/programs/psicologia.jpg',
+  'recreacion-y-deportes': '/images/programs/recreacion-y-deportes.jpg',
+  'ropero': '/images/programs/ropero.jpg',
   'escuela-de-padres': '/images/programs/escuela-padres.jpg',
-  'pre-icfes': '/images/programs/pre-icfes.jpg',
-  'manualidades': '/images/programs/manualidades.jpg',
-  'sistemas': '/images/programs/sistemas.jpg',
+  'teatro': '/images/programs/teatro.jpg',
+  'tecnologia': '/images/programs/tecnologia.jpg',
 };
-
-const stats = [
-  { value: '14', label: 'Programas' },
-  { value: '1.877+', label: 'Niños' },
-  { value: '23', label: 'Años' },
-];
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
 export default function ProgramsPage() {
   const t = useTranslations('programs');
+
+  const stats = [
+    { value: '14', label: t('stats.programs') },
+    { value: '1.877+', label: t('stats.children') },
+    { value: '23', label: t('stats.years') },
+  ];
 
   return (
     <>
@@ -77,7 +84,7 @@ export default function ProgramsPage() {
               transition={{ duration: 0.6, ease: smoothEase }}
               className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
             >
-              Fundacion Cigarra
+              {t('orgName')}
             </motion.p>
 
             <motion.h1
@@ -124,7 +131,7 @@ export default function ProgramsPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
                 src="/images/news/festival-arte.jpg"
-                alt="Ninos en programas de la Fundacion Cigarra"
+                alt={t('heroImageAlt')}
                 fill
                 className="object-cover"
                 priority
@@ -141,13 +148,13 @@ export default function ProgramsPage() {
           <ScrollReveal>
             <div className="mb-14 text-center">
               <span className="mb-3 inline-block rounded-full bg-primary-100 px-4 py-1 text-sm font-semibold text-primary-700">
-                Explora
+                {t('explore')}
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Nuestros <span className="text-primary-600">Programas</span>
+                {t('gridTitle')} <span className="text-primary-600">{t('gridTitleHighlight')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-gray-500">
-                Cada programa es una puerta abierta al conocimiento, la creatividad y el desarrollo integral de nuestros beneficiarios.
+                {t('gridSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -165,7 +172,7 @@ export default function ProgramsPage() {
                     <div className="relative h-48 overflow-hidden">
                       <Image
                         src={`${programImageMap[program.slug]}`}
-                        alt={program.name}
+                        alt={t(`names.${program.slug}`)}
                         fill
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -183,7 +190,7 @@ export default function ProgramsPage() {
                       {/* Program name overlay on image */}
                       <div className="absolute bottom-3 left-4 right-4">
                         <h2 className="font-heading text-lg font-bold text-white drop-shadow-md">
-                          {program.name}
+                          {t(`names.${program.slug}`)}
                         </h2>
                       </div>
                     </div>
@@ -191,7 +198,7 @@ export default function ProgramsPage() {
                     {/* Card body */}
                     <div className="p-5">
                       <p className="line-clamp-3 text-sm leading-relaxed text-gray-600">
-                        {program.description}
+                        {t(`descriptions.${program.slug}`)}
                       </p>
 
                       {/* Learn more link */}
@@ -220,12 +227,10 @@ export default function ProgramsPage() {
             </div>
 
             <h2 className="mb-5 font-heading text-3xl font-bold text-white md:text-5xl">
-              Comparte tu talento con quienes mas lo necesitan
+              {t('ctaTitle')}
             </h2>
             <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/80">
-              Nuestros programas necesitan personas apasionadas que quieran
-              compartir sus conocimientos. Tu tiempo y talento pueden abrir
-              puertas que cambian vidas.
+              {t('ctaDescription')}
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -234,14 +239,14 @@ export default function ProgramsPage() {
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-heading text-sm font-bold tracking-wide text-primary-600 uppercase transition-colors duration-300 hover:bg-gray-50"
               >
                 <HiUserGroup className="h-4 w-4" />
-                Se Voluntario
+                {t('beVolunteer')}
                 <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/como-ayudar"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold tracking-wide text-white uppercase transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Conoce como ayudar
+                {t('howToHelpLink')}
                 <HiArrowRight className="h-4 w-4" />
               </Link>
             </div>

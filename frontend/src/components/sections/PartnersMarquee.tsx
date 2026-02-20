@@ -7,11 +7,9 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 const partners = [
   { name: 'Saint George School', logo: '/images/partners/san-jorge.png' },
   { name: 'Microsoft', logo: '/images/partners/microsoft.png' },
-  { name: 'Ecopetrol', logo: '/images/partners/ecopetrol.png' },
   { name: 'CWA', logo: '/images/partners/cwa.png' },
   { name: 'Karelsie Foundation', logo: '/images/partners/karelsie.png' },
   { name: 'Aqualogic', logo: '/images/partners/aqualogic.png' },
-  { name: 'Chocolates Bora', logo: '/images/partners/chocolates-bora.png' },
   { name: 'Opperar', logo: '/images/partners/opperar.png' },
   { name: 'HomeCenter', logo: '/images/partners/homecenter.jpg' },
   { name: 'Makri', logo: '/images/partners/makri.jpg' },

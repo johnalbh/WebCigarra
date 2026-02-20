@@ -10,6 +10,8 @@ const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-
 
 export default function DonationFloatingCTA() {
   const t = useTranslations('donation');
+  const tNav = useTranslations('nav');
+  const tCommon = useTranslations('common');
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -52,11 +54,11 @@ export default function DonationFloatingCTA() {
             <div className="relative">
               <div className="flex items-center gap-2 rounded-full bg-accent-500 px-5 py-3 text-white">
                 <HiHeart className="h-5 w-5" />
-                <span className="font-semibold text-sm">Dona ahora</span>
+                <span className="font-semibold text-sm">{tNav('donate')}</span>
                 <button
                   onClick={handleDismiss}
                   className="ml-1 rounded-full p-0.5 hover:bg-accent-600"
-                  aria-label="Cerrar"
+                  aria-label={tCommon('close')}
                 >
                   <HiX className="h-3.5 w-3.5" />
                 </button>

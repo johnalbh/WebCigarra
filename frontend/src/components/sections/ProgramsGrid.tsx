@@ -7,24 +7,24 @@ import { motion } from 'motion/react';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { HiArrowRight } from 'react-icons/hi';
 
-const programs = [
-  { name: 'Música', slug: 'musica', image: '/images/programs/musica.jpg', description: 'Formación en instrumentos de cuerda, viento y percusión' },
-  { name: 'Danza', slug: 'danza', image: '/images/programs/danza.jpg', description: 'Danza folclórica y contemporánea' },
-  { name: 'Artes Plásticas', slug: 'artes-plasticas', image: '/images/programs/artes-plasticas.jpg', description: 'Pintura, dibujo y escultura' },
-  { name: 'Refuerzo Escolar', slug: 'refuerzo-escolar', image: '/images/programs/refuerzo-escolar.jpg', description: 'Apoyo en matemáticas, español y ciencias' },
-  { name: 'Teatro', slug: 'teatro', image: '/images/programs/teatro.jpg', description: 'Artes escénicas y expresión' },
-  { name: 'Emprendimiento', slug: 'emprendimiento', image: '/images/programs/emprendimiento.jpg', description: 'Habilidades empresariales para jóvenes' },
+const featuredPrograms = [
+  { slug: 'musica', image: '/images/programs/musica.jpg' },
+  { slug: 'danza', image: '/images/programs/danza.jpg' },
+  { slug: 'refuerzo-escolar', image: '/images/programs/refuerzo-escolar.jpg' },
+  { slug: 'biblioteca', image: '/images/programs/biblioteca.jpg' },
+  { slug: 'teatro', image: '/images/programs/teatro.jpg' },
+  { slug: 'tecnologia', image: '/images/programs/tecnologia.jpg' },
 ];
 
-const morePrograms = [
-  { name: 'Inglés', slug: 'ingles' },
-  { name: 'Valores y Liderazgo', slug: 'valores-y-liderazgo' },
-  { name: 'Fotografía', slug: 'fotografia' },
-  { name: 'Recreación', slug: 'recreacion' },
-  { name: 'Escuela de Padres', slug: 'escuela-de-padres' },
-  { name: 'Pre-ICFES', slug: 'pre-icfes' },
-  { name: 'Manualidades', slug: 'manualidades' },
-  { name: 'Sistemas', slug: 'sistemas' },
+const moreProgramSlugs = [
+  'ingles',
+  'centro-comunitario',
+  'grupo-adultos-mayores',
+  'primera-infancia',
+  'psicologia',
+  'recreacion-y-deportes',
+  'ropero',
+  'escuela-de-padres',
 ];
 
 export default function ProgramsGrid() {
@@ -37,7 +37,7 @@ export default function ProgramsGrid() {
         <ScrollReveal>
           <div className="mb-16 text-center">
             <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary-500">
-              14 programas activos
+              {t('activeCount')}
             </p>
             <h2 className="mb-4 font-heading text-4xl font-bold text-gray-900 md:text-5xl">
               {t('title')}
@@ -52,15 +52,15 @@ export default function ProgramsGrid() {
         <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
           {/* Featured program - spans 2 rows */}
           <ScrollReveal className="md:col-span-1 md:row-span-2">
-            <Link href={{ pathname: '/programas/[slug]', params: { slug: programs[0].slug } }}>
+            <Link href={{ pathname: '/programas/[slug]', params: { slug: featuredPrograms[0].slug } }}>
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 className="group relative h-full min-h-[400px] overflow-hidden rounded-xl md:min-h-0"
               >
                 <Image
-                  src={programs[0].image}
-                  alt={programs[0].name}
+                  src={featuredPrograms[0].image}
+                  alt={t(`names.${featuredPrograms[0].slug}`)}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -68,14 +68,14 @@ export default function ProgramsGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <span className="mb-2 inline-block rounded-full bg-accent-500 px-3 py-1 text-xs font-bold text-white">
-                    Destacado
+                    {t('featured')}
                   </span>
                   <h3 className="mb-1 font-heading text-2xl font-bold text-white">
-                    {programs[0].name}
+                    {t(`names.${featuredPrograms[0].slug}`)}
                   </h3>
-                  <p className="text-sm text-white/80">{programs[0].description}</p>
+                  <p className="text-sm text-white/80">{t(`descriptions.${featuredPrograms[0].slug}`)}</p>
                   <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent-400 transition-all group-hover:gap-2">
-                    Conocer más <HiArrowRight className="h-4 w-4" />
+                    {t('learnMore')} <HiArrowRight className="h-4 w-4" />
                   </span>
                 </div>
               </motion.div>
@@ -83,7 +83,7 @@ export default function ProgramsGrid() {
           </ScrollReveal>
 
           {/* Remaining 5 programs in a 2x2 + 1 layout */}
-          {programs.slice(1).map((program, i) => (
+          {featuredPrograms.slice(1).map((program, i) => (
             <ScrollReveal key={program.slug} delay={(i + 1) * 0.08}>
               <Link href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}>
                 <motion.div
@@ -93,7 +93,7 @@ export default function ProgramsGrid() {
                 >
                   <Image
                     src={program.image}
-                    alt={program.name}
+                    alt={t(`names.${program.slug}`)}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -101,9 +101,9 @@ export default function ProgramsGrid() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-4">
                     <h3 className="font-heading text-base font-bold text-white">
-                      {program.name}
+                      {t(`names.${program.slug}`)}
                     </h3>
-                    <p className="mt-0.5 text-xs text-white/70">{program.description}</p>
+                    <p className="mt-0.5 text-xs text-white/70">{t(`descriptions.${program.slug}`)}</p>
                   </div>
                 </motion.div>
               </Link>
@@ -117,10 +117,10 @@ export default function ProgramsGrid() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-gray-900">
-                  Y {morePrograms.length} programas más:
+                  {t('andMore', { count: moreProgramSlugs.length })}
                 </p>
                 <p className="mt-1 text-sm text-gray-500">
-                  {morePrograms.map((p) => p.name).join(' · ')}
+                  {moreProgramSlugs.map((slug) => t(`names.${slug}`)).join(' · ')}
                 </p>
               </div>
               <Link

@@ -27,18 +27,16 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
           >
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-primary-300">
-              Desde 2002 transformando vidas
+              {t('tagline')}
             </p>
 
             <h1 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-              Transformamos vidas a través del{' '}
-              <span className="text-accent-400">arte, la educación</span> y la
-              cultura
+              {t('title')}{' '}
+              <span className="text-accent-400">{t('titleHighlight')}</span> {t('titleSuffix')}
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-primary-200/80">
-              Más de 1.877 niños y jóvenes en Ciudad Bolívar encuentran en
-              nuestros programas un camino hacia un futuro mejor.
+              {t('description')}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -60,9 +58,9 @@ export default function HeroSection() {
             {/* Stats */}
             <div className="mt-14 flex gap-10">
               {[
-                { number: '1.877+', label: 'Niños' },
-                { number: '23', label: 'Años' },
-                { number: '14', label: 'Programas' },
+                { number: '1.877+', label: t('statsChildren') },
+                { number: '23', label: t('statsYears') },
+                { number: '14', label: t('statsPrograms') },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="font-heading text-2xl font-bold text-white">
@@ -86,7 +84,7 @@ export default function HeroSection() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
               <Image
                 src="/images/hero/fundacion-ninos.png"
-                alt="Niños de la Fundación Cigarra"
+                alt={t('imageAlt')}
                 fill
                 priority
                 sizes="50vw"

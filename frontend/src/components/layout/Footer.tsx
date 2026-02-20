@@ -23,12 +23,21 @@ const navLinks = [
   { href: '/contacto' as const, key: 'contact' },
 ];
 
-const programLinks = [
-  { href: '/programas' as const, label: 'Educación' },
-  { href: '/programas' as const, label: 'Nutrición' },
-  { href: '/programas' as const, label: 'Arte y Cultura' },
-  { href: '/programas' as const, label: 'Deporte' },
-  { href: '/programas' as const, label: 'Acompañamiento' },
+const programSlugs = [
+  'refuerzo-escolar',
+  'biblioteca',
+  'centro-comunitario',
+  'danza',
+  'grupo-adultos-mayores',
+  'ingles',
+  'musica',
+  'primera-infancia',
+  'psicologia',
+  'recreacion-y-deportes',
+  'ropero',
+  'escuela-de-padres',
+  'teatro',
+  'tecnologia',
 ];
 
 const helpLinks = [
@@ -41,6 +50,7 @@ const helpLinks = [
 export default function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
+  const tPrograms = useTranslations('programs');
 
   return (
     <footer className="bg-primary-900 text-white">
@@ -83,11 +93,10 @@ export default function Footer() {
             Fundación Cigarra
           </h2>
           <p className="mt-2 font-accent text-xl italic text-accent-400">
-            El resurgir de una esperanza
+            {t('slogan')}
           </p>
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-primary-300">
-            <span className="font-semibold text-white">Construimos</span> oportunidades reales para más de 1.877 niños y jóvenes
-            en Ciudad Bolívar, Bogotá.
+            {t('description')}
           </p>
 
           {/* Social icons */}
@@ -121,7 +130,7 @@ export default function Footer() {
           {/* Col 1: Navigation */}
           <div>
             <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-primary-400">
-              Navegación
+              {t('navigation')}
             </h3>
             <ul className="space-y-3">
               {navLinks.map((link) => (
@@ -137,19 +146,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 2: Programs */}
+          {/* Col 2: Programs (two sub-columns) */}
           <div>
             <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-primary-400">
-              Programas
+              {t('programs')}
             </h3>
-            <ul className="space-y-3">
-              {programLinks.map((link) => (
-                <li key={link.label}>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+              {programSlugs.map((slug) => (
+                <li key={slug}>
                   <Link
-                    href={link.href}
+                    href={{ pathname: '/programas/[slug]', params: { slug } }}
                     className="text-sm text-primary-300 transition-all duration-300 hover:text-white"
                   >
-                    {link.label}
+                    {tPrograms(`names.${slug}`)}
                   </Link>
                 </li>
               ))}
@@ -159,12 +168,12 @@ export default function Footer() {
           {/* Col 3: Contact */}
           <div>
             <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-primary-400">
-              Contacto
+              {t('contact')}
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-primary-300">
                 <HiLocationMarker className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-500" />
-                <span>Ciudad Bolívar, Bogotá, Colombia</span>
+                <span>Calle 71 Q sur No. 27-60<br />Barrio Puertas del Paraíso<br />Bogotá, Colombia</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-300">
                 <HiPhone className="h-4 w-4 flex-shrink-0 text-primary-500" />
@@ -184,10 +193,10 @@ export default function Footer() {
           {/* Col 4: Support */}
           <div>
             <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-primary-400">
-              Apóyanos
+              {t('support')}
             </h3>
             <p className="mb-4 text-sm leading-relaxed text-primary-300">
-              Tu aporte transforma vidas. Ayuda a más de 1.877 niños a construir un futuro mejor.
+              {t('supportDescription')}
             </p>
             <ul className="space-y-3">
               {helpLinks.map((link) => (

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -32,87 +32,59 @@ const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
-/* ── Impact calculator data ── */
+/* ── Impact calculator data (config only) ── */
 const impactOptions = [
-  {
-    amount: 30000,
-    label: '$30.000',
-    impact: 'refrigerios nutritivos para 4 ninos durante una semana',
-  },
-  {
-    amount: 50000,
-    label: '$50.000',
-    impact: 'materiales escolares para 1 nino por 1 mes',
-  },
-  {
-    amount: 100000,
-    label: '$100.000',
-    impact: 'alimentacion nutritiva para 1 nino por un mes completo',
-  },
-  {
-    amount: 200000,
-    label: '$200.000',
-    impact: 'programa completo de educacion + alimentacion para 1 nino',
-  },
+  { amount: 30000, label: '$30.000', key: '30000' },
+  { amount: 50000, label: '$50.000', key: '50000' },
+  { amount: 100000, label: '$100.000', key: '100000' },
+  { amount: 200000, label: '$200.000', key: '200000' },
 ];
 
-/* ── Donation tiers (Plan Padrino real pricing) ── */
+/* ── Donation tiers config (Plan Padrino real pricing) ── */
 const donationTiers = [
   {
-    name: 'Plan Mensual',
+    key: 'monthly',
     amountCOP: 65000,
-    period: 'mes',
-    impact: 'Apadrina 1 nino con educacion y alimentacion por un mes',
     highlighted: false,
     icon: HiHeart,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
   },
   {
-    name: 'Plan Semestral',
+    key: 'semester',
     amountCOP: 330000,
-    period: 'semestre',
-    impact: 'Apadrina 1 nino durante 6 meses continuos',
     highlighted: false,
     icon: HiShieldCheck,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
   },
   {
-    name: 'Plan Anual',
+    key: 'annual',
     amountCOP: 650000,
-    period: 'ano',
-    impact: 'Apadrina 1 nino durante todo un ano academico',
     highlighted: true,
     icon: HiStar,
     color: 'border-accent-300 ring-2 ring-accent-200',
     iconBg: 'bg-accent-100 text-accent-600',
   },
   {
-    name: 'Plan Dorado',
+    key: 'gold',
     amountCOP: 1200000,
-    period: 'ano',
-    impact: 'Apadrina 2 ninos durante todo un ano academico',
     highlighted: false,
     icon: HiSparkles,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-accent-100 text-accent-600',
   },
   {
-    name: 'Plan Platino',
+    key: 'platinum',
     amountCOP: 1650000,
-    period: 'ano',
-    impact: 'Apadrina 3 ninos durante todo un ano academico',
     highlighted: false,
     icon: HiGlobeAlt,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
   },
   {
-    name: 'Plan Ultra',
+    key: 'ultra',
     amountCOP: 2100000,
-    period: 'ano',
-    impact: 'Apadrina 4 ninos durante todo un ano academico',
     highlighted: false,
     icon: HiStar,
     color: 'border-primary-200 hover:border-primary-400',
@@ -120,80 +92,50 @@ const donationTiers = [
   },
 ];
 
-/* ── Volunteer areas ── */
+/* ── Volunteer areas config ── */
 const volunteerAreas = [
   {
+    key: 'education',
     icon: HiAcademicCap,
-    title: 'Educacion',
-    description: 'Refuerzo escolar, talleres de lectura, apoyo en tareas y preparacion de examenes.',
     color: 'bg-primary-50 text-primary-600 border-primary-200',
     iconBg: 'bg-primary-100',
   },
   {
+    key: 'artsCulture',
     icon: FaPaintBrush,
-    title: 'Arte y Cultura',
-    description: 'Musica, danza, teatro, artes plasticas, fotografia y manualidades.',
     color: 'bg-accent-50 text-accent-600 border-accent-200',
     iconBg: 'bg-accent-100',
   },
   {
+    key: 'sports',
     icon: FaRunning,
-    title: 'Deportes y Recreacion',
-    description: 'Actividades deportivas, juegos cooperativos y desarrollo motriz.',
     color: 'bg-green-50 text-green-600 border-green-200',
     iconBg: 'bg-green-100',
   },
   {
+    key: 'management',
     icon: FaBriefcase,
-    title: 'Gestion y Administracion',
-    description: 'Comunicaciones, diseño, contabilidad, asesoria legal y tecnologia.',
     color: 'bg-purple-50 text-purple-600 border-purple-200',
     iconBg: 'bg-purple-100',
   },
 ];
 
-/* ── FAQ data ── */
-const faqs = [
-  {
-    question: 'Como puedo donar?',
-    answer:
-      'Puedes donar en linea a traves de nuestra plataforma segura DonarOnline, en pesos colombianos o dolares americanos. Tambien aceptamos transferencias bancarias directas.',
-  },
-  {
-    question: 'Mi donacion es deducible de impuestos?',
-    answer:
-      'Si, la Fundacion Cigarra es una entidad sin animo de lucro registrada con NIT 830.114.318-9. Las donaciones son deducibles de impuestos segun la normativa colombiana vigente.',
-  },
-  {
-    question: 'Como se que mi donacion se usa correctamente?',
-    answer:
-      'Publicamos informes anuales de gestion y financieros. Los padrinos reciben reportes periodicos del progreso de su apadrinado. Estamos comprometidos con la transparencia total.',
-  },
-  {
-    question: 'Puedo ser voluntario?',
-    answer:
-      'Si, buscamos voluntarios en areas de educacion, arte, deportes, tecnologia y gestion administrativa. Contactanos por WhatsApp o correo electronico para conocer las oportunidades disponibles.',
-  },
-  {
-    question: 'Que es el Plan Padrino?',
-    answer:
-      'El Plan Padrino te permite apadrinar a un nino especifico, cubrir sus necesidades educativas y de alimentacion, y seguir su progreso durante todo el ano academico con reportes personalizados.',
-  },
-];
+/* ── FAQ keys ── */
+const faqKeys = ['howDonate', 'taxDeductible', 'transparency', 'canVolunteer', 'whatIsPlanPadrino'] as const;
 
-/* ── Trust badges ── */
+/* ── Trust badges config ── */
 const trustBadges = [
-  { icon: HiShieldCheck, label: '100% seguro' },
-  { icon: HiDocumentReport, label: 'Deducible de impuestos' },
-  { icon: HiCheckCircle, label: 'Transparencia total' },
+  { key: 'trustSecure', icon: HiShieldCheck },
+  { key: 'trustTaxDeductible', icon: HiDocumentReport },
+  { key: 'trustTransparency', icon: HiCheckCircle },
 ];
 
-/* ── Plan Padrino includes ── */
+/* ── Plan Padrino includes config ── */
 const planPadrinoIncludes = [
-  { icon: HiAcademicCap, text: 'Programa educativo mensual completo' },
-  { icon: HiHeart, text: 'Alimentacion nutritiva diaria ($7.045 COP/dia)' },
-  { icon: HiDocumentReport, text: 'Reportes personalizados de progreso' },
-  { icon: HiClipboardCheck, text: 'Certificado anual de impacto' },
+  { key: 'education', icon: HiAcademicCap },
+  { key: 'nutrition', icon: HiHeart },
+  { key: 'reports', icon: HiDocumentReport },
+  { key: 'certificate', icon: HiClipboardCheck },
 ];
 
 /* ── FAQ Accordion item ── */
@@ -266,15 +208,24 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
    MAIN PAGE COMPONENT
    ══════════════════════════════════════════════════════════════ */
 export default function HowToHelpPage() {
-  const t = useTranslations('donation');
+  const t = useTranslations('howToHelp');
+  const tDonation = useTranslations('donation');
+  const tPlan = useTranslations('planPadrino');
   const tFaq = useTranslations('faq');
+  const tContact = useTranslations('contact');
+  const locale = useLocale();
   const [selectedAmount, setSelectedAmount] = useState(1); // index into impactOptions
   const [customAmount, setCustomAmount] = useState('');
   const [showCustom, setShowCustom] = useState(false);
 
+  const numberLocale = locale === 'en' ? 'en-US' : 'es-CO';
+
   const activeImpact = showCustom
-    ? `Con $${Number(customAmount || 0).toLocaleString('es-CO')} COP puedes apoyar los programas de la Fundacion Cigarra`
-    : `Con ${impactOptions[selectedAmount].label} COP puedes cubrir ${impactOptions[selectedAmount].impact}`;
+    ? t('customImpact', { amount: Number(customAmount || 0).toLocaleString(numberLocale) })
+    : t('presetImpact', {
+        label: impactOptions[selectedAmount].label,
+        impact: t(`impactOptions.${impactOptions[selectedAmount].key}`),
+      });
 
   return (
     <>
@@ -293,7 +244,7 @@ export default function HowToHelpPage() {
             transition={{ duration: 0.6, ease: smoothEase }}
             className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
           >
-            Fundacion Cigarra
+            {t('heroTagline')}
           </motion.p>
 
           <motion.h1
@@ -302,9 +253,9 @@ export default function HowToHelpPage() {
             transition={{ duration: 0.7, delay: 0.1, ease: smoothEase }}
             className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
           >
-            Cada Gesto{' '}
+            {t('heroTitle')}{' '}
             <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">
-              Cuenta
+              {t('heroHighlight')}
             </span>
           </motion.h1>
 
@@ -314,7 +265,7 @@ export default function HowToHelpPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-200/80"
           >
-            {t('subtitle')}
+            {tDonation('subtitle')}
           </motion.p>
 
           {/* CTA buttons */}
@@ -331,14 +282,14 @@ export default function HowToHelpPage() {
               className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-lg font-semibold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
             >
               <HiHeart className="h-5 w-5" />
-              Dona Ahora
+              {t('donateNow')}
             </a>
             <a
               href="#plan-padrino"
               className="inline-flex items-center gap-2 rounded-full border-2 border-white/20 px-8 py-4 font-heading text-lg font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
             >
               <HiUserGroup className="h-5 w-5" />
-              Apadrina un Nino
+              {t('sponsorChild')}
             </a>
           </motion.div>
 
@@ -351,11 +302,11 @@ export default function HowToHelpPage() {
           >
             {trustBadges.map((badge) => (
               <div
-                key={badge.label}
+                key={badge.key}
                 className="flex items-center gap-2 text-sm text-primary-300/70"
               >
                 <badge.icon className="h-4 w-4 text-accent-400" />
-                <span>{badge.label}</span>
+                <span>{tDonation(badge.key)}</span>
               </div>
             ))}
           </motion.div>
@@ -370,14 +321,14 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="mb-10 text-center">
               <span className="inline-block rounded-full bg-accent-100 px-5 py-2 font-heading text-sm font-semibold text-accent-700 mb-4">
-                Calculadora de Impacto
+                {t('impactCalculator')}
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Tu aporte de hoy{' '}
-                <span className="text-primary-600">transforma vidas</span>
+                {t('impactTitle')}{' '}
+                <span className="text-primary-600">{t('impactHighlight')}</span>
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-gray-500">
-                Selecciona un monto y descubre el impacto real de tu donacion.
+                {t('impactSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -411,7 +362,7 @@ export default function HowToHelpPage() {
                   onClick={() => setShowCustom(!showCustom)}
                   className="text-sm font-medium text-primary-600 underline decoration-primary-300 underline-offset-4 hover:text-primary-700"
                 >
-                  {showCustom ? 'Elegir monto predefinido' : 'Ingresar otro monto'}
+                  {showCustom ? t('presetAmount') : t('customAmount')}
                 </button>
               </div>
 
@@ -429,7 +380,7 @@ export default function HowToHelpPage() {
                       <span className="text-lg font-bold text-gray-400">$</span>
                       <input
                         type="number"
-                        placeholder="Ej: 75000"
+                        placeholder={t('customPlaceholder')}
                         value={customAmount}
                         onChange={(e) => setCustomAmount(e.target.value)}
                         className="w-48 rounded-xl border-2 border-gray-200 px-4 py-3 text-center font-heading text-lg font-bold text-gray-800 placeholder:text-gray-300 focus:border-accent-500 focus:outline-none"
@@ -463,7 +414,7 @@ export default function HowToHelpPage() {
                   className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
                 >
                   <HiHeart className="h-5 w-5" />
-                  Donar Ahora
+                  {t('donateNowBtn')}
                 </a>
                 <a
                   href={DONATION_LINK_USD}
@@ -472,7 +423,7 @@ export default function HowToHelpPage() {
                   className="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700"
                 >
                   <HiCurrencyDollar className="h-4 w-4" />
-                  Donar en USD (dolares)
+                  {t('donateUSD')}
                 </a>
               </div>
             </div>
@@ -488,10 +439,10 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                3 formas de <span className="text-primary-600">cambiar vidas</span>
+                {t('threeWays')} <span className="text-primary-600">{t('changeLives')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                Elige la manera que mejor se adapte a ti. Cada gesto cuenta.
+                {t('threeWaysSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -517,11 +468,11 @@ export default function HowToHelpPage() {
                     <HiHeart className="h-7 w-7 text-white" />
                   </div>
                   <span className="mb-1 text-xs font-bold uppercase tracking-widest text-red-300">
-                    Opcion 1
+                    {t('option')} 1
                   </span>
-                  <h3 className="mb-2 font-heading text-3xl font-bold text-white">Dona</h3>
+                  <h3 className="mb-2 font-heading text-3xl font-bold text-white">{t('donate')}</h3>
                   <p className="mb-6 text-sm leading-relaxed text-white/90">
-                    Tu donacion financia educacion, alimentacion y materiales para ninos en Ciudad Bolivar.
+                    {t('donateDescription')}
                   </p>
                   <a
                     href={DONATION_LINK_COP}
@@ -529,7 +480,7 @@ export default function HowToHelpPage() {
                     rel="noopener noreferrer"
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-accent-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-accent-400"
                   >
-                    Donar Ahora
+                    {t('donateNowBtn')}
                     <HiArrowRight className="h-4 w-4" />
                   </a>
                 </div>
@@ -556,22 +507,22 @@ export default function HowToHelpPage() {
                     <HiUserGroup className="h-7 w-7 text-white" />
                   </div>
                   <span className="mb-1 text-xs font-bold uppercase tracking-widest text-primary-300">
-                    Opcion 2
+                    {t('option')} 2
                   </span>
                   <h3 className="mb-2 font-heading text-3xl font-bold text-white">
-                    Apadrina un Nino
+                    {t('sponsorTitle')}
                   </h3>
                   <p className="mb-2 text-sm leading-relaxed text-white/90">
-                    El Plan Padrino cubre educacion + alimentacion de un nino. Recibes reportes de su progreso.
+                    {t('sponsorDescription')}
                   </p>
                   <div className="mb-5 inline-flex w-fit items-center gap-1 rounded-full bg-white/15 px-3 py-1.5">
-                    <span className="text-sm font-bold text-accent-300">Desde $65.000 COP/mes</span>
+                    <span className="text-sm font-bold text-accent-300">{t('sponsorStarting')}</span>
                   </div>
                   <Link
                     href={'/plan-padrino' as '/plan-padrino'}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 font-heading font-semibold text-primary-700 transition-all duration-300 hover:bg-primary-50"
                   >
-                    Conocer el Plan Padrino
+                    {t('learnPlanPadrino')}
                     <HiArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -598,19 +549,19 @@ export default function HowToHelpPage() {
                     <HiHand className="h-7 w-7 text-white" />
                   </div>
                   <span className="mb-1 text-xs font-bold uppercase tracking-widest text-green-300">
-                    Opcion 3
+                    {t('option')} 3
                   </span>
                   <h3 className="mb-2 font-heading text-3xl font-bold text-white">
-                    Se Voluntario
+                    {t('beVolunteer')}
                   </h3>
                   <p className="mb-6 text-sm leading-relaxed text-white/90">
-                    Comparte tu tiempo y talento. Buscamos docentes, artistas, mentores y mas.
+                    {t('volunteerDescription')}
                   </p>
                   <Link
                     href={'/voluntariado' as '/voluntariado'}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-green-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-green-400"
                   >
-                    Quiero Ser Voluntario
+                    {t('wantToVolunteer')}
                     <HiArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -646,7 +597,7 @@ export default function HowToHelpPage() {
                       <HiHeart className="h-5 w-5 text-accent-600" />
                     </div>
                     <p className="text-sm font-medium text-gray-700">
-                      <span className="font-bold text-primary-700">+23 anos</span> transformando vidas en Ciudad Bolivar
+                      <span className="font-bold text-primary-700">+23</span> {t('yearsTransforming')}
                     </p>
                   </div>
                 </div>
@@ -657,24 +608,24 @@ export default function HowToHelpPage() {
             <ScrollReveal direction="right">
               <div>
                 <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-6">
-                  Plan Padrino
+                  {t('planPadrinoSection')}
                 </span>
                 <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                  Cambia la vida de un nino{' '}
-                  <span className="text-primary-600">para siempre</span>
+                  {t('changeChildLife')}{' '}
+                  <span className="text-primary-600">{t('forever')}</span>
                 </h2>
                 <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                  Al apadrinar un nino, cubres sus necesidades educativas y alimentarias durante todo el ano. Recibes reportes personalizados de su avance y te conviertes en parte fundamental de su futuro.
+                  {t('changeChildDescription')}
                 </p>
 
                 {/* What it includes */}
                 <div className="mt-8 space-y-4">
                   {planPadrinoIncludes.map((item) => (
-                    <div key={item.text} className="flex items-start gap-4">
+                    <div key={item.key} className="flex items-start gap-4">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-100">
                         <item.icon className="h-5 w-5 text-primary-600" />
                       </div>
-                      <p className="pt-2 text-gray-700 font-medium">{item.text}</p>
+                      <p className="pt-2 text-gray-700 font-medium">{t(`planPadrinoIncludes.${item.key}`)}</p>
                     </div>
                   ))}
                 </div>
@@ -688,13 +639,13 @@ export default function HowToHelpPage() {
                     <span className="text-lg font-medium text-accent-600">COP/mes</span>
                   </div>
                   <p className="mt-1 text-sm text-accent-600/70">
-                    Planes desde mensual hasta anual. Ver todos los planes.
+                    {t('plansFromMonthly')}
                   </p>
                   <Link
                     href={'/plan-padrino' as '/plan-padrino'}
                     className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700"
                   >
-                    Ver planes detallados
+                    {t('viewDetailedPlans')}
                     <HiArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -707,7 +658,7 @@ export default function HowToHelpPage() {
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
                 >
                   <HiHeart className="h-5 w-5" />
-                  Apadrina un Nino Hoy
+                  {t('sponsorChildToday')}
                 </a>
               </div>
             </ScrollReveal>
@@ -723,13 +674,13 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-accent-100 px-5 py-2 font-heading text-sm font-semibold text-accent-700 mb-4">
-                {t('impact')}
+                {tDonation('impact')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                Elige tu nivel de <span className="text-primary-600">impacto</span>
+                {t('chooseImpact')} <span className="text-primary-600">{t('impactLevel')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                Cada aporte transforma vidas. Elige el plan que mejor se adapte a ti.
+                {t('chooseImpactSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -738,7 +689,7 @@ export default function HowToHelpPage() {
             {donationTiers.map((tier) => {
               const Icon = tier.icon;
               return (
-                <StaggerItem key={tier.name}>
+                <StaggerItem key={tier.key}>
                   <motion.div
                     whileHover={{ x: 4 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
@@ -749,7 +700,7 @@ export default function HowToHelpPage() {
                       <div className="absolute top-0 right-0 rounded-bl-xl bg-accent-500 px-4 py-1.5">
                         <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white">
                           <HiStar className="h-3.5 w-3.5" />
-                          Mas Popular
+                          {t('popularBadge')}
                         </span>
                       </div>
                     )}
@@ -762,19 +713,19 @@ export default function HowToHelpPage() {
                     {/* Name & impact */}
                     <div className="flex-1 text-center md:text-left">
                       <h3 className="font-heading text-2xl font-bold text-gray-900">
-                        {tier.name}
+                        {tPlan(`tiers.${tier.key}.name`)}
                       </h3>
-                      <p className="mt-1 text-gray-500">{tier.impact}</p>
+                      <p className="mt-1 text-gray-500">{t(`tierImpacts.${tier.key}`)}</p>
                     </div>
 
                     {/* Price */}
                     <div className="text-center md:text-right shrink-0">
                       <div className="font-heading text-2xl font-bold text-gray-900">
-                        ${tier.amountCOP.toLocaleString('es-CO')}
+                        ${tier.amountCOP.toLocaleString(numberLocale)}
                         <span className="text-sm font-medium text-gray-400"> COP</span>
                       </div>
                       <p className="text-xs text-gray-400">
-                        / {tier.period}
+                        / {tPlan(`tiers.${tier.key}.period`)}
                       </p>
                     </div>
 
@@ -789,7 +740,7 @@ export default function HowToHelpPage() {
                           : 'bg-primary-500 hover:bg-primary-400'
                       }`}
                     >
-                      Donar
+                      {t('donateBtn')}
                       <HiArrowRight className="h-4 w-4" />
                     </a>
                   </motion.div>
@@ -810,7 +761,7 @@ export default function HowToHelpPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100 transition-colors group-hover:bg-primary-200">
                   <HiCurrencyDollar className="h-6 w-6 text-primary-600" />
                 </div>
-                {t('donateUSD')}
+                {tDonation('donateUSD')}
               </a>
             </div>
           </ScrollReveal>
@@ -826,12 +777,12 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="text-center">
               <span className="inline-block rounded-full bg-white/10 px-5 py-2 font-heading text-sm font-semibold text-accent-400 mb-6">
-                {t('nutritionTitle')}
+                {tDonation('nutritionTitle')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">
-                Alimentacion que{' '}
+                {t('nutritionFuture')}{' '}
                 <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">
-                  nutre el futuro
+                  {t('feedsFuture')}
                 </span>
               </h2>
             </div>
@@ -844,9 +795,9 @@ export default function HowToHelpPage() {
                   <HiCurrencyDollar className="h-8 w-8 text-accent-400" />
                 </div>
                 <p className="font-heading text-5xl font-bold text-white">$7.045</p>
-                <p className="mt-2 text-lg font-medium text-primary-300">COP por nino por dia</p>
+                <p className="mt-2 text-lg font-medium text-primary-300">{t('costPerChildPerDay')}</p>
                 <p className="mt-3 text-sm text-primary-400/70">
-                  Costo real de una comida nutritiva completa
+                  {t('realCostMeal')}
                 </p>
               </div>
             </ScrollReveal>
@@ -857,9 +808,9 @@ export default function HowToHelpPage() {
                   <HiHeart className="h-8 w-8 text-green-400" />
                 </div>
                 <p className="font-heading text-5xl font-bold text-white">2,000+</p>
-                <p className="mt-2 text-lg font-medium text-primary-300">refrigerios servidos</p>
+                <p className="mt-2 text-lg font-medium text-primary-300">{t('snacksServed')}</p>
                 <p className="mt-3 text-sm text-primary-400/70">
-                  Este trimestre en nuestras jornadas de nutricion
+                  {t('thisQuarter')}
                 </p>
               </div>
             </ScrollReveal>
@@ -874,10 +825,10 @@ export default function HowToHelpPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400"
               >
                 <HiHeart className="h-5 w-5" />
-                Dona para Nutricion
+                {t('donateForNutrition')}
               </a>
               <p className="mt-4 text-sm text-primary-400/60">
-                Con solo $7.045 COP al dia puedes alimentar a un nino
+                {t('feedChildDaily')}
               </p>
             </div>
           </ScrollReveal>
@@ -892,13 +843,13 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-green-100 px-5 py-2 font-heading text-sm font-semibold text-green-700 mb-4">
-                {t('volunteerTitle')}
+                {tDonation('volunteerTitle')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                Comparte tu <span className="text-green-600">talento</span>
+                {t('shareYour')} <span className="text-green-600">{t('talent')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                {t('volunteerDescription')}
+                {tDonation('volunteerDescription')}
               </p>
             </div>
           </ScrollReveal>
@@ -907,7 +858,7 @@ export default function HowToHelpPage() {
             {volunteerAreas.map((area) => {
               const Icon = area.icon;
               return (
-                <StaggerItem key={area.title}>
+                <StaggerItem key={area.key}>
                   <motion.div
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
@@ -917,10 +868,10 @@ export default function HowToHelpPage() {
                       <Icon className="h-7 w-7" />
                     </div>
                     <h3 className="mb-2 font-heading text-xl font-bold text-gray-900">
-                      {area.title}
+                      {t(`volunteerAreas.${area.key}.title`)}
                     </h3>
                     <p className="flex-1 text-sm leading-relaxed text-gray-600">
-                      {area.description}
+                      {t(`volunteerAreas.${area.key}.description`)}
                     </p>
                   </motion.div>
                 </StaggerItem>
@@ -938,10 +889,10 @@ export default function HowToHelpPage() {
                 className="inline-flex items-center gap-3 rounded-full bg-green-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:bg-green-400"
               >
                 <FaWhatsapp className="h-6 w-6" />
-                Quiero Ser Voluntario
+                {t('volunteerWhatsApp')}
               </a>
               <p className="mt-3 text-sm text-gray-400">
-                Escribenos por WhatsApp y te contamos como participar
+                {t('volunteerWhatsAppDescription')}
               </p>
             </div>
           </ScrollReveal>
@@ -962,17 +913,17 @@ export default function HowToHelpPage() {
                 {tFaq('title')}
               </h2>
               <p className="mx-auto mt-4 max-w-lg text-gray-500">
-                Resolvemos tus dudas para que puedas ayudar con confianza.
+                {t('faqSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
           <div>
-            {faqs.map((faq, index) => (
+            {faqKeys.map((faqKey, index) => (
               <FAQItem
-                key={faq.question}
-                question={faq.question}
-                answer={faq.answer}
+                key={faqKey}
+                question={t(`faqs.${faqKey}.q`)}
+                answer={t(`faqs.${faqKey}.a`)}
                 index={index}
               />
             ))}
@@ -996,10 +947,10 @@ export default function HowToHelpPage() {
             </div>
 
             <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
-              No dejes para manana lo que puedes hacer hoy
+              {t('finalCtaTitle')}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-              Cada dia sin actuar es un dia menos en la vida de un nino. Tu aporte de hoy construye el futuro de manana.
+              {t('finalCtaDescription')}
             </p>
 
             {/* CTA Buttons */}
@@ -1011,7 +962,7 @@ export default function HowToHelpPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl"
               >
                 <HiHeart className="h-5 w-5" />
-                {t('donateCOP')}
+                {tDonation('donateCOP')}
               </a>
               <a
                 href={DONATION_LINK_USD}
@@ -1020,13 +971,13 @@ export default function HowToHelpPage() {
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 <HiCurrencyDollar className="h-5 w-5" />
-                {t('donateUSD')}
+                {tDonation('donateUSD')}
               </a>
               <Link
                 href={'/contacto' as '/contacto'}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Contactar
+                {tContact('contactUs')}
                 <HiArrowRight className="h-5 w-5" />
               </Link>
             </div>
@@ -1035,11 +986,11 @@ export default function HowToHelpPage() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
               {trustBadges.map((badge) => (
                 <div
-                  key={badge.label}
+                  key={badge.key}
                   className="flex items-center gap-2 text-sm text-white/70"
                 >
                   <badge.icon className="h-4 w-4 text-white/90" />
-                  <span>{badge.label}</span>
+                  <span>{tDonation(badge.key)}</span>
                 </div>
               ))}
             </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -32,239 +33,110 @@ const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
-/* ── Pricing tiers ── */
-const pricingTiers = [
+/* ── Pricing tier config ── */
+const tierKeys = ['monthly', 'semester', 'annual', 'gold', 'platinum', 'ultra'] as const;
+const tierConfig = [
   {
-    name: 'Plan Mensual',
+    key: 'monthly' as const,
     price: 65000,
-    period: 'mes',
     children: 1,
     highlighted: false,
     icon: HiHeart,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
     badgeBg: 'bg-primary-50 text-primary-700',
-    description: 'Ideal para comenzar tu compromiso con un nino.',
-    includes: [
-      'Programa educativo completo',
-      'Alimentacion nutritiva diaria',
-      'Reporte mensual de progreso',
-    ],
+    includeKeys: ['educationComplete', 'nutritionDaily', 'monthlyReport'],
   },
   {
-    name: 'Plan Semestral',
+    key: 'semester' as const,
     price: 330000,
-    period: 'semestre',
     children: 1,
     highlighted: false,
     icon: HiShieldCheck,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
     badgeBg: 'bg-primary-50 text-primary-700',
-    description: 'Acompanamiento continuo durante 6 meses.',
-    includes: [
-      'Programa educativo completo',
-      'Alimentacion nutritiva diaria',
-      'Reportes bimestrales de progreso',
-      'Foto actualizada del nino',
-    ],
+    includeKeys: ['educationComplete', 'nutritionDaily', 'bimonthlyReports', 'childPhoto'],
   },
   {
-    name: 'Plan Anual',
+    key: 'annual' as const,
     price: 650000,
-    period: 'ano',
     children: 1,
     highlighted: true,
     icon: HiStar,
     color: 'border-accent-300 ring-2 ring-accent-200 shadow-lg shadow-accent-500/10',
     iconBg: 'bg-accent-100 text-accent-600',
     badgeBg: 'bg-accent-50 text-accent-700',
-    description: 'Un ano completo transformando la vida de un nino.',
-    includes: [
-      'Programa educativo completo',
-      'Alimentacion nutritiva diaria',
-      'Reportes trimestrales de progreso',
-      'Certificado anual de impacto',
-      'Carta personalizada del nino',
-    ],
+    includeKeys: ['educationComplete', 'nutritionDaily', 'quarterlyReports', 'annualCertificate', 'personalizedLetter'],
   },
   {
-    name: 'Plan Dorado',
+    key: 'gold' as const,
     price: 1200000,
-    period: 'ano',
     children: 2,
     highlighted: false,
     icon: HiSparkles,
     color: 'border-accent-200 hover:border-accent-400',
     iconBg: 'bg-accent-100 text-accent-600',
     badgeBg: 'bg-accent-50 text-accent-700',
-    description: 'Duplica tu impacto apadrinando a 2 ninos.',
-    includes: [
-      'Programa educativo para 2 ninos',
-      'Alimentacion nutritiva diaria para 2',
-      'Reportes trimestrales de progreso',
-      'Certificado anual de impacto',
-      'Cartas personalizadas de cada nino',
-    ],
+    includeKeys: ['educationFor2', 'nutritionFor2', 'quarterlyReports', 'annualCertificate', 'lettersFrom2'],
   },
   {
-    name: 'Plan Platino',
+    key: 'platinum' as const,
     price: 1650000,
-    period: 'ano',
     children: 3,
     highlighted: false,
     icon: HiGlobeAlt,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
     badgeBg: 'bg-primary-50 text-primary-700',
-    description: 'Triple impacto: 3 ninos con futuro asegurado.',
-    includes: [
-      'Programa educativo para 3 ninos',
-      'Alimentacion nutritiva diaria para 3',
-      'Reportes trimestrales de progreso',
-      'Certificado anual de impacto',
-      'Cartas personalizadas de cada nino',
-      'Invitacion a evento anual de la fundacion',
-    ],
+    includeKeys: ['educationFor3', 'nutritionFor3', 'quarterlyReports', 'annualCertificate', 'lettersFrom2', 'eventInvitation'],
   },
   {
-    name: 'Plan Ultra',
+    key: 'ultra' as const,
     price: 2100000,
-    period: 'ano',
     children: 4,
     highlighted: false,
     icon: HiStar,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
     badgeBg: 'bg-primary-50 text-primary-700',
-    description: 'Maximo impacto: transforma la vida de 4 ninos.',
-    includes: [
-      'Programa educativo para 4 ninos',
-      'Alimentacion nutritiva diaria para 4',
-      'Reportes trimestrales de progreso',
-      'Certificado anual de impacto',
-      'Cartas personalizadas de cada nino',
-      'Invitacion a evento anual de la fundacion',
-      'Reconocimiento en nuestras redes sociales',
-    ],
+    includeKeys: ['educationFor4', 'nutritionFor4', 'quarterlyReports', 'annualCertificate', 'lettersFrom2', 'eventInvitation', 'socialMediaRecognition'],
   },
 ];
 
-/* ── How It Works steps ── */
-const steps = [
-  {
-    number: '01',
-    title: 'Elige tu plan',
-    description: 'Selecciona el plan de apadrinamiento que mejor se adapte a tus posibilidades.',
-    icon: HiClipboardCheck,
-    color: 'from-primary-500 to-primary-700',
-  },
-  {
-    number: '02',
-    title: 'Conoce a tu apadrinado',
-    description: 'Te presentamos al nino o nina que acompanaras en su proceso educativo.',
-    icon: FaChild,
-    color: 'from-accent-500 to-accent-700',
-  },
-  {
-    number: '03',
-    title: 'Sigue su progreso',
-    description: 'Recibe reportes personalizados con el avance academico y desarrollo de tu apadrinado.',
-    icon: FaChartLine,
-    color: 'from-primary-400 to-primary-600',
-  },
+/* ── How It Works steps config ── */
+const stepKeys = ['choose', 'meet', 'follow'] as const;
+const stepConfig = [
+  { key: 'choose' as const, number: '01', icon: HiClipboardCheck, color: 'from-primary-500 to-primary-700' },
+  { key: 'meet' as const, number: '02', icon: FaChild, color: 'from-accent-500 to-accent-700' },
+  { key: 'follow' as const, number: '03', icon: FaChartLine, color: 'from-primary-400 to-primary-600' },
 ];
 
-/* ── What's Included items ── */
-const includedItems = [
-  {
-    icon: HiAcademicCap,
-    title: 'Programa educativo',
-    description: 'Refuerzo escolar, talleres y apoyo pedagogico integral para su formacion academica.',
-    color: 'bg-primary-50 text-primary-600',
-    iconBg: 'bg-primary-100',
-  },
-  {
-    icon: HiHeart,
-    title: 'Alimentacion nutritiva diaria',
-    description: 'Comida balanceada y nutritiva cada dia por $7.045 COP, garantizando su bienestar.',
-    color: 'bg-rose-50 text-rose-600',
-    iconBg: 'bg-rose-100',
-  },
-  {
-    icon: HiDocumentReport,
-    title: 'Reportes personalizados de progreso',
-    description: 'Informes detallados sobre el avance academico y desarrollo integral del nino.',
-    color: 'bg-accent-50 text-accent-600',
-    iconBg: 'bg-accent-100',
-  },
-  {
-    icon: HiCheckCircle,
-    title: 'Certificado anual de impacto',
-    description: 'Documento oficial que certifica tu aporte y el impacto generado en la vida del nino.',
-    color: 'bg-green-50 text-green-600',
-    iconBg: 'bg-green-100',
-  },
-  {
-    icon: HiPhotograph,
-    title: 'Fotos y actualizaciones',
-    description: 'Imagenes y noticias del dia a dia de tu apadrinado en la fundacion.',
-    color: 'bg-purple-50 text-purple-600',
-    iconBg: 'bg-purple-100',
-  },
-  {
-    icon: HiMail,
-    title: 'Carta personalizada del nino',
-    description: 'Una carta escrita por tu apadrinado donde comparte sus suenos y agradecimiento.',
-    color: 'bg-sky-50 text-sky-600',
-    iconBg: 'bg-sky-100',
-  },
+/* ── What's Included config ── */
+const includedKeys = ['education', 'nutrition', 'reports', 'certificate', 'photos', 'letter'] as const;
+const includedConfig = [
+  { key: 'education' as const, icon: HiAcademicCap, color: 'bg-primary-50 text-primary-600', iconBg: 'bg-primary-100' },
+  { key: 'nutrition' as const, icon: HiHeart, color: 'bg-rose-50 text-rose-600', iconBg: 'bg-rose-100' },
+  { key: 'reports' as const, icon: HiDocumentReport, color: 'bg-accent-50 text-accent-600', iconBg: 'bg-accent-100' },
+  { key: 'certificate' as const, icon: HiCheckCircle, color: 'bg-green-50 text-green-600', iconBg: 'bg-green-100' },
+  { key: 'photos' as const, icon: HiPhotograph, color: 'bg-purple-50 text-purple-600', iconBg: 'bg-purple-100' },
+  { key: 'letter' as const, icon: HiMail, color: 'bg-sky-50 text-sky-600', iconBg: 'bg-sky-100' },
 ];
 
-/* ── FAQ data ── */
-const faqs = [
-  {
-    question: 'Mi donacion al Plan Padrino es deducible de impuestos?',
-    answer:
-      'Si. La Fundacion Cigarra es una entidad sin animo de lucro registrada con NIT 830.114.318-9. Todas las donaciones son deducibles de impuestos de acuerdo con la normativa tributaria colombiana vigente. Emitimos el certificado correspondiente para tu declaracion de renta.',
-  },
-  {
-    question: 'Puedo cancelar o cambiar mi plan en cualquier momento?',
-    answer:
-      'Si, puedes cancelar o cambiar tu plan en cualquier momento. Solo contactanos por correo electronico o WhatsApp y procesaremos el cambio. Si cancelas, el nino continuara siendo atendido por la fundacion con otros recursos disponibles.',
-  },
-  {
-    question: 'Que sucede si el nino que apadrino se gradua o deja la fundacion?',
-    answer:
-      'Si tu apadrinado se gradua o deja la fundacion, te notificamos y te asignamos un nuevo nino para que puedas continuar con tu apadrinamiento. Tambien puedes elegir redirigir tu aporte a otro programa de la fundacion.',
-  },
-  {
-    question: 'Como puedo pagar?',
-    answer:
-      'Puedes pagar a traves de nuestra plataforma segura DonarOnline, que acepta tarjetas de credito, debito y transferencias bancarias. Tambien ofrecemos la opcion de donacion en dolares americanos para padrinos internacionales.',
-  },
-  {
-    question: 'Puedo conocer personalmente al nino que apadrino?',
-    answer:
-      'Si, organizamos eventos anuales donde los padrinos pueden visitar la fundacion y conocer a sus apadrinados. Tambien puedes coordinar una visita en dias habiles contactandonos previamente.',
-  },
-  {
-    question: 'Que porcentaje de mi donacion llega directamente al nino?',
-    answer:
-      'El 100% de tu donacion se destina directamente a los programas de la fundacion. Los gastos administrativos son cubiertos por alianzas corporativas. Publicamos informes anuales de gestion financiera para total transparencia.',
-  },
-];
+/* ── FAQ keys ── */
+const faqKeys = ['taxDeductible', 'cancel', 'graduation', 'payment', 'visit', 'percentage'] as const;
 
-/* ── Trust badges ── */
-const trustBadges = [
-  { icon: HiShieldCheck, label: 'NIT 830.114.318-9' },
-  { icon: HiDocumentReport, label: 'Deducible de impuestos' },
-  { icon: HiCheckCircle, label: 'Transparencia total' },
+/* ── Trust badge config ── */
+const trustBadgeConfig = [
+  { key: 'nit' as const, icon: HiShieldCheck },
+  { key: 'taxDeductible' as const, icon: HiDocumentReport },
+  { key: 'transparency' as const, icon: HiCheckCircle },
 ];
 
 /* ── FAQ Accordion Item ── */
-function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+function FAQItem({ questionKey, index }: { questionKey: string; index: number }) {
   const [open, setOpen] = useState(false);
+  const t = useTranslations('planPadrino');
 
   return (
     <ScrollReveal delay={index * 0.05}>
@@ -294,7 +166,7 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
                 open ? 'text-primary-800' : 'text-gray-900'
               }`}
             >
-              {question}
+              {t(`faqs.${questionKey}.q`)}
             </span>
           </div>
           <motion.div
@@ -318,7 +190,7 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
               className="overflow-hidden"
             >
               <div className="px-6 pb-6 pl-20">
-                <p className="text-gray-600 leading-relaxed">{answer}</p>
+                <p className="text-gray-600 leading-relaxed">{t(`faqs.${questionKey}.a`)}</p>
               </div>
             </motion.div>
           )}
@@ -332,6 +204,10 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
    MAIN PAGE COMPONENT
    ══════════════════════════════════════════════════════════════ */
 export default function PlanPadrinoPage() {
+  const t = useTranslations('planPadrino');
+  const tFaq = useTranslations('faq');
+  const tContact = useTranslations('contact');
+
   return (
     <>
       {/* ═══════════════════════════════════════════════════════
@@ -339,7 +215,6 @@ export default function PlanPadrinoPage() {
           ═══════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-primary-900">
         <HeroWaves />
-        {/* Accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-28 text-center lg:px-8 lg:py-36">
@@ -349,7 +224,7 @@ export default function PlanPadrinoPage() {
             transition={{ duration: 0.6, ease: smoothEase }}
             className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
           >
-            Fundacion Cigarra &mdash; Ciudad Bolivar, Bogota
+            {t('heroTagline')}
           </motion.p>
 
           <motion.h1
@@ -360,7 +235,7 @@ export default function PlanPadrinoPage() {
           >
             Plan{' '}
             <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">
-              Padrino
+              {t('heroTitle')}
             </span>
           </motion.h1>
 
@@ -370,8 +245,7 @@ export default function PlanPadrinoPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-200/80"
           >
-            Apadrina a un nino en Ciudad Bolivar y transforma su vida con educacion,
-            alimentacion y amor. Tu compromiso les da la oportunidad de sonar en grande.
+            {t('heroDescription')}
           </motion.p>
 
           {/* CTA buttons */}
@@ -386,14 +260,14 @@ export default function PlanPadrinoPage() {
               className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-lg font-semibold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
             >
               <HiHeart className="h-5 w-5" />
-              Ver Planes
+              {t('viewPlans')}
             </a>
             <a
               href="#como-funciona"
               className="inline-flex items-center gap-2 rounded-full border-2 border-white/20 px-8 py-4 font-heading text-lg font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
             >
               <HiQuestionMarkCircle className="h-5 w-5" />
-              Como Funciona
+              {t('howItWorks')}
             </a>
           </motion.div>
 
@@ -404,13 +278,13 @@ export default function PlanPadrinoPage() {
             transition={{ duration: 0.7, delay: 0.55, ease: smoothEase }}
             className="mt-10 flex flex-wrap items-center justify-center gap-6"
           >
-            {trustBadges.map((badge) => (
+            {trustBadgeConfig.map((badge) => (
               <div
-                key={badge.label}
+                key={badge.key}
                 className="flex items-center gap-2 text-sm text-primary-300/70"
               >
                 <badge.icon className="h-4 w-4 text-accent-400" />
-                <span>{badge.label}</span>
+                <span>{t(`trustBadges.${badge.key}`)}</span>
               </div>
             ))}
           </motion.div>
@@ -425,20 +299,20 @@ export default function PlanPadrinoPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
-                Paso a Paso
+                {t('stepByStep')}
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
-                Como funciona el{' '}
-                <span className="text-primary-600">Plan Padrino</span>
+                {t('howItWorksTitle')}{' '}
+                <span className="text-primary-600">Plan {t('heroTitle')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                En tres simples pasos puedes cambiar la vida de un nino para siempre.
+                {t('howItWorksSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
           <StaggerContainer className="grid gap-8 md:grid-cols-3" staggerDelay={0.15}>
-            {steps.map((step, index) => {
+            {stepConfig.map((step, index) => {
               const Icon = step.icon;
               return (
                 <StaggerItem key={step.number}>
@@ -447,14 +321,12 @@ export default function PlanPadrinoPage() {
                     transition={{ duration: 0.3, ease: smoothEase }}
                     className="group relative flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-8 text-center transition-all duration-300 hover:shadow-lg"
                   >
-                    {/* Step number */}
                     <div className="absolute -top-4 right-6">
                       <span className="font-accent text-6xl font-bold text-primary-100 transition-colors duration-300 group-hover:text-primary-200">
                         {step.number}
                       </span>
                     </div>
 
-                    {/* Icon */}
                     <div
                       className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${step.color} shadow-md`}
                     >
@@ -462,12 +334,11 @@ export default function PlanPadrinoPage() {
                     </div>
 
                     <h3 className="mb-3 font-heading text-xl font-bold text-gray-900">
-                      {step.title}
+                      {t(`steps.${step.key}.title`)}
                     </h3>
-                    <p className="text-gray-500 leading-relaxed">{step.description}</p>
+                    <p className="text-gray-500 leading-relaxed">{t(`steps.${step.key}.description`)}</p>
 
-                    {/* Connector arrow (hidden on last) */}
-                    {index < steps.length - 1 && (
+                    {index < stepConfig.length - 1 && (
                       <div className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 md:block">
                         <HiArrowRight className="h-8 w-8 text-primary-200" />
                       </div>
@@ -488,15 +359,14 @@ export default function PlanPadrinoPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-accent-100 px-5 py-2 font-heading text-sm font-semibold text-accent-700 mb-4">
-                Planes de Apadrinamiento
+                {t('sponsorshipPlans')}
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
-                Elige tu nivel de{' '}
-                <span className="text-primary-600">compromiso</span>
+                {t('chooseLevel')}{' '}
+                <span className="text-primary-600">{t('commitment')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                Cada plan incluye educacion, alimentacion y seguimiento personalizado.
-                Elige el que mejor se adapte a ti.
+                {t('chooseLevelSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -505,77 +375,70 @@ export default function PlanPadrinoPage() {
             className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
             staggerDelay={0.1}
           >
-            {pricingTiers.map((tier) => {
+            {tierConfig.map((tier) => {
               const Icon = tier.icon;
               return (
-                <StaggerItem key={tier.name}>
+                <StaggerItem key={tier.key}>
                   <motion.div
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.3, ease: smoothEase }}
                     className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 bg-white transition-all duration-300 ${tier.color}`}
                   >
-                    {/* Popular badge */}
                     {tier.highlighted && (
                       <div className="absolute top-0 right-0 z-10 rounded-bl-xl bg-accent-500 px-4 py-1.5">
                         <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white">
                           <HiStar className="h-3.5 w-3.5" />
-                          Mas Popular
+                          {t('mostPopular')}
                         </span>
                       </div>
                     )}
 
-                    {/* Card header */}
                     <div className={`p-6 pb-4 ${tier.highlighted ? 'bg-accent-50/50' : ''}`}>
-                      {/* Icon + name */}
                       <div className="flex items-center gap-3 mb-3">
                         <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${tier.iconBg}`}>
                           <Icon className="h-6 w-6" />
                         </div>
                         <div>
                           <h3 className="font-heading text-xl font-bold text-gray-900">
-                            {tier.name}
+                            {t(`tiers.${tier.key}.name`)}
                           </h3>
                           <span className={`inline-flex items-center gap-1 text-xs font-semibold ${tier.highlighted ? 'text-accent-600' : 'text-primary-500'}`}>
                             <FaChild className="h-3 w-3" />
-                            {tier.children} {tier.children === 1 ? 'nino' : 'ninos'}
+                            {tier.children} {tier.children === 1 ? t('child') : t('children')}
                           </span>
                         </div>
                       </div>
 
-                      {/* Price */}
                       <div className="mb-3">
                         <div className="flex items-baseline gap-1">
                           <span className={`font-heading text-3xl font-bold ${tier.highlighted ? 'text-accent-700' : 'text-gray-900'}`}>
                             ${tier.price.toLocaleString('es-CO')}
                           </span>
                           <span className="text-sm font-medium text-gray-400">
-                            COP/{tier.period}
+                            COP/{t(`tiers.${tier.key}.period`)}
                           </span>
                         </div>
                       </div>
 
-                      <p className="text-sm text-gray-500 leading-relaxed">{tier.description}</p>
+                      <p className="text-sm text-gray-500 leading-relaxed">{t(`tiers.${tier.key}.description`)}</p>
                     </div>
 
-                    {/* Divider */}
                     <div className="mx-6 border-t border-gray-100" />
 
-                    {/* Includes list */}
                     <div className="flex-1 p-6 pt-4">
                       <p className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-400">
-                        Incluye
+                        {t('includes')}
                       </p>
                       <ul className="space-y-2.5">
-                        {tier.includes.map((item) => (
-                          <li key={item} className="flex items-start gap-2.5">
+                        {tier.includeKeys.map((includeKey) => (
+                          <li key={includeKey} className="flex items-start gap-2.5">
                             <HiCheckCircle className={`mt-0.5 h-4 w-4 shrink-0 ${tier.highlighted ? 'text-accent-500' : 'text-primary-500'}`} />
-                            <span className="text-sm text-gray-600">{item}</span>
+                            <span className="text-sm text-gray-600">{t(`tierIncludes.${includeKey}`)}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    {/* CTA Button */}
                     <div className="p-6 pt-0">
                       <a
                         href={DONATION_LINK_COP}
@@ -588,7 +451,7 @@ export default function PlanPadrinoPage() {
                         }`}
                       >
                         <FaHandHoldingHeart className="h-4 w-4" />
-                        Apadrinar Ahora
+                        {t('sponsorNow')}
                       </a>
                     </div>
                   </motion.div>
@@ -597,7 +460,6 @@ export default function PlanPadrinoPage() {
             })}
           </StaggerContainer>
 
-          {/* USD link */}
           <ScrollReveal>
             <div className="mt-12 text-center">
               <a
@@ -609,7 +471,7 @@ export default function PlanPadrinoPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100 transition-colors group-hover:bg-primary-200">
                   <HiCurrencyDollar className="h-6 w-6 text-primary-600" />
                 </div>
-                Donar en USD (dolares)
+                {t('donateUSD')}
               </a>
             </div>
           </ScrollReveal>
@@ -624,24 +486,23 @@ export default function PlanPadrinoPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
-                Beneficios del Plan
+                {t('planBenefits')}
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
-                Que incluye tu{' '}
-                <span className="text-primary-600">apadrinamiento</span>
+                {t('whatIncludes')}{' '}
+                <span className="text-primary-600">{t('sponsorship')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                Cada apadrinamiento cubre las necesidades integrales del nino,
-                asegurando su desarrollo educativo y bienestar.
+                {t('whatIncludesSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
           <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.1}>
-            {includedItems.map((item) => {
+            {includedConfig.map((item) => {
               const Icon = item.icon;
               return (
-                <StaggerItem key={item.title}>
+                <StaggerItem key={item.key}>
                   <motion.div
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
@@ -651,10 +512,10 @@ export default function PlanPadrinoPage() {
                       <Icon className="h-7 w-7" />
                     </div>
                     <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
-                      {item.title}
+                      {t(`includedItems.${item.key}.title`)}
                     </h3>
                     <p className="flex-1 text-sm leading-relaxed text-gray-600">
-                      {item.description}
+                      {t(`includedItems.${item.key}.description`)}
                     </p>
                   </motion.div>
                 </StaggerItem>
@@ -671,23 +532,19 @@ export default function PlanPadrinoPage() {
         <HeroWaves />
         <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Left: Quote */}
             <ScrollReveal direction="left">
               <div>
                 <span className="inline-block rounded-full bg-white/10 px-5 py-2 font-heading text-sm font-semibold text-accent-400 mb-6">
-                  Testimonios
+                  {t('testimonials')}
                 </span>
 
-                {/* Quote */}
                 <div className="relative">
                   <span className="font-accent text-8xl leading-none text-accent-500/20 absolute -top-6 -left-4">
                     &ldquo;
                   </span>
                   <blockquote className="relative z-10 pl-6">
                     <p className="font-accent text-2xl leading-relaxed text-white/90 italic md:text-3xl">
-                      Gracias al Plan Padrino, mi hijo ahora suena con ser ingeniero.
-                      La fundacion le dio las herramientas y el amor que necesitaba
-                      para creer en si mismo.
+                      {t('testimonialQuote')}
                     </p>
                     <footer className="mt-6 flex items-center gap-4">
                       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-500/20">
@@ -695,10 +552,10 @@ export default function PlanPadrinoPage() {
                       </div>
                       <div>
                         <p className="font-heading font-semibold text-white">
-                          Maria Fernanda
+                          {t('testimonialAuthor')}
                         </p>
                         <p className="text-sm text-primary-300/70">
-                          Madre de beneficiario, Ciudad Bolivar
+                          {t('testimonialRole')}
                         </p>
                       </div>
                     </footer>
@@ -707,7 +564,6 @@ export default function PlanPadrinoPage() {
               </div>
             </ScrollReveal>
 
-            {/* Right: Impact Stats */}
             <ScrollReveal direction="right">
               <div className="grid grid-cols-2 gap-6">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
@@ -715,7 +571,7 @@ export default function PlanPadrinoPage() {
                     <FaChild className="h-7 w-7 text-accent-400" />
                   </div>
                   <p className="font-heading text-4xl font-bold text-white md:text-5xl">1,877+</p>
-                  <p className="mt-2 text-sm font-medium text-primary-300">ninos ayudados</p>
+                  <p className="mt-2 text-sm font-medium text-primary-300">{t('childrenHelped')}</p>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
@@ -723,7 +579,7 @@ export default function PlanPadrinoPage() {
                     <HiSparkles className="h-7 w-7 text-primary-300" />
                   </div>
                   <p className="font-heading text-4xl font-bold text-white md:text-5xl">23</p>
-                  <p className="mt-2 text-sm font-medium text-primary-300">anos de trayectoria</p>
+                  <p className="mt-2 text-sm font-medium text-primary-300">{t('yearsTrajectory')}</p>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
@@ -731,7 +587,7 @@ export default function PlanPadrinoPage() {
                     <HiAcademicCap className="h-7 w-7 text-green-400" />
                   </div>
                   <p className="font-heading text-4xl font-bold text-white md:text-5xl">14</p>
-                  <p className="mt-2 text-sm font-medium text-primary-300">programas activos</p>
+                  <p className="mt-2 text-sm font-medium text-primary-300">{t('activePrograms')}</p>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
@@ -739,7 +595,7 @@ export default function PlanPadrinoPage() {
                     <HiHeart className="h-7 w-7 text-rose-400" />
                   </div>
                   <p className="font-heading text-4xl font-bold text-white md:text-5xl">$7.045</p>
-                  <p className="mt-2 text-sm font-medium text-primary-300">COP/dia por nino</p>
+                  <p className="mt-2 text-sm font-medium text-primary-300">{t('costPerChildPerDay')}</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -755,24 +611,23 @@ export default function PlanPadrinoPage() {
           <ScrollReveal>
             <div className="mb-12 text-center">
               <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
-                Preguntas Frecuentes
+                {tFaq('title')}
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
-                Resolvemos tus{' '}
-                <span className="text-primary-600">dudas</span>
+                {t('faqTitle')}{' '}
+                <span className="text-primary-600">{t('faqHighlight')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-lg text-gray-500">
-                Todo lo que necesitas saber sobre el Plan Padrino antes de dar el paso.
+                {t('faqSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
           <div>
-            {faqs.map((faq, index) => (
+            {faqKeys.map((key, index) => (
               <FAQItem
-                key={faq.question}
-                question={faq.question}
-                answer={faq.answer}
+                key={key}
+                questionKey={key}
                 index={index}
               />
             ))}
@@ -785,7 +640,6 @@ export default function PlanPadrinoPage() {
           ═══════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-gradient-to-br from-accent-500 via-accent-600 to-accent-700 py-24">
         <HeroWaves />
-        {/* Decorative circles */}
         <div className="pointer-events-none absolute -top-20 -right-20 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
 
@@ -796,14 +650,12 @@ export default function PlanPadrinoPage() {
             </div>
 
             <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
-              Cambia una vida hoy
+              {t('changeLifeToday')}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-              Un nino en Ciudad Bolivar esta esperando por ti. Con tu apadrinamiento,
-              le das acceso a educacion, alimentacion y la oportunidad de un futuro mejor.
+              {t('changeLifeDescription')}
             </p>
 
-            {/* CTA Buttons */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
                 href={DONATION_LINK_COP}
@@ -812,7 +664,7 @@ export default function PlanPadrinoPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl"
               >
                 <HiHeart className="h-5 w-5" />
-                Apadrinar en COP
+                {t('sponsorCOP')}
               </a>
               <a
                 href={DONATION_LINK_USD}
@@ -821,26 +673,25 @@ export default function PlanPadrinoPage() {
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 <HiCurrencyDollar className="h-5 w-5" />
-                Donar en USD
+                {t('donateDollars')}
               </a>
               <Link
                 href={'/contacto' as '/contacto'}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Contactar
+                {tContact('contactUs')}
                 <HiArrowRight className="h-5 w-5" />
               </Link>
             </div>
 
-            {/* Trust badges */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-              {trustBadges.map((badge) => (
+              {trustBadgeConfig.map((badge) => (
                 <div
-                  key={badge.label}
+                  key={badge.key}
                   className="flex items-center gap-2 text-sm text-white/70"
                 >
                   <badge.icon className="h-4 w-4 text-white/90" />
-                  <span>{badge.label}</span>
+                  <span>{t(`trustBadges.${badge.key}`)}</span>
                 </div>
               ))}
             </div>

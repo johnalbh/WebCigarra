@@ -144,7 +144,7 @@ function DesktopDropdown({
                 {t(child.key)}
                 {child.highlight && (
                   <span className="ml-auto rounded-full bg-accent-100 px-2 py-0.5 text-[10px] font-semibold text-accent-700">
-                    Empresas
+                    {t('companies')}
                   </span>
                 )}
               </Link>
@@ -359,7 +359,7 @@ export default function Navbar() {
                                 {t(child.key)}
                                 {child.highlight && (
                                   <span className="ml-auto rounded-full bg-accent-100 px-2 py-0.5 text-[10px] font-semibold text-accent-700">
-                                    Empresas
+                                    {t('companies')}
                                   </span>
                                 )}
                               </Link>

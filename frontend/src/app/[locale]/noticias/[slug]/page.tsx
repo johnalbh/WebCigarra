@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -45,13 +45,13 @@ const articles = [
     content: 'Estamos orgullosos de anunciar nuestra alianza con Microsoft para ofrecer programas de formación en tecnología a nuestros jóvenes beneficiarios.\n\nA través de esta alianza, los participantes tendrán acceso a cursos de programación, diseño digital y herramientas ofimáticas que les permitirán desarrollar habilidades para el siglo XXI.\n\nEsta alianza refuerza nuestro compromiso de brindar oportunidades de formación integral y preparar a nuestros jóvenes para un futuro con mayores oportunidades laborales y profesionales.',
   },
   {
-    slug: 'graduacion-pre-icfes',
-    title: 'Graduación de la primera cohorte de Pre-ICFES',
-    excerpt: 'Celebramos la graduación de 25 jóvenes que completaron nuestro programa de preparación.',
+    slug: 'jornada-recreacion-deportes',
+    title: 'Jornada de recreación y deportes para toda la comunidad',
+    excerpt: 'Más de 120 niños y jóvenes participaron en nuestra jornada deportiva con actividades al aire libre.',
     date: '2024-03-15',
     author: 'Fundación Cigarra',
-    image: '/images/programs/refuerzo-escolar.jpg',
-    content: 'Con gran orgullo celebramos la graduación de la primera cohorte de nuestro programa Pre-ICFES, donde 25 jóvenes completaron exitosamente su preparación para las pruebas Saber 11.\n\nDurante varios meses, los estudiantes recibieron refuerzo en las áreas de matemáticas, lectura crítica, ciencias naturales, sociales e inglés, con simulacros periódicos para medir su progreso.\n\nLos resultados han sido extraordinarios: el promedio de puntaje de nuestros estudiantes superó el promedio de la localidad, demostrando que con dedicación y apoyo, nuestros jóvenes pueden alcanzar sus metas académicas.',
+    image: '/images/programs/recreacion-y-deportes.jpg',
+    content: 'Con gran entusiasmo realizamos una jornada de recreación y deportes que reunió a más de 120 niños y jóvenes de Ciudad Bolívar.\n\nLa jornada incluyó torneos de fútbol, baloncesto, juegos cooperativos y actividades de desarrollo motriz, todo en un ambiente de sana convivencia y diversión.\n\nNuestro programa de Recreación y Deportes busca promover el bienestar físico y emocional de los participantes, fortaleciendo valores como el trabajo en equipo, el respeto y la disciplina deportiva.',
   },
   {
     slug: 'festival-arte-cultura',
@@ -73,58 +73,15 @@ const articles = [
   },
 ];
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('es-CO', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
-const ctaCards = [
-  {
-    icon: HiHeart,
-    title: 'Dona',
-    description: 'Cada peso transforma una vida.',
-    cta: 'Donar Ahora',
-    href: DONATION_LINK,
-    external: true,
-    color: 'bg-red-50 text-red-600',
-    iconBg: 'bg-red-100',
-  },
-  {
-    icon: HiUserGroup,
-    title: 'Apadrina',
-    description: 'Acompaña a un niño en su camino.',
-    cta: 'Plan Padrino',
-    href: '/plan-padrino',
-    external: false,
-    color: 'bg-primary-50 text-primary-600',
-    iconBg: 'bg-primary-100',
-  },
-  {
-    icon: HiHand,
-    title: 'Voluntariado',
-    description: 'Comparte tu tiempo y talento.',
-    cta: 'Ser Voluntario',
-    href: '/voluntariado',
-    external: false,
-    color: 'bg-accent-50 text-accent-600',
-    iconBg: 'bg-accent-100',
-  },
-  {
-    icon: HiPhone,
-    title: 'Contáctanos',
-    description: 'Queremos escucharte.',
-    cta: 'Escribir',
-    href: '/contacto',
-    external: false,
-    color: 'bg-green-50 text-green-600',
-    iconBg: 'bg-green-100',
-  },
+const ctaCardKeys = ['donate', 'sponsor', 'volunteer', 'contact'] as const;
+const ctaCardConfig = [
+  { key: 'donate' as const, icon: HiHeart, href: DONATION_LINK, external: true, color: 'bg-red-50 text-red-600', iconBg: 'bg-red-100' },
+  { key: 'sponsor' as const, icon: HiUserGroup, href: '/plan-padrino', external: false, color: 'bg-primary-50 text-primary-600', iconBg: 'bg-primary-100' },
+  { key: 'volunteer' as const, icon: HiHand, href: '/voluntariado', external: false, color: 'bg-accent-50 text-accent-600', iconBg: 'bg-accent-100' },
+  { key: 'contact' as const, icon: HiPhone, href: '/contacto', external: false, color: 'bg-green-50 text-green-600', iconBg: 'bg-green-100' },
 ] as const;
 
-function BottomArticlesBar({ currentSlug }: { currentSlug: string }) {
+function BottomArticlesBar({ currentSlug, readingLabel }: { currentSlug: string; readingLabel: string }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -190,7 +147,7 @@ function BottomArticlesBar({ currentSlug }: { currentSlug: string }) {
           {/* Active indicator */}
           <span className="flex flex-shrink-0 items-center gap-1.5 rounded-full bg-primary-500 px-4 py-2 text-xs font-medium text-white">
             <HiCalendar className="h-3.5 w-3.5" />
-            Leyendo
+            {readingLabel}
           </span>
 
           {otherArticles.map((a) => (
@@ -212,8 +169,17 @@ function BottomArticlesBar({ currentSlug }: { currentSlug: string }) {
 
 export default function ArticleDetailPage() {
   const t = useTranslations('news');
+  const locale = useLocale();
   const params = useParams();
   const slug = params.slug as string;
+
+  function formatDate(dateStr: string) {
+    return new Date(dateStr).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-CO', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  }
 
   const currentIndex = articles.findIndex((a) => a.slug === slug);
   const article = currentIndex >= 0
@@ -225,7 +191,7 @@ export default function ArticleDetailPage() {
         date: '2024-01-01',
         author: 'Fundación Cigarra',
         image: '/images/news/celebramos-22-anos.jpg',
-        content: 'Contenido del artículo próximamente disponible. Estamos trabajando para traerte la información más actualizada sobre nuestras actividades y logros.',
+        content: t('fallbackContent'),
       };
 
   const prevArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
@@ -389,7 +355,7 @@ export default function ArticleDetailPage() {
                     >
                       <HiChevronLeft className="h-5 w-5 flex-shrink-0 text-gray-400" />
                       <div className="min-w-0">
-                        <p className="text-xs text-gray-400">Anterior</p>
+                        <p className="text-xs text-gray-400">{t('previous')}</p>
                         <p className="truncate text-sm font-medium text-gray-900 group-hover:text-primary-600">{prevArticle.title}</p>
                       </div>
                     </Link>
@@ -400,7 +366,7 @@ export default function ArticleDetailPage() {
                       className="group flex items-center justify-end gap-3 rounded-xl border border-gray-100 p-4 text-right transition-colors hover:border-gray-200"
                     >
                       <div className="min-w-0">
-                        <p className="text-xs text-gray-400">Siguiente</p>
+                        <p className="text-xs text-gray-400">{t('next')}</p>
                         <p className="truncate text-sm font-medium text-gray-900 group-hover:text-primary-600">{nextArticle.title}</p>
                       </div>
                       <HiChevronRight className="h-5 w-5 flex-shrink-0 text-gray-400" />
@@ -411,23 +377,23 @@ export default function ArticleDetailPage() {
 
               {/* CTA cards on mobile */}
               <div className="mt-10 grid grid-cols-2 gap-3 lg:hidden">
-                {ctaCards.map((card) => {
+                {ctaCardConfig.map((card) => {
                   const Icon = card.icon;
                   const content = (
                     <div className={`flex flex-col items-center rounded-xl p-4 text-center ${card.color}`}>
                       <div className={`mb-2 flex h-10 w-10 items-center justify-center rounded-full ${card.iconBg}`}>
                         <Icon className="h-5 w-5" />
                       </div>
-                      <p className="text-sm font-semibold">{card.title}</p>
-                      <p className="mt-1 text-xs opacity-70">{card.description}</p>
+                      <p className="text-sm font-semibold">{t(`ctaCards.${card.key}.title`)}</p>
+                      <p className="mt-1 text-xs opacity-70">{t(`ctaCards.${card.key}.description`)}</p>
                     </div>
                   );
                   return card.external ? (
-                    <a key={card.title} href={card.href} target="_blank" rel="noopener noreferrer">
+                    <a key={card.key} href={card.href} target="_blank" rel="noopener noreferrer">
                       {content}
                     </a>
                   ) : (
-                    <Link key={card.title} href={card.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}>
+                    <Link key={card.key} href={card.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}>
                       {content}
                     </Link>
                   );
@@ -440,7 +406,7 @@ export default function ArticleDetailPage() {
               <ScrollReveal direction="right">
                 <div className="sticky top-24 space-y-6">
                   {/* CTA Cards */}
-                  {ctaCards.map((card) => {
+                  {ctaCardConfig.map((card) => {
                     const Icon = card.icon;
                     const inner = (
                       <div className={`group flex items-center gap-4 rounded-xl p-5 transition-all hover:-translate-y-0.5 ${card.color}`}>
@@ -448,21 +414,21 @@ export default function ArticleDetailPage() {
                           <Icon className="h-6 w-6" />
                         </div>
                         <div className="min-w-0">
-                          <p className="font-heading text-sm font-bold">{card.title}</p>
-                          <p className="mt-0.5 text-xs opacity-70">{card.description}</p>
+                          <p className="font-heading text-sm font-bold">{t(`ctaCards.${card.key}.title`)}</p>
+                          <p className="mt-0.5 text-xs opacity-70">{t(`ctaCards.${card.key}.description`)}</p>
                           <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold">
-                            {card.cta}
+                            {t(`ctaCards.${card.key}.cta`)}
                             <HiArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                           </span>
                         </div>
                       </div>
                     );
                     return card.external ? (
-                      <a key={card.title} href={card.href} target="_blank" rel="noopener noreferrer">
+                      <a key={card.key} href={card.href} target="_blank" rel="noopener noreferrer">
                         {inner}
                       </a>
                     ) : (
-                      <Link key={card.title} href={card.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}>
+                      <Link key={card.key} href={card.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}>
                         {inner}
                       </Link>
                     );
@@ -471,7 +437,7 @@ export default function ArticleDetailPage() {
                   {/* Other articles */}
                   <div className="rounded-xl border border-gray-100 bg-white p-6">
                     <h3 className="mb-4 font-heading text-base font-semibold text-gray-900">
-                      Más Noticias
+                      {t('moreNews')}
                     </h3>
                     <nav className="space-y-1">
                       {articles
@@ -509,7 +475,7 @@ export default function ArticleDetailPage() {
       </section>
 
       {/* Sticky bottom bar */}
-      <BottomArticlesBar currentSlug={slug} />
+      <BottomArticlesBar currentSlug={slug} readingLabel={t('reading')} />
     </>
   );
 }

@@ -9,10 +9,10 @@ import { HiArrowRight } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
 
 const stats = [
-  { key: 'children', value: 1877, suffix: '+', label: 'Niños Ayudados' },
-  { key: 'years', value: 23, suffix: '', label: 'Años de Servicio' },
-  { key: 'jobs', value: 100, suffix: '+', label: 'Empleos Generados' },
-  { key: 'families', value: 190, suffix: '+', label: 'Familias Beneficiadas' },
+  { key: 'childrenHelped', value: 1877, suffix: '+' },
+  { key: 'years', value: 23, suffix: '' },
+  { key: 'jobsGenerated', value: 100, suffix: '+' },
+  { key: 'families', value: 190, suffix: '+' },
 ];
 
 function Counter({ end, suffix, enabled }: { end: number; suffix: string; enabled: boolean }) {
@@ -36,7 +36,7 @@ export default function ImpactCounters() {
           className="mb-16 text-center"
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary-300">
-            Nuestro impacto
+            {t('subtitle')}
           </p>
           <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">
             {t('title')}
@@ -57,7 +57,7 @@ export default function ImpactCounters() {
                 <Counter end={stat.value} suffix={stat.suffix} enabled={isInView} />
               </p>
               <p className="mt-2 text-sm font-medium text-primary-300">
-                {stat.label}
+                {t(stat.key)}
               </p>
             </motion.div>
           ))}
@@ -71,12 +71,12 @@ export default function ImpactCounters() {
           className="mt-14 text-center"
         >
           <p className="text-sm text-primary-300/70">
-            Tu aporte hace esto posible.{' '}
+            {t('yourContribution')}{' '}
             <Link
               href="/como-ayudar"
               className="inline-flex items-center gap-1 font-medium text-accent-400 transition-colors hover:text-accent-300"
             >
-              Dona ahora
+              {t('donateNow')}
               <HiArrowRight className="h-3.5 w-3.5" />
             </Link>
           </p>

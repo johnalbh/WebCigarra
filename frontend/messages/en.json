@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Cigarra Foundation - Transforming Lives in Ciudad Bolívar",
-    "description": "Since 2002, the Cigarra Foundation has served 180+ children with education, art, and culture programs in Ciudad Bolívar, Bogotá."
+    "description": "Since 2002, the Cigarra Foundation has served over 180 children with education, art, and culture programs in Ciudad Bolívar, Bogotá."
   },
   "nav": {
     "home": "Home",
@@ -18,20 +18,34 @@
     "volunteer": "Volunteer",
     "corporateImpact": "Corporate Impact",
     "aboutUs": "About",
-    "getInvolved": "Get Involved"
+    "getInvolved": "Get Involved",
+    "companies": "Corporate"
   },
   "hero": {
     "tagline": "Transforming lives since 2002",
+    "title": "We transform lives through",
+    "titleHighlight": "art, education",
+    "titleSuffix": "and culture",
+    "description": "More than 1,877 children and youth in Ciudad Bolívar find in our programs a path to a better future.",
     "cta_donate": "Donate Now",
     "cta_programs": "Explore Our Programs",
-    "scroll": "Discover more"
+    "scroll": "Discover more",
+    "statsChildren": "Children",
+    "statsYears": "Years",
+    "statsPrograms": "Programs",
+    "imageAlt": "Children from the Cigarra Foundation"
   },
   "impact": {
     "title": "Our Impact",
+    "subtitle": "Our impact",
     "children": "Children Served",
+    "childrenHelped": "Children Helped",
     "years": "Years of Service",
     "programs": "Active Programs",
-    "families": "Families Benefited"
+    "families": "Families Benefited",
+    "jobsGenerated": "Jobs Generated",
+    "yourContribution": "Your support makes this possible.",
+    "donateNow": "Donate now"
   },
   "programs": {
     "title": "Our Programs",
@@ -40,36 +54,260 @@
     "learnMore": "Learn more",
     "ageRange": "Ages",
     "schedule": "Schedule",
-    "relatedPrograms": "Related Programs"
+    "relatedPrograms": "Related Programs",
+    "activeCount": "14 active programs",
+    "featured": "Featured",
+    "andMore": "And {count} more programs:",
+    "orgName": "Cigarra Foundation",
+    "explore": "Explore",
+    "gridTitle": "Our",
+    "gridTitleHighlight": "Programs",
+    "gridSubtitle": "Each program is an open door to knowledge, creativity, and the comprehensive development of our beneficiaries.",
+    "heroImageAlt": "Children in Cigarra Foundation programs",
+    "ctaTitle": "Share your talent with those who need it most",
+    "ctaDescription": "Our programs need passionate people willing to share their knowledge. Your time and talent can open doors that change lives.",
+    "beVolunteer": "Be a Volunteer",
+    "howToHelpLink": "Learn how to help",
+    "information": "Information",
+    "supportProgram": "Support this program with your donation",
+    "donateNow": "Donate Now",
+    "otherPrograms": "Other Programs",
+    "defaultDescription": "Cigarra Foundation Program",
+    "defaultFullDescription": "This program is part of the 14 programs offered by the Cigarra Foundation to children and youth in Ciudad Bolivar, Bogota. Through educational and recreational activities, we seek to contribute to the comprehensive development of participants.",
+    "defaultAgeRange": "6-17 years",
+    "defaultSchedule": "Monday to Friday",
+    "stats": {
+      "programs": "Programs",
+      "children": "Children",
+      "years": "Years"
+    },
+    "names": {
+      "refuerzo-escolar": "Academic Tutoring",
+      "biblioteca": "Library",
+      "centro-comunitario": "Community Center",
+      "danza": "Dance",
+      "grupo-adultos-mayores": "Senior Citizens Group",
+      "ingles": "English",
+      "musica": "Music",
+      "primera-infancia": "Early Childhood",
+      "psicologia": "Psychology",
+      "recreacion-y-deportes": "Recreation & Sports",
+      "ropero": "Clothing Closet",
+      "escuela-de-padres": "Parents' School",
+      "teatro": "Theater",
+      "tecnologia": "Technology"
+    },
+    "descriptions": {
+      "refuerzo-escolar": "Academic support in math, reading, writing, and homework. We strengthen school learning.",
+      "biblioteca": "A reading and book lending space to foster reading habits and access to written culture.",
+      "centro-comunitario": "A meeting space for the community with cultural, educational, and social integration activities.",
+      "danza": "Folk and contemporary dance. Body expression, coordination, and cultural appreciation.",
+      "grupo-adultos-mayores": "Recreational, cultural, and wellness activities for senior members of the community.",
+      "ingles": "English language learning as a tool for accessing global opportunities.",
+      "musica": "Music education with string, wind, and percussion instruments. Artistic talent and discipline development.",
+      "primera-infancia": "Comprehensive care for children ages 0 to 5 with early stimulation, play, and family support.",
+      "psicologia": "Psychosocial support for children, youth, and families, strengthening emotional well-being.",
+      "recreacion-y-deportes": "Recreational and sports activities for physical development and healthy coexistence.",
+      "ropero": "Clothing and footwear donation and distribution for community families.",
+      "escuela-de-padres": "Workshops for parents and caregivers on parenting, communication, and school support.",
+      "teatro": "Performing arts as a means of expression, communication, and confidence building.",
+      "tecnologia": "Training in computer tools and digital skills for the 21st century."
+    },
+    "details": {
+      "musica": {
+        "ageRange": "6-17 years",
+        "schedule": "Monday to Friday, 2:00 PM - 5:00 PM",
+        "longDescription": "Our music program offers comprehensive training in string, wind, and percussion instruments. Students develop musical skills, discipline, and teamwork through individual and group practice. We have a musical ensemble that performs at community events and festivals."
+      },
+      "refuerzo-escolar": {
+        "ageRange": "6-17 years",
+        "schedule": "Monday to Friday, 2:00 PM - 4:00 PM",
+        "longDescription": "We provide personalized academic support in math, Spanish, science, and other subjects. Our tutors help students improve their school performance, develop study habits, and strengthen basic skills."
+      },
+      "biblioteca": {
+        "ageRange": "All ages",
+        "schedule": "Monday to Friday, 8:00 AM - 5:00 PM",
+        "longDescription": "Our community library is a space for reading, book lending, and reading promotion workshops. Beneficiaries can explore the world through reading, participate in book clubs, and activities that strengthen their reading comprehension skills."
+      },
+      "centro-comunitario": {
+        "ageRange": "All ages",
+        "schedule": "Monday to Friday, 8:00 AM - 6:00 PM",
+        "longDescription": "The Community Center is a meeting space for the community where cultural, educational, and social integration activities take place. It is the heart of the Foundation, where children, youth, adults, and seniors share and learn together."
+      },
+      "danza": {
+        "ageRange": "6-17 years",
+        "schedule": "Tuesday and Thursday, 3:00 PM - 5:00 PM",
+        "longDescription": "Our dance program offers training in folk and contemporary dance. Participants develop body expression, coordination, rhythm, and a deep appreciation for Colombian culture through movement and music."
+      },
+      "grupo-adultos-mayores": {
+        "ageRange": "60+ years",
+        "schedule": "Wednesday and Friday, 9:00 AM - 12:00 PM",
+        "longDescription": "We offer recreational, cultural, and wellness activities for senior members of the community. The program includes crafts, adapted physical activity, social gatherings, and support to improve their quality of life."
+      },
+      "ingles": {
+        "ageRange": "6-17 years",
+        "schedule": "Monday to Friday, 3:00 PM - 5:00 PM",
+        "longDescription": "The English program offers language learning as a tool for accessing global opportunities. Students develop comprehension, reading, writing, and conversation skills through dynamic and participatory methodologies."
+      },
+      "primera-infancia": {
+        "ageRange": "0-5 years",
+        "schedule": "Monday to Friday, 8:00 AM - 12:00 PM",
+        "longDescription": "We provide comprehensive care for children ages 0 to 5 with early stimulation, play, art, and family support. The program focuses on cognitive, motor, social, and emotional development during the first years of life."
+      },
+      "psicologia": {
+        "ageRange": "All ages",
+        "schedule": "Monday to Friday, 8:00 AM - 5:00 PM",
+        "longDescription": "Our psychology service offers psychosocial support for children, youth, and families. Through individual care, group workshops, and parent school, we strengthen emotional well-being and family relationships."
+      },
+      "recreacion-y-deportes": {
+        "ageRange": "6-17 years",
+        "schedule": "Monday to Friday, 2:00 PM - 5:00 PM",
+        "longDescription": "The recreation and sports program offers recreational and sports activities for physical development, healthy coexistence, and teamwork. Participants practice soccer, basketball, cooperative games, and outdoor activities."
+      },
+      "ropero": {
+        "ageRange": "All ages",
+        "schedule": "Saturdays, 8:00 AM - 12:00 PM",
+        "longDescription": "The community clothing closet receives, organizes, and distributes clothing and footwear donations for community families. This program ensures beneficiaries have access to clothing in good condition."
+      },
+      "escuela-de-padres": {
+        "ageRange": "Parents and caregivers",
+        "schedule": "Saturdays, 9:00 AM - 11:00 AM",
+        "longDescription": "The Parents' School offers workshops and meetings for parents and caregivers on positive parenting, effective communication, school support, and child development. We strengthen family bonds as the foundation of children's well-being."
+      },
+      "teatro": {
+        "ageRange": "6-17 years",
+        "schedule": "Monday and Wednesday, 3:00 PM - 5:00 PM",
+        "longDescription": "Our theater program uses the performing arts as a means of expression, communication, and confidence building. Participants learn acting, improvisation, and stage production, performing at community events."
+      },
+      "tecnologia": {
+        "ageRange": "8-17 years",
+        "schedule": "Monday to Friday, 2:00 PM - 4:00 PM",
+        "longDescription": "The technology program offers training in computer tools, basic programming, and digital skills for the 21st century. Students learn to use computers, safe internet practices, and office tools."
+      }
+    }
   },
   "stories": {
     "title": "Success Stories",
     "subtitle": "Meet those whose lives have been transformed through the Foundation",
     "readMore": "Read full story",
-    "achievement": "Achievement"
+    "achievement": "Achievement",
+    "heroTagline": "Transformed lives",
+    "statsYears": "Years",
+    "statsChildren": "Children Helped",
+    "statsCommitment": "Commitment",
+    "gridTitle": "Discover their stories",
+    "gridSubtitle": "Each one came through the Foundation and today they are examples of perseverance and commitment.",
+    "donationNudge": "These stories are possible thanks to people like you.",
+    "donateNow": "Donate now",
+    "donationNudgeSuffix": "and help write more success stories.",
+    "galleryTagline": "Inspiring moments",
+    "galleryTitle": "Impact in images",
+    "impactAlt": "Impact",
+    "ctaTitle": "Sponsor a child and write the next chapter",
+    "ctaDescription": "With the Sponsorship Plan, you support a child's growth, ensuring their access to education, art, and life-changing opportunities.",
+    "ctaSponsor": "Sponsor a Child",
+    "ctaVolunteer": "Be a Volunteer",
+    "ctaLabels": {
+      "planPadrino": "Sponsorship Plan",
+      "volunteering": "Volunteering",
+      "directImpact": "Direct impact"
+    },
+    "roles": {
+      "juanDavid": "Community leader",
+      "andrey": "Community leader",
+      "yuri": "Educator",
+      "anyie": "Professional"
+    },
+    "quotes": {
+      "juanDavid": "At the Foundation, I discovered that art can change entire communities.",
+      "andrey": "The values I learned at the Foundation guide my work every day.",
+      "yuri": "Today I return to the community as an educator to open the same doors.",
+      "anyie": "With effort and dedication, everything is possible. The Foundation showed me that."
+    },
+    "achievements": {
+      "juanDavid": "Cultural manager, social project leader",
+      "andrey": "Community leader, youth mentor",
+      "yuri": "Education graduate, active volunteer",
+      "anyie": "Business administration professional, mentor"
+    }
   },
   "donation": {
     "title": "Your Donation Transforms Lives",
     "subtitle": "With just $1.70 USD per day, a child receives nutritious meals",
-    "donateCOP": "Donate in COP",
-    "donateUSD": "Donate in USD",
+    "donateCOP": "Donate in Pesos (COP)",
+    "donateUSD": "Donate in Dollars (USD)",
     "monthly": "monthly",
     "impact": "Your impact",
-    "sponsorTitle": "Sponsor a Child",
+    "sponsorTitle": "Sponsorship Plan",
     "sponsorDescription": "Sponsor a child and follow their progress throughout the year",
     "volunteerTitle": "Volunteer",
     "volunteerDescription": "Donate your time and talent. We need volunteers in education, art, and sports",
     "nutritionTitle": "Nutrition Program",
-    "nutritionCost": "Daily cost per child"
+    "nutritionCost": "Daily cost per child",
+    "headlinePrefix": "There are many ways to",
+    "headlineHighlight": "change lives",
+    "headlineDescription": "It's not just about money. Your time, skills, and voice also transform communities.",
+    "raised": "raised",
+    "goal": "Goal",
+    "ofMonthlyGoal": "of monthly goal",
+    "internationalDonors": "International donors",
+    "trustSecure": "100% secure",
+    "trustTaxDeductible": "Tax deductible",
+    "trustTransparency": "Full transparency",
+    "paths": {
+      "donate": {
+        "title": "Donate",
+        "description": "Every peso transforms a life. Your donation funds education, meals, and supplies.",
+        "cta": "Donate Now"
+      },
+      "sponsor": {
+        "title": "Sponsor a Child",
+        "description": "The Sponsorship Plan covers a child's education + meals. Receive progress reports.",
+        "cta": "Learn About the Plan"
+      },
+      "volunteer": {
+        "title": "Be a Volunteer",
+        "description": "Share your time and talent. We're looking for teachers, artists, mentors, and organizers.",
+        "cta": "I Want to Help"
+      },
+      "share": {
+        "title": "Share",
+        "description": "Spread the word on social media. One more voice can open new doors.",
+        "cta": "Share"
+      }
+    }
   },
   "news": {
     "title": "News",
     "subtitle": "Stay updated on our activities and achievements",
     "readMore": "Read more",
     "latest": "Latest News",
+    "latestNews": "Latest News",
     "share": "Share",
     "relatedArticles": "Related Articles",
-    "noArticles": "No articles available"
+    "noArticles": "No articles available",
+    "reading": "Reading",
+    "previous": "Previous",
+    "next": "Next",
+    "moreNews": "More News",
+    "stayInformed": "Stay informed",
+    "more": "More",
+    "featured": "Featured",
+    "ctaCards": {
+      "donate": { "title": "Donate", "description": "Every peso transforms a life.", "cta": "Donate Now" },
+      "sponsor": { "title": "Sponsor", "description": "Support a child on their journey.", "cta": "Sponsorship Plan" },
+      "volunteer": { "title": "Volunteer", "description": "Share your time and talent.", "cta": "Be a Volunteer" },
+      "contact": { "title": "Contact Us", "description": "We want to hear from you.", "cta": "Write" }
+    },
+    "heroTagline": "Latest News",
+    "newsletter": {
+      "title": "Don't miss any updates",
+      "description": "Subscribe to our newsletter and receive the latest news, events, and achievements from the Cigarra Foundation directly in your inbox.",
+      "placeholder": "Your email address",
+      "subscribe": "Subscribe",
+      "noSpam": "No spam. You can unsubscribe at any time."
+    },
+    "fallbackContent": "Article content coming soon. We are working to bring you the most up-to-date information about our activities and achievements."
   },
   "about": {
     "title": "About Us",
@@ -78,7 +316,86 @@
     "history": "Our History",
     "team": "Our Team",
     "gallery": "Gallery",
-    "foundedIn": "Founded in"
+    "foundedIn": "Founded in",
+    "heroDescription": "More than two decades dedicated to transforming lives through art, education, and culture in one of Bogota's most underserved communities.",
+    "missionStatement": "To provide comprehensive care to children and youth in vulnerable conditions in Ciudad Bolivar, through education, art, culture, and recreation programs, promoting their personal and social development as agents of change in their community.",
+    "missionBadge": "More than 180 children currently served",
+    "visionStatement": "To be a leading organization in the social transformation of vulnerable communities in Colombia, recognized for the quality and impact of its educational, artistic, and cultural programs, and for the formation of citizens committed to social change.",
+    "visionBadge": "23 years and 14 programs transforming communities",
+    "timeline": {
+      "title": "Our Journey",
+      "subtitle": "More than two decades of history building dreams and transforming realities in Ciudad Bolivar.",
+      "2002": {
+        "title": "Foundation",
+        "description": "The Cigarra Foundation is born in Ciudad Bolivar to serve children in vulnerable conditions."
+      },
+      "2005": {
+        "title": "First Programs",
+        "description": "The academic tutoring, dance, and music programs are consolidated."
+      },
+      "2008": {
+        "title": "Growth",
+        "description": "Expansion to 8 programs including music, dance, and theater."
+      },
+      "2012": {
+        "title": "A Decade",
+        "description": "We celebrate 10 years with more than 100 children benefited annually."
+      },
+      "2015": {
+        "title": "Strategic Partnerships",
+        "description": "We establish partnerships with national and international organizations."
+      },
+      "2018": {
+        "title": "Innovation",
+        "description": "We incorporate technology, early childhood, and psychology programs."
+      },
+      "2020": {
+        "title": "Resilience",
+        "description": "Adaptation during the pandemic with virtual programs."
+      },
+      "2024": {
+        "title": "Present Day",
+        "description": "14 active programs serving more than 1,877 children and youth."
+      }
+    },
+    "values": {
+      "sectionTitle": "What defines us",
+      "title": "Our Values",
+      "love": {
+        "title": "Love",
+        "description": "Love as the fundamental driver of our work. Every action is born from genuine commitment to our children."
+      },
+      "education": {
+        "title": "Education",
+        "description": "We believe education is the most powerful tool to transform realities and build futures."
+      },
+      "community": {
+        "title": "Community",
+        "description": "We work hand in hand with families and the community to generate a true and lasting impact."
+      },
+      "creativity": {
+        "title": "Creativity",
+        "description": "Art and culture are vehicles of expression, healing, and empowerment for our youth."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "We manage resources responsibly, being accountable to our partners and benefactors."
+      },
+      "inclusion": {
+        "title": "Inclusion",
+        "description": "We open our doors to everyone without distinction, ensuring equal opportunities for every child and young person."
+      }
+    },
+    "teamSection": {
+      "title": "Meet our team",
+      "description": "More than 33 professionals committed to social transformation. Educators, artists, psychologists, and administrators who make our 14 programs possible.",
+      "cta": "See the Full Team"
+    },
+    "ctaTitle": "Join the Cigarra family",
+    "ctaDescription": "There are many ways to be part of this community that transforms lives. Donate, share your time, or simply join us on this journey.",
+    "ctaDonate": "Donate Now",
+    "ctaVolunteer": "Be a Volunteer",
+    "ctaTeam": "Our Team"
   },
   "contact": {
     "title": "Contact Us",
@@ -94,7 +411,23 @@
     "error": "Error sending message. Please try again.",
     "whatsapp": "Message us on WhatsApp",
     "address": "Address",
-    "hours": "Hours"
+    "hours": "Hours",
+    "contactUs": "Contact",
+    "heroTagline": "We're here for you",
+    "formTitle": "Send us a message",
+    "formSubtitle": "Fill out the form and we'll get back to you as soon as possible.",
+    "namePlaceholder": "Your full name",
+    "emailPlaceholder": "your@email.com",
+    "phonePlaceholder": "+57 300 000 0000",
+    "subjectPlaceholder": "Subject of your message",
+    "messagePlaceholder": "Write your message here...",
+    "successTitle": "Message sent",
+    "errorTitle": "Error",
+    "addressLine1": "Cra 18M #75-25 Sur",
+    "addressLine2": "Ciudad Bolívar, Bogotá D.C.",
+    "addressLine3": "Colombia",
+    "hoursWeekday": "Monday to Friday: 8:00 AM - 5:00 PM",
+    "hoursSaturday": "Saturdays: 8:00 AM - 12:00 PM"
   },
   "partners": {
     "title": "Our Partners",
@@ -108,18 +441,406 @@
     "nit": "Tax ID",
     "quickLinks": "Quick Links",
     "contactInfo": "Contact Information",
-    "followUs": "Follow Us"
+    "followUs": "Follow Us",
+    "navigation": "Navigation",
+    "programs": "Programs",
+    "contact": "Contact",
+    "support": "Support Us",
+    "supportDescription": "Your contribution transforms lives. Help more than 1,877 children build a better future.",
+    "slogan": "The resurgence of hope",
+    "description": "We build real opportunities for more than 1,877 children and youth in Ciudad Bolívar, Bogotá."
   },
   "common": {
     "loading": "Loading...",
     "error": "Something went wrong",
     "backToHome": "Back to home",
-    "language": "Language"
+    "language": "Language",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "close": "Close"
+  },
+  "breadcrumb": {
+    "home": "Home"
+  },
+  "planPadrino": {
+    "heroTagline": "Cigarra Foundation — Ciudad Bolívar, Bogotá",
+    "heroTitle": "Sponsor",
+    "heroDescription": "Sponsor a child in Ciudad Bolívar and transform their life through education, nutrition, and love. Your commitment gives them the chance to dream big.",
+    "viewPlans": "View Plans",
+    "howItWorks": "How It Works",
+    "stepByStep": "Step by Step",
+    "howItWorksTitle": "How the",
+    "howItWorksSubtitle": "In three simple steps, you can change a child's life forever.",
+    "sponsorshipPlans": "Sponsorship Plans",
+    "chooseLevel": "Choose your level of",
+    "commitment": "commitment",
+    "chooseLevelSubtitle": "Every plan includes education, meals, and personalized follow-up. Choose the one that best fits you.",
+    "mostPopular": "Most Popular",
+    "child": "child",
+    "children": "children",
+    "includes": "Includes",
+    "sponsorNow": "Sponsor Now",
+    "donateUSD": "Donate in USD (dollars)",
+    "planBenefits": "Plan Benefits",
+    "whatIncludes": "What your",
+    "sponsorship": "sponsorship includes",
+    "whatIncludesSubtitle": "Every sponsorship covers the child's comprehensive needs, ensuring their educational development and well-being.",
+    "testimonials": "Testimonials",
+    "testimonialQuote": "Thanks to the Sponsorship Plan, my son now dreams of becoming an engineer. The foundation gave him the tools and love he needed to believe in himself.",
+    "testimonialAuthor": "María Fernanda",
+    "testimonialRole": "Mother of beneficiary, Ciudad Bolívar",
+    "childrenHelped": "children helped",
+    "yearsTrajectory": "years of experience",
+    "activePrograms": "active programs",
+    "costPerChildPerDay": "COP/day per child",
+    "faqTitle": "We answer your",
+    "faqHighlight": "questions",
+    "faqSubtitle": "Everything you need to know about the Sponsorship Plan before taking the step.",
+    "changeLifeToday": "Change a life today",
+    "changeLifeDescription": "A child in Ciudad Bolívar is waiting for you. With your sponsorship, you give them access to education, meals, and the chance for a better future.",
+    "sponsorCOP": "Sponsor in COP",
+    "donateDollars": "Donate in USD",
+    "steps": {
+      "choose": { "title": "Choose your plan", "description": "Select the sponsorship plan that best fits your possibilities." },
+      "meet": { "title": "Meet your sponsored child", "description": "We introduce you to the child you'll support throughout their educational journey." },
+      "follow": { "title": "Follow their progress", "description": "Receive personalized reports on your sponsored child's academic progress and development." }
+    },
+    "tiers": {
+      "monthly": { "name": "Monthly Plan", "period": "month", "description": "Ideal to start your commitment to a child." },
+      "semester": { "name": "Semester Plan", "period": "semester", "description": "Continuous support for 6 months." },
+      "annual": { "name": "Annual Plan", "period": "year", "description": "A full year transforming a child's life." },
+      "gold": { "name": "Gold Plan", "period": "year", "description": "Double your impact by sponsoring 2 children." },
+      "platinum": { "name": "Platinum Plan", "period": "year", "description": "Triple impact: 3 children with a secured future." },
+      "ultra": { "name": "Ultra Plan", "period": "year", "description": "Maximum impact: transform the lives of 4 children." }
+    },
+    "tierIncludes": {
+      "educationComplete": "Complete educational program",
+      "nutritionDaily": "Daily nutritious meals",
+      "monthlyReport": "Monthly progress report",
+      "bimonthlyReports": "Bimonthly progress reports",
+      "childPhoto": "Updated photo of the child",
+      "quarterlyReports": "Quarterly progress reports",
+      "annualCertificate": "Annual impact certificate",
+      "personalizedLetter": "Personalized letter from the child",
+      "educationFor2": "Educational program for 2 children",
+      "nutritionFor2": "Daily nutritious meals for 2",
+      "lettersFrom2": "Personalized letters from each child",
+      "educationFor3": "Educational program for 3 children",
+      "nutritionFor3": "Daily nutritious meals for 3",
+      "eventInvitation": "Invitation to the foundation's annual event",
+      "educationFor4": "Educational program for 4 children",
+      "nutritionFor4": "Daily nutritious meals for 4",
+      "socialMediaRecognition": "Recognition on our social media"
+    },
+    "includedItems": {
+      "education": { "title": "Educational program", "description": "Academic reinforcement, workshops, and comprehensive pedagogical support for their education." },
+      "nutrition": { "title": "Daily nutritious meals", "description": "Balanced and nutritious food every day for $1.70 USD, ensuring their well-being." },
+      "reports": { "title": "Personalized progress reports", "description": "Detailed reports on the child's academic progress and comprehensive development." },
+      "certificate": { "title": "Annual impact certificate", "description": "Official document certifying your contribution and the impact generated in the child's life." },
+      "photos": { "title": "Photos and updates", "description": "Images and news from your sponsored child's daily life at the foundation." },
+      "letter": { "title": "Personalized letter from the child", "description": "A letter written by your sponsored child sharing their dreams and gratitude." }
+    },
+    "faqs": {
+      "taxDeductible": { "q": "Is my Sponsorship Plan donation tax deductible?", "a": "Yes. The Cigarra Foundation is a registered nonprofit with Tax ID 830.114.318-9. All donations are tax deductible in accordance with current Colombian tax regulations. We issue the corresponding certificate for your tax return." },
+      "cancel": { "q": "Can I cancel or change my plan at any time?", "a": "Yes, you can cancel or change your plan at any time. Simply contact us by email or WhatsApp, and we'll process the change. If you cancel, the child will continue to be served by the foundation with other available resources." },
+      "graduation": { "q": "What happens if the child I sponsor graduates or leaves the foundation?", "a": "If your sponsored child graduates or leaves the foundation, we'll notify you and assign a new child so you can continue your sponsorship. You can also choose to redirect your contribution to another foundation program." },
+      "payment": { "q": "How can I pay?", "a": "You can pay through our secure DonarOnline platform, which accepts credit cards, debit cards, and bank transfers. We also offer the option of donating in US dollars for international sponsors." },
+      "visit": { "q": "Can I personally meet the child I sponsor?", "a": "Yes, we organize annual events where sponsors can visit the foundation and meet their sponsored children. You can also arrange a visit on business days by contacting us in advance." },
+      "percentage": { "q": "What percentage of my donation goes directly to the child?", "a": "100% of your donation goes directly to the foundation's programs. Administrative expenses are covered by corporate partnerships. We publish annual financial management reports for full transparency." }
+    },
+    "trustBadges": {
+      "nit": "Tax ID 830.114.318-9",
+      "taxDeductible": "Tax deductible",
+      "transparency": "Full transparency"
+    }
+  },
+  "howToHelp": {
+    "heroTagline": "Cigarra Foundation",
+    "heroTitle": "Every Gesture",
+    "heroHighlight": "Counts",
+    "donateNow": "Donate Now",
+    "sponsorChild": "Sponsor a Child",
+    "impactCalculator": "Impact Calculator",
+    "impactTitle": "Your contribution today",
+    "impactHighlight": "transforms lives",
+    "impactSubtitle": "Select an amount and discover the real impact of your donation.",
+    "customAmount": "Enter a custom amount",
+    "presetAmount": "Choose a preset amount",
+    "customPlaceholder": "e.g. 75000",
+    "customImpact": "With ${amount} COP you can support the Cigarra Foundation's programs",
+    "presetImpact": "With {label} COP you can cover {impact}",
+    "impactOptions": {
+      "30000": "nutritious snacks for 4 children for a week",
+      "50000": "school supplies for 1 child for 1 month",
+      "100000": "nutritious meals for 1 child for a full month",
+      "200000": "complete education + meals program for 1 child"
+    },
+    "donateNowBtn": "Donate Now",
+    "donateUSD": "Donate in USD (dollars)",
+    "threeWays": "3 ways to",
+    "changeLives": "change lives",
+    "threeWaysSubtitle": "Choose the way that best suits you. Every gesture counts.",
+    "option": "Option",
+    "donate": "Donate",
+    "donateDescription": "Your donation funds education, meals, and supplies for children in Ciudad Bolívar.",
+    "sponsorTitle": "Sponsor a Child",
+    "sponsorDescription": "The Sponsorship Plan covers a child's education + meals. You receive progress reports.",
+    "sponsorStarting": "From $15 USD/month",
+    "learnPlanPadrino": "Learn About Sponsorship",
+    "beVolunteer": "Be a Volunteer",
+    "volunteerDescription": "Share your time and talent. We're looking for teachers, artists, mentors, and more.",
+    "wantToVolunteer": "I Want to Volunteer",
+    "planPadrinoSection": "Sponsorship Plan",
+    "changeChildLife": "Change a child's life",
+    "forever": "forever",
+    "changeChildDescription": "By sponsoring a child, you cover their educational and nutritional needs throughout the year. You receive personalized progress reports and become a fundamental part of their future.",
+    "yearsTransforming": "years transforming lives in Ciudad Bolívar",
+    "plansFromMonthly": "Plans from monthly to annual. View all plans.",
+    "viewDetailedPlans": "View detailed plans",
+    "sponsorChildToday": "Sponsor a Child Today",
+    "chooseImpact": "Choose your level of",
+    "impactLevel": "impact",
+    "chooseImpactSubtitle": "Every contribution transforms lives. Choose the plan that best fits you.",
+    "donateBtn": "Donate",
+    "popularBadge": "Most Popular",
+    "nutritionFuture": "Nutrition that",
+    "feedsFuture": "feeds the future",
+    "costPerChildPerDay": "COP per child per day",
+    "realCostMeal": "Real cost of a complete nutritious meal",
+    "snacksServed": "snacks served",
+    "thisQuarter": "This quarter in our nutrition programs",
+    "donateForNutrition": "Donate for Nutrition",
+    "feedChildDaily": "With just $1.70 USD per day you can feed a child",
+    "shareYour": "Share your",
+    "talent": "talent",
+    "volunteerWhatsApp": "I Want to Volunteer",
+    "volunteerWhatsAppDescription": "Message us on WhatsApp and we'll tell you how to participate",
+    "faqSubtitle": "We answer your questions so you can help with confidence.",
+    "finalCtaTitle": "Don't put off until tomorrow what you can do today",
+    "finalCtaDescription": "Every day without action is one less day in a child's life. Your contribution today builds tomorrow's future.",
+    "faqs": {
+      "howDonate": { "q": "How can I donate?", "a": "You can donate online through our secure DonarOnline platform, in Colombian pesos or US dollars. We also accept direct bank transfers." },
+      "taxDeductible": { "q": "Is my donation tax deductible?", "a": "Yes, the Cigarra Foundation is a registered nonprofit with Tax ID 830.114.318-9. Donations are tax deductible under current Colombian regulations." },
+      "transparency": { "q": "How do I know my donation is used correctly?", "a": "We publish annual management and financial reports. Sponsors receive periodic reports on their sponsored child's progress. We are committed to full transparency." },
+      "canVolunteer": { "q": "Can I volunteer?", "a": "Yes, we're looking for volunteers in education, art, sports, technology, and administrative management. Contact us via WhatsApp or email to learn about available opportunities." },
+      "whatIsPlanPadrino": { "q": "What is the Sponsorship Plan?", "a": "The Sponsorship Plan allows you to sponsor a specific child, cover their educational and nutritional needs, and track their progress throughout the academic year with personalized reports." }
+    },
+    "volunteerAreas": {
+      "education": { "title": "Education", "description": "Academic tutoring, reading workshops, homework help, and exam preparation." },
+      "artsCulture": { "title": "Arts & Culture", "description": "Music, dance, and theater. Creativity and artistic expression." },
+      "sports": { "title": "Sports & Recreation", "description": "Sports activities, cooperative games, and motor development." },
+      "management": { "title": "Management & Administration", "description": "Communications, design, accounting, legal advice, and technology." }
+    },
+    "planPadrinoIncludes": {
+      "education": "Complete monthly educational program",
+      "nutrition": "Daily nutritious meals ($1.70 USD/day)",
+      "reports": "Personalized progress reports",
+      "certificate": "Annual impact certificate"
+    },
+    "tierImpacts": {
+      "monthly": "Sponsor 1 child with education and meals for one month",
+      "semester": "Sponsor 1 child for 6 continuous months",
+      "annual": "Sponsor 1 child for a full academic year",
+      "gold": "Sponsor 2 children for a full academic year",
+      "platinum": "Sponsor 3 children for a full academic year",
+      "ultra": "Sponsor 4 children for a full academic year"
+    }
+  },
+  "volunteer": {
+    "heroTagline": "Cigarra Foundation",
+    "heroTitle": "Be a",
+    "heroHighlight": "Volunteer",
+    "heroDescription": "Share your time and talent with the children of Ciudad Bolívar. Your presence can change a child's life forever.",
+    "wantToVolunteer": "I Want to Volunteer",
+    "howToApply": "How to Apply",
+    "activeVolunteers": "50+ active volunteers",
+    "yearsExperience": "23+ years of experience",
+    "programsCount": "14 programs",
+    "whyVolunteer": "Why volunteer",
+    "reasonsToJoin": "Reasons to",
+    "joinHighlight": "join us",
+    "reasonsSubtitle": "Volunteering not only transforms children's lives, but also yours.",
+    "benefits": {
+      "impact": { "title": "Real community impact", "description": "You work directly with the children and families of Ciudad Bolívar, transforming lives in a tangible and lasting way." },
+      "skills": { "title": "Skill development", "description": "Strengthen your leadership, communication, and teamwork skills while sharing your knowledge." },
+      "network": { "title": "Network of committed people", "description": "Connect with a community of volunteers and professionals passionate about education and social change." }
+    },
+    "areasTitle": "Volunteer Areas",
+    "findYour": "Find your",
+    "place": "place",
+    "areasSubtitle": "We have room for all kinds of talents. Choose the area you're most passionate about.",
+    "areas": {
+      "education": {
+        "title": "Education",
+        "description": "Academic tutoring, reading workshops, homework help, and exam preparation. Help children reach their full academic potential.",
+        "activities": ["Academic tutoring", "Reading workshops", "Homework help", "Exam preparation"]
+      },
+      "arts": {
+        "title": "Arts & Culture",
+        "description": "Music, dance, and theater. Awaken children's creativity and artistic talent.",
+        "activities": ["Music", "Dance", "Theater"]
+      },
+      "sports": {
+        "title": "Sports & Recreation",
+        "description": "Sports activities, cooperative games, and motor development. Promote physical health and healthy coexistence.",
+        "activities": ["Sports activities", "Cooperative games", "Motor development"]
+      },
+      "management": {
+        "title": "Management & Administration",
+        "description": "Communications, design, accounting, legal advice, and technology. Support from behind the scenes to keep everything running.",
+        "activities": ["Communications", "Design", "Accounting", "Legal advice", "Technology"]
+      }
+    },
+    "requirementsTitle": "Requirements",
+    "requirementsHeading": "What you need to",
+    "requirementsHighlight": "be a volunteer",
+    "requirementsSubtitle": "You just need the desire to help and meet these basic requirements.",
+    "requirements": {
+      "age": "Be at least 18 years old",
+      "availability": "Minimum availability of 4 hours per week",
+      "passion": "Passion for education and social work",
+      "background": "Background check certificate (required by law)"
+    },
+    "requirementsNote": "The criminal background check is a mandatory legal requirement for working with minors in Colombia. The foundation will guide you through the process if needed.",
+    "testimonialsTitle": "Testimonials",
+    "theyAreAlready": "They are already",
+    "volunteers": "volunteers",
+    "testimonialsSubtitle": "Hear from those who already share their time and talent with us.",
+    "testimonials": {
+      "andrea": {
+        "name": "Andrea Morales",
+        "role": "Academic Tutoring Volunteer",
+        "quote": "Volunteering at the Cigarra Foundation has been the most enriching experience of my life. Watching children advance academically and gain confidence in themselves is priceless.",
+        "years": "3 years as a volunteer"
+      },
+      "carlos": {
+        "name": "Carlos Gutiérrez",
+        "role": "Music Volunteer",
+        "quote": "I share my love for music with the children of Ciudad Bolívar every Saturday. The joy on their faces when they manage to play a complete song is the best reward I could receive.",
+        "years": "2 years as a volunteer"
+      },
+      "laura": {
+        "name": "Laura Jiménez",
+        "role": "Communications Volunteer",
+        "quote": "From the communications team, I help more people learn about the foundation's work. Every story we tell inspires someone new to join this cause.",
+        "years": "1 year as a volunteer"
+      }
+    },
+    "processTitle": "Process",
+    "howTo": "How to",
+    "apply": "apply",
+    "processSubtitle": "In 3 simple steps, you can join our team of volunteers.",
+    "applicationSteps": {
+      "contact": { "title": "Contact us", "description": "Write to us on WhatsApp or email to tell us about your interest and availability. We'll respond within 24 hours." },
+      "interview": { "title": "Interview", "description": "We schedule a brief interview to get to know you better, understand your motivations, and assign you the most suitable area." },
+      "start": { "title": "Orientation and start", "description": "You participate in an orientation session where you'll learn about the foundation, the programs, and the children. Then, let's get to work!" }
+    },
+    "ctaTitle": "Your time can change a life",
+    "ctaDescription": "Every hour you share with the children of Ciudad Bolívar is a seed of hope. Join our team of volunteers and be part of the change.",
+    "writeWhatsApp": "Write us on WhatsApp",
+    "goToContact": "Go to Contact"
+  },
+  "corporate": {
+    "heroTagline": "Corporate Partnerships",
+    "heroTitle": "Corporate",
+    "heroHighlight": "Impact",
+    "heroDescription": "Your company can be part of the change. Together we build real opportunities for more than 1,877 children and youth in Ciudad Bolívar, Bogotá. Corporate social responsibility gains meaning when it transforms lives.",
+    "becomeAlly": "Become a Partner",
+    "allianceModels": "Partnership Models",
+    "esalRegistered": "Registered Nonprofit",
+    "taxDeductible": "Tax deductible",
+    "benefitsTitle": "Benefits for Your Company",
+    "whyPartner": "Why become a",
+    "ally": "partner",
+    "whyPartnerSubtitle": "Investing in social impact is investing in the future of your company and Colombia.",
+    "benefits": {
+      "csr": { "title": "Corporate Social Responsibility", "description": "Strengthen your company's CSR strategy with a partner that has over 23 years of real impact in one of Bogotá's most vulnerable communities." },
+      "tax": { "title": "Tax Benefits", "description": "Donations to the Cigarra Foundation are tax deductible under the Colombian Tax Code. Tax ID: 830.114.318-9. Donation certificate included." },
+      "measurable": { "title": "Measurable and Reportable Impact", "description": "Receive detailed reports on the impact of your social investment: number of beneficiaries, outcome indicators, and photographic evidence." },
+      "brand": { "title": "Brand Strengthening", "description": "Associate your brand with a high social impact cause. Visibility across our channels, events, and annual reports reaching 1,877+ beneficiaries and their families." }
+    },
+    "modelsTitle": "Partnership Models",
+    "waysTo": "Ways to",
+    "collaborate": "collaborate",
+    "modelsSubtitle": "We offer different partnership models to adapt to each company's needs and objectives.",
+    "models": {
+      "donation": { "title": "Corporate Donation", "description": "Monetary contributions with an official donation certificate for tax deduction. Flexible amounts based on your company's capacity." },
+      "volunteering": { "title": "Corporate Volunteering", "description": "Organize volunteer days for your employees. Team building activities with real social impact in education, art, and recreation." },
+      "sponsorship": { "title": "Program Sponsorship", "description": "Sponsor one of our 14 active programs: education, music, dance, theater, sports, technology, library, and more." },
+      "inKind": { "title": "In-Kind Donation", "description": "Contribute school supplies, tech equipment, musical instruments, food, furniture, or sports equipment." },
+      "cobranding": { "title": "Co-branding & Partnerships", "description": "Strategic partnerships for mutual visibility. Your brand featured at our events, social media, printed materials, and impact reports." }
+    },
+    "consult": "Inquire",
+    "esalTitle": "Nonprofit Status",
+    "esalHeading": "Certified",
+    "esalHighlight": "Nonprofit Organization",
+    "esalDescription": "The Cigarra Foundation is a duly registered and regulated Nonprofit Organization (ESAL) under Colombian law. An ESAL is an organization whose main purpose is not profit, but the development of social, educational, and cultural activities of public interest.",
+    "esalLegalTitle": "Nonprofit Legal Framework",
+    "esalLegalDescription": "Nonprofit organizations in Colombia are regulated by Decree 2150 of 1995, Law 22 of 1987, and the Tax Code. The Cigarra Foundation complies with all requirements for permanence, renewal, and reporting before the Bogotá Chamber of Commerce and DIAN, guaranteeing the full legality of donations made by companies and individuals.",
+    "esalBadges": {
+      "registered": { "label": "Registered Nonprofit", "description": "Nonprofit Organization" },
+      "active": { "label": "23+ Years Active", "description": "Since 2002 in Ciudad Bolívar" },
+      "transparent": { "label": "Transparent Finances", "description": "Annual audits" },
+      "deductible": { "label": "Deductible Donations", "description": "Tax Code" }
+    },
+    "impactTitle": "Our Impact in Numbers",
+    "impactHeading": "Results that",
+    "impactHighlight": "speak for themselves",
+    "impactSubtitle": "Over two decades of transparent and measurable work. These are the numbers that back our mission.",
+    "impactNumbers": {
+      "children": "Children Helped",
+      "years": "Years of Service",
+      "programs": "Active Programs",
+      "jobs": "Jobs Generated",
+      "families": "Families Benefited",
+      "allies": "Corporate Partners"
+    },
+    "partnersTitle": "Partner Network",
+    "companiesTrust": "Companies that",
+    "trustHighlight": "trust us",
+    "partnersSubtitle": "We have the support of companies and organizations committed to the social development of Ciudad Bolívar. Our corporate partners are a fundamental part of the impact we generate.",
+    "platinumAllies": "Platinum Partners",
+    "goldAllies": "Gold Partners",
+    "silverAllies": "Silver Partners",
+    "transformingAlliances": "Transforming Partnerships",
+    "transformingDescription": "Over more than 23 years, we have built strong partnerships with private sector companies, international organizations, and government institutions. Each partner contributes uniquely to the well-being of our beneficiaries.",
+    "alliancesList": {
+      "corporateAllies": "More than 8 active corporate partners",
+      "nationalInternational": "Partnerships with national and international organizations",
+      "educationalAgreements": "Agreements with educational institutions",
+      "governmentCollaboration": "Collaboration with local government entities"
+    },
+    "nextAlly": "Your company can be the next partner",
+    "nextAllySubtitle": "Join our network of corporate partners and generate real impact.",
+    "contactUs": "Contact Us",
+    "corporateContact": "Corporate Contact",
+    "letsTalk": "Let's talk about",
+    "yourAlliance": "your partnership",
+    "contactSubtitle": "Our team is ready to design a partnership tailored to your company. Contact us and let's build a better future together.",
+    "phone": "Phone",
+    "address": "Address",
+    "writeNow": "Write now",
+    "writeWhatsApp": "Write us on WhatsApp",
+    "responseGuarantee": "Guaranteed response within 24 business hours",
+    "ctaTitle": "Your company can change a child's story",
+    "ctaDescription": "Every corporate partnership multiplies the impact. With your company's support, more children and youth in Ciudad Bolívar can access education, art, culture, and real development opportunities.",
+    "contactWhatsApp": "Contact via WhatsApp",
+    "contactForm": "Contact Form",
+    "donateAsIndividual": "Donate as Individual",
+    "registeredAtChamber": "at the Bogotá Chamber of Commerce",
+    "esalLegal": {
+      "nit": "Tax ID: 830.114.318-9",
+      "registeredChamber": "Registered at the Bogotá Chamber of Commerce",
+      "activeSince": "Active since 2002 - Over 23 years of continuous service",
+      "annualAudits": "Annual audits and full financial transparency",
+      "taxDeductible": "Deductible donations under the Colombian Tax Code",
+      "compliance": "Compliance with Colombian nonprofit regulations"
+    }
   },
   "seo": {
     "home": {
       "title": "Cigarra Foundation - Transforming Lives in Ciudad Bolívar",
-      "description": "Since 2002, the Cigarra Foundation has served 180+ children with education, art, and culture programs in Ciudad Bolívar, Bogotá."
+      "description": "Since 2002, the Cigarra Foundation has served over 180 children with education, art, and culture programs in Ciudad Bolívar, Bogotá."
     },
     "about": {
       "title": "About Us",

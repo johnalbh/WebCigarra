@@ -29,12 +29,10 @@ function formatCOP(amount: number) {
   }).format(amount);
 }
 
-const engagementPaths = [
+const pathConfigs = [
   {
     icon: HiHeart,
-    title: 'Dona',
-    description: 'Cada peso transforma una vida. Tu donación financia educación, alimentación y materiales.',
-    cta: 'Dona Ahora',
+    key: 'donate' as const,
     href: DONATION_LINK_COP,
     external: true,
     color: 'bg-red-500',
@@ -42,9 +40,7 @@ const engagementPaths = [
   },
   {
     icon: HiUserGroup,
-    title: 'Apadrina un Niño',
-    description: 'El Plan Padrino cubre educación + alimentación de un niño. Recibe reportes de su progreso.',
-    cta: 'Conoce el Plan',
+    key: 'sponsor' as const,
     href: '/plan-padrino',
     external: false,
     color: 'bg-primary-500',
@@ -52,9 +48,7 @@ const engagementPaths = [
   },
   {
     icon: HiHand,
-    title: 'Sé Voluntario',
-    description: 'Comparte tu tiempo y talento. Buscamos profesores, artistas, mentores y gestores.',
-    cta: 'Quiero Ayudar',
+    key: 'volunteer' as const,
     href: '/voluntariado',
     external: false,
     color: 'bg-accent-500',
@@ -62,9 +56,7 @@ const engagementPaths = [
   },
   {
     icon: HiShare,
-    title: 'Comparte',
-    description: 'Difunde nuestra labor en tus redes. Una voz más puede abrir nuevas puertas.',
-    cta: 'Compartir',
+    key: 'share' as const,
     href: 'https://wa.me/?text=Conoce%20la%20Fundación%20Cigarra%20y%20su%20increíble%20labor%20con%20niños%20en%20Ciudad%20Bolívar%20🦗%20https://cigarra.org',
     external: true,
     color: 'bg-green-500',
@@ -98,18 +90,18 @@ export default function DonationCTA() {
           </motion.div>
 
           <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
-            Hay muchas formas de <span className="text-accent-400">cambiar vidas</span>
+            {t('headlinePrefix')} <span className="text-accent-400">{t('headlineHighlight')}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-primary-200/80">
-            No se trata solo de dinero. Tu tiempo, tus habilidades y tu voz también transforman comunidades.
+            {t('headlineDescription')}
           </p>
 
           {/* Progress bar */}
           <div className="mx-auto mt-10 max-w-lg">
             <div className="mb-2 flex items-center justify-between text-sm text-primary-200/70">
-              <span>{formatCOP(CURRENT_AMOUNT)} recaudados</span>
+              <span>{formatCOP(CURRENT_AMOUNT)} {t('raised')}</span>
               <span className="font-semibold text-white">
-                Meta: {formatCOP(MONTHLY_GOAL)}
+                {t('goal')}: {formatCOP(MONTHLY_GOAL)}
               </span>
             </div>
             <div className="h-2.5 overflow-hidden rounded-full bg-white/10">
@@ -121,7 +113,7 @@ export default function DonationCTA() {
               />
             </div>
             <p className="mt-2 text-sm text-primary-300/50">
-              {Math.round((CURRENT_AMOUNT / MONTHLY_GOAL) * 100)}% de la meta mensual
+              {Math.round((CURRENT_AMOUNT / MONTHLY_GOAL) * 100)}% {t('ofMonthlyGoal')}
             </p>
           </div>
         </div>
@@ -131,18 +123,21 @@ export default function DonationCTA() {
       <section className="section-padding">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {engagementPaths.map((path, i) => {
+            {pathConfigs.map((path, i) => {
               const Icon = path.icon;
+              const title = t(`paths.${path.key}.title`);
+              const description = t(`paths.${path.key}.description`);
+              const cta = t(`paths.${path.key}.cta`);
               const btnClass = "group/btn inline-flex items-center gap-2 rounded-full bg-primary-500 px-5 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-primary-600";
 
               return (
-                <ScrollReveal key={path.title} delay={i * 0.1}>
+                <ScrollReveal key={path.key} delay={i * 0.1}>
                   <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white transition-all duration-300 hover:border-gray-200 hover:-translate-y-1">
                     {/* Image */}
                     <div className="relative h-44 overflow-hidden">
                       <Image
                         src={path.image}
-                        alt={path.title}
+                        alt={title}
                         fill
                         sizes="(max-width: 768px) 100vw, 25vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -158,10 +153,10 @@ export default function DonationCTA() {
                     {/* Content */}
                     <div className="flex flex-1 flex-col p-5">
                       <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
-                        {path.title}
+                        {title}
                       </h3>
                       <p className="mb-5 flex-1 text-sm leading-relaxed text-gray-500">
-                        {path.description}
+                        {description}
                       </p>
 
                       {path.external ? (
@@ -171,7 +166,7 @@ export default function DonationCTA() {
                           rel="noopener noreferrer"
                           className={btnClass}
                         >
-                          {path.cta}
+                          {cta}
                           <HiArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
                         </a>
                       ) : (
@@ -179,7 +174,7 @@ export default function DonationCTA() {
                           href={path.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}
                           className={btnClass}
                         >
-                          {path.cta}
+                          {cta}
                           <HiArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
                         </Link>
                       )}
@@ -193,7 +188,7 @@ export default function DonationCTA() {
           {/* USD option */}
           <ScrollReveal>
             <div className="mt-10 text-center">
-              <p className="mb-3 text-sm text-gray-400">International donors</p>
+              <p className="mb-3 text-sm text-gray-400">{t('internationalDonors')}</p>
               <a
                 href={DONATION_LINK_USD}
                 target="_blank"
@@ -210,15 +205,15 @@ export default function DonationCTA() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              100% seguro
+              {t('trustSecure')}
             </span>
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-primary-400" />
-              Deducible de impuestos
+              {t('trustTaxDeductible')}
             </span>
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-400" />
-              Transparencia total
+              {t('trustTransparency')}
             </span>
           </div>
         </div>

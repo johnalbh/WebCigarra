@@ -18,119 +18,36 @@ import {
 } from 'react-icons/hi';
 import { Link } from '@/i18n/routing';
 import HeroWaves from '@/components/shared/HeroWaves';
+import type { IconType } from 'react-icons';
 
-/* ---------- timeline data ---------- */
-const timeline = [
-  {
-    year: '2002',
-    title: 'Fundacion',
-    description:
-      'Nace la Fundacion Cigarra en Ciudad Bolivar para atender ninos en condicion de vulnerabilidad.',
-    icon: HiSparkles,
-    color: 'from-primary-500 to-primary-700',
-  },
-  {
-    year: '2005',
-    title: 'Primeros Programas',
-    description:
-      'Se consolidan los programas de refuerzo escolar y artes plasticas.',
-    icon: HiAcademicCap,
-    color: 'from-accent-400 to-accent-600',
-  },
-  {
-    year: '2008',
-    title: 'Crecimiento',
-    description:
-      'Ampliacion a 8 programas incluyendo musica, danza y teatro.',
-    icon: HiStar,
-    color: 'from-primary-400 to-primary-600',
-  },
-  {
-    year: '2012',
-    title: 'Una Decada',
-    description:
-      'Celebramos 10 anos con mas de 100 ninos beneficiados anualmente.',
-    icon: HiHeart,
-    color: 'from-rose-400 to-rose-600',
-  },
-  {
-    year: '2015',
-    title: 'Alianzas Estrategicas',
-    description:
-      'Establecemos alianzas con organizaciones nacionales e internacionales.',
-    icon: HiGlobeAlt,
-    color: 'from-accent-500 to-accent-700',
-  },
-  {
-    year: '2018',
-    title: 'Innovacion',
-    description:
-      'Incorporamos programas de tecnologia y emprendimiento.',
-    icon: HiSparkles,
-    color: 'from-primary-500 to-primary-700',
-  },
-  {
-    year: '2020',
-    title: 'Resiliencia',
-    description:
-      'Adaptacion durante la pandemia con programas virtuales.',
-    icon: HiUserGroup,
-    color: 'from-emerald-400 to-emerald-600',
-  },
-  {
-    year: '2024',
-    title: 'Actualidad',
-    description:
-      '14 programas activos atendiendo a más de 1.877 niños y jóvenes.',
-    icon: HiAcademicCap,
-    color: 'from-accent-400 to-accent-600',
-  },
+/* ---------- timeline config (non-translatable parts) ---------- */
+const timelineConfig: {
+  year: string;
+  icon: IconType;
+  color: string;
+}[] = [
+  { year: '2002', icon: HiSparkles, color: 'from-primary-500 to-primary-700' },
+  { year: '2005', icon: HiAcademicCap, color: 'from-accent-400 to-accent-600' },
+  { year: '2008', icon: HiStar, color: 'from-primary-400 to-primary-600' },
+  { year: '2012', icon: HiHeart, color: 'from-rose-400 to-rose-600' },
+  { year: '2015', icon: HiGlobeAlt, color: 'from-accent-500 to-accent-700' },
+  { year: '2018', icon: HiSparkles, color: 'from-primary-500 to-primary-700' },
+  { year: '2020', icon: HiUserGroup, color: 'from-emerald-400 to-emerald-600' },
+  { year: '2024', icon: HiAcademicCap, color: 'from-accent-400 to-accent-600' },
 ];
 
-/* ---------- values data ---------- */
-const values = [
-  {
-    icon: HiHeart,
-    title: 'Amor',
-    description:
-      'El amor como motor fundamental de nuestra labor. Cada accion nace del compromiso genuino con nuestros ninos.',
-    gradient: 'from-rose-500 to-pink-600',
-  },
-  {
-    icon: HiAcademicCap,
-    title: 'Educacion',
-    description:
-      'Creemos que la educacion es la herramienta mas poderosa para transformar realidades y construir futuros.',
-    gradient: 'from-primary-500 to-primary-700',
-  },
-  {
-    icon: HiUserGroup,
-    title: 'Comunidad',
-    description:
-      'Trabajamos de la mano con las familias y la comunidad para generar un impacto verdadero y duradero.',
-    gradient: 'from-accent-500 to-amber-600',
-  },
-  {
-    icon: HiSparkles,
-    title: 'Creatividad',
-    description:
-      'El arte y la cultura son vehiculos de expresion, sanacion y empoderamiento para nuestros jovenes.',
-    gradient: 'from-violet-500 to-purple-600',
-  },
-  {
-    icon: HiGlobeAlt,
-    title: 'Transparencia',
-    description:
-      'Gestionamos los recursos con responsabilidad, rindiendo cuentas a nuestros aliados y benefactores.',
-    gradient: 'from-emerald-500 to-teal-600',
-  },
-  {
-    icon: HiEye,
-    title: 'Inclusion',
-    description:
-      'Abrimos las puertas a todos sin distincion, garantizando igualdad de oportunidades para cada nino y joven.',
-    gradient: 'from-sky-500 to-cyan-600',
-  },
+/* ---------- values config (non-translatable parts) ---------- */
+const valuesConfig: {
+  key: string;
+  icon: IconType;
+  gradient: string;
+}[] = [
+  { key: 'love', icon: HiHeart, gradient: 'from-rose-500 to-pink-600' },
+  { key: 'education', icon: HiAcademicCap, gradient: 'from-primary-500 to-primary-700' },
+  { key: 'community', icon: HiUserGroup, gradient: 'from-accent-500 to-amber-600' },
+  { key: 'creativity', icon: HiSparkles, gradient: 'from-violet-500 to-purple-600' },
+  { key: 'transparency', icon: HiGlobeAlt, gradient: 'from-emerald-500 to-teal-600' },
+  { key: 'inclusion', icon: HiEye, gradient: 'from-sky-500 to-cyan-600' },
 ];
 
 /* ---------- animated timeline line ---------- */
@@ -158,9 +75,13 @@ function TimelineLine() {
 function TimelineNode({
   item,
   index,
+  title,
+  description,
 }: {
-  item: (typeof timeline)[number];
+  item: (typeof timelineConfig)[number];
   index: number;
+  title: string;
+  description: string;
 }) {
   const isEven = index % 2 === 0;
   const Icon = item.icon;
@@ -205,10 +126,10 @@ function TimelineNode({
               </span>
 
               <h3 className="mb-2 font-heading text-xl font-bold text-gray-900">
-                {item.title}
+                {title}
               </h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                {item.description}
+                {description}
               </p>
             </div>
           </ScrollReveal>
@@ -259,9 +180,7 @@ export default function AboutPage() {
               transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
               className="mt-6 max-w-xl text-lg leading-relaxed text-primary-200/80"
             >
-              Mas de dos decadas dedicadas a transformar vidas a traves del arte,
-              la educacion y la cultura en una de las comunidades mas necesitadas
-              de Bogota.
+              {t('heroDescription')}
             </motion.p>
           </div>
 
@@ -324,11 +243,7 @@ export default function AboutPage() {
                   </div>
 
                   <p className="text-lg leading-relaxed text-gray-700">
-                    Brindar atencion integral a ninos, ninas y jovenes en
-                    condicion de vulnerabilidad de Ciudad Bolivar, a traves de
-                    programas de educacion, arte, cultura y recreacion,
-                    promoviendo su desarrollo personal y social como agentes de
-                    cambio en su comunidad.
+                    {t('missionStatement')}
                   </p>
 
                   {/* Decorative accent */}
@@ -337,7 +252,7 @@ export default function AboutPage() {
                       <HiHeart className="h-5 w-5 text-primary-600" />
                     </div>
                     <p className="text-sm font-medium text-primary-700">
-                      Mas de 180 ninos atendidos actualmente
+                      {t('missionBadge')}
                     </p>
                   </div>
                 </div>
@@ -370,11 +285,7 @@ export default function AboutPage() {
                   </div>
 
                   <p className="text-lg leading-relaxed text-gray-700">
-                    Ser una organizacion referente en la transformacion social de
-                    comunidades vulnerables en Colombia, reconocida por la
-                    calidad e impacto de sus programas educativos, artisticos y
-                    culturales, y por la formacion de ciudadanos comprometidos
-                    con el cambio social.
+                    {t('visionStatement')}
                   </p>
 
                   {/* Decorative accent */}
@@ -383,7 +294,7 @@ export default function AboutPage() {
                       <HiGlobeAlt className="h-5 w-5 text-accent-600" />
                     </div>
                     <p className="text-sm font-medium text-accent-700">
-                      23 años y 14 programas transformando comunidades
+                      {t('visionBadge')}
                     </p>
                   </div>
                 </div>
@@ -417,7 +328,7 @@ export default function AboutPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="mb-4 inline-block rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-primary-700">
-                Nuestra Trayectoria
+                {t('timeline.title')}
               </span>
               <h2 className="mb-4 font-heading text-3xl font-bold text-gray-900 md:text-5xl">
                 {t('history')}
@@ -428,8 +339,7 @@ export default function AboutPage() {
                 <span className="h-1 w-8 rounded-full bg-primary-300" />
               </div>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
-                Mas de dos decadas de historia construyendo suenos y
-                transformando realidades en Ciudad Bolivar.
+                {t('timeline.subtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -438,8 +348,14 @@ export default function AboutPage() {
           <div className="relative">
             <TimelineLine />
 
-            {timeline.map((item, i) => (
-              <TimelineNode key={item.year} item={item} index={i} />
+            {timelineConfig.map((item, i) => (
+              <TimelineNode
+                key={item.year}
+                item={item}
+                index={i}
+                title={t(`timeline.${item.year}.title`)}
+                description={t(`timeline.${item.year}.description`)}
+              />
             ))}
           </div>
         </div>
@@ -451,10 +367,10 @@ export default function AboutPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="mb-4 inline-block rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-accent-700">
-                Lo que nos define
+                {t('values.sectionTitle')}
               </span>
               <h2 className="mb-4 font-heading text-3xl font-bold text-gray-900 md:text-5xl">
-                Nuestros Valores
+                {t('values.title')}
               </h2>
               <div className="mx-auto mt-4 flex items-center justify-center gap-2">
                 <span className="h-1 w-8 rounded-full bg-accent-300" />
@@ -465,10 +381,10 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {values.map((value) => {
+            {valuesConfig.map((value) => {
               const Icon = value.icon;
               return (
-                <StaggerItem key={value.title}>
+                <StaggerItem key={value.key}>
                   <div className="group h-full rounded-xl border border-gray-100 bg-white p-8 transition-colors duration-300 hover:border-gray-200">
                     {/* Icon */}
                     <div
@@ -478,11 +394,11 @@ export default function AboutPage() {
                     </div>
 
                     <h3 className="mb-3 font-heading text-xl font-bold text-gray-900">
-                      {value.title}
+                      {t(`values.${value.key}.title`)}
                     </h3>
 
                     <p className="text-sm leading-relaxed text-gray-600">
-                      {value.description}
+                      {t(`values.${value.key}.description`)}
                     </p>
                   </div>
                 </StaggerItem>
@@ -503,17 +419,17 @@ export default function AboutPage() {
                     {t('team')}
                   </span>
                   <h2 className="mb-4 font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                    Conoce a nuestro equipo
+                    {t('teamSection.title')}
                   </h2>
                   <p className="mb-6 text-lg leading-relaxed text-gray-600">
-                    Mas de 33 profesionales comprometidos con la transformacion social. Educadores, artistas, psicologos y administradores que hacen posible nuestros 14 programas.
+                    {t('teamSection.description')}
                   </p>
                   <Link
                     href={'/equipo' as '/equipo'}
                     className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-primary-600"
                   >
                     <HiUserGroup className="h-5 w-5" />
-                    Ver Todo el Equipo
+                    {t('teamSection.cta')}
                   </Link>
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
@@ -541,12 +457,10 @@ export default function AboutPage() {
             </div>
 
             <h2 className="mb-6 font-heading text-3xl font-bold text-white md:text-4xl">
-              Unite a la familia Cigarra
+              {t('ctaTitle')}
             </h2>
             <p className="mx-auto mb-10 max-w-2xl text-lg text-white/80">
-              Hay muchas formas de ser parte de esta comunidad que transforma
-              vidas. Dona, comparte tu tiempo o simplemente acompananos en
-              este camino.
+              {t('ctaDescription')}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <a
@@ -556,20 +470,20 @@ export default function AboutPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-heading text-sm font-bold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
               >
                 <HiHeart className="h-5 w-5" />
-                Dona Ahora
+                {t('ctaDonate')}
               </a>
               <Link
                 href={'/voluntariado' as '/voluntariado'}
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 <HiUserGroup className="h-5 w-5" />
-                Se Voluntario
+                {t('ctaVolunteer')}
               </Link>
               <Link
                 href={'/equipo' as '/equipo'}
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Nuestro Equipo
+                {t('ctaTeam')}
               </Link>
             </div>
           </ScrollReveal>

@@ -9,82 +9,65 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import { useState, useRef, useEffect } from 'react';
 import {
   HiArrowLeft, HiClock, HiUsers, HiArrowRight,
-  HiMusicNote, HiPencil, HiBookOpen, HiSparkles,
-  HiCube, HiLightBulb, HiGlobe, HiHeart,
-  HiCamera, HiStar, HiAcademicCap,
-  HiColorSwatch, HiDesktopComputer, HiChevronLeft, HiChevronRight,
+  HiMusicNote, HiBookOpen, HiSparkles,
+  HiCube, HiGlobe, HiHeart,
+  HiStar, HiAcademicCap, HiHome, HiSun,
+  HiDesktopComputer, HiChevronLeft, HiChevronRight,
+  HiUserGroup, HiShoppingBag,
 } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
+import { IconType } from 'react-icons';
 
-const allPrograms = [
-  { name: 'Música', slug: 'musica', icon: HiMusicNote, color: '#E74C3C' },
-  { name: 'Artes Plásticas', slug: 'artes-plasticas', icon: HiPencil, color: '#3498DB' },
-  { name: 'Refuerzo Escolar', slug: 'refuerzo-escolar', icon: HiBookOpen, color: '#2ECC71' },
-  { name: 'Danza', slug: 'danza', icon: HiSparkles, color: '#F39C12' },
-  { name: 'Teatro', slug: 'teatro', icon: HiCube, color: '#9B59B6' },
-  { name: 'Emprendimiento', slug: 'emprendimiento', icon: HiLightBulb, color: '#1ABC9C' },
-  { name: 'Inglés', slug: 'ingles', icon: HiGlobe, color: '#E67E22' },
-  { name: 'Valores y Liderazgo', slug: 'valores-y-liderazgo', icon: HiHeart, color: '#E91E63' },
-  { name: 'Fotografía', slug: 'fotografia', icon: HiCamera, color: '#00BCD4' },
-  { name: 'Recreación', slug: 'recreacion', icon: HiStar, color: '#FF5722' },
-  { name: 'Escuela de Padres', slug: 'escuela-de-padres', icon: HiUsers, color: '#4CAF50' },
-  { name: 'Pre-ICFES', slug: 'pre-icfes', icon: HiAcademicCap, color: '#673AB7' },
-  { name: 'Manualidades', slug: 'manualidades', icon: HiColorSwatch, color: '#FF9800' },
-  { name: 'Sistemas', slug: 'sistemas', icon: HiDesktopComputer, color: '#2196F3' },
+interface ProgramConfig {
+  slug: string;
+  icon: IconType;
+  color: string;
+}
+
+const allPrograms: ProgramConfig[] = [
+  { slug: 'refuerzo-escolar', icon: HiAcademicCap, color: '#2ECC71' },
+  { slug: 'biblioteca', icon: HiBookOpen, color: '#3498DB' },
+  { slug: 'centro-comunitario', icon: HiHome, color: '#1ABC9C' },
+  { slug: 'danza', icon: HiSparkles, color: '#F39C12' },
+  { slug: 'grupo-adultos-mayores', icon: HiUsers, color: '#E91E63' },
+  { slug: 'ingles', icon: HiGlobe, color: '#E67E22' },
+  { slug: 'musica', icon: HiMusicNote, color: '#E74C3C' },
+  { slug: 'primera-infancia', icon: HiSun, color: '#FF9800' },
+  { slug: 'psicologia', icon: HiHeart, color: '#673AB7' },
+  { slug: 'recreacion-y-deportes', icon: HiStar, color: '#FF5722' },
+  { slug: 'ropero', icon: HiShoppingBag, color: '#00BCD4' },
+  { slug: 'escuela-de-padres', icon: HiUserGroup, color: '#4CAF50' },
+  { slug: 'teatro', icon: HiCube, color: '#9B59B6' },
+  { slug: 'tecnologia', icon: HiDesktopComputer, color: '#2196F3' },
 ];
 
 const programImageMap: Record<string, string> = {
-  'musica': '/images/programs/musica.jpg',
-  'artes-plasticas': '/images/programs/artes-plasticas.jpg',
   'refuerzo-escolar': '/images/programs/refuerzo-escolar.jpg',
+  'biblioteca': '/images/programs/biblioteca.jpg',
+  'centro-comunitario': '/images/programs/centro-comunitario.jpg',
   'danza': '/images/programs/danza.jpg',
-  'teatro': '/images/programs/teatro.jpg',
-  'emprendimiento': '/images/programs/emprendimiento.jpg',
+  'grupo-adultos-mayores': '/images/programs/grupo-adultos-mayores.jpg',
   'ingles': '/images/programs/ingles.jpg',
-  'valores-y-liderazgo': '/images/programs/valores-liderazgo.jpg',
-  'fotografia': '/images/programs/fotografia.jpg',
-  'recreacion': '/images/programs/recreacion.jpg',
+  'musica': '/images/programs/musica.jpg',
+  'primera-infancia': '/images/programs/primera-infancia.jpg',
+  'psicologia': '/images/programs/psicologia.jpg',
+  'recreacion-y-deportes': '/images/programs/recreacion-y-deportes.jpg',
+  'ropero': '/images/programs/ropero.jpg',
   'escuela-de-padres': '/images/programs/escuela-padres.jpg',
-  'pre-icfes': '/images/programs/pre-icfes.jpg',
-  'manualidades': '/images/programs/manualidades.jpg',
-  'sistemas': '/images/programs/sistemas.jpg',
+  'teatro': '/images/programs/teatro.jpg',
+  'tecnologia': '/images/programs/tecnologia.jpg',
 };
 
-const programData: Record<string, {
-  name: string;
-  description: string;
-  ageRange: string;
-  schedule: string;
-  color: string;
-  fullDescription: string;
-}> = {
-  'musica': {
-    name: 'Música',
-    description: 'Formación musical integral',
-    ageRange: '6-17 años',
-    schedule: 'Lunes a Viernes, 2:00 PM - 5:00 PM',
-    color: '#E74C3C',
-    fullDescription: 'Nuestro programa de música ofrece formación integral en instrumentos de cuerda, viento y percusión. Los estudiantes desarrollan habilidades musicales, disciplina y trabajo en equipo a través de la práctica individual y grupal. Contamos con un ensamble musical que se presenta en eventos comunitarios y festivales.',
-  },
-  'artes-plasticas': {
-    name: 'Artes Plásticas',
-    description: 'Expresión a través del arte visual',
-    ageRange: '5-17 años',
-    schedule: 'Martes y Jueves, 2:00 PM - 5:00 PM',
-    color: '#3498DB',
-    fullDescription: 'El programa de artes plásticas permite a los niños y jóvenes explorar diversas técnicas de pintura, dibujo, escultura y grabado. A través del arte visual, los participantes desarrollan su creatividad, habilidades motoras y capacidad de expresión emocional.',
-  },
-  'refuerzo-escolar': {
-    name: 'Refuerzo Escolar',
-    description: 'Apoyo académico integral',
-    ageRange: '6-17 años',
-    schedule: 'Lunes a Viernes, 2:00 PM - 4:00 PM',
-    color: '#2ECC71',
-    fullDescription: 'Brindamos apoyo académico personalizado en matemáticas, español, ciencias y otras áreas. Nuestros tutores ayudan a los estudiantes a mejorar su rendimiento escolar, desarrollar hábitos de estudio y fortalecer competencias básicas.',
-  },
-};
+// Slugs that have detailed translations
+const slugsWithDetails = [
+  'musica', 'refuerzo-escolar', 'biblioteca', 'centro-comunitario',
+  'danza', 'grupo-adultos-mayores', 'ingles', 'primera-infancia',
+  'psicologia', 'recreacion-y-deportes', 'ropero', 'escuela-de-padres',
+  'teatro', 'tecnologia',
+];
 
 function BottomProgramsBar({ currentSlug }: { currentSlug: string }) {
+  const t = useTranslations('programs');
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -170,7 +153,7 @@ function BottomProgramsBar({ currentSlug }: { currentSlug: string }) {
                   className="h-3.5 w-3.5"
                   style={isActive ? undefined : { color: p.color }}
                 />
-                {p.name}
+                {t(`names.${p.slug}`)}
               </Link>
             );
           })}
@@ -185,14 +168,24 @@ export default function ProgramDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
 
-  const program = programData[slug] || {
-    name: slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
-    description: 'Programa de la Fundación Cigarra',
-    ageRange: '6-17 años',
-    schedule: 'Lunes a Viernes',
-    color: '#167BAE',
-    fullDescription: 'Este programa hace parte de los 14 programas que ofrece la Fundación Cigarra a los niños y jóvenes de Ciudad Bolívar, Bogotá. A través de actividades formativas y recreativas, buscamos contribuir al desarrollo integral de los participantes.',
-  };
+  const currentConfig = allPrograms.find((p) => p.slug === slug);
+  const color = currentConfig?.color || '#167BAE';
+
+  const hasDetails = slugsWithDetails.includes(slug);
+
+  const programName = t(`names.${slug}`);
+  const programDescription = hasDetails
+    ? t(`descriptions.${slug}`)
+    : t('defaultDescription');
+  const programAgeRange = hasDetails
+    ? t(`details.${slug}.ageRange`)
+    : t('defaultAgeRange');
+  const programSchedule = hasDetails
+    ? t(`details.${slug}.schedule`)
+    : t('defaultSchedule');
+  const programFullDescription = hasDetails
+    ? t(`details.${slug}.longDescription`)
+    : t('defaultFullDescription');
 
   const currentIndex = allPrograms.findIndex((p) => p.slug === slug);
   const otherPrograms = allPrograms.filter((p) => p.slug !== slug);
@@ -200,7 +193,7 @@ export default function ProgramDetailPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-20" style={{ background: `linear-gradient(135deg, ${program.color}dd 0%, ${program.color}88 100%)` }}>
+      <section className="relative overflow-hidden pt-20" style={{ background: `linear-gradient(135deg, ${color}dd 0%, ${color}88 100%)` }}>
         <HeroWaves />
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 lg:px-8">
           <Link
@@ -215,7 +208,7 @@ export default function ProgramDetailPage() {
             animate={{ opacity: 1, y: 0 }}
             className="font-heading text-4xl font-bold text-white md:text-5xl"
           >
-            {program.name}
+            {programName}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -223,7 +216,7 @@ export default function ProgramDetailPage() {
             transition={{ delay: 0.1 }}
             className="mt-4 max-w-xl text-lg text-white/80"
           >
-            {program.description}
+            {programDescription}
           </motion.p>
 
           {/* Prev / Next navigation */}
@@ -239,7 +232,7 @@ export default function ProgramDetailPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/25"
               >
                 <HiChevronLeft className="h-4 w-4" />
-                {allPrograms[currentIndex - 1].name}
+                {t(`names.${allPrograms[currentIndex - 1].slug}`)}
               </Link>
             )}
             {currentIndex < allPrograms.length - 1 && currentIndex >= 0 && (
@@ -247,7 +240,7 @@ export default function ProgramDetailPage() {
                 href={{ pathname: '/programas/[slug]', params: { slug: allPrograms[currentIndex + 1].slug } }}
                 className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/25"
               >
-                {allPrograms[currentIndex + 1].name}
+                {t(`names.${allPrograms[currentIndex + 1].slug}`)}
                 <HiChevronRight className="h-4 w-4" />
               </Link>
             )}
@@ -267,7 +260,7 @@ export default function ProgramDetailPage() {
                   <div className="relative mb-8 aspect-video overflow-hidden rounded-xl">
                     <Image
                       src={programImageMap[slug]}
-                      alt={program.name}
+                      alt={programName}
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 66vw"
@@ -279,7 +272,7 @@ export default function ProgramDetailPage() {
 
               <ScrollReveal>
                 <div className="prose prose-lg max-w-none">
-                  <p className="leading-relaxed text-gray-700">{program.fullDescription}</p>
+                  <p className="leading-relaxed text-gray-700">{programFullDescription}</p>
                 </div>
               </ScrollReveal>
 
@@ -289,12 +282,12 @@ export default function ProgramDetailPage() {
                   <div className="rounded-xl bg-gray-50 p-5">
                     <HiUsers className="mb-2 h-5 w-5 text-primary-600" />
                     <p className="text-xs font-medium text-gray-500">{t('ageRange')}</p>
-                    <p className="text-sm font-semibold text-gray-900">{program.ageRange}</p>
+                    <p className="text-sm font-semibold text-gray-900">{programAgeRange}</p>
                   </div>
                   <div className="rounded-xl bg-gray-50 p-5">
                     <HiClock className="mb-2 h-5 w-5 text-primary-600" />
                     <p className="text-xs font-medium text-gray-500">{t('schedule')}</p>
-                    <p className="text-sm font-semibold text-gray-900">{program.schedule}</p>
+                    <p className="text-sm font-semibold text-gray-900">{programSchedule}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -307,21 +300,21 @@ export default function ProgramDetailPage() {
                   {/* Info */}
                   <div className="rounded-xl bg-gray-50 p-6">
                     <h3 className="mb-4 font-heading text-lg font-semibold text-gray-900">
-                      Información
+                      {t('information')}
                     </h3>
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
                         <HiUsers className="mt-0.5 h-5 w-5 text-primary-600" />
                         <div>
                           <p className="text-sm font-medium text-gray-900">{t('ageRange')}</p>
-                          <p className="text-sm text-gray-600">{program.ageRange}</p>
+                          <p className="text-sm text-gray-600">{programAgeRange}</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
                         <HiClock className="mt-0.5 h-5 w-5 text-primary-600" />
                         <div>
                           <p className="text-sm font-medium text-gray-900">{t('schedule')}</p>
-                          <p className="text-sm text-gray-600">{program.schedule}</p>
+                          <p className="text-sm text-gray-600">{programSchedule}</p>
                         </div>
                       </div>
                     </div>
@@ -330,20 +323,20 @@ export default function ProgramDetailPage() {
                   {/* Donate CTA */}
                   <div className="rounded-xl bg-accent-50 p-6 text-center">
                     <p className="mb-3 text-sm text-gray-700">
-                      Apoya este programa con tu donación
+                      {t('supportProgram')}
                     </p>
                     <Link
                       href="/como-ayudar"
                       className="inline-block rounded-full bg-accent-500 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
                     >
-                      Donar Ahora
+                      {t('donateNow')}
                     </Link>
                   </div>
 
                   {/* Other programs list */}
                   <div className="rounded-xl border border-gray-100 bg-white p-6">
                     <h3 className="mb-4 font-heading text-base font-semibold text-gray-900">
-                      Otros Programas
+                      {t('otherPrograms')}
                     </h3>
                     <nav className="space-y-1">
                       {otherPrograms.map((p) => {
@@ -361,7 +354,7 @@ export default function ProgramDetailPage() {
                               <Icon className="h-3.5 w-3.5" style={{ color: p.color }} />
                             </span>
                             <span className="font-medium text-gray-700 transition-colors group-hover:text-primary-600">
-                              {p.name}
+                              {t(`names.${p.slug}`)}
                             </span>
                             <HiArrowRight className="ml-auto h-3.5 w-3.5 text-gray-300 transition-all group-hover:translate-x-0.5 group-hover:text-primary-500" />
                           </Link>

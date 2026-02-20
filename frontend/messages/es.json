@@ -18,20 +18,34 @@
     "volunteer": "Voluntariado",
     "corporateImpact": "Impacto Empresarial",
     "aboutUs": "Nosotros",
-    "getInvolved": "Participa"
+    "getInvolved": "Participa",
+    "companies": "Empresas"
   },
   "hero": {
     "tagline": "Desde 2002 transformando vidas",
+    "title": "Transformamos vidas a través del",
+    "titleHighlight": "arte, la educación",
+    "titleSuffix": "y la cultura",
+    "description": "Más de 1.877 niños y jóvenes en Ciudad Bolívar encuentran en nuestros programas un camino hacia un futuro mejor.",
     "cta_donate": "Dona Ahora",
     "cta_programs": "Conoce Nuestros Programas",
-    "scroll": "Descubre más"
+    "scroll": "Descubre más",
+    "statsChildren": "Niños",
+    "statsYears": "Años",
+    "statsPrograms": "Programas",
+    "imageAlt": "Niños de la Fundación Cigarra"
   },
   "impact": {
     "title": "Nuestro Impacto",
+    "subtitle": "Nuestro impacto",
     "children": "Niños Atendidos",
+    "childrenHelped": "Niños Ayudados",
     "years": "Años de Servicio",
     "programs": "Programas Activos",
-    "families": "Familias Beneficiadas"
+    "families": "Familias Beneficiadas",
+    "jobsGenerated": "Empleos Generados",
+    "yourContribution": "Tu aporte hace esto posible.",
+    "donateNow": "Dona ahora"
   },
   "programs": {
     "title": "Nuestros Programas",
@@ -40,13 +54,182 @@
     "learnMore": "Conocer más",
     "ageRange": "Edades",
     "schedule": "Horario",
-    "relatedPrograms": "Programas Relacionados"
+    "relatedPrograms": "Programas Relacionados",
+    "activeCount": "14 programas activos",
+    "featured": "Destacado",
+    "andMore": "Y {count} programas más:",
+    "orgName": "Fundación Cigarra",
+    "explore": "Explora",
+    "gridTitle": "Nuestros",
+    "gridTitleHighlight": "Programas",
+    "gridSubtitle": "Cada programa es una puerta abierta al conocimiento, la creatividad y el desarrollo integral de nuestros beneficiarios.",
+    "heroImageAlt": "Niños en programas de la Fundación Cigarra",
+    "ctaTitle": "Comparte tu talento con quienes más lo necesitan",
+    "ctaDescription": "Nuestros programas necesitan personas apasionadas que quieran compartir sus conocimientos. Tu tiempo y talento pueden abrir puertas que cambian vidas.",
+    "beVolunteer": "Sé Voluntario",
+    "howToHelpLink": "Conoce cómo ayudar",
+    "information": "Información",
+    "supportProgram": "Apoya este programa con tu donación",
+    "donateNow": "Donar Ahora",
+    "otherPrograms": "Otros Programas",
+    "defaultDescription": "Programa de la Fundación Cigarra",
+    "defaultFullDescription": "Este programa hace parte de los 14 programas que ofrece la Fundación Cigarra a los niños y jóvenes de Ciudad Bolívar, Bogotá. A través de actividades formativas y recreativas, buscamos contribuir al desarrollo integral de los participantes.",
+    "defaultAgeRange": "6-17 años",
+    "defaultSchedule": "Lunes a Viernes",
+    "stats": {
+      "programs": "Programas",
+      "children": "Niños",
+      "years": "Años"
+    },
+    "names": {
+      "refuerzo-escolar": "Refuerzo Escolar",
+      "biblioteca": "Biblioteca",
+      "centro-comunitario": "Centro Comunitario",
+      "danza": "Danza",
+      "grupo-adultos-mayores": "Grupo de Adultos Mayores",
+      "ingles": "Inglés",
+      "musica": "Música",
+      "primera-infancia": "Primera Infancia",
+      "psicologia": "Psicología",
+      "recreacion-y-deportes": "Recreación y Deportes",
+      "ropero": "Ropero",
+      "escuela-de-padres": "Escuela de Padres",
+      "teatro": "Teatro",
+      "tecnologia": "Tecnología"
+    },
+    "descriptions": {
+      "refuerzo-escolar": "Acompañamiento académico en matemáticas, lectura, escritura y tareas. Fortalecemos el aprendizaje escolar.",
+      "biblioteca": "Espacio de lectura y préstamo de libros para fomentar el hábito lector y el acceso a la cultura escrita.",
+      "centro-comunitario": "Espacio de encuentro para la comunidad con actividades culturales, formativas y de integración social.",
+      "danza": "Danza folclórica y contemporánea. Expresión corporal, coordinación y valoración cultural.",
+      "grupo-adultos-mayores": "Actividades recreativas, culturales y de bienestar para los adultos mayores de la comunidad.",
+      "ingles": "Aprendizaje del idioma inglés como herramienta de acceso a oportunidades globales.",
+      "musica": "Formación musical con instrumentos de cuerda, viento y percusión. Desarrollo del talento artístico y la disciplina.",
+      "primera-infancia": "Atención integral para niños de 0 a 5 años con estimulación temprana, juego y acompañamiento familiar.",
+      "psicologia": "Acompañamiento psicosocial para niños, jóvenes y familias, fortaleciendo el bienestar emocional.",
+      "recreacion-y-deportes": "Actividades lúdicas y deportivas para el desarrollo físico y la sana convivencia.",
+      "ropero": "Donación y distribución de ropa y calzado para las familias de la comunidad.",
+      "escuela-de-padres": "Talleres para padres y cuidadores sobre crianza, comunicación y acompañamiento escolar.",
+      "teatro": "Artes escénicas como medio de expresión, comunicación y desarrollo de la confianza.",
+      "tecnologia": "Formación en herramientas informáticas y habilidades digitales para el siglo XXI."
+    },
+    "details": {
+      "musica": {
+        "ageRange": "6-17 años",
+        "schedule": "Lunes a Viernes, 2:00 PM - 5:00 PM",
+        "longDescription": "Nuestro programa de música ofrece formación integral en instrumentos de cuerda, viento y percusión. Los estudiantes desarrollan habilidades musicales, disciplina y trabajo en equipo a través de la práctica individual y grupal. Contamos con un ensamble musical que se presenta en eventos comunitarios y festivales."
+      },
+      "refuerzo-escolar": {
+        "ageRange": "6-17 años",
+        "schedule": "Lunes a Viernes, 2:00 PM - 4:00 PM",
+        "longDescription": "Brindamos apoyo académico personalizado en matemáticas, español, ciencias y otras áreas. Nuestros tutores ayudan a los estudiantes a mejorar su rendimiento escolar, desarrollar hábitos de estudio y fortalecer competencias básicas."
+      },
+      "biblioteca": {
+        "ageRange": "Todas las edades",
+        "schedule": "Lunes a Viernes, 8:00 AM - 5:00 PM",
+        "longDescription": "Nuestra biblioteca comunitaria es un espacio de lectura, préstamo de libros y talleres de fomento lector. Los beneficiarios pueden explorar el mundo a través de la lectura, participar en clubes de libro y actividades que fortalecen sus competencias de comprensión lectora."
+      },
+      "centro-comunitario": {
+        "ageRange": "Todas las edades",
+        "schedule": "Lunes a Viernes, 8:00 AM - 6:00 PM",
+        "longDescription": "El Centro Comunitario es un espacio de encuentro para la comunidad donde se realizan actividades culturales, formativas y de integración social. Es el corazón de la Fundación, donde niños, jóvenes, adultos y adultos mayores comparten y aprenden juntos."
+      },
+      "danza": {
+        "ageRange": "6-17 años",
+        "schedule": "Martes y Jueves, 3:00 PM - 5:00 PM",
+        "longDescription": "Nuestro programa de danza ofrece formación en danza folclórica y contemporánea. Los participantes desarrollan expresión corporal, coordinación, ritmo y una profunda valoración por la cultura colombiana a través del movimiento y la música."
+      },
+      "grupo-adultos-mayores": {
+        "ageRange": "60+ años",
+        "schedule": "Miércoles y Viernes, 9:00 AM - 12:00 PM",
+        "longDescription": "Ofrecemos actividades recreativas, culturales y de bienestar para los adultos mayores de la comunidad. El programa incluye manualidades, actividad física adaptada, encuentros sociales y acompañamiento para mejorar su calidad de vida."
+      },
+      "ingles": {
+        "ageRange": "6-17 años",
+        "schedule": "Lunes a Viernes, 3:00 PM - 5:00 PM",
+        "longDescription": "El programa de inglés ofrece aprendizaje del idioma como herramienta de acceso a oportunidades globales. Los estudiantes desarrollan competencias de comprensión, lectura, escritura y conversación a través de metodologías dinámicas y participativas."
+      },
+      "primera-infancia": {
+        "ageRange": "0-5 años",
+        "schedule": "Lunes a Viernes, 8:00 AM - 12:00 PM",
+        "longDescription": "Brindamos atención integral para niños de 0 a 5 años con estimulación temprana, juego, arte y acompañamiento familiar. El programa se enfoca en el desarrollo cognitivo, motriz, social y emocional durante los primeros años de vida."
+      },
+      "psicologia": {
+        "ageRange": "Todas las edades",
+        "schedule": "Lunes a Viernes, 8:00 AM - 5:00 PM",
+        "longDescription": "Nuestro servicio de psicología ofrece acompañamiento psicosocial para niños, jóvenes y familias. A través de atención individual, talleres grupales y escuela de padres, fortalecemos el bienestar emocional y las relaciones familiares."
+      },
+      "recreacion-y-deportes": {
+        "ageRange": "6-17 años",
+        "schedule": "Lunes a Viernes, 2:00 PM - 5:00 PM",
+        "longDescription": "El programa de recreación y deportes ofrece actividades lúdicas y deportivas para el desarrollo físico, la sana convivencia y el trabajo en equipo. Los participantes practican fútbol, baloncesto, juegos cooperativos y actividades al aire libre."
+      },
+      "ropero": {
+        "ageRange": "Todas las edades",
+        "schedule": "Sábados, 8:00 AM - 12:00 PM",
+        "longDescription": "El ropero comunitario recibe, organiza y distribuye donaciones de ropa y calzado para las familias de la comunidad. Este programa garantiza que los beneficiarios tengan acceso a prendas de vestir en buen estado."
+      },
+      "escuela-de-padres": {
+        "ageRange": "Padres y cuidadores",
+        "schedule": "Sábados, 9:00 AM - 11:00 AM",
+        "longDescription": "La Escuela de Padres ofrece talleres y encuentros para padres y cuidadores sobre crianza positiva, comunicación efectiva, acompañamiento escolar y desarrollo infantil. Fortalecemos el vínculo familiar como base del bienestar de los niños."
+      },
+      "teatro": {
+        "ageRange": "6-17 años",
+        "schedule": "Lunes y Miércoles, 3:00 PM - 5:00 PM",
+        "longDescription": "Nuestro programa de teatro utiliza las artes escénicas como medio de expresión, comunicación y desarrollo de la confianza. Los participantes aprenden actuación, improvisación y montaje de obras, presentándose en eventos comunitarios."
+      },
+      "tecnologia": {
+        "ageRange": "8-17 años",
+        "schedule": "Lunes a Viernes, 2:00 PM - 4:00 PM",
+        "longDescription": "El programa de tecnología ofrece formación en herramientas informáticas, programación básica y habilidades digitales para el siglo XXI. Los estudiantes aprenden a usar computadores, internet seguro y herramientas ofimáticas."
+      }
+    }
   },
   "stories": {
     "title": "Historias de Éxito",
     "subtitle": "Conoce a quienes han transformado sus vidas gracias a la Fundación",
     "readMore": "Leer historia completa",
-    "achievement": "Logro"
+    "achievement": "Logro",
+    "heroTagline": "Vidas transformadas",
+    "statsYears": "Años",
+    "statsChildren": "Niños Ayudados",
+    "statsCommitment": "Compromiso",
+    "gridTitle": "Conoce sus historias",
+    "gridSubtitle": "Cada uno pasó por la Fundación y hoy son ejemplo de superación y compromiso.",
+    "donationNudge": "Estas historias son posibles gracias a personas como tú.",
+    "donateNow": "Dona ahora",
+    "donationNudgeSuffix": "y ayuda a escribir más historias de éxito.",
+    "galleryTagline": "Momentos que inspiran",
+    "galleryTitle": "El impacto en imágenes",
+    "impactAlt": "Impacto",
+    "ctaTitle": "Apadrina un niño y escribe el próximo capítulo",
+    "ctaDescription": "Con el Plan Padrino acompañas el crecimiento de un niño o joven, garantizando su acceso a educación, arte y oportunidades que transforman su vida.",
+    "ctaSponsor": "Apadrina un Niño",
+    "ctaVolunteer": "Sé Voluntario",
+    "ctaLabels": {
+      "planPadrino": "Plan Padrino",
+      "volunteering": "Voluntariado",
+      "directImpact": "Impacto directo"
+    },
+    "roles": {
+      "juanDavid": "Líder comunitario",
+      "andrey": "Líder comunitario",
+      "yuri": "Educadora",
+      "anyie": "Profesional"
+    },
+    "quotes": {
+      "juanDavid": "En la Fundación descubrí que el arte puede cambiar comunidades enteras.",
+      "andrey": "Los valores que aprendí en la Fundación guían mi trabajo cada día.",
+      "yuri": "Hoy regreso a la comunidad como educadora para abrir las mismas puertas.",
+      "anyie": "Con esfuerzo y dedicación todo es posible. La Fundación me lo demostró."
+    },
+    "achievements": {
+      "juanDavid": "Gestor cultural, líder de proyectos sociales",
+      "andrey": "Líder comunitario, mentor de jóvenes",
+      "yuri": "Licenciada en educación, voluntaria activa",
+      "anyie": "Profesional en administración, mentora"
+    }
   },
   "donation": {
     "title": "Tu Donación Transforma Vidas",
@@ -60,16 +243,71 @@
     "volunteerTitle": "Voluntariado",
     "volunteerDescription": "Dona tu tiempo y talento. Buscamos voluntarios en educación, arte y deportes",
     "nutritionTitle": "Programa de Nutrición",
-    "nutritionCost": "Costo diario por niño"
+    "nutritionCost": "Costo diario por niño",
+    "headlinePrefix": "Hay muchas formas de",
+    "headlineHighlight": "cambiar vidas",
+    "headlineDescription": "No se trata solo de dinero. Tu tiempo, tus habilidades y tu voz también transforman comunidades.",
+    "raised": "recaudados",
+    "goal": "Meta",
+    "ofMonthlyGoal": "de la meta mensual",
+    "internationalDonors": "Donantes internacionales",
+    "trustSecure": "100% seguro",
+    "trustTaxDeductible": "Deducible de impuestos",
+    "trustTransparency": "Transparencia total",
+    "paths": {
+      "donate": {
+        "title": "Dona",
+        "description": "Cada peso transforma una vida. Tu donación financia educación, alimentación y materiales.",
+        "cta": "Dona Ahora"
+      },
+      "sponsor": {
+        "title": "Apadrina un Niño",
+        "description": "El Plan Padrino cubre educación + alimentación de un niño. Recibe reportes de su progreso.",
+        "cta": "Conoce el Plan"
+      },
+      "volunteer": {
+        "title": "Sé Voluntario",
+        "description": "Comparte tu tiempo y talento. Buscamos profesores, artistas, mentores y gestores.",
+        "cta": "Quiero Ayudar"
+      },
+      "share": {
+        "title": "Comparte",
+        "description": "Difunde nuestra labor en tus redes. Una voz más puede abrir nuevas puertas.",
+        "cta": "Compartir"
+      }
+    }
   },
   "news": {
     "title": "Noticias",
     "subtitle": "Mantente informado sobre nuestras actividades y logros",
     "readMore": "Leer más",
     "latest": "Últimas Noticias",
+    "latestNews": "Últimas Noticias",
     "share": "Compartir",
     "relatedArticles": "Artículos Relacionados",
-    "noArticles": "No hay artículos disponibles"
+    "noArticles": "No hay artículos disponibles",
+    "reading": "Leyendo",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "moreNews": "Más Noticias",
+    "stayInformed": "Mantente informado",
+    "more": "Más",
+    "featured": "Destacado",
+    "ctaCards": {
+      "donate": { "title": "Dona", "description": "Cada peso transforma una vida.", "cta": "Donar Ahora" },
+      "sponsor": { "title": "Apadrina", "description": "Acompaña a un niño en su camino.", "cta": "Plan Padrino" },
+      "volunteer": { "title": "Voluntariado", "description": "Comparte tu tiempo y talento.", "cta": "Ser Voluntario" },
+      "contact": { "title": "Contáctanos", "description": "Queremos escucharte.", "cta": "Escribir" }
+    },
+    "heroTagline": "Últimas Noticias",
+    "newsletter": {
+      "title": "No te pierdas ninguna novedad",
+      "description": "Suscríbete a nuestro boletín y recibe las últimas noticias, eventos y logros de la Fundación Cigarra directamente en tu correo.",
+      "placeholder": "Tu correo electrónico",
+      "subscribe": "Suscribirme",
+      "noSpam": "Sin spam. Puedes cancelar cuando quieras."
+    },
+    "fallbackContent": "Contenido del artículo próximamente disponible. Estamos trabajando para traerte la información más actualizada sobre nuestras actividades y logros."
   },
   "about": {
     "title": "Quiénes Somos",
@@ -78,7 +316,86 @@
     "history": "Nuestra Historia",
     "team": "Nuestro Equipo",
     "gallery": "Galería",
-    "foundedIn": "Fundada en"
+    "foundedIn": "Fundada en",
+    "heroDescription": "Más de dos décadas dedicadas a transformar vidas a través del arte, la educación y la cultura en una de las comunidades más necesitadas de Bogotá.",
+    "missionStatement": "Brindar atención integral a niños, niñas y jóvenes en condición de vulnerabilidad de Ciudad Bolívar, a través de programas de educación, arte, cultura y recreación, promoviendo su desarrollo personal y social como agentes de cambio en su comunidad.",
+    "missionBadge": "Más de 180 niños atendidos actualmente",
+    "visionStatement": "Ser una organización referente en la transformación social de comunidades vulnerables en Colombia, reconocida por la calidad e impacto de sus programas educativos, artísticos y culturales, y por la formación de ciudadanos comprometidos con el cambio social.",
+    "visionBadge": "23 años y 14 programas transformando comunidades",
+    "timeline": {
+      "title": "Nuestra Trayectoria",
+      "subtitle": "Más de dos décadas de historia construyendo sueños y transformando realidades en Ciudad Bolívar.",
+      "2002": {
+        "title": "Fundación",
+        "description": "Nace la Fundación Cigarra en Ciudad Bolívar para atender niños en condición de vulnerabilidad."
+      },
+      "2005": {
+        "title": "Primeros Programas",
+        "description": "Se consolidan los programas de refuerzo escolar, danza y música."
+      },
+      "2008": {
+        "title": "Crecimiento",
+        "description": "Ampliación a 8 programas incluyendo música, danza y teatro."
+      },
+      "2012": {
+        "title": "Una Década",
+        "description": "Celebramos 10 años con más de 100 niños beneficiados anualmente."
+      },
+      "2015": {
+        "title": "Alianzas Estratégicas",
+        "description": "Establecemos alianzas con organizaciones nacionales e internacionales."
+      },
+      "2018": {
+        "title": "Innovación",
+        "description": "Incorporamos programas de tecnología, primera infancia y psicología."
+      },
+      "2020": {
+        "title": "Resiliencia",
+        "description": "Adaptación durante la pandemia con programas virtuales."
+      },
+      "2024": {
+        "title": "Actualidad",
+        "description": "14 programas activos atendiendo a más de 1.877 niños y jóvenes."
+      }
+    },
+    "values": {
+      "sectionTitle": "Lo que nos define",
+      "title": "Nuestros Valores",
+      "love": {
+        "title": "Amor",
+        "description": "El amor como motor fundamental de nuestra labor. Cada acción nace del compromiso genuino con nuestros niños."
+      },
+      "education": {
+        "title": "Educación",
+        "description": "Creemos que la educación es la herramienta más poderosa para transformar realidades y construir futuros."
+      },
+      "community": {
+        "title": "Comunidad",
+        "description": "Trabajamos de la mano con las familias y la comunidad para generar un impacto verdadero y duradero."
+      },
+      "creativity": {
+        "title": "Creatividad",
+        "description": "El arte y la cultura son vehículos de expresión, sanación y empoderamiento para nuestros jóvenes."
+      },
+      "transparency": {
+        "title": "Transparencia",
+        "description": "Gestionamos los recursos con responsabilidad, rindiendo cuentas a nuestros aliados y benefactores."
+      },
+      "inclusion": {
+        "title": "Inclusión",
+        "description": "Abrimos las puertas a todos sin distinción, garantizando igualdad de oportunidades para cada niño y joven."
+      }
+    },
+    "teamSection": {
+      "title": "Conoce a nuestro equipo",
+      "description": "Más de 33 profesionales comprometidos con la transformación social. Educadores, artistas, psicólogos y administradores que hacen posible nuestros 14 programas.",
+      "cta": "Ver Todo el Equipo"
+    },
+    "ctaTitle": "Únete a la familia Cigarra",
+    "ctaDescription": "Hay muchas formas de ser parte de esta comunidad que transforma vidas. Dona, comparte tu tiempo o simplemente acompáñanos en este camino.",
+    "ctaDonate": "Dona Ahora",
+    "ctaVolunteer": "Sé Voluntario",
+    "ctaTeam": "Nuestro Equipo"
   },
   "contact": {
     "title": "Contáctanos",
@@ -94,7 +411,23 @@
     "error": "Error al enviar el mensaje. Por favor intenta de nuevo.",
     "whatsapp": "Escríbenos por WhatsApp",
     "address": "Dirección",
-    "hours": "Horarios"
+    "hours": "Horarios",
+    "contactUs": "Contactar",
+    "heroTagline": "Estamos para ti",
+    "formTitle": "Envíanos un mensaje",
+    "formSubtitle": "Completa el formulario y te responderemos lo más pronto posible.",
+    "namePlaceholder": "Tu nombre completo",
+    "emailPlaceholder": "tu@correo.com",
+    "phonePlaceholder": "+57 300 000 0000",
+    "subjectPlaceholder": "Asunto de tu mensaje",
+    "messagePlaceholder": "Escribe tu mensaje aquí...",
+    "successTitle": "Mensaje enviado",
+    "errorTitle": "Error",
+    "addressLine1": "Cra 18M #75-25 Sur",
+    "addressLine2": "Ciudad Bolívar, Bogotá D.C.",
+    "addressLine3": "Colombia",
+    "hoursWeekday": "Lunes a Viernes: 8:00 AM - 5:00 PM",
+    "hoursSaturday": "Sábados: 8:00 AM - 12:00 PM"
   },
   "partners": {
     "title": "Nuestros Aliados",
@@ -108,13 +441,401 @@
     "nit": "NIT",
     "quickLinks": "Enlaces Rápidos",
     "contactInfo": "Información de Contacto",
-    "followUs": "Síguenos"
+    "followUs": "Síguenos",
+    "navigation": "Navegación",
+    "programs": "Programas",
+    "contact": "Contacto",
+    "support": "Apóyanos",
+    "supportDescription": "Tu aporte transforma vidas. Ayuda a más de 1.877 niños a construir un futuro mejor.",
+    "slogan": "El resurgir de una esperanza",
+    "description": "Construimos oportunidades reales para más de 1.877 niños y jóvenes en Ciudad Bolívar, Bogotá."
   },
   "common": {
     "loading": "Cargando...",
     "error": "Algo salió mal",
     "backToHome": "Volver al inicio",
-    "language": "Idioma"
+    "language": "Idioma",
+    "learnMore": "Saber más",
+    "viewAll": "Ver todos",
+    "close": "Cerrar"
+  },
+  "breadcrumb": {
+    "home": "Inicio"
+  },
+  "planPadrino": {
+    "heroTagline": "Fundación Cigarra — Ciudad Bolívar, Bogotá",
+    "heroTitle": "Padrino",
+    "heroDescription": "Apadrina a un niño en Ciudad Bolívar y transforma su vida con educación, alimentación y amor. Tu compromiso les da la oportunidad de soñar en grande.",
+    "viewPlans": "Ver Planes",
+    "howItWorks": "Cómo Funciona",
+    "stepByStep": "Paso a Paso",
+    "howItWorksTitle": "Cómo funciona el",
+    "howItWorksSubtitle": "En tres simples pasos puedes cambiar la vida de un niño para siempre.",
+    "sponsorshipPlans": "Planes de Apadrinamiento",
+    "chooseLevel": "Elige tu nivel de",
+    "commitment": "compromiso",
+    "chooseLevelSubtitle": "Cada plan incluye educación, alimentación y seguimiento personalizado. Elige el que mejor se adapte a ti.",
+    "mostPopular": "Más Popular",
+    "child": "niño",
+    "children": "niños",
+    "includes": "Incluye",
+    "sponsorNow": "Apadrinar Ahora",
+    "donateUSD": "Donar en USD (dólares)",
+    "planBenefits": "Beneficios del Plan",
+    "whatIncludes": "Qué incluye tu",
+    "sponsorship": "apadrinamiento",
+    "whatIncludesSubtitle": "Cada apadrinamiento cubre las necesidades integrales del niño, asegurando su desarrollo educativo y bienestar.",
+    "testimonials": "Testimonios",
+    "testimonialQuote": "Gracias al Plan Padrino, mi hijo ahora sueña con ser ingeniero. La fundación le dio las herramientas y el amor que necesitaba para creer en sí mismo.",
+    "testimonialAuthor": "María Fernanda",
+    "testimonialRole": "Madre de beneficiario, Ciudad Bolívar",
+    "childrenHelped": "niños ayudados",
+    "yearsTrajectory": "años de trayectoria",
+    "activePrograms": "programas activos",
+    "costPerChildPerDay": "COP/día por niño",
+    "faqTitle": "Resolvemos tus",
+    "faqHighlight": "dudas",
+    "faqSubtitle": "Todo lo que necesitas saber sobre el Plan Padrino antes de dar el paso.",
+    "changeLifeToday": "Cambia una vida hoy",
+    "changeLifeDescription": "Un niño en Ciudad Bolívar está esperando por ti. Con tu apadrinamiento, le das acceso a educación, alimentación y la oportunidad de un futuro mejor.",
+    "sponsorCOP": "Apadrinar en COP",
+    "donateDollars": "Donar en USD",
+    "steps": {
+      "choose": { "title": "Elige tu plan", "description": "Selecciona el plan de apadrinamiento que mejor se adapte a tus posibilidades." },
+      "meet": { "title": "Conoce a tu apadrinado", "description": "Te presentamos al niño o niña que acompañarás en su proceso educativo." },
+      "follow": { "title": "Sigue su progreso", "description": "Recibe reportes personalizados con el avance académico y desarrollo de tu apadrinado." }
+    },
+    "tiers": {
+      "monthly": { "name": "Plan Mensual", "period": "mes", "description": "Ideal para comenzar tu compromiso con un niño." },
+      "semester": { "name": "Plan Semestral", "period": "semestre", "description": "Acompañamiento continuo durante 6 meses." },
+      "annual": { "name": "Plan Anual", "period": "año", "description": "Un año completo transformando la vida de un niño." },
+      "gold": { "name": "Plan Dorado", "period": "año", "description": "Duplica tu impacto apadrinando a 2 niños." },
+      "platinum": { "name": "Plan Platino", "period": "año", "description": "Triple impacto: 3 niños con futuro asegurado." },
+      "ultra": { "name": "Plan Ultra", "period": "año", "description": "Máximo impacto: transforma la vida de 4 niños." }
+    },
+    "tierIncludes": {
+      "educationComplete": "Programa educativo completo",
+      "nutritionDaily": "Alimentación nutritiva diaria",
+      "monthlyReport": "Reporte mensual de progreso",
+      "bimonthlyReports": "Reportes bimestrales de progreso",
+      "childPhoto": "Foto actualizada del niño",
+      "quarterlyReports": "Reportes trimestrales de progreso",
+      "annualCertificate": "Certificado anual de impacto",
+      "personalizedLetter": "Carta personalizada del niño",
+      "educationFor2": "Programa educativo para 2 niños",
+      "nutritionFor2": "Alimentación nutritiva diaria para 2",
+      "lettersFrom2": "Cartas personalizadas de cada niño",
+      "educationFor3": "Programa educativo para 3 niños",
+      "nutritionFor3": "Alimentación nutritiva diaria para 3",
+      "eventInvitation": "Invitación a evento anual de la fundación",
+      "educationFor4": "Programa educativo para 4 niños",
+      "nutritionFor4": "Alimentación nutritiva diaria para 4",
+      "socialMediaRecognition": "Reconocimiento en nuestras redes sociales"
+    },
+    "includedItems": {
+      "education": { "title": "Programa educativo", "description": "Refuerzo escolar, talleres y apoyo pedagógico integral para su formación académica." },
+      "nutrition": { "title": "Alimentación nutritiva diaria", "description": "Comida balanceada y nutritiva cada día por $7.045 COP, garantizando su bienestar." },
+      "reports": { "title": "Reportes personalizados de progreso", "description": "Informes detallados sobre el avance académico y desarrollo integral del niño." },
+      "certificate": { "title": "Certificado anual de impacto", "description": "Documento oficial que certifica tu aporte y el impacto generado en la vida del niño." },
+      "photos": { "title": "Fotos y actualizaciones", "description": "Imágenes y noticias del día a día de tu apadrinado en la fundación." },
+      "letter": { "title": "Carta personalizada del niño", "description": "Una carta escrita por tu apadrinado donde comparte sus sueños y agradecimiento." }
+    },
+    "faqs": {
+      "taxDeductible": { "q": "¿Mi donación al Plan Padrino es deducible de impuestos?", "a": "Sí. La Fundación Cigarra es una entidad sin ánimo de lucro registrada con NIT 830.114.318-9. Todas las donaciones son deducibles de impuestos de acuerdo con la normativa tributaria colombiana vigente. Emitimos el certificado correspondiente para tu declaración de renta." },
+      "cancel": { "q": "¿Puedo cancelar o cambiar mi plan en cualquier momento?", "a": "Sí, puedes cancelar o cambiar tu plan en cualquier momento. Solo contáctanos por correo electrónico o WhatsApp y procesaremos el cambio. Si cancelas, el niño continuará siendo atendido por la fundación con otros recursos disponibles." },
+      "graduation": { "q": "¿Qué sucede si el niño que apadrino se gradúa o deja la fundación?", "a": "Si tu apadrinado se gradúa o deja la fundación, te notificamos y te asignamos un nuevo niño para que puedas continuar con tu apadrinamiento. También puedes elegir redirigir tu aporte a otro programa de la fundación." },
+      "payment": { "q": "¿Cómo puedo pagar?", "a": "Puedes pagar a través de nuestra plataforma segura DonarOnline, que acepta tarjetas de crédito, débito y transferencias bancarias. También ofrecemos la opción de donación en dólares americanos para padrinos internacionales." },
+      "visit": { "q": "¿Puedo conocer personalmente al niño que apadrino?", "a": "Sí, organizamos eventos anuales donde los padrinos pueden visitar la fundación y conocer a sus apadrinados. También puedes coordinar una visita en días hábiles contactándonos previamente." },
+      "percentage": { "q": "¿Qué porcentaje de mi donación llega directamente al niño?", "a": "El 100% de tu donación se destina directamente a los programas de la fundación. Los gastos administrativos son cubiertos por alianzas corporativas. Publicamos informes anuales de gestión financiera para total transparencia." }
+    },
+    "trustBadges": {
+      "nit": "NIT 830.114.318-9",
+      "taxDeductible": "Deducible de impuestos",
+      "transparency": "Transparencia total"
+    }
+  },
+  "howToHelp": {
+    "heroTagline": "Fundación Cigarra",
+    "heroTitle": "Cada Gesto",
+    "heroHighlight": "Cuenta",
+    "donateNow": "Dona Ahora",
+    "sponsorChild": "Apadrina un Niño",
+    "impactCalculator": "Calculadora de Impacto",
+    "impactTitle": "Tu aporte de hoy",
+    "impactHighlight": "transforma vidas",
+    "impactSubtitle": "Selecciona un monto y descubre el impacto real de tu donación.",
+    "customAmount": "Ingresar otro monto",
+    "presetAmount": "Elegir monto predefinido",
+    "customPlaceholder": "Ej: 75000",
+    "customImpact": "Con ${amount} COP puedes apoyar los programas de la Fundación Cigarra",
+    "presetImpact": "Con {label} COP puedes cubrir {impact}",
+    "impactOptions": {
+      "30000": "refrigerios nutritivos para 4 niños durante una semana",
+      "50000": "materiales escolares para 1 niño por 1 mes",
+      "100000": "alimentación nutritiva para 1 niño por un mes completo",
+      "200000": "programa completo de educación + alimentación para 1 niño"
+    },
+    "donateNowBtn": "Donar Ahora",
+    "donateUSD": "Donar en USD (dólares)",
+    "threeWays": "3 formas de",
+    "changeLives": "cambiar vidas",
+    "threeWaysSubtitle": "Elige la manera que mejor se adapte a ti. Cada gesto cuenta.",
+    "option": "Opción",
+    "donate": "Dona",
+    "donateDescription": "Tu donación financia educación, alimentación y materiales para niños en Ciudad Bolívar.",
+    "sponsorTitle": "Apadrina un Niño",
+    "sponsorDescription": "El Plan Padrino cubre educación + alimentación de un niño. Recibes reportes de su progreso.",
+    "sponsorStarting": "Desde $65.000 COP/mes",
+    "learnPlanPadrino": "Conocer el Plan Padrino",
+    "beVolunteer": "Sé Voluntario",
+    "volunteerDescription": "Comparte tu tiempo y talento. Buscamos docentes, artistas, mentores y más.",
+    "wantToVolunteer": "Quiero Ser Voluntario",
+    "planPadrinoSection": "Plan Padrino",
+    "changeChildLife": "Cambia la vida de un niño",
+    "forever": "para siempre",
+    "changeChildDescription": "Al apadrinar un niño, cubres sus necesidades educativas y alimentarias durante todo el año. Recibes reportes personalizados de su avance y te conviertes en parte fundamental de su futuro.",
+    "yearsTransforming": "años transformando vidas en Ciudad Bolívar",
+    "plansFromMonthly": "Planes desde mensual hasta anual. Ver todos los planes.",
+    "viewDetailedPlans": "Ver planes detallados",
+    "sponsorChildToday": "Apadrina un Niño Hoy",
+    "chooseImpact": "Elige tu nivel de",
+    "impactLevel": "impacto",
+    "chooseImpactSubtitle": "Cada aporte transforma vidas. Elige el plan que mejor se adapte a ti.",
+    "donateBtn": "Donar",
+    "popularBadge": "Más Popular",
+    "nutritionFuture": "Alimentación que",
+    "feedsFuture": "nutre el futuro",
+    "costPerChildPerDay": "COP por niño por día",
+    "realCostMeal": "Costo real de una comida nutritiva completa",
+    "snacksServed": "refrigerios servidos",
+    "thisQuarter": "Este trimestre en nuestras jornadas de nutrición",
+    "donateForNutrition": "Dona para Nutrición",
+    "feedChildDaily": "Con solo $7.045 COP al día puedes alimentar a un niño",
+    "shareYour": "Comparte tu",
+    "talent": "talento",
+    "volunteerWhatsApp": "Quiero Ser Voluntario",
+    "volunteerWhatsAppDescription": "Escríbenos por WhatsApp y te contamos cómo participar",
+    "faqSubtitle": "Resolvemos tus dudas para que puedas ayudar con confianza.",
+    "finalCtaTitle": "No dejes para mañana lo que puedes hacer hoy",
+    "finalCtaDescription": "Cada día sin actuar es un día menos en la vida de un niño. Tu aporte de hoy construye el futuro de mañana.",
+    "faqs": {
+      "howDonate": { "q": "¿Cómo puedo donar?", "a": "Puedes donar en línea a través de nuestra plataforma segura DonarOnline, en pesos colombianos o dólares americanos. También aceptamos transferencias bancarias directas." },
+      "taxDeductible": { "q": "¿Mi donación es deducible de impuestos?", "a": "Sí, la Fundación Cigarra es una entidad sin ánimo de lucro registrada con NIT 830.114.318-9. Las donaciones son deducibles de impuestos según la normativa colombiana vigente." },
+      "transparency": { "q": "¿Cómo sé que mi donación se usa correctamente?", "a": "Publicamos informes anuales de gestión y financieros. Los padrinos reciben reportes periódicos del progreso de su apadrinado. Estamos comprometidos con la transparencia total." },
+      "canVolunteer": { "q": "¿Puedo ser voluntario?", "a": "Sí, buscamos voluntarios en áreas de educación, arte, deportes, tecnología y gestión administrativa. Contáctanos por WhatsApp o correo electrónico para conocer las oportunidades disponibles." },
+      "whatIsPlanPadrino": { "q": "¿Qué es el Plan Padrino?", "a": "El Plan Padrino te permite apadrinar a un niño específico, cubrir sus necesidades educativas y de alimentación, y seguir su progreso durante todo el año académico con reportes personalizados." }
+    },
+    "volunteerAreas": {
+      "education": { "title": "Educación", "description": "Refuerzo escolar, talleres de lectura, apoyo en tareas y preparación de exámenes." },
+      "artsCulture": { "title": "Arte y Cultura", "description": "Música, danza y teatro. Creatividad y expresión artística." },
+      "sports": { "title": "Deportes y Recreación", "description": "Actividades deportivas, juegos cooperativos y desarrollo motriz." },
+      "management": { "title": "Gestión y Administración", "description": "Comunicaciones, diseño, contabilidad, asesoría legal y tecnología." }
+    },
+    "planPadrinoIncludes": {
+      "education": "Programa educativo mensual completo",
+      "nutrition": "Alimentación nutritiva diaria ($7.045 COP/día)",
+      "reports": "Reportes personalizados de progreso",
+      "certificate": "Certificado anual de impacto"
+    },
+    "tierImpacts": {
+      "monthly": "Apadrina 1 niño con educación y alimentación por un mes",
+      "semester": "Apadrina 1 niño durante 6 meses continuos",
+      "annual": "Apadrina 1 niño durante todo un año académico",
+      "gold": "Apadrina 2 niños durante todo un año académico",
+      "platinum": "Apadrina 3 niños durante todo un año académico",
+      "ultra": "Apadrina 4 niños durante todo un año académico"
+    }
+  },
+  "volunteer": {
+    "heroTagline": "Fundación Cigarra",
+    "heroTitle": "Sé",
+    "heroHighlight": "Voluntario",
+    "heroDescription": "Comparte tu tiempo y talento con los niños de Ciudad Bolívar. Tu presencia puede cambiar la vida de un niño para siempre.",
+    "wantToVolunteer": "Quiero Ser Voluntario",
+    "howToApply": "Cómo Aplicar",
+    "activeVolunteers": "+50 voluntarios activos",
+    "yearsExperience": "+23 años de experiencia",
+    "programsCount": "14 programas",
+    "whyVolunteer": "Por qué ser voluntario",
+    "reasonsToJoin": "Razones para",
+    "joinHighlight": "unirte",
+    "reasonsSubtitle": "Ser voluntario no solo transforma la vida de los niños, sino también la tuya.",
+    "benefits": {
+      "impact": { "title": "Impacto real en la comunidad", "description": "Trabajas directamente con los niños y familias de Ciudad Bolívar, transformando vidas de forma tangible y duradera." },
+      "skills": { "title": "Desarrollo de habilidades", "description": "Fortalece tus competencias de liderazgo, comunicación y trabajo en equipo mientras compartes tu conocimiento." },
+      "network": { "title": "Red de personas comprometidas", "description": "Conecta con una comunidad de voluntarios y profesionales apasionados por la educación y el cambio social." }
+    },
+    "areasTitle": "Áreas de Voluntariado",
+    "findYour": "Encuentra tu",
+    "place": "lugar",
+    "areasSubtitle": "Tenemos espacio para todo tipo de talentos. Elige el área que más te apasione.",
+    "areas": {
+      "education": {
+        "title": "Educación",
+        "description": "Refuerzo escolar, talleres de lectura, apoyo en tareas y preparación de exámenes. Ayuda a los niños a alcanzar su máximo potencial académico.",
+        "activities": ["Refuerzo escolar", "Talleres de lectura", "Apoyo en tareas", "Preparación de exámenes"]
+      },
+      "arts": {
+        "title": "Arte y Cultura",
+        "description": "Música, danza y teatro. Despierta la creatividad y el talento artístico de los niños.",
+        "activities": ["Música", "Danza", "Teatro"]
+      },
+      "sports": {
+        "title": "Deportes y Recreación",
+        "description": "Actividades deportivas, juegos cooperativos y desarrollo motriz. Promueve la salud física y la sana convivencia.",
+        "activities": ["Actividades deportivas", "Juegos cooperativos", "Desarrollo motriz"]
+      },
+      "management": {
+        "title": "Gestión y Administración",
+        "description": "Comunicaciones, diseño, contabilidad, asesoría legal y tecnología. Apoya desde el back-office para que todo funcione.",
+        "activities": ["Comunicaciones", "Diseño", "Contabilidad", "Asesoría legal", "Tecnología"]
+      }
+    },
+    "requirementsTitle": "Requisitos",
+    "requirementsHeading": "Qué necesitas para",
+    "requirementsHighlight": "ser voluntario",
+    "requirementsSubtitle": "Solo necesitas ganas de ayudar y cumplir estos requisitos básicos.",
+    "requirements": {
+      "age": "Ser mayor de 18 años",
+      "availability": "Disponibilidad mínima de 4 horas semanales",
+      "passion": "Pasión por la educación y el trabajo social",
+      "background": "Certificado de antecedentes (requerido por ley)"
+    },
+    "requirementsNote": "El certificado de antecedentes penales es un requisito legal obligatorio para trabajar con menores de edad en Colombia. La fundación te guiará en el proceso de obtención si es necesario.",
+    "testimonialsTitle": "Testimonios",
+    "theyAreAlready": "Ellos ya son",
+    "volunteers": "voluntarios",
+    "testimonialsSubtitle": "Conoce las experiencias de quienes ya comparten su tiempo y talento con nosotros.",
+    "testimonials": {
+      "andrea": {
+        "name": "Andrea Morales",
+        "role": "Voluntaria de Refuerzo Escolar",
+        "quote": "Ser voluntaria en la Fundación Cigarra ha sido la experiencia más enriquecedora de mi vida. Ver cómo los niños avanzan académicamente y ganan confianza en sí mismos no tiene precio.",
+        "years": "3 años como voluntaria"
+      },
+      "carlos": {
+        "name": "Carlos Gutiérrez",
+        "role": "Voluntario de Música",
+        "quote": "Comparto mi amor por la música con los niños de Ciudad Bolívar cada sábado. La alegría en sus rostros cuando logran tocar una canción completa es la mejor recompensa que puedo recibir.",
+        "years": "2 años como voluntario"
+      },
+      "laura": {
+        "name": "Laura Jiménez",
+        "role": "Voluntaria de Comunicaciones",
+        "quote": "Desde el área de comunicaciones ayudo a que más personas conozcan la labor de la fundación. Cada historia que contamos inspira a alguien nuevo a unirse a esta causa.",
+        "years": "1 año como voluntaria"
+      }
+    },
+    "processTitle": "Proceso",
+    "howTo": "Cómo",
+    "apply": "aplicar",
+    "processSubtitle": "En 3 sencillos pasos puedes unirte a nuestro equipo de voluntarios.",
+    "applicationSteps": {
+      "contact": { "title": "Contáctanos", "description": "Escríbenos por WhatsApp o correo electrónico para contarnos tu interés y disponibilidad. Te responderemos en menos de 24 horas." },
+      "interview": { "title": "Entrevista", "description": "Agendamos una breve entrevista para conocerte mejor, entender tus motivaciones y asignarte el área más adecuada." },
+      "start": { "title": "Inducción y arranque", "description": "Participas en una jornada de inducción donde conocerás la fundación, los programas y los niños. ¡Luego, a trabajar!" }
+    },
+    "ctaTitle": "Tu tiempo puede cambiar una vida",
+    "ctaDescription": "Cada hora que compartes con los niños de Ciudad Bolívar es una semilla de esperanza. Únete a nuestro equipo de voluntarios y sé parte del cambio.",
+    "writeWhatsApp": "Escríbenos por WhatsApp",
+    "goToContact": "Ir a Contacto"
+  },
+  "corporate": {
+    "heroTagline": "Alianzas Corporativas",
+    "heroTitle": "Impacto",
+    "heroHighlight": "Empresarial",
+    "heroDescription": "Tu empresa puede ser parte del cambio. Juntos construimos oportunidades reales para más de 1.877 niños y jóvenes en Ciudad Bolívar, Bogotá. La responsabilidad social empresarial cobra sentido cuando transforma vidas.",
+    "becomeAlly": "Ser Aliado",
+    "allianceModels": "Modelos de Alianza",
+    "esalRegistered": "ESAL Registrada",
+    "taxDeductible": "Deducible de impuestos",
+    "benefitsTitle": "Beneficios para tu Empresa",
+    "whyPartner": "Por qué ser",
+    "ally": "aliado",
+    "whyPartnerSubtitle": "Invertir en impacto social es invertir en el futuro de tu empresa y de Colombia.",
+    "benefits": {
+      "csr": { "title": "Responsabilidad Social Empresarial", "description": "Fortalece la estrategia RSE de tu empresa con un aliado que lleva más de 23 años generando impacto real en una de las comunidades más vulnerables de Bogotá." },
+      "tax": { "title": "Beneficios Tributarios", "description": "Las donaciones a la Fundación Cigarra son deducibles de impuestos según el Estatuto Tributario colombiano. NIT: 830.114.318-9. Certificado de donación incluido." },
+      "measurable": { "title": "Impacto Medible y Reportable", "description": "Recibe informes detallados del impacto de tu inversión social: número de beneficiarios, indicadores de resultado y evidencia fotográfica." },
+      "brand": { "title": "Fortalecimiento de Marca", "description": "Asocia tu marca con una causa de alto impacto social. Visibilidad en nuestros canales, eventos y reportes anuales ante más de 1.877 beneficiarios y sus familias." }
+    },
+    "modelsTitle": "Modelos de Alianza",
+    "waysTo": "Formas de",
+    "collaborate": "colaborar",
+    "modelsSubtitle": "Ofrecemos diferentes modelos de alianza para adaptarnos a las necesidades y objetivos de cada empresa.",
+    "models": {
+      "donation": { "title": "Donación Corporativa", "description": "Aportes monetarios con certificado de donación oficial para deducción tributaria. Montos flexibles según la capacidad de tu empresa." },
+      "volunteering": { "title": "Voluntariado Corporativo", "description": "Organiza jornadas de voluntariado para tus empleados. Actividades de team building con impacto social real en educación, arte y recreación." },
+      "sponsorship": { "title": "Patrocinio de Programas", "description": "Patrocina uno de nuestros 14 programas activos: educación, música, danza, teatro, deportes, tecnología, biblioteca y más." },
+      "inKind": { "title": "Donación en Especie", "description": "Aporta materiales escolares, equipos tecnológicos, instrumentos musicales, alimentos, mobiliario o implementos deportivos." },
+      "cobranding": { "title": "Co-branding y Alianzas", "description": "Alianzas estratégicas para visibilidad mutua. Tu marca presente en nuestros eventos, redes sociales, material impreso y reportes de impacto." }
+    },
+    "consult": "Consultar",
+    "esalTitle": "Permanencia ESAL",
+    "esalHeading": "Entidad Sin Ánimo de",
+    "esalHighlight": "Lucro Certificada",
+    "esalDescription": "La Fundación Cigarra es una Entidad Sin Ánimo de Lucro (ESAL) debidamente registrada y regulada bajo la normativa colombiana. Una ESAL es una organización cuyo fin principal no es la obtención de beneficios económicos, sino el desarrollo de actividades de interés social, educativo y cultural.",
+    "esalLegalTitle": "Marco Legal ESAL",
+    "esalLegalDescription": "Las Entidades Sin Ánimo de Lucro en Colombia están reguladas por el Decreto 2150 de 1995, la Ley 22 de 1987 y el Estatuto Tributario. La Fundación Cigarra cumple con todos los requisitos de permanencia, renovación y reporte ante la Cámara de Comercio de Bogotá y la DIAN, garantizando la plena legalidad de las donaciones realizadas por empresas y personas naturales.",
+    "esalBadges": {
+      "registered": { "label": "ESAL Registrada", "description": "Entidad Sin Ánimo de Lucro" },
+      "active": { "label": "23+ Años Activa", "description": "Desde 2002 en Ciudad Bolívar" },
+      "transparent": { "label": "Finanzas Transparentes", "description": "Auditorías anuales" },
+      "deductible": { "label": "Donaciones Deducibles", "description": "Estatuto Tributario" }
+    },
+    "impactTitle": "Nuestro Impacto en Cifras",
+    "impactHeading": "Resultados que",
+    "impactHighlight": "hablan por sí solos",
+    "impactSubtitle": "Más de dos décadas de trabajo transparente y medible. Estos son los números que respaldan nuestra labor.",
+    "impactNumbers": {
+      "children": "Niños Ayudados",
+      "years": "Años de Servicio",
+      "programs": "Programas Activos",
+      "jobs": "Empleos Generados",
+      "families": "Familias Beneficiadas",
+      "allies": "Aliados Corporativos"
+    },
+    "partnersTitle": "Red de Aliados",
+    "companiesTrust": "Empresas que",
+    "trustHighlight": "confían en nosotros",
+    "partnersSubtitle": "Contamos con el respaldo de empresas y organizaciones comprometidas con el desarrollo social de Ciudad Bolívar. Nuestros aliados corporativos son parte fundamental del impacto que generamos.",
+    "platinumAllies": "Aliados Platinum",
+    "goldAllies": "Aliados Gold",
+    "silverAllies": "Aliados Silver",
+    "transformingAlliances": "Alianzas que Transforman",
+    "transformingDescription": "A lo largo de más de 23 años, hemos construido alianzas sólidas con empresas del sector privado, organizaciones internacionales e instituciones gubernamentales. Cada aliado aporta de manera única al bienestar de nuestros beneficiarios.",
+    "alliancesList": {
+      "corporateAllies": "Más de 8 aliados corporativos activos",
+      "nationalInternational": "Alianzas con organizaciones nacionales e internacionales",
+      "educationalAgreements": "Convenios con instituciones educativas",
+      "governmentCollaboration": "Colaboración con entidades gubernamentales locales"
+    },
+    "nextAlly": "Tu empresa puede ser el próximo aliado",
+    "nextAllySubtitle": "Únete a nuestra red de aliados corporativos y genera impacto real.",
+    "contactUs": "Contáctanos",
+    "corporateContact": "Contacto Corporativo",
+    "letsTalk": "Hablemos de",
+    "yourAlliance": "tu alianza",
+    "contactSubtitle": "Nuestro equipo está listo para diseñar una alianza a la medida de tu empresa. Contáctanos y construyamos juntos un futuro mejor.",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "writeNow": "Escribe ahora",
+    "writeWhatsApp": "Escríbenos por WhatsApp",
+    "responseGuarantee": "Respuesta garantizada en menos de 24 horas hábiles",
+    "ctaTitle": "Tu empresa puede cambiar la historia de un niño",
+    "ctaDescription": "Cada alianza corporativa multiplica el impacto. Con el respaldo de tu empresa, más niños y jóvenes de Ciudad Bolívar pueden acceder a educación, arte, cultura y oportunidades reales de desarrollo.",
+    "contactWhatsApp": "Contactar por WhatsApp",
+    "contactForm": "Formulario de Contacto",
+    "donateAsIndividual": "Donar como Persona",
+    "registeredAtChamber": "ante la Cámara de Comercio de Bogotá",
+    "esalLegal": {
+      "nit": "NIT: 830.114.318-9",
+      "registeredChamber": "Registrada en la Cámara de Comercio de Bogotá",
+      "activeSince": "Activa desde 2002 - Más de 23 años de servicio continuo",
+      "annualAudits": "Auditorías anuales y transparencia financiera completa",
+      "taxDeductible": "Donaciones deducibles bajo el Estatuto Tributario colombiano",
+      "compliance": "Cumplimiento de regulaciones colombianas para entidades sin ánimo de lucro"
+    }
   },
   "seo": {
     "home": {

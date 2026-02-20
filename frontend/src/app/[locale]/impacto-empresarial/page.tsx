@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
 import HeroWaves from '@/components/shared/HeroWaves';
@@ -30,114 +31,62 @@ import { FaWhatsapp, FaHandshake, FaBuilding, FaBalanceScale } from 'react-icons
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
-/* ── Why partner benefits ── */
-const partnerBenefits = [
-  {
-    icon: HiGlobeAlt,
-    title: 'Responsabilidad Social Empresarial',
-    description:
-      'Fortalece la estrategia RSE de tu empresa con un aliado que lleva mas de 23 anos generando impacto real en una de las comunidades mas vulnerables de Bogota.',
-    color: 'bg-primary-50 text-primary-600 border-primary-200',
-    iconBg: 'bg-primary-100',
-  },
-  {
-    icon: HiCurrencyDollar,
-    title: 'Beneficios Tributarios',
-    description:
-      'Las donaciones a la Fundacion Cigarra son deducibles de impuestos segun el Estatuto Tributario colombiano. NIT: 830.114.318-9. Certificado de donacion incluido.',
-    color: 'bg-accent-50 text-accent-600 border-accent-200',
-    iconBg: 'bg-accent-100',
-  },
-  {
-    icon: HiDocumentReport,
-    title: 'Impacto Medible y Reportable',
-    description:
-      'Recibe informes detallados del impacto de tu inversion social: numero de beneficiarios, indicadores de resultado y evidencia fotografica.',
-    color: 'bg-green-50 text-green-600 border-green-200',
-    iconBg: 'bg-green-100',
-  },
-  {
-    icon: HiStar,
-    title: 'Fortalecimiento de Marca',
-    description:
-      'Asocia tu marca con una causa de alto impacto social. Visibilidad en nuestros canales, eventos y reportes anuales ante mas de 1.877 beneficiarios y sus familias.',
-    color: 'bg-purple-50 text-purple-600 border-purple-200',
-    iconBg: 'bg-purple-100',
-  },
+/* ── Benefit config (keys only) ── */
+const benefitConfig = [
+  { key: 'csr', icon: HiGlobeAlt, color: 'bg-primary-50 text-primary-600 border-primary-200', iconBg: 'bg-primary-100' },
+  { key: 'tax', icon: HiCurrencyDollar, color: 'bg-accent-50 text-accent-600 border-accent-200', iconBg: 'bg-accent-100' },
+  { key: 'measurable', icon: HiDocumentReport, color: 'bg-green-50 text-green-600 border-green-200', iconBg: 'bg-green-100' },
+  { key: 'brand', icon: HiStar, color: 'bg-purple-50 text-purple-600 border-purple-200', iconBg: 'bg-purple-100' },
 ];
 
-/* ── Partnership models ── */
-const partnershipModels = [
-  {
-    icon: HiCurrencyDollar,
-    title: 'Donacion Corporativa',
-    description:
-      'Aportes monetarios con certificado de donacion oficial para deduccion tributaria. Montos flexibles segun la capacidad de tu empresa.',
-    accent: 'from-primary-500 to-primary-700',
-    border: 'border-primary-200 hover:border-primary-400',
-  },
-  {
-    icon: HiUserGroup,
-    title: 'Voluntariado Corporativo',
-    description:
-      'Organiza jornadas de voluntariado para tus empleados. Actividades de team building con impacto social real en educacion, arte y recreacion.',
-    accent: 'from-green-500 to-green-700',
-    border: 'border-green-200 hover:border-green-400',
-  },
-  {
-    icon: HiAcademicCap,
-    title: 'Patrocinio de Programas',
-    description:
-      'Patrocina uno de nuestros 14 programas activos: educacion, musica, danza, teatro, artes plasticas, deportes, tecnologia y mas.',
-    accent: 'from-accent-500 to-accent-700',
-    border: 'border-accent-200 hover:border-accent-400',
-  },
-  {
-    icon: HiTruck,
-    title: 'Donacion en Especie',
-    description:
-      'Aporta materiales escolares, equipos tecnologicos, instrumentos musicales, alimentos, mobiliario o implementos deportivos.',
-    accent: 'from-rose-500 to-rose-700',
-    border: 'border-rose-200 hover:border-rose-400',
-  },
-  {
-    icon: HiSpeakerphone,
-    title: 'Co-branding y Alianzas',
-    description:
-      'Alianzas estrategicas para visibilidad mutua. Tu marca presente en nuestros eventos, redes sociales, material impreso y reportes de impacto.',
-    accent: 'from-violet-500 to-violet-700',
-    border: 'border-violet-200 hover:border-violet-400',
-  },
+/* ── Partnership model config (keys only) ── */
+const modelConfig = [
+  { key: 'donation', icon: HiCurrencyDollar, accent: 'from-primary-500 to-primary-700', border: 'border-primary-200 hover:border-primary-400' },
+  { key: 'volunteering', icon: HiUserGroup, accent: 'from-green-500 to-green-700', border: 'border-green-200 hover:border-green-400' },
+  { key: 'sponsorship', icon: HiAcademicCap, accent: 'from-accent-500 to-accent-700', border: 'border-accent-200 hover:border-accent-400' },
+  { key: 'inKind', icon: HiTruck, accent: 'from-rose-500 to-rose-700', border: 'border-rose-200 hover:border-rose-400' },
+  { key: 'cobranding', icon: HiSpeakerphone, accent: 'from-violet-500 to-violet-700', border: 'border-violet-200 hover:border-violet-400' },
 ];
 
-/* ── ESAL trust badges ── */
-const esalBadges = [
-  { icon: HiShieldCheck, label: 'ESAL Registrada', description: 'Entidad Sin Animo de Lucro' },
-  { icon: HiClipboardCheck, label: '23+ Anos Activa', description: 'Desde 2002 en Ciudad Bolivar' },
-  { icon: HiDocumentReport, label: 'Finanzas Transparentes', description: 'Auditorias anuales' },
-  { icon: HiCurrencyDollar, label: 'Donaciones Deducibles', description: 'Estatuto Tributario' },
+/* ── ESAL trust badge config (keys only) ── */
+const esalBadgeConfig = [
+  { key: 'registered', icon: HiShieldCheck },
+  { key: 'active', icon: HiClipboardCheck },
+  { key: 'transparent', icon: HiDocumentReport },
+  { key: 'deductible', icon: HiCurrencyDollar },
 ];
 
-/* ── Impact numbers ── */
-const impactNumbers = [
-  { number: '1,877+', label: 'Ninos Ayudados', icon: HiHeart },
-  { number: '23', label: 'Anos de Servicio', icon: HiStar },
-  { number: '14', label: 'Programas Activos', icon: HiAcademicCap },
-  { number: '100+', label: 'Empleos Generados', icon: HiBriefcase },
-  { number: '190+', label: 'Familias Beneficiadas', icon: HiUserGroup },
-  { number: '10+', label: 'Aliados Corporativos', icon: FaHandshake },
+/* ── Impact number config (keys only) ── */
+const impactNumberConfig = [
+  { key: 'children', number: '1,877+', icon: HiHeart },
+  { key: 'years', number: '23', icon: HiStar },
+  { key: 'programs', number: '14', icon: HiAcademicCap },
+  { key: 'jobs', number: '100+', icon: HiBriefcase },
+  { key: 'families', number: '190+', icon: HiUserGroup },
+  { key: 'allies', number: '8+', icon: FaHandshake },
 ];
+
+/* ── ESAL legal config (keys only) ── */
+const esalLegalConfig = [
+  { key: 'nit', icon: FaBuilding },
+  { key: 'registeredChamber', icon: FaBalanceScale },
+  { key: 'activeSince', icon: HiClipboardCheck },
+  { key: 'annualAudits', icon: HiDocumentReport },
+  { key: 'taxDeductible', icon: HiCurrencyDollar },
+  { key: 'compliance', icon: HiShieldCheck },
+];
+
+/* ── Alliances list config (keys only) ── */
+const alliancesListConfig = ['corporateAllies', 'nationalInternational', 'educationalAgreements', 'governmentCollaboration'];
 
 /* ── Partner logos (static — replace with Strapi fetch later) ── */
 const partners = [
-  { name: 'Microsoft', logo: '/images/partners/microsoft.png', tier: 'platinum' as const },
-  { name: 'Ecopetrol', logo: '/images/partners/ecopetrol.png', tier: 'platinum' as const },
-  { name: 'Saint George School', logo: '/images/partners/san-jorge.png', tier: 'gold' as const },
+  { name: 'Saint George School', logo: '/images/partners/san-jorge.png', tier: 'platinum' as const },
+  { name: 'Microsoft', logo: '/images/partners/microsoft.png', tier: 'gold' as const },
   { name: 'Charles Wright Academy', logo: '/images/partners/cwa.png', tier: 'gold' as const },
   { name: 'Karelsie Foundation', logo: '/images/partners/karelsie.png', tier: 'gold' as const },
   { name: 'HomeCenter', logo: '/images/partners/homecenter.jpg', tier: 'gold' as const },
   { name: 'Aqualogic', logo: '/images/partners/aqualogic.png', tier: 'silver' as const },
-  { name: 'Chocolates Bora', logo: '/images/partners/chocolates-bora.png', tier: 'silver' as const },
   { name: 'Opperar', logo: '/images/partners/opperar.png', tier: 'silver' as const },
   { name: 'Makri', logo: '/images/partners/makri.jpg', tier: 'silver' as const },
 ];
@@ -150,6 +99,8 @@ const silverPartners = partners.filter((p) => p.tier === 'silver');
    MAIN PAGE COMPONENT
    ══════════════════════════════════════════════════════════════ */
 export default function ImpactoEmpresarialPage() {
+  const t = useTranslations('corporate');
+
   return (
     <>
       {/* ═══════════════════════════════════════════════════════
@@ -167,7 +118,7 @@ export default function ImpactoEmpresarialPage() {
             transition={{ duration: 0.6, ease: smoothEase }}
             className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
           >
-            Alianzas Corporativas
+            {t('heroTagline')}
           </motion.p>
 
           <motion.h1
@@ -176,9 +127,9 @@ export default function ImpactoEmpresarialPage() {
             transition={{ duration: 0.7, delay: 0.1, ease: smoothEase }}
             className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
           >
-            Impacto{' '}
+            {t('heroTitle')}{' '}
             <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">
-              Empresarial
+              {t('heroHighlight')}
             </span>
           </motion.h1>
 
@@ -188,9 +139,7 @@ export default function ImpactoEmpresarialPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-200/80"
           >
-            Tu empresa puede ser parte del cambio. Juntos construimos oportunidades reales para
-            mas de 1.877 ninos y jovenes en Ciudad Bolivar, Bogota. La responsabilidad social
-            empresarial cobra sentido cuando transforma vidas.
+            {t('heroDescription')}
           </motion.p>
 
           {/* CTA buttons */}
@@ -205,14 +154,14 @@ export default function ImpactoEmpresarialPage() {
               className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-lg font-semibold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
             >
               <FaHandshake className="h-5 w-5" />
-              Ser Aliado
+              {t('becomeAlly')}
             </a>
             <a
               href="#modelos-alianza"
               className="inline-flex items-center gap-2 rounded-full border-2 border-white/20 px-8 py-4 font-heading text-lg font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
             >
               <HiBriefcase className="h-5 w-5" />
-              Modelos de Alianza
+              {t('allianceModels')}
             </a>
           </motion.div>
 
@@ -224,8 +173,8 @@ export default function ImpactoEmpresarialPage() {
             className="mt-10 flex flex-wrap items-center justify-center gap-6"
           >
             {[
-              { icon: HiShieldCheck, label: 'ESAL Registrada' },
-              { icon: HiDocumentReport, label: 'Deducible de impuestos' },
+              { icon: HiShieldCheck, label: t('esalRegistered') },
+              { icon: HiDocumentReport, label: t('taxDeductible') },
               { icon: HiCheckCircle, label: 'NIT: 830.114.318-9' },
             ].map((badge) => (
               <div
@@ -248,22 +197,22 @@ export default function ImpactoEmpresarialPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
-                Beneficios para tu Empresa
+                {t('benefitsTitle')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                Por que ser <span className="text-primary-600">aliado</span>
+                {t('whyPartner')} <span className="text-primary-600">{t('ally')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                Invertir en impacto social es invertir en el futuro de tu empresa y de Colombia.
+                {t('whyPartnerSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
           <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
-            {partnerBenefits.map((benefit) => {
+            {benefitConfig.map((benefit) => {
               const Icon = benefit.icon;
               return (
-                <StaggerItem key={benefit.title}>
+                <StaggerItem key={benefit.key}>
                   <motion.div
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
@@ -273,10 +222,10 @@ export default function ImpactoEmpresarialPage() {
                       <Icon className="h-7 w-7" />
                     </div>
                     <h3 className="mb-2 font-heading text-xl font-bold text-gray-900">
-                      {benefit.title}
+                      {t(`benefits.${benefit.key}.title`)}
                     </h3>
                     <p className="flex-1 text-sm leading-relaxed text-gray-600">
-                      {benefit.description}
+                      {t(`benefits.${benefit.key}.description`)}
                     </p>
                   </motion.div>
                 </StaggerItem>
@@ -294,23 +243,22 @@ export default function ImpactoEmpresarialPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-accent-100 px-5 py-2 font-heading text-sm font-semibold text-accent-700 mb-4">
-                Modelos de Alianza
+                {t('modelsTitle')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                Formas de <span className="text-primary-600">colaborar</span>
+                {t('waysTo')} <span className="text-primary-600">{t('collaborate')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                Ofrecemos diferentes modelos de alianza para adaptarnos a las necesidades
-                y objetivos de cada empresa.
+                {t('modelsSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
           <StaggerContainer className="space-y-4 md:space-y-5" staggerDelay={0.1}>
-            {partnershipModels.map((model) => {
+            {modelConfig.map((model) => {
               const Icon = model.icon;
               return (
-                <StaggerItem key={model.title}>
+                <StaggerItem key={model.key}>
                   <motion.div
                     whileHover={{ x: 4 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
@@ -324,9 +272,9 @@ export default function ImpactoEmpresarialPage() {
                     {/* Name & description */}
                     <div className="flex-1 text-center md:text-left">
                       <h3 className="font-heading text-2xl font-bold text-gray-900">
-                        {model.title}
+                        {t(`models.${model.key}.title`)}
                       </h3>
-                      <p className="mt-1 text-gray-500">{model.description}</p>
+                      <p className="mt-1 text-gray-500">{t(`models.${model.key}.description`)}</p>
                     </div>
 
                     {/* Arrow */}
@@ -334,7 +282,7 @@ export default function ImpactoEmpresarialPage() {
                       href="#contacto-empresarial"
                       className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-primary-400"
                     >
-                      Consultar
+                      {t('consult')}
                       <HiArrowRight className="h-4 w-4" />
                     </a>
                   </motion.div>
@@ -368,7 +316,7 @@ export default function ImpactoEmpresarialPage() {
                       <HiShieldCheck className="h-5 w-5 text-primary-600" />
                     </div>
                     <p className="text-sm font-medium text-gray-700">
-                      <span className="font-bold text-primary-700">ESAL Registrada</span> ante la Camara de Comercio de Bogota
+                      <span className="font-bold text-primary-700">{t('esalRegistered')}</span> {t('registeredAtChamber')}
                     </p>
                   </div>
                 </div>
@@ -379,34 +327,24 @@ export default function ImpactoEmpresarialPage() {
             <ScrollReveal direction="right">
               <div>
                 <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-6">
-                  Permanencia ESAL
+                  {t('esalTitle')}
                 </span>
                 <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                  Entidad Sin Animo de{' '}
-                  <span className="text-primary-600">Lucro Certificada</span>
+                  {t('esalHeading')}{' '}
+                  <span className="text-primary-600">{t('esalHighlight')}</span>
                 </h2>
                 <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                  La Fundacion Cigarra es una <strong>Entidad Sin Animo de Lucro (ESAL)</strong> debidamente
-                  registrada y regulada bajo la normativa colombiana. Una ESAL es una organizacion cuyo fin
-                  principal no es la obtencion de beneficios economicos, sino el desarrollo de actividades
-                  de interes social, educativo y cultural.
+                  {t('esalDescription')}
                 </p>
 
                 {/* Legal details */}
                 <div className="mt-8 space-y-4">
-                  {[
-                    { icon: FaBuilding, text: 'NIT: 830.114.318-9' },
-                    { icon: FaBalanceScale, text: 'Registrada en la Camara de Comercio de Bogota' },
-                    { icon: HiClipboardCheck, text: 'Activa desde 2002 - Mas de 23 anos de servicio continuo' },
-                    { icon: HiDocumentReport, text: 'Auditorias anuales y transparencia financiera completa' },
-                    { icon: HiCurrencyDollar, text: 'Donaciones deducibles bajo el Estatuto Tributario colombiano' },
-                    { icon: HiShieldCheck, text: 'Cumplimiento de regulaciones colombianas para entidades sin animo de lucro' },
-                  ].map((item) => (
-                    <div key={item.text} className="flex items-start gap-4">
+                  {esalLegalConfig.map((item) => (
+                    <div key={item.key} className="flex items-start gap-4">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-100">
                         <item.icon className="h-5 w-5 text-primary-600" />
                       </div>
-                      <p className="pt-2 text-gray-700 font-medium">{item.text}</p>
+                      <p className="pt-2 text-gray-700 font-medium">{t(`esalLegal.${item.key}`)}</p>
                     </div>
                   ))}
                 </div>
@@ -414,13 +352,10 @@ export default function ImpactoEmpresarialPage() {
                 {/* ESAL explanation box */}
                 <div className="mt-8 rounded-xl border border-primary-200 bg-primary-50 p-6">
                   <h4 className="font-heading text-lg font-bold text-primary-800 mb-2">
-                    Marco Legal ESAL
+                    {t('esalLegalTitle')}
                   </h4>
                   <p className="text-sm leading-relaxed text-primary-700/80">
-                    Las Entidades Sin Animo de Lucro en Colombia estan reguladas por el Decreto 2150 de 1995,
-                    la Ley 22 de 1987 y el Estatuto Tributario. La Fundacion Cigarra cumple con todos los
-                    requisitos de permanencia, renovacion y reporte ante la Camara de Comercio de Bogota
-                    y la DIAN, garantizando la plena legalidad de las donaciones realizadas por empresas y personas naturales.
+                    {t('esalLegalDescription')}
                   </p>
                 </div>
               </div>
@@ -430,10 +365,10 @@ export default function ImpactoEmpresarialPage() {
           {/* ESAL Trust Badges */}
           <div className="mt-16">
             <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
-              {esalBadges.map((badge) => {
+              {esalBadgeConfig.map((badge) => {
                 const Icon = badge.icon;
                 return (
-                  <StaggerItem key={badge.label}>
+                  <StaggerItem key={badge.key}>
                     <motion.div
                       whileHover={{ y: -3 }}
                       transition={{ duration: 0.25, ease: smoothEase }}
@@ -443,8 +378,8 @@ export default function ImpactoEmpresarialPage() {
                         <Icon className="h-6 w-6 text-primary-600" />
                       </div>
                       <div>
-                        <p className="font-heading text-sm font-bold text-gray-900">{badge.label}</p>
-                        <p className="text-xs text-gray-500">{badge.description}</p>
+                        <p className="font-heading text-sm font-bold text-gray-900">{t(`esalBadges.${badge.key}.label`)}</p>
+                        <p className="text-xs text-gray-500">{t(`esalBadges.${badge.key}.description`)}</p>
                       </div>
                     </motion.div>
                   </StaggerItem>
@@ -464,25 +399,25 @@ export default function ImpactoEmpresarialPage() {
           <ScrollReveal>
             <div className="mb-14 text-center">
               <span className="inline-block rounded-full bg-white/10 px-5 py-2 font-heading text-sm font-semibold text-accent-400 mb-6">
-                Nuestro Impacto en Cifras
+                {t('impactTitle')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">
-                Resultados que{' '}
+                {t('impactHeading')}{' '}
                 <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">
-                  hablan por si solos
+                  {t('impactHighlight')}
                 </span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-200/70">
-                Mas de dos decadas de trabajo transparente y medible. Estos son los numeros que respaldan nuestra labor.
+                {t('impactSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
           <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.08}>
-            {impactNumbers.map((stat) => {
+            {impactNumberConfig.map((stat) => {
               const Icon = stat.icon;
               return (
-                <StaggerItem key={stat.label}>
+                <StaggerItem key={stat.key}>
                   <motion.div
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
@@ -492,7 +427,7 @@ export default function ImpactoEmpresarialPage() {
                       <Icon className="h-7 w-7 text-accent-400" />
                     </div>
                     <p className="font-heading text-4xl font-bold text-white md:text-5xl">{stat.number}</p>
-                    <p className="mt-2 text-lg font-medium text-primary-300">{stat.label}</p>
+                    <p className="mt-2 text-lg font-medium text-primary-300">{t(`impactNumbers.${stat.key}`)}</p>
                   </motion.div>
                 </StaggerItem>
               );
@@ -509,15 +444,13 @@ export default function ImpactoEmpresarialPage() {
           <ScrollReveal>
             <div className="text-center">
               <span className="inline-block rounded-full bg-accent-100 px-5 py-2 font-heading text-sm font-semibold text-accent-700 mb-4">
-                Red de Aliados
+                {t('partnersTitle')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                Empresas que <span className="text-primary-600">confian en nosotros</span>
+                {t('companiesTrust')} <span className="text-primary-600">{t('trustHighlight')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                Contamos con el respaldo de empresas y organizaciones comprometidas con el desarrollo
-                social de Ciudad Bolivar. Nuestros aliados corporativos son parte fundamental del
-                impacto que generamos.
+                {t('partnersSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -528,7 +461,7 @@ export default function ImpactoEmpresarialPage() {
               {/* Platinum */}
               <div>
                 <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-                  Aliados Platinum
+                  {t('platinumAllies')}
                 </p>
                 <StaggerContainer className="flex flex-wrap items-center justify-center gap-10" staggerDelay={0.08}>
                   {platinumPartners.map((p) => (
@@ -550,7 +483,7 @@ export default function ImpactoEmpresarialPage() {
               {/* Gold */}
               <div>
                 <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-                  Aliados Gold
+                  {t('goldAllies')}
                 </p>
                 <StaggerContainer className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
                   {goldPartners.map((p) => (
@@ -572,7 +505,7 @@ export default function ImpactoEmpresarialPage() {
               {/* Silver */}
               <div>
                 <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-                  Aliados Silver
+                  {t('silverAllies')}
                 </p>
                 <StaggerContainer className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
                   {silverPartners.map((p) => (
@@ -605,23 +538,16 @@ export default function ImpactoEmpresarialPage() {
                     <FaHandshake className="h-7 w-7 text-primary-600" />
                   </div>
                   <h3 className="font-heading text-2xl font-bold text-gray-900 mb-3">
-                    Alianzas que Transforman
+                    {t('transformingAlliances')}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    A lo largo de mas de 23 anos, hemos construido alianzas solidas con empresas del sector
-                    privado, organizaciones internacionales e instituciones gubernamentales. Cada aliado
-                    aporta de manera unica al bienestar de nuestros beneficiarios.
+                    {t('transformingDescription')}
                   </p>
                   <ul className="mt-6 space-y-3">
-                    {[
-                      'Mas de 10 aliados corporativos activos',
-                      'Alianzas con organizaciones nacionales e internacionales',
-                      'Convenios con instituciones educativas',
-                      'Colaboracion con entidades gubernamentales locales',
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-3">
+                    {alliancesListConfig.map((key) => (
+                      <li key={key} className="flex items-start gap-3">
                         <HiCheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary-500" />
-                        <span className="text-sm text-gray-700">{item}</span>
+                        <span className="text-sm text-gray-700">{t(`alliancesList.${key}`)}</span>
                       </li>
                     ))}
                   </ul>
@@ -633,16 +559,16 @@ export default function ImpactoEmpresarialPage() {
                     <HiSparkles className="h-10 w-10 text-primary-600" />
                   </div>
                   <p className="text-center font-heading text-xl font-bold text-primary-800 mb-2">
-                    Tu empresa puede ser el proximo aliado
+                    {t('nextAlly')}
                   </p>
                   <p className="text-center text-sm text-primary-600/70 mb-6">
-                    Unete a nuestra red de aliados corporativos y genera impacto real.
+                    {t('nextAllySubtitle')}
                   </p>
                   <a
                     href="#contacto-empresarial"
                     className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-8 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-primary-400"
                   >
-                    Contactanos
+                    {t('contactUs')}
                     <HiArrowRight className="h-4 w-4" />
                   </a>
                 </div>
@@ -660,14 +586,13 @@ export default function ImpactoEmpresarialPage() {
           <ScrollReveal>
             <div className="mb-14 text-center">
               <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
-                Contacto Corporativo
+                {t('corporateContact')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                Hablemos de <span className="text-primary-600">tu alianza</span>
+                {t('letsTalk')} <span className="text-primary-600">{t('yourAlliance')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                Nuestro equipo esta listo para disenar una alianza a la medida de tu empresa.
-                Contactanos y construyamos juntos un futuro mejor.
+                {t('contactSubtitle')}
               </p>
             </div>
           </ScrollReveal>
@@ -700,7 +625,7 @@ export default function ImpactoEmpresarialPage() {
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50">
                   <HiPhone className="h-7 w-7 text-blue-600" />
                 </div>
-                <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">Telefono</h3>
+                <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">{t('phone')}</h3>
                 <p className="text-sm text-primary-600">+57 321 246 5421</p>
               </motion.a>
             </ScrollReveal>
@@ -719,7 +644,7 @@ export default function ImpactoEmpresarialPage() {
                   <FaWhatsapp className="h-7 w-7 text-green-600" />
                 </div>
                 <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">WhatsApp</h3>
-                <p className="text-sm text-green-600">Escribe ahora</p>
+                <p className="text-sm text-green-600">{t('writeNow')}</p>
               </motion.a>
             </ScrollReveal>
 
@@ -733,7 +658,7 @@ export default function ImpactoEmpresarialPage() {
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50">
                   <HiLocationMarker className="h-7 w-7 text-primary-600" />
                 </div>
-                <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">Direccion</h3>
+                <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">{t('address')}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   Cra 18M #75-25 Sur
                   <br />
@@ -753,10 +678,10 @@ export default function ImpactoEmpresarialPage() {
                 className="inline-flex items-center gap-3 rounded-full bg-green-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:bg-green-400"
               >
                 <FaWhatsapp className="h-6 w-6" />
-                Escribenos por WhatsApp
+                {t('writeWhatsApp')}
               </a>
               <p className="mt-3 text-sm text-gray-400">
-                Respuesta garantizada en menos de 24 horas habiles
+                {t('responseGuarantee')}
               </p>
             </div>
           </ScrollReveal>
@@ -779,12 +704,10 @@ export default function ImpactoEmpresarialPage() {
             </div>
 
             <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
-              Tu empresa puede cambiar la historia de un nino
+              {t('ctaTitle')}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-              Cada alianza corporativa multiplica el impacto. Con el respaldo de tu empresa,
-              mas ninos y jovenes de Ciudad Bolivar pueden acceder a educacion, arte, cultura
-              y oportunidades reales de desarrollo.
+              {t('ctaDescription')}
             </p>
 
             {/* CTA Buttons */}
@@ -796,20 +719,20 @@ export default function ImpactoEmpresarialPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
               >
                 <FaWhatsapp className="h-5 w-5" />
-                Contactar por WhatsApp
+                {t('contactWhatsApp')}
               </a>
               <Link
                 href={'/contacto' as '/contacto'}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Formulario de Contacto
+                {t('contactForm')}
                 <HiArrowRight className="h-5 w-5" />
               </Link>
               <Link
                 href={'/como-ayudar' as '/como-ayudar'}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Donar como Persona
+                {t('donateAsIndividual')}
                 <HiHeart className="h-5 w-5" />
               </Link>
             </div>
@@ -817,8 +740,8 @@ export default function ImpactoEmpresarialPage() {
             {/* Trust badges */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
               {[
-                { icon: HiShieldCheck, label: 'ESAL Registrada' },
-                { icon: HiDocumentReport, label: 'Deducible de impuestos' },
+                { icon: HiShieldCheck, label: t('esalRegistered') },
+                { icon: HiDocumentReport, label: t('taxDeductible') },
                 { icon: HiCheckCircle, label: 'NIT: 830.114.318-9' },
               ].map((badge) => (
                 <div

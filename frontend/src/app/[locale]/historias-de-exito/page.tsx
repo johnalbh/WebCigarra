@@ -8,44 +8,36 @@ import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContai
 import { HiStar, HiHeart, HiSparkles, HiAcademicCap, HiUserGroup, HiArrowRight } from 'react-icons/hi';
 import { Link } from '@/i18n/routing';
 import HeroWaves from '@/components/shared/HeroWaves';
+import { IconType } from 'react-icons';
 
 const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
-const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-now';
 
-/* ---------- stories data ---------- */
-const stories = [
+/* ---------- stories config ---------- */
+const storiesConfig = [
   {
+    key: 'juanDavid',
     name: 'Juan David Hernández',
-    role: 'Líder comunitario',
-    quote: 'En la Fundación descubrí que el arte puede cambiar comunidades enteras.',
-    achievement: 'Gestor cultural, líder de proyectos sociales',
     image: '/images/stories/juan-david.jpg',
     accentColor: '#4facfe',
     icon: HiHeart,
   },
   {
+    key: 'andrey',
     name: 'Andrey Ruiz',
-    role: 'Emprendedor social',
-    quote: 'Los valores que aprendí en la Fundación guían mi emprendimiento cada día.',
-    achievement: 'Emprendedor, mentor de jóvenes',
     image: '/images/stories/andrey-ruiz.jpg',
     accentColor: '#43e97b',
     icon: HiStar,
   },
   {
+    key: 'yuri',
     name: 'Yuri Karina Poveda',
-    role: 'Educadora',
-    quote: 'Hoy regreso a la comunidad como educadora para abrir las mismas puertas.',
-    achievement: 'Licenciada en educación, voluntaria activa',
     image: '/images/stories/yuri-karina.png',
     accentColor: '#fa709a',
     icon: HiAcademicCap,
   },
   {
+    key: 'anyie',
     name: 'Anyie Tatiana',
-    role: 'Profesional',
-    quote: 'Con esfuerzo y dedicación todo es posible. La Fundación me lo demostró.',
-    achievement: 'Profesional en administración, mentora',
     image: '/images/stories/anyie.png',
     accentColor: '#a18cd1',
     icon: HiSparkles,
@@ -63,7 +55,7 @@ const impactImages = [
 ];
 
 /* ---------- story card ---------- */
-function StoryCard({ story }: { story: (typeof stories)[number] }) {
+function StoryCard({ story }: { story: { key: string; name: string; image: string; accentColor: string; icon: IconType } }) {
   const t = useTranslations('stories');
   const Icon = story.icon;
 
@@ -85,7 +77,7 @@ function StoryCard({ story }: { story: (typeof stories)[number] }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         <div className="absolute bottom-4 left-5 right-5">
           <h3 className="font-heading text-lg font-bold text-white">{story.name}</h3>
-          <p className="text-sm text-white/80">{story.role}</p>
+          <p className="text-sm text-white/80">{t(`roles.${story.key}`)}</p>
         </div>
       </div>
 
@@ -93,7 +85,7 @@ function StoryCard({ story }: { story: (typeof stories)[number] }) {
       <div className="flex flex-1 flex-col p-6">
         <blockquote className="mb-5 flex-1">
           <p className="font-accent text-base italic leading-relaxed text-gray-600">
-            &ldquo;{story.quote}&rdquo;
+            &ldquo;{t(`quotes.${story.key}`)}&rdquo;
           </p>
         </blockquote>
 
@@ -103,7 +95,7 @@ function StoryCard({ story }: { story: (typeof stories)[number] }) {
         >
           <Icon className="h-4 w-4 flex-shrink-0" style={{ color: story.accentColor }} />
           <p className="text-sm text-gray-600">
-            <span className="font-semibold">{t('achievement')}:</span> {story.achievement}
+            <span className="font-semibold">{t('achievement')}:</span> {t(`achievements.${story.key}`)}
           </p>
         </div>
       </div>
@@ -147,7 +139,7 @@ export default function SuccessStoriesPage() {
                 variants={itemVariants}
                 className="mb-5 text-sm font-medium uppercase tracking-[0.2em] text-accent-400"
               >
-                Vidas transformadas
+                {t('heroTagline')}
               </motion.p>
               <motion.h1
                 variants={itemVariants}
@@ -165,9 +157,9 @@ export default function SuccessStoriesPage() {
               {/* Mini stats */}
               <motion.div variants={itemVariants} className="mt-12 flex gap-10">
                 {[
-                  { n: '23', l: 'Años' },
-                  { n: '1.877+', l: 'Niños Ayudados' },
-                  { n: '100%', l: 'Compromiso' },
+                  { n: '23', l: t('statsYears') },
+                  { n: '1.877+', l: t('statsChildren') },
+                  { n: '100%', l: t('statsCommitment') },
                 ].map((s) => (
                   <div key={s.l}>
                     <p className="font-heading text-2xl font-bold text-white">{s.n}</p>
@@ -237,16 +229,16 @@ export default function SuccessStoriesPage() {
           <ScrollReveal>
             <div className="mb-14 text-center">
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Conoce sus historias
+                {t('gridTitle')}
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-gray-500">
-                Cada uno pasó por la Fundación y hoy son ejemplo de superación y compromiso.
+                {t('gridSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
           <StaggerContainer className="grid gap-8 md:grid-cols-2" staggerDelay={0.1}>
-            {stories.map((story) => (
+            {storiesConfig.map((story) => (
               <StaggerItem key={story.name}>
                 <StoryCard story={story} />
               </StaggerItem>
@@ -257,16 +249,16 @@ export default function SuccessStoriesPage() {
           <ScrollReveal>
             <div className="mt-16 rounded-xl border border-primary-100 bg-primary-50/50 p-8 text-center">
               <p className="text-gray-700">
-                Estas historias son posibles gracias a personas como tu.{' '}
+                {t('donationNudge')}{' '}
                 <a
                   href={DONATION_LINK_COP}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold text-primary-600 underline underline-offset-2 hover:text-primary-700"
                 >
-                  Dona ahora
+                  {t('donateNow')}
                 </a>{' '}
-                y ayuda a escribir mas historias de exito.
+                {t('donationNudgeSuffix')}
               </p>
             </div>
           </ScrollReveal>
@@ -279,10 +271,10 @@ export default function SuccessStoriesPage() {
           <ScrollReveal>
             <div className="mb-12 text-center">
               <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-accent-600">
-                Momentos que inspiran
+                {t('galleryTagline')}
               </p>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                El impacto en imágenes
+                {t('galleryTitle')}
               </h2>
             </div>
           </ScrollReveal>
@@ -293,7 +285,7 @@ export default function SuccessStoriesPage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                   <Image
                     src={img}
-                    alt={`Impacto ${i + 1}`}
+                    alt={`${t('impactAlt')} ${i + 1}`}
                     fill
                     sizes="(max-width: 768px) 50vw, 33vw"
                     className="object-cover"
@@ -315,12 +307,10 @@ export default function SuccessStoriesPage() {
             </div>
 
             <h2 className="mb-5 font-heading text-3xl font-bold text-white md:text-5xl">
-              Apadrina un nino y escribe el proximo capitulo
+              {t('ctaTitle')}
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/80">
-              Con el Plan Padrino acompanas el crecimiento de un nino o joven,
-              garantizando su acceso a educacion, arte y oportunidades que
-              transforman su vida.
+              {t('ctaDescription')}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
@@ -329,7 +319,7 @@ export default function SuccessStoriesPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-heading text-sm font-semibold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
               >
                 <HiHeart className="h-4 w-4" />
-                Apadrina un Nino
+                {t('ctaSponsor')}
                 <HiArrowRight className="h-4 w-4" />
               </Link>
               <Link
@@ -337,15 +327,15 @@ export default function SuccessStoriesPage() {
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 font-heading text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/10"
               >
                 <HiUserGroup className="h-4 w-4" />
-                Se Voluntario
+                {t('ctaVolunteer')}
               </Link>
             </div>
 
             <div className="mt-12 flex items-center justify-center gap-8 text-sm text-white/60">
-              {['Plan Padrino', 'Voluntariado', 'Impacto directo'].map((label) => (
-                <span key={label} className="flex items-center gap-1.5">
+              {(['planPadrino', 'volunteering', 'directImpact'] as const).map((key) => (
+                <span key={key} className="flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
-                  {label}
+                  {t(`ctaLabels.${key}`)}
                 </span>
               ))}
             </div>
