@@ -24,8 +24,8 @@ import {
   STAGGER,
 } from '@/lib/animation-config';
 
-const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
-const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-now';
+const DONATION_LINK_COP = '/como-ayudar#donar';
+const DONATION_LINK_USD = '/como-ayudar#donar';
 const MONTHLY_GOAL = 5000000;
 const CURRENT_AMOUNT = 3250000;
 const PROGRESS_PERCENTAGE = (CURRENT_AMOUNT / MONTHLY_GOAL) * 100;
@@ -45,8 +45,8 @@ const pathConfigs = [
   {
     icon: HiHeart,
     key: 'donate' as const,
-    href: DONATION_LINK_COP,
-    external: true,
+    href: '/como-ayudar',
+    external: false,
     color: 'bg-red-500',
     image: '/images/engagement/musica.webp',
   },
@@ -212,15 +212,13 @@ export default function DonationCTA() {
           <ScrollReveal>
             <div className="mt-10 text-center">
               <p className="mb-3 text-sm text-gray-400">{t('internationalDonors')}</p>
-              <a
-                href={DONATION_LINK_USD}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={'/como-ayudar' as '/como-ayudar'}
                 className="inline-flex items-center gap-2 rounded-full border border-primary-200 px-6 py-3 text-sm font-semibold text-primary-600 transition-colors hover:bg-primary-50"
               >
                 {t('donateUSD')}
                 <HiArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
 

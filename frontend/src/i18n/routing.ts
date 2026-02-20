@@ -58,6 +58,10 @@ export const routing = defineRouting({
       es: '/impacto-empresarial',
       en: '/corporate-impact',
     },
+    '/donacion/respuesta': {
+      es: '/donacion/respuesta',
+      en: '/donation/response',
+    },
   },
 });
 

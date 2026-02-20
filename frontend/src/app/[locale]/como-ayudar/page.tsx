@@ -26,9 +26,10 @@ import {
 } from 'react-icons/hi';
 import { FaWhatsapp, FaPaintBrush, FaRunning, FaBriefcase } from 'react-icons/fa';
 import HeroWaves from '@/components/shared/HeroWaves';
+import DonationCheckout from '@/components/sections/DonationCheckout';
 
-const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
-const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-now';
+const DONATION_LINK_COP = '#donar';
+const DONATION_LINK_USD = '#donar';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
@@ -277,8 +278,6 @@ export default function HowToHelpPage() {
           >
             <a
               href={DONATION_LINK_COP}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-lg font-semibold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
             >
               <HiHeart className="h-5 w-5" />
@@ -409,24 +408,24 @@ export default function HowToHelpPage() {
               <div className="mt-8 flex flex-col items-center gap-3">
                 <a
                   href={DONATION_LINK_COP}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
                 >
                   <HiHeart className="h-5 w-5" />
                   {t('donateNowBtn')}
                 </a>
-                <a
-                  href={DONATION_LINK_USD}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700"
-                >
-                  <HiCurrencyDollar className="h-4 w-4" />
-                  {t('donateUSD')}
-                </a>
               </div>
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          2.5. DONATION CHECKOUT (ePayco)
+          ═══════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden bg-white">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <ScrollReveal>
+            <DonationCheckout />
           </ScrollReveal>
         </div>
       </section>
@@ -476,8 +475,6 @@ export default function HowToHelpPage() {
                   </p>
                   <a
                     href={DONATION_LINK_COP}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-accent-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-accent-400"
                   >
                     {t('donateNowBtn')}
@@ -653,8 +650,6 @@ export default function HowToHelpPage() {
                 {/* CTA */}
                 <a
                   href={DONATION_LINK_COP}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
                 >
                   <HiHeart className="h-5 w-5" />
@@ -732,8 +727,6 @@ export default function HowToHelpPage() {
                     {/* Donate button */}
                     <a
                       href={DONATION_LINK_COP}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className={`inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 ${
                         tier.highlighted
                           ? 'bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20'
@@ -754,8 +747,6 @@ export default function HowToHelpPage() {
             <div className="mt-10 text-center">
               <a
                 href={DONATION_LINK_USD}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 rounded-full border border-primary-200 bg-white px-10 py-4 font-heading text-lg font-semibold text-primary-700 transition-colors duration-300 hover:border-primary-400 hover:bg-primary-50"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100 transition-colors group-hover:bg-primary-200">
@@ -820,8 +811,6 @@ export default function HowToHelpPage() {
             <div className="mt-12 text-center">
               <a
                 href={DONATION_LINK_COP}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400"
               >
                 <HiHeart className="h-5 w-5" />
@@ -932,7 +921,18 @@ export default function HowToHelpPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          9. FINAL CTA SECTION
+          9. DONATION CHECKOUT (ePayco)
+          ═══════════════════════════════════════════════════════ */}
+      <section className="section-padding bg-white">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <ScrollReveal>
+            <DonationCheckout />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          10. FINAL CTA SECTION
           ═══════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-gradient-to-br from-accent-500 via-accent-600 to-accent-700 py-24">
         <HeroWaves />
@@ -957,8 +957,6 @@ export default function HowToHelpPage() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
                 href={DONATION_LINK_COP}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl"
               >
                 <HiHeart className="h-5 w-5" />
@@ -966,8 +964,6 @@ export default function HowToHelpPage() {
               </a>
               <a
                 href={DONATION_LINK_USD}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 <HiCurrencyDollar className="h-5 w-5" />

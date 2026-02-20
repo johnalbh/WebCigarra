@@ -892,5 +892,39 @@
     "heading": "404",
     "message": "Sorry, the page you are looking for does not exist or has been moved.",
     "cta": "Back to Home"
+  },
+  "donationCheckout": {
+    "title": "Make a donation",
+    "selectAmount": "Select an amount",
+    "customAmount": "Other amount",
+    "enterAmount": "Enter the amount in pesos",
+    "minAmount": "Minimum amount: $1,000 COP",
+    "yourInfo": "Your information",
+    "identificationType": "ID type",
+    "identificationNumber": "ID number",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email address",
+    "phone": "Phone (optional)",
+    "city": "City (optional)",
+    "confirmDonation": "Confirm donation",
+    "donateButton": "Donate {amount}",
+    "processing": "Processing...",
+    "errorCreating": "Error processing your donation. Please try again.",
+    "securePayment": "Secure payment with ePayco",
+    "step": "Step {current} of {total}"
+  },
+  "donationResponse": {
+    "approved": "Thank you for your donation!",
+    "approvedMessage": "Your donation of {amount} has been received successfully. You will receive a confirmation email.",
+    "rejected": "Payment rejected",
+    "rejectedMessage": "Your payment could not be processed. Please try a different payment method.",
+    "pending": "Payment in progress",
+    "pendingMessage": "Your payment is being verified. We will notify you by email when confirmed.",
+    "failed": "Payment error",
+    "failedMessage": "There was an error processing your payment. Please try again.",
+    "reference": "Reference: {ref}",
+    "tryAgain": "Try again",
+    "backHome": "Back to home"
   }
 }

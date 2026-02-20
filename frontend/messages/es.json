@@ -892,5 +892,39 @@
     "heading": "404",
     "message": "Lo sentimos, la página que buscas no existe o ha sido movida.",
     "cta": "Volver al inicio"
+  },
+  "donationCheckout": {
+    "title": "Haz tu donación",
+    "selectAmount": "Selecciona un monto",
+    "customAmount": "Otro monto",
+    "enterAmount": "Ingresa el monto en pesos",
+    "minAmount": "Monto mínimo: $1,000 COP",
+    "yourInfo": "Tus datos",
+    "identificationType": "Tipo de documento",
+    "identificationNumber": "Número de documento",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "phone": "Teléfono (opcional)",
+    "city": "Ciudad (opcional)",
+    "confirmDonation": "Confirmar donación",
+    "donateButton": "Donar {amount}",
+    "processing": "Procesando...",
+    "errorCreating": "Error al procesar tu donación. Intenta de nuevo.",
+    "securePayment": "Pago seguro con ePayco",
+    "step": "Paso {current} de {total}"
+  },
+  "donationResponse": {
+    "approved": "¡Gracias por tu donación!",
+    "approvedMessage": "Tu donación de {amount} ha sido recibida exitosamente. Recibirás un correo de confirmación.",
+    "rejected": "Pago rechazado",
+    "rejectedMessage": "Tu pago no pudo ser procesado. Por favor, intenta con otro método de pago.",
+    "pending": "Pago en proceso",
+    "pendingMessage": "Tu pago está siendo verificado. Te notificaremos por correo electrónico cuando se confirme.",
+    "failed": "Error en el pago",
+    "failedMessage": "Hubo un error procesando tu pago. Por favor, intenta de nuevo.",
+    "reference": "Referencia: {ref}",
+    "tryAgain": "Intentar de nuevo",
+    "backHome": "Volver al inicio"
   }
 }
