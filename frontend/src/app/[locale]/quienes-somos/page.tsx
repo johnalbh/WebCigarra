@@ -26,14 +26,14 @@ const timelineConfig: {
   icon: IconType;
   color: string;
 }[] = [
-  { year: '2002', icon: HiSparkles, color: 'from-primary-500 to-primary-700' },
-  { year: '2005', icon: HiAcademicCap, color: 'from-accent-400 to-accent-600' },
-  { year: '2008', icon: HiStar, color: 'from-primary-400 to-primary-600' },
-  { year: '2012', icon: HiHeart, color: 'from-rose-400 to-rose-600' },
-  { year: '2015', icon: HiGlobeAlt, color: 'from-accent-500 to-accent-700' },
-  { year: '2018', icon: HiSparkles, color: 'from-primary-500 to-primary-700' },
-  { year: '2020', icon: HiUserGroup, color: 'from-emerald-400 to-emerald-600' },
   { year: '2024', icon: HiAcademicCap, color: 'from-accent-400 to-accent-600' },
+  { year: '2020', icon: HiUserGroup, color: 'from-emerald-400 to-emerald-600' },
+  { year: '2018', icon: HiSparkles, color: 'from-primary-500 to-primary-700' },
+  { year: '2015', icon: HiGlobeAlt, color: 'from-accent-500 to-accent-700' },
+  { year: '2012', icon: HiHeart, color: 'from-rose-400 to-rose-600' },
+  { year: '2008', icon: HiStar, color: 'from-primary-400 to-primary-600' },
+  { year: '2005', icon: HiAcademicCap, color: 'from-accent-400 to-accent-600' },
+  { year: '2002', icon: HiSparkles, color: 'from-primary-500 to-primary-700' },
 ];
 
 /* ---------- values config (non-translatable parts) ---------- */

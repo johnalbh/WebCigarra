@@ -6,29 +6,51 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { HiArrowRight } from 'react-icons/hi';
+import type { IconType } from 'react-icons';
+import {
+  HiAcademicCap,
+  HiBookOpen,
+  HiGlobeAlt,
+  HiHeart,
+  HiHome,
+  HiMusicNote,
+  HiPuzzle,
+  HiShoppingBag,
+  HiSparkles,
+  HiStar,
+  HiSun,
+  HiUserGroup,
+  HiUsers,
+} from 'react-icons/hi';
+import { HiComputerDesktop } from 'react-icons/hi2';
 
+/* ── 5 featured programs shown as image cards ── */
 const featuredPrograms = [
   { slug: 'musica', image: '/images/programs/musica.jpg' },
   { slug: 'danza', image: '/images/programs/danza.jpg' },
   { slug: 'refuerzo-escolar', image: '/images/programs/refuerzo-escolar.jpg' },
   { slug: 'biblioteca', image: '/images/programs/biblioteca.jpg' },
   { slug: 'teatro', image: '/images/programs/teatro.jpg' },
-  { slug: 'tecnologia', image: '/images/programs/tecnologia.jpg' },
 ];
 
-const moreProgramSlugs = [
-  'ingles',
-  'centro-comunitario',
-  'grupo-adultos-mayores',
-  'primera-infancia',
-  'psicologia',
-  'recreacion-y-deportes',
-  'ropero',
-  'escuela-de-padres',
+/* ── Remaining programs shown in the marquee ── */
+const marqueePrograms: { slug: string; icon: IconType; color: string }[] = [
+  { slug: 'tecnologia', icon: HiComputerDesktop, color: '#2196F3' },
+  { slug: 'ingles', icon: HiGlobeAlt, color: '#E67E22' },
+  { slug: 'centro-comunitario', icon: HiHome, color: '#1ABC9C' },
+  { slug: 'grupo-adultos-mayores', icon: HiUsers, color: '#E91E63' },
+  { slug: 'primera-infancia', icon: HiSun, color: '#FF9800' },
+  { slug: 'psicologia', icon: HiHeart, color: '#673AB7' },
+  { slug: 'recreacion-y-deportes', icon: HiPuzzle, color: '#FF5722' },
+  { slug: 'ropero', icon: HiShoppingBag, color: '#00BCD4' },
+  { slug: 'escuela-de-padres', icon: HiUserGroup, color: '#4CAF50' },
 ];
 
 export default function ProgramsGrid() {
   const t = useTranslations('programs');
+
+  // Duplicate the marquee items for seamless loop
+  const doubledMarquee = [...marqueePrograms, ...marqueePrograms];
 
   return (
     <section className="section-padding bg-gray-50">
@@ -48,7 +70,7 @@ export default function ProgramsGrid() {
           </div>
         </ScrollReveal>
 
-        {/* Bento grid: 1 large featured + 5 smaller */}
+        {/* Bento grid: 1 large featured + 4 smaller */}
         <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
           {/* Featured program - spans 2 rows */}
           <ScrollReveal className="md:col-span-1 md:row-span-2">
@@ -82,7 +104,7 @@ export default function ProgramsGrid() {
             </Link>
           </ScrollReveal>
 
-          {/* Remaining 5 programs in a 2x2 + 1 layout */}
+          {/* Remaining 4 programs */}
           {featuredPrograms.slice(1).map((program, i) => (
             <ScrollReveal key={program.slug} delay={(i + 1) * 0.08}>
               <Link href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}>
@@ -111,25 +133,59 @@ export default function ProgramsGrid() {
           ))}
         </div>
 
-        {/* More programs bar */}
+        {/* Auto-scrolling marquee of remaining programs */}
         <ScrollReveal>
-          <div className="mt-8 rounded-xl border border-gray-100 bg-white p-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <p className="text-sm font-semibold text-gray-900">
-                  {t('andMore', { count: moreProgramSlugs.length })}
-                </p>
-                <p className="mt-1 text-sm text-gray-500">
-                  {moreProgramSlugs.map((slug) => t(`names.${slug}`)).join(' · ')}
-                </p>
-              </div>
+          <div className="mt-8 overflow-hidden rounded-xl border border-gray-100 bg-white">
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
+              <p className="text-sm font-semibold text-gray-900">
+                {t('andMore', { count: marqueePrograms.length })}
+              </p>
               <Link
                 href="/programas"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary-500 px-6 py-2.5 font-heading text-sm font-semibold text-white transition-colors hover:bg-primary-600"
+                className="group inline-flex items-center gap-2 rounded-full bg-primary-500 px-5 py-2 font-heading text-sm font-semibold text-white transition-colors hover:bg-primary-600"
               >
                 {t('viewAll')}
                 <HiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
+            </div>
+
+            {/* Marquee track */}
+            <div className="relative py-5">
+              {/* Fade edges */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent" />
+
+              <div className="flex animate-marquee">
+                {doubledMarquee.map((program, i) => {
+                  const Icon = program.icon;
+                  return (
+                    <Link
+                      key={`${program.slug}-${i}`}
+                      href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}
+                      className="group mx-2 flex-shrink-0"
+                    >
+                      <div className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-5 py-3 transition-all duration-300 group-hover:border-gray-200 group-hover:bg-white group-hover:shadow-sm">
+                        <div
+                          className="flex h-9 w-9 items-center justify-center rounded-lg"
+                          style={{ backgroundColor: `${program.color}15` }}
+                        >
+                          <Icon className="h-5 w-5" style={{ color: program.color }} />
+                        </div>
+                        <div>
+                          <p className="whitespace-nowrap text-sm font-semibold text-gray-900">
+                            {t(`names.${program.slug}`)}
+                          </p>
+                          <p className="whitespace-nowrap text-xs text-gray-500">
+                            {t(`descriptions.${program.slug}`)}
+                          </p>
+                        </div>
+                        <HiArrowRight className="ml-2 h-4 w-4 flex-shrink-0 text-gray-300 transition-colors group-hover:text-primary-500" />
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </ScrollReveal>

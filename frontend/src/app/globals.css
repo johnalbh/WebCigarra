@@ -187,3 +187,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 .animate-hero-dash { animation: hero-dash 6s linear infinite; }
 .animate-hero-dash-reverse { animation: hero-dash-reverse 8s linear infinite; }
+
+/* Disable heavy hero SVG animations on mobile for performance */
+@media (max-width: 767px) {
+  .animate-hero-wave-1,
+  .animate-hero-wave-2,
+  .animate-hero-wave-3,
+  .animate-hero-float,
+  .animate-hero-float-reverse,
+  .animate-hero-dot-1,
+  .animate-hero-dot-2,
+  .animate-hero-wave-fill-1,
+  .animate-hero-wave-fill-2,
+  .animate-hero-wave-fill-3,
+  .animate-hero-glow-pulse,
+  .animate-hero-ring-rotate,
+  .animate-hero-ring-rotate-reverse,
+  .animate-hero-shimmer,
+  .animate-hero-dash,
+  .animate-hero-dash-reverse {
+    animation: none !important;
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-wave-1,
+  .animate-hero-wave-2,
+  .animate-hero-wave-3,
+  .animate-hero-float,
+  .animate-hero-float-reverse,
+  .animate-hero-dot-1,
+  .animate-hero-dot-2,
+  .animate-hero-wave-fill-1,
+  .animate-hero-wave-fill-2,
+  .animate-hero-wave-fill-3,
+  .animate-hero-glow-pulse,
+  .animate-hero-ring-rotate,
+  .animate-hero-ring-rotate-reverse,
+  .animate-hero-shimmer,
+  .animate-hero-dash,
+  .animate-hero-dash-reverse,
+  .animate-marquee {
+    animation: none !important;
+  }
+}

@@ -33,15 +33,15 @@ export default function HeroSection() {
   }, [paused, advance]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-primary-900">
+    <section className="relative min-h-[80vh] overflow-hidden bg-primary-900 lg:min-h-screen">
       {/* Animated SVG background */}
       <HeroWaves />
 
-      {/* Single subtle glow */}
-      <div className="pointer-events-none absolute -top-32 right-0 h-[500px] w-[500px] rounded-full bg-primary-500/10 blur-[120px]" />
+      {/* Single subtle glow — hidden on mobile for performance */}
+      <div className="pointer-events-none absolute -top-32 right-0 hidden h-[500px] w-[500px] rounded-full bg-primary-500/10 blur-[120px] md:block" />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 lg:px-8">
-        <div className="grid w-full items-center gap-16 py-24 lg:grid-cols-2">
+      <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl items-center px-6 lg:min-h-screen lg:px-8">
+        <div className="grid w-full items-center gap-8 py-20 lg:grid-cols-2 lg:gap-16 lg:py-24">
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -101,18 +101,17 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:block"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
-              <AnimatePresence mode="popLayout">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-xl lg:aspect-[4/5]">
+              <AnimatePresence mode="wait">
                 <motion.div
                   key={current}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.8, ease: 'easeInOut' }}
+                  transition={{ duration: 0.6, ease: 'easeInOut' }}
                   className="absolute inset-0"
                 >
                   <Image
@@ -120,7 +119,7 @@ export default function HeroSection() {
                     alt={t('imageAlt')}
                     fill
                     priority={current === 0}
-                    sizes="50vw"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </motion.div>
