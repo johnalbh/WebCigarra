@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import {
@@ -14,11 +14,23 @@ import {
 } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
 import ScrollReveal from '@/components/shared/ScrollReveal';
+import {
+  EASE_APPLE,
+  SCALE_HOVER,
+  SCALE_INITIAL,
+  DURATION_HOVER,
+  DURATION_REVEAL,
+  DURATION_REVEAL_LONG,
+  STAGGER,
+} from '@/lib/animation-config';
 
 const DONATION_LINK_COP = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
 const DONATION_LINK_USD = 'https://www.donaronline.org/fundacion-cigarra/donate-now';
 const MONTHLY_GOAL = 5000000;
 const CURRENT_AMOUNT = 3250000;
+const PROGRESS_PERCENTAGE = (CURRENT_AMOUNT / MONTHLY_GOAL) * 100;
+
+const easeApple = EASE_APPLE;
 
 function formatCOP(amount: number) {
   return new Intl.NumberFormat('es-CO', {
@@ -66,37 +78,46 @@ const pathConfigs = [
 
 export default function DonationCTA() {
   const t = useTranslations('donation');
-  const [progressWidth, setProgressWidth] = useState(0);
+  const progressRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgressWidth((CURRENT_AMOUNT / MONTHLY_GOAL) * 100);
-    }, 400);
-    return () => clearTimeout(timer);
-  }, []);
+  // Progress bar fills as user scrolls through the section
+  const { scrollYProgress } = useScroll({
+    target: progressRef,
+    offset: ['start end', 'center center'],
+  });
+  const progressWidth = useTransform(
+    scrollYProgress,
+    [0, 0.8],
+    [0, PROGRESS_PERCENTAGE],
+  );
 
   return (
     <>
       {/* Progress + headline section */}
-      <section className="relative overflow-hidden bg-primary-900 py-20 md:py-28">
+      <section ref={progressRef} className="relative overflow-hidden bg-primary-900 py-20 md:py-28">
         <HeroWaves />
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-8">
+          {/* Heart — single elegant scale-up on enter */}
           <motion.div
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+            initial={{ opacity: 0, scale: 0.7 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: DURATION_REVEAL_LONG, ease: easeApple }}
             className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-accent-500/20"
           >
             <HiHeart className="h-7 w-7 text-accent-400" />
           </motion.div>
 
-          <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
-            {t('headlinePrefix')} <span className="text-accent-400">{t('headlineHighlight')}</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-primary-200/80">
-            {t('headlineDescription')}
-          </p>
+          <ScrollReveal>
+            <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
+              {t('headlinePrefix')} <span className="text-accent-400">{t('headlineHighlight')}</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-primary-200/80">
+              {t('headlineDescription')}
+            </p>
+          </ScrollReveal>
 
-          {/* Progress bar */}
+          {/* Progress bar — scroll-linked */}
           <div className="mx-auto mt-10 max-w-lg">
             <div className="mb-2 flex items-center justify-between text-sm text-primary-200/70">
               <span>{formatCOP(CURRENT_AMOUNT)} {t('raised')}</span>
@@ -107,19 +128,17 @@ export default function DonationCTA() {
             <div className="h-2.5 overflow-hidden rounded-full bg-white/10">
               <motion.div
                 className="h-full rounded-full bg-gradient-to-r from-accent-400 to-accent-500"
-                initial={{ width: '0%' }}
-                animate={{ width: `${progressWidth}%` }}
-                transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
+                style={{ width: useTransform(progressWidth, (v) => `${v}%`) }}
               />
             </div>
             <p className="mt-2 text-sm text-primary-300/50">
-              {Math.round((CURRENT_AMOUNT / MONTHLY_GOAL) * 100)}% {t('ofMonthlyGoal')}
+              {Math.round(PROGRESS_PERCENTAGE)}% {t('ofMonthlyGoal')}
             </p>
           </div>
         </div>
       </section>
 
-      {/* 4 engagement paths */}
+      {/* 4 engagement paths — scale-up stagger */}
       <section className="section-padding">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -131,8 +150,12 @@ export default function DonationCTA() {
               const btnClass = "group/btn inline-flex items-center gap-2 rounded-full bg-primary-500 px-5 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-primary-600";
 
               return (
-                <ScrollReveal key={path.key} delay={i * 0.1}>
-                  <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white transition-all duration-300 hover:border-gray-200 hover:-translate-y-1">
+                <ScrollReveal key={path.key} mode="scroll" scaleFrom={SCALE_INITIAL}>
+                  <motion.div
+                    whileHover={{ scale: SCALE_HOVER }}
+                    transition={{ duration: DURATION_HOVER, ease: easeApple }}
+                    className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white transition-shadow duration-300 hover:shadow-xl"
+                  >
                     {/* Image */}
                     <div className="relative h-44 overflow-hidden">
                       <Image
@@ -179,7 +202,7 @@ export default function DonationCTA() {
                         </Link>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
                 </ScrollReveal>
               );
             })}

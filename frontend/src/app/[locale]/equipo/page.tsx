@@ -152,8 +152,8 @@ function FounderCard() {
 function MemberCard({ member }: { member: { name: string; role: string; photo: string } }) {
   return (
     <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="group flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-colors duration-300 hover:border-gray-200"
     >
       {/* Circular photo */}
@@ -324,11 +324,12 @@ export default function TeamPage() {
 
                     {/* Members grid */}
                     <StaggerContainer
+                      scaleUp
                       staggerDelay={0.06}
                       className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
                     >
                       {membersForGrid.map((member) => (
-                        <StaggerItem key={member.name}>
+                        <StaggerItem scaleUp key={member.name}>
                           <MemberCard member={member} />
                         </StaggerItem>
                       ))}

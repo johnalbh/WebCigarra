@@ -8,21 +8,17 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import { HiArrowRight } from 'react-icons/hi';
 import type { IconType } from 'react-icons';
 import {
-  HiAcademicCap,
-  HiBookOpen,
   HiGlobeAlt,
   HiHeart,
   HiHome,
-  HiMusicNote,
   HiPuzzle,
   HiShoppingBag,
-  HiSparkles,
-  HiStar,
   HiSun,
   HiUserGroup,
   HiUsers,
 } from 'react-icons/hi';
 import { HiComputerDesktop } from 'react-icons/hi2';
+import { EASE_APPLE, SCALE_HOVER, DURATION_HOVER } from '@/lib/animation-config';
 
 /* ── 5 featured programs shown as image cards ── */
 const featuredPrograms = [
@@ -46,10 +42,11 @@ const marqueePrograms: { slug: string; icon: IconType; color: string }[] = [
   { slug: 'escuela-de-padres', icon: HiUserGroup, color: '#4CAF50' },
 ];
 
+const easeApple = EASE_APPLE;
+
 export default function ProgramsGrid() {
   const t = useTranslations('programs');
 
-  // Duplicate the marquee items for seamless loop
   const doubledMarquee = [...marqueePrograms, ...marqueePrograms];
 
   return (
@@ -70,14 +67,14 @@ export default function ProgramsGrid() {
           </div>
         </ScrollReveal>
 
-        {/* Bento grid: 1 large featured + 4 smaller */}
+        {/* Bento grid: 1 large featured + 4 smaller — scale-up reveal */}
         <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
           {/* Featured program - spans 2 rows */}
-          <ScrollReveal className="md:col-span-1 md:row-span-2">
+          <ScrollReveal mode="scroll" scaleFrom={0.92} className="md:col-span-1 md:row-span-2">
             <Link href={{ pathname: '/programas/[slug]', params: { slug: featuredPrograms[0].slug } }}>
               <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                whileHover={{ scale: SCALE_HOVER, boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}
+                transition={{ duration: DURATION_HOVER, ease: easeApple }}
                 className="group relative h-full min-h-[400px] overflow-hidden rounded-xl md:min-h-0"
               >
                 <Image
@@ -104,13 +101,13 @@ export default function ProgramsGrid() {
             </Link>
           </ScrollReveal>
 
-          {/* Remaining 4 programs */}
-          {featuredPrograms.slice(1).map((program, i) => (
-            <ScrollReveal key={program.slug} delay={(i + 1) * 0.08}>
+          {/* Remaining 4 programs — scale-up reveal */}
+          {featuredPrograms.slice(1).map((program) => (
+            <ScrollReveal key={program.slug} mode="scroll" scaleFrom={0.92}>
               <Link href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}>
                 <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                  whileHover={{ scale: SCALE_HOVER, boxShadow: '0 16px 48px rgba(0,0,0,0.12)' }}
+                  transition={{ duration: DURATION_HOVER, ease: easeApple }}
                   className="group relative h-[200px] overflow-hidden rounded-xl"
                 >
                   <Image
@@ -133,9 +130,9 @@ export default function ProgramsGrid() {
           ))}
         </div>
 
-        {/* Auto-scrolling marquee of remaining programs */}
+        {/* Auto-scrolling marquee — with hover-pause */}
         <ScrollReveal>
-          <div className="mt-8 overflow-hidden rounded-xl border border-gray-100 bg-white">
+          <div className="group mt-8 overflow-hidden rounded-xl border border-gray-100 bg-white">
             {/* Header */}
             <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
               <p className="text-sm font-semibold text-gray-900">
@@ -143,16 +140,15 @@ export default function ProgramsGrid() {
               </p>
               <Link
                 href="/programas"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary-500 px-5 py-2 font-heading text-sm font-semibold text-white transition-colors hover:bg-primary-600"
+                className="group/btn inline-flex items-center gap-2 rounded-full bg-primary-500 px-5 py-2 font-heading text-sm font-semibold text-white transition-colors hover:bg-primary-600"
               >
                 {t('viewAll')}
-                <HiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <HiArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
               </Link>
             </div>
 
             {/* Marquee track */}
             <div className="relative py-5">
-              {/* Fade edges */}
               <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent" />
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent" />
 
@@ -163,9 +159,9 @@ export default function ProgramsGrid() {
                     <Link
                       key={`${program.slug}-${i}`}
                       href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}
-                      className="group mx-2 flex-shrink-0"
+                      className="mx-2 flex-shrink-0"
                     >
-                      <div className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-5 py-3 transition-all duration-300 group-hover:border-gray-200 group-hover:bg-white group-hover:shadow-sm">
+                      <div className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-5 py-3 opacity-80 transition-all duration-300 hover:border-gray-200 hover:bg-white hover:opacity-100 hover:shadow-sm">
                         <div
                           className="flex h-9 w-9 items-center justify-center rounded-lg"
                           style={{ backgroundColor: `${program.color}15` }}
@@ -180,7 +176,7 @@ export default function ProgramsGrid() {
                             {t(`descriptions.${program.slug}`)}
                           </p>
                         </div>
-                        <HiArrowRight className="ml-2 h-4 w-4 flex-shrink-0 text-gray-300 transition-colors group-hover:text-primary-500" />
+                        <HiArrowRight className="ml-2 h-4 w-4 flex-shrink-0 text-gray-300 transition-colors hover:text-primary-500" />
                       </div>
                     </Link>
                   );

@@ -208,13 +208,13 @@ export default function ImpactoEmpresarialPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
+          <StaggerContainer scaleUp className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
             {benefitConfig.map((benefit) => {
               const Icon = benefit.icon;
               return (
-                <StaggerItem key={benefit.key}>
+                <StaggerItem scaleUp key={benefit.key}>
                   <motion.div
-                    whileHover={{ y: -4 }}
+                    whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
                     className={`group flex h-full flex-col items-center rounded-xl border p-8 text-center transition-all duration-300 hover:shadow-md ${benefit.color}`}
                   >
@@ -254,13 +254,13 @@ export default function ImpactoEmpresarialPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="space-y-4 md:space-y-5" staggerDelay={0.1}>
+          <StaggerContainer scaleUp className="space-y-4 md:space-y-5" staggerDelay={0.1}>
             {modelConfig.map((model) => {
               const Icon = model.icon;
               return (
-                <StaggerItem key={model.key}>
+                <StaggerItem scaleUp key={model.key}>
                   <motion.div
-                    whileHover={{ x: 4 }}
+                    whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
                     className={`group relative flex flex-col items-center gap-6 overflow-hidden rounded-xl border-2 bg-white p-6 transition-all duration-300 md:flex-row md:gap-8 md:p-8 ${model.border}`}
                   >
@@ -364,13 +364,13 @@ export default function ImpactoEmpresarialPage() {
 
           {/* ESAL Trust Badges */}
           <div className="mt-16">
-            <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
+            <StaggerContainer scaleUp className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
               {esalBadgeConfig.map((badge) => {
                 const Icon = badge.icon;
                 return (
-                  <StaggerItem key={badge.key}>
+                  <StaggerItem scaleUp key={badge.key}>
                     <motion.div
-                      whileHover={{ y: -3 }}
+                      whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.25, ease: smoothEase }}
                       className="flex items-center gap-4 rounded-xl border border-primary-100 bg-white p-5 transition-all duration-300 hover:border-primary-200 hover:shadow-sm"
                     >
@@ -413,11 +413,11 @@ export default function ImpactoEmpresarialPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.08}>
+          <StaggerContainer scaleUp className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.08}>
             {impactNumberConfig.map((stat) => {
               const Icon = stat.icon;
               return (
-                <StaggerItem key={stat.key}>
+                <StaggerItem scaleUp key={stat.key}>
                   <motion.div
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
@@ -463,9 +463,9 @@ export default function ImpactoEmpresarialPage() {
                 <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
                   {t('platinumAllies')}
                 </p>
-                <StaggerContainer className="flex flex-wrap items-center justify-center gap-10" staggerDelay={0.08}>
+                <StaggerContainer scaleUp className="flex flex-wrap items-center justify-center gap-10" staggerDelay={0.08}>
                   {platinumPartners.map((p) => (
-                    <StaggerItem key={p.name}>
+                    <StaggerItem scaleUp key={p.name}>
                       <div className="group relative h-16 w-40 md:h-20 md:w-48 grayscale transition-all duration-500 hover:grayscale-0">
                         <Image
                           src={p.logo}
@@ -485,9 +485,9 @@ export default function ImpactoEmpresarialPage() {
                 <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
                   {t('goldAllies')}
                 </p>
-                <StaggerContainer className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
+                <StaggerContainer scaleUp className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
                   {goldPartners.map((p) => (
-                    <StaggerItem key={p.name}>
+                    <StaggerItem scaleUp key={p.name}>
                       <div className="group relative h-12 w-32 md:h-16 md:w-40 grayscale transition-all duration-500 hover:grayscale-0">
                         <Image
                           src={p.logo}
@@ -507,9 +507,9 @@ export default function ImpactoEmpresarialPage() {
                 <p className="mb-6 text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
                   {t('silverAllies')}
                 </p>
-                <StaggerContainer className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
+                <StaggerContainer scaleUp className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
                   {silverPartners.map((p) => (
-                    <StaggerItem key={p.name}>
+                    <StaggerItem scaleUp key={p.name}>
                       <div className="group relative h-10 w-28 md:h-12 md:w-32 grayscale transition-all duration-500 hover:grayscale-0">
                         <Image
                           src={p.logo}
@@ -599,11 +599,11 @@ export default function ImpactoEmpresarialPage() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {/* Email */}
-            <ScrollReveal delay={0}>
+            <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0}>
               <motion.a
                 href="mailto:info@cigarra.org"
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25, ease: smoothEase }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-all duration-300 hover:border-primary-200 hover:shadow-md"
               >
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent-50">
@@ -615,11 +615,11 @@ export default function ImpactoEmpresarialPage() {
             </ScrollReveal>
 
             {/* Phone */}
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0.1}>
               <motion.a
                 href="tel:+573212465421"
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25, ease: smoothEase }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-all duration-300 hover:border-primary-200 hover:shadow-md"
               >
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50">
@@ -631,13 +631,13 @@ export default function ImpactoEmpresarialPage() {
             </ScrollReveal>
 
             {/* WhatsApp */}
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0.2}>
               <motion.a
                 href="https://wa.me/573212465421"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25, ease: smoothEase }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-all duration-300 hover:border-green-200 hover:shadow-md"
               >
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-green-50">
@@ -649,10 +649,10 @@ export default function ImpactoEmpresarialPage() {
             </ScrollReveal>
 
             {/* Address */}
-            <ScrollReveal delay={0.3}>
+            <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0.3}>
               <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25, ease: smoothEase }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-all duration-300 hover:border-primary-200 hover:shadow-md"
               >
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50">

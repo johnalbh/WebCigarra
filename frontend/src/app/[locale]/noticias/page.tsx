@@ -103,11 +103,11 @@ export default function NewsPage() {
       {/* Featured Article */}
       <section className="relative bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <ScrollReveal>
+          <ScrollReveal mode="scroll" scaleFrom={0.95}>
             <Link href={{ pathname: '/noticias/[slug]', params: { slug: featured.slug } }}>
               <motion.article
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="group relative overflow-hidden rounded-xl border border-gray-200 bg-gray-900 md:flex md:min-h-[420px]"
               >
                 <div className="relative h-72 overflow-hidden md:h-auto md:w-3/5">
@@ -171,13 +171,13 @@ export default function NewsPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer staggerDelay={0.08} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <StaggerContainer scaleUp staggerDelay={0.08} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((article) => (
-              <StaggerItem key={article.slug}>
+              <StaggerItem scaleUp key={article.slug}>
                 <Link href={{ pathname: '/noticias/[slug]', params: { slug: article.slug } }}>
                   <motion.article
-                    whileHover={{ y: -4 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="group h-full overflow-hidden rounded-lg border border-gray-100 bg-white transition-colors duration-300 hover:border-gray-200"
                   >
                     <div className="relative h-52 overflow-hidden">

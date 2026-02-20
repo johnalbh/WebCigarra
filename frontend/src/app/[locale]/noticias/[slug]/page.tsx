@@ -286,7 +286,7 @@ export default function ArticleDetailPage() {
             {/* Main content */}
             <div className="lg:col-span-2">
               {/* Featured image */}
-              <ScrollReveal>
+              <ScrollReveal mode="scroll" scaleFrom={0.95}>
                 <div className="relative mb-10 aspect-video overflow-hidden rounded-xl">
                   <Image
                     src={article.image}
@@ -299,7 +299,7 @@ export default function ArticleDetailPage() {
                 </div>
               </ScrollReveal>
 
-              <ScrollReveal>
+              <ScrollReveal mode="scroll" scaleFrom={0.95}>
                 <div className="prose prose-lg max-w-none">
                   {article.content.split('\n\n').map((paragraph, i) => (
                     <p key={i} className="mb-6 leading-relaxed text-gray-700">
@@ -310,7 +310,7 @@ export default function ArticleDetailPage() {
               </ScrollReveal>
 
               {/* Share */}
-              <ScrollReveal>
+              <ScrollReveal mode="scroll" scaleFrom={0.95}>
                 <div className="mt-12 flex flex-wrap items-center gap-4 border-t pt-8">
                   <span className="flex items-center gap-2 text-sm font-medium text-gray-900">
                     <HiShare className="h-4 w-4" />
@@ -346,7 +346,7 @@ export default function ArticleDetailPage() {
               </ScrollReveal>
 
               {/* Prev/Next cards on mobile */}
-              <ScrollReveal>
+              <ScrollReveal mode="scroll" scaleFrom={0.95}>
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {prevArticle && (
                     <Link

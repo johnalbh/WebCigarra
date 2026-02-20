@@ -211,6 +211,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Respect reduced motion preference */
+/* ── Marquee hover-pause ── */
+.group:hover .animate-marquee,
+.group:hover [style*="marquee"] {
+  animation-play-state: paused;
+}
+
+/* ── GPU acceleration hint ── */
+.gpu-accelerated {
+  will-change: transform, opacity;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-hero-wave-1,
   .animate-hero-wave-2,
@@ -230,5 +241,12 @@ h1, h2, h3, h4, h5, h6 {
   .animate-hero-dash-reverse,
   .animate-marquee {
     animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

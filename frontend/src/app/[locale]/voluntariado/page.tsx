@@ -176,13 +176,13 @@ export default function VoluntariadoPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="grid gap-8 md:grid-cols-3" staggerDelay={0.15}>
+          <StaggerContainer scaleUp className="grid gap-8 md:grid-cols-3" staggerDelay={0.15}>
             {benefitConfig.map((benefit) => {
               const Icon = benefit.icon;
               return (
-                <StaggerItem key={benefit.key}>
+                <StaggerItem scaleUp key={benefit.key}>
                   <motion.div
-                    whileHover={{ y: -4 }}
+                    whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.25, ease: smoothEase }}
                     className={`group flex h-full flex-col items-center rounded-2xl border p-8 text-center transition-all duration-300 hover:shadow-lg ${benefit.color}`}
                   >
@@ -232,10 +232,10 @@ export default function VoluntariadoPage() {
               const activities = t.raw(`areas.${area.key}.activities`) as string[];
 
               return (
-                <ScrollReveal key={area.key} delay={index * 0.1}>
+                <ScrollReveal mode="scroll" scaleFrom={0.95} key={area.key} delay={index * 0.1}>
                   <motion.div
-                    whileHover={{ y: -2 }}
-                    transition={{ duration: 0.25, ease: smoothEase }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className={`overflow-hidden rounded-2xl border-2 bg-white transition-all duration-300 hover:shadow-lg ${area.color}`}
                   >
                     <div
@@ -358,11 +358,11 @@ export default function VoluntariadoPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="grid gap-8 md:grid-cols-3" staggerDelay={0.15}>
+          <StaggerContainer scaleUp className="grid gap-8 md:grid-cols-3" staggerDelay={0.15}>
             {testimonialConfig.map((testimonial) => (
-              <StaggerItem key={testimonial.key}>
+              <StaggerItem scaleUp key={testimonial.key}>
                 <motion.div
-                  whileHover={{ y: -4 }}
+                  whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.25, ease: smoothEase }}
                   className="group flex h-full flex-col rounded-2xl border border-gray-100 bg-white p-8 transition-all duration-300 hover:border-green-200 hover:shadow-lg"
                 >
@@ -418,14 +418,14 @@ export default function VoluntariadoPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="relative grid gap-8 md:grid-cols-3" staggerDelay={0.2}>
+          <StaggerContainer scaleUp className="relative grid gap-8 md:grid-cols-3" staggerDelay={0.2}>
             {/* Connecting line (desktop) */}
             <div className="pointer-events-none absolute top-24 left-[16.67%] right-[16.67%] hidden h-0.5 bg-gradient-to-r from-green-200 via-green-300 to-green-200 md:block" />
 
             {stepConfig.map((step) => {
               const Icon = step.icon;
               return (
-                <StaggerItem key={step.step}>
+                <StaggerItem scaleUp key={step.step}>
                   <div className="relative flex flex-col items-center text-center">
                     {/* Step number circle */}
                     <div className="relative z-10 mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-500 shadow-lg shadow-green-500/25">

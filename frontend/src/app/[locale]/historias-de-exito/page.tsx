@@ -61,8 +61,8 @@ function StoryCard({ story }: { story: { key: string; name: string; image: strin
 
   return (
     <motion.article
-      whileHover={{ y: -4 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white transition-colors duration-300 hover:border-gray-200"
     >
       {/* Image */}
@@ -237,9 +237,9 @@ export default function SuccessStoriesPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="grid gap-8 md:grid-cols-2" staggerDelay={0.1}>
+          <StaggerContainer scaleUp className="grid gap-8 md:grid-cols-2" staggerDelay={0.1}>
             {storiesConfig.map((story) => (
-              <StaggerItem key={story.name}>
+              <StaggerItem scaleUp key={story.name}>
                 <StoryCard story={story} />
               </StaggerItem>
             ))}
@@ -281,7 +281,7 @@ export default function SuccessStoriesPage() {
 
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
             {impactImages.map((img, i) => (
-              <ScrollReveal key={img} delay={i * 0.06}>
+              <ScrollReveal key={img} delay={i * 0.06} mode="scroll" scaleFrom={0.95}>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                   <Image
                     src={img}

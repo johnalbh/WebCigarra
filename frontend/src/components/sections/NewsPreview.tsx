@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { HiCalendar, HiArrowRight } from 'react-icons/hi';
+import { EASE_APPLE, SCALE_HOVER, DURATION_HOVER } from '@/lib/animation-config';
+
+const easeApple = EASE_APPLE;
 
 const defaultArticles = [
   {
@@ -69,12 +72,12 @@ export default function NewsPreview() {
 
         {/* Featured + side articles layout */}
         <div className="grid gap-6 lg:grid-cols-5">
-          {/* Featured article - large */}
-          <ScrollReveal className="lg:col-span-3">
+          {/* Featured article — scale-up reveal + refined hover */}
+          <ScrollReveal mode="scroll" scaleFrom={0.95} className="lg:col-span-3">
             <Link href={{ pathname: '/noticias/[slug]', params: { slug: featured.slug } }}>
               <motion.article
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                whileHover={{ scale: SCALE_HOVER }}
+                transition={{ duration: DURATION_HOVER, ease: easeApple }}
                 className="group relative h-full min-h-[420px] overflow-hidden rounded-xl"
               >
                 <Image
@@ -115,15 +118,15 @@ export default function NewsPreview() {
             </Link>
           </ScrollReveal>
 
-          {/* Side articles - stacked */}
+          {/* Side articles — scale-up reveal */}
           <div className="flex flex-col gap-6 lg:col-span-2">
-            {rest.map((article, i) => (
-              <ScrollReveal key={article.slug} delay={(i + 1) * 0.12}>
+            {rest.map((article) => (
+              <ScrollReveal key={article.slug} mode="scroll" scaleFrom={0.95}>
                 <Link href={{ pathname: '/noticias/[slug]', params: { slug: article.slug } }}>
                   <motion.article
-                    whileHover={{ y: -2 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                    className="group flex h-full overflow-hidden rounded-xl border border-gray-100 bg-white transition-colors hover:border-gray-200"
+                    whileHover={{ scale: SCALE_HOVER }}
+                    transition={{ duration: DURATION_HOVER, ease: easeApple }}
+                    className="group flex h-full overflow-hidden rounded-xl border border-gray-100 bg-white transition-shadow duration-300 hover:shadow-lg"
                   >
                     {/* Image */}
                     <div className="relative h-auto w-32 flex-shrink-0 overflow-hidden sm:w-40">
@@ -132,7 +135,7 @@ export default function NewsPreview() {
                         alt={article.title}
                         fill
                         sizes="160px"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
 

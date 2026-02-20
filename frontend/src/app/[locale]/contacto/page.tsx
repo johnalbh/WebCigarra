@@ -168,7 +168,7 @@ export default function ContactPage() {
                   {contactInfo.map((item, index) => {
                     const Icon = item.icon;
                     return (
-                      <ScrollReveal key={item.labelKey} delay={index * 0.1}>
+                      <ScrollReveal mode="scroll" scaleFrom={0.95} key={item.labelKey} delay={index * 0.1}>
                         <div className="rounded-xl border border-gray-100 bg-white p-5 transition-colors duration-300 hover:border-gray-200">
                           <div className="flex items-start gap-4">
                             <div
@@ -198,7 +198,7 @@ export default function ContactPage() {
                   })}
 
                   {/* WhatsApp CTA */}
-                  <ScrollReveal delay={0.5}>
+                  <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0.5}>
                     <a
                       href="https://wa.me/573212465421"
                       target="_blank"
@@ -228,7 +228,7 @@ export default function ContactPage() {
                   </ScrollReveal>
 
                   {/* Google Maps */}
-                  <ScrollReveal delay={0.6}>
+                  <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0.6}>
                     <div className="overflow-hidden rounded-lg border border-gray-100">
                       <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0!2d-74.15!3d4.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzQnMTIuMCJOIDc0wrAwOScwMC4wIlc!5e0!3m2!1ses!2sco!4v1"

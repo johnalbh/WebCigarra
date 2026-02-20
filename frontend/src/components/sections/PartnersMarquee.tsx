@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
+import TextReveal from '@/components/shared/TextReveal';
 
 const partners = [
   { name: 'Saint George School', logo: '/images/partners/san-jorge.webp' },
@@ -23,18 +24,20 @@ export default function PartnersMarquee() {
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <ScrollReveal>
           <div className="mb-14 text-center">
-            <h2 className="mb-4 font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-              {t('title')}
-            </h2>
+            <TextReveal
+              text={t('title')}
+              as="h2"
+              className="mb-4 font-heading text-4xl font-bold text-gray-900 md:text-5xl"
+            />
             <p className="mx-auto max-w-xl text-gray-500">{t('subtitle')}</p>
           </div>
         </ScrollReveal>
       </div>
 
-      {/* Double-row marquee */}
+      {/* Double-row marquee — hover to pause */}
       <div className="space-y-6">
         {/* Row 1 - moves left */}
-        <div className="relative overflow-hidden">
+        <div className="group relative overflow-hidden">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-white" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-white" />
           <div className="flex animate-marquee">
@@ -43,7 +46,7 @@ export default function PartnersMarquee() {
                 key={`row1-${i}`}
                 className="mx-4 flex-shrink-0"
               >
-                <div className="flex h-20 w-48 items-center justify-center rounded-lg border border-gray-100 bg-white px-4">
+                <div className="flex h-20 w-48 items-center justify-center rounded-lg border border-gray-100 bg-white px-4 opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:shadow-sm">
                   <div className="relative h-12 w-full">
                     <Image
                       src={partner.logo}
@@ -60,7 +63,7 @@ export default function PartnersMarquee() {
         </div>
 
         {/* Row 2 - moves right */}
-        <div className="relative overflow-hidden">
+        <div className="group relative overflow-hidden">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-white" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-white" />
           <div className="flex" style={{ animation: 'marquee 35s linear infinite reverse' }}>
@@ -69,7 +72,7 @@ export default function PartnersMarquee() {
                 key={`row2-${i}`}
                 className="mx-4 flex-shrink-0"
               >
-                <div className="flex h-20 w-48 items-center justify-center rounded-lg border border-gray-100 bg-white px-4">
+                <div className="flex h-20 w-48 items-center justify-center rounded-lg border border-gray-100 bg-white px-4 opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:shadow-sm">
                   <div className="relative h-12 w-full">
                     <Image
                       src={partner.logo}

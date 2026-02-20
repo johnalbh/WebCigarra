@@ -7,8 +7,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { HiChevronLeft, HiChevronRight, HiHeart, HiArrowRight } from 'react-icons/hi';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
+import { EASE_APPLE } from '@/lib/animation-config';
 
 const AUTOPLAY_DURATION = 7000;
+const easeApple = EASE_APPLE;
 
 const defaultStories = [
   {
@@ -54,6 +56,30 @@ const defaultStories = [
     image: '/images/stories/leider-quinones.webp',
   },
 ];
+
+/** Splits quote into words and renders them with staggered fade. */
+function QuoteReveal({ text }: { text: string }) {
+  const words = text.split(' ');
+  return (
+    <>
+      {words.map((word, i) => (
+        <motion.span
+          key={`${word}-${i}`}
+          initial={{ opacity: 0.1, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: i * 0.02,
+            ease: easeApple,
+          }}
+          className="inline-block"
+        >
+          {word}{i < words.length - 1 ? '\u00A0' : ''}
+        </motion.span>
+      ))}
+    </>
+  );
+}
 
 export default function StoriesCarousel() {
   const t = useTranslations('stories');
@@ -114,7 +140,7 @@ export default function StoriesCarousel() {
 
   const slideVariants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 300 : -300,
+      x: dir > 0 ? 100 : -100,
       opacity: 0,
     }),
     center: {
@@ -122,7 +148,7 @@ export default function StoriesCarousel() {
       opacity: 1,
     },
     exit: (dir: number) => ({
-      x: dir > 0 ? -300 : 300,
+      x: dir > 0 ? -100 : 100,
       opacity: 0,
     }),
   };
@@ -150,14 +176,14 @@ export default function StoriesCarousel() {
           {/* Navigation arrows */}
           <button
             onClick={prev}
-            className="absolute top-1/2 -left-2 z-20 -translate-y-1/2 rounded-full border border-gray-200 bg-white p-3 transition-colors hover:bg-gray-50 md:-left-16"
+            className="absolute top-1/2 -left-2 z-20 -translate-y-1/2 rounded-full border border-gray-200 bg-white p-3 transition-all duration-300 hover:bg-gray-50 hover:shadow-md md:-left-16"
             aria-label="Previous story"
           >
             <HiChevronLeft className="h-5 w-5 text-gray-600" />
           </button>
           <button
             onClick={next}
-            className="absolute top-1/2 -right-2 z-20 -translate-y-1/2 rounded-full border border-gray-200 bg-white p-3 transition-colors hover:bg-gray-50 md:-right-16"
+            className="absolute top-1/2 -right-2 z-20 -translate-y-1/2 rounded-full border border-gray-200 bg-white p-3 transition-all duration-300 hover:bg-gray-50 hover:shadow-md md:-right-16"
             aria-label="Next story"
           >
             <HiChevronRight className="h-5 w-5 text-gray-600" />
@@ -175,21 +201,27 @@ export default function StoriesCarousel() {
                 exit="exit"
                 transition={{
                   type: 'spring',
-                  stiffness: 300,
-                  damping: 30,
-                  mass: 0.8,
+                  stiffness: 200,
+                  damping: 35,
                 }}
                 className="bg-white md:flex md:min-h-[400px]"
               >
-                {/* Image side */}
-                <div className="relative h-72 md:h-auto md:w-2/5">
-                  <Image
-                    src={story.image}
-                    alt={story.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover"
-                  />
+                {/* Image side — Ken Burns zoom-out */}
+                <div className="relative h-72 overflow-hidden md:h-auto md:w-2/5">
+                  <motion.div
+                    initial={{ scale: 1.08 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: AUTOPLAY_DURATION / 1000, ease: easeApple }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={story.image}
+                      alt={story.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
                   {/* Overlay counter */}
                   <div className="absolute top-4 left-4 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
                     {current + 1} / {defaultStories.length}
@@ -198,29 +230,49 @@ export default function StoriesCarousel() {
 
                 {/* Content side */}
                 <div className="flex flex-col justify-center px-8 py-10 md:w-3/5 md:px-12 md:py-14">
-                  {/* Large quote mark */}
-                  <div className="mb-4 font-accent text-6xl leading-none text-primary-200">
+                  {/* Large quote mark — scale-up */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, ease: easeApple }}
+                    className="mb-4 font-accent text-6xl leading-none text-primary-200"
+                  >
                     &ldquo;
-                  </div>
+                  </motion.div>
 
-                  {/* Quote */}
+                  {/* Quote — word-by-word reveal */}
                   <blockquote className="mb-8 font-accent text-xl leading-relaxed text-gray-800 md:text-2xl">
-                    {story.quote}
+                    <QuoteReveal text={story.quote} />
                   </blockquote>
 
                   {/* Divider */}
-                  <div className="mb-5 flex items-center gap-2">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.6, delay: 0.3, ease: easeApple }}
+                    className="mb-5 flex origin-left items-center gap-2"
+                  >
                     <div className="h-px w-8 bg-primary-500" />
                     <div className="h-px w-4 bg-primary-300" />
-                  </div>
+                  </motion.div>
 
                   {/* Name and role */}
-                  <p className="font-heading text-lg font-bold text-gray-900">
+                  <motion.p
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.35, ease: easeApple }}
+                    className="font-heading text-lg font-bold text-gray-900"
+                  >
                     {story.name}
-                  </p>
-                  <p className="mt-1 text-sm text-gray-500">
+                  </motion.p>
+                  <motion.p
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4, ease: easeApple }}
+                    className="mt-1 text-sm text-gray-500"
+                  >
                     {story.role} &middot; {story.achievement}
-                  </p>
+                  </motion.p>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -258,7 +310,7 @@ export default function StoriesCarousel() {
           </div>
         </div>
 
-        {/* Sponsorship CTA - emotionally driven */}
+        {/* Sponsorship CTA */}
         <ScrollReveal>
           <div className="mx-auto mt-16 max-w-3xl rounded-xl bg-primary-900 p-8 md:p-10">
             <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">

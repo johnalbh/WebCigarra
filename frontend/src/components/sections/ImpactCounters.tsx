@@ -7,6 +7,7 @@ import { useCountUp } from '@/hooks/useCountUp';
 import { Link } from '@/i18n/routing';
 import { HiArrowRight } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
+import { EASE_APPLE, SCALE_INITIAL, STAGGER, DURATION_REVEAL } from '@/lib/animation-config';
 
 const stats = [
   { key: 'childrenHelped', value: 1877, suffix: '+' },
@@ -14,6 +15,8 @@ const stats = [
   { key: 'jobsGenerated', value: 100, suffix: '+' },
   { key: 'families', value: 190, suffix: '+' },
 ];
+
+const easeApple = EASE_APPLE;
 
 function Counter({ end, suffix, enabled }: { end: number; suffix: string; enabled: boolean }) {
   const count = useCountUp({ end, duration: 2500, enabled });
@@ -32,7 +35,7 @@ export default function ImpactCounters() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: DURATION_REVEAL, ease: easeApple }}
           className="mb-16 text-center"
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary-300">
@@ -43,14 +46,22 @@ export default function ImpactCounters() {
           </h2>
         </motion.div>
 
-        {/* Stats */}
+        {/* Stats — scale-up reveal */}
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.key}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 20, scale: SCALE_INITIAL }}
+              animate={
+                isInView
+                  ? { opacity: 1, y: 0, scale: 1 }
+                  : { opacity: 0, y: 20, scale: SCALE_INITIAL }
+              }
+              transition={{
+                duration: DURATION_REVEAL,
+                delay: i * STAGGER.normal,
+                ease: easeApple,
+              }}
               className="text-center"
             >
               <p className="font-heading text-4xl font-bold text-white md:text-5xl">
@@ -67,7 +78,7 @@ export default function ImpactCounters() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: easeApple }}
           className="mt-14 text-center"
         >
           <p className="text-sm text-primary-300/70">

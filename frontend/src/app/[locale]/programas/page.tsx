@@ -159,13 +159,13 @@ export default function ProgramsPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer staggerDelay={0.06} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <StaggerContainer scaleUp staggerDelay={0.06} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {programs.map((program) => (
-              <StaggerItem key={program.slug}>
+              <StaggerItem scaleUp key={program.slug}>
                 <Link href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}>
                   <motion.article
-                    whileHover={{ y: -4 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="group relative h-full overflow-hidden rounded-xl border border-gray-100 bg-white transition-colors duration-300 hover:border-gray-200"
                   >
                     {/* Image container */}

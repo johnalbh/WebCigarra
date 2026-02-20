@@ -256,7 +256,7 @@ export default function ProgramDetailPage() {
             <div className="lg:col-span-2">
               {/* Program image */}
               {programImageMap[slug] && (
-                <ScrollReveal>
+                <ScrollReveal mode="scroll" scaleFrom={0.95}>
                   <div className="relative mb-8 aspect-video overflow-hidden rounded-xl">
                     <Image
                       src={programImageMap[slug]}
@@ -270,14 +270,14 @@ export default function ProgramDetailPage() {
                 </ScrollReveal>
               )}
 
-              <ScrollReveal>
+              <ScrollReveal mode="scroll" scaleFrom={0.95}>
                 <div className="prose prose-lg max-w-none">
                   <p className="leading-relaxed text-gray-700">{programFullDescription}</p>
                 </div>
               </ScrollReveal>
 
               {/* Info cards on mobile (hidden on desktop where sidebar shows them) */}
-              <ScrollReveal>
+              <ScrollReveal mode="scroll" scaleFrom={0.95}>
                 <div className="mt-8 grid grid-cols-2 gap-4 lg:hidden">
                   <div className="rounded-xl bg-gray-50 p-5">
                     <HiUsers className="mb-2 h-5 w-5 text-primary-600" />

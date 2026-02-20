@@ -449,10 +449,10 @@ export default function HowToHelpPage() {
 
           <div className="grid gap-6 md:grid-cols-3">
             {/* ── Card: DONA ── */}
-            <ScrollReveal delay={0}>
+            <ScrollReveal delay={0} mode="scroll" scaleFrom={0.95}>
               <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3, ease: smoothEase }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="group relative h-[480px] overflow-hidden rounded-2xl"
               >
                 <Image
@@ -488,10 +488,10 @@ export default function HowToHelpPage() {
             </ScrollReveal>
 
             {/* ── Card: APADRINA ── */}
-            <ScrollReveal delay={0.15}>
+            <ScrollReveal delay={0.15} mode="scroll" scaleFrom={0.95}>
               <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3, ease: smoothEase }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="group relative h-[480px] overflow-hidden rounded-2xl"
               >
                 <Image
@@ -530,10 +530,10 @@ export default function HowToHelpPage() {
             </ScrollReveal>
 
             {/* ── Card: VOLUNTARIO ── */}
-            <ScrollReveal delay={0.3}>
+            <ScrollReveal delay={0.3} mode="scroll" scaleFrom={0.95}>
               <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3, ease: smoothEase }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="group relative h-[480px] overflow-hidden rounded-2xl"
               >
                 <Image
@@ -685,14 +685,14 @@ export default function HowToHelpPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="space-y-4 md:space-y-5" staggerDelay={0.1}>
+          <StaggerContainer scaleUp className="space-y-4 md:space-y-5" staggerDelay={0.1}>
             {donationTiers.map((tier) => {
               const Icon = tier.icon;
               return (
-                <StaggerItem key={tier.key}>
+                <StaggerItem scaleUp key={tier.key}>
                   <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.25, ease: smoothEase }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className={`group relative flex flex-col items-center gap-6 overflow-hidden rounded-xl border-2 bg-white p-6 transition-all duration-300 md:flex-row md:gap-8 md:p-8 ${tier.color}`}
                   >
                     {/* Popular badge */}
@@ -854,14 +854,14 @@ export default function HowToHelpPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
+          <StaggerContainer scaleUp className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
             {volunteerAreas.map((area) => {
               const Icon = area.icon;
               return (
-                <StaggerItem key={area.key}>
+                <StaggerItem scaleUp key={area.key}>
                   <motion.div
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.25, ease: smoothEase }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className={`group flex h-full flex-col items-center rounded-xl border p-8 text-center transition-all duration-300 hover:shadow-md ${area.color}`}
                   >
                     <div className={`mb-5 flex h-14 w-14 items-center justify-center rounded-xl ${area.iconBg}`}>

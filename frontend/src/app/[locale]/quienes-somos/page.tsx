@@ -380,11 +380,11 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerContainer scaleUp className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {valuesConfig.map((value) => {
               const Icon = value.icon;
               return (
-                <StaggerItem key={value.key}>
+                <StaggerItem scaleUp key={value.key}>
                   <div className="group h-full rounded-xl border border-gray-100 bg-white p-8 transition-colors duration-300 hover:border-gray-200">
                     {/* Icon */}
                     <div
