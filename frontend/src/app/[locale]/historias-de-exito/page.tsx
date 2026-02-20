@@ -17,28 +17,28 @@ const storiesConfig = [
   {
     key: 'juanDavid',
     name: 'Juan David Hernández',
-    image: '/images/stories/juan-david.jpg',
+    image: '/images/stories/juan-david.webp',
     accentColor: '#4facfe',
     icon: HiHeart,
   },
   {
     key: 'andrey',
     name: 'Andrey Ruiz',
-    image: '/images/stories/andrey-ruiz.jpg',
+    image: '/images/stories/andrey-ruiz.webp',
     accentColor: '#43e97b',
     icon: HiStar,
   },
   {
     key: 'yuri',
     name: 'Yuri Karina Poveda',
-    image: '/images/stories/yuri-karina.png',
+    image: '/images/stories/yuri-karina.webp',
     accentColor: '#fa709a',
     icon: HiAcademicCap,
   },
   {
     key: 'anyie',
     name: 'Anyie Tatiana',
-    image: '/images/stories/anyie.png',
+    image: '/images/stories/anyie.webp',
     accentColor: '#a18cd1',
     icon: HiSparkles,
   },
@@ -46,12 +46,12 @@ const storiesConfig = [
 
 /* ---------- impact gallery images ---------- */
 const impactImages = [
-  '/images/news/festival-arte.jpg',
-  '/images/gallery/musica.jpg',
-  '/images/gallery/tecnologia.jpg',
-  '/images/engagement/apoyo-escolar.jpg',
-  '/images/engagement/recreacion.jpg',
-  '/images/engagement/musica.jpg',
+  '/images/news/festival-arte.webp',
+  '/images/gallery/musica.webp',
+  '/images/gallery/tecnologia.webp',
+  '/images/engagement/apoyo-escolar.webp',
+  '/images/engagement/recreacion.webp',
+  '/images/engagement/musica.webp',
 ];
 
 /* ---------- story card ---------- */
@@ -180,7 +180,7 @@ export default function SuccessStoriesPage() {
                 <div className="space-y-4">
                   <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                     <Image
-                      src="/images/stories/juan-david.jpg"
+                      src="/images/stories/juan-david.webp"
                       alt="Juan David"
                       fill
                       sizes="25vw"
@@ -189,7 +189,7 @@ export default function SuccessStoriesPage() {
                   </div>
                   <div className="relative aspect-square overflow-hidden rounded-2xl">
                     <Image
-                      src="/images/stories/anyie.png"
+                      src="/images/stories/anyie.webp"
                       alt="Anyie"
                       fill
                       sizes="25vw"
@@ -200,7 +200,7 @@ export default function SuccessStoriesPage() {
                 <div className="mt-8 space-y-4">
                   <div className="relative aspect-square overflow-hidden rounded-2xl">
                     <Image
-                      src="/images/stories/andrey-ruiz.jpg"
+                      src="/images/stories/andrey-ruiz.webp"
                       alt="Andrey"
                       fill
                       sizes="25vw"
@@ -209,7 +209,7 @@ export default function SuccessStoriesPage() {
                   </div>
                   <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                     <Image
-                      src="/images/stories/yuri-karina.png"
+                      src="/images/stories/yuri-karina.webp"
                       alt="Yuri Karina"
                       fill
                       sizes="25vw"

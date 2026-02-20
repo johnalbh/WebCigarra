@@ -32,9 +32,9 @@ const benefitConfig = [
 
 /* ── Volunteer areas (config only) ── */
 const areaConfig = [
-  { key: 'education', icon: HiAcademicCap, color: 'border-primary-200 hover:border-primary-400', iconBg: 'bg-primary-100 text-primary-600', image: '/images/engagement/apoyo-escolar.jpg' },
-  { key: 'arts', icon: FaPaintBrush, color: 'border-accent-200 hover:border-accent-400', iconBg: 'bg-accent-100 text-accent-600', image: '/images/engagement/musica.jpg' },
-  { key: 'sports', icon: FaRunning, color: 'border-green-200 hover:border-green-400', iconBg: 'bg-green-100 text-green-600', image: '/images/engagement/recreacion.jpg' },
+  { key: 'education', icon: HiAcademicCap, color: 'border-primary-200 hover:border-primary-400', iconBg: 'bg-primary-100 text-primary-600', image: '/images/engagement/apoyo-escolar.webp' },
+  { key: 'arts', icon: FaPaintBrush, color: 'border-accent-200 hover:border-accent-400', iconBg: 'bg-accent-100 text-accent-600', image: '/images/engagement/musica.webp' },
+  { key: 'sports', icon: FaRunning, color: 'border-green-200 hover:border-green-400', iconBg: 'bg-green-100 text-green-600', image: '/images/engagement/recreacion.webp' },
   { key: 'management', icon: FaBriefcase, color: 'border-purple-200 hover:border-purple-400', iconBg: 'bg-purple-100 text-purple-600', image: null },
 ];
 

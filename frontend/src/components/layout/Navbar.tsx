@@ -198,7 +198,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/logo-principal.png"
+            src="/images/logo-principal.webp"
             alt="Fundación Cigarra"
             width={200}
             height={56}

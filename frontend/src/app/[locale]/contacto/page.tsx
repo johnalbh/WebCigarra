@@ -145,7 +145,7 @@ export default function ContactPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="/images/engagement/recreacion.jpg"
+                src="/images/engagement/recreacion.webp"
                 alt="Comunidad Fundacion Cigarra"
                 fill
                 className="object-cover"

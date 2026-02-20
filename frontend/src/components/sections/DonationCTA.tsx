@@ -36,7 +36,7 @@ const pathConfigs = [
     href: DONATION_LINK_COP,
     external: true,
     color: 'bg-red-500',
-    image: '/images/engagement/musica.jpg',
+    image: '/images/engagement/musica.webp',
   },
   {
     icon: HiUserGroup,
@@ -44,7 +44,7 @@ const pathConfigs = [
     href: '/plan-padrino',
     external: false,
     color: 'bg-primary-500',
-    image: '/images/engagement/apoyo-escolar.jpg',
+    image: '/images/engagement/apoyo-escolar.webp',
   },
   {
     icon: HiHand,
@@ -52,7 +52,7 @@ const pathConfigs = [
     href: '/voluntariado',
     external: false,
     color: 'bg-accent-500',
-    image: '/images/engagement/recreacion.jpg',
+    image: '/images/engagement/recreacion.webp',
   },
   {
     icon: HiShare,
@@ -60,7 +60,7 @@ const pathConfigs = [
     href: 'https://wa.me/?text=Conoce%20la%20Fundación%20Cigarra%20y%20su%20increíble%20labor%20con%20niños%20en%20Ciudad%20Bolívar%20🦗%20https://cigarra.org',
     external: true,
     color: 'bg-green-500',
-    image: '/images/news/festival-arte.jpg',
+    image: '/images/news/festival-arte.webp',
   },
 ];
 

@@ -81,14 +81,14 @@ const alliancesListConfig = ['corporateAllies', 'nationalInternational', 'educat
 
 /* ── Partner logos (static — replace with Strapi fetch later) ── */
 const partners = [
-  { name: 'Saint George School', logo: '/images/partners/san-jorge.png', tier: 'platinum' as const },
-  { name: 'Microsoft', logo: '/images/partners/microsoft.png', tier: 'gold' as const },
-  { name: 'Charles Wright Academy', logo: '/images/partners/cwa.png', tier: 'gold' as const },
-  { name: 'Karelsie Foundation', logo: '/images/partners/karelsie.png', tier: 'gold' as const },
-  { name: 'HomeCenter', logo: '/images/partners/homecenter.jpg', tier: 'gold' as const },
-  { name: 'Aqualogic', logo: '/images/partners/aqualogic.png', tier: 'silver' as const },
-  { name: 'Opperar', logo: '/images/partners/opperar.png', tier: 'silver' as const },
-  { name: 'Makri', logo: '/images/partners/makri.jpg', tier: 'silver' as const },
+  { name: 'Saint George School', logo: '/images/partners/san-jorge.webp', tier: 'platinum' as const },
+  { name: 'Microsoft', logo: '/images/partners/microsoft.webp', tier: 'gold' as const },
+  { name: 'Charles Wright Academy', logo: '/images/partners/cwa.webp', tier: 'gold' as const },
+  { name: 'Karelsie Foundation', logo: '/images/partners/karelsie.webp', tier: 'gold' as const },
+  { name: 'HomeCenter', logo: '/images/partners/homecenter.webp', tier: 'gold' as const },
+  { name: 'Aqualogic', logo: '/images/partners/aqualogic.webp', tier: 'silver' as const },
+  { name: 'Opperar', logo: '/images/partners/opperar.webp', tier: 'silver' as const },
+  { name: 'Makri', logo: '/images/partners/makri.webp', tier: 'silver' as const },
 ];
 
 const platinumPartners = partners.filter((p) => p.tier === 'platinum');
@@ -303,7 +303,7 @@ export default function ImpactoEmpresarialPage() {
             <ScrollReveal direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                 <Image
-                  src="/images/engagement/apoyo-escolar.jpg"
+                  src="/images/engagement/apoyo-escolar.webp"
                   alt="Fundacion Cigarra - Entidad Sin Animo de Lucro"
                   fill
                   className="object-cover"

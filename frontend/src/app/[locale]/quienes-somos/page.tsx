@@ -193,7 +193,7 @@ export default function AboutPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="/images/about/equipo.jpg"
+                src="/images/about/equipo.webp"
                 alt="Equipo Fundacion Cigarra"
                 fill
                 priority
@@ -213,7 +213,7 @@ export default function AboutPage() {
             <ScrollReveal direction="left" className="relative h-full min-h-[400px] md:min-h-[600px]">
               <div className="absolute inset-0 overflow-hidden">
                 <Image
-                  src="/images/about/mision.jpg"
+                  src="/images/about/mision.webp"
                   alt="Misión Fundación Cigarra"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -308,7 +308,7 @@ export default function AboutPage() {
             >
               <div className="absolute inset-0 overflow-hidden">
                 <Image
-                  src="/images/about/vision.jpg"
+                  src="/images/about/vision.webp"
                   alt="Visión Fundación Cigarra"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -434,7 +434,7 @@ export default function AboutPage() {
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
                   <Image
-                    src="/images/about/equipo.jpg"
+                    src="/images/about/equipo.webp"
                     alt="Equipo Fundación Cigarra"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"

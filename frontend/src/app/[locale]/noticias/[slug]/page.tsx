@@ -23,7 +23,7 @@ const articles = [
     excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes de la localidad.',
     date: '2024-06-15',
     author: 'Fundación Cigarra',
-    image: '/images/news/celebramos-22-anos.jpg',
+    image: '/images/news/celebramos-22-anos.webp',
     content: 'Este año marca un hito especial para nuestra fundación: 23 años de labor ininterrumpida al servicio de los niños y jóvenes de Ciudad Bolívar en Bogotá.\n\nDesde nuestros humildes comienzos en 2002, hemos crecido hasta ayudar a más de 1.877 niños y jóvenes a través de 14 programas de educación, arte y cultura, generando más de 100 empleos y beneficiando a más de 190 familias.\n\nNuestro compromiso sigue siendo el mismo: brindar oportunidades de desarrollo integral a quienes más lo necesitan, creando un espacio seguro donde los sueños de nuestros niños puedan florecer.\n\nAgradecemos a todos nuestros donantes, voluntarios y aliados que hacen posible esta labor. Juntos, seguiremos transformando vidas.',
   },
   {
@@ -32,7 +32,7 @@ const articles = [
     excerpt: 'Ampliamos nuestra oferta de programas musicales con nuevos instrumentos y profesores calificados.',
     date: '2024-05-20',
     author: 'Fundación Cigarra',
-    image: '/images/news/talleres-musica.jpg',
+    image: '/images/news/talleres-musica.webp',
     content: 'Nos complace anunciar la apertura de nuevos talleres de música para nuestra comunidad.\n\nGracias al apoyo de nuestros donantes, hemos adquirido nuevos instrumentos musicales y contamos con profesores calificados para ofrecer formación en guitarra, flauta, percusión y canto.\n\nLos talleres están abiertos para niños y jóvenes entre 6 y 17 años y se realizan de lunes a viernes en horario de la tarde.\n\nLa música es una herramienta poderosa para el desarrollo integral de los niños. Les enseña disciplina, trabajo en equipo y les abre puertas a nuevas oportunidades.',
   },
   {
@@ -41,7 +41,7 @@ const articles = [
     excerpt: 'Nuestros jóvenes acceden a programas de formación tecnológica gracias a esta alianza.',
     date: '2024-04-10',
     author: 'Fundación Cigarra',
-    image: '/images/news/alianza-microsoft.jpg',
+    image: '/images/news/alianza-microsoft.webp',
     content: 'Estamos orgullosos de anunciar nuestra alianza con Microsoft para ofrecer programas de formación en tecnología a nuestros jóvenes beneficiarios.\n\nA través de esta alianza, los participantes tendrán acceso a cursos de programación, diseño digital y herramientas ofimáticas que les permitirán desarrollar habilidades para el siglo XXI.\n\nEsta alianza refuerza nuestro compromiso de brindar oportunidades de formación integral y preparar a nuestros jóvenes para un futuro con mayores oportunidades laborales y profesionales.',
   },
   {
@@ -50,7 +50,7 @@ const articles = [
     excerpt: 'Más de 120 niños y jóvenes participaron en nuestra jornada deportiva con actividades al aire libre.',
     date: '2024-03-15',
     author: 'Fundación Cigarra',
-    image: '/images/programs/recreacion-y-deportes.jpg',
+    image: '/images/programs/recreacion-y-deportes.webp',
     content: 'Con gran entusiasmo realizamos una jornada de recreación y deportes que reunió a más de 120 niños y jóvenes de Ciudad Bolívar.\n\nLa jornada incluyó torneos de fútbol, baloncesto, juegos cooperativos y actividades de desarrollo motriz, todo en un ambiente de sana convivencia y diversión.\n\nNuestro programa de Recreación y Deportes busca promover el bienestar físico y emocional de los participantes, fortaleciendo valores como el trabajo en equipo, el respeto y la disciplina deportiva.',
   },
   {
@@ -59,7 +59,7 @@ const articles = [
     excerpt: 'Nuestro festival anual reunió a más de 300 personas de la comunidad.',
     date: '2024-02-20',
     author: 'Fundación Cigarra',
-    image: '/images/news/festival-arte.jpg',
+    image: '/images/news/festival-arte.webp',
     content: 'El Festival de Arte y Cultura Cigarra 2024 fue un éxito rotundo, reuniendo a más de 300 personas de la comunidad en una jornada llena de arte, música, danza y cultura.\n\nLos niños y jóvenes de todos nuestros programas presentaron sus trabajos artísticos, interpretaciones musicales, coreografías de danza y obras de teatro que dejaron asombrados a los asistentes.\n\nEl festival también contó con la participación de nuestros aliados y padrinos, quienes pudieron ver de primera mano el impacto de su apoyo en la vida de los beneficiarios.\n\nEste evento anual es una muestra del talento, la dedicación y el espíritu transformador que caracteriza a la Fundación Cigarra.',
   },
   {
@@ -68,7 +68,7 @@ const articles = [
     excerpt: 'Compartimos los avances de nuestro programa de alimentación nutritiva.',
     date: '2024-01-30',
     author: 'Fundación Cigarra',
-    image: '/images/news/campana-nutricion.jpg',
+    image: '/images/news/campana-nutricion.webp',
     content: 'Compartimos con alegría los resultados del primer trimestre de nuestra campaña de nutrición, un programa que busca garantizar una alimentación saludable para los niños y jóvenes que asisten a nuestros programas.\n\nDurante estos tres meses, hemos proporcionado más de 2.000 refrigerios nutritivos y meriendas equilibradas a los participantes de nuestros programas diarios.\n\nGracias al apoyo de donantes y aliados, hemos logrado mejorar los indicadores nutricionales de los beneficiarios, contribuyendo a su bienestar físico y rendimiento académico.\n\nLa buena alimentación es fundamental para que nuestros niños puedan aprender, crear y soñar con un futuro mejor.',
   },
 ];
@@ -190,7 +190,7 @@ export default function ArticleDetailPage() {
         excerpt: '',
         date: '2024-01-01',
         author: 'Fundación Cigarra',
-        image: '/images/news/celebramos-22-anos.jpg',
+        image: '/images/news/celebramos-22-anos.webp',
         content: t('fallbackContent'),
       };
 

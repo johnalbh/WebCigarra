@@ -80,7 +80,7 @@ export default function Footer() {
             />
             <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-white shadow-2xl shadow-white/10">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Fundación Cigarra"
                 width={160}
                 height={160}

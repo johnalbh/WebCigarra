@@ -10,12 +10,12 @@ import { HiCalendar, HiArrowRight, HiMail } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
 
 const articleImages: Record<string, string> = {
-  'celebramos-22-anos': '/images/news/celebramos-22-anos.jpg',
-  'nuevos-talleres-musica': '/images/news/talleres-musica.jpg',
-  'alianza-microsoft': '/images/news/alianza-microsoft.jpg',
-  'jornada-recreacion-deportes': '/images/programs/recreacion-y-deportes.jpg',
-  'festival-arte-cultura': '/images/news/festival-arte.jpg',
-  'campana-nutricion': '/images/news/campana-nutricion.jpg',
+  'celebramos-22-anos': '/images/news/celebramos-22-anos.webp',
+  'nuevos-talleres-musica': '/images/news/talleres-musica.webp',
+  'alianza-microsoft': '/images/news/alianza-microsoft.webp',
+  'jornada-recreacion-deportes': '/images/programs/recreacion-y-deportes.webp',
+  'festival-arte-cultura': '/images/news/festival-arte.webp',
+  'campana-nutricion': '/images/news/campana-nutricion.webp',
 };
 
 const articles = [
@@ -88,7 +88,7 @@ export default function NewsPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="/images/news/celebramos-22-anos.jpg"
+                src="/images/news/celebramos-22-anos.webp"
                 alt="Fundación Cigarra"
                 fill
                 className="object-cover"

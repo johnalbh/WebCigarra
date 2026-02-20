@@ -9,10 +9,10 @@ import { HiArrowRight } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
 
 const heroImages = [
-  '/images/hero/fundacion-ninos.png',
-  '/images/hero/hero-2.jpg',
-  '/images/hero/hero-3.jpg',
-  '/images/hero/hero-4.jpg',
+  '/images/hero/fundacion-ninos.webp',
+  '/images/hero/hero-2.webp',
+  '/images/hero/hero-3.webp',
+  '/images/hero/hero-4.webp',
 ];
 
 const SLIDE_INTERVAL = 5000;

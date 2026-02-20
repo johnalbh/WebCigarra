@@ -40,20 +40,20 @@ const programs: ProgramConfig[] = [
 ];
 
 const programImageMap: Record<string, string> = {
-  'refuerzo-escolar': '/images/programs/refuerzo-escolar.jpg',
-  'biblioteca': '/images/programs/biblioteca.jpg',
-  'centro-comunitario': '/images/programs/centro-comunitario.jpg',
-  'danza': '/images/programs/danza.jpg',
-  'grupo-adultos-mayores': '/images/programs/grupo-adultos-mayores.jpg',
-  'ingles': '/images/programs/ingles.jpg',
-  'musica': '/images/programs/musica.jpg',
-  'primera-infancia': '/images/programs/primera-infancia.jpg',
-  'psicologia': '/images/programs/psicologia.jpg',
-  'recreacion-y-deportes': '/images/programs/recreacion-y-deportes.jpg',
-  'ropero': '/images/programs/ropero.jpg',
-  'escuela-de-padres': '/images/programs/escuela-padres.jpg',
-  'teatro': '/images/programs/teatro.jpg',
-  'tecnologia': '/images/programs/tecnologia.jpg',
+  'refuerzo-escolar': '/images/programs/refuerzo-escolar.webp',
+  'biblioteca': '/images/programs/biblioteca.webp',
+  'centro-comunitario': '/images/programs/centro-comunitario.webp',
+  'danza': '/images/programs/danza.webp',
+  'grupo-adultos-mayores': '/images/programs/grupo-adultos-mayores.webp',
+  'ingles': '/images/programs/ingles.webp',
+  'musica': '/images/programs/musica.webp',
+  'primera-infancia': '/images/programs/primera-infancia.webp',
+  'psicologia': '/images/programs/psicologia.webp',
+  'recreacion-y-deportes': '/images/programs/recreacion-y-deportes.webp',
+  'ropero': '/images/programs/ropero.webp',
+  'escuela-de-padres': '/images/programs/escuela-padres.webp',
+  'teatro': '/images/programs/teatro.webp',
+  'tecnologia': '/images/programs/tecnologia.webp',
 };
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
@@ -130,7 +130,7 @@ export default function ProgramsPage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="/images/news/festival-arte.jpg"
+                src="/images/news/festival-arte.webp"
                 alt={t('heroImageAlt')}
                 fill
                 className="object-cover"

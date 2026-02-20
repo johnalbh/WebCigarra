@@ -456,7 +456,7 @@ export default function HowToHelpPage() {
                 className="group relative h-[480px] overflow-hidden rounded-2xl"
               >
                 <Image
-                  src="/images/engagement/musica.jpg"
+                  src="/images/engagement/musica.webp"
                   alt="Ninos en actividades de la fundacion"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -495,7 +495,7 @@ export default function HowToHelpPage() {
                 className="group relative h-[480px] overflow-hidden rounded-2xl"
               >
                 <Image
-                  src="/images/engagement/apoyo-escolar.jpg"
+                  src="/images/engagement/apoyo-escolar.webp"
                   alt="Apoyo escolar en la fundacion"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -537,7 +537,7 @@ export default function HowToHelpPage() {
                 className="group relative h-[480px] overflow-hidden rounded-2xl"
               >
                 <Image
-                  src="/images/engagement/recreacion.jpg"
+                  src="/images/engagement/recreacion.webp"
                   alt="Voluntarios en actividades recreativas"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -584,7 +584,7 @@ export default function HowToHelpPage() {
             <ScrollReveal direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                 <Image
-                  src="/images/stories/juan-david.jpg"
+                  src="/images/stories/juan-david.webp"
                   alt="Nino estudiando en la fundacion"
                   fill
                   className="object-cover"

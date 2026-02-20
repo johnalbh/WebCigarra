@@ -26,11 +26,11 @@ import { HiComputerDesktop } from 'react-icons/hi2';
 
 /* ── 5 featured programs shown as image cards ── */
 const featuredPrograms = [
-  { slug: 'musica', image: '/images/programs/musica.jpg' },
-  { slug: 'danza', image: '/images/programs/danza.jpg' },
-  { slug: 'refuerzo-escolar', image: '/images/programs/refuerzo-escolar.jpg' },
-  { slug: 'biblioteca', image: '/images/programs/biblioteca.jpg' },
-  { slug: 'teatro', image: '/images/programs/teatro.jpg' },
+  { slug: 'musica', image: '/images/programs/musica.webp' },
+  { slug: 'danza', image: '/images/programs/danza.webp' },
+  { slug: 'refuerzo-escolar', image: '/images/programs/refuerzo-escolar.webp' },
+  { slug: 'biblioteca', image: '/images/programs/biblioteca.webp' },
+  { slug: 'teatro', image: '/images/programs/teatro.webp' },
 ];
 
 /* ── Remaining programs shown in the marquee ── */
