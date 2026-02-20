@@ -65,7 +65,7 @@ export default function DonationCheckout({
   preselectedAmount,
 }: DonationCheckoutProps) {
   const t = useTranslations('donationCheckout');
-  const { openCheckout, isLoaded, method } = useEpayco();
+  const { openCheckout, isLoaded } = useEpayco();
 
   const [step, setStep] = useState(preselectedAmount ? 2 : 1);
   const [selectedAmount, setSelectedAmount] = useState<number>(preselectedAmount || 0);
@@ -82,7 +82,7 @@ export default function DonationCheckout({
     email: '',
     phoneNumber: '',
     city: '',
-    country: 'Colombia',
+    country: 'CO',
   });
 
   const currentAmount = isCustom ? parseInt(customAmount) || 0 : selectedAmount;
@@ -185,11 +185,11 @@ export default function DonationCheckout({
 
       const result = await res.json();
 
-      if (!result.success || !result.smartCheckout) {
+      if (!result.success || !result.sessionId) {
         throw new Error(result.errorMessage || 'Error al crear donacion');
       }
 
-      await openCheckout(result.smartCheckout);
+      openCheckout({ sessionId: result.sessionId, test: result.test });
     } catch (err) {
       setError(err instanceof Error ? err.message : t('errorCreating'));
     } finally {
