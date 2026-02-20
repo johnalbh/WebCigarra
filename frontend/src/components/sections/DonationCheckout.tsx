@@ -189,7 +189,7 @@ export default function DonationCheckout({
         throw new Error(result.errorMessage || 'Error al crear donacion');
       }
 
-      openCheckout(result.smartCheckout);
+      await openCheckout(result.smartCheckout);
     } catch (err) {
       setError(err instanceof Error ? err.message : t('errorCreating'));
     } finally {
