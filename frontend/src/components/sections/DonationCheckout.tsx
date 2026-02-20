@@ -54,10 +54,12 @@ function formatCOP(amount: number): string {
   }).format(amount);
 }
 
-function formatCompact(amount: number): string {
-  if (amount >= 1000000) return `$${(amount / 1000000).toFixed(1)}M`;
-  if (amount >= 1000) return `$${Math.round(amount / 1000)}K`;
-  return `$${amount}`;
+const SLIDER_MIN = 10000;
+const SLIDER_MAX = 1000000;
+const SLIDER_STEP = 5000;
+
+function formatAmount(amount: number): string {
+  return new Intl.NumberFormat('es-CO').format(amount);
 }
 
 export default function DonationCheckout({
@@ -104,6 +106,20 @@ export default function DonationCheckout({
     setSelectedAmount(0);
     setError('');
   }, []);
+
+  const handleSliderChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const val = parseInt(e.target.value);
+      setSelectedAmount(val);
+      setIsCustom(false);
+      setCustomAmount('');
+      setError('');
+    },
+    []
+  );
+
+  const sliderValue = Math.max(SLIDER_MIN, Math.min(SLIDER_MAX, currentAmount || SLIDER_MIN));
+  const sliderPercent = ((sliderValue - SLIDER_MIN) / (SLIDER_MAX - SLIDER_MIN)) * 100;
 
   const handleDonorChange = useCallback(
     (field: keyof DonorFormData, value: string) => {
@@ -289,63 +305,101 @@ export default function DonationCheckout({
                 exit="exit"
                 transition={{ duration: 0.4, ease: EASE_APPLE }}
               >
-                <p className="mb-5 text-center text-sm font-medium uppercase tracking-widest text-gray-400">
-                  {t('selectAmount')}
-                </p>
-
-                {/* Amount grid */}
-                <div className="grid grid-cols-3 gap-3">
-                  {PRESET_AMOUNTS.map((preset, i) => (
-                    <motion.button
-                      key={preset.value}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * STAGGER.fast, ease: EASE_APPLE }}
-                      onClick={() => handleAmountSelect(preset.value)}
-                      className={`group relative rounded-2xl border-2 px-3 py-4 text-center transition-all duration-300 ${
-                        selectedAmount === preset.value && !isCustom
-                          ? 'border-accent-500 bg-accent-50 shadow-sm shadow-accent-500/10'
-                          : 'border-gray-100 bg-gray-50/50 hover:border-gray-200 hover:bg-gray-50'
-                      }`}
+                {/* Big animated amount display */}
+                <div className="mb-8 text-center">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentAmount}
+                      initial={{ opacity: 0, y: 8, filter: 'blur(4px)' }}
+                      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                      exit={{ opacity: 0, y: -8, filter: 'blur(4px)' }}
+                      transition={{ duration: 0.25, ease: EASE_APPLE }}
                     >
-                      <span
-                        className={`block font-heading text-lg font-bold transition-colors ${
-                          selectedAmount === preset.value && !isCustom
-                            ? 'text-accent-600'
-                            : 'text-gray-800'
+                      <span className="font-heading text-5xl font-bold tracking-tight text-gray-900 md:text-6xl">
+                        {currentAmount >= MIN_AMOUNT
+                          ? formatCOP(currentAmount)
+                          : '$0'}
+                      </span>
+                    </motion.div>
+                  </AnimatePresence>
+                  <p className="mt-2 text-sm font-medium tracking-wide text-gray-300">
+                    {t('selectAmount')}
+                  </p>
+                </div>
+
+                {/* Preset amount pills */}
+                <div className="mb-6 flex flex-wrap justify-center gap-2">
+                  {PRESET_AMOUNTS.map((preset, i) => {
+                    const isActive = selectedAmount === preset.value && !isCustom;
+                    return (
+                      <motion.button
+                        key={preset.value}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                          delay: i * STAGGER.fast,
+                          ease: EASE_APPLE,
+                        }}
+                        onClick={() => handleAmountSelect(preset.value)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                          isActive
+                            ? 'bg-gray-900 text-white shadow-lg shadow-gray-900/20'
+                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         }`}
                       >
-                        {formatCompact(preset.value)}
-                      </span>
-                      <span className="mt-0.5 block text-[11px] font-medium text-gray-400">
-                        COP
-                      </span>
-                    </motion.button>
-                  ))}
-
-                  {/* Custom amount button */}
+                        {`$${formatAmount(preset.value)}`}
+                      </motion.button>
+                    );
+                  })}
                   <motion.button
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     transition={{
                       delay: PRESET_AMOUNTS.length * STAGGER.fast,
                       ease: EASE_APPLE,
                     }}
                     onClick={handleCustomToggle}
-                    className={`rounded-2xl border-2 border-dashed px-3 py-4 text-center transition-all duration-300 ${
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`rounded-full border-2 border-dashed px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
                       isCustom
-                        ? 'border-accent-500 bg-accent-50'
-                        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                        ? 'border-gray-900 bg-gray-900 text-white shadow-lg shadow-gray-900/20'
+                        : 'border-gray-200 text-gray-500 hover:border-gray-300 hover:bg-gray-50'
                     }`}
                   >
-                    <span
-                      className={`block text-sm font-semibold ${
-                        isCustom ? 'text-accent-600' : 'text-gray-500'
-                      }`}
-                    >
-                      {t('customAmount')}
-                    </span>
+                    {t('customAmount')}
                   </motion.button>
+                </div>
+
+                {/* Range slider */}
+                <div className="mb-6 px-1">
+                  <div className="relative flex h-8 items-center">
+                    <div className="pointer-events-none absolute left-0 right-0 h-[6px] rounded-full bg-gray-100" />
+                    <motion.div
+                      className="pointer-events-none absolute left-0 h-[6px] rounded-full bg-gradient-to-r from-accent-400 to-accent-500"
+                      animate={{ width: `${sliderPercent}%` }}
+                      transition={{ duration: 0.15, ease: 'easeOut' }}
+                    />
+                    <input
+                      type="range"
+                      min={SLIDER_MIN}
+                      max={SLIDER_MAX}
+                      step={SLIDER_STEP}
+                      value={sliderValue}
+                      onChange={handleSliderChange}
+                      className="donation-slider relative z-10 w-full"
+                    />
+                  </div>
+                  <div className="mt-1 flex justify-between px-0.5">
+                    <span className="text-[11px] font-medium text-gray-300">
+                      {`$${formatAmount(SLIDER_MIN)}`}
+                    </span>
+                    <span className="text-[11px] font-medium text-gray-300">
+                      {`$${formatAmount(SLIDER_MAX)}`}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Custom amount input */}
@@ -358,7 +412,7 @@ export default function DonationCheckout({
                       transition={{ duration: 0.3, ease: EASE_APPLE }}
                       className="overflow-hidden"
                     >
-                      <div className="mt-4">
+                      <div className="mb-4">
                         <div className="relative">
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 font-heading text-lg font-bold text-gray-300">
                             $
@@ -390,7 +444,7 @@ export default function DonationCheckout({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.3, ease: EASE_APPLE }}
-                      className="mt-5 rounded-2xl bg-gradient-to-r from-primary-50 to-accent-50 p-4 text-center"
+                      className="rounded-2xl bg-gradient-to-r from-primary-50 to-accent-50 p-4 text-center"
                     >
                       <p className="text-sm leading-relaxed text-primary-700">
                         <span className="font-semibold">{formatCOP(currentAmount)}</span>
@@ -407,7 +461,7 @@ export default function DonationCheckout({
                   disabled={currentAmount < MIN_AMOUNT}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gray-900 px-6 py-4 font-heading text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-30"
+                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-gray-900 px-6 py-4 font-heading text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   {currentAmount >= MIN_AMOUNT
                     ? `${t('confirmDonation')} ${formatCOP(currentAmount)}`
