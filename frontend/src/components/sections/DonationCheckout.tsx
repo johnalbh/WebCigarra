@@ -21,6 +21,7 @@ const PRESET_AMOUNTS = [
 ];
 const MIN_AMOUNT = 1000;
 const MAX_AMOUNT = 50000000;
+const DEFAULT_AMOUNT = 50000;
 
 const ID_TYPES = [
   { value: 'CC', label: 'Cedula de Ciudadania' },
@@ -43,6 +44,8 @@ interface DonorFormData {
 interface DonationCheckoutProps {
   campaignId?: number;
   preselectedAmount?: number;
+  variant?: 'page' | 'modal';
+  onClose?: () => void;
 }
 
 function formatCOP(amount: number): string {
@@ -54,23 +57,32 @@ function formatCOP(amount: number): string {
   }).format(amount);
 }
 
-const SLIDER_MIN = 10000;
-const SLIDER_MAX = 1000000;
-const SLIDER_STEP = 5000;
-
 function formatAmount(amount: number): string {
   return new Intl.NumberFormat('es-CO').format(amount);
+}
+
+function parseFormattedNumber(value: string): number {
+  return parseInt(value.replace(/\D/g, '')) || 0;
+}
+
+function formatInputNumber(value: string): string {
+  const digits = value.replace(/\D/g, '');
+  if (!digits) return '';
+  return new Intl.NumberFormat('es-CO').format(parseInt(digits));
 }
 
 export default function DonationCheckout({
   campaignId,
   preselectedAmount,
+  variant = 'page',
+  onClose,
 }: DonationCheckoutProps) {
   const t = useTranslations('donationCheckout');
   const { openCheckout, isLoaded } = useEpayco();
 
+  const initialAmount = preselectedAmount || DEFAULT_AMOUNT;
   const [step, setStep] = useState(preselectedAmount ? 2 : 1);
-  const [selectedAmount, setSelectedAmount] = useState<number>(preselectedAmount || 0);
+  const [selectedAmount, setSelectedAmount] = useState<number>(initialAmount);
   const [customAmount, setCustomAmount] = useState('');
   const [isCustom, setIsCustom] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -87,7 +99,7 @@ export default function DonationCheckout({
     country: 'CO',
   });
 
-  const currentAmount = isCustom ? parseInt(customAmount) || 0 : selectedAmount;
+  const currentAmount = isCustom ? parseFormattedNumber(customAmount) : selectedAmount;
 
   const currentImpact = isCustom
     ? t('impactCustom')
@@ -107,19 +119,11 @@ export default function DonationCheckout({
     setError('');
   }, []);
 
-  const handleSliderChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const val = parseInt(e.target.value);
-      setSelectedAmount(val);
-      setIsCustom(false);
-      setCustomAmount('');
-      setError('');
-    },
-    []
-  );
-
-  const sliderValue = Math.max(SLIDER_MIN, Math.min(SLIDER_MAX, currentAmount || SLIDER_MIN));
-  const sliderPercent = ((sliderValue - SLIDER_MIN) / (SLIDER_MAX - SLIDER_MIN)) * 100;
+  const handleCustomAmountChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatInputNumber(e.target.value);
+    setCustomAmount(formatted);
+    setError('');
+  }, []);
 
   const handleDonorChange = useCallback(
     (field: keyof DonorFormData, value: string) => {
@@ -220,42 +224,45 @@ export default function DonationCheckout({
   };
 
   const direction = 1;
+  const isModal = variant === 'modal';
 
   return (
-    <div id="donar" className="mx-auto w-full max-w-xl">
-      {/* ── Header ── */}
-      <div className="mb-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: EASE_APPLE }}
-          className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-accent-400 to-accent-600 shadow-lg shadow-accent-500/25"
-        >
-          <HiHeart className="h-7 w-7 text-white" />
-        </motion.div>
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1, ease: EASE_APPLE }}
-          className="font-heading text-3xl font-bold tracking-tight text-gray-900 md:text-4xl"
-        >
-          {t('title')}
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2, ease: EASE_APPLE }}
-          className="mx-auto mt-3 max-w-md text-base leading-relaxed text-gray-500"
-        >
-          {t('subtitle')}
-        </motion.p>
-      </div>
+    <div id="donar" className={`mx-auto w-full ${isModal ? 'max-w-full' : 'max-w-xl'}`}>
+      {/* ── Header (only in page mode) ── */}
+      {!isModal && (
+        <div className="mb-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: EASE_APPLE }}
+            className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-accent-400 to-accent-600 shadow-lg shadow-accent-500/25"
+          >
+            <HiHeart className="h-7 w-7 text-white" />
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: EASE_APPLE }}
+            className="font-heading text-3xl font-bold tracking-tight text-gray-900 md:text-4xl"
+          >
+            {t('title')}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: EASE_APPLE }}
+            className="mx-auto mt-3 max-w-md text-base leading-relaxed text-gray-500"
+          >
+            {t('subtitle')}
+          </motion.p>
+        </div>
+      )}
 
       {/* ── Step Progress ── */}
-      <div className="mb-8 flex items-center justify-center gap-1">
+      <div className={`flex items-center justify-center gap-1 ${isModal ? 'mb-6' : 'mb-8'}`}>
         {[1, 2, 3].map((s) => (
           <div key={s} className="flex items-center gap-1">
             <motion.div
@@ -272,11 +279,11 @@ export default function DonationCheckout({
 
       {/* ── Card Container ── */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial={isModal ? { opacity: 1 } : { opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        {...(!isModal && { whileInView: { opacity: 1, y: 0 }, viewport: { once: true } })}
         transition={{ duration: 0.7, delay: 0.15, ease: EASE_APPLE }}
-        className="overflow-hidden rounded-3xl bg-white shadow-xl shadow-gray-200/60 ring-1 ring-gray-100"
+        className={`overflow-hidden ${isModal ? '' : 'rounded-3xl bg-white shadow-xl shadow-gray-200/60 ring-1 ring-gray-100'}`}
       >
         {/* Error message */}
         <AnimatePresence>
@@ -292,7 +299,7 @@ export default function DonationCheckout({
           )}
         </AnimatePresence>
 
-        <div className="p-6 sm:p-8">
+        <div className={isModal ? 'px-1' : 'p-6 sm:p-8'}>
           <AnimatePresence mode="wait" custom={direction}>
             {/* ═══ STEP 1: Amount Selection ═══ */}
             {step === 1 && (
@@ -373,35 +380,6 @@ export default function DonationCheckout({
                   </motion.button>
                 </div>
 
-                {/* Range slider */}
-                <div className="mb-6 px-1">
-                  <div className="relative flex h-8 items-center">
-                    <div className="pointer-events-none absolute left-0 right-0 h-[6px] rounded-full bg-gray-100" />
-                    <motion.div
-                      className="pointer-events-none absolute left-0 h-[6px] rounded-full bg-gradient-to-r from-accent-400 to-accent-500"
-                      animate={{ width: `${sliderPercent}%` }}
-                      transition={{ duration: 0.15, ease: 'easeOut' }}
-                    />
-                    <input
-                      type="range"
-                      min={SLIDER_MIN}
-                      max={SLIDER_MAX}
-                      step={SLIDER_STEP}
-                      value={sliderValue}
-                      onChange={handleSliderChange}
-                      className="donation-slider relative z-10 w-full"
-                    />
-                  </div>
-                  <div className="mt-1 flex justify-between px-0.5">
-                    <span className="text-[11px] font-medium text-gray-300">
-                      {`$${formatAmount(SLIDER_MIN)}`}
-                    </span>
-                    <span className="text-[11px] font-medium text-gray-300">
-                      {`$${formatAmount(SLIDER_MAX)}`}
-                    </span>
-                  </div>
-                </div>
-
                 {/* Custom amount input */}
                 <AnimatePresence>
                   {isCustom && (
@@ -418,12 +396,11 @@ export default function DonationCheckout({
                             $
                           </span>
                           <input
-                            type="number"
-                            min={MIN_AMOUNT}
-                            max={MAX_AMOUNT}
+                            type="text"
+                            inputMode="numeric"
                             value={customAmount}
-                            onChange={(e) => setCustomAmount(e.target.value)}
-                            placeholder="50.000"
+                            onChange={handleCustomAmountChange}
+                            placeholder="150.000"
                             className="w-full rounded-2xl border-2 border-gray-100 bg-gray-50/50 py-4 pl-10 pr-16 font-heading text-xl font-bold text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
                           />
                           <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-gray-300">
@@ -718,7 +695,7 @@ export default function DonationCheckout({
         </div>
 
         {/* ── Footer trust badge ── */}
-        <div className="border-t border-gray-50 bg-gray-50/50 px-6 py-3">
+        <div className={`border-t border-gray-50 bg-gray-50/50 px-6 py-3 ${isModal ? 'mt-4' : ''}`}>
           <p className="flex items-center justify-center gap-1.5 text-xs text-gray-400">
             <HiShieldCheck className="h-3.5 w-3.5" />
             {t('securePayment')}

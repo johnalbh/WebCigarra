@@ -95,53 +95,6 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-/* Apple-style donation slider */
-.donation-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  height: 28px;
-  outline: none;
-  cursor: pointer;
-}
-.donation-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 28px;
-  width: 28px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.08);
-  border: 2px solid var(--color-accent-500);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.donation-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15), 0 6px 16px rgba(0,0,0,0.1);
-}
-.donation-slider::-webkit-slider-thumb:active {
-  transform: scale(1.05);
-  border-color: var(--color-accent-600);
-}
-.donation-slider::-webkit-slider-runnable-track {
-  height: 6px;
-  background: transparent;
-}
-.donation-slider::-moz-range-thumb {
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.08);
-  border: 2px solid var(--color-accent-500);
-  cursor: pointer;
-}
-.donation-slider::-moz-range-track {
-  height: 6px;
-  background: transparent;
-  border: none;
-}
-
 /* Hero SVG animations */
 @keyframes hero-wave-1 {
   0%, 100% { transform: translateX(0) translateY(0); }
