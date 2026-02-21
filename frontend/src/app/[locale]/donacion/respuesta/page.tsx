@@ -135,27 +135,14 @@ export default function DonationResponsePage() {
     const RETRY_INTERVAL = 3000;
 
     try {
-      // Query ePayco directly, use backend proxy as CORS fallback
-      const [epaycoResult, proxyResult] = await Promise.allSettled([
-        fetchFromEpayco(refPayco),
-        fetchFromBackendProxy(refPayco),
-      ]);
-
-      // Prefer ePayco result (authoritative source)
+      // Try ePayco directly first, fallback to backend proxy only if CORS blocks
       let result: TransactionStatus | null = null;
 
-      if (epaycoResult.status === 'fulfilled') {
-        result = epaycoResult.value;
-      } else if (proxyResult.status === 'fulfilled') {
-        result = proxyResult.value;
-      }
-
-      if (!result) {
-        throw new Error(
-          epaycoResult.status === 'rejected'
-            ? (epaycoResult.reason as Error).message
-            : 'No se pudo obtener el estado'
-        );
+      try {
+        result = await fetchFromEpayco(refPayco);
+      } catch {
+        // ePayco direct failed (likely CORS), try backend proxy
+        result = await fetchFromBackendProxy(refPayco);
       }
 
       setTxStatus(result);
