@@ -440,13 +440,15 @@ async function seedPartners(strapi: Core.Strapi) {
 
   const partners = [
     { name: 'Saint George School', tier: 'platinum', order: 1, active: true },
-    { name: 'Microsoft', tier: 'gold', order: 2, active: true },
-    { name: 'Charles Wright', tier: 'gold', order: 3, active: true },
-    { name: 'Karelsie Foundation', tier: 'gold', order: 4, active: true },
-    { name: 'HomeCenter', tier: 'gold', order: 5, active: true },
-    { name: 'Aqualogic', tier: 'silver', order: 6, active: true },
-    { name: 'Opperar', tier: 'silver', order: 7, active: true },
-    { name: 'Makri', tier: 'silver', order: 8, active: true },
+    { name: 'Karelsie Foundation', tier: 'platinum', order: 2, active: true },
+    { name: 'Microsoft', tier: 'gold', order: 3, active: true },
+    { name: 'Permoda', tier: 'gold', order: 4, active: true },
+    { name: 'Almacenes Éxito', tier: 'gold', order: 5, active: true },
+    { name: 'HomeCenter', tier: 'silver', order: 6, active: true },
+    { name: 'Aqualogic', tier: 'silver', order: 7, active: true },
+    { name: 'Opperar', tier: 'silver', order: 8, active: true },
+    { name: 'Makri', tier: 'silver', order: 9, active: true },
+    { name: 'ABACO - Banco de Alimentos', tier: 'silver', order: 10, active: true },
   ];
 
   for (const partner of partners) {
