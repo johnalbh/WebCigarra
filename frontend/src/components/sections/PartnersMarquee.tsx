@@ -8,7 +8,6 @@ import TextReveal from '@/components/shared/TextReveal';
 const partners = [
   { name: 'Saint George School', logo: '/images/partners/san-jorge.webp' },
   { name: 'Microsoft', logo: '/images/partners/microsoft.webp' },
-  { name: 'CWA', logo: '/images/partners/cwa.webp' },
   { name: 'Karelsie Foundation', logo: '/images/partners/karelsie.webp' },
   { name: 'Aqualogic', logo: '/images/partners/aqualogic.webp' },
   { name: 'Opperar', logo: '/images/partners/opperar.webp' },
