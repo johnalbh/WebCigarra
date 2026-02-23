@@ -88,16 +88,6 @@ export default function Footer() {
             </div>
           </div>
 
-          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-            Fundación Cigarra
-          </h2>
-          <p className="mt-2 font-accent text-xl italic text-accent-400">
-            {t('slogan')}
-          </p>
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-primary-300">
-            {t('description')}
-          </p>
-
           {/* Social icons */}
           <div className="mt-8 flex gap-4">
             {socialLinks.map((social) => (

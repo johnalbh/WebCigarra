@@ -70,7 +70,9 @@ export interface SectionsTimelineItem extends Struct.ComponentSchema {
     icon: 'clock';
   };
   attributes: {
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    color: Schema.Attribute.String;
+    icon: Schema.Attribute.String;
+    items: Schema.Attribute.JSON & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     year: Schema.Attribute.String & Schema.Attribute.Required;
   };

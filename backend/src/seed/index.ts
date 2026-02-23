@@ -855,7 +855,7 @@ async function seedGlobalSettings(strapi: Core.Strapi) {
         phone: '+573212465421',
         whatsapp: '+573212465421',
         email: 'info@cigarra.org',
-        address: 'Cra 18M #75-25 Sur, Ciudad Bolívar',
+        address: 'Calle 71 Q sur No. 27-60, Ciudad Bolívar',
         city: 'Bogotá, Colombia',
       },
       socialLinks: [
@@ -1061,6 +1061,214 @@ async function seedAboutPage(strapi: Core.Strapi) {
     return;
   }
 
+  // Spanish timeline (reverse chronological: 2026 → 2002)
+  const timelineES = [
+    {
+      year: '2026', title: 'Ampliación Salón San Jorge', icon: 'HiSparkles', color: 'from-accent-500 to-accent-700',
+      items: ['Está proyectada la ampliación del cupo del Salón San Jorge, creando el Salón San Jorgito para niños de 6 a 12 años.'],
+    },
+    {
+      year: '2025', title: '23 años de impacto', icon: 'HiHeart', color: 'from-primary-600 to-primary-800',
+      items: [
+        'La Fundación reporta más de 23 años de servicio.',
+        'Ha beneficiado a 1.090 familias y 1.877 niños, niñas y adolescentes.',
+        'Se consolida como referente de cuidado integral, educación, arte, deporte, tecnología y acompañamiento psicosocial.',
+      ],
+    },
+    {
+      year: '2023', title: 'Primer concierto de la orquesta', icon: 'HiMusicNote', color: 'from-violet-500 to-violet-700',
+      items: ['Se realiza el primer concierto de la orquesta (junio de 2023), un hito institucional.'],
+    },
+    {
+      year: '2022', title: 'Competencia de casas e impulso musical', icon: 'HiFlag', color: 'from-sky-500 to-sky-700',
+      items: [
+        'Inicia la competencia de casas (Jaguar, Tiburón, Caimán y Cóndor), inspirada en el modelo inglés.',
+        'Se fortalece el sueño de la orquesta gracias a donación de una importante ONG colombiana.',
+        'Se graba el himno de la Fundación (en diciembre de 2022, con Claraluna y profesores de música).',
+      ],
+    },
+    {
+      year: '2020', title: 'Mascota Racamandaca', icon: 'HiStar', color: 'from-accent-400 to-accent-600',
+      items: ['La Fundación adopta su mascota Racamandaca, inspirada en "las cigarritas".'],
+    },
+    {
+      year: '2019', title: 'Edificio Greta Thunberg', icon: 'HiLightBulb', color: 'from-primary-500 to-primary-700',
+      items: [
+        'Se adquieren contenedores reciclados y se construye el Edificio Greta Thunberg (2 pisos).',
+        'Allí funcionan el Salón San Jorge y el salón de gimnasia.',
+      ],
+    },
+    {
+      year: '2017–2019', title: 'Nuevo edificio para ropero y música', icon: 'HiMusicNote', color: 'from-rose-500 to-rose-700',
+      items: [
+        'Se construye un edificio de tres pisos para el ropero y salones de música.',
+        'Se fortalece la visión de impulsar el programa musical y una futura orquesta.',
+      ],
+    },
+    {
+      year: '2015', title: 'Nuevo comedor e infraestructura', icon: 'HiOfficeBuilding', color: 'from-emerald-500 to-emerald-700',
+      items: ['Se inaugura un nuevo comedor, más dos salones, baños y oficina administrativa.'],
+    },
+    {
+      year: '2014', title: 'Adultos mayores y obra comunitaria', icon: 'HiUserGroup', color: 'from-accent-500 to-accent-700',
+      items: [
+        'Se incorpora un grupo de adultos mayores, fortaleciendo el intercambio intergeneracional.',
+        'Con la comunidad y Fundación Techo, se adoquina la vía de acceso principal hacia la Fundación.',
+      ],
+    },
+    {
+      year: '2013', title: 'Nace el Salón Malala', icon: 'HiAcademicCap', color: 'from-violet-400 to-violet-600',
+      items: ['Se crea el Salón Malala, un espacio para adolescentes (12+ años) en jornada alterna.'],
+    },
+    {
+      year: '2011', title: 'Casa Na', icon: 'HiHome', color: 'from-primary-400 to-primary-600',
+      items: [
+        'La Fundación compra la Casa Na.',
+        'Allí se instala de forma permanente la panadería y una enfermería.',
+        'En el local arrendado anteriormente se abre un ropero comunitario (fuente alterna de ingresos).',
+      ],
+    },
+    {
+      year: '2010', title: 'Tecnología y formación para emprendimiento', icon: 'HiDesktopComputer', color: 'from-sky-400 to-sky-600',
+      items: [
+        'Se remodela y dota el salón de informática "Cigarrita" (donación del IRT del Reino Unido).',
+        'Se arrienda un local para panadería, con cursos de panadería y repostería (con mediación de FUMDIR).',
+      ],
+    },
+    {
+      year: '2009', title: 'Parque infantil', icon: 'HiStar', color: 'from-emerald-400 to-emerald-600',
+      items: ['Se construye el parque infantil junto con la comunidad.'],
+    },
+    {
+      year: '2003', title: 'Primera gran donación internacional', icon: 'HiGlobeAlt', color: 'from-accent-400 to-accent-600',
+      items: ['En mayo de 2003 llega la primera gran donación internacional (benefactor anónimo), un apoyo que continúa en el tiempo.'],
+    },
+    {
+      year: '2002–2003', title: 'Primeros apoyos y expansión social', icon: 'HiHeart', color: 'from-rose-400 to-rose-600',
+      items: [
+        'Se realizan jornadas de vacunación y brigadas de salud.',
+        'Durante un año, Médicos Sin Fronteras brinda atención primaria.',
+        'Se ofrecen servicios de odontología con voluntarias.',
+        'El Programa Mundial de Alimentos apoya con alimentos y suplementos en los primeros años.',
+      ],
+    },
+    {
+      year: '2002', title: 'Nace Fundación Cigarra', icon: 'HiSparkles', color: 'from-primary-500 to-primary-700',
+      items: [
+        'La Dra. Carolyn Acosta Allen funda la Fundación Cigarra en respuesta a la situación de desplazamiento en Colombia.',
+        'Se identifica una necesidad urgente en Puertas del Paraíso (Ciudad Bolívar): un lugar seguro para que niños y niñas permanezcan mientras sus padres trabajan.',
+        'Con apoyo de la comunidad y Servivienda, se inicia la construcción en mayo; en agosto ya estaba terminada y en septiembre abre sus puertas.',
+        'Inicia atención a aproximadamente 120 niños y niñas (de 3 meses a 9 años).',
+        'También se impulsan cursos de tejido para madres.',
+        'La Fundación gestiona la llegada de servicios básicos (agua, luz, alcantarillado) y, junto con la comunidad, construye dos escaleras de acceso.',
+      ],
+    },
+  ];
+
+  // English timeline (same order)
+  const timelineEN = [
+    {
+      year: '2026', title: 'San Jorge Room Expansion', icon: 'HiSparkles', color: 'from-accent-500 to-accent-700',
+      items: ['The expansion of the San Jorge Room capacity is projected, creating the San Jorgito Room for children ages 6 to 12.'],
+    },
+    {
+      year: '2025', title: '23 Years of Impact', icon: 'HiHeart', color: 'from-primary-600 to-primary-800',
+      items: [
+        'The Foundation reports over 23 years of service.',
+        'It has benefited 1,090 families and 1,877 children and adolescents.',
+        'It is consolidated as a benchmark for comprehensive care, education, art, sports, technology, and psychosocial support.',
+      ],
+    },
+    {
+      year: '2023', title: 'First Orchestra Concert', icon: 'HiMusicNote', color: 'from-violet-500 to-violet-700',
+      items: ['The first orchestra concert takes place (June 2023), an institutional milestone.'],
+    },
+    {
+      year: '2022', title: 'House Competition and Musical Momentum', icon: 'HiFlag', color: 'from-sky-500 to-sky-700',
+      items: [
+        'The house competition begins (Jaguar, Shark, Caiman, and Condor), inspired by the English model.',
+        'The orchestra dream is strengthened thanks to a donation from a major Colombian NGO.',
+        "The Foundation's anthem is recorded (December 2022, with Claraluna and music teachers).",
+      ],
+    },
+    {
+      year: '2020', title: 'Racamandaca Mascot', icon: 'HiStar', color: 'from-accent-400 to-accent-600',
+      items: ['The Foundation adopts its mascot Racamandaca, inspired by "las cigarritas".'],
+    },
+    {
+      year: '2019', title: 'Greta Thunberg Building', icon: 'HiLightBulb', color: 'from-primary-500 to-primary-700',
+      items: [
+        'Recycled containers are acquired and the Greta Thunberg Building (2 floors) is constructed.',
+        'The San Jorge Room and the gymnastics room operate there.',
+      ],
+    },
+    {
+      year: '2017–2019', title: 'New Building for Clothing Closet and Music', icon: 'HiMusicNote', color: 'from-rose-500 to-rose-700',
+      items: [
+        'A three-story building is constructed for the clothing closet and music rooms.',
+        'The vision of promoting the music program and a future orchestra is strengthened.',
+      ],
+    },
+    {
+      year: '2015', title: 'New Dining Hall and Infrastructure', icon: 'HiOfficeBuilding', color: 'from-emerald-500 to-emerald-700',
+      items: ['A new dining hall is inaugurated, plus two classrooms, bathrooms, and an administrative office.'],
+    },
+    {
+      year: '2014', title: 'Senior Citizens and Community Works', icon: 'HiUserGroup', color: 'from-accent-500 to-accent-700',
+      items: [
+        'A senior citizens group is incorporated, strengthening intergenerational exchange.',
+        'With the community and Fundación Techo, the main access road to the Foundation is paved.',
+      ],
+    },
+    {
+      year: '2013', title: 'The Malala Room is Born', icon: 'HiAcademicCap', color: 'from-violet-400 to-violet-600',
+      items: ['The Malala Room is created, a space for teenagers (12+ years) during alternate hours.'],
+    },
+    {
+      year: '2011', title: 'Casa Na', icon: 'HiHome', color: 'from-primary-400 to-primary-600',
+      items: [
+        'The Foundation purchases Casa Na.',
+        'The bakery and a nursing station are permanently installed there.',
+        'In the previously rented space, a community clothing closet opens (alternative income source).',
+      ],
+    },
+    {
+      year: '2010', title: 'Technology and Entrepreneurship Training', icon: 'HiDesktopComputer', color: 'from-sky-400 to-sky-600',
+      items: [
+        'The "Cigarrita" computer room is remodeled and equipped (donation from IRT, United Kingdom).',
+        'A bakery space is rented, with baking and pastry courses (mediated by FUMDIR).',
+      ],
+    },
+    {
+      year: '2009', title: "Children's Playground", icon: 'HiStar', color: 'from-emerald-400 to-emerald-600',
+      items: ["The children's playground is built together with the community."],
+    },
+    {
+      year: '2003', title: 'First Major International Donation', icon: 'HiGlobeAlt', color: 'from-accent-400 to-accent-600',
+      items: ['In May 2003, the first major international donation arrives (anonymous benefactor), a support that continues over time.'],
+    },
+    {
+      year: '2002–2003', title: 'First Support and Social Expansion', icon: 'HiHeart', color: 'from-rose-400 to-rose-600',
+      items: [
+        'Vaccination drives and health brigades are carried out.',
+        'For one year, Médecins Sans Frontières provides primary care.',
+        'Dental services are offered with volunteers.',
+        'The World Food Programme supports with food and supplements in the early years.',
+      ],
+    },
+    {
+      year: '2002', title: 'Cigarra Foundation is Born', icon: 'HiSparkles', color: 'from-primary-500 to-primary-700',
+      items: [
+        'Dr. Carolyn Acosta Allen founds the Cigarra Foundation in response to the displacement crisis in Colombia.',
+        'An urgent need is identified in Puertas del Paraíso (Ciudad Bolívar): a safe place for children while their parents work.',
+        'With community support and Servivienda, construction begins in May; by August it was finished and in September it opens its doors.',
+        'Begins serving approximately 120 children (ages 3 months to 9 years).',
+        'Knitting courses for mothers are also launched.',
+        'The Foundation secures basic services (water, electricity, sewage) and, together with the community, builds two access staircases.',
+      ],
+    },
+  ];
+
   const doc = await strapi.documents('api::about-page.about-page').create({
     data: {
       mission:
@@ -1071,15 +1279,7 @@ async function seedAboutPage(strapi: Core.Strapi) {
         'La Fundación Cigarra nació en 2002 en el barrio Lucero Alto de Ciudad Bolívar, Bogotá, cuando un grupo de vecinos decidió abrir un espacio seguro donde los niños del sector pudieran aprender, crear y soñar. Lo que empezó como clases de música en un pequeño salón comunal se convirtió en una organización que hoy ofrece 13 programas, ha ayudado a más de 1.877 niños, generado más de 100 empleos y beneficiado a más de 190 familias.\n\nA lo largo de 23 años, la Cigarra ha sobrevivido gracias al compromiso de su comunidad, el trabajo de voluntarios apasionados y el apoyo de aliados nacionales e internacionales que creen en el poder transformador de la educación y el arte.',
       foundedYear: 2002,
       seo: { metaTitle: 'Quiénes Somos | Fundación Cigarra', metaDescription: 'Desde 2002, la Fundación Cigarra transforma vidas de niños en Ciudad Bolívar a través del arte y la educación.' },
-      timeline: [
-        { year: '2002', title: 'Fundación', description: 'Nace la Fundación Cigarra en el barrio Lucero Alto de Ciudad Bolívar con clases de música para 15 niños.' },
-        { year: '2005', title: 'Primeros programas', description: 'Se amplía la oferta con danza, refuerzo escolar y música, atendiendo a 40 niños.' },
-        { year: '2010', title: 'Sede propia', description: 'La fundación adquiere su sede propia gracias a donaciones y al trabajo de la comunidad.' },
-        { year: '2015', title: 'Alianzas estratégicas', description: 'Se formalizan alianzas con Microsoft, Saint George School y otras organizaciones para ampliar el impacto.' },
-        { year: '2018', title: 'Nuevos programas', description: 'Se incorporan los programas de tecnología, primera infancia y psicología.' },
-        { year: '2022', title: '20 años de servicio', description: 'Celebramos 23 años transformando vidas con 13 programas activos y más de 1.877 niños ayudados.' },
-        { year: '2025', title: 'Expansión digital', description: 'Lanzamiento de la plataforma web y programas de formación en tecnología y sistemas.' },
-      ],
+      timeline: timelineES,
     } as any,
     locale: 'es',
     status: 'published',
@@ -1093,16 +1293,8 @@ async function seedAboutPage(strapi: Core.Strapi) {
     history:
       'Fundación Cigarra was born in 2002 in the Lucero Alto neighborhood of Ciudad Bolívar, Bogotá, when a group of neighbors decided to open a safe space where local children could learn, create, and dream. What started as music classes in a small community hall became an organization that today offers 13 programs, has helped more than 1,877 children, created over 100 jobs, and benefited more than 190 families.\n\nOver 23 years, La Cigarra has survived thanks to the commitment of its community, the work of passionate volunteers, and the support of national and international partners who believe in the transformative power of education and art.',
     seo: { metaTitle: 'About Us | Fundación Cigarra', metaDescription: 'Since 2002, Fundación Cigarra transforms children\'s lives in Ciudad Bolívar through art and education.' },
-    timeline: [
-      { year: '2002', title: 'Foundation', description: 'Fundación Cigarra is born in the Lucero Alto neighborhood of Ciudad Bolívar with music classes for 15 children.' },
-      { year: '2005', title: 'First programs', description: 'The offering expands with dance, academic tutoring, and music, serving 40 children.' },
-      { year: '2010', title: 'Own headquarters', description: 'The foundation acquires its own headquarters thanks to donations and the community\'s work.' },
-      { year: '2015', title: 'Strategic partnerships', description: 'Partnerships are formalized with Microsoft, Saint George School, and other organizations to expand impact.' },
-      { year: '2018', title: 'New programs', description: 'Technology, early childhood, and psychology programs are added.' },
-      { year: '2022', title: '20 years of service', description: 'We celebrate 23 years transforming lives with 13 active programs and more than 1,877 children helped.' },
-      { year: '2025', title: 'Digital expansion', description: 'Launch of the web platform and technology and systems training programs.' },
-    ],
+    timeline: timelineEN,
   });
 
-  strapi.log.info('Seeded about page (ES + EN).');
+  strapi.log.info('Seeded about page with 16 timeline entries (ES + EN).');
 }

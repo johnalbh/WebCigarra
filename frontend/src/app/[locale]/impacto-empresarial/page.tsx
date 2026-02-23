@@ -661,7 +661,7 @@ export default function ImpactoEmpresarialPage() {
                 </div>
                 <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">{t('address')}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Cra 18M #75-25 Sur
+                  Calle 71 Q sur No. 27-60
                   <br />
                   Ciudad Bolivar, Bogota D.C.
                 </p>

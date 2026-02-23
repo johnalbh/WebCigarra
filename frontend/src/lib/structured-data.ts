@@ -12,7 +12,7 @@ export function getOrganizationSchema() {
     foundingDate: '2002',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Cra 18M #75-25 Sur',
+      streetAddress: 'Calle 71 Q sur No. 27-60',
       addressLocality: 'Bogotá',
       addressRegion: 'Ciudad Bolívar',
       addressCountry: 'CO',

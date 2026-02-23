@@ -15,9 +15,15 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "text",
+    "items": {
+      "type": "json",
       "required": true
+    },
+    "icon": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
     }
   }
 }
