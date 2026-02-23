@@ -813,7 +813,8 @@
       "volunteering": { "title": "Voluntariado Corporativo", "description": "Organiza jornadas de voluntariado para tus empleados. Actividades de team building con impacto social real en educación, arte y recreación." },
       "sponsorship": { "title": "Patrocinio de Programas", "description": "Patrocina uno de nuestros 13 programas activos: educación, música, danza, artes, tecnología, biblioteca y más." },
       "inKind": { "title": "Donación en Especie", "description": "Aporta materiales escolares, equipos tecnológicos, instrumentos musicales, alimentos, mobiliario o implementos deportivos." },
-      "cobranding": { "title": "Co-branding y Alianzas", "description": "Alianzas estratégicas para visibilidad mutua. Tu marca presente en nuestros eventos, redes sociales, material impreso y reportes de impacto." }
+      "cobranding": { "title": "Co-branding y Alianzas", "description": "Alianzas estratégicas para visibilidad mutua. Tu marca presente en nuestros eventos, redes sociales, material impreso y reportes de impacto." },
+      "planPadrino": { "title": "Plan Padrino Empresarial", "description": "Tu empresa apadrina a uno o más niños durante un año completo. Incluye educación, alimentación, acceso a todos los programas y reportes personalizados del progreso de cada beneficiario." }
     },
     "consult": "Consultar",
     "esalTitle": "Permanencia ESAL",

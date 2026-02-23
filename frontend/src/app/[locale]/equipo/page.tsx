@@ -34,12 +34,10 @@ const departments = [
   {
     name: 'Equipo Docente',
     members: [
-      { name: 'Narda Gissela Rocha Candela', role: 'Coordinadora General', photo: '/images/team/narda-rocha.webp' },
       { name: 'Yeimi Rocio Forero Medina', role: 'Coordinadora Pedagogica', photo: '/images/team/yeimi-forero.webp' },
       { name: 'Elvin Yezid Barbos Silva', role: 'Docente de Musica', photo: '/images/team/elvin-barbos.webp' },
       { name: 'Sandra Lenith Beltran Suarez', role: 'Docente', photo: '/images/team/sandra-beltran.webp' },
       { name: 'Andrea Liliana Capera Prada', role: 'Docente', photo: '/images/team/andrea-capera.webp' },
-      { name: 'John Edilberto Charry', role: 'Docente', photo: '/images/team/john-charry.webp' },
       { name: 'Ruth Correa Millan', role: 'Docente', photo: '/images/team/ruth-correa.webp' },
       { name: 'Luz Dary Corredor Lemus', role: 'Docente', photo: '/images/team/luz-corredor.webp' },
       { name: 'Paola Andrea Delgadillo Lucas', role: 'Docente', photo: '/images/team/paola-delgadillo.webp' },
@@ -48,17 +46,13 @@ const departments = [
       { name: 'Andres Fernando Quitian Ovalle', role: 'Docente', photo: '/images/team/andres-quitian.webp' },
       { name: 'Yuri Consuelo Salinas Hernandez', role: 'Docente', photo: '/images/team/yuri-salinas.webp' },
       { name: 'Jonnatan Villegas Huertas', role: 'Docente', photo: '/images/team/jonnatan-villegas.webp' },
-      { name: 'Ruth Kattia', role: 'Docente', photo: '/images/team/ruth-kattia.webp' },
-      { name: 'Lina Paola Amaya Ordonez', role: 'Docente', photo: '/images/team/lina-amaya.webp' },
       { name: 'Venjy Alejandra Castillo Gavilan', role: 'Docente', photo: '/images/team/venjy-castillo.webp' },
     ],
   },
   {
     name: 'Servicios Generales',
     members: [
-      { name: 'Ruth Bravo Bermudez', role: 'Economa', photo: '/images/team/ruth-bravo.webp' },
       { name: 'Maritza Fuquen Ramirez', role: 'Servicios Generales', photo: '/images/team/maritza-fuquen.webp' },
-      { name: 'Lilia Moreno Gonzalez', role: 'Economa', photo: '/images/team/lilia-moreno.webp' },
       { name: 'John Fredy Perez Pineda', role: 'Servicios Generales', photo: '/images/team/john-perez.webp' },
       { name: 'Yulieth Rojas Salinas', role: 'Economa', photo: '/images/team/yulieth-rojas.webp' },
     ],
@@ -67,7 +61,6 @@ const departments = [
     name: 'Mantenimiento',
     members: [
       { name: 'Fanny Marin Luz', role: 'Almacenista', photo: '/images/team/fanny-marin.webp' },
-      { name: 'Jesus Antonio Mendez Lozano', role: 'Mantenimiento', photo: '/images/team/jesus-mendez.webp' },
       { name: 'Orlando Callejas Valencia', role: 'Mantenimiento', photo: '/images/team/orlando-callejas.webp' },
     ],
   },

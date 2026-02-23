@@ -46,6 +46,7 @@ const modelConfig = [
   { key: 'sponsorship', icon: HiAcademicCap, accent: 'from-accent-500 to-accent-700', border: 'border-accent-200 hover:border-accent-400' },
   { key: 'inKind', icon: HiTruck, accent: 'from-rose-500 to-rose-700', border: 'border-rose-200 hover:border-rose-400' },
   { key: 'cobranding', icon: HiSpeakerphone, accent: 'from-violet-500 to-violet-700', border: 'border-violet-200 hover:border-violet-400' },
+  { key: 'planPadrino', icon: HiHeart, accent: 'from-sky-500 to-sky-700', border: 'border-sky-200 hover:border-sky-400' },
 ];
 
 /* ── ESAL trust badge config (keys only) ── */

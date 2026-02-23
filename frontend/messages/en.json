@@ -813,7 +813,8 @@
       "volunteering": { "title": "Corporate Volunteering", "description": "Organize volunteer days for your employees. Team building activities with real social impact in education, art, and recreation." },
       "sponsorship": { "title": "Program Sponsorship", "description": "Sponsor one of our 13 active programs: education, music, dance, arts, technology, library, and more." },
       "inKind": { "title": "In-Kind Donation", "description": "Contribute school supplies, tech equipment, musical instruments, food, furniture, or sports equipment." },
-      "cobranding": { "title": "Co-branding & Partnerships", "description": "Strategic partnerships for mutual visibility. Your brand featured at our events, social media, printed materials, and impact reports." }
+      "cobranding": { "title": "Co-branding & Partnerships", "description": "Strategic partnerships for mutual visibility. Your brand featured at our events, social media, printed materials, and impact reports." },
+      "planPadrino": { "title": "Corporate Sponsorship Plan", "description": "Your company sponsors one or more children for a full year. Includes education, meals, access to all programs, and personalized progress reports for each beneficiary." }
     },
     "consult": "Inquire",
     "esalTitle": "Nonprofit Status",
