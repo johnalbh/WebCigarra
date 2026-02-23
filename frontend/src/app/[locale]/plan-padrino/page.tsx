@@ -327,7 +327,7 @@ export default function PlanPadrinoPage() {
                     className="group relative flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-8 text-center transition-all duration-300 hover:shadow-lg"
                   >
                     <div className="absolute -top-4 right-6">
-                      <span className="font-accent text-6xl font-bold text-primary-100 transition-colors duration-300 group-hover:text-primary-200">
+                      <span className="font-accent text-7xl italic text-primary-100/60 transition-colors duration-300 group-hover:text-primary-200/80">
                         {step.number}
                       </span>
                     </div>
