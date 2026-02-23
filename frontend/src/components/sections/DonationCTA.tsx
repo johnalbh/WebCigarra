@@ -1,8 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import {
@@ -19,27 +18,10 @@ import {
   SCALE_HOVER,
   SCALE_INITIAL,
   DURATION_HOVER,
-  DURATION_REVEAL,
   DURATION_REVEAL_LONG,
-  STAGGER,
 } from '@/lib/animation-config';
 
-const DONATION_LINK_COP = '/como-ayudar#donar';
-const DONATION_LINK_USD = '/como-ayudar#donar';
-const MONTHLY_GOAL = 5000000;
-const CURRENT_AMOUNT = 3250000;
-const PROGRESS_PERCENTAGE = (CURRENT_AMOUNT / MONTHLY_GOAL) * 100;
-
 const easeApple = EASE_APPLE;
-
-function formatCOP(amount: number) {
-  return new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
 
 const pathConfigs = [
   {
@@ -78,23 +60,11 @@ const pathConfigs = [
 
 export default function DonationCTA() {
   const t = useTranslations('donation');
-  const progressRef = useRef<HTMLElement>(null);
-
-  // Progress bar fills as user scrolls through the section
-  const { scrollYProgress } = useScroll({
-    target: progressRef,
-    offset: ['start end', 'center center'],
-  });
-  const progressWidth = useTransform(
-    scrollYProgress,
-    [0, 0.8],
-    [0, PROGRESS_PERCENTAGE],
-  );
 
   return (
     <>
       {/* Progress + headline section */}
-      <section ref={progressRef} className="relative overflow-hidden bg-primary-900 py-20 md:py-28">
+      <section className="relative overflow-hidden bg-primary-900 py-20 md:py-28">
         <HeroWaves />
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-8">
           {/* Heart — single elegant scale-up on enter */}
@@ -117,24 +87,6 @@ export default function DonationCTA() {
             </p>
           </ScrollReveal>
 
-          {/* Progress bar — scroll-linked */}
-          <div className="mx-auto mt-10 max-w-lg">
-            <div className="mb-2 flex items-center justify-between text-sm text-primary-200/70">
-              <span>{formatCOP(CURRENT_AMOUNT)} {t('raised')}</span>
-              <span className="font-semibold text-white">
-                {t('goal')}: {formatCOP(MONTHLY_GOAL)}
-              </span>
-            </div>
-            <div className="h-2.5 overflow-hidden rounded-full bg-white/10">
-              <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-accent-400 to-accent-500"
-                style={{ width: useTransform(progressWidth, (v) => `${v}%`) }}
-              />
-            </div>
-            <p className="mt-2 text-sm text-primary-300/50">
-              {Math.round(PROGRESS_PERCENTAGE)}% {t('ofMonthlyGoal')}
-            </p>
-          </div>
         </div>
       </section>
 
