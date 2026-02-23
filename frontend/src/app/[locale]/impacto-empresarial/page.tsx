@@ -86,7 +86,7 @@ const impactNumberConfig = [
   { key: 'years', number: '23', icon: HiStar },
   { key: 'programs', number: '14', icon: HiAcademicCap },
   { key: 'jobs', number: '100+', icon: HiBriefcase },
-  { key: 'families', number: '190+', icon: HiUserGroup },
+  { key: 'families', number: '1,800+', icon: HiUserGroup },
   { key: 'allies', number: '8+', icon: FaHandshake },
 ];
 
