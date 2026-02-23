@@ -839,6 +839,7 @@
           "description": "Un año completo de transformación. Máximo impacto social con reportes trimestrales, certificado anual, carta personalizada e invitación a eventos."
         }
       },
+      "taxReturnLabel": "Descuento tributario (25%):",
       "taxTitle": "¿Sabías que del valor de tu donación un 25% es descuento tributario?",
       "taxDescription": "Por cada donación, recibes un descuento tributario en tu impuesto de renta (Art. 257 E.T.) equivalente al 25% del valor donado.",
       "taxBenefit1": "Descuento tributario del 25% sobre el valor donado en tu impuesto de renta (Art. 257 del Estatuto Tributario).",

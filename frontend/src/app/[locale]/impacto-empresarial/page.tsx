@@ -51,9 +51,9 @@ const modelConfig = [
 
 /* ── Plan Padrino Empresarial tier config ── */
 const padrinoTierConfig = [
-  { key: 'gold', price: '$14.840.000', children: 192, period: '1month', icon: HiStar, accent: 'from-amber-500 to-amber-700', border: 'border-amber-200' },
-  { key: 'platinum', price: '$74.200.000', children: 192, period: '6months', icon: HiSparkles, accent: 'from-slate-400 to-slate-600', border: 'border-slate-200' },
-  { key: 'annual', price: '$163.240.000', children: 192, period: '1year', icon: HiGlobeAlt, accent: 'from-primary-500 to-primary-700', border: 'border-primary-200' },
+  { key: 'gold', price: '$14.840.000', taxReturn: '$3.710.000', children: 192, period: '1month', icon: HiStar, accent: 'from-amber-500 to-amber-700', border: 'border-amber-200' },
+  { key: 'platinum', price: '$74.200.000', taxReturn: '$18.550.000', children: 192, period: '6months', icon: HiSparkles, accent: 'from-slate-400 to-slate-600', border: 'border-slate-200' },
+  { key: 'annual', price: '$163.240.000', taxReturn: '$40.810.000', children: 192, period: '1year', icon: HiGlobeAlt, accent: 'from-primary-500 to-primary-700', border: 'border-primary-200' },
 ];
 
 /* ── Plan Padrino includes config ── */
@@ -359,7 +359,11 @@ export default function ImpactoEmpresarialPage() {
                         {t(`padrinoSection.tiers.${tier.key}.name`)}
                       </h3>
                       <p className="mt-3 font-heading text-4xl font-bold">{tier.price}</p>
-                      <p className="mt-1 text-sm text-white/80">COP</p>
+                      <p className="mt-1 text-xs uppercase tracking-wider text-white/60">COP</p>
+                      <div className="mx-auto mt-5 max-w-[220px] rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm">
+                        <p className="text-xs uppercase tracking-wider text-white/60 mb-1">{t('padrinoSection.taxReturnLabel')}</p>
+                        <p className="font-heading text-xl font-bold text-amber-300">{tier.taxReturn}</p>
+                      </div>
                     </div>
 
                     {/* Details */}
