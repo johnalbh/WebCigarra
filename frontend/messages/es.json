@@ -319,36 +319,86 @@
       "title": "Nuestra Trayectoria",
       "subtitle": "Más de dos décadas de historia construyendo sueños y transformando realidades en Ciudad Bolívar.",
       "2002": {
-        "title": "Fundación",
-        "description": "Nace la Fundación Cigarra en Ciudad Bolívar para atender niños en condición de vulnerabilidad."
+        "title": "Nace Fundación Cigarra",
+        "item1": "La Dra. Carolyn Acosta Allen funda la Fundación Cigarra en respuesta a la situación de desplazamiento en Colombia.",
+        "item2": "Se identifica una necesidad urgente en Puertas del Paraíso (Ciudad Bolívar): un lugar seguro para que niños y niñas permanezcan mientras sus padres trabajan.",
+        "item3": "Con apoyo de la comunidad y Servivienda, se inicia la construcción en mayo; en agosto ya estaba terminada y en septiembre abre sus puertas.",
+        "item4": "Inicia atención a aproximadamente 120 niños y niñas (de 3 meses a 9 años).",
+        "item5": "También se impulsan cursos de tejido para madres.",
+        "item6": "La Fundación gestiona la llegada de servicios básicos (agua, luz, alcantarillado) y, junto con la comunidad, construye dos escaleras de acceso."
       },
-      "2005": {
-        "title": "Primeros Programas",
-        "description": "Se consolidan los programas de refuerzo escolar, danza y música."
+      "2002-2003": {
+        "title": "Primeros apoyos y expansión social",
+        "item1": "Se realizan jornadas de vacunación y brigadas de salud.",
+        "item2": "Durante un año, Médicos Sin Fronteras brinda atención primaria.",
+        "item3": "Se ofrecen servicios de odontología con voluntarias.",
+        "item4": "El Programa Mundial de Alimentos apoya con alimentos y suplementos en los primeros años."
       },
-      "2008": {
-        "title": "Crecimiento",
-        "description": "Ampliación a 8 programas incluyendo música, danza y teatro."
+      "2003": {
+        "title": "Primera gran donación internacional",
+        "item1": "En mayo de 2003 llega la primera gran donación internacional (benefactor anónimo), un apoyo que continúa en el tiempo."
       },
-      "2012": {
-        "title": "Una Década",
-        "description": "Celebramos 10 años con más de 100 niños beneficiados anualmente."
+      "2009": {
+        "title": "Parque infantil",
+        "item1": "Se construye el parque infantil junto con la comunidad."
+      },
+      "2010": {
+        "title": "Tecnología y formación para emprendimiento",
+        "item1": "Se remodela y dota el salón de informática \"Cigarrita\" (donación del IRT del Reino Unido).",
+        "item2": "Se arrienda un local para panadería, con cursos de panadería y repostería (con mediación de FUMDIR)."
+      },
+      "2011": {
+        "title": "Casa Na",
+        "item1": "La Fundación compra la Casa Na.",
+        "item2": "Allí se instala de forma permanente la panadería y una enfermería.",
+        "item3": "En el local arrendado anteriormente se abre un ropero comunitario (fuente alterna de ingresos)."
+      },
+      "2013": {
+        "title": "Nace el Salón Malala",
+        "item1": "Se crea el Salón Malala, un espacio para adolescentes (12+ años) en jornada alterna."
+      },
+      "2014": {
+        "title": "Adultos mayores y obra comunitaria",
+        "item1": "Se incorpora un grupo de adultos mayores, fortaleciendo el intercambio intergeneracional.",
+        "item2": "Con la comunidad y Fundación Techo, se adoquina la vía de acceso principal hacia la Fundación."
       },
       "2015": {
-        "title": "Alianzas Estratégicas",
-        "description": "Establecemos alianzas con organizaciones nacionales e internacionales."
+        "title": "Nuevo comedor e infraestructura",
+        "item1": "Se inaugura un nuevo comedor, más dos salones, baños y oficina administrativa."
       },
-      "2018": {
-        "title": "Innovación",
-        "description": "Incorporamos programas de tecnología, primera infancia y psicología."
+      "2017-2019": {
+        "title": "Nuevo edificio para ropero y música",
+        "item1": "Se construye un edificio de tres pisos para el ropero y salones de música.",
+        "item2": "Se fortalece la visión de impulsar el programa musical y una futura orquesta."
+      },
+      "2019": {
+        "title": "Edificio Greta Thunberg",
+        "item1": "Se adquieren contenedores reciclados y se construye el Edificio Greta Thunberg (2 pisos).",
+        "item2": "Allí funcionan el Salón San Jorge y el salón de gimnasia."
       },
       "2020": {
-        "title": "Resiliencia",
-        "description": "Adaptación durante la pandemia con programas virtuales."
+        "title": "Mascota Racamandaca",
+        "item1": "La Fundación adopta su mascota Racamandaca, inspirada en \"las cigarritas\"."
       },
-      "2024": {
-        "title": "Actualidad",
-        "description": "13 programas activos atendiendo a más de 1.877 niños y jóvenes."
+      "2022": {
+        "title": "Competencia de casas e impulso musical",
+        "item1": "Inicia la competencia de casas (Jaguar, Tiburón, Caimán y Cóndor), inspirada en el modelo inglés.",
+        "item2": "Se fortalece el sueño de la orquesta gracias a donación de una importante ONG colombiana.",
+        "item3": "Se graba el himno de la Fundación (en diciembre de 2022, con Claraluna y profesores de música)."
+      },
+      "2023": {
+        "title": "Primer concierto de la orquesta",
+        "item1": "Se realiza el primer concierto de la orquesta (junio de 2023), un hito institucional."
+      },
+      "2025": {
+        "title": "23 años de impacto",
+        "item1": "La Fundación reporta más de 23 años de servicio.",
+        "item2": "Ha beneficiado a 1.090 familias y 1.877 niños, niñas y adolescentes.",
+        "item3": "Se consolida como referente de cuidado integral, educación, arte, deporte, tecnología y acompañamiento psicosocial."
+      },
+      "2026": {
+        "title": "Ampliación Salón San Jorge",
+        "item1": "Está proyectada la ampliación del cupo del Salón San Jorge, creando el Salón San Jorgito para niños de 6 a 12 años."
       }
     },
     "values": {

@@ -15,6 +15,11 @@ import {
   HiSparkles,
   HiGlobeAlt,
   HiStar,
+  HiDesktopComputer,
+  HiHome,
+  HiOfficeBuilding,
+  HiMusicNote,
+  HiFlag,
 } from 'react-icons/hi';
 import { Link } from '@/i18n/routing';
 import HeroWaves from '@/components/shared/HeroWaves';
@@ -22,18 +27,28 @@ import type { IconType } from 'react-icons';
 
 /* ---------- timeline config (non-translatable parts) ---------- */
 const timelineConfig: {
+  key: string;
   year: string;
   icon: IconType;
   color: string;
+  itemCount: number;
 }[] = [
-  { year: '2024', icon: HiAcademicCap, color: 'from-accent-400 to-accent-600' },
-  { year: '2020', icon: HiUserGroup, color: 'from-emerald-400 to-emerald-600' },
-  { year: '2018', icon: HiSparkles, color: 'from-primary-500 to-primary-700' },
-  { year: '2015', icon: HiGlobeAlt, color: 'from-accent-500 to-accent-700' },
-  { year: '2012', icon: HiHeart, color: 'from-rose-400 to-rose-600' },
-  { year: '2008', icon: HiStar, color: 'from-primary-400 to-primary-600' },
-  { year: '2005', icon: HiAcademicCap, color: 'from-accent-400 to-accent-600' },
-  { year: '2002', icon: HiSparkles, color: 'from-primary-500 to-primary-700' },
+  { key: '2026', year: '2026', icon: HiSparkles, color: 'from-accent-500 to-accent-700', itemCount: 1 },
+  { key: '2025', year: '2025', icon: HiHeart, color: 'from-primary-600 to-primary-800', itemCount: 3 },
+  { key: '2023', year: '2023', icon: HiMusicNote, color: 'from-violet-500 to-violet-700', itemCount: 1 },
+  { key: '2022', year: '2022', icon: HiFlag, color: 'from-sky-500 to-sky-700', itemCount: 3 },
+  { key: '2020', year: '2020', icon: HiStar, color: 'from-accent-400 to-accent-600', itemCount: 1 },
+  { key: '2019', year: '2019', icon: HiLightBulb, color: 'from-primary-500 to-primary-700', itemCount: 2 },
+  { key: '2017-2019', year: '2017–2019', icon: HiMusicNote, color: 'from-rose-500 to-rose-700', itemCount: 2 },
+  { key: '2015', year: '2015', icon: HiOfficeBuilding, color: 'from-emerald-500 to-emerald-700', itemCount: 1 },
+  { key: '2014', year: '2014', icon: HiUserGroup, color: 'from-accent-500 to-accent-700', itemCount: 2 },
+  { key: '2013', year: '2013', icon: HiAcademicCap, color: 'from-violet-400 to-violet-600', itemCount: 1 },
+  { key: '2011', year: '2011', icon: HiHome, color: 'from-primary-400 to-primary-600', itemCount: 3 },
+  { key: '2010', year: '2010', icon: HiDesktopComputer, color: 'from-sky-400 to-sky-600', itemCount: 2 },
+  { key: '2009', year: '2009', icon: HiStar, color: 'from-emerald-400 to-emerald-600', itemCount: 1 },
+  { key: '2003', year: '2003', icon: HiGlobeAlt, color: 'from-accent-400 to-accent-600', itemCount: 1 },
+  { key: '2002-2003', year: '2002–2003', icon: HiHeart, color: 'from-rose-400 to-rose-600', itemCount: 4 },
+  { key: '2002', year: '2002', icon: HiSparkles, color: 'from-primary-500 to-primary-700', itemCount: 6 },
 ];
 
 /* ---------- values config (non-translatable parts) ---------- */
@@ -76,12 +91,12 @@ function TimelineNode({
   item,
   index,
   title,
-  description,
+  items,
 }: {
   item: (typeof timelineConfig)[number];
   index: number;
   title: string;
-  description: string;
+  items: string[];
 }) {
   const isEven = index % 2 === 0;
   const Icon = item.icon;
@@ -128,9 +143,21 @@ function TimelineNode({
               <h3 className="mb-2 font-heading text-xl font-bold text-gray-900">
                 {title}
               </h3>
-              <p className="text-sm leading-relaxed text-gray-600">
-                {description}
-              </p>
+
+              {items.length === 1 ? (
+                <p className="text-sm leading-relaxed text-gray-600">
+                  {items[0]}
+                </p>
+              ) : (
+                <ul className="mt-2 space-y-2">
+                  {items.map((text, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-gray-600">
+                      <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br ${item.color}`} />
+                      {text}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </ScrollReveal>
         </div>
@@ -350,11 +377,11 @@ export default function AboutPage() {
 
             {timelineConfig.map((item, i) => (
               <TimelineNode
-                key={item.year}
+                key={item.key}
                 item={item}
                 index={i}
-                title={t(`timeline.${item.year}.title`)}
-                description={t(`timeline.${item.year}.description`)}
+                title={t(`timeline.${item.key}.title`)}
+                items={Array.from({ length: item.itemCount }, (_, j) => t(`timeline.${item.key}.item${j + 1}`))}
               />
             ))}
           </div>

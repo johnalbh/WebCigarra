@@ -14,8 +14,8 @@ const partners = [
   { name: 'Opperar', logo: '/images/partners/opperar.webp' },
   { name: 'HomeCenter', logo: '/images/partners/homecenter.webp' },
   { name: 'Makri', logo: '/images/partners/makri.webp' },
-  { name: 'ABACO - Banco de Alimentos', logo: '/images/partners/abaco.svg' },
-];
+  { name: 'ABACO - Banco de Alimentos', logo: '/images/partners/abaco.svg', imgClass: 'scale-75' },
+] as const;
 
 export default function PartnersMarquee() {
   const t = useTranslations('partners');
@@ -48,7 +48,7 @@ export default function PartnersMarquee() {
                 className="mx-4 flex-shrink-0"
               >
                 <div className="flex h-24 w-56 items-center justify-center rounded-lg border border-gray-100 bg-white px-4 opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:shadow-sm">
-                  <div className="relative h-16 w-full">
+                  <div className={`relative h-16 w-full ${'imgClass' in partner ? partner.imgClass : ''}`}>
                     <Image
                       src={partner.logo}
                       alt={partner.name}
@@ -74,7 +74,7 @@ export default function PartnersMarquee() {
                 className="mx-4 flex-shrink-0"
               >
                 <div className="flex h-24 w-56 items-center justify-center rounded-lg border border-gray-100 bg-white px-4 opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:shadow-sm">
-                  <div className="relative h-16 w-full">
+                  <div className={`relative h-16 w-full ${'imgClass' in partner ? partner.imgClass : ''}`}>
                     <Image
                       src={partner.logo}
                       alt={partner.name}

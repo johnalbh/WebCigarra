@@ -317,38 +317,88 @@
     "visionBadge": "23 years and 13 programs transforming communities",
     "timeline": {
       "title": "Our Journey",
-      "subtitle": "More than two decades of history building dreams and transforming realities in Ciudad Bolivar.",
+      "subtitle": "More than two decades of history building dreams and transforming realities in Ciudad Bolívar.",
       "2002": {
-        "title": "Foundation",
-        "description": "The Cigarra Foundation is born in Ciudad Bolivar to serve children in vulnerable conditions."
+        "title": "Cigarra Foundation is Born",
+        "item1": "Dr. Carolyn Acosta Allen founds the Cigarra Foundation in response to the displacement crisis in Colombia.",
+        "item2": "An urgent need is identified in Puertas del Paraíso (Ciudad Bolívar): a safe place for children while their parents work.",
+        "item3": "With community support and Servivienda, construction begins in May; by August it was finished and in September it opens its doors.",
+        "item4": "Begins serving approximately 120 children (ages 3 months to 9 years).",
+        "item5": "Knitting courses for mothers are also launched.",
+        "item6": "The Foundation secures basic services (water, electricity, sewage) and, together with the community, builds two access staircases."
       },
-      "2005": {
-        "title": "First Programs",
-        "description": "The academic tutoring, dance, and music programs are consolidated."
+      "2002-2003": {
+        "title": "First Support and Social Expansion",
+        "item1": "Vaccination drives and health brigades are carried out.",
+        "item2": "For one year, Médecins Sans Frontières provides primary care.",
+        "item3": "Dental services are offered with volunteers.",
+        "item4": "The World Food Programme supports with food and supplements in the early years."
       },
-      "2008": {
-        "title": "Growth",
-        "description": "Expansion to 8 programs including music, dance, and theater."
+      "2003": {
+        "title": "First Major International Donation",
+        "item1": "In May 2003, the first major international donation arrives (anonymous benefactor), a support that continues over time."
       },
-      "2012": {
-        "title": "A Decade",
-        "description": "We celebrate 10 years with more than 100 children benefited annually."
+      "2009": {
+        "title": "Children's Playground",
+        "item1": "The children's playground is built together with the community."
+      },
+      "2010": {
+        "title": "Technology and Entrepreneurship Training",
+        "item1": "The \"Cigarrita\" computer room is remodeled and equipped (donation from IRT, United Kingdom).",
+        "item2": "A bakery space is rented, with baking and pastry courses (mediated by FUMDIR)."
+      },
+      "2011": {
+        "title": "Casa Na",
+        "item1": "The Foundation purchases Casa Na.",
+        "item2": "The bakery and a nursing station are permanently installed there.",
+        "item3": "In the previously rented space, a community clothing closet opens (alternative income source)."
+      },
+      "2013": {
+        "title": "The Malala Room is Born",
+        "item1": "The Malala Room is created, a space for teenagers (12+ years) during alternate hours."
+      },
+      "2014": {
+        "title": "Senior Citizens and Community Works",
+        "item1": "A senior citizens group is incorporated, strengthening intergenerational exchange.",
+        "item2": "With the community and Fundación Techo, the main access road to the Foundation is paved."
       },
       "2015": {
-        "title": "Strategic Partnerships",
-        "description": "We establish partnerships with national and international organizations."
+        "title": "New Dining Hall and Infrastructure",
+        "item1": "A new dining hall is inaugurated, plus two classrooms, bathrooms, and an administrative office."
       },
-      "2018": {
-        "title": "Innovation",
-        "description": "We incorporate technology, early childhood, and psychology programs."
+      "2017-2019": {
+        "title": "New Building for Clothing Closet and Music",
+        "item1": "A three-story building is constructed for the clothing closet and music rooms.",
+        "item2": "The vision of promoting the music program and a future orchestra is strengthened."
+      },
+      "2019": {
+        "title": "Greta Thunberg Building",
+        "item1": "Recycled containers are acquired and the Greta Thunberg Building (2 floors) is constructed.",
+        "item2": "The San Jorge Room and the gymnastics room operate there."
       },
       "2020": {
-        "title": "Resilience",
-        "description": "Adaptation during the pandemic with virtual programs."
+        "title": "Racamandaca Mascot",
+        "item1": "The Foundation adopts its mascot Racamandaca, inspired by \"las cigarritas\"."
       },
-      "2024": {
-        "title": "Present Day",
-        "description": "13 active programs serving more than 1,877 children and youth."
+      "2022": {
+        "title": "House Competition and Musical Momentum",
+        "item1": "The house competition begins (Jaguar, Shark, Caiman, and Condor), inspired by the English model.",
+        "item2": "The orchestra dream is strengthened thanks to a donation from a major Colombian NGO.",
+        "item3": "The Foundation's anthem is recorded (December 2022, with Claraluna and music teachers)."
+      },
+      "2023": {
+        "title": "First Orchestra Concert",
+        "item1": "The first orchestra concert takes place (June 2023), an institutional milestone."
+      },
+      "2025": {
+        "title": "23 Years of Impact",
+        "item1": "The Foundation reports over 23 years of service.",
+        "item2": "It has benefited 1,090 families and 1,877 children and adolescents.",
+        "item3": "It is consolidated as a benchmark for comprehensive care, education, art, sports, technology, and psychosocial support."
+      },
+      "2026": {
+        "title": "San Jorge Room Expansion",
+        "item1": "The expansion of the San Jorge Room capacity is projected, creating the San Jorgito Room for children ages 6 to 12."
       }
     },
     "values": {
