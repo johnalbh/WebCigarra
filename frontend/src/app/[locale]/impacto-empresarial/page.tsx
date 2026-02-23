@@ -110,11 +110,12 @@ const partners = [
   { name: 'Microsoft', logo: '/images/partners/microsoft.webp', tier: 'gold' as const },
   { name: 'Charles Wright Academy', logo: '/images/partners/cwa.webp', tier: 'gold' as const },
   { name: 'HomeCenter', logo: '/images/partners/homecenter.webp', tier: 'gold' as const },
-  { name: 'Almacenes Éxito', logo: '/images/partners/exito.svg', tier: 'gold' as const },
-  { name: 'ABACO - Banco de Alimentos', logo: '/images/partners/abaco.svg', tier: 'gold' as const, imgClass: 'scale-75' },
   { name: 'Aqualogic', logo: '/images/partners/aqualogic.webp', tier: 'silver' as const },
   { name: 'Opperar', logo: '/images/partners/opperar.webp', tier: 'silver' as const },
   { name: 'Makri', logo: '/images/partners/makri.webp', tier: 'silver' as const },
+  { name: 'Permoda', logo: '/images/partners/permoda.svg', tier: 'silver' as const },
+  { name: 'Almacenes Éxito', logo: '/images/partners/exito.svg', tier: 'silver' as const },
+  { name: 'ABACO - Banco de Alimentos', logo: '/images/partners/abaco.svg', tier: 'silver' as const, imgClass: 'scale-75' },
 ];
 
 const platinumPartners = partners.filter((p) => p.tier === 'platinum');

@@ -15,6 +15,8 @@ const partners = [
   { name: 'HomeCenter', logo: '/images/partners/homecenter.webp' },
   { name: 'Makri', logo: '/images/partners/makri.webp' },
   { name: 'ABACO - Banco de Alimentos', logo: '/images/partners/abaco.svg', imgClass: 'scale-75' },
+  { name: 'Permoda', logo: '/images/partners/permoda.svg' },
+  { name: 'Almacenes Éxito', logo: '/images/partners/exito.svg' },
 ] as const;
 
 export default function PartnersMarquee() {
