@@ -817,6 +817,49 @@
       "planPadrino": { "title": "Plan Padrino Empresarial", "description": "Tu empresa apadrina a uno o más niños durante un año completo. Incluye educación, alimentación, acceso a todos los programas y reportes personalizados del progreso de cada beneficiario." }
     },
     "consult": "Consultar",
+    "padrinoSection": {
+      "tag": "Plan Padrino Empresarial",
+      "heading": "Inversión Social con",
+      "headingHighlight": "Retorno Fiscal",
+      "subtitle": "Transformando el futuro de 192 niños y niñas en Ciudad Bolívar. Optimiza tu carga tributaria apoyando educación y nutrición de primer nivel.",
+      "tiers": {
+        "gold": {
+          "name": "Plan Dorado",
+          "scope": "Apadrinar 192 niños por 1 mes",
+          "description": "Cubre un mes completo de educación, alimentación y todos los programas para los 192 niños y niñas de la Fundación Cigarra."
+        },
+        "platinum": {
+          "name": "Plan Platino",
+          "scope": "Apadrinar 192 niños por 6 meses",
+          "description": "Seis meses de acompañamiento integral. Incluye reportes de avance bimestrales y certificado de donación semestral."
+        },
+        "annual": {
+          "name": "Plan Anual",
+          "scope": "Apadrinar 192 niños por 1 año",
+          "description": "Un año completo de transformación. Máximo impacto social con reportes trimestrales, certificado anual, carta personalizada e invitación a eventos."
+        }
+      },
+      "taxTitle": "¿Sabías que del valor de tu donación un 25% es descuento tributario?",
+      "taxDescription": "Por cada donación, recibes un descuento tributario en tu impuesto de renta (Art. 257 E.T.) equivalente al 25% del valor donado.",
+      "taxBenefit1": "Descuento tributario del 25% sobre el valor donado en tu impuesto de renta (Art. 257 del Estatuto Tributario).",
+      "taxBenefit2": "Certificado de donación: Fundación Cigarra te expide el certificado como soporte para tu declaración de renta, de manera oportuna y profesional.",
+      "taxBenefit3": "Escudo Fiscal: Si este año no aplicas todo el descuento, ¡puedes usarlo en los próximos 4 periodos gravables!",
+      "includesTitle": "¿Qué contempla el Plan Padrino?",
+      "includes": {
+        "matricula": "Matrícula",
+        "pension": "Pensión",
+        "desayuno": "Desayuno",
+        "almuerzo": "Almuerzo",
+        "mediaTarde": "Media tarde",
+        "infraestructura": "Infraestructura de primer nivel",
+        "ingles": "Inglés",
+        "deporte": "Deporte",
+        "musica": "Música",
+        "tecnologia": "Tecnología",
+        "material": "Material didáctico",
+        "talleres": "Talleres Paternidad Responsable"
+      }
+    },
     "esalTitle": "Permanencia ESAL",
     "esalHeading": "Entidad Sin Ánimo de",
     "esalHighlight": "Lucro Certificada",

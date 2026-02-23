@@ -27,7 +27,7 @@ import {
   HiSpeakerphone,
   HiSparkles,
 } from 'react-icons/hi';
-import { FaWhatsapp, FaHandshake, FaBuilding, FaBalanceScale } from 'react-icons/fa';
+import { FaWhatsapp, FaHandshake, FaBuilding, FaBalanceScale, FaChild } from 'react-icons/fa';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
@@ -47,6 +47,29 @@ const modelConfig = [
   { key: 'planPadrino', icon: HiHeart, accent: 'from-sky-500 to-sky-700', border: 'border-sky-200 hover:border-sky-400' },
   { key: 'inKind', icon: HiTruck, accent: 'from-rose-500 to-rose-700', border: 'border-rose-200 hover:border-rose-400' },
   { key: 'cobranding', icon: HiSpeakerphone, accent: 'from-violet-500 to-violet-700', border: 'border-violet-200 hover:border-violet-400' },
+];
+
+/* ── Plan Padrino Empresarial tier config ── */
+const padrinoTierConfig = [
+  { key: 'gold', price: '$14.840.000', children: 192, period: '1month', icon: HiStar, accent: 'from-amber-500 to-amber-700', border: 'border-amber-200' },
+  { key: 'platinum', price: '$74.200.000', children: 192, period: '6months', icon: HiSparkles, accent: 'from-slate-400 to-slate-600', border: 'border-slate-200' },
+  { key: 'annual', price: '$163.240.000', children: 192, period: '1year', icon: HiGlobeAlt, accent: 'from-primary-500 to-primary-700', border: 'border-primary-200' },
+];
+
+/* ── Plan Padrino includes config ── */
+const padrinoIncludesConfig = [
+  { key: 'matricula', icon: HiAcademicCap },
+  { key: 'pension', icon: HiClipboardCheck },
+  { key: 'desayuno', icon: HiHeart },
+  { key: 'almuerzo', icon: HiHeart },
+  { key: 'mediaTarde', icon: HiHeart },
+  { key: 'infraestructura', icon: HiStar },
+  { key: 'ingles', icon: HiGlobeAlt },
+  { key: 'deporte', icon: HiUserGroup },
+  { key: 'musica', icon: HiSparkles },
+  { key: 'tecnologia', icon: HiDocumentReport },
+  { key: 'material', icon: HiBriefcase },
+  { key: 'talleres', icon: FaChild },
 ];
 
 /* ── ESAL trust badge config (keys only) ── */
@@ -292,6 +315,142 @@ export default function ImpactoEmpresarialPage() {
               );
             })}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          3.5 PLAN PADRINO EMPRESARIAL (Detailed)
+          ═══════════════════════════════════════════════════════ */}
+      <section id="plan-padrino-empresarial" className="relative section-padding overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          {/* Header */}
+          <ScrollReveal>
+            <div className="mb-16 text-center">
+              <span className="inline-block rounded-full bg-sky-100 px-5 py-2 font-heading text-sm font-semibold text-sky-700 mb-4">
+                {t('padrinoSection.tag')}
+              </span>
+              <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
+                {t('padrinoSection.heading')}{' '}
+                <span className="text-primary-600">{t('padrinoSection.headingHighlight')}</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-500">
+                {t('padrinoSection.subtitle')}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Tier cards */}
+          <StaggerContainer scaleUp className="grid gap-8 md:grid-cols-3" staggerDelay={0.12}>
+            {padrinoTierConfig.map((tier) => {
+              const Icon = tier.icon;
+              return (
+                <StaggerItem scaleUp key={tier.key}>
+                  <motion.div
+                    whileHover={{ y: -6 }}
+                    transition={{ duration: 0.3, ease: smoothEase }}
+                    className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 bg-white transition-all duration-300 hover:shadow-xl ${tier.border}`}
+                  >
+                    {/* Gradient header */}
+                    <div className={`bg-gradient-to-br ${tier.accent} px-6 py-8 text-center text-white`}>
+                      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/20">
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <h3 className="font-heading text-2xl font-bold">
+                        {t(`padrinoSection.tiers.${tier.key}.name`)}
+                      </h3>
+                      <p className="mt-3 font-heading text-4xl font-bold">{tier.price}</p>
+                      <p className="mt-1 text-sm text-white/80">COP</p>
+                    </div>
+
+                    {/* Details */}
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="mb-4 flex items-center gap-2 rounded-lg bg-sky-50 px-4 py-3">
+                        <FaChild className="h-5 w-5 text-sky-600" />
+                        <span className="font-heading text-sm font-bold text-sky-800">
+                          {t(`padrinoSection.tiers.${tier.key}.scope`)}
+                        </span>
+                      </div>
+                      <p className="flex-1 text-sm leading-relaxed text-gray-600">
+                        {t(`padrinoSection.tiers.${tier.key}.description`)}
+                      </p>
+                      <a
+                        href="#contacto-empresarial"
+                        className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-primary-500 px-6 py-3.5 font-heading font-semibold text-white transition-all duration-300 hover:bg-primary-400"
+                      >
+                        {t('consult')}
+                        <HiArrowRight className="h-4 w-4" />
+                      </a>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+
+          {/* Tax benefit callout */}
+          <ScrollReveal>
+            <div className="mt-16 rounded-2xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-white p-8 md:p-12">
+              <div className="grid items-center gap-8 md:grid-cols-2">
+                {/* Left: Tax info */}
+                <div>
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-amber-100">
+                    <HiCurrencyDollar className="h-7 w-7 text-amber-600" />
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-gray-900 mb-3">
+                    {t('padrinoSection.taxTitle')}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    {t('padrinoSection.taxDescription')}
+                  </p>
+
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <HiCurrencyDollar className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+                      <p className="text-sm text-gray-700">{t('padrinoSection.taxBenefit1')}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <HiDocumentReport className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+                      <p className="text-sm text-gray-700">{t('padrinoSection.taxBenefit2')}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <HiShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+                      <p className="text-sm text-gray-700">{t('padrinoSection.taxBenefit3')}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: What's included */}
+                <div className="rounded-xl border border-gray-200 bg-white p-6">
+                  <h4 className="font-heading text-lg font-bold text-gray-900 mb-5">
+                    {t('padrinoSection.includesTitle')}
+                  </h4>
+                  <div className="grid grid-cols-2 gap-3">
+                    {padrinoIncludesConfig.map((item) => (
+                      <div key={item.key} className="flex items-center gap-2.5">
+                        <HiCheckCircle className="h-4 w-4 shrink-0 text-primary-500" />
+                        <span className="text-sm text-gray-700">{t(`padrinoSection.includes.${item.key}`)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Contact emails */}
+          <ScrollReveal>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
+              <a href="mailto:cristina.rocio.parra@sgs.edu.co" className="flex items-center gap-2 hover:text-primary-600 transition-colors">
+                <HiMail className="h-4 w-4" /> cristina.rocio.parra@sgs.edu.co
+              </a>
+              <a href="mailto:info@cigarra.org" className="flex items-center gap-2 hover:text-primary-600 transition-colors">
+                <HiMail className="h-4 w-4" /> info@cigarra.org
+              </a>
+              <a href="mailto:esperanza.duque@cigarra.org" className="flex items-center gap-2 hover:text-primary-600 transition-colors">
+                <HiMail className="h-4 w-4" /> esperanza.duque@cigarra.org
+              </a>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

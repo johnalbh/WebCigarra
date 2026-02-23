@@ -817,6 +817,49 @@
       "planPadrino": { "title": "Corporate Sponsorship Plan", "description": "Your company sponsors one or more children for a full year. Includes education, meals, access to all programs, and personalized progress reports for each beneficiary." }
     },
     "consult": "Inquire",
+    "padrinoSection": {
+      "tag": "Corporate Sponsorship Plan",
+      "heading": "Social Investment with",
+      "headingHighlight": "Tax Returns",
+      "subtitle": "Transforming the future of 192 children in Ciudad Bolívar. Optimize your tax burden while supporting first-class education and nutrition.",
+      "tiers": {
+        "gold": {
+          "name": "Gold Plan",
+          "scope": "Sponsor 192 children for 1 month",
+          "description": "Covers a full month of education, meals, and all programs for the 192 children of the Cigarra Foundation."
+        },
+        "platinum": {
+          "name": "Platinum Plan",
+          "scope": "Sponsor 192 children for 6 months",
+          "description": "Six months of comprehensive support. Includes bimonthly progress reports and a semester donation certificate."
+        },
+        "annual": {
+          "name": "Annual Plan",
+          "scope": "Sponsor 192 children for 1 year",
+          "description": "A full year of transformation. Maximum social impact with quarterly reports, annual certificate, personalized letter, and event invitation."
+        }
+      },
+      "taxTitle": "Did you know that 25% of your donation is a tax discount?",
+      "taxDescription": "For every donation, you receive a tax discount on your income tax (Art. 257 Colombian Tax Code) equivalent to 25% of the donated amount.",
+      "taxBenefit1": "25% tax discount on the donated amount applied to your income tax (Art. 257 of the Colombian Tax Code).",
+      "taxBenefit2": "Donation certificate: Cigarra Foundation issues the certificate as support for your tax filing, in a timely and professional manner.",
+      "taxBenefit3": "Tax shield: If you don't apply the full discount this year, you can use it in the next 4 taxable periods!",
+      "includesTitle": "What does the Sponsorship Plan include?",
+      "includes": {
+        "matricula": "Enrollment",
+        "pension": "Tuition",
+        "desayuno": "Breakfast",
+        "almuerzo": "Lunch",
+        "mediaTarde": "Afternoon snack",
+        "infraestructura": "First-class facilities",
+        "ingles": "English",
+        "deporte": "Sports",
+        "musica": "Music",
+        "tecnologia": "Technology",
+        "material": "Learning materials",
+        "talleres": "Responsible Parenting Workshops"
+      }
+    },
     "esalTitle": "Nonprofit Status",
     "esalHeading": "Certified",
     "esalHighlight": "Nonprofit Organization",
