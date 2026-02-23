@@ -10,9 +10,8 @@ import type { IconType } from 'react-icons';
 import {
   HiGlobeAlt,
   HiHeart,
-  HiHome,
-  HiPuzzle,
   HiShoppingBag,
+  HiStar,
   HiSun,
   HiUserGroup,
   HiUsers,
@@ -26,20 +25,19 @@ const featuredPrograms = [
   { slug: 'danza', image: '/images/programs/danza.webp' },
   { slug: 'refuerzo-escolar', image: '/images/programs/refuerzo-escolar.webp' },
   { slug: 'biblioteca', image: '/images/programs/biblioteca.webp' },
-  { slug: 'teatro', image: '/images/programs/teatro.webp' },
+  { slug: 'artes', image: '/images/programs/teatro.webp' },
 ];
 
 /* ── Remaining programs shown in the marquee ── */
 const marqueePrograms: { slug: string; icon: IconType; color: string }[] = [
-  { slug: 'tecnologia', icon: HiComputerDesktop, color: '#2196F3' },
-  { slug: 'ingles', icon: HiGlobeAlt, color: '#E67E22' },
-  { slug: 'centro-comunitario', icon: HiHome, color: '#1ABC9C' },
-  { slug: 'grupo-adultos-mayores', icon: HiUsers, color: '#E91E63' },
   { slug: 'primera-infancia', icon: HiSun, color: '#FF9800' },
+  { slug: 'ingles', icon: HiGlobeAlt, color: '#E67E22' },
+  { slug: 'escuela-de-artes', icon: HiStar, color: '#FF5722' },
+  { slug: 'tecnologia', icon: HiComputerDesktop, color: '#2196F3' },
   { slug: 'psicologia', icon: HiHeart, color: '#673AB7' },
-  { slug: 'recreacion-y-deportes', icon: HiPuzzle, color: '#FF5722' },
+  { slug: 'grupo-mayores', icon: HiUsers, color: '#E91E63' },
+  { slug: 'talleres-para-padres', icon: HiUserGroup, color: '#4CAF50' },
   { slug: 'ropero', icon: HiShoppingBag, color: '#00BCD4' },
-  { slug: 'escuela-de-padres', icon: HiUserGroup, color: '#4CAF50' },
 ];
 
 const easeApple = EASE_APPLE;

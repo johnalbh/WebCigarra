@@ -23,37 +23,35 @@ interface ProgramConfig {
 }
 
 const programs: ProgramConfig[] = [
+  { slug: 'primera-infancia', icon: HiSun, color: '#FF9800' },
   { slug: 'refuerzo-escolar', icon: HiAcademicCap, color: '#2ECC71' },
-  { slug: 'biblioteca', icon: HiBookOpen, color: '#3498DB' },
-  { slug: 'centro-comunitario', icon: HiHome, color: '#1ABC9C' },
   { slug: 'danza', icon: HiSparkles, color: '#F39C12' },
-  { slug: 'grupo-adultos-mayores', icon: HiUsers, color: '#E91E63' },
   { slug: 'ingles', icon: HiGlobe, color: '#E67E22' },
   { slug: 'musica', icon: HiMusicNote, color: '#E74C3C' },
-  { slug: 'primera-infancia', icon: HiSun, color: '#FF9800' },
-  { slug: 'psicologia', icon: HiHeart, color: '#673AB7' },
-  { slug: 'recreacion-y-deportes', icon: HiStar, color: '#FF5722' },
-  { slug: 'ropero', icon: HiShoppingBag, color: '#00BCD4' },
-  { slug: 'escuela-de-padres', icon: HiUserGroup, color: '#4CAF50' },
-  { slug: 'teatro', icon: HiCube, color: '#9B59B6' },
+  { slug: 'artes', icon: HiCube, color: '#9B59B6' },
+  { slug: 'escuela-de-artes', icon: HiStar, color: '#FF5722' },
   { slug: 'tecnologia', icon: HiDesktopComputer, color: '#2196F3' },
+  { slug: 'biblioteca', icon: HiBookOpen, color: '#3498DB' },
+  { slug: 'psicologia', icon: HiHeart, color: '#673AB7' },
+  { slug: 'grupo-mayores', icon: HiUsers, color: '#E91E63' },
+  { slug: 'talleres-para-padres', icon: HiUserGroup, color: '#4CAF50' },
+  { slug: 'ropero', icon: HiShoppingBag, color: '#00BCD4' },
 ];
 
 const programImageMap: Record<string, string> = {
+  'primera-infancia': '/images/programs/primera-infancia.webp',
   'refuerzo-escolar': '/images/programs/refuerzo-escolar.webp',
-  'biblioteca': '/images/programs/biblioteca.webp',
-  'centro-comunitario': '/images/programs/centro-comunitario.webp',
   'danza': '/images/programs/danza.webp',
-  'grupo-adultos-mayores': '/images/programs/grupo-adultos-mayores.webp',
   'ingles': '/images/programs/ingles.webp',
   'musica': '/images/programs/musica.webp',
-  'primera-infancia': '/images/programs/primera-infancia.webp',
-  'psicologia': '/images/programs/psicologia.webp',
-  'recreacion-y-deportes': '/images/programs/recreacion-y-deportes.webp',
-  'ropero': '/images/programs/ropero.webp',
-  'escuela-de-padres': '/images/programs/escuela-padres.webp',
-  'teatro': '/images/programs/teatro.webp',
+  'artes': '/images/programs/teatro.webp',
+  'escuela-de-artes': '/images/programs/recreacion-y-deportes.webp',
   'tecnologia': '/images/programs/tecnologia.webp',
+  'biblioteca': '/images/programs/biblioteca.webp',
+  'psicologia': '/images/programs/psicologia.webp',
+  'grupo-mayores': '/images/programs/grupo-adultos-mayores.webp',
+  'talleres-para-padres': '/images/programs/escuela-padres.webp',
+  'ropero': '/images/programs/ropero.webp',
 };
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
@@ -62,7 +60,7 @@ export default function ProgramsPage() {
   const t = useTranslations('programs');
 
   const stats = [
-    { value: '14', label: t('stats.programs') },
+    { value: '13', label: t('stats.programs') },
     { value: '1.877+', label: t('stats.children') },
     { value: '23', label: t('stats.years') },
   ];

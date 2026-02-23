@@ -49,13 +49,13 @@
   },
   "programs": {
     "title": "Our Programs",
-    "subtitle": "14 education, art, and culture programs for the children of Ciudad Bolívar",
+    "subtitle": "13 education, art, and culture programs for the children of Ciudad Bolívar",
     "viewAll": "View All Programs",
     "learnMore": "Learn more",
     "ageRange": "Ages",
     "schedule": "Schedule",
     "relatedPrograms": "Related Programs",
-    "activeCount": "14 active programs",
+    "activeCount": "13 active programs",
     "featured": "Featured",
     "andMore": "And {count} more programs:",
     "orgName": "Cigarra Foundation",
@@ -73,7 +73,7 @@
     "donateNow": "Donate Now",
     "otherPrograms": "Other Programs",
     "defaultDescription": "Cigarra Foundation Program",
-    "defaultFullDescription": "This program is part of the 14 programs offered by the Cigarra Foundation to children and youth in Ciudad Bolivar, Bogota. Through educational and recreational activities, we seek to contribute to the comprehensive development of participants.",
+    "defaultFullDescription": "This program is part of the 13 programs offered by the Cigarra Foundation to children and youth in Ciudad Bolivar, Bogota. Through educational and recreational activities, we seek to contribute to the comprehensive development of participants.",
     "defaultAgeRange": "6-17 years",
     "defaultSchedule": "Monday to Friday",
     "stats": {
@@ -82,107 +82,100 @@
       "years": "Years"
     },
     "names": {
+      "primera-infancia": "Early Childhood",
       "refuerzo-escolar": "Academic Tutoring",
-      "biblioteca": "Library",
-      "centro-comunitario": "Community Center",
       "danza": "Dance",
-      "grupo-adultos-mayores": "Senior Citizens Group",
       "ingles": "English",
       "musica": "Music",
-      "primera-infancia": "Early Childhood",
+      "artes": "Arts",
+      "escuela-de-artes": "School of Arts",
+      "tecnologia": "Technology",
+      "biblioteca": "Library",
       "psicologia": "Psychology",
-      "recreacion-y-deportes": "Recreation & Sports",
-      "ropero": "Clothing Closet",
-      "escuela-de-padres": "Parents' School",
-      "teatro": "Theater",
-      "tecnologia": "Technology"
+      "grupo-mayores": "Senior Citizens",
+      "talleres-para-padres": "Parent Workshops",
+      "ropero": "Clothing Closet"
     },
     "descriptions": {
+      "primera-infancia": "Comprehensive care for children ages 0 to 5 with early stimulation, play, and family support.",
       "refuerzo-escolar": "Academic support in math, reading, writing, and homework. We strengthen school learning.",
-      "biblioteca": "A reading and book lending space to foster reading habits and access to written culture.",
-      "centro-comunitario": "A meeting space for the community with cultural, educational, and social integration activities.",
       "danza": "Folk and contemporary dance. Body expression, coordination, and cultural appreciation.",
-      "grupo-adultos-mayores": "Recreational, cultural, and wellness activities for senior members of the community.",
       "ingles": "English language learning as a tool for accessing global opportunities.",
       "musica": "Music education with string, wind, and percussion instruments. Artistic talent and discipline development.",
-      "primera-infancia": "Comprehensive care for children ages 0 to 5 with early stimulation, play, and family support.",
+      "artes": "Comprehensive artistic training that develops creativity, expression, and aesthetic sensitivity.",
+      "escuela-de-artes": "Artistic training space with specialized workshops in different creative disciplines.",
+      "tecnologia": "Training in computer tools and digital skills for the 21st century.",
+      "biblioteca": "A reading and book lending space to foster reading habits and access to written culture.",
       "psicologia": "Psychosocial support for children, youth, and families, strengthening emotional well-being.",
-      "recreacion-y-deportes": "Recreational and sports activities for physical development and healthy coexistence.",
-      "ropero": "Clothing and footwear donation and distribution for community families.",
-      "escuela-de-padres": "Workshops for parents and caregivers on parenting, communication, and school support.",
-      "teatro": "Performing arts as a means of expression, communication, and confidence building.",
-      "tecnologia": "Training in computer tools and digital skills for the 21st century."
+      "grupo-mayores": "Recreational, cultural, and wellness activities for senior members of the community.",
+      "talleres-para-padres": "Workshops for parents and caregivers on parenting, communication, and school support.",
+      "ropero": "Clothing and footwear donation and distribution for community families."
     },
     "details": {
-      "musica": {
-        "ageRange": "6-17 years",
-        "schedule": "Monday to Friday, 2:00 PM - 5:00 PM",
-        "longDescription": "Our music program offers comprehensive training in string, wind, and percussion instruments. Students develop musical skills, discipline, and teamwork through individual and group practice. We have a musical ensemble that performs at community events and festivals."
+      "primera-infancia": {
+        "ageRange": "0-5 years",
+        "schedule": "Monday to Friday, 8:00 AM - 12:00 PM",
+        "longDescription": "We provide comprehensive care for children ages 0 to 5 with early stimulation, play, art, and family support. The program focuses on cognitive, motor, social, and emotional development during the first years of life."
       },
       "refuerzo-escolar": {
         "ageRange": "6-17 years",
         "schedule": "Monday to Friday, 2:00 PM - 4:00 PM",
         "longDescription": "We provide personalized academic support in math, Spanish, science, and other subjects. Our tutors help students improve their school performance, develop study habits, and strengthen basic skills."
       },
-      "biblioteca": {
-        "ageRange": "All ages",
-        "schedule": "Monday to Friday, 8:00 AM - 5:00 PM",
-        "longDescription": "Our community library is a space for reading, book lending, and reading promotion workshops. Beneficiaries can explore the world through reading, participate in book clubs, and activities that strengthen their reading comprehension skills."
-      },
-      "centro-comunitario": {
-        "ageRange": "All ages",
-        "schedule": "Monday to Friday, 8:00 AM - 6:00 PM",
-        "longDescription": "The Community Center is a meeting space for the community where cultural, educational, and social integration activities take place. It is the heart of the Foundation, where children, youth, adults, and seniors share and learn together."
-      },
       "danza": {
         "ageRange": "6-17 years",
         "schedule": "Tuesday and Thursday, 3:00 PM - 5:00 PM",
         "longDescription": "Our dance program offers training in folk and contemporary dance. Participants develop body expression, coordination, rhythm, and a deep appreciation for Colombian culture through movement and music."
-      },
-      "grupo-adultos-mayores": {
-        "ageRange": "60+ years",
-        "schedule": "Wednesday and Friday, 9:00 AM - 12:00 PM",
-        "longDescription": "We offer recreational, cultural, and wellness activities for senior members of the community. The program includes crafts, adapted physical activity, social gatherings, and support to improve their quality of life."
       },
       "ingles": {
         "ageRange": "6-17 years",
         "schedule": "Monday to Friday, 3:00 PM - 5:00 PM",
         "longDescription": "The English program offers language learning as a tool for accessing global opportunities. Students develop comprehension, reading, writing, and conversation skills through dynamic and participatory methodologies."
       },
-      "primera-infancia": {
-        "ageRange": "0-5 years",
-        "schedule": "Monday to Friday, 8:00 AM - 12:00 PM",
-        "longDescription": "We provide comprehensive care for children ages 0 to 5 with early stimulation, play, art, and family support. The program focuses on cognitive, motor, social, and emotional development during the first years of life."
+      "musica": {
+        "ageRange": "6-17 years",
+        "schedule": "Monday to Friday, 2:00 PM - 5:00 PM",
+        "longDescription": "Our music program offers comprehensive training in string, wind, and percussion instruments. Students develop musical skills, discipline, and teamwork through individual and group practice. We have a musical ensemble that performs at community events and festivals."
+      },
+      "artes": {
+        "ageRange": "6-17 years",
+        "schedule": "Monday to Friday, 3:00 PM - 5:00 PM",
+        "longDescription": "The Arts program offers comprehensive artistic training including visual arts, drawing, painting, and crafts. Participants develop their creativity, expression, and aesthetic sensitivity through individual and collective projects."
+      },
+      "escuela-de-artes": {
+        "ageRange": "6-17 years",
+        "schedule": "Monday to Friday, 2:00 PM - 5:00 PM",
+        "longDescription": "The School of Arts is an artistic training space that brings together different creative disciplines. Students participate in specialized workshops in visual arts, music, dance, and theater, strengthening their comprehensive artistic education."
+      },
+      "tecnologia": {
+        "ageRange": "8-17 years",
+        "schedule": "Monday to Friday, 2:00 PM - 4:00 PM",
+        "longDescription": "The technology program offers training in computer tools, basic programming, and digital skills for the 21st century. Students learn to use computers, safe internet practices, and office tools."
+      },
+      "biblioteca": {
+        "ageRange": "All ages",
+        "schedule": "Monday to Friday, 8:00 AM - 5:00 PM",
+        "longDescription": "Our community library is a space for reading, book lending, and reading promotion workshops. Beneficiaries can explore the world through reading, participate in book clubs, and activities that strengthen their reading comprehension skills."
       },
       "psicologia": {
         "ageRange": "All ages",
         "schedule": "Monday to Friday, 8:00 AM - 5:00 PM",
         "longDescription": "Our psychology service offers psychosocial support for children, youth, and families. Through individual care, group workshops, and parent school, we strengthen emotional well-being and family relationships."
       },
-      "recreacion-y-deportes": {
-        "ageRange": "6-17 years",
-        "schedule": "Monday to Friday, 2:00 PM - 5:00 PM",
-        "longDescription": "The recreation and sports program offers recreational and sports activities for physical development, healthy coexistence, and teamwork. Participants practice soccer, basketball, cooperative games, and outdoor activities."
+      "grupo-mayores": {
+        "ageRange": "60+ years",
+        "schedule": "Wednesday and Friday, 9:00 AM - 12:00 PM",
+        "longDescription": "We offer recreational, cultural, and wellness activities for senior members of the community. The program includes crafts, adapted physical activity, social gatherings, and support to improve their quality of life."
+      },
+      "talleres-para-padres": {
+        "ageRange": "Parents and caregivers",
+        "schedule": "Saturdays, 9:00 AM - 11:00 AM",
+        "longDescription": "Parent Workshops offer meetings for parents and caregivers on positive parenting, effective communication, school support, and child development. We strengthen family bonds as the foundation of children's well-being."
       },
       "ropero": {
         "ageRange": "All ages",
         "schedule": "Saturdays, 8:00 AM - 12:00 PM",
         "longDescription": "The community clothing closet receives, organizes, and distributes clothing and footwear donations for community families. This program ensures beneficiaries have access to clothing in good condition."
-      },
-      "escuela-de-padres": {
-        "ageRange": "Parents and caregivers",
-        "schedule": "Saturdays, 9:00 AM - 11:00 AM",
-        "longDescription": "The Parents' School offers workshops and meetings for parents and caregivers on positive parenting, effective communication, school support, and child development. We strengthen family bonds as the foundation of children's well-being."
-      },
-      "teatro": {
-        "ageRange": "6-17 years",
-        "schedule": "Monday and Wednesday, 3:00 PM - 5:00 PM",
-        "longDescription": "Our theater program uses the performing arts as a means of expression, communication, and confidence building. Participants learn acting, improvisation, and stage production, performing at community events."
-      },
-      "tecnologia": {
-        "ageRange": "8-17 years",
-        "schedule": "Monday to Friday, 2:00 PM - 4:00 PM",
-        "longDescription": "The technology program offers training in computer tools, basic programming, and digital skills for the 21st century. Students learn to use computers, safe internet practices, and office tools."
       }
     }
   },
@@ -321,7 +314,7 @@
     "missionStatement": "To provide comprehensive care to children and youth in vulnerable conditions in Ciudad Bolivar, through education, art, culture, and recreation programs, promoting their personal and social development as agents of change in their community.",
     "missionBadge": "More than 180 children currently served",
     "visionStatement": "To be a leading organization in the social transformation of vulnerable communities in Colombia, recognized for the quality and impact of its educational, artistic, and cultural programs, and for the formation of citizens committed to social change.",
-    "visionBadge": "23 years and 14 programs transforming communities",
+    "visionBadge": "23 years and 13 programs transforming communities",
     "timeline": {
       "title": "Our Journey",
       "subtitle": "More than two decades of history building dreams and transforming realities in Ciudad Bolivar.",
@@ -355,7 +348,7 @@
       },
       "2024": {
         "title": "Present Day",
-        "description": "14 active programs serving more than 1,877 children and youth."
+        "description": "13 active programs serving more than 1,877 children and youth."
       }
     },
     "values": {
@@ -388,7 +381,7 @@
     },
     "teamSection": {
       "title": "Meet our team",
-      "description": "More than 33 professionals committed to social transformation. Educators, artists, psychologists, and administrators who make our 14 programs possible.",
+      "description": "More than 33 professionals committed to social transformation. Educators, artists, psychologists, and administrators who make our 13 programs possible.",
       "cta": "See the Full Team"
     },
     "ctaTitle": "Join the Cigarra family",
@@ -657,7 +650,7 @@
     "howToApply": "How to Apply",
     "activeVolunteers": "50+ active volunteers",
     "yearsExperience": "23+ years of experience",
-    "programsCount": "14 programs",
+    "programsCount": "13 programs",
     "whyVolunteer": "Why volunteer",
     "reasonsToJoin": "Reasons to",
     "joinHighlight": "join us",
@@ -768,7 +761,7 @@
     "models": {
       "donation": { "title": "Corporate Donation", "description": "Monetary contributions with an official donation certificate for tax deduction. Flexible amounts based on your company's capacity." },
       "volunteering": { "title": "Corporate Volunteering", "description": "Organize volunteer days for your employees. Team building activities with real social impact in education, art, and recreation." },
-      "sponsorship": { "title": "Program Sponsorship", "description": "Sponsor one of our 14 active programs: education, music, dance, theater, sports, technology, library, and more." },
+      "sponsorship": { "title": "Program Sponsorship", "description": "Sponsor one of our 13 active programs: education, music, dance, arts, technology, library, and more." },
       "inKind": { "title": "In-Kind Donation", "description": "Contribute school supplies, tech equipment, musical instruments, food, furniture, or sports equipment." },
       "cobranding": { "title": "Co-branding & Partnerships", "description": "Strategic partnerships for mutual visibility. Your brand featured at our events, social media, printed materials, and impact reports." }
     },
@@ -850,7 +843,7 @@
     },
     "programs": {
       "title": "Programs",
-      "description": "14 education, art, and culture programs for children and youth in Ciudad Bolívar, Bogotá."
+      "description": "13 education, art, and culture programs for children and youth in Ciudad Bolívar, Bogotá."
     },
     "howToHelp": {
       "title": "How to Help",

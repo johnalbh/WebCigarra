@@ -49,13 +49,13 @@
   },
   "programs": {
     "title": "Nuestros Programas",
-    "subtitle": "14 programas de educación, arte y cultura para los niños de Ciudad Bolívar",
+    "subtitle": "13 programas de educación, arte y cultura para los niños de Ciudad Bolívar",
     "viewAll": "Ver Todos los Programas",
     "learnMore": "Conocer más",
     "ageRange": "Edades",
     "schedule": "Horario",
     "relatedPrograms": "Programas Relacionados",
-    "activeCount": "14 programas activos",
+    "activeCount": "13 programas activos",
     "featured": "Destacado",
     "andMore": "Y {count} programas más:",
     "orgName": "Fundación Cigarra",
@@ -73,7 +73,7 @@
     "donateNow": "Donar Ahora",
     "otherPrograms": "Otros Programas",
     "defaultDescription": "Programa de la Fundación Cigarra",
-    "defaultFullDescription": "Este programa hace parte de los 14 programas que ofrece la Fundación Cigarra a los niños y jóvenes de Ciudad Bolívar, Bogotá. A través de actividades formativas y recreativas, buscamos contribuir al desarrollo integral de los participantes.",
+    "defaultFullDescription": "Este programa hace parte de los 13 programas que ofrece la Fundación Cigarra a los niños y jóvenes de Ciudad Bolívar, Bogotá. A través de actividades formativas y recreativas, buscamos contribuir al desarrollo integral de los participantes.",
     "defaultAgeRange": "6-17 años",
     "defaultSchedule": "Lunes a Viernes",
     "stats": {
@@ -82,107 +82,100 @@
       "years": "Años"
     },
     "names": {
+      "primera-infancia": "Primera Infancia",
       "refuerzo-escolar": "Refuerzo Escolar",
-      "biblioteca": "Biblioteca",
-      "centro-comunitario": "Centro Comunitario",
       "danza": "Danza",
-      "grupo-adultos-mayores": "Grupo de Adultos Mayores",
       "ingles": "Inglés",
       "musica": "Música",
-      "primera-infancia": "Primera Infancia",
+      "artes": "Artes",
+      "escuela-de-artes": "Escuela de Artes",
+      "tecnologia": "Tecnología",
+      "biblioteca": "Biblioteca",
       "psicologia": "Psicología",
-      "recreacion-y-deportes": "Recreación y Deportes",
-      "ropero": "Ropero",
-      "escuela-de-padres": "Escuela de Padres",
-      "teatro": "Teatro",
-      "tecnologia": "Tecnología"
+      "grupo-mayores": "Grupo Mayores",
+      "talleres-para-padres": "Talleres para Padres",
+      "ropero": "Ropero"
     },
     "descriptions": {
+      "primera-infancia": "Atención integral para niños de 0 a 5 años con estimulación temprana, juego y acompañamiento familiar.",
       "refuerzo-escolar": "Acompañamiento académico en matemáticas, lectura, escritura y tareas. Fortalecemos el aprendizaje escolar.",
-      "biblioteca": "Espacio de lectura y préstamo de libros para fomentar el hábito lector y el acceso a la cultura escrita.",
-      "centro-comunitario": "Espacio de encuentro para la comunidad con actividades culturales, formativas y de integración social.",
       "danza": "Danza folclórica y contemporánea. Expresión corporal, coordinación y valoración cultural.",
-      "grupo-adultos-mayores": "Actividades recreativas, culturales y de bienestar para los adultos mayores de la comunidad.",
       "ingles": "Aprendizaje del idioma inglés como herramienta de acceso a oportunidades globales.",
       "musica": "Formación musical con instrumentos de cuerda, viento y percusión. Desarrollo del talento artístico y la disciplina.",
-      "primera-infancia": "Atención integral para niños de 0 a 5 años con estimulación temprana, juego y acompañamiento familiar.",
+      "artes": "Formación artística integral que desarrolla la creatividad, la expresión y la sensibilidad estética.",
+      "escuela-de-artes": "Espacio de formación artística con talleres especializados en diferentes disciplinas creativas.",
+      "tecnologia": "Formación en herramientas informáticas y habilidades digitales para el siglo XXI.",
+      "biblioteca": "Espacio de lectura y préstamo de libros para fomentar el hábito lector y el acceso a la cultura escrita.",
       "psicologia": "Acompañamiento psicosocial para niños, jóvenes y familias, fortaleciendo el bienestar emocional.",
-      "recreacion-y-deportes": "Actividades lúdicas y deportivas para el desarrollo físico y la sana convivencia.",
-      "ropero": "Donación y distribución de ropa y calzado para las familias de la comunidad.",
-      "escuela-de-padres": "Talleres para padres y cuidadores sobre crianza, comunicación y acompañamiento escolar.",
-      "teatro": "Artes escénicas como medio de expresión, comunicación y desarrollo de la confianza.",
-      "tecnologia": "Formación en herramientas informáticas y habilidades digitales para el siglo XXI."
+      "grupo-mayores": "Actividades recreativas, culturales y de bienestar para los adultos mayores de la comunidad.",
+      "talleres-para-padres": "Talleres para padres y cuidadores sobre crianza, comunicación y acompañamiento escolar.",
+      "ropero": "Donación y distribución de ropa y calzado para las familias de la comunidad."
     },
     "details": {
-      "musica": {
-        "ageRange": "6-17 años",
-        "schedule": "Lunes a Viernes, 2:00 PM - 5:00 PM",
-        "longDescription": "Nuestro programa de música ofrece formación integral en instrumentos de cuerda, viento y percusión. Los estudiantes desarrollan habilidades musicales, disciplina y trabajo en equipo a través de la práctica individual y grupal. Contamos con un ensamble musical que se presenta en eventos comunitarios y festivales."
+      "primera-infancia": {
+        "ageRange": "0-5 años",
+        "schedule": "Lunes a Viernes, 8:00 AM - 12:00 PM",
+        "longDescription": "Brindamos atención integral para niños de 0 a 5 años con estimulación temprana, juego, arte y acompañamiento familiar. El programa se enfoca en el desarrollo cognitivo, motriz, social y emocional durante los primeros años de vida."
       },
       "refuerzo-escolar": {
         "ageRange": "6-17 años",
         "schedule": "Lunes a Viernes, 2:00 PM - 4:00 PM",
         "longDescription": "Brindamos apoyo académico personalizado en matemáticas, español, ciencias y otras áreas. Nuestros tutores ayudan a los estudiantes a mejorar su rendimiento escolar, desarrollar hábitos de estudio y fortalecer competencias básicas."
       },
-      "biblioteca": {
-        "ageRange": "Todas las edades",
-        "schedule": "Lunes a Viernes, 8:00 AM - 5:00 PM",
-        "longDescription": "Nuestra biblioteca comunitaria es un espacio de lectura, préstamo de libros y talleres de fomento lector. Los beneficiarios pueden explorar el mundo a través de la lectura, participar en clubes de libro y actividades que fortalecen sus competencias de comprensión lectora."
-      },
-      "centro-comunitario": {
-        "ageRange": "Todas las edades",
-        "schedule": "Lunes a Viernes, 8:00 AM - 6:00 PM",
-        "longDescription": "El Centro Comunitario es un espacio de encuentro para la comunidad donde se realizan actividades culturales, formativas y de integración social. Es el corazón de la Fundación, donde niños, jóvenes, adultos y adultos mayores comparten y aprenden juntos."
-      },
       "danza": {
         "ageRange": "6-17 años",
         "schedule": "Martes y Jueves, 3:00 PM - 5:00 PM",
         "longDescription": "Nuestro programa de danza ofrece formación en danza folclórica y contemporánea. Los participantes desarrollan expresión corporal, coordinación, ritmo y una profunda valoración por la cultura colombiana a través del movimiento y la música."
-      },
-      "grupo-adultos-mayores": {
-        "ageRange": "60+ años",
-        "schedule": "Miércoles y Viernes, 9:00 AM - 12:00 PM",
-        "longDescription": "Ofrecemos actividades recreativas, culturales y de bienestar para los adultos mayores de la comunidad. El programa incluye manualidades, actividad física adaptada, encuentros sociales y acompañamiento para mejorar su calidad de vida."
       },
       "ingles": {
         "ageRange": "6-17 años",
         "schedule": "Lunes a Viernes, 3:00 PM - 5:00 PM",
         "longDescription": "El programa de inglés ofrece aprendizaje del idioma como herramienta de acceso a oportunidades globales. Los estudiantes desarrollan competencias de comprensión, lectura, escritura y conversación a través de metodologías dinámicas y participativas."
       },
-      "primera-infancia": {
-        "ageRange": "0-5 años",
-        "schedule": "Lunes a Viernes, 8:00 AM - 12:00 PM",
-        "longDescription": "Brindamos atención integral para niños de 0 a 5 años con estimulación temprana, juego, arte y acompañamiento familiar. El programa se enfoca en el desarrollo cognitivo, motriz, social y emocional durante los primeros años de vida."
+      "musica": {
+        "ageRange": "6-17 años",
+        "schedule": "Lunes a Viernes, 2:00 PM - 5:00 PM",
+        "longDescription": "Nuestro programa de música ofrece formación integral en instrumentos de cuerda, viento y percusión. Los estudiantes desarrollan habilidades musicales, disciplina y trabajo en equipo a través de la práctica individual y grupal. Contamos con un ensamble musical que se presenta en eventos comunitarios y festivales."
+      },
+      "artes": {
+        "ageRange": "6-17 años",
+        "schedule": "Lunes a Viernes, 3:00 PM - 5:00 PM",
+        "longDescription": "El programa de Artes ofrece formación artística integral que incluye artes plásticas, dibujo, pintura y manualidades. Los participantes desarrollan su creatividad, expresión y sensibilidad estética a través de proyectos individuales y colectivos."
+      },
+      "escuela-de-artes": {
+        "ageRange": "6-17 años",
+        "schedule": "Lunes a Viernes, 2:00 PM - 5:00 PM",
+        "longDescription": "La Escuela de Artes es un espacio de formación artística que reúne diferentes disciplinas creativas. Los estudiantes participan en talleres especializados de artes visuales, música, danza y teatro, fortaleciendo su formación artística integral."
+      },
+      "tecnologia": {
+        "ageRange": "8-17 años",
+        "schedule": "Lunes a Viernes, 2:00 PM - 4:00 PM",
+        "longDescription": "El programa de tecnología ofrece formación en herramientas informáticas, programación básica y habilidades digitales para el siglo XXI. Los estudiantes aprenden a usar computadores, internet seguro y herramientas ofimáticas."
+      },
+      "biblioteca": {
+        "ageRange": "Todas las edades",
+        "schedule": "Lunes a Viernes, 8:00 AM - 5:00 PM",
+        "longDescription": "Nuestra biblioteca comunitaria es un espacio de lectura, préstamo de libros y talleres de fomento lector. Los beneficiarios pueden explorar el mundo a través de la lectura, participar en clubes de libro y actividades que fortalecen sus competencias de comprensión lectora."
       },
       "psicologia": {
         "ageRange": "Todas las edades",
         "schedule": "Lunes a Viernes, 8:00 AM - 5:00 PM",
         "longDescription": "Nuestro servicio de psicología ofrece acompañamiento psicosocial para niños, jóvenes y familias. A través de atención individual, talleres grupales y escuela de padres, fortalecemos el bienestar emocional y las relaciones familiares."
       },
-      "recreacion-y-deportes": {
-        "ageRange": "6-17 años",
-        "schedule": "Lunes a Viernes, 2:00 PM - 5:00 PM",
-        "longDescription": "El programa de recreación y deportes ofrece actividades lúdicas y deportivas para el desarrollo físico, la sana convivencia y el trabajo en equipo. Los participantes practican fútbol, baloncesto, juegos cooperativos y actividades al aire libre."
+      "grupo-mayores": {
+        "ageRange": "60+ años",
+        "schedule": "Miércoles y Viernes, 9:00 AM - 12:00 PM",
+        "longDescription": "Ofrecemos actividades recreativas, culturales y de bienestar para los adultos mayores de la comunidad. El programa incluye manualidades, actividad física adaptada, encuentros sociales y acompañamiento para mejorar su calidad de vida."
+      },
+      "talleres-para-padres": {
+        "ageRange": "Padres y cuidadores",
+        "schedule": "Sábados, 9:00 AM - 11:00 AM",
+        "longDescription": "Los Talleres para Padres ofrecen encuentros para padres y cuidadores sobre crianza positiva, comunicación efectiva, acompañamiento escolar y desarrollo infantil. Fortalecemos el vínculo familiar como base del bienestar de los niños."
       },
       "ropero": {
         "ageRange": "Todas las edades",
         "schedule": "Sábados, 8:00 AM - 12:00 PM",
         "longDescription": "El ropero comunitario recibe, organiza y distribuye donaciones de ropa y calzado para las familias de la comunidad. Este programa garantiza que los beneficiarios tengan acceso a prendas de vestir en buen estado."
-      },
-      "escuela-de-padres": {
-        "ageRange": "Padres y cuidadores",
-        "schedule": "Sábados, 9:00 AM - 11:00 AM",
-        "longDescription": "La Escuela de Padres ofrece talleres y encuentros para padres y cuidadores sobre crianza positiva, comunicación efectiva, acompañamiento escolar y desarrollo infantil. Fortalecemos el vínculo familiar como base del bienestar de los niños."
-      },
-      "teatro": {
-        "ageRange": "6-17 años",
-        "schedule": "Lunes y Miércoles, 3:00 PM - 5:00 PM",
-        "longDescription": "Nuestro programa de teatro utiliza las artes escénicas como medio de expresión, comunicación y desarrollo de la confianza. Los participantes aprenden actuación, improvisación y montaje de obras, presentándose en eventos comunitarios."
-      },
-      "tecnologia": {
-        "ageRange": "8-17 años",
-        "schedule": "Lunes a Viernes, 2:00 PM - 4:00 PM",
-        "longDescription": "El programa de tecnología ofrece formación en herramientas informáticas, programación básica y habilidades digitales para el siglo XXI. Los estudiantes aprenden a usar computadores, internet seguro y herramientas ofimáticas."
       }
     }
   },
@@ -321,7 +314,7 @@
     "missionStatement": "Brindar atención integral a niños, niñas y jóvenes en condición de vulnerabilidad de Ciudad Bolívar, a través de programas de educación, arte, cultura y recreación, promoviendo su desarrollo personal y social como agentes de cambio en su comunidad.",
     "missionBadge": "Más de 180 niños atendidos actualmente",
     "visionStatement": "Ser una organización referente en la transformación social de comunidades vulnerables en Colombia, reconocida por la calidad e impacto de sus programas educativos, artísticos y culturales, y por la formación de ciudadanos comprometidos con el cambio social.",
-    "visionBadge": "23 años y 14 programas transformando comunidades",
+    "visionBadge": "23 años y 13 programas transformando comunidades",
     "timeline": {
       "title": "Nuestra Trayectoria",
       "subtitle": "Más de dos décadas de historia construyendo sueños y transformando realidades en Ciudad Bolívar.",
@@ -355,7 +348,7 @@
       },
       "2024": {
         "title": "Actualidad",
-        "description": "14 programas activos atendiendo a más de 1.877 niños y jóvenes."
+        "description": "13 programas activos atendiendo a más de 1.877 niños y jóvenes."
       }
     },
     "values": {
@@ -388,7 +381,7 @@
     },
     "teamSection": {
       "title": "Conoce a nuestro equipo",
-      "description": "Más de 33 profesionales comprometidos con la transformación social. Educadores, artistas, psicólogos y administradores que hacen posible nuestros 14 programas.",
+      "description": "Más de 33 profesionales comprometidos con la transformación social. Educadores, artistas, psicólogos y administradores que hacen posible nuestros 13 programas.",
       "cta": "Ver Todo el Equipo"
     },
     "ctaTitle": "Únete a la familia Cigarra",
@@ -657,7 +650,7 @@
     "howToApply": "Cómo Aplicar",
     "activeVolunteers": "+50 voluntarios activos",
     "yearsExperience": "+23 años de experiencia",
-    "programsCount": "14 programas",
+    "programsCount": "13 programas",
     "whyVolunteer": "Por qué ser voluntario",
     "reasonsToJoin": "Razones para",
     "joinHighlight": "unirte",
@@ -768,7 +761,7 @@
     "models": {
       "donation": { "title": "Donación Corporativa", "description": "Aportes monetarios con certificado de donación oficial para deducción tributaria. Montos flexibles según la capacidad de tu empresa." },
       "volunteering": { "title": "Voluntariado Corporativo", "description": "Organiza jornadas de voluntariado para tus empleados. Actividades de team building con impacto social real en educación, arte y recreación." },
-      "sponsorship": { "title": "Patrocinio de Programas", "description": "Patrocina uno de nuestros 14 programas activos: educación, música, danza, teatro, deportes, tecnología, biblioteca y más." },
+      "sponsorship": { "title": "Patrocinio de Programas", "description": "Patrocina uno de nuestros 13 programas activos: educación, música, danza, artes, tecnología, biblioteca y más." },
       "inKind": { "title": "Donación en Especie", "description": "Aporta materiales escolares, equipos tecnológicos, instrumentos musicales, alimentos, mobiliario o implementos deportivos." },
       "cobranding": { "title": "Co-branding y Alianzas", "description": "Alianzas estratégicas para visibilidad mutua. Tu marca presente en nuestros eventos, redes sociales, material impreso y reportes de impacto." }
     },
@@ -850,7 +843,7 @@
     },
     "programs": {
       "title": "Programas",
-      "description": "14 programas de educación, arte y cultura para niños y jóvenes en Ciudad Bolívar, Bogotá."
+      "description": "13 programas de educación, arte y cultura para niños y jóvenes en Ciudad Bolívar, Bogotá."
     },
     "howToHelp": {
       "title": "Cómo Ayudar",

@@ -29,6 +29,7 @@ const navItems: NavItem[] = [
     ],
   },
   { href: '/programas', key: 'programs' },
+  { href: '/impacto-empresarial', key: 'companies', featured: true },
   {
     key: 'getInvolved',
     featured: true,
@@ -36,11 +37,9 @@ const navItems: NavItem[] = [
       { href: '/como-ayudar', key: 'howToHelp' },
       { href: '/plan-padrino', key: 'planPadrino' },
       { href: '/voluntariado', key: 'volunteer' },
-      { href: '/impacto-empresarial', key: 'corporateImpact', highlight: true },
     ],
   },
   { href: '/noticias', key: 'news' },
-  { href: '/historias-de-exito', key: 'successStories' },
   { href: '/contacto', key: 'contact' },
 ];
 
@@ -204,7 +203,8 @@ export default function Navbar() {
             height={56}
             priority
             className={cn(
-              'h-12 w-auto transition-all duration-700 ease-out',
+              'w-auto transition-all duration-700 ease-out',
+              !scrolled && isHome ? 'h-22' : 'h-12',
               showWhiteLogo
                 ? 'brightness-0 invert'
                 : ''
@@ -230,16 +230,23 @@ export default function Navbar() {
                 key={item.key}
                 href={item.href as '/'}
                 className={cn(
-                  'rounded-lg px-3 py-2 text-sm font-medium transition-all duration-500 ease-out',
-                  pathWithoutLocale === item.href
+                  'flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-500 ease-out',
+                  item.featured
                     ? scrolled
-                      ? 'bg-primary-50 text-primary-600'
-                      : 'bg-white/20 text-white'
-                    : scrolled
-                      ? 'text-gray-700 hover:bg-gray-100'
-                      : 'text-white/90 hover:bg-white/10 hover:text-white'
+                      ? 'bg-accent-50 text-accent-700 hover:bg-accent-100'
+                      : 'bg-white/15 text-white hover:bg-white/25'
+                    : pathWithoutLocale === item.href
+                      ? scrolled
+                        ? 'bg-primary-50 text-primary-600'
+                        : 'bg-white/20 text-white'
+                      : scrolled
+                        ? 'text-gray-700 hover:bg-gray-100'
+                        : 'text-white/90 hover:bg-white/10 hover:text-white'
                 )}
               >
+                {item.featured && (
+                  <HiBriefcase className={cn('h-4 w-4', scrolled ? 'text-accent-500' : 'text-accent-400')} />
+                )}
                 {t(item.key)}
               </Link>
             )
@@ -374,12 +381,15 @@ export default function Navbar() {
                     key={item.key}
                     href={item.href as '/'}
                     className={cn(
-                      'block rounded-lg px-4 py-3 text-sm font-medium transition-all duration-300',
-                      pathWithoutLocale === item.href
-                        ? 'bg-primary-50 text-primary-600'
-                        : 'text-gray-700 hover:bg-gray-50'
+                      'flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-300',
+                      item.featured
+                        ? 'bg-accent-50 text-accent-700'
+                        : pathWithoutLocale === item.href
+                          ? 'bg-primary-50 text-primary-600'
+                          : 'text-gray-700 hover:bg-gray-50'
                     )}
                   >
+                    {item.featured && <HiBriefcase className="h-4 w-4 text-accent-500" />}
                     {t(item.key)}
                   </Link>
                 )

@@ -24,7 +24,7 @@ const articles = [
     date: '2024-06-15',
     author: 'Fundación Cigarra',
     image: '/images/news/celebramos-22-anos.webp',
-    content: 'Este año marca un hito especial para nuestra fundación: 23 años de labor ininterrumpida al servicio de los niños y jóvenes de Ciudad Bolívar en Bogotá.\n\nDesde nuestros humildes comienzos en 2002, hemos crecido hasta ayudar a más de 1.877 niños y jóvenes a través de 14 programas de educación, arte y cultura, generando más de 100 empleos y beneficiando a más de 190 familias.\n\nNuestro compromiso sigue siendo el mismo: brindar oportunidades de desarrollo integral a quienes más lo necesitan, creando un espacio seguro donde los sueños de nuestros niños puedan florecer.\n\nAgradecemos a todos nuestros donantes, voluntarios y aliados que hacen posible esta labor. Juntos, seguiremos transformando vidas.',
+    content: 'Este año marca un hito especial para nuestra fundación: 23 años de labor ininterrumpida al servicio de los niños y jóvenes de Ciudad Bolívar en Bogotá.\n\nDesde nuestros humildes comienzos en 2002, hemos crecido hasta ayudar a más de 1.877 niños y jóvenes a través de 13 programas de educación, arte y cultura, generando más de 100 empleos y beneficiando a más de 190 familias.\n\nNuestro compromiso sigue siendo el mismo: brindar oportunidades de desarrollo integral a quienes más lo necesitan, creando un espacio seguro donde los sueños de nuestros niños puedan florecer.\n\nAgradecemos a todos nuestros donantes, voluntarios y aliados que hacen posible esta labor. Juntos, seguiremos transformando vidas.',
   },
   {
     slug: 'nuevos-talleres-musica',

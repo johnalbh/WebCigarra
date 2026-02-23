@@ -24,20 +24,19 @@ const navLinks = [
 ];
 
 const programSlugs = [
+  'primera-infancia',
   'refuerzo-escolar',
-  'biblioteca',
-  'centro-comunitario',
   'danza',
-  'grupo-adultos-mayores',
   'ingles',
   'musica',
-  'primera-infancia',
-  'psicologia',
-  'recreacion-y-deportes',
-  'ropero',
-  'escuela-de-padres',
-  'teatro',
+  'artes',
+  'escuela-de-artes',
   'tecnologia',
+  'biblioteca',
+  'psicologia',
+  'grupo-mayores',
+  'talleres-para-padres',
+  'ropero',
 ];
 
 const helpLinks = [

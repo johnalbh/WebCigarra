@@ -86,6 +86,7 @@ const partners = [
   { name: 'Charles Wright Academy', logo: '/images/partners/cwa.webp', tier: 'gold' as const },
   { name: 'Karelsie Foundation', logo: '/images/partners/karelsie.webp', tier: 'gold' as const },
   { name: 'HomeCenter', logo: '/images/partners/homecenter.webp', tier: 'gold' as const },
+  { name: 'ABACO - Banco de Alimentos', logo: '/images/partners/abaco.svg', tier: 'gold' as const },
   { name: 'Aqualogic', logo: '/images/partners/aqualogic.webp', tier: 'silver' as const },
   { name: 'Opperar', logo: '/images/partners/opperar.webp', tier: 'silver' as const },
   { name: 'Makri', logo: '/images/partners/makri.webp', tier: 'silver' as const },
@@ -466,7 +467,7 @@ export default function ImpactoEmpresarialPage() {
                 <StaggerContainer scaleUp className="flex flex-wrap items-center justify-center gap-10" staggerDelay={0.08}>
                   {platinumPartners.map((p) => (
                     <StaggerItem scaleUp key={p.name}>
-                      <div className="group relative h-16 w-40 md:h-20 md:w-48 grayscale transition-all duration-500 hover:grayscale-0">
+                      <div className="group relative h-20 w-48 md:h-24 md:w-56 grayscale transition-all duration-500 hover:grayscale-0">
                         <Image
                           src={p.logo}
                           alt={p.name}
@@ -488,7 +489,7 @@ export default function ImpactoEmpresarialPage() {
                 <StaggerContainer scaleUp className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
                   {goldPartners.map((p) => (
                     <StaggerItem scaleUp key={p.name}>
-                      <div className="group relative h-12 w-32 md:h-16 md:w-40 grayscale transition-all duration-500 hover:grayscale-0">
+                      <div className="group relative h-16 w-40 md:h-20 md:w-48 grayscale transition-all duration-500 hover:grayscale-0">
                         <Image
                           src={p.logo}
                           alt={p.name}
@@ -510,7 +511,7 @@ export default function ImpactoEmpresarialPage() {
                 <StaggerContainer scaleUp className="flex flex-wrap items-center justify-center gap-8" staggerDelay={0.08}>
                   {silverPartners.map((p) => (
                     <StaggerItem scaleUp key={p.name}>
-                      <div className="group relative h-10 w-28 md:h-12 md:w-32 grayscale transition-all duration-500 hover:grayscale-0">
+                      <div className="group relative h-14 w-36 md:h-16 md:w-40 grayscale transition-all duration-500 hover:grayscale-0">
                         <Image
                           src={p.logo}
                           alt={p.name}

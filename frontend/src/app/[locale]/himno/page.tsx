@@ -263,7 +263,7 @@ export default function AnthemPage() {
             </h2>
             <p className="mx-auto mb-10 max-w-2xl text-lg text-white/80">
               El himno refleja el espiritu de transformacion que viven nuestros
-              ninos y jovenes cada dia a traves de nuestros 14 programas.
+              ninos y jovenes cada dia a traves de nuestros 13 programas.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
