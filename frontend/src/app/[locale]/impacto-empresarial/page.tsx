@@ -44,9 +44,9 @@ const modelConfig = [
   { key: 'donation', icon: HiCurrencyDollar, accent: 'from-primary-500 to-primary-700', border: 'border-primary-200 hover:border-primary-400' },
   { key: 'volunteering', icon: HiUserGroup, accent: 'from-green-500 to-green-700', border: 'border-green-200 hover:border-green-400' },
   { key: 'sponsorship', icon: HiAcademicCap, accent: 'from-accent-500 to-accent-700', border: 'border-accent-200 hover:border-accent-400' },
+  { key: 'planPadrino', icon: HiHeart, accent: 'from-sky-500 to-sky-700', border: 'border-sky-200 hover:border-sky-400' },
   { key: 'inKind', icon: HiTruck, accent: 'from-rose-500 to-rose-700', border: 'border-rose-200 hover:border-rose-400' },
   { key: 'cobranding', icon: HiSpeakerphone, accent: 'from-violet-500 to-violet-700', border: 'border-violet-200 hover:border-violet-400' },
-  { key: 'planPadrino', icon: HiHeart, accent: 'from-sky-500 to-sky-700', border: 'border-sky-200 hover:border-sky-400' },
 ];
 
 /* ── ESAL trust badge config (keys only) ── */
