@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import FloatingSocialBar from '@/components/shared/FloatingSocialBar';
 import DonationFloatingCTA from '@/components/layout/DonationFloatingCTA';
+import PayPalProvider from '@/components/providers/PayPalProvider';
 import { SITE_URL, SITE_NAME } from '@/lib/seo';
 
 const inter = Inter({
@@ -93,12 +94,14 @@ export default async function LocaleLayout({
         className={`${inter.variable} ${poppins.variable} ${playfair.variable} font-body antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-          <WhatsAppButton />
-          <FloatingSocialBar />
-          <DonationFloatingCTA />
+          <PayPalProvider>
+            <Navbar />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+            <FloatingSocialBar />
+            <DonationFloatingCTA />
+          </PayPalProvider>
         </NextIntlClientProvider>
       </body>
     </html>

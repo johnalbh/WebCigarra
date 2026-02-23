@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
@@ -25,7 +25,7 @@ import {
   HiMail,
   HiQuestionMarkCircle,
 } from "react-icons/hi";
-import { FaChild, FaHandHoldingHeart, FaChartLine } from "react-icons/fa";
+import { FaChild, FaHandHoldingHeart, FaChartLine, FaPaypal } from "react-icons/fa";
 
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
@@ -36,6 +36,7 @@ const tierConfig = [
   {
     key: "monthly" as const,
     price: 65000,
+    priceUSD: 15,
     children: 1,
     highlighted: false,
     icon: HiHeart,
@@ -43,11 +44,13 @@ const tierConfig = [
     iconBg: "bg-primary-100 text-primary-600",
     badgeBg: "bg-primary-50 text-primary-700",
     link: "https://subscription-landing.epayco.co/plan/9993771eb5d4c1974062db2",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_MONTHLY || "",
     includeKeys: ["educationComplete", "nutritionDaily", "monthlyReport"],
   },
   {
     key: "semester" as const,
     price: 330000,
+    priceUSD: 80,
     children: 1,
     highlighted: false,
     icon: HiShieldCheck,
@@ -55,11 +58,13 @@ const tierConfig = [
     iconBg: "bg-primary-100 text-primary-600",
     badgeBg: "bg-primary-50 text-primary-700",
     link: "https://subscription-landing.epayco.co/plan/99937a3eea2b9882807efb0",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_SEMESTER || "",
     includeKeys: ["educationComplete", "nutritionDaily", "bimonthlyReports", "childPhoto"],
   },
   {
     key: "annual" as const,
     price: 650000,
+    priceUSD: 155,
     children: 1,
     highlighted: true,
     icon: HiStar,
@@ -67,11 +72,13 @@ const tierConfig = [
     iconBg: "bg-accent-100 text-accent-600",
     badgeBg: "bg-accent-50 text-accent-700",
     link: "https://subscription-landing.epayco.co/plan/99937be6d46e7149f0f5292",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ANNUAL || "",
     includeKeys: ["educationComplete", "nutritionDaily", "quarterlyReports", "annualCertificate", "personalizedLetter"],
   },
   {
     key: "gold" as const,
     price: 1200000,
+    priceUSD: 290,
     children: 2,
     highlighted: false,
     icon: HiSparkles,
@@ -79,11 +86,13 @@ const tierConfig = [
     iconBg: "bg-accent-100 text-accent-600",
     badgeBg: "bg-accent-50 text-accent-700",
     link: "https://subscription-landing.epayco.co/plan/99937daa95cda6af90e37f2",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_GOLD || "",
     includeKeys: ["educationFor2", "nutritionFor2", "quarterlyReports", "annualCertificate", "lettersFrom2"],
   },
   {
     key: "platinum" as const,
     price: 1650000,
+    priceUSD: 400,
     children: 3,
     highlighted: false,
     icon: HiGlobeAlt,
@@ -91,11 +100,13 @@ const tierConfig = [
     iconBg: "bg-primary-100 text-primary-600",
     badgeBg: "bg-primary-50 text-primary-700",
     link: "https://subscription-landing.epayco.co/plan/999380649eb24bc4e0c3f52",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_PLATINUM || "",
     includeKeys: ["educationFor3", "nutritionFor3", "quarterlyReports", "annualCertificate", "lettersFrom2", "eventInvitation"],
   },
   {
     key: "ultra" as const,
     price: 2100000,
+    priceUSD: 510,
     children: 4,
     highlighted: false,
     icon: HiStar,
@@ -103,6 +114,7 @@ const tierConfig = [
     iconBg: "bg-primary-100 text-primary-600",
     badgeBg: "bg-primary-50 text-primary-700",
     link: "https://subscription-landing.epayco.co/plan/999382045fa92aa320e4d12",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ULTRA || "",
     includeKeys: [
       "educationFor4",
       "nutritionFor4",
@@ -200,6 +212,15 @@ export default function PlanPadrinoPage() {
   const t = useTranslations("planPadrino");
   const tFaq = useTranslations("faq");
   const tContact = useTranslations("contact");
+  const locale = useLocale();
+  const isPayPal = locale === "en";
+
+  const formatPrice = (tier: (typeof tierConfig)[number]) => {
+    if (isPayPal) {
+      return `$${tier.priceUSD.toLocaleString("en-US")}`;
+    }
+    return `$${tier.price.toLocaleString("es-CO")}`;
+  };
 
   return (
     <>
@@ -386,9 +407,11 @@ export default function PlanPadrinoPage() {
                       <div className="mb-3">
                         <div className="flex items-baseline gap-1">
                           <span className={`font-heading text-3xl font-bold ${tier.highlighted ? "text-accent-700" : "text-gray-900"}`}>
-                            ${tier.price.toLocaleString("es-CO")}
+                            {formatPrice(tier)}
                           </span>
-                          <span className="text-sm font-medium text-gray-400">COP/{t(`tiers.${tier.key}.period`)}</span>
+                          <span className="text-sm font-medium text-gray-400">
+                            {isPayPal ? "USD" : "COP"}/{t(`tiers.${tier.key}.period`)}
+                          </span>
                         </div>
                       </div>
 
@@ -410,19 +433,47 @@ export default function PlanPadrinoPage() {
                     </div>
 
                     <div className="p-6 pt-0">
-                      <a
-                        href={tier.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 font-heading font-semibold text-white transition-all duration-300 ${
-                          tier.highlighted
-                            ? "bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20"
-                            : "bg-primary-500 hover:bg-primary-400"
-                        }`}
-                      >
-                        <FaHandHoldingHeart className="h-4 w-4" />
-                        {t("sponsorNow")}
-                      </a>
+                      {isPayPal && tier.paypalPlanId ? (
+                        <a
+                          href={`https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=${tier.paypalPlanId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 font-heading font-semibold text-white transition-all duration-300 ${
+                            tier.highlighted
+                              ? "bg-[#0070ba] hover:bg-[#005ea6] shadow-md shadow-[#0070ba]/20"
+                              : "bg-[#0070ba] hover:bg-[#005ea6]"
+                          }`}
+                        >
+                          <FaPaypal className="h-4 w-4" />
+                          {t("subscribePayPal")}
+                        </a>
+                      ) : isPayPal ? (
+                        <Link
+                          href={"/contacto" as "/contacto"}
+                          className={`flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 font-heading font-semibold text-white transition-all duration-300 ${
+                            tier.highlighted
+                              ? "bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20"
+                              : "bg-primary-500 hover:bg-primary-400"
+                          }`}
+                        >
+                          <FaHandHoldingHeart className="h-4 w-4" />
+                          {t("contactToSubscribe")}
+                        </Link>
+                      ) : (
+                        <a
+                          href={tier.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 font-heading font-semibold text-white transition-all duration-300 ${
+                            tier.highlighted
+                              ? "bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20"
+                              : "bg-primary-500 hover:bg-primary-400"
+                          }`}
+                        >
+                          <FaHandHoldingHeart className="h-4 w-4" />
+                          {t("sponsorNow")}
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 </StaggerItem>
@@ -586,15 +637,25 @@ export default function PlanPadrinoPage() {
             <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">{t("changeLifeDescription")}</p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <a
-                href="https://subscription-landing.epayco.co/subscription-landing/landing/699938851815d78a6a75f635"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl"
-              >
-                <HiHeart className="h-5 w-5" />
-                {t("sponsorCOP")}
-              </a>
+              {isPayPal ? (
+                <Link
+                  href="/como-ayudar"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl"
+                >
+                  <FaPaypal className="h-5 w-5" />
+                  {t("donateUSD")}
+                </Link>
+              ) : (
+                <a
+                  href="https://subscription-landing.epayco.co/subscription-landing/landing/699938851815d78a6a75f635"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl"
+                >
+                  <HiHeart className="h-5 w-5" />
+                  {t("sponsorCOP")}
+                </a>
+              )}
               <Link
                 href={"/contacto" as "/contacto"}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"

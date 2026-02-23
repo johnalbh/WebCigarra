@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'motion/react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   HiCheckCircle,
   HiXCircle,
@@ -20,6 +20,8 @@ import { EASE_APPLE } from '@/lib/animation-config';
 interface TransactionStatus {
   status: string;
   amount: number;
+  currency?: string;
+  gateway?: string;
   referenceCode: string;
   donorName: string;
   approvedDate: string | null;
@@ -28,7 +30,15 @@ interface TransactionStatus {
 
 // ── Helpers ──
 
-function formatCOP(amount: number): string {
+function formatCurrency(amount: number, currency: string = 'COP'): string {
+  if (currency === 'USD') {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  }
   return new Intl.NumberFormat('es-CO', {
     style: 'currency',
     currency: 'COP',
@@ -59,6 +69,8 @@ async function fetchFromEpayco(refPayco: string): Promise<TransactionStatus> {
   return {
     status: mapEpaycoCode(d.x_cod_response),
     amount: parseFloat(d.x_amount) || 0,
+    currency: 'COP',
+    gateway: 'Epayco',
     referenceCode: d.x_id_invoice || refPayco,
     donorName: [d.x_customer_name, d.x_customer_lastname].filter(Boolean).join(' '),
     approvedDate: d.x_approval_code ? d.x_transaction_date : null,
@@ -79,10 +91,30 @@ async function fetchFromBackendProxy(refPayco: string): Promise<TransactionStatu
   return {
     status: statusMap[data.status] || (data.isApproved ? 'Approved' : 'Failed'),
     amount: data.amount || 0,
+    currency: 'COP',
+    gateway: 'Epayco',
     referenceCode: data.refPayco || refPayco,
     donorName: '',
     approvedDate: data.isApproved ? new Date().toISOString() : null,
     transactionDate: new Date().toISOString(),
+  };
+}
+
+async function fetchFromBackendStatus(reference: string): Promise<TransactionStatus> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+  const res = await fetch(`${apiUrl}/api/donations/${reference}/status`);
+  if (!res.ok) throw new Error('Status API error');
+  const data = await res.json();
+
+  return {
+    status: data.status,
+    amount: data.amount,
+    currency: data.currency || 'USD',
+    gateway: data.gateway || 'PayPal',
+    referenceCode: data.referenceCode || reference,
+    donorName: data.donorName || '',
+    approvedDate: data.approvedDate || null,
+    transactionDate: data.transactionDate || new Date().toISOString(),
   };
 }
 
@@ -125,62 +157,90 @@ const STATUS_CONFIG = {
 
 export default function DonationResponsePage() {
   const t = useTranslations('donationResponse');
+  const locale = useLocale();
   const searchParams = useSearchParams();
   const [txStatus, setTxStatus] = useState<TransactionStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const fetchStatus = useCallback(async (refPayco: string, attempt: number) => {
+  const fetchEpaycoStatus = useCallback(async (refPayco: string, attempt: number) => {
     const MAX_ATTEMPTS = 5;
     const RETRY_INTERVAL = 3000;
 
     try {
-      // Try ePayco directly first, fallback to backend proxy only if CORS blocks
       let result: TransactionStatus | null = null;
 
       try {
         result = await fetchFromEpayco(refPayco);
       } catch {
-        // ePayco direct failed (likely CORS), try backend proxy
         result = await fetchFromBackendProxy(refPayco);
       }
 
       setTxStatus(result);
 
-      // If still pending, retry
       const isPending = result.status === 'PendingCheckout' || result.status === 'Pending';
       if (isPending && attempt < MAX_ATTEMPTS) {
-        setTimeout(() => fetchStatus(refPayco, attempt + 1), RETRY_INTERVAL);
+        setTimeout(() => fetchEpaycoStatus(refPayco, attempt + 1), RETRY_INTERVAL);
       } else {
         setLoading(false);
       }
     } catch (err) {
       if (attempt < MAX_ATTEMPTS) {
-        setTimeout(() => fetchStatus(refPayco, attempt + 1), RETRY_INTERVAL);
+        setTimeout(() => fetchEpaycoStatus(refPayco, attempt + 1), RETRY_INTERVAL);
       } else {
-        setError(err instanceof Error ? err.message : 'Error desconocido');
+        setError(err instanceof Error ? err.message : t('unknownError'));
         setLoading(false);
       }
     }
-  }, []);
+  }, [t]);
+
+  const fetchPayPalStatus = useCallback(async (reference: string, attempt: number) => {
+    const MAX_ATTEMPTS = 3;
+    const RETRY_INTERVAL = 2000;
+
+    try {
+      const result = await fetchFromBackendStatus(reference);
+      setTxStatus(result);
+
+      const isPending = result.status === 'PendingCheckout' || result.status === 'Pending';
+      if (isPending && attempt < MAX_ATTEMPTS) {
+        setTimeout(() => fetchPayPalStatus(reference, attempt + 1), RETRY_INTERVAL);
+      } else {
+        setLoading(false);
+      }
+    } catch (err) {
+      if (attempt < MAX_ATTEMPTS) {
+        setTimeout(() => fetchPayPalStatus(reference, attempt + 1), RETRY_INTERVAL);
+      } else {
+        setError(err instanceof Error ? err.message : t('unknownError'));
+        setLoading(false);
+      }
+    }
+  }, [t]);
 
   useEffect(() => {
     const refPayco = searchParams.get('ref_payco');
+    const ref = searchParams.get('ref');
+    const gateway = searchParams.get('gateway');
 
-    if (!refPayco) {
-      setError('No se encontro referencia de pago');
+    if (gateway === 'paypal' && ref) {
+      // PayPal: fetch from our backend status API
+      fetchPayPalStatus(ref, 0);
+    } else if (refPayco) {
+      // ePayco: existing flow
+      fetchEpaycoStatus(refPayco, 0);
+    } else {
+      setError(t('noReference'));
       setLoading(false);
-      return;
     }
-
-    fetchStatus(refPayco, 0);
-  }, [searchParams, fetchStatus]);
+  }, [searchParams, fetchEpaycoStatus, fetchPayPalStatus, t]);
 
   // ── Render ──
 
   const statusKey = txStatus?.status as keyof typeof STATUS_CONFIG;
   const config = STATUS_CONFIG[statusKey] || STATUS_CONFIG.Failed;
   const Icon = config.icon;
+  const txCurrency = txStatus?.currency || (locale === 'en' ? 'USD' : 'COP');
 
   const getStatusTranslationKey = (status: string) => {
     switch (status) {
@@ -238,7 +298,7 @@ export default function DonationResponsePage() {
 
             <p className="mb-4 text-neutral-600">
               {t(`${getStatusTranslationKey(txStatus.status)}Message`, {
-                amount: formatCOP(txStatus.amount),
+                amount: formatCurrency(txStatus.amount, txCurrency),
               })}
             </p>
 
@@ -249,7 +309,7 @@ export default function DonationResponsePage() {
                 transition={{ delay: 0.4 }}
                 className="mb-6 text-3xl font-bold text-green-700"
               >
-                {formatCOP(txStatus.amount)}
+                {formatCurrency(txStatus.amount, txCurrency)}
               </motion.div>
             )}
 

@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from '@/i18n/routing';
 import {
   HiHeart,
   HiArrowRight,
@@ -10,18 +11,25 @@ import {
   HiShieldCheck,
 } from 'react-icons/hi2';
 import { useEpayco } from '@/hooks/useEpayco';
+import PayPalButtonWrapper from '@/components/sections/PayPalButtonWrapper';
 import { EASE_APPLE, STAGGER } from '@/lib/animation-config';
 
-const PRESET_AMOUNTS = [
+// ── Amount presets per currency ──
+const PRESET_AMOUNTS_COP = [
   { value: 30000, impactKey: 'impact30000' },
   { value: 50000, impactKey: 'impact50000' },
   { value: 100000, impactKey: 'impact100000' },
   { value: 200000, impactKey: 'impact200000' },
   { value: 500000, impactKey: 'impact500000' },
 ];
-const MIN_AMOUNT = 1000;
-const MAX_AMOUNT = 50000000;
-const DEFAULT_AMOUNT = 50000;
+
+const PRESET_AMOUNTS_USD = [
+  { value: 5, impactKey: 'impact5' },
+  { value: 10, impactKey: 'impact10' },
+  { value: 25, impactKey: 'impact25' },
+  { value: 50, impactKey: 'impact50' },
+  { value: 100, impactKey: 'impact100' },
+];
 
 const ID_TYPES = [
   { value: 'CC', label: 'Cedula de Ciudadania' },
@@ -48,7 +56,15 @@ interface DonationCheckoutProps {
   onClose?: () => void;
 }
 
-function formatCOP(amount: number): string {
+function formatCurrency(amount: number, currency: 'COP' | 'USD'): string {
+  if (currency === 'USD') {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  }
   return new Intl.NumberFormat('es-CO', {
     style: 'currency',
     currency: 'COP',
@@ -57,18 +73,22 @@ function formatCOP(amount: number): string {
   }).format(amount);
 }
 
-function formatAmount(amount: number): string {
-  return new Intl.NumberFormat('es-CO').format(amount);
+function formatAmount(amount: number, isUSD: boolean): string {
+  return isUSD
+    ? new Intl.NumberFormat('en-US').format(amount)
+    : new Intl.NumberFormat('es-CO').format(amount);
 }
 
 function parseFormattedNumber(value: string): number {
   return parseInt(value.replace(/\D/g, '')) || 0;
 }
 
-function formatInputNumber(value: string): string {
+function formatInputNumber(value: string, isUSD: boolean): string {
   const digits = value.replace(/\D/g, '');
   if (!digits) return '';
-  return new Intl.NumberFormat('es-CO').format(parseInt(digits));
+  return isUSD
+    ? new Intl.NumberFormat('en-US').format(parseInt(digits))
+    : new Intl.NumberFormat('es-CO').format(parseInt(digits));
 }
 
 export default function DonationCheckout({
@@ -78,6 +98,15 @@ export default function DonationCheckout({
   onClose,
 }: DonationCheckoutProps) {
   const t = useTranslations('donationCheckout');
+  const locale = useLocale();
+  const router = useRouter();
+  const isPayPal = locale === 'en';
+  const currency: 'COP' | 'USD' = isPayPal ? 'USD' : 'COP';
+  const presets = isPayPal ? PRESET_AMOUNTS_USD : PRESET_AMOUNTS_COP;
+  const MIN_AMOUNT = isPayPal ? 1 : 1000;
+  const MAX_AMOUNT = isPayPal ? 100000 : 50000000;
+  const DEFAULT_AMOUNT = isPayPal ? 25 : 50000;
+
   const { openCheckout, isLoaded } = useEpayco();
 
   const initialAmount = preselectedAmount || DEFAULT_AMOUNT;
@@ -96,16 +125,16 @@ export default function DonationCheckout({
     email: '',
     phoneNumber: '',
     city: '',
-    country: 'CO',
+    country: isPayPal ? 'US' : 'CO',
   });
 
   const currentAmount = isCustom ? parseFormattedNumber(customAmount) : selectedAmount;
 
   const currentImpact = isCustom
-    ? t('impactCustom')
-    : PRESET_AMOUNTS.find((p) => p.value === selectedAmount)
-      ? t(PRESET_AMOUNTS.find((p) => p.value === selectedAmount)!.impactKey)
-      : t('impactCustom');
+    ? t(isPayPal ? 'impactCustomUSD' : 'impactCustom')
+    : presets.find((p) => p.value === selectedAmount)
+      ? t(presets.find((p) => p.value === selectedAmount)!.impactKey)
+      : t(isPayPal ? 'impactCustomUSD' : 'impactCustom');
 
   const handleAmountSelect = useCallback((amount: number) => {
     setSelectedAmount(amount);
@@ -120,10 +149,10 @@ export default function DonationCheckout({
   }, []);
 
   const handleCustomAmountChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatInputNumber(e.target.value);
+    const formatted = formatInputNumber(e.target.value, isPayPal);
     setCustomAmount(formatted);
     setError('');
-  }, []);
+  }, [isPayPal]);
 
   const handleDonorChange = useCallback(
     (field: keyof DonorFormData, value: string) => {
@@ -135,31 +164,32 @@ export default function DonationCheckout({
 
   const validateStep1 = (): boolean => {
     if (currentAmount < MIN_AMOUNT) {
-      setError(t('minAmount'));
+      setError(t(isPayPal ? 'minAmountUSD' : 'minAmount'));
       return false;
     }
     if (currentAmount > MAX_AMOUNT) {
-      setError(`Monto maximo: ${formatCOP(MAX_AMOUNT)}`);
+      setError(`${t('maxAmountLabel')}: ${formatCurrency(MAX_AMOUNT, currency)}`);
       return false;
     }
     return true;
   };
 
   const validateStep2 = (): boolean => {
-    if (!donor.identificationNumber.trim()) {
+    // Colombian ID required only for ePayco
+    if (!isPayPal && !donor.identificationNumber.trim()) {
       setError(t('identificationNumber') + ' es requerido');
       return false;
     }
     if (!donor.firstName.trim()) {
-      setError(t('firstName') + ' es requerido');
+      setError(t('firstName') + (isPayPal ? ' is required' : ' es requerido'));
       return false;
     }
     if (!donor.lastName.trim()) {
-      setError(t('lastName') + ' es requerido');
+      setError(t('lastName') + (isPayPal ? ' is required' : ' es requerido'));
       return false;
     }
     if (!donor.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(donor.email)) {
-      setError(t('email') + ' no es valido');
+      setError(t('email') + (isPayPal ? ' is not valid' : ' no es valido'));
       return false;
     }
     return true;
@@ -173,7 +203,8 @@ export default function DonationCheckout({
     }
   };
 
-  const handleSubmit = async () => {
+  // ePayco submit (only used when locale is 'es')
+  const handleEpaycoSubmit = async () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
     setError('');
@@ -195,6 +226,7 @@ export default function DonationCheckout({
           city: donor.city.trim() || undefined,
           amount: currentAmount,
           campaignId: campaignId || undefined,
+          gateway: 'Epayco',
         }),
       });
 
@@ -324,7 +356,7 @@ export default function DonationCheckout({
                     >
                       <span className="font-heading text-5xl font-bold tracking-tight text-gray-900 md:text-6xl">
                         {currentAmount >= MIN_AMOUNT
-                          ? formatCOP(currentAmount)
+                          ? formatCurrency(currentAmount, currency)
                           : '$0'}
                       </span>
                     </motion.div>
@@ -336,7 +368,7 @@ export default function DonationCheckout({
 
                 {/* Preset amount pills */}
                 <div className="mb-6 flex flex-wrap justify-center gap-2">
-                  {PRESET_AMOUNTS.map((preset, i) => {
+                  {presets.map((preset, i) => {
                     const isActive = selectedAmount === preset.value && !isCustom;
                     return (
                       <motion.button
@@ -356,7 +388,7 @@ export default function DonationCheckout({
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         }`}
                       >
-                        {`$${formatAmount(preset.value)}`}
+                        {isPayPal ? `$${preset.value}` : `$${formatAmount(preset.value, false)}`}
                       </motion.button>
                     );
                   })}
@@ -364,7 +396,7 @@ export default function DonationCheckout({
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{
-                      delay: PRESET_AMOUNTS.length * STAGGER.fast,
+                      delay: presets.length * STAGGER.fast,
                       ease: EASE_APPLE,
                     }}
                     onClick={handleCustomToggle}
@@ -400,11 +432,11 @@ export default function DonationCheckout({
                             inputMode="numeric"
                             value={customAmount}
                             onChange={handleCustomAmountChange}
-                            placeholder="150.000"
+                            placeholder={isPayPal ? '75' : '150.000'}
                             className="w-full rounded-2xl border-2 border-gray-100 bg-gray-50/50 py-4 pl-10 pr-16 font-heading text-xl font-bold text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
                           />
                           <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-gray-300">
-                            COP
+                            {currency}
                           </span>
                         </div>
                       </div>
@@ -424,7 +456,7 @@ export default function DonationCheckout({
                       className="rounded-2xl bg-gradient-to-r from-primary-50 to-accent-50 p-4 text-center"
                     >
                       <p className="text-sm leading-relaxed text-primary-700">
-                        <span className="font-semibold">{formatCOP(currentAmount)}</span>
+                        <span className="font-semibold">{formatCurrency(currentAmount, currency)}</span>
                         {' = '}
                         {currentImpact}
                       </p>
@@ -441,7 +473,7 @@ export default function DonationCheckout({
                   className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-gray-900 px-6 py-4 font-heading text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   {currentAmount >= MIN_AMOUNT
-                    ? `${t('confirmDonation')} ${formatCOP(currentAmount)}`
+                    ? `${t('confirmDonation')} ${formatCurrency(currentAmount, currency)}`
                     : t('selectAmount')}
                   <HiArrowRight className="h-4 w-4" />
                 </motion.button>
@@ -465,7 +497,7 @@ export default function DonationCheckout({
                     onClick={() => setStep(1)}
                     className="inline-flex items-center gap-2 rounded-full bg-accent-50 px-4 py-2 text-sm font-semibold text-accent-700 transition-colors hover:bg-accent-100"
                   >
-                    {formatCOP(currentAmount)}
+                    {formatCurrency(currentAmount, currency)}
                     <span className="text-accent-400">|</span>
                     <span className="text-xs font-medium text-accent-500">
                       {t('editAmount')}
@@ -478,31 +510,33 @@ export default function DonationCheckout({
                 </p>
 
                 <div className="space-y-3">
-                  {/* ID Type + Number */}
-                  <div className="grid grid-cols-[120px_1fr] gap-3">
-                    <select
-                      value={donor.identificationType}
-                      onChange={(e) =>
-                        handleDonorChange('identificationType', e.target.value)
-                      }
-                      className="rounded-xl border-2 border-gray-100 bg-gray-50/50 px-3 py-3.5 text-sm font-medium text-gray-700 outline-none transition-all focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
-                    >
-                      {ID_TYPES.map((type) => (
-                        <option key={type.value} value={type.value}>
-                          {type.value}
-                        </option>
-                      ))}
-                    </select>
-                    <input
-                      type="text"
-                      value={donor.identificationNumber}
-                      onChange={(e) =>
-                        handleDonorChange('identificationNumber', e.target.value)
-                      }
-                      placeholder={t('identificationNumber')}
-                      className="rounded-xl border-2 border-gray-100 bg-gray-50/50 px-4 py-3.5 text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
-                    />
-                  </div>
+                  {/* ID Type + Number (only for ePayco / Colombia) */}
+                  {!isPayPal && (
+                    <div className="grid grid-cols-[120px_1fr] gap-3">
+                      <select
+                        value={donor.identificationType}
+                        onChange={(e) =>
+                          handleDonorChange('identificationType', e.target.value)
+                        }
+                        className="rounded-xl border-2 border-gray-100 bg-gray-50/50 px-3 py-3.5 text-sm font-medium text-gray-700 outline-none transition-all focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
+                      >
+                        {ID_TYPES.map((type) => (
+                          <option key={type.value} value={type.value}>
+                            {type.value}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        type="text"
+                        value={donor.identificationNumber}
+                        onChange={(e) =>
+                          handleDonorChange('identificationNumber', e.target.value)
+                        }
+                        placeholder={t('identificationNumber')}
+                        className="rounded-xl border-2 border-gray-100 bg-gray-50/50 px-4 py-3.5 text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
+                      />
+                    </div>
+                  )}
 
                   {/* Names */}
                   <div className="grid grid-cols-2 gap-3">
@@ -531,25 +565,27 @@ export default function DonationCheckout({
                     className="w-full rounded-xl border-2 border-gray-100 bg-gray-50/50 px-4 py-3.5 text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
                   />
 
-                  {/* Phone + City */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <input
-                      type="tel"
-                      value={donor.phoneNumber}
-                      onChange={(e) =>
-                        handleDonorChange('phoneNumber', e.target.value)
-                      }
-                      placeholder={t('phone')}
-                      className="rounded-xl border-2 border-gray-100 bg-gray-50/50 px-4 py-3.5 text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
-                    />
-                    <input
-                      type="text"
-                      value={donor.city}
-                      onChange={(e) => handleDonorChange('city', e.target.value)}
-                      placeholder={t('city')}
-                      className="rounded-xl border-2 border-gray-100 bg-gray-50/50 px-4 py-3.5 text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
-                    />
-                  </div>
+                  {/* Phone + City (only for ePayco) */}
+                  {!isPayPal && (
+                    <div className="grid grid-cols-2 gap-3">
+                      <input
+                        type="tel"
+                        value={donor.phoneNumber}
+                        onChange={(e) =>
+                          handleDonorChange('phoneNumber', e.target.value)
+                        }
+                        placeholder={t('phone')}
+                        className="rounded-xl border-2 border-gray-100 bg-gray-50/50 px-4 py-3.5 text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
+                      />
+                      <input
+                        type="text"
+                        value={donor.city}
+                        onChange={(e) => handleDonorChange('city', e.target.value)}
+                        placeholder={t('city')}
+                        className="rounded-xl border-2 border-gray-100 bg-gray-50/50 px-4 py-3.5 text-gray-900 outline-none transition-all placeholder:text-gray-300 focus:border-accent-500 focus:bg-white focus:ring-4 focus:ring-accent-500/10"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* Actions */}
@@ -595,7 +631,7 @@ export default function DonationCheckout({
                   {/* Amount */}
                   <div className="mb-5 text-center">
                     <p className="font-heading text-4xl font-bold tracking-tight text-gray-900">
-                      {formatCOP(currentAmount)}
+                      {formatCurrency(currentAmount, currency)}
                     </p>
                     <p className="mt-1 text-sm text-gray-400">{currentImpact}</p>
                   </div>
@@ -615,12 +651,14 @@ export default function DonationCheckout({
                       <span className="text-gray-400">{t('email')}</span>
                       <span className="font-medium text-gray-700">{donor.email}</span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-400">{t('identificationNumber')}</span>
-                      <span className="font-medium text-gray-700">
-                        {donor.identificationType} {donor.identificationNumber}
-                      </span>
-                    </div>
+                    {!isPayPal && (
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-400">{t('identificationNumber')}</span>
+                        <span className="font-medium text-gray-700">
+                          {donor.identificationType} {donor.identificationNumber}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Edit link */}
@@ -640,44 +678,65 @@ export default function DonationCheckout({
                   </div>
                 </div>
 
-                {/* Pay button */}
-                <motion.button
-                  onClick={handleSubmit}
-                  disabled={isSubmitting || !isLoaded}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="mt-6 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-accent-500 to-accent-600 px-6 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all hover:shadow-accent-500/40 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg
-                        className="h-5 w-5 animate-spin"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        />
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                        />
-                      </svg>
-                      {t('processing')}
-                    </>
-                  ) : (
-                    <>
-                      <HiHeart className="h-5 w-5" />
-                      {t('donateButton', { amount: formatCOP(currentAmount) })}
-                    </>
-                  )}
-                </motion.button>
+                {/* ── Payment buttons ── */}
+                {isPayPal ? (
+                  <div className="mt-6">
+                    <PayPalButtonWrapper
+                      amount={currentAmount}
+                      donorData={{
+                        firstName: donor.firstName,
+                        lastName: donor.lastName,
+                        email: donor.email,
+                        campaignId,
+                      }}
+                      onApprove={({ referenceCode }) => {
+                        router.push(
+                          `/donacion/respuesta?ref=${referenceCode}&gateway=paypal` as '/donacion/respuesta'
+                        );
+                      }}
+                      onError={(err) => setError(err)}
+                      onCancel={() => setError(t('paypalCancelled'))}
+                    />
+                  </div>
+                ) : (
+                  <motion.button
+                    onClick={handleEpaycoSubmit}
+                    disabled={isSubmitting || !isLoaded}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="mt-6 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-accent-500 to-accent-600 px-6 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all hover:shadow-accent-500/40 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg
+                          className="h-5 w-5 animate-spin"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                          />
+                        </svg>
+                        {t('processing')}
+                      </>
+                    ) : (
+                      <>
+                        <HiHeart className="h-5 w-5" />
+                        {t('donateButton', { amount: formatCurrency(currentAmount, currency) })}
+                      </>
+                    )}
+                  </motion.button>
+                )}
 
                 {/* Back button */}
                 <div className="mt-3 flex justify-center">
@@ -698,7 +757,7 @@ export default function DonationCheckout({
         <div className={`border-t border-gray-50 bg-gray-50/50 px-6 py-3 ${isModal ? 'mt-4' : ''}`}>
           <p className="flex items-center justify-center gap-1.5 text-xs text-gray-400">
             <HiShieldCheck className="h-3.5 w-3.5" />
-            {t('securePayment')}
+            {isPayPal ? t('securePaymentPayPal') : t('securePayment')}
           </p>
         </div>
       </motion.div>
