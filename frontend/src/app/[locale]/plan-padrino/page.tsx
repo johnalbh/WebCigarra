@@ -36,7 +36,7 @@ const tierConfig = [
   {
     key: "monthly" as const,
     price: 65000,
-    priceUSD: 15,
+    priceUSD: 25,
     children: 1,
     highlighted: false,
     icon: HiHeart,
@@ -50,7 +50,7 @@ const tierConfig = [
   {
     key: "semester" as const,
     price: 330000,
-    priceUSD: 80,
+    priceUSD: 85,
     children: 1,
     highlighted: false,
     icon: HiShieldCheck,
@@ -64,7 +64,7 @@ const tierConfig = [
   {
     key: "annual" as const,
     price: 650000,
-    priceUSD: 155,
+    priceUSD: 170,
     children: 1,
     highlighted: true,
     icon: HiStar,
@@ -78,7 +78,7 @@ const tierConfig = [
   {
     key: "gold" as const,
     price: 1200000,
-    priceUSD: 290,
+    priceUSD: 300,
     children: 2,
     highlighted: false,
     icon: HiSparkles,
@@ -92,7 +92,7 @@ const tierConfig = [
   {
     key: "platinum" as const,
     price: 1650000,
-    priceUSD: 400,
+    priceUSD: 450,
     children: 3,
     highlighted: false,
     icon: HiGlobeAlt,
@@ -106,7 +106,7 @@ const tierConfig = [
   {
     key: "ultra" as const,
     price: 2100000,
-    priceUSD: 510,
+    priceUSD: 550,
     children: 4,
     highlighted: false,
     icon: HiStar,
