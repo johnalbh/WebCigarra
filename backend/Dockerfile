@@ -1,7 +1,7 @@
 # Stage 1: Build
 FROM node:20-alpine AS build
 
-RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev
 
 WORKDIR /app
 
@@ -10,12 +10,13 @@ RUN npm ci
 
 COPY . .
 
+ENV NODE_ENV=production
 RUN npm run build
 
 # Stage 2: Production
 FROM node:20-alpine AS production
 
-RUN apk add --no-cache vips-dev
+RUN apk update && apk add --no-cache vips-dev
 
 WORKDIR /app
 
@@ -26,11 +27,12 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/public ./public
 COPY --from=build /app/favicon.png ./favicon.png
 COPY --from=build /app/src ./src
-
-EXPOSE 1337
+COPY --from=build /app/database ./database
 
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=1337
+
+EXPOSE 1337
 
 CMD ["npm", "run", "start"]
