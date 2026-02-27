@@ -3,6 +3,15 @@ import type { Core } from '@strapi/strapi';
 export default async function seed(strapi: Core.Strapi) {
   strapi.log.info('🌱 Seed script started...');
 
+  // Ensure locales exist before seeding content
+  await ensureLocales(strapi);
+
+  // If SEED_FORCE=true, delete all existing content first
+  if (process.env.SEED_FORCE === 'true') {
+    strapi.log.info('🗑️ SEED_FORCE=true — clearing existing content...');
+    await clearAllContent(strapi);
+  }
+
   await seedPrograms(strapi);
   await seedSuccessStories(strapi);
   await seedPartners(strapi);
@@ -15,6 +24,58 @@ export default async function seed(strapi: Core.Strapi) {
   await seedAboutPage(strapi);
 
   strapi.log.info('🌱 Seed script completed successfully.');
+}
+
+// ---------------------------------------------------------------------------
+// Clear all content for re-seeding
+// ---------------------------------------------------------------------------
+async function clearAllContent(strapi: Core.Strapi) {
+  const uids = [
+    'api::program.program',
+    'api::success-story.success-story',
+    'api::partner.partner',
+    'api::article.article',
+    'api::team-member.team-member',
+    'api::hero.hero',
+    'api::impact-statistic.impact-statistic',
+    'api::global-setting.global-setting',
+    'api::ways-to-help.ways-to-help',
+    'api::about-page.about-page',
+  ];
+
+  for (const uid of uids) {
+    const docs = await (strapi.documents(uid as any) as any).findMany({ locale: 'all' });
+    for (const doc of docs) {
+      await (strapi.documents(uid as any) as any).delete({ documentId: doc.documentId });
+    }
+    strapi.log.info(`🗑️ Cleared ${docs.length} documents from ${uid}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Ensure i18n locales exist (es as default, en as secondary)
+// ---------------------------------------------------------------------------
+async function ensureLocales(strapi: Core.Strapi) {
+  const localeService = strapi.plugin('i18n').service('locales');
+  const existing = await localeService.find();
+  const codes = existing.map((l: any) => l.code);
+
+  if (!codes.includes('es')) {
+    await localeService.create({ code: 'es', name: 'Spanish (es)', isDefault: true });
+    strapi.log.info('🌍 Created locale: es (default)');
+  }
+
+  if (!codes.includes('en')) {
+    await localeService.create({ code: 'en', name: 'English (en)', isDefault: false });
+    strapi.log.info('🌍 Created locale: en');
+  }
+
+  // Ensure 'es' is the default
+  const esLocale = (await localeService.find()).find((l: any) => l.code === 'es');
+  if (esLocale && !esLocale.isDefault) {
+    await localeService.setDefaultLocale({ code: 'es' });
+    strapi.log.info('🌍 Set es as default locale');
+  }
 }
 
 // ---------------------------------------------------------------------------
