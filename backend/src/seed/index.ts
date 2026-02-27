@@ -1,4 +1,64 @@
 import type { Core } from '@strapi/strapi';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
+
+// ---------------------------------------------------------------------------
+// Image upload helper — downloads from URL and uploads to Strapi Media Library
+// ---------------------------------------------------------------------------
+async function uploadImage(
+  strapi: Core.Strapi,
+  imageUrl: string,
+  fileName: string,
+): Promise<any | null> {
+  try {
+    const response = await fetch(imageUrl, { redirect: 'follow' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const buffer = Buffer.from(await response.arrayBuffer());
+
+    const tmpPath = path.join(os.tmpdir(), fileName);
+    fs.writeFileSync(tmpPath, buffer);
+
+    const uploadService = strapi.plugin('upload').service('upload');
+    // Strapi v5 uses formidable v3 format: filepath, originalFilename, mimetype
+    const [uploaded] = await uploadService.upload({
+      data: {},
+      files: {
+        filepath: tmpPath,
+        originalFilename: fileName,
+        mimetype: 'image/jpeg',
+        size: buffer.length,
+      },
+    });
+
+    fs.unlinkSync(tmpPath);
+    return uploaded;
+  } catch (err: any) {
+    strapi.log.warn(`⚠️ Could not upload image ${fileName}: ${err.message}`);
+    return null;
+  }
+}
+
+async function linkMedia(
+  strapi: Core.Strapi,
+  uid: string,
+  documentId: string,
+  field: string,
+  fileOrFiles: any,
+  locale?: string,
+) {
+  if (!fileOrFiles) return;
+  const ids = Array.isArray(fileOrFiles)
+    ? fileOrFiles.filter(Boolean).map((f: any) => f.id)
+    : fileOrFiles.id;
+  if (Array.isArray(ids) && ids.length === 0) return;
+
+  await (strapi.documents(uid as any) as any).update({
+    documentId,
+    ...(locale ? { locale } : {}),
+    data: { [field]: ids },
+  });
+}
 
 export default async function seed(strapi: Core.Strapi) {
   strapi.log.info('🌱 Seed script started...');
@@ -49,6 +109,25 @@ async function clearAllContent(strapi: Core.Strapi) {
       await (strapi.documents(uid as any) as any).delete({ documentId: doc.documentId });
     }
     strapi.log.info(`🗑️ Cleared ${docs.length} documents from ${uid}`);
+  }
+
+  // Also clear seed-uploaded files from the media library
+  try {
+    const uploadService = strapi.plugin('upload').service('upload');
+    const files = await strapi.db.query('plugin::upload.file').findMany({ limit: 1000 });
+    const seedFiles = files.filter((f: any) =>
+      f.name.startsWith('program-') || f.name.startsWith('story-') ||
+      f.name.startsWith('partner-') || f.name.startsWith('article-') ||
+      f.name.startsWith('team-') || f.name.startsWith('hero-') ||
+      f.name.startsWith('impact-') || f.name.startsWith('site-logo') ||
+      f.name.startsWith('about-gallery')
+    );
+    for (const file of seedFiles) {
+      await uploadService.remove(file);
+    }
+    strapi.log.info(`🗑️ Cleared ${seedFiles.length} seed images from media library`);
+  } catch (err: any) {
+    strapi.log.warn(`⚠️ Could not clear media: ${err.message}`);
   }
 }
 
@@ -334,12 +413,24 @@ async function seedPrograms(strapi: Core.Strapi) {
     },
   };
 
-  for (const program of programs) {
+  for (let i = 0; i < programs.length; i++) {
+    const program = programs[i];
     const doc = await strapi.documents('api::program.program').create({
       data: program as any,
       locale: 'es',
       status: 'published',
     });
+
+    // Upload cover image + gallery
+    const cover = await uploadImage(strapi, `https://picsum.photos/seed/prog-${program.slug}/800/600`, `program-${program.slug}.jpg`);
+    await linkMedia(strapi, 'api::program.program', doc.documentId, 'coverImage', cover, 'es');
+
+    const galleryFiles = await Promise.all([
+      uploadImage(strapi, `https://picsum.photos/seed/prog-${program.slug}-g1/800/600`, `program-${program.slug}-gallery1.jpg`),
+      uploadImage(strapi, `https://picsum.photos/seed/prog-${program.slug}-g2/800/600`, `program-${program.slug}-gallery2.jpg`),
+      uploadImage(strapi, `https://picsum.photos/seed/prog-${program.slug}-g3/800/600`, `program-${program.slug}-gallery3.jpg`),
+    ]);
+    await linkMedia(strapi, 'api::program.program', doc.documentId, 'gallery', galleryFiles, 'es');
 
     const en = programsEN[program.slug];
     if (en) {
@@ -347,7 +438,7 @@ async function seedPrograms(strapi: Core.Strapi) {
     }
   }
 
-  strapi.log.info(`Seeded ${programs.length} programs (ES + EN).`);
+  strapi.log.info(`Seeded ${programs.length} programs with images (ES + EN).`);
 }
 
 // ---------------------------------------------------------------------------
@@ -478,13 +569,17 @@ async function seedSuccessStories(strapi: Core.Strapi) {
       status: 'published',
     });
 
+    // Upload portrait photo
+    const photo = await uploadImage(strapi, `https://picsum.photos/seed/story-${story.slug}/400/500`, `story-${story.slug}.jpg`);
+    await linkMedia(strapi, 'api::success-story.success-story', doc.documentId, 'photo', photo, 'es');
+
     const en = storiesEN[story.slug];
     if (en) {
       await addEnglishLocale(strapi, 'api::success-story.success-story', doc.documentId, en);
     }
   }
 
-  strapi.log.info(`Seeded ${stories.length} success stories (ES + EN).`);
+  strapi.log.info(`Seeded ${stories.length} success stories with photos (ES + EN).`);
 }
 
 // ---------------------------------------------------------------------------
@@ -513,13 +608,18 @@ async function seedPartners(strapi: Core.Strapi) {
   ];
 
   for (const partner of partners) {
-    await strapi.documents('api::partner.partner').create({
+    const doc = await strapi.documents('api::partner.partner').create({
       data: partner as any,
       status: 'published',
     });
+
+    // Upload partner logo
+    const slug = partner.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const logo = await uploadImage(strapi, `https://picsum.photos/seed/partner-${slug}/300/200`, `partner-${slug}.jpg`);
+    await linkMedia(strapi, 'api::partner.partner', doc.documentId, 'logo', logo);
   }
 
-  strapi.log.info(`Seeded ${partners.length} partners.`);
+  strapi.log.info(`Seeded ${partners.length} partners with logos.`);
 }
 
 // ---------------------------------------------------------------------------
@@ -674,13 +774,17 @@ async function seedArticles(strapi: Core.Strapi) {
       status: 'published',
     });
 
+    // Upload cover image
+    const cover = await uploadImage(strapi, `https://picsum.photos/seed/article-${article.slug}/1200/630`, `article-${article.slug}.jpg`);
+    await linkMedia(strapi, 'api::article.article', doc.documentId, 'coverImage', cover, 'es');
+
     const en = articlesEN[article.slug];
     if (en) {
       await addEnglishLocale(strapi, 'api::article.article', doc.documentId, en);
     }
   }
 
-  strapi.log.info(`Seeded ${articles.length} articles (ES + EN).`);
+  strapi.log.info(`Seeded ${articles.length} articles with images (ES + EN).`);
 }
 
 // ---------------------------------------------------------------------------
@@ -819,13 +923,18 @@ async function seedTeamMembers(strapi: Core.Strapi) {
       status: 'published',
     });
 
+    // Upload portrait photo
+    const slug = member.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    const photo = await uploadImage(strapi, `https://picsum.photos/seed/team-${slug}/400/400`, `team-${slug}.jpg`);
+    await linkMedia(strapi, 'api::team-member.team-member', doc.documentId, 'photo', photo, 'es');
+
     const en = membersEN[member.name];
     if (en) {
       await addEnglishLocale(strapi, 'api::team-member.team-member', doc.documentId, en);
     }
   }
 
-  strapi.log.info(`Seeded ${members.length} team members (ES + EN).`);
+  strapi.log.info(`Seeded ${members.length} team members with photos (ES + EN).`);
 }
 
 // ---------------------------------------------------------------------------
@@ -849,13 +958,17 @@ async function seedHero(strapi: Core.Strapi) {
     status: 'published',
   });
 
+  // Upload hero background image (wide landscape)
+  const bg = await uploadImage(strapi, 'https://picsum.photos/seed/hero-cigarra/1920/1080', 'hero-background.jpg');
+  await linkMedia(strapi, 'api::hero.hero', doc.documentId, 'backgroundImage', bg, 'es');
+
   await addEnglishLocale(strapi, 'api::hero.hero', doc.documentId, {
     title: 'Fundación Cigarra',
     subtitle: 'We transform lives through art, education, and love in Ciudad Bolívar, Bogotá.',
     tagline: 'Sowing hope since 2002',
   });
 
-  strapi.log.info('Seeded hero section (ES + EN).');
+  strapi.log.info('Seeded hero section with background image (ES + EN).');
 }
 
 // ---------------------------------------------------------------------------
@@ -884,6 +997,10 @@ async function seedImpactStatistics(strapi: Core.Strapi) {
     status: 'published',
   });
 
+  // Upload background image (wide banner)
+  const bg = await uploadImage(strapi, 'https://picsum.photos/seed/impact-stats/1920/800', 'impact-background.jpg');
+  await linkMedia(strapi, 'api::impact-statistic.impact-statistic', doc.documentId, 'backgroundImage', bg, 'es');
+
   await addEnglishLocale(strapi, 'api::impact-statistic.impact-statistic', doc.documentId, {
     sectionTitle: 'Our Impact',
     stats: [
@@ -894,7 +1011,7 @@ async function seedImpactStatistics(strapi: Core.Strapi) {
     ],
   });
 
-  strapi.log.info('Seeded impact statistics (ES + EN).');
+  strapi.log.info('Seeded impact statistics with background image (ES + EN).');
 }
 
 // ---------------------------------------------------------------------------
@@ -943,6 +1060,10 @@ async function seedGlobalSettings(strapi: Core.Strapi) {
       ],
     } as any,
   });
+
+  // Upload site logo
+  const logo = await uploadImage(strapi, 'https://picsum.photos/seed/cigarra-logo/400/400', 'site-logo.jpg');
+  await linkMedia(strapi, 'api::global-setting.global-setting', doc.documentId, 'logo', logo);
 
   await addEnglishLocale(strapi, 'api::global-setting.global-setting', doc.documentId, {
     siteName: 'Fundación Cigarra',
@@ -1348,6 +1469,16 @@ async function seedAboutPage(strapi: Core.Strapi) {
     status: 'published',
   });
 
+  // Upload gallery images for about page
+  const galleryFiles = await Promise.all([
+    uploadImage(strapi, 'https://picsum.photos/seed/about-gallery-1/800/600', 'about-gallery-1.jpg'),
+    uploadImage(strapi, 'https://picsum.photos/seed/about-gallery-2/800/600', 'about-gallery-2.jpg'),
+    uploadImage(strapi, 'https://picsum.photos/seed/about-gallery-3/800/600', 'about-gallery-3.jpg'),
+    uploadImage(strapi, 'https://picsum.photos/seed/about-gallery-4/800/600', 'about-gallery-4.jpg'),
+    uploadImage(strapi, 'https://picsum.photos/seed/about-gallery-5/800/600', 'about-gallery-5.jpg'),
+  ]);
+  await linkMedia(strapi, 'api::about-page.about-page', doc.documentId, 'gallery', galleryFiles, 'es');
+
   await addEnglishLocale(strapi, 'api::about-page.about-page', doc.documentId, {
     mission:
       'Our mission is to transform the lives of vulnerable children and youth in Ciudad Bolívar, Bogotá, through educational, artistic, and human development programs that allow them to discover their potential, strengthen their values, and build a dignified future for themselves and their families.',
@@ -1359,5 +1490,5 @@ async function seedAboutPage(strapi: Core.Strapi) {
     timeline: timelineEN,
   });
 
-  strapi.log.info('Seeded about page with 16 timeline entries (ES + EN).');
+  strapi.log.info('Seeded about page with gallery and 16 timeline entries (ES + EN).');
 }
