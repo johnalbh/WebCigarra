@@ -1,7 +1,14 @@
 node_modules
 .tmp
 .cache
+.strapi
 dist
 build
 .env
 .env.local
+.env.*.local
+.git
+.gitignore
+.DS_Store
+*.md
+.strapi-updater.json

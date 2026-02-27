@@ -1,5 +1,19 @@
 import type { Core } from '@strapi/strapi';
 
+const getCorsOrigins = (): string[] => {
+  const envOrigins = process.env.CORS_ORIGINS;
+  if (envOrigins) {
+    return envOrigins.split(',').map((o) => o.trim());
+  }
+  if (process.env.NODE_ENV === 'production') {
+    return [
+      'https://frontend-three-chi-15.vercel.app',
+      'https://www.fundacioncigarra.org',
+    ];
+  }
+  return ['*'];
+};
+
 const config: Core.Config.Middlewares = [
   'strapi::logger',
   'strapi::errors',
@@ -20,7 +34,7 @@ const config: Core.Config.Middlewares = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['*'],
+      origin: getCorsOrigins(),
       headers: ['*'],
     },
   },
