@@ -56,21 +56,28 @@ COPY --from=build /app/database ./database
 COPY --from=build /app/public ./public
 COPY --from=build /app/favicon.png ./favicon.png
 
-# Create uploads directory and give node user write access to public/
-RUN mkdir -p /app/public/uploads && chown -R node:node /app/public
+# Create uploads directory
+RUN mkdir -p /app/public/uploads
+
+# Install gosu for lightweight user switching at runtime
+RUN apt-get update && apt-get install -y --no-install-recommends gosu && rm -rf /var/lib/apt/lists/*
+
+# Copy entrypoint script that fixes volume permissions at runtime
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Environment defaults (overridden by Railway env vars)
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=1337
 
-# Use non-root user for security
-USER node
-
+# Do NOT set USER node here — entrypoint runs as root to fix
+# volume permissions, then drops to node via gosu
 EXPOSE 1337
 
 # Health check inside the container
 HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
   CMD curl -f http://localhost:1337/_health || exit 1
 
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["npm", "run", "start"]
