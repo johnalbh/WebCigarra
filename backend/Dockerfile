@@ -57,7 +57,7 @@ COPY --from=build /app/public ./public
 COPY --from=build /app/favicon.png ./favicon.png
 
 # Create uploads directory (will be mounted as a volume on Railway)
-RUN mkdir -p /app/public/uploads && chown -R node:node /app
+RUN mkdir -p /app/public/uploads && chown -R node:node /app/public/uploads
 
 # Environment defaults (overridden by Railway env vars)
 ENV NODE_ENV=production
