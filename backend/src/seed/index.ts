@@ -53,11 +53,38 @@ async function linkMedia(
     : fileOrFiles.id;
   if (Array.isArray(ids) && ids.length === 0) return;
 
-  await (strapi.documents(uid as any) as any).update({
-    documentId,
-    ...(locale ? { locale } : {}),
-    data: { [field]: ids },
-  });
+  // Strapi v5 document service update() only writes morph relations to the
+  // draft row. We need morphs on ALL internal rows (draft + published) for
+  // the API to return media. Insert directly via knex.
+  const meta = strapi.db.metadata.get(uid);
+  const tableName = (meta as any).tableName;
+
+  // Find ALL internal rows for this document + locale (draft + published)
+  const qb = strapi.db.connection(tableName)
+    .where({ document_id: documentId })
+    .select('id', 'locale', 'published_at');
+  if (locale) qb.andWhere({ locale });
+  const rows = await qb;
+
+  if (rows.length === 0) {
+    strapi.log.warn(`linkMedia: no rows found for ${uid} doc=${documentId} locale=${locale}`);
+    return;
+  }
+
+  const fileIds = Array.isArray(ids) ? ids : [ids];
+
+  for (const row of rows) {
+    for (let i = 0; i < fileIds.length; i++) {
+      await strapi.db.connection('files_related_mph').insert({
+        file_id: fileIds[i],
+        related_id: row.id,
+        related_type: uid,
+        field,
+        order: i + 1,
+      });
+    }
+  }
+  strapi.log.debug(`linkMedia: ${uid} doc=${documentId} locale=${locale} → ${rows.length} rows, ${fileIds.length} files`);
 }
 
 export default async function seed(strapi: Core.Strapi) {
