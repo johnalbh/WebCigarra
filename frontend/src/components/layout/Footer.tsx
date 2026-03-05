@@ -206,10 +206,10 @@ export default function Footer() {
       {/* Copyright bar */}
       <div className="border-t border-primary-800">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 lg:px-8">
-          <p className="text-xs text-primary-500">
+          <p className="text-xs text-primary-300">
             &copy; {new Date().getFullYear()} Fundación Cigarra. {t('rights')}.
           </p>
-          <p className="text-xs text-primary-500">
+          <p className="text-xs text-primary-300">
             NIT: 830.114.318-9
           </p>
         </div>

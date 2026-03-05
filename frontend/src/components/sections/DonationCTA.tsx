@@ -175,7 +175,7 @@ export default function DonationCTA() {
           </ScrollReveal>
 
           {/* Trust badges */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-600">
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
               {t('trustSecure')}
