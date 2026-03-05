@@ -585,7 +585,7 @@ export default function PlanPadrinoPage() {
                   <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-rose-500/20">
                     <HiHeart className="h-7 w-7 text-rose-400" />
                   </div>
-                  <p className="font-heading text-4xl font-bold text-white md:text-5xl">$7.045</p>
+                  <p className="font-heading text-4xl font-bold text-white md:text-5xl">{isPayPal ? '$1.81' : '$7.045'}</p>
                   <p className="mt-2 text-sm font-medium text-primary-300">{t("costPerChildPerDay")}</p>
                 </div>
               </div>

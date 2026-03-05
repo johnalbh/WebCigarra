@@ -3,7 +3,10 @@
     "allow": [
       "Bash(cwebp -q 80 hero-2-raw.jpg -o hero-2.webp)",
       "Bash(cwebp -q 80 hero-3-raw.jpg -o hero-3.webp)",
-      "Bash(NODE_OPTIONS='--inspect' npx next info)"
+      "Bash(NODE_OPTIONS='--inspect' npx next info)",
+      "Bash(grep -E '^\\\\$[0-9]')",
+      "Bash(grep -o '\\\\$[0-9,.]*\\\\s*USD')",
+      "Bash(grep -oE '\\\\$[0-9,.]+ \\(USD|COP\\)')"
     ]
   }
 }

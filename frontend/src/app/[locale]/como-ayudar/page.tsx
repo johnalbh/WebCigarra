@@ -23,13 +23,12 @@ import {
   HiClipboardCheck,
   HiDocumentReport,
 } from 'react-icons/hi';
-import { FaWhatsapp, FaPaintBrush, FaRunning, FaBriefcase } from 'react-icons/fa';
+import { FaWhatsapp, FaPaintBrush, FaRunning, FaBriefcase, FaPaypal } from 'react-icons/fa';
 import HeroWaves from '@/components/shared/HeroWaves';
 import DonationCheckout from '@/components/sections/DonationCheckout';
 
 const DONATION_LINK_COP = '#donar';
 const DONATION_LINK_USD = '#donar';
-const COP_TO_USD = 3900;
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
@@ -38,50 +37,68 @@ const donationTiers = [
   {
     key: 'monthly',
     amountCOP: 65000,
+    amountUSD: 25,
     highlighted: false,
     icon: HiHeart,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
+    ePaycoLink: 'https://subscription-landing.epayco.co/plan/9993771eb5d4c1974062db2',
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_MONTHLY || '',
   },
   {
     key: 'semester',
     amountCOP: 330000,
+    amountUSD: 85,
     highlighted: false,
     icon: HiShieldCheck,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
+    ePaycoLink: 'https://subscription-landing.epayco.co/plan/99937a3eea2b9882807efb0',
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_SEMESTER || '',
   },
   {
     key: 'annual',
     amountCOP: 650000,
+    amountUSD: 170,
     highlighted: true,
     icon: HiStar,
     color: 'border-accent-300 ring-2 ring-accent-200',
     iconBg: 'bg-accent-100 text-accent-600',
+    ePaycoLink: 'https://subscription-landing.epayco.co/plan/99937be6d46e7149f0f5292',
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ANNUAL || '',
   },
   {
     key: 'gold',
     amountCOP: 1200000,
+    amountUSD: 300,
     highlighted: false,
     icon: HiSparkles,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-accent-100 text-accent-600',
+    ePaycoLink: 'https://subscription-landing.epayco.co/plan/99937daa95cda6af90e37f2',
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_GOLD || '',
   },
   {
     key: 'platinum',
     amountCOP: 1650000,
+    amountUSD: 450,
     highlighted: false,
     icon: HiGlobeAlt,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
+    ePaycoLink: 'https://subscription-landing.epayco.co/plan/999380649eb24bc4e0c3f52',
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_PLATINUM || '',
   },
   {
     key: 'ultra',
     amountCOP: 2100000,
+    amountUSD: 550,
     highlighted: false,
     icon: HiStar,
     color: 'border-primary-200 hover:border-primary-400',
     iconBg: 'bg-primary-100 text-primary-600',
+    ePaycoLink: 'https://subscription-landing.epayco.co/plan/999382045fa92aa320e4d12',
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ULTRA || '',
   },
 ];
 
@@ -593,7 +610,7 @@ export default function HowToHelpPage() {
                     <div className="text-center md:text-right shrink-0">
                       <div className="font-heading text-2xl font-bold text-gray-900">
                         ${locale === 'en'
-                          ? Math.round(tier.amountCOP / COP_TO_USD).toLocaleString(numberLocale)
+                          ? tier.amountUSD.toLocaleString(numberLocale)
                           : tier.amountCOP.toLocaleString(numberLocale)}
                         <span className="text-sm font-medium text-gray-400"> {locale === 'en' ? 'USD' : 'COP'}</span>
                       </div>
@@ -603,17 +620,43 @@ export default function HowToHelpPage() {
                     </div>
 
                     {/* Donate button */}
-                    <a
-                      href={DONATION_LINK_COP}
-                      className={`inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 ${
-                        tier.highlighted
-                          ? 'bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20'
-                          : 'bg-primary-500 hover:bg-primary-400'
-                      }`}
-                    >
-                      {t('donateBtn')}
-                      <HiArrowRight className="h-4 w-4" />
-                    </a>
+                    {locale === 'en' && tier.paypalPlanId ? (
+                      <a
+                        href={`https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=${tier.paypalPlanId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 bg-[#0070ba] hover:bg-[#005ea6]"
+                      >
+                        <FaPaypal className="h-4 w-4" />
+                        {t('donateBtn')}
+                      </a>
+                    ) : locale === 'en' ? (
+                      <Link
+                        href={'/plan-padrino' as '/plan-padrino'}
+                        className={`inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 ${
+                          tier.highlighted
+                            ? 'bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20'
+                            : 'bg-primary-500 hover:bg-primary-400'
+                        }`}
+                      >
+                        {t('donateBtn')}
+                        <HiArrowRight className="h-4 w-4" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={tier.ePaycoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 ${
+                          tier.highlighted
+                            ? 'bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20'
+                            : 'bg-primary-500 hover:bg-primary-400'
+                        }`}
+                      >
+                        {t('donateBtn')}
+                        <HiArrowRight className="h-4 w-4" />
+                      </a>
+                    )}
                   </motion.div>
                 </StaggerItem>
               );
@@ -663,7 +706,7 @@ export default function HowToHelpPage() {
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/20">
                   <HiCurrencyDollar className="h-8 w-8 text-accent-400" />
                 </div>
-                <p className="font-heading text-5xl font-bold text-white">$7.045</p>
+                <p className="font-heading text-5xl font-bold text-white">{locale === 'en' ? '$1.81' : '$7.045'}</p>
                 <p className="mt-2 text-lg font-medium text-primary-300">{t('costPerChildPerDay')}</p>
                 <p className="mt-3 text-sm text-primary-400/70">
                   {t('realCostMeal')}
