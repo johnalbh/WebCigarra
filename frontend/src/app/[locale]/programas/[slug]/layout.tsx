@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { buildPageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
-import { getPrograms, getProgramBySlug } from '@/lib/queries';
+import { getProgramBySlug } from '@/lib/queries';
 import { getStrapiMedia } from '@/lib/strapi';
 import { getBreadcrumbSchema } from '@/lib/structured-data';
 import JsonLd from '@/components/seo/JsonLd';
@@ -31,25 +31,6 @@ async function fetchProgram(slug: string, locale: string): Promise<StrapiProgram
   } catch {
     return null;
   }
-}
-
-export async function generateStaticParams() {
-  const locales = ['es', 'en'];
-  const params: { locale: string; slug: string }[] = [];
-
-  for (const locale of locales) {
-    try {
-      const res = (await getPrograms(locale)) as StrapiResponse;
-      const programs = Array.isArray(res?.data) ? res.data : res?.data ? [res.data] : [];
-      for (const p of programs) {
-        if (p.slug) params.push({ locale, slug: p.slug });
-      }
-    } catch {
-      // Fallback: build without pre-rendering if Strapi is unavailable
-    }
-  }
-
-  return params;
 }
 
 function formatSlug(slug: string) {
