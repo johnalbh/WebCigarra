@@ -226,8 +226,8 @@
   },
   "donation": {
     "title": "Your Donation Transforms Lives",
-    "subtitle": "With just $1.70 USD per day, a child receives nutritious meals",
-    "donateCOP": "Donate in Pesos (COP)",
+    "subtitle": "With just $1.80 USD per day, a child receives nutritious meals",
+    "donateCOP": "Donate in Dollars (USD)",
     "donateUSD": "Donate in Dollars (USD)",
     "monthly": "monthly",
     "impact": "Your impact",
@@ -250,7 +250,7 @@
     "paths": {
       "donate": {
         "title": "Donate",
-        "description": "Every peso transforms a life. Your donation funds education, meals, and supplies.",
+        "description": "Every dollar transforms a life. Your donation funds education, meals, and supplies.",
         "cta": "Donate Now"
       },
       "sponsor": {
@@ -287,7 +287,7 @@
     "more": "More",
     "featured": "Featured",
     "ctaCards": {
-      "donate": { "title": "Donate", "description": "Every peso transforms a life.", "cta": "Donate Now" },
+      "donate": { "title": "Donate", "description": "Every dollar transforms a life.", "cta": "Donate Now" },
       "sponsor": { "title": "Sponsor", "description": "Support a child on their journey.", "cta": "Sponsorship Plan" },
       "volunteer": { "title": "Volunteer", "description": "Share your time and talent.", "cta": "Be a Volunteer" },
       "contact": { "title": "Contact Us", "description": "We want to hear from you.", "cta": "Write" }
@@ -537,13 +537,13 @@
     "childrenHelped": "children helped",
     "yearsTrajectory": "years of experience",
     "activePrograms": "active programs",
-    "costPerChildPerDay": "COP/day per child",
+    "costPerChildPerDay": "USD/day per child",
     "faqTitle": "We answer your",
     "faqHighlight": "questions",
     "faqSubtitle": "Everything you need to know about the Sponsorship Plan before taking the step.",
     "changeLifeToday": "Change a life today",
     "changeLifeDescription": "A child in Ciudad Bolívar is waiting for you. With your sponsorship, you give them access to education, meals, and the chance for a better future.",
-    "sponsorCOP": "Sponsor in COP",
+    "sponsorCOP": "Sponsor in USD",
     "donateDollars": "Donate in USD",
     "steps": {
       "choose": { "title": "Choose your plan", "description": "Select the sponsorship plan that best fits your possibilities." },
@@ -579,7 +579,7 @@
     },
     "includedItems": {
       "education": { "title": "Educational program", "description": "Academic reinforcement, workshops, and comprehensive pedagogical support for their education." },
-      "nutrition": { "title": "Daily nutritious meals", "description": "Balanced and nutritious food every day for $1.70 USD, ensuring their well-being." },
+      "nutrition": { "title": "Daily nutritious meals", "description": "Balanced and nutritious food every day for $1.80 USD, ensuring their well-being." },
       "reports": { "title": "Personalized progress reports", "description": "Detailed reports on the child's academic progress and comprehensive development." },
       "certificate": { "title": "Annual impact certificate", "description": "Official document certifying your contribution and the impact generated in the child's life." },
       "photos": { "title": "Photos and updates", "description": "Images and news from your sponsored child's daily life at the foundation." },
@@ -611,14 +611,14 @@
     "impactSubtitle": "Select an amount and discover the real impact of your donation.",
     "customAmount": "Enter a custom amount",
     "presetAmount": "Choose a preset amount",
-    "customPlaceholder": "e.g. 75000",
-    "customImpact": "With ${amount} COP you can support the Cigarra Foundation's programs",
-    "presetImpact": "With {label} COP you can cover {impact}",
+    "customPlaceholder": "e.g. 20",
+    "customImpact": "With ${amount} USD you can support the Cigarra Foundation's programs",
+    "presetImpact": "With {label} USD you can cover {impact}",
     "impactOptions": {
-      "30000": "nutritious snacks for 4 children for a week",
-      "50000": "school supplies for 1 child for 1 month",
-      "100000": "nutritious meals for 1 child for a full month",
-      "200000": "complete education + meals program for 1 child"
+      "8": "nutritious snacks for 4 children for a week",
+      "13": "school supplies for 1 child for 1 month",
+      "26": "nutritious meals for 1 child for a full month",
+      "51": "complete education + meals program for 1 child"
     },
     "donateNowBtn": "Donate Now",
     "donateUSD": "Donate in USD (dollars)",
@@ -650,12 +650,12 @@
     "popularBadge": "Most Popular",
     "nutritionFuture": "Nutrition that",
     "feedsFuture": "feeds the future",
-    "costPerChildPerDay": "COP per child per day",
+    "costPerChildPerDay": "USD per child per day",
     "realCostMeal": "Real cost of a complete nutritious meal",
     "snacksServed": "snacks served",
     "thisQuarter": "This quarter in our nutrition programs",
     "donateForNutrition": "Donate for Nutrition",
-    "feedChildDaily": "With just $1.70 USD per day you can feed a child",
+    "feedChildDaily": "With just $1.80 USD per day you can feed a child",
     "shareYour": "Share your",
     "talent": "talent",
     "volunteerWhatsApp": "I Want to Volunteer",
@@ -664,7 +664,7 @@
     "finalCtaTitle": "Don't put off until tomorrow what you can do today",
     "finalCtaDescription": "Every day without action is one less day in a child's life. Your contribution today builds tomorrow's future.",
     "faqs": {
-      "howDonate": { "q": "How can I donate?", "a": "You can donate online through our secure DonarOnline platform, in Colombian pesos or US dollars. We also accept direct bank transfers." },
+      "howDonate": { "q": "How can I donate?", "a": "You can donate online through our secure DonarOnline platform in US dollars. We also accept direct bank transfers and PayPal." },
       "taxDeductible": { "q": "Is my donation tax deductible?", "a": "Yes, the Cigarra Foundation is a registered nonprofit with Tax ID 830.114.318-9. Donations are tax deductible under current Colombian regulations." },
       "transparency": { "q": "How do I know my donation is used correctly?", "a": "We publish annual management and financial reports. Sponsors receive periodic reports on their sponsored child's progress. We are committed to full transparency." },
       "canVolunteer": { "q": "Can I volunteer?", "a": "Yes, we're looking for volunteers in education, art, sports, technology, and administrative management. Contact us via WhatsApp or email to learn about available opportunities." },
@@ -678,7 +678,7 @@
     },
     "planPadrinoIncludes": {
       "education": "Complete monthly educational program",
-      "nutrition": "Daily nutritious meals ($1.70 USD/day)",
+      "nutrition": "Daily nutritious meals ($1.80 USD/day)",
       "reports": "Personalized progress reports",
       "certificate": "Annual impact certificate"
     },
@@ -1003,8 +1003,8 @@
     "subtitle": "Every donation feeds, educates, and protects a child in Ciudad Bolivar.",
     "selectAmount": "Choose your gift",
     "customAmount": "Other amount",
-    "enterAmount": "Enter the amount in pesos",
-    "minAmount": "Minimum amount: $1,000 COP",
+    "enterAmount": "Enter the amount in dollars",
+    "minAmount": "Minimum amount: $1 USD",
     "yourInfo": "Your information",
     "identificationType": "ID type",
     "identificationNumber": "ID number",
@@ -1024,7 +1024,7 @@
     "impact100000": "Nutritious meals for 1 child for a full month",
     "impact200000": "Complete education + meals program for 1 child",
     "impact500000": "Full educational scholarship for 1 child for a semester",
-    "impactCustom": "Every peso counts to transform a life",
+    "impactCustom": "Every dollar counts to transform a life",
     "impact5": "Nutritious snacks for 1 child for a day",
     "impact10": "School supplies for 1 child for a week",
     "impact25": "Nutritious meals for 1 child for a week",

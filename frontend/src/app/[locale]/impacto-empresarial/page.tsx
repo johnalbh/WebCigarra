@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
 import HeroWaves from '@/components/shared/HeroWaves';
@@ -51,9 +51,9 @@ const modelConfig = [
 
 /* ── Plan Padrino Empresarial tier config ── */
 const padrinoTierConfig = [
-  { key: 'gold', price: '$14.840.000', taxReturn: '$3.710.000', children: 192, period: '1month', icon: HiStar, accent: 'from-amber-500 to-amber-700', border: 'border-amber-200' },
-  { key: 'platinum', price: '$74.200.000', taxReturn: '$18.550.000', children: 192, period: '6months', icon: HiSparkles, accent: 'from-slate-400 to-slate-600', border: 'border-slate-200' },
-  { key: 'annual', price: '$163.240.000', taxReturn: '$40.810.000', children: 192, period: '1year', icon: HiGlobeAlt, accent: 'from-primary-500 to-primary-700', border: 'border-primary-200' },
+  { key: 'gold', priceCOP: '$14.840.000', priceUSD: '$3,805', taxReturnCOP: '$3.710.000', taxReturnUSD: '$951', children: 192, period: '1month', icon: HiStar, accent: 'from-amber-500 to-amber-700', border: 'border-amber-200' },
+  { key: 'platinum', priceCOP: '$74.200.000', priceUSD: '$19,026', taxReturnCOP: '$18.550.000', taxReturnUSD: '$4,756', children: 192, period: '6months', icon: HiSparkles, accent: 'from-slate-400 to-slate-600', border: 'border-slate-200' },
+  { key: 'annual', priceCOP: '$163.240.000', priceUSD: '$41,856', taxReturnCOP: '$40.810.000', taxReturnUSD: '$10,464', children: 192, period: '1year', icon: HiGlobeAlt, accent: 'from-primary-500 to-primary-700', border: 'border-primary-200' },
 ];
 
 /* ── Plan Padrino includes config ── */
@@ -126,6 +126,7 @@ const silverPartners = partners.filter((p) => p.tier === 'silver');
    ══════════════════════════════════════════════════════════════ */
 export default function ImpactoEmpresarialPage() {
   const t = useTranslations('corporate');
+  const locale = useLocale();
 
   return (
     <>
@@ -359,11 +360,11 @@ export default function ImpactoEmpresarialPage() {
                       <h3 className="font-heading text-2xl font-bold">
                         {t(`padrinoSection.tiers.${tier.key}.name`)}
                       </h3>
-                      <p className="mt-3 font-heading text-4xl font-bold">{tier.price}</p>
-                      <p className="mt-1 text-xs uppercase tracking-wider text-white/60">COP</p>
+                      <p className="mt-3 font-heading text-4xl font-bold">{locale === 'en' ? tier.priceUSD : tier.priceCOP}</p>
+                      <p className="mt-1 text-xs uppercase tracking-wider text-white/60">{locale === 'en' ? 'USD' : 'COP'}</p>
                       <div className="mx-auto mt-5 max-w-[220px] rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm">
                         <p className="text-xs uppercase tracking-wider text-white/60 mb-1">{t('padrinoSection.taxReturnLabel')}</p>
-                        <p className="font-heading text-xl font-bold text-amber-300">{tier.taxReturn}</p>
+                        <p className="font-heading text-xl font-bold text-amber-300">{locale === 'en' ? tier.taxReturnUSD : tier.taxReturnCOP}</p>
                       </div>
                     </div>
 

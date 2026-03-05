@@ -29,6 +29,7 @@ import DonationCheckout from '@/components/sections/DonationCheckout';
 
 const DONATION_LINK_COP = '#donar';
 const DONATION_LINK_USD = '#donar';
+const COP_TO_USD = 3900;
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
@@ -504,9 +505,11 @@ export default function HowToHelpPage() {
                 <div className="mt-8 rounded-xl border border-accent-200 bg-accent-50 p-6">
                   <div className="flex items-baseline gap-2">
                     <span className="font-heading text-4xl font-bold text-accent-700">
-                      $65.000
+                      {locale === 'en' ? '$17' : '$65.000'}
                     </span>
-                    <span className="text-lg font-medium text-accent-600">COP/mes</span>
+                    <span className="text-lg font-medium text-accent-600">
+                      {locale === 'en' ? 'USD/month' : 'COP/mes'}
+                    </span>
                   </div>
                   <p className="mt-1 text-sm text-accent-600/70">
                     {t('plansFromMonthly')}
@@ -589,8 +592,10 @@ export default function HowToHelpPage() {
                     {/* Price */}
                     <div className="text-center md:text-right shrink-0">
                       <div className="font-heading text-2xl font-bold text-gray-900">
-                        ${tier.amountCOP.toLocaleString(numberLocale)}
-                        <span className="text-sm font-medium text-gray-400"> COP</span>
+                        ${locale === 'en'
+                          ? Math.round(tier.amountCOP / COP_TO_USD).toLocaleString(numberLocale)
+                          : tier.amountCOP.toLocaleString(numberLocale)}
+                        <span className="text-sm font-medium text-gray-400"> {locale === 'en' ? 'USD' : 'COP'}</span>
                       </div>
                       <p className="text-xs text-gray-400">
                         / {tPlan(`tiers.${tier.key}.period`)}
