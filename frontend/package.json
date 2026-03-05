@@ -9,11 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.4.2",
     "@paypal/react-paypal-js": "^8.9.2",
     "clsx": "^2.1.1",
     "motion": "^12.34.1",
     "next": "16.1.6",
     "next-intl": "^4.8.3",
+    "nodemailer": "^8.0.1",
     "qs": "^6.15.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.11",
     "@types/qs": "^6.14.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",

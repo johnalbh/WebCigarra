@@ -1,7 +1,9 @@
 'use client';
 
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
+import { HiMail } from 'react-icons/hi';
 import { motion } from 'motion/react';
+import { Link } from '@/i18n/routing';
 
 const socialLinks = [
   {
@@ -31,6 +33,8 @@ const socialLinks = [
 ];
 
 export default function FloatingSocialBar() {
+  const totalSocial = socialLinks.length;
+
   return (
     <div className="fixed right-4 bottom-36 z-40 flex flex-col gap-2 md:right-6 md:bottom-44">
       {socialLinks.map((social, i) => (
@@ -48,6 +52,21 @@ export default function FloatingSocialBar() {
           <social.icon className="h-3.5 w-3.5 md:h-4 md:w-4" />
         </motion.a>
       ))}
+
+      {/* Contact button */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3 + totalSocial * 0.1, duration: 0.4, ease: 'easeOut' }}
+      >
+        <Link
+          href="/contacto"
+          aria-label="Contacto"
+          className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg transition-all duration-300 hover:bg-primary-700 hover:scale-110 md:h-11 md:w-11"
+        >
+          <HiMail className="h-4.5 w-4.5 md:h-5 md:w-5" />
+        </Link>
+      </motion.div>
     </div>
   );
 }
