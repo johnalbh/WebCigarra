@@ -148,7 +148,7 @@ export async function POST(request: Request) {
       subject: `[Hoja de Vida] ${fullName} — ${area}`,
       html: `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
-          <div style="background: linear-gradient(135deg, #1a5632 0%, #22753f 100%); padding: 32px 24px; border-radius: 12px 12px 0 0;">
+          <div style="background-color: #1a5632; padding: 32px 24px; border-radius: 12px 12px 0 0;">
             <h2 style="color: white; margin: 0; font-size: 22px; font-weight: 600;">Nueva postulacion al equipo</h2>
             <p style="color: rgba(255,255,255,0.7); margin: 6px 0 0; font-size: 14px;">Recibido desde fundacioncigarra.org</p>
           </div>
