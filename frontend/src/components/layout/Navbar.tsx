@@ -155,16 +155,24 @@ export default function Navbar() {
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
   const pathWithoutLocale = pathname.replace(`/${locale}`, "") || "/";
-  const isHome = pathWithoutLocale === "/";
 
-  /* White logo at top (all pages have dark hero), original on scroll. */
-  const showWhiteLogo = !scrolled;
+  /* Pages without a dark hero section — force scrolled (opaque) header */
+  const lightPages = ["/donacion/respuesta"];
+  const isLightPage = lightPages.some((p) => pathWithoutLocale.startsWith(p));
+
+  /* White logo at top (pages with dark hero), original on scroll or light pages. */
+  const showWhiteLogo = !scrolled && !isLightPage;
 
   useEffect(() => {
+    if (isLightPage) {
+      setScrolled(true);
+      return;
+    }
     const handleScroll = () => setScrolled(window.scrollY > 50);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isLightPage]);
 
   useEffect(() => {
     setMobileOpen(false);
