@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getPrograms, getArticles, getSuccessStories } from '@/lib/queries';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cigarra.org';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.fundacioncigarra.org';
 const locales = ['es', 'en'];
 
 const staticPages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [

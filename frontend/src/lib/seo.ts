@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://cigarra.org';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://www.fundacioncigarra.org';
 export const SITE_NAME = 'Fundación Cigarra';
 
 export function getCanonicalUrl(locale: string, path = '') {
