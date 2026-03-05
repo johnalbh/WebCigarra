@@ -470,7 +470,8 @@
     "addressLine2": "Ciudad Bolívar, Bogotá D.C.",
     "addressLine3": "Colombia",
     "hoursWeekday": "Lunes a Viernes: 8:00 AM - 5:00 PM",
-    "hoursSaturday": "Sábados: 8:00 AM - 12:00 PM"
+    "hoursSaturday": "Sábados: 8:00 AM - 12:00 PM",
+    "requiredFields": "Los campos con * son obligatorios"
   },
   "partners": {
     "title": "Nuestros Aliados",

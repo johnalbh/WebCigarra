@@ -401,7 +401,7 @@ export default function ContactPage() {
                         )}
                       </button>
                       <p className="text-xs text-gray-300">
-                        {t('requiredFields') ?? 'Los campos con * son obligatorios'}
+                        {t('requiredFields')}
                       </p>
                     </div>
 
