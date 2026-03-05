@@ -983,6 +983,21 @@
     "message": "Lo sentimos, la página que buscas no existe o ha sido movida.",
     "cta": "Volver al inicio"
   },
+  "anthem": {
+    "tagline": "Nuestro canto de esperanza",
+    "title": "Himno de la Fundación Cigarra",
+    "subtitle": "Nuestro canto de esperanza y transformación",
+    "lyricsLabel": "Letra del Himno",
+    "watchVideo": "Escucha Nuestro Himno",
+    "watchVideoSubtitle": "Mira y escucha el himno oficial de la Fundación Cigarra interpretado por nuestros niños y jóvenes.",
+    "verse": "Verso",
+    "chorus": "Coro",
+    "attribution": "Himno oficial de la Fundación Cigarra — Ciudad Bolívar, Bogotá",
+    "ctaTitle": "Conoce nuestros programas",
+    "ctaDescription": "El himno refleja el espíritu de transformación que viven nuestros niños y jóvenes cada día a través de nuestros 13 programas.",
+    "viewPrograms": "Ver Programas",
+    "aboutUs": "Quiénes Somos"
+  },
   "donationCheckout": {
     "title": "Tu aporte transforma vidas",
     "subtitle": "Cada donación alimenta, educa y protege a un niño en Ciudad Bolívar.",

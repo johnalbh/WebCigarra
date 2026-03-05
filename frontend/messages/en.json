@@ -983,6 +983,21 @@
     "message": "Sorry, the page you are looking for does not exist or has been moved.",
     "cta": "Back to Home"
   },
+  "anthem": {
+    "tagline": "Our song of hope",
+    "title": "Anthem of the Cigarra Foundation",
+    "subtitle": "Our song of hope and transformation",
+    "lyricsLabel": "Anthem Lyrics",
+    "watchVideo": "Listen to Our Anthem",
+    "watchVideoSubtitle": "Watch and listen to the official anthem of the Cigarra Foundation performed by our children and youth.",
+    "verse": "Verse",
+    "chorus": "Chorus",
+    "attribution": "Official anthem of the Cigarra Foundation — Ciudad Bolívar, Bogotá",
+    "ctaTitle": "Discover our programs",
+    "ctaDescription": "The anthem reflects the spirit of transformation that our children and youth experience every day through our 13 programs.",
+    "viewPrograms": "View Programs",
+    "aboutUs": "About Us"
+  },
   "donationCheckout": {
     "title": "Your gift transforms lives",
     "subtitle": "Every donation feeds, educates, and protects a child in Ciudad Bolivar.",

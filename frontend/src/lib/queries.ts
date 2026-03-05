@@ -70,6 +70,18 @@ export async function getAboutPage(locale: string) {
   });
 }
 
+export async function getAnthem(locale: string) {
+  return fetchAPI({
+    path: '/anthem',
+    locale,
+    query: {
+      populate: {
+        seo: { populate: '*' },
+      },
+    },
+  });
+}
+
 // ─── Collection Types ────────────────────────────────────
 
 export async function getPrograms(locale: string) {

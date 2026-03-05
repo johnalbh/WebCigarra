@@ -1,68 +1,74 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import { Link } from '@/i18n/routing';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import HeroWaves from '@/components/shared/HeroWaves';
-import { HiMusicNote, HiArrowRight } from 'react-icons/hi';
+import { HiMusicNote, HiArrowRight, HiPlay } from 'react-icons/hi';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
+
+const YOUTUBE_VIDEO_ID = 'qvVL6m1AOds';
 
 /* ---------- lyrics data ---------- */
 const verses = [
   {
-    label: 'Verso I',
+    labelKey: 'verse',
+    labelSuffix: ' I',
     lines: [
       'Como la semilla que espera bajo la tierra',
-      'nace la esperanza y va creciendo de raiz.',
+      'nace la esperanza y va creciendo de raíz.',
       'Como la flor que se abre buscando la luz,',
-      'asi la Cigarra abre sus alas con valor.',
+      'así la Cigarra abre sus alas con valor.',
     ],
   },
   {
-    label: 'Coro',
+    labelKey: 'chorus',
     isChorus: true,
     lines: [
       'El resurgir de una esperanza',
-      'que abre las puertas del paraiso.',
+      'que abre las puertas del paraíso.',
       'La vida y la paz son nuestro centro,',
       'la Cigarra canta, la Cigarra siente.',
     ],
   },
   {
-    label: 'Verso II',
+    labelKey: 'verse',
+    labelSuffix: ' II',
     lines: [
-      'Subiendo la montana con fuerza y con fe,',
-      'cantando a cada rincon, sembrando el saber.',
+      'Subiendo la montaña con fuerza y con fe,',
+      'cantando a cada rincón, sembrando el saber.',
       'Reunidos en el calor de una misma hoguera,',
       'la Cigarra alumbra como un gran farol.',
     ],
   },
   {
-    label: 'Coro',
+    labelKey: 'chorus',
     isChorus: true,
     lines: [
       'El resurgir de una esperanza',
-      'que abre las puertas del paraiso.',
+      'que abre las puertas del paraíso.',
       'La vida y la paz son nuestro centro,',
       'la Cigarra canta, la Cigarra siente.',
     ],
   },
   {
-    label: 'Verso III',
+    labelKey: 'verse',
+    labelSuffix: ' III',
     lines: [
-      'Un jardin de suenos donde todos caben,',
-      'donde las raices nos hacen mas fuertes.',
+      'Un jardín de sueños donde todos caben,',
+      'donde las raíces nos hacen más fuertes.',
       'La Cigarra vive, la Cigarra crece,',
       'transformando vidas con amor y con paz.',
     ],
   },
   {
-    label: 'Coro',
+    labelKey: 'chorus',
     isChorus: true,
     lines: [
       'El resurgir de una esperanza',
-      'que abre las puertas del paraiso.',
+      'que abre las puertas del paraíso.',
       'La vida y la paz son nuestro centro,',
       'la Cigarra canta, la Cigarra siente.',
     ],
@@ -101,18 +107,37 @@ function FloatingNotes() {
   );
 }
 
+/* ---------- YouTube embed component ---------- */
+function YouTubeEmbed({ videoId }: { videoId: string }) {
+  return (
+    <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl bg-black">
+      {/* Decorative glow behind the video */}
+      <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary-500/20 via-accent-500/10 to-primary-500/20 blur-2xl" />
+      <div className="relative aspect-video">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`}
+          title="Himno Fundación Cigarra"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 h-full w-full rounded-2xl"
+        />
+      </div>
+    </div>
+  );
+}
+
 /* ---------- main page component ---------- */
 export default function AnthemPage() {
+  const t = useTranslations('anthem');
+
   return (
     <>
       {/* ========== HERO SECTION ========== */}
       <section className="relative overflow-hidden bg-primary-900">
         <HeroWaves />
-        {/* Subtle accent glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-accent-500/8 blur-[120px]" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 py-28 text-center lg:px-8 lg:py-36">
-          {/* Decorative icon */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -128,7 +153,7 @@ export default function AnthemPage() {
             transition={{ duration: 0.6, ease: smoothEase }}
             className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
           >
-            Nuestro canto de esperanza
+            {t('tagline')}
           </motion.p>
 
           <motion.h1
@@ -137,7 +162,7 @@ export default function AnthemPage() {
             transition={{ duration: 0.7, delay: 0.1, ease: smoothEase }}
             className="font-heading text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
           >
-            Himno de la Fundacion Cigarra
+            {t('title')}
           </motion.h1>
 
           <motion.p
@@ -146,20 +171,41 @@ export default function AnthemPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
             className="mt-6 mx-auto max-w-2xl text-lg leading-relaxed text-primary-200/80"
           >
-            Nuestro canto de esperanza y transformacion
+            {t('subtitle')}
           </motion.p>
         </div>
       </section>
 
+      {/* ========== VIDEO SECTION ========== */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white py-20 lg:py-28">
+        <div className="mx-auto max-w-4xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-12 text-center">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary-100 px-5 py-2 text-sm font-semibold uppercase tracking-wide text-primary-700">
+                <HiPlay className="h-4 w-4" />
+                {t('watchVideo')}
+              </span>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-500">
+                {t('watchVideoSubtitle')}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <YouTubeEmbed videoId={YOUTUBE_VIDEO_ID} />
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ========== LYRICS SECTION ========== */}
-      <section className="relative section-padding bg-gradient-to-b from-gray-50 to-white">
+      <section className="relative section-padding bg-white">
         <FloatingNotes />
 
         <div className="relative z-10 mx-auto max-w-3xl px-4 lg:px-8">
           <ScrollReveal>
             <div className="mb-12 text-center">
               <span className="mb-4 inline-block rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-primary-700">
-                Letra del Himno
+                {t('lyricsLabel')}
               </span>
               <div className="mx-auto mt-4 flex items-center justify-center gap-2">
                 <span className="h-1 w-8 rounded-full bg-primary-300" />
@@ -174,7 +220,6 @@ export default function AnthemPage() {
           {/* Lyrics Card */}
           <ScrollReveal>
             <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-12">
-              {/* Opening quotation mark */}
               <div className="mb-8 text-center">
                 <span className="font-accent text-6xl leading-none text-primary-200">&ldquo;</span>
               </div>
@@ -189,7 +234,6 @@ export default function AnthemPage() {
                           : ''
                       }`}
                     >
-                      {/* Verse label */}
                       <p
                         className={`mb-4 text-xs font-semibold uppercase tracking-[0.2em] ${
                           verse.isChorus ? 'text-accent-600' : 'text-primary-500'
@@ -198,13 +242,12 @@ export default function AnthemPage() {
                         {verse.isChorus && (
                           <HiMusicNote className="mr-1 inline-block h-3 w-3" />
                         )}
-                        {verse.label}
+                        {t(verse.labelKey)}{verse.labelSuffix || ''}
                         {verse.isChorus && (
                           <HiMusicNote className="ml-1 inline-block h-3 w-3" />
                         )}
                       </p>
 
-                      {/* Lyrics lines */}
                       <div className="space-y-2">
                         {verse.lines.map((line, lineIndex) => (
                           <p
@@ -221,7 +264,6 @@ export default function AnthemPage() {
                       </div>
                     </div>
 
-                    {/* Decorative separator between sections */}
                     {index < verses.length - 1 && !verse.isChorus && (
                       <div className="mt-8 flex items-center justify-center gap-3">
                         <span className="h-px w-12 bg-gray-200" />
@@ -233,17 +275,15 @@ export default function AnthemPage() {
                 ))}
               </div>
 
-              {/* Closing quotation mark */}
               <div className="mt-8 text-center">
                 <span className="font-accent text-6xl leading-none text-primary-200">&rdquo;</span>
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Attribution */}
           <ScrollReveal delay={0.2}>
             <p className="mt-8 text-center text-sm text-gray-400">
-              Himno oficial de la Fundacion Cigarra &mdash; Ciudad Bolivar, Bogota
+              {t('attribution')}
             </p>
           </ScrollReveal>
         </div>
@@ -259,11 +299,10 @@ export default function AnthemPage() {
             </div>
 
             <h2 className="mb-6 font-heading text-3xl font-bold text-white md:text-4xl">
-              Conoce nuestros programas
+              {t('ctaTitle')}
             </h2>
             <p className="mx-auto mb-10 max-w-2xl text-lg text-white/80">
-              El himno refleja el espiritu de transformacion que viven nuestros
-              ninos y jovenes cada dia a traves de nuestros 13 programas.
+              {t('ctaDescription')}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
@@ -271,14 +310,14 @@ export default function AnthemPage() {
                 href="/programas"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-heading text-sm font-bold text-primary-600 transition-colors duration-300 hover:bg-gray-50"
               >
-                Ver Programas
+                {t('viewPrograms')}
                 <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/quienes-somos"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                Quienes Somos
+                {t('aboutUs')}
                 <HiArrowRight className="h-4 w-4" />
               </Link>
             </div>
