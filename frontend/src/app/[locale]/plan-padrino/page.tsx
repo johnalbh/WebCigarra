@@ -319,13 +319,9 @@ export default function PlanPadrinoPage() {
           <StaggerContainer className="grid gap-8 md:grid-cols-3" staggerDelay={0.15}>
             {stepConfig.map((step, index) => {
               const Icon = step.icon;
-              return (
-                <StaggerItem key={step.number}>
-                  <motion.div
-                    whileHover={{ y: -6 }}
-                    transition={{ duration: 0.3, ease: smoothEase }}
-                    className="group relative flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-8 text-center transition-all duration-300 hover:shadow-lg"
-                  >
+              const isClickable = index === 0;
+              const cardContent = (
+                <>
                     <div className="absolute -top-4 right-6">
                       <span className="font-accent text-7xl italic text-primary-100/60 transition-colors duration-300 group-hover:text-primary-200/80">
                         {step.number}
@@ -339,11 +335,33 @@ export default function PlanPadrinoPage() {
                     <h3 className="mb-3 font-heading text-xl font-bold text-gray-900">{t(`steps.${step.key}.title`)}</h3>
                     <p className="text-gray-500 leading-relaxed">{t(`steps.${step.key}.description`)}</p>
 
+                    {isClickable && (
+                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 transition-colors group-hover:text-primary-700">
+                        {t(`steps.${step.key}.title`)} <HiArrowRight className="h-4 w-4" />
+                      </span>
+                    )}
+
                     {index < stepConfig.length - 1 && (
                       <div className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 md:block">
                         <HiArrowRight className="h-8 w-8 text-primary-200" />
                       </div>
                     )}
+                </>
+              );
+              return (
+                <StaggerItem key={step.number}>
+                  <motion.div
+                    whileHover={{ y: -6 }}
+                    transition={{ duration: 0.3, ease: smoothEase }}
+                    className={`group relative flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-8 text-center transition-all duration-300 hover:shadow-lg ${isClickable ? 'cursor-pointer' : ''}`}
+                    {...(isClickable ? {
+                      onClick: () => document.getElementById('planes')?.scrollIntoView({ behavior: 'smooth' }),
+                      role: 'button',
+                      tabIndex: 0,
+                      onKeyDown: (e: React.KeyboardEvent) => { if (e.key === 'Enter') document.getElementById('planes')?.scrollIntoView({ behavior: 'smooth' }); },
+                    } : {})}
+                  >
+                    {cardContent}
                   </motion.div>
                 </StaggerItem>
               );
