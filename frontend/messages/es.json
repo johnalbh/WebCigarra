@@ -1026,6 +1026,8 @@
     "editInfo": "Editar datos"
   },
   "donationResponse": {
+    "pageTitle": "Estado de tu Donación",
+    "pageDescription": "Consulta el estado de tu donación a la Fundación Cigarra.",
     "approved": "¡Gracias por tu donación!",
     "approvedMessage": "Tu donación de {amount} ha sido recibida exitosamente. Recibirás un correo de confirmación.",
     "rejected": "Pago rechazado",

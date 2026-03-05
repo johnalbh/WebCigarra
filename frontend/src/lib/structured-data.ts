@@ -6,7 +6,7 @@ export function getOrganizationSchema() {
     '@type': 'NonprofitOrganization',
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/favicon.ico`,
+    logo: `${SITE_URL}/images/logo-principal.webp`,
     description:
       'Desde 2002, la Fundación Cigarra atiende a más de 180 niños con programas de educación, arte y cultura en Ciudad Bolívar, Bogotá.',
     foundingDate: '2002',
@@ -80,7 +80,7 @@ export function getArticleSchema(article: {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/favicon.ico`,
+        url: `${SITE_URL}/images/logo-principal.webp`,
       },
     },
   };

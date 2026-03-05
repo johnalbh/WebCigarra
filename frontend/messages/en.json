@@ -1026,6 +1026,8 @@
     "editInfo": "Edit info"
   },
   "donationResponse": {
+    "pageTitle": "Donation Status",
+    "pageDescription": "Check the status of your donation to Fundación Cigarra.",
     "approved": "Thank you for your donation!",
     "approvedMessage": "Your donation of {amount} has been received successfully. You will receive a confirmation email.",
     "rejected": "Payment rejected",

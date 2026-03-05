@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { buildPageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
-import { getArticleBySlug } from '@/lib/queries';
+import { getArticles, getArticleBySlug } from '@/lib/queries';
 import { getStrapiMedia } from '@/lib/strapi';
 import { getBreadcrumbSchema, getArticleSchema } from '@/lib/structured-data';
 import JsonLd from '@/components/seo/JsonLd';
@@ -33,6 +33,25 @@ async function fetchArticle(slug: string, locale: string): Promise<StrapiArticle
   } catch {
     return null;
   }
+}
+
+export async function generateStaticParams() {
+  const locales = ['es', 'en'];
+  const params: { locale: string; slug: string }[] = [];
+
+  for (const locale of locales) {
+    try {
+      const res = (await getArticles(locale, 1, 100)) as StrapiResponse;
+      const articles = Array.isArray(res?.data) ? res.data : res?.data ? [res.data] : [];
+      for (const a of articles) {
+        if (a.slug) params.push({ locale, slug: a.slug });
+      }
+    } catch {
+      // Fallback: build without pre-rendering if Strapi is unavailable
+    }
+  }
+
+  return params;
 }
 
 function formatSlug(slug: string) {
