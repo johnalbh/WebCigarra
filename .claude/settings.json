@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cwebp -q 80 hero-2-raw.jpg -o hero-2.webp)",
+      "Bash(cwebp -q 80 hero-3-raw.jpg -o hero-3.webp)"
+    ]
+  }
+}

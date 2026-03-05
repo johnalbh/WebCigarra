@@ -37,7 +37,7 @@
     },
     "backgroundImage": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": { "localized": false }

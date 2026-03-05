@@ -10,6 +10,8 @@ import PartnersMarquee from '@/components/sections/PartnersMarquee';
 import { buildPageMetadata } from '@/lib/seo';
 import { getOrganizationSchema, getWebSiteSchema } from '@/lib/structured-data';
 import JsonLd from '@/components/seo/JsonLd';
+import { getHero } from '@/lib/queries';
+import { getStrapiMedia } from '@/lib/strapi';
 
 export async function generateMetadata({
   params,
@@ -26,12 +28,31 @@ export async function generateMetadata({
   });
 }
 
-export default function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  let heroImages: string[] | undefined;
+  try {
+    const heroData = await getHero(locale) as any;
+    const images = heroData?.data?.backgroundImage;
+    if (Array.isArray(images) && images.length > 0) {
+      heroImages = images
+        .map((img: any) => getStrapiMedia(img.url))
+        .filter(Boolean) as string[];
+    }
+  } catch {
+    // Fallback to local images if Strapi is unavailable
+  }
+
   return (
     <>
       <JsonLd data={getOrganizationSchema()} />
       <JsonLd data={getWebSiteSchema()} />
-      <HeroSection />
+      <HeroSection images={heroImages} />
       <ImpactCounters />
       <ProgramsGrid />
       <StoriesCarousel />

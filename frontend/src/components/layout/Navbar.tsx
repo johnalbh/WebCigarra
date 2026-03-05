@@ -178,10 +178,12 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out",
-        scrolled ? "bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm" : "bg-transparent",
+        scrolled
+          ? "bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm"
+          : "bg-linear-to-b from-black/40 to-transparent lg:bg-transparent lg:from-transparent",
       )}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8 lg:py-5">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 lg:px-8 lg:py-5">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -190,12 +192,9 @@ export default function Navbar() {
             width={400}
             height={112}
             priority
-            style={{
-              width: "auto",
-              height: "5.5rem",
-              transition: "all 700ms ease-out",
-            }}
             className={cn(
+              "h-10 w-auto transition-all duration-700 ease-out lg:h-22",
+              scrolled && "lg:h-16",
               showWhiteLogo ? "brightness-0 invert" : "",
             )}
           />

@@ -734,7 +734,7 @@ export interface ApiHeroHero extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    backgroundImage: Schema.Attribute.Media<'images'> &
+    backgroundImage: Schema.Attribute.Media<'images', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;

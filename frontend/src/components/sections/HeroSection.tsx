@@ -10,7 +10,7 @@ import HeroWaves from '@/components/shared/HeroWaves';
 import { EASE_APPLE, SCALE_INITIAL, STAGGER } from '@/lib/animation-config';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 
-const heroImages = [
+const fallbackImages = [
   '/images/hero/fundacion-ninos.webp',
   '/images/hero/hero-2.webp',
   '/images/hero/hero-3.webp',
@@ -19,7 +19,12 @@ const heroImages = [
 
 const SLIDE_INTERVAL = 5000;
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  images?: string[];
+}
+
+export default function HeroSection({ images }: HeroSectionProps) {
+  const heroImages = images && images.length > 0 ? images : fallbackImages;
   const t = useTranslations('hero');
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);

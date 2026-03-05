@@ -985,9 +985,19 @@ async function seedHero(strapi: Core.Strapi) {
     status: 'published',
   });
 
-  // Upload hero background image (wide landscape)
-  const bg = await uploadImage(strapi, 'https://picsum.photos/seed/hero-cigarra/1920/1080', 'hero-background.jpg');
-  await linkMedia(strapi, 'api::hero.hero', doc.documentId, 'backgroundImage', bg, 'es');
+  // Upload hero slider images (real photos from cigarra.org)
+  const sliderUrls = [
+    { url: 'https://cigarra.org/wp-content/uploads/2025/02/Nutricion_2.jpg', name: 'hero-fundacion-ninos.jpg' },
+    { url: 'https://cigarra.org/wp-content/uploads/2025/11/2.-Presentacion-en-Quiba_1-1024x683.jpg', name: 'hero-presentacion-quiba.jpg' },
+    { url: 'https://cigarra.org/wp-content/uploads/2025/04/Sinfonica1-1024x768.jpg', name: 'hero-sinfonica.jpg' },
+    { url: 'https://cigarra.org/wp-content/uploads/2025/02/Nutricion_3.jpg', name: 'hero-nutricion.jpg' },
+  ];
+  const sliderFiles = [];
+  for (const img of sliderUrls) {
+    const file = await uploadImage(strapi, img.url, img.name);
+    if (file) sliderFiles.push(file);
+  }
+  await linkMedia(strapi, 'api::hero.hero', doc.documentId, 'backgroundImage', sliderFiles, 'es');
 
   await addEnglishLocale(strapi, 'api::hero.hero', doc.documentId, {
     title: 'Fundación Cigarra',
