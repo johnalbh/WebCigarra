@@ -522,7 +522,7 @@ export default function HowToHelpPage() {
                 <div className="mt-8 rounded-xl border border-accent-200 bg-accent-50 p-6">
                   <div className="flex items-baseline gap-2">
                     <span className="font-heading text-4xl font-bold text-accent-700">
-                      {locale === 'en' ? '$17' : '$65.000'}
+                      {locale === 'en' ? '$25' : '$65.000'}
                     </span>
                     <span className="text-lg font-medium text-accent-600">
                       {locale === 'en' ? 'USD/month' : 'COP/mes'}
@@ -542,7 +542,7 @@ export default function HowToHelpPage() {
 
                 {/* CTA */}
                 <a
-                  href={DONATION_LINK_COP}
+                  href="#donation-tiers"
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
                 >
                   <HiHeart className="h-5 w-5" />
