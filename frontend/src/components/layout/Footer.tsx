@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
 import { HiMail, HiPhone, HiLocationMarker, HiShieldCheck, HiExternalLink, HiCog } from 'react-icons/hi';
 import { reopenCookieBanner } from '@/components/shared/CookieConsent';
+import NewsletterForm from '@/components/shared/NewsletterForm';
 import { motion } from 'motion/react';
 
 const socialLinks = [
@@ -105,6 +106,17 @@ export default function Footer() {
               </a>
             ))}
           </div>
+        </motion.div>
+
+        {/* Newsletter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mt-12 flex justify-center"
+        >
+          <NewsletterForm />
         </motion.div>
 
         {/* Separator */}

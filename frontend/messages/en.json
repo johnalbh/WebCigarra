@@ -512,7 +512,16 @@
     "cookiePreferences": "Cookie Preferences",
     "privacyPolicy": "Privacy Policy",
     "cookiePolicy": "Cookie Policy",
-    "legal": "Legal"
+    "legal": "Legal",
+    "newsletterTitle": "Stay informed",
+    "newsletterDescription": "Get news, events, and program updates delivered to your inbox.",
+    "newsletterPlaceholder": "Your email address",
+    "newsletterButton": "Subscribe",
+    "newsletterSending": "Sending...",
+    "newsletterSuccess": "Thanks for subscribing!",
+    "newsletterAlready": "You're already subscribed. Thank you!",
+    "newsletterError": "Subscription failed. Please try again.",
+    "newsletterPrivacy": "We respect your privacy. No spam, just news."
   },
   "common": {
     "loading": "Loading...",

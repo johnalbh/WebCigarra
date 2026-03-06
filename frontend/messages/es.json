@@ -507,7 +507,16 @@
     "cookiePreferences": "Preferencias de cookies",
     "privacyPolicy": "Política de Privacidad",
     "cookiePolicy": "Política de Cookies",
-    "legal": "Legal"
+    "legal": "Legal",
+    "newsletterTitle": "Mantente informado",
+    "newsletterDescription": "Recibe noticias, eventos y avances de nuestros programas directamente en tu correo.",
+    "newsletterPlaceholder": "Tu correo electrónico",
+    "newsletterButton": "Suscribirse",
+    "newsletterSending": "Enviando...",
+    "newsletterSuccess": "¡Gracias por suscribirte!",
+    "newsletterAlready": "Ya estás suscrito. ¡Gracias!",
+    "newsletterError": "No se pudo completar la suscripción. Intenta de nuevo.",
+    "newsletterPrivacy": "Respetamos tu privacidad. Sin spam, solo noticias."
   },
   "common": {
     "loading": "Cargando...",
