@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { usePathname, Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'motion/react';
 import { HiX, HiExternalLink, HiArrowRight, HiCalendar, HiSparkles } from 'react-icons/hi';
 import { EASE_APPLE, EASE_SMOOTH } from '@/lib/animation-config';
@@ -22,18 +22,33 @@ export default function AnnouncementPopup({ data }: { data: AnnouncementData }) 
   const t = useTranslations('common');
   const tNews = useTranslations('news');
   const locale = useLocale();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [permanentlyDismissed, setPermanentlyDismissed] = useState(false);
+  const closedForThisVisitRef = useRef(false);
 
+  // Check localStorage on mount
   useEffect(() => {
     const dismissedKey = `announcement-hidden-${data.title}`;
     if (localStorage.getItem(dismissedKey)) {
       setPermanentlyDismissed(true);
-      return;
     }
-    const timer = setTimeout(() => setIsOpen(true), 1500);
-    return () => clearTimeout(timer);
   }, [data.title]);
+
+  // Show popup each time the user arrives at home ('/')
+  useEffect(() => {
+    if (permanentlyDismissed) return;
+
+    if (pathname === '/') {
+      closedForThisVisitRef.current = false;
+      const timer = setTimeout(() => {
+        if (!closedForThisVisitRef.current) setIsOpen(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+    // Navigated away from home — reset so it shows again next time
+    setIsOpen(false);
+  }, [pathname, permanentlyDismissed]);
 
   useEffect(() => {
     if (isOpen) {
@@ -55,6 +70,7 @@ export default function AnnouncementPopup({ data }: { data: AnnouncementData }) 
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
+    closedForThisVisitRef.current = true;
   }, []);
 
   const handleDontShowAgain = useCallback(() => {
