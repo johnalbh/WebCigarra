@@ -106,16 +106,16 @@
       "primera-infancia": "We transform the first five years of life into a solid foundation for the future through early stimulation, art, and play.",
       "refuerzo-escolar": "After-school sessions with academic support, robotics, dance, music, arts, English, sports, and entrepreneurship.",
       "danza": "Coordination, rhythm, and emotional expression fusing the richness of folklore with the freedom of contemporary dance.",
-      "ingles": "English language learning as a tool for accessing global opportunities.",
-      "musica": "Music education with string, wind, and percussion instruments. Artistic talent and discipline development.",
-      "artes": "Comprehensive artistic training that develops creativity, expression, and aesthetic sensitivity.",
-      "escuela-de-artes": "Artistic training space with specialized workshops in different creative disciplines.",
-      "tecnologia": "Training in computer tools and digital skills for the 21st century.",
+      "ingles": "We transform language learning into a tool without borders through dynamic and participatory methodologies.",
+      "musica": "Since 2015, comprehensive music training with string, wind, and percussion instruments. Home of our 60-member Youth Symphony Orchestra.",
+      "artes": "Comprehensive training in visual arts, drawing, and painting that enhances creativity, expression, and aesthetic sensitivity.",
+      "escuela-de-artes": "A space open to the entire community to explore visual arts, drawing, painting, and music on Saturdays.",
+      "tecnologia": "We bridge the digital divide with training in computer tools, safe browsing, and introduction to programming.",
       "biblioteca": "A reading and book lending space to foster reading habits and access to written culture.",
-      "psicologia": "Psychosocial support for children, youth, and families, strengthening emotional well-being.",
-      "grupo-mayores": "Recreational, cultural, and wellness activities for senior members of the community.",
-      "talleres-para-padres": "Workshops for parents and caregivers on parenting, communication, and school support.",
-      "ropero": "Clothing and footwear donation and distribution for community families."
+      "psicologia": "Comprehensive psychosocial support for children, youth, and families, strengthening emotional well-being and resilience.",
+      "grupo-mayores": "A welcoming gathering space with recreational, cultural, and wellness activities for senior citizens.",
+      "talleres-para-padres": "Monthly meetings for parents and caregivers on positive parenting, effective communication, and child development.",
+      "ropero": "Responsible collection, sorting, and distribution of clothing, footwear, furniture, and household items for families."
     },
     "details": {
       "primera-infancia": {
@@ -134,29 +134,29 @@
         "longDescription": "We transform energy into art. Through dance, we enhance the coordination, rhythm, and emotional expression of our children and youth. In this space, they don't just learn technique — they discover their own body voice, strengthen their discipline, and fuse the richness of folklore with the freedom of contemporary dance. We form complete artists who embrace their culture, trust their talent, and shine with their own light."
       },
       "ingles": {
-        "ageRange": "6-17 years",
-        "schedule": "Monday to Friday, 3:00 PM - 5:00 PM",
-        "longDescription": "The English program offers language learning as a tool for accessing global opportunities. Students develop comprehension, reading, writing, and conversation skills through dynamic and participatory methodologies."
+        "ageRange": "1-17 years",
+        "schedule": "Monday to Friday, 7:00 AM - 4:00 PM",
+        "longDescription": "We transform language learning into a tool without borders. Through dynamic and participatory methodologies, our students develop conversation, reading, and writing skills naturally. We don't just teach English — we give our children and youth the key to access global opportunities, connecting them with the world and empowering their vision of the future."
       },
       "musica": {
-        "ageRange": "6-17 years",
-        "schedule": "Monday to Friday, 2:00 PM - 5:00 PM",
-        "longDescription": "Our music program offers comprehensive training in string, wind, and percussion instruments. Students develop musical skills, discipline, and teamwork through individual and group practice. We have a musical ensemble that performs at community events and festivals."
+        "ageRange": "1-17 years",
+        "schedule": "Monday to Friday, 7:00 AM - 4:00 PM",
+        "longDescription": "Since 2015, we have been transforming lives through sound. As our longest-standing program, we offer comprehensive music education that embraces children and youth from their first year of life through age 17. In our semi-personalized and group classes for string, wind, and percussion instruments, we cultivate not only talent but also discipline and harmony. The cornerstone of this process is our Symphony Orchestra, made up of 60 young musicians who represent the foundation at festivals and high-level stages. Here, every note is a step toward a future full of hope and opportunities."
       },
       "artes": {
-        "ageRange": "6-17 years",
-        "schedule": "Monday to Friday, 3:00 PM - 5:00 PM",
-        "longDescription": "The Arts program offers comprehensive artistic training including visual arts, drawing, painting, and crafts. Participants develop their creativity, expression, and aesthetic sensitivity through individual and collective projects."
+        "ageRange": "1-17 years",
+        "schedule": "Monday to Friday, 7:00 AM - 4:00 PM",
+        "longDescription": "We empower the ability to innovate and communicate through artistic creation. Our program offers comprehensive training in visual arts, drawing, and painting, allowing participants to explore their aesthetic sensitivity from a solid technical foundation. Through individual and collective projects, students enhance their creativity, attention to detail, and problem-solving skills. In this space, art becomes a fundamental tool for identity expression and the development of motor and critical thinking skills."
       },
       "escuela-de-artes": {
-        "ageRange": "6-17 years",
-        "schedule": "Monday to Friday, 2:00 PM - 5:00 PM",
-        "longDescription": "The School of Arts is an artistic training space that brings together different creative disciplines. Students participate in specialized workshops in visual arts, music, dance, and theater, strengthening their comprehensive artistic education."
+        "ageRange": "5+ years",
+        "schedule": "Saturdays, 8:00 AM - 10:00 AM & 10:00 AM - 12:00 PM",
+        "longDescription": "We foster social cohesion through multidisciplinary artistic training. The School of Arts is a space open to the entire community, where children from age 4, youth, and adults come together to explore visual arts, drawing, painting, and music. We operate in two time blocks — 8:00 AM to 10:00 AM and 10:00 AM to 12:00 PM — providing an environment designed for learning, nurturing talents, and enjoying art as a common language. As a teaching center, we serve as a connection point that strengthens healthy coexistence and creative expression at every stage of life."
       },
       "tecnologia": {
-        "ageRange": "8-17 years",
-        "schedule": "Monday to Friday, 2:00 PM - 4:00 PM",
-        "longDescription": "The technology program offers training in computer tools, basic programming, and digital skills for the 21st century. Students learn to use computers, safe internet practices, and office tools."
+        "ageRange": "1-17 years",
+        "schedule": "Monday to Friday, 7:00 AM - 4:00 PM",
+        "longDescription": "We bridge the digital divide through technical and practical knowledge. Our program offers comprehensive training in computer tools and essential digital skills for today's challenges. From office tools and safe internet browsing to an introduction to basic programming, we equip our students to master technology with judgment and confidence. In this space, we turn computers into windows of opportunity for learning, research, and professional development."
       },
       "biblioteca": {
         "ageRange": "All ages",
@@ -164,24 +164,24 @@
         "longDescription": "Our community library is a space for reading, book lending, and reading promotion workshops. Beneficiaries can explore the world through reading, participate in book clubs, and activities that strengthen their reading comprehension skills."
       },
       "psicologia": {
-        "ageRange": "All ages",
-        "schedule": "Monday to Friday, 8:00 AM - 5:00 PM",
-        "longDescription": "Our psychology service offers psychosocial support for children, youth, and families. Through individual care, group workshops, and parent school, we strengthen emotional well-being and family relationships."
+        "ageRange": "1-17 years",
+        "schedule": "Monday to Friday, 7:00 AM - 4:00 PM",
+        "longDescription": "We strengthen the heart of our community through psychosocial support. Our psychology service provides comprehensive support for children, youth, and their families, focused on developing emotional tools and resilience. Through individual care, group workshops, and parent sessions, we promote safe and healthy environments. In this space, we work to enhance emotional well-being, strengthen family bonds, and ensure that every member of the foundation has the balance needed to reach their full potential."
       },
       "grupo-mayores": {
         "ageRange": "60+ years",
-        "schedule": "Wednesday and Friday, 9:00 AM - 12:00 PM",
-        "longDescription": "We offer recreational, cultural, and wellness activities for senior members of the community. The program includes crafts, adapted physical activity, social gatherings, and support to improve their quality of life."
+        "schedule": "Tuesdays, 8:00 AM - 12:00 PM",
+        "longDescription": "We honor the experience and vitality of our community. We offer a comprehensive gathering space where senior citizens participate in recreational, cultural, and wellness activities designed especially for their stage of life. Our program integrates crafts, adapted physical activity, and social gatherings that combat isolation and strengthen bonds of friendship. Through this constant support, we promote a better quality of life, ensuring that every participant finds in the foundation a place of joy, respect, and personal growth."
       },
       "talleres-para-padres": {
         "ageRange": "Parents and caregivers",
-        "schedule": "Saturdays, 9:00 AM - 11:00 AM",
-        "longDescription": "Parent Workshops offer meetings for parents and caregivers on positive parenting, effective communication, school support, and child development. We strengthen family bonds as the foundation of children's well-being."
+        "schedule": "Last Friday of each month, 7:00 AM - 9:00 AM",
+        "longDescription": "We believe in the family as the first environment of well-being. On the last Friday of each month, we provide a gathering space for parents and caregivers focused on positive parenting, effective communication, and comprehensive child development. Our sessions include training in psychosocial topics, parenting guidelines, and nutrition, providing practical tools for school and emotional support. By strengthening caregivers' capabilities, we ensure a solid foundation for the healthy and harmonious growth of our children and youth."
       },
       "ropero": {
         "ageRange": "All ages",
-        "schedule": "Saturdays, 8:00 AM - 12:00 PM",
-        "longDescription": "The community clothing closet receives, organizes, and distributes clothing and footwear donations for community families. This program ensures beneficiaries have access to clothing in good condition."
+        "schedule": "Twice a month, 9:00 AM - 1:00 PM",
+        "longDescription": "We transform generosity into tangible well-being for the home. The Community Clothing Closet is a program dedicated to the responsible collection, sorting, and distribution of clothing, footwear, furniture, and household items in excellent condition. Through an organized system, we ensure that families have access to dignified clothing and essential household articles, promoting a culture of mutual support and resource optimization. More than a donation, it is a bridge of solidarity that ensures every item reaches those who need it most, strengthening the sense of collective care."
       }
     }
   },

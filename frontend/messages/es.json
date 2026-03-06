@@ -106,16 +106,16 @@
       "primera-infancia": "Transformamos los primeros cinco años de vida en una base sólida para el futuro a través de la estimulación temprana, el arte y el juego.",
       "refuerzo-escolar": "Jornadas alternas con refuerzo académico, robótica, danza, música, artes, inglés, deportes y emprendimiento.",
       "danza": "Coordinación, ritmo y expresión emocional fusionando la riqueza del folclor con la libertad de la danza contemporánea.",
-      "ingles": "Aprendizaje del idioma inglés como herramienta de acceso a oportunidades globales.",
-      "musica": "Formación musical con instrumentos de cuerda, viento y percusión. Desarrollo del talento artístico y la disciplina.",
-      "artes": "Formación artística integral que desarrolla la creatividad, la expresión y la sensibilidad estética.",
-      "escuela-de-artes": "Espacio de formación artística con talleres especializados en diferentes disciplinas creativas.",
-      "tecnologia": "Formación en herramientas informáticas y habilidades digitales para el siglo XXI.",
+      "ingles": "Transformamos el aprendizaje de un idioma en una herramienta sin fronteras con metodologías dinámicas y participativas.",
+      "musica": "Desde 2015, formación musical integral con instrumentos de cuerda, viento y percusión. Hogar de nuestra Orquesta Sinfónica de 60 jóvenes músicos.",
+      "artes": "Formación integral en artes plásticas, dibujo y pintura que potencia la creatividad, la expresión y la sensibilidad estética.",
+      "escuela-de-artes": "Espacio abierto a toda la comunidad para explorar artes plásticas, dibujo, pintura y música los sábados.",
+      "tecnologia": "Reducimos la brecha digital con formación en herramientas informáticas, navegación segura e introducción a la programación.",
       "biblioteca": "Espacio de lectura y préstamo de libros para fomentar el hábito lector y el acceso a la cultura escrita.",
-      "psicologia": "Acompañamiento psicosocial para niños, jóvenes y familias, fortaleciendo el bienestar emocional.",
-      "grupo-mayores": "Actividades recreativas, culturales y de bienestar para los adultos mayores de la comunidad.",
-      "talleres-para-padres": "Talleres para padres y cuidadores sobre crianza, comunicación y acompañamiento escolar.",
-      "ropero": "Donación y distribución de ropa y calzado para las familias de la comunidad."
+      "psicologia": "Acompañamiento psicosocial integral para niños, jóvenes y familias, fortaleciendo el bienestar emocional y la resiliencia.",
+      "grupo-mayores": "Espacio integral de encuentro con actividades recreativas, culturales y de bienestar para adultos mayores.",
+      "talleres-para-padres": "Encuentros mensuales para padres y cuidadores sobre crianza positiva, comunicación efectiva y desarrollo infantil.",
+      "ropero": "Recepción, clasificación y distribución responsable de prendas de vestir, calzado, muebles y enseres para las familias."
     },
     "details": {
       "primera-infancia": {
@@ -134,29 +134,29 @@
         "longDescription": "Transformamos la energía en arte. A través de la danza, potenciamos la coordinación, el ritmo y la expresión emocional de nuestros niños y jóvenes. En este espacio, no solo aprenden técnica; descubren su propia voz corporal, fortalecen su disciplina y fusionan la riqueza del folclor con la libertad de la danza contemporánea. Así, formamos artistas integrales que abrazan su cultura, confían en su talento y brillan con luz propia."
       },
       "ingles": {
-        "ageRange": "6-17 años",
-        "schedule": "Lunes a Viernes, 3:00 PM - 5:00 PM",
-        "longDescription": "El programa de inglés ofrece aprendizaje del idioma como herramienta de acceso a oportunidades globales. Los estudiantes desarrollan competencias de comprensión, lectura, escritura y conversación a través de metodologías dinámicas y participativas."
+        "ageRange": "1-17 años",
+        "schedule": "Lunes a Viernes, 7:00 AM - 4:00 PM",
+        "longDescription": "Transformamos el aprendizaje de un idioma en una herramienta sin fronteras. A través de metodologías dinámicas y participativas, nuestros estudiantes desarrollan competencias de conversación, lectura y escritura de manera natural. No solo enseñamos inglés; brindamos a nuestros niños y jóvenes la llave para acceder a oportunidades globales, conectándolos con el mundo y potenciando su visión del futuro."
       },
       "musica": {
-        "ageRange": "6-17 años",
-        "schedule": "Lunes a Viernes, 2:00 PM - 5:00 PM",
-        "longDescription": "Nuestro programa de música ofrece formación integral en instrumentos de cuerda, viento y percusión. Los estudiantes desarrollan habilidades musicales, disciplina y trabajo en equipo a través de la práctica individual y grupal. Contamos con un ensamble musical que se presenta en eventos comunitarios y festivales."
+        "ageRange": "1-17 años",
+        "schedule": "Lunes a Viernes, 7:00 AM - 4:00 PM",
+        "longDescription": "Desde 2015, transformamos vidas a través del sonido. Como nuestro programa de mayor tradición, ofrecemos una formación musical integral que abraza a niños y jóvenes desde su primer año de vida hasta los 17 años. En nuestras clases semipersonalizadas y grupales de instrumentos de cuerda, viento y percusión, cultivamos no solo el talento, sino la disciplina y la armonía. El pilar de este proceso es nuestra Orquesta Sinfónica, integrada por 60 jóvenes músicos que representan a la fundación en festivales y escenarios de alto nivel. Aquí, cada nota es un paso hacia un futuro lleno de esperanza y oportunidades."
       },
       "artes": {
-        "ageRange": "6-17 años",
-        "schedule": "Lunes a Viernes, 3:00 PM - 5:00 PM",
-        "longDescription": "El programa de Artes ofrece formación artística integral que incluye artes plásticas, dibujo, pintura y manualidades. Los participantes desarrollan su creatividad, expresión y sensibilidad estética a través de proyectos individuales y colectivos."
+        "ageRange": "1-17 años",
+        "schedule": "Lunes a Viernes, 7:00 AM - 4:00 PM",
+        "longDescription": "Potenciamos la capacidad de innovar y comunicar mediante la creación artística. Nuestro programa ofrece una formación integral en artes plásticas, dibujo y pintura, permitiendo que los participantes exploren su sensibilidad estética desde una base técnica sólida. Mediante proyectos individuales y colectivos, los estudiantes potencian su creatividad, atención al detalle y capacidad de resolución de problemas. En este espacio, el arte se convierte en una herramienta fundamental para la expresión de la identidad y el desarrollo de habilidades motrices y críticas."
       },
       "escuela-de-artes": {
-        "ageRange": "6-17 años",
-        "schedule": "Lunes a Viernes, 2:00 PM - 5:00 PM",
-        "longDescription": "La Escuela de Artes es un espacio de formación artística que reúne diferentes disciplinas creativas. Los estudiantes participan en talleres especializados de artes visuales, música, danza y teatro, fortaleciendo su formación artística integral."
+        "ageRange": "5+ años",
+        "schedule": "Sábados, 8:00 AM - 10:00 AM y 10:00 AM - 12:00 M",
+        "longDescription": "Fomentamos la cohesión social a través de la formación artística multidisciplinaria. La Escuela de Artes es un espacio abierto a toda la comunidad, donde niños desde los 4 años, jóvenes y adultos convergen para explorar las artes plásticas, el dibujo, la pintura y la música. Operamos en dos bloques horarios, de 8:00 a. m. a 10:00 a. m. y de 10:00 a. m. a 12:00 m., brindando un entorno diseñado para aprender, potenciar talentos y disfrutar del arte como un lenguaje común. Como centro de enseñanza, funcionamos como un punto de conexión que fortalece la sana convivencia y la expresión creativa en todas las etapas de la vida."
       },
       "tecnologia": {
-        "ageRange": "8-17 años",
-        "schedule": "Lunes a Viernes, 2:00 PM - 4:00 PM",
-        "longDescription": "El programa de tecnología ofrece formación en herramientas informáticas, programación básica y habilidades digitales para el siglo XXI. Los estudiantes aprenden a usar computadores, internet seguro y herramientas ofimáticas."
+        "ageRange": "1-17 años",
+        "schedule": "Lunes a Viernes, 7:00 AM - 4:00 PM",
+        "longDescription": "Reducimos la brecha digital a través del conocimiento técnico y práctico. Nuestro programa ofrece una formación integral en herramientas informáticas y habilidades digitales esenciales para los desafíos del mundo actual. Desde el manejo de herramientas ofimáticas y navegación segura por internet, hasta una introducción a la programación básica, capacitamos a nuestros estudiantes para que dominen la tecnología con criterio y seguridad. En este espacio, convertimos los computadores en ventanas de oportunidad para el aprendizaje, la investigación y el desarrollo profesional."
       },
       "biblioteca": {
         "ageRange": "Todas las edades",
@@ -164,24 +164,24 @@
         "longDescription": "Nuestra biblioteca comunitaria es un espacio de lectura, préstamo de libros y talleres de fomento lector. Los beneficiarios pueden explorar el mundo a través de la lectura, participar en clubes de libro y actividades que fortalecen sus competencias de comprensión lectora."
       },
       "psicologia": {
-        "ageRange": "Todas las edades",
-        "schedule": "Lunes a Viernes, 8:00 AM - 5:00 PM",
-        "longDescription": "Nuestro servicio de psicología ofrece acompañamiento psicosocial para niños, jóvenes y familias. A través de atención individual, talleres grupales y escuela de padres, fortalecemos el bienestar emocional y las relaciones familiares."
+        "ageRange": "1-17 años",
+        "schedule": "Lunes a Viernes, 7:00 AM - 4:00 PM",
+        "longDescription": "Fortalecemos el corazón de nuestra comunidad mediante el acompañamiento psicosocial. Nuestro servicio de psicología brinda un soporte integral para niños, jóvenes y sus familias, enfocado en el desarrollo de herramientas emocionales y la resiliencia. Mediante atención individual, talleres grupales y jornadas para padres, promovemos entornos seguros y saludables. En este espacio, trabajamos para potenciar el bienestar emocional, fortalecer los vínculos familiares y asegurar que cada integrante de la fundación cuente con el equilibrio necesario para alcanzar su máximo potencial."
       },
       "grupo-mayores": {
         "ageRange": "60+ años",
-        "schedule": "Miércoles y Viernes, 9:00 AM - 12:00 PM",
-        "longDescription": "Ofrecemos actividades recreativas, culturales y de bienestar para los adultos mayores de la comunidad. El programa incluye manualidades, actividad física adaptada, encuentros sociales y acompañamiento para mejorar su calidad de vida."
+        "schedule": "Martes, 8:00 AM - 12:00 M",
+        "longDescription": "Honramos la experiencia y vitalidad de nuestra comunidad. Ofrecemos un espacio integral de encuentro donde los adultos mayores participan en actividades recreativas, culturales y de bienestar diseñadas especialmente para su etapa de vida. Nuestro programa integra manualidades, actividad física adaptada y encuentros sociales que combaten el aislamiento y fortalecen los lazos de amistad. A través de este acompañamiento constante, promovemos una mejor calidad de vida, asegurando que cada participante encuentre en la fundación un lugar de alegría, respeto y desarrollo personal."
       },
       "talleres-para-padres": {
         "ageRange": "Padres y cuidadores",
-        "schedule": "Sábados, 9:00 AM - 11:00 AM",
-        "longDescription": "Los Talleres para Padres ofrecen encuentros para padres y cuidadores sobre crianza positiva, comunicación efectiva, acompañamiento escolar y desarrollo infantil. Fortalecemos el vínculo familiar como base del bienestar de los niños."
+        "schedule": "Último viernes de cada mes, 7:00 AM - 9:00 AM",
+        "longDescription": "Creemos en la familia como el primer entorno de bienestar. El último viernes de cada mes, brindamos un espacio de encuentro para padres y cuidadores enfocado en la crianza positiva, la comunicación efectiva y el desarrollo infantil integral. Nuestras jornadas incluyen formación en temas psicosociales, pautas de crianza y nutrición, proporcionando herramientas prácticas para el acompañamiento escolar y emocional. Al fortalecer las capacidades de los cuidadores, aseguramos una base sólida para el crecimiento saludable y armonioso de nuestros niños y jóvenes."
       },
       "ropero": {
         "ageRange": "Todas las edades",
-        "schedule": "Sábados, 8:00 AM - 12:00 PM",
-        "longDescription": "El ropero comunitario recibe, organiza y distribuye donaciones de ropa y calzado para las familias de la comunidad. Este programa garantiza que los beneficiarios tengan acceso a prendas de vestir en buen estado."
+        "schedule": "Dos veces al mes, 9:00 AM - 1:00 PM",
+        "longDescription": "Transformamos la generosidad en bienestar tangible para el hogar. El Ropero Comunitario es un programa dedicado a la recepción, clasificación y distribución responsable de prendas de vestir, calzado, muebles y enseres en excelente estado. A través de un sistema organizado, garantizamos que las familias tengan acceso a vestuario digno y artículos esenciales para la vivienda, promoviendo una cultura de apoyo mutuo y aprovechamiento de recursos. Más que una donación, es un puente de solidaridad que asegura que cada artículo llegue a manos de quien más lo necesita, fortaleciendo el sentido de cuidado colectivo."
       }
     }
   },
