@@ -13,7 +13,7 @@ const partners = [
   { name: 'Opperar', logo: '/images/partners/opperar.webp' },
   { name: 'HomeCenter', logo: '/images/partners/homecenter.webp' },
   { name: 'Makri', logo: '/images/partners/makri.webp' },
-  { name: 'ABACO - Banco de Alimentos', logo: '/images/partners/abaco.svg', imgClass: 'scale-75' },
+  { name: 'ABACO - Banco de Alimentos', logo: '/images/partners/abaco.svg' },
   { name: 'Permoda', logo: '/images/partners/permoda.svg' },
   { name: 'Almacenes Éxito', logo: '/images/partners/exito.svg' },
 ] as const;
@@ -48,13 +48,13 @@ export default function PartnersMarquee() {
                 key={`row1-${i}`}
                 className="mx-4 flex-shrink-0"
               >
-                <div className="flex h-24 w-56 items-center justify-center rounded-lg border border-gray-100 bg-white px-4 opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:shadow-sm">
-                  <div className={`relative h-16 w-full ${'imgClass' in partner ? partner.imgClass : ''}`}>
+                <div className="flex h-28 w-48 items-center justify-center rounded-lg border border-gray-100 bg-white p-4 opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:shadow-sm">
+                  <div className="relative h-14 w-32">
                     <Image
                       src={partner.logo}
                       alt={partner.name}
                       fill
-                      sizes="200px"
+                      sizes="128px"
                       className="object-contain"
                     />
                   </div>
@@ -74,13 +74,13 @@ export default function PartnersMarquee() {
                 key={`row2-${i}`}
                 className="mx-4 flex-shrink-0"
               >
-                <div className="flex h-24 w-56 items-center justify-center rounded-lg border border-gray-100 bg-white px-4 opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:shadow-sm">
-                  <div className={`relative h-16 w-full ${'imgClass' in partner ? partner.imgClass : ''}`}>
+                <div className="flex h-28 w-48 items-center justify-center rounded-lg border border-gray-100 bg-white p-4 opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:shadow-sm">
+                  <div className="relative h-14 w-32">
                     <Image
                       src={partner.logo}
                       alt={partner.name}
                       fill
-                      sizes="160px"
+                      sizes="128px"
                       className="object-contain"
                     />
                   </div>

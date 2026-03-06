@@ -201,8 +201,8 @@ export default function Navbar() {
             height={112}
             priority
             className={cn(
-              "h-10 w-auto transition-all duration-700 ease-out lg:h-22",
-              scrolled && "lg:h-16",
+              "h-12 w-auto transition-all duration-700 ease-out lg:h-24",
+              scrolled && "lg:h-18",
               showWhiteLogo ? "brightness-0 invert" : "",
             )}
           />
@@ -252,11 +252,12 @@ export default function Navbar() {
           <a
             href={switchLocaleHref}
             className={cn(
-              "rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-500 ease-out",
-              scrolled ? "text-gray-600 hover:bg-gray-100" : "text-white/90 hover:bg-white/10",
+              "rounded-lg px-3 py-1.5 text-2xl leading-none transition-all duration-500 ease-out hover:scale-110",
+              scrolled ? "hover:bg-gray-100" : "hover:bg-white/10",
             )}
+            title={locale === "es" ? "English" : "Español"}
           >
-            {locale === "es" ? "EN" : "ES"}
+            {locale === "es" ? "🇬🇧" : "🇨🇴"}
           </a>
           <Link
             href="/como-ayudar"
@@ -379,8 +380,9 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
                   <a
                     href={switchLocaleHref}
-                    className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300"
+                    className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300"
                   >
+                    <span className="text-xl leading-none">{locale === "es" ? "🇬🇧" : "🇨🇴"}</span>
                     {locale === "es" ? "English" : "Español"}
                   </a>
                   <Link
