@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Link } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { HiMenu, HiX, HiChevronDown, HiBriefcase, HiHeart } from "react-icons/hi";
@@ -180,7 +180,7 @@ export default function Navbar() {
   }, [pathname]);
 
   const otherLocale = locale === "es" ? "en" : "es";
-  const switchLocaleHref = `/${otherLocale}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`;
+  const intlPathname = usePathname();
 
   return (
     <header
@@ -249,8 +249,9 @@ export default function Navbar() {
 
         {/* Right side: Language + Donate */}
         <div className="hidden items-center gap-2 lg:flex">
-          <a
-            href={switchLocaleHref}
+          <Link
+            href={intlPathname as "/"}
+            locale={otherLocale}
             className={cn(
               "rounded-lg px-3 py-1.5 text-2xl leading-none transition-all duration-500 ease-out hover:scale-110",
               scrolled ? "hover:bg-gray-100" : "hover:bg-white/10",
@@ -258,7 +259,7 @@ export default function Navbar() {
             title={locale === "es" ? "English" : "Español"}
           >
             {locale === "es" ? "🇬🇧" : "🇨🇴"}
-          </a>
+          </Link>
           <Link
             href="/como-ayudar"
             className="rounded-full bg-accent-500 px-5 py-2 text-sm font-semibold text-white transition-all duration-500 ease-out hover:bg-accent-600 hover:shadow-lg hover:shadow-accent-500/25"
@@ -378,13 +379,14 @@ export default function Navbar() {
 
               <div className="border-t pt-4 mt-2">
                 <div className="flex items-center gap-3">
-                  <a
-                    href={switchLocaleHref}
+                  <Link
+                    href={intlPathname as "/"}
+                    locale={otherLocale}
                     className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300"
                   >
                     <span className="text-xl leading-none">{locale === "es" ? "🇬🇧" : "🇨🇴"}</span>
                     {locale === "es" ? "English" : "Español"}
-                  </a>
+                  </Link>
                   <Link
                     href="/como-ayudar"
                     className="flex-1 rounded-full bg-accent-500 py-2.5 text-center text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-600"
