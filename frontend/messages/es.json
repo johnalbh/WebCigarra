@@ -103,9 +103,9 @@
       "ropero": "Ropero"
     },
     "descriptions": {
-      "primera-infancia": "Atención integral para niños de 0 a 5 años con estimulación temprana, juego y acompañamiento familiar.",
-      "refuerzo-escolar": "Acompañamiento académico en matemáticas, lectura, escritura y tareas. Fortalecemos el aprendizaje escolar.",
-      "danza": "Danza folclórica y contemporánea. Expresión corporal, coordinación y valoración cultural.",
+      "primera-infancia": "Transformamos los primeros cinco años de vida en una base sólida para el futuro a través de la estimulación temprana, el arte y el juego.",
+      "refuerzo-escolar": "Jornadas alternas con refuerzo académico, robótica, danza, música, artes, inglés, deportes y emprendimiento.",
+      "danza": "Coordinación, ritmo y expresión emocional fusionando la riqueza del folclor con la libertad de la danza contemporánea.",
       "ingles": "Aprendizaje del idioma inglés como herramienta de acceso a oportunidades globales.",
       "musica": "Formación musical con instrumentos de cuerda, viento y percusión. Desarrollo del talento artístico y la disciplina.",
       "artes": "Formación artística integral que desarrolla la creatividad, la expresión y la sensibilidad estética.",
@@ -119,19 +119,19 @@
     },
     "details": {
       "primera-infancia": {
-        "ageRange": "0-5 años",
-        "schedule": "Lunes a Viernes, 8:00 AM - 12:00 PM",
-        "longDescription": "Brindamos atención integral para niños de 0 a 5 años con estimulación temprana, juego, arte y acompañamiento familiar. El programa se enfoca en el desarrollo cognitivo, motriz, social y emocional durante los primeros años de vida."
+        "ageRange": "1-5 años",
+        "schedule": "Lunes a Viernes, 7:00 AM - 4:00 PM",
+        "longDescription": "Transformamos los primeros cinco años de vida en una base sólida para el futuro. A través de la estimulación temprana, el arte y el juego, potenciamos el desarrollo cognitivo, emocional y motriz de los niños. Formamos alianza con las familias para asegurar que cada pequeño crezca en un entorno seguro, creativo y lleno de posibilidades."
       },
       "refuerzo-escolar": {
-        "ageRange": "6-17 años",
-        "schedule": "Lunes a Viernes, 2:00 PM - 4:00 PM",
-        "longDescription": "Brindamos apoyo académico personalizado en matemáticas, español, ciencias y otras áreas. Nuestros tutores ayudan a los estudiantes a mejorar su rendimiento escolar, desarrollar hábitos de estudio y fortalecer competencias básicas."
+        "ageRange": "5-17 años",
+        "schedule": "Lunes a Viernes, 7:00 AM - 11:30 AM y 12:30 PM - 4:00 PM",
+        "longDescription": "Convertimos el tiempo extraescolar en una oportunidad de descubrimiento. En jornadas alternas a su colegio (mañana o tarde), nuestros estudiantes no solo fortalecen su rendimiento académico en áreas básicas; también despiertan su genio creativo y tecnológico. Desde la precisión de la robótica y la tecnología, hasta la expresión en danza, música y artes, pasando por el inglés, deportes y emprendimiento. Brindamos un ecosistema de aprendizaje donde cada niño encuentra su pasión, desarrolla hábitos de estudio sólidos y se prepara para los retos del futuro."
       },
       "danza": {
-        "ageRange": "6-17 años",
-        "schedule": "Martes y Jueves, 3:00 PM - 5:00 PM",
-        "longDescription": "Nuestro programa de danza ofrece formación en danza folclórica y contemporánea. Los participantes desarrollan expresión corporal, coordinación, ritmo y una profunda valoración por la cultura colombiana a través del movimiento y la música."
+        "ageRange": "1-17 años",
+        "schedule": "Lunes a Viernes, 7:00 AM - 4:00 PM",
+        "longDescription": "Transformamos la energía en arte. A través de la danza, potenciamos la coordinación, el ritmo y la expresión emocional de nuestros niños y jóvenes. En este espacio, no solo aprenden técnica; descubren su propia voz corporal, fortalecen su disciplina y fusionan la riqueza del folclor con la libertad de la danza contemporánea. Así, formamos artistas integrales que abrazan su cultura, confían en su talento y brillan con luz propia."
       },
       "ingles": {
         "ageRange": "6-17 años",
@@ -1295,8 +1295,8 @@
     "lastUpdated": "Última actualización: 1 de enero de 2018",
     "contactTitle": "Datos del Responsable del Tratamiento",
     "contactAddress": "Calle 71Q sur No. 27-60, Barrio Puertas del Paraíso, Bogotá, Colombia",
-    "contactEmail": "isabel.gutierrez@cigarra.org",
-    "contactPhone": "(57+1) 7907122",
+    "contactEmail": "esperanza.duque@cigarra.org",
+    "contactPhone": "+57 321 246 5421",
     "s1Title": "Marco Legal Aplicable",
     "s1Content": "La presente política se fundamenta en las siguientes normas:\n\n• Constitución Política de Colombia (Art. 15 — Derecho a la intimidad y habeas data)\n• Ley 1266 de 2008 — Habeas data financiero\n• Sentencia C-748 de 2011 — Control constitucional\n• Ley 1581 de 2012 — Régimen general de protección de datos personales\n• Decreto 1377 de 2013 — Reglamentación parcial de la Ley 1581\n• Decreto 886 de 2014 — Registro Nacional de Bases de Datos\n• Decreto 1074 de 2015 — Decreto Único Reglamentario del Sector Comercio",
     "s2Title": "Principios Rectores",
@@ -1314,7 +1314,7 @@
     "s8Title": "Legitimación para el Ejercicio de Derechos",
     "s8Content": "Pueden ejercitar los derechos previstos en esta política:\n\n• El titular, previa acreditación de su identidad\n• Los causahabientes en caso de muerte o incapacidad del titular\n• El representante o apoderado del titular, debidamente acreditado\n• Por estipulación o mandato a favor de otro\n• Para menores de edad, sus padres o representantes legales",
     "s9Title": "Responsable de Consultas y Reclamos",
-    "s9Content": "El Oficial de Protección de Datos (Administrador de la Fundación) es el encargado de atender consultas y reclamos, definiendo e implementando las acciones conforme a la regulación vigente.\n\nContacto: isabel.gutierrez@cigarra.org",
+    "s9Content": "El Oficial de Protección de Datos (Administrador de la Fundación) es el encargado de atender consultas y reclamos, definiendo e implementando las acciones conforme a la regulación vigente.\n\nContacto: esperanza.duque@cigarra.org",
     "s10Title": "Procedimiento de Consultas",
     "s10Content": "Las consultas serán atendidas en un término máximo de diez (10) días hábiles contados a partir de la fecha de recepción. Cuando no fuere posible atender la consulta dentro de dicho término, se informará al interesado los motivos de la demora y la fecha en que será atendida, la cual en ningún caso podrá superar los cinco (5) días hábiles siguientes al vencimiento del primer término.",
     "s11Title": "Procedimiento de Reclamos",

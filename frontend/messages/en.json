@@ -103,9 +103,9 @@
       "ropero": "Clothing Closet"
     },
     "descriptions": {
-      "primera-infancia": "Comprehensive care for children ages 0 to 5 with early stimulation, play, and family support.",
-      "refuerzo-escolar": "Academic support in math, reading, writing, and homework. We strengthen school learning.",
-      "danza": "Folk and contemporary dance. Body expression, coordination, and cultural appreciation.",
+      "primera-infancia": "We transform the first five years of life into a solid foundation for the future through early stimulation, art, and play.",
+      "refuerzo-escolar": "After-school sessions with academic support, robotics, dance, music, arts, English, sports, and entrepreneurship.",
+      "danza": "Coordination, rhythm, and emotional expression fusing the richness of folklore with the freedom of contemporary dance.",
       "ingles": "English language learning as a tool for accessing global opportunities.",
       "musica": "Music education with string, wind, and percussion instruments. Artistic talent and discipline development.",
       "artes": "Comprehensive artistic training that develops creativity, expression, and aesthetic sensitivity.",
@@ -119,19 +119,19 @@
     },
     "details": {
       "primera-infancia": {
-        "ageRange": "0-5 years",
-        "schedule": "Monday to Friday, 8:00 AM - 12:00 PM",
-        "longDescription": "We provide comprehensive care for children ages 0 to 5 with early stimulation, play, art, and family support. The program focuses on cognitive, motor, social, and emotional development during the first years of life."
+        "ageRange": "1-5 years",
+        "schedule": "Monday to Friday, 7:00 AM - 4:00 PM",
+        "longDescription": "We transform the first five years of life into a solid foundation for the future. Through early stimulation, art, and play, we enhance the cognitive, emotional, and motor development of children. We build alliances with families to ensure every child grows in a safe, creative environment full of possibilities."
       },
       "refuerzo-escolar": {
-        "ageRange": "6-17 years",
-        "schedule": "Monday to Friday, 2:00 PM - 4:00 PM",
-        "longDescription": "We provide personalized academic support in math, Spanish, science, and other subjects. Our tutors help students improve their school performance, develop study habits, and strengthen basic skills."
+        "ageRange": "5-17 years",
+        "schedule": "Monday to Friday, 7:00 AM - 11:30 AM & 12:30 PM - 4:00 PM",
+        "longDescription": "We turn after-school time into an opportunity for discovery. In sessions alternate to their school schedule (morning or afternoon), our students not only strengthen their academic performance in core subjects — they also awaken their creative and technological genius. From the precision of robotics and technology to expression in dance, music, and arts, through English, sports, and entrepreneurship. We provide a learning ecosystem where every child finds their passion, develops solid study habits, and prepares for the challenges of the future."
       },
       "danza": {
-        "ageRange": "6-17 years",
-        "schedule": "Tuesday and Thursday, 3:00 PM - 5:00 PM",
-        "longDescription": "Our dance program offers training in folk and contemporary dance. Participants develop body expression, coordination, rhythm, and a deep appreciation for Colombian culture through movement and music."
+        "ageRange": "1-17 years",
+        "schedule": "Monday to Friday, 7:00 AM - 4:00 PM",
+        "longDescription": "We transform energy into art. Through dance, we enhance the coordination, rhythm, and emotional expression of our children and youth. In this space, they don't just learn technique — they discover their own body voice, strengthen their discipline, and fuse the richness of folklore with the freedom of contemporary dance. We form complete artists who embrace their culture, trust their talent, and shine with their own light."
       },
       "ingles": {
         "ageRange": "6-17 years",
@@ -1410,8 +1410,8 @@
     "lastUpdated": "Last updated: January 1, 2018",
     "contactTitle": "Data Controller Information",
     "contactAddress": "Calle 71Q sur No. 27-60, Barrio Puertas del Paraíso, Bogotá, Colombia",
-    "contactEmail": "isabel.gutierrez@cigarra.org",
-    "contactPhone": "(57+1) 7907122",
+    "contactEmail": "esperanza.duque@cigarra.org",
+    "contactPhone": "+57 321 246 5421",
     "s1Title": "Applicable Legal Framework",
     "s1Content": "This policy is based on the following regulations:\n\n• Colombian Constitution (Art. 15 — Right to privacy and habeas data)\n• Law 1266 of 2008 — Financial habeas data\n• Decision C-748 of 2011 — Constitutional review\n• Law 1581 of 2012 — General personal data protection regime\n• Decree 1377 of 2013 — Partial regulation of Law 1581\n• Decree 886 of 2014 — National Database Registry\n• Decree 1074 of 2015 — Single Regulatory Decree for the Commerce Sector",
     "s2Title": "Guiding Principles",
@@ -1429,7 +1429,7 @@
     "s8Title": "Legitimation for Exercising Rights",
     "s8Content": "The following may exercise the rights provided in this policy:\n\n• The data subject, upon verification of their identity\n• Successors in case of death or incapacity of the data subject\n• The duly accredited representative or attorney of the data subject\n• By stipulation or mandate in favor of another\n• For minors, their parents or legal representatives",
     "s9Title": "Person Responsible for Inquiries and Claims",
-    "s9Content": "The Data Protection Officer (Foundation Administrator) is responsible for handling inquiries and claims, defining and implementing actions in accordance with current regulations.\n\nContact: isabel.gutierrez@cigarra.org",
+    "s9Content": "The Data Protection Officer (Foundation Administrator) is responsible for handling inquiries and claims, defining and implementing actions in accordance with current regulations.\n\nContact: esperanza.duque@cigarra.org",
     "s10Title": "Inquiry Procedure",
     "s10Content": "Inquiries will be addressed within a maximum period of ten (10) business days from the date of receipt. When it is not possible to address the inquiry within said period, the interested party will be informed of the reasons for the delay and the date on which it will be addressed, which in no case may exceed five (5) business days following the expiration of the initial period.",
     "s11Title": "Claims Procedure",
