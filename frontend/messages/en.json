@@ -555,12 +555,12 @@
       "follow": { "title": "Follow their progress", "description": "Receive personalized reports on your sponsored child's academic progress and development." }
     },
     "tiers": {
-      "monthly": { "name": "Monthly Plan", "period": "month", "description": "Ideal to start your commitment to a child." },
-      "semester": { "name": "Semester Plan", "period": "semester", "description": "Continuous support for 6 months." },
-      "annual": { "name": "Annual Plan", "period": "year", "description": "A full year transforming a child's life." },
-      "gold": { "name": "Gold Plan", "period": "year", "description": "Double your impact by sponsoring 2 children." },
-      "platinum": { "name": "Platinum Plan", "period": "year", "description": "Triple impact: 3 children with a secured future." },
-      "ultra": { "name": "Ultra Plan", "period": "year", "description": "Maximum impact: transform the lives of 4 children." }
+      "monthly": { "name": "Monthly Plan", "period": "month", "description": "Sponsor 1 child with education and meals for one month." },
+      "semester": { "name": "Semester Plan", "period": "semester", "description": "Sponsor 1 child for 6 continuous months." },
+      "annual": { "name": "Annual Plan", "period": "year", "description": "Sponsor 1 child for a full academic year." },
+      "gold": { "name": "Gold Plan", "period": "year", "description": "Sponsor 2 children for a full academic year." },
+      "platinum": { "name": "Platinum Plan", "period": "year", "description": "Sponsor 3 children for a full academic year." },
+      "ultra": { "name": "Ultra Plan", "period": "year", "description": "Sponsor 4 children for a full academic year." }
     },
     "tierIncludes": {
       "educationComplete": "Complete educational program",

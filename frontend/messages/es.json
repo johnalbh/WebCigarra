@@ -555,12 +555,12 @@
       "follow": { "title": "Sigue su progreso", "description": "Recibe reportes personalizados con el avance académico y desarrollo de tu apadrinado." }
     },
     "tiers": {
-      "monthly": { "name": "Plan Mensual", "period": "mes", "description": "Ideal para comenzar tu compromiso con un niño." },
-      "semester": { "name": "Plan Semestral", "period": "semestre", "description": "Acompañamiento continuo durante 6 meses." },
-      "annual": { "name": "Plan Anual", "period": "año", "description": "Un año completo transformando la vida de un niño." },
-      "gold": { "name": "Plan Dorado", "period": "año", "description": "Duplica tu impacto apadrinando a 2 niños." },
-      "platinum": { "name": "Plan Platino", "period": "año", "description": "Triple impacto: 3 niños con futuro asegurado." },
-      "ultra": { "name": "Plan Ultra", "period": "año", "description": "Máximo impacto: transforma la vida de 4 niños." }
+      "monthly": { "name": "Plan Mensual", "period": "mes", "description": "Apadrina 1 niño con educación y alimentación por un mes." },
+      "semester": { "name": "Plan Semestral", "period": "semestre", "description": "Apadrina 1 niño durante 6 meses continuos." },
+      "annual": { "name": "Plan Anual", "period": "año", "description": "Apadrina 1 niño durante todo un año académico." },
+      "gold": { "name": "Plan Dorado", "period": "año", "description": "Apadrina 2 niños durante todo un año académico." },
+      "platinum": { "name": "Plan Platino", "period": "año", "description": "Apadrina 3 niños durante todo un año académico." },
+      "ultra": { "name": "Plan Ultra", "period": "año", "description": "Apadrina 4 niños durante todo un año académico." }
     },
     "tierIncludes": {
       "educationComplete": "Programa educativo completo",
