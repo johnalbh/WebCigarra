@@ -379,7 +379,7 @@ export default function ImpactoEmpresarialPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          3.5 HOW IT WORKS (Process)
+          3.5 HOW IT WORKS (Process) – animated
           ═══════════════════════════════════════════════════════ */}
       <section className="relative section-padding overflow-hidden">
         <div className="mx-auto max-w-5xl px-4 lg:px-8">
@@ -398,34 +398,74 @@ export default function ImpactoEmpresarialPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer scaleUp className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
-            {[
-              { key: 'contact', icon: FaWhatsapp, num: '1', color: 'bg-green-100 text-green-600' },
-              { key: 'proposal', icon: HiDocumentReport, num: '2', color: 'bg-accent-100 text-accent-600' },
-              { key: 'agreement', icon: HiClipboardCheck, num: '3', color: 'bg-primary-100 text-primary-600' },
-              { key: 'impact', icon: HiStar, num: '4', color: 'bg-amber-100 text-amber-600' },
-            ].map((step) => {
-              const Icon = step.icon;
-              return (
-                <StaggerItem scaleUp key={step.key}>
-                  <div className="relative flex flex-col items-center text-center p-6">
-                    <div className="absolute -top-2 -left-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 font-heading text-sm font-bold text-white">
+          {/* Steps with connecting line */}
+          <div className="relative">
+            {/* Horizontal connector line (lg only) */}
+            <motion.div
+              className="absolute top-12 left-[12.5%] right-[12.5%] hidden lg:block"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+            >
+              <motion.div
+                className="h-0.5 w-full bg-gradient-to-r from-green-300 via-accent-300 via-primary-300 to-amber-300 rounded-full origin-left"
+                variants={{
+                  hidden: { scaleX: 0, opacity: 0 },
+                  visible: { scaleX: 1, opacity: 1 },
+                }}
+                transition={{ duration: 1.2, ease: smoothEase, delay: 0.3 }}
+              />
+            </motion.div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { key: 'contact', icon: FaWhatsapp, num: '1', color: 'bg-green-100 text-green-600', glow: 'group-hover:shadow-green-200' },
+                { key: 'proposal', icon: HiDocumentReport, num: '2', color: 'bg-accent-100 text-accent-600', glow: 'group-hover:shadow-accent-200' },
+                { key: 'agreement', icon: HiClipboardCheck, num: '3', color: 'bg-primary-100 text-primary-600', glow: 'group-hover:shadow-primary-200' },
+                { key: 'impact', icon: HiStar, num: '4', color: 'bg-amber-100 text-amber-600', glow: 'group-hover:shadow-amber-200' },
+              ].map((step, i) => {
+                const Icon = step.icon;
+                return (
+                  <motion.div
+                    key={step.key}
+                    className="group relative flex flex-col items-center text-center p-6 rounded-2xl cursor-default transition-shadow duration-300 hover:shadow-lg"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.15 * i }}
+                    whileHover={{ y: -6 }}
+                  >
+                    {/* Number badge */}
+                    <motion.div
+                      className="absolute -top-2 -left-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 font-heading text-sm font-bold text-white shadow-md"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 15, delay: 0.3 + 0.15 * i }}
+                    >
                       {step.num}
-                    </div>
-                    <div className={`mb-4 flex h-16 w-16 items-center justify-center rounded-2xl ${step.color}`}>
+                    </motion.div>
+
+                    {/* Icon with float */}
+                    <motion.div
+                      className={`mb-4 flex h-16 w-16 items-center justify-center rounded-2xl ${step.color} shadow-sm transition-shadow duration-300 ${step.glow}`}
+                      animate={{ y: [0, -4, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 * i }}
+                    >
                       <Icon className="h-8 w-8" />
-                    </div>
+                    </motion.div>
+
                     <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">
                       {t(`howItWorks.steps.${step.key}.title`)}
                     </h3>
                     <p className="text-sm text-gray-500 leading-relaxed">
                       {t(`howItWorks.steps.${step.key}.description`)}
                     </p>
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </StaggerContainer>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
