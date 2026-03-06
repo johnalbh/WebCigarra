@@ -5,12 +5,16 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { HiMenu, HiX, HiChevronDown, HiBriefcase, HiHeart } from "react-icons/hi";
+import {
+  HiMenu, HiX, HiChevronDown, HiBriefcase, HiHeart, HiArrowRight,
+  HiUserGroup, HiUsers, HiMusicNote, HiLightBulb, HiGift, HiHand,
+} from "react-icons/hi";
+import type { IconType } from "react-icons";
 import { motion, AnimatePresence } from "motion/react";
 import { usePathname as useNextPathname } from "next/navigation";
 
 /* ── Nav structure with dropdowns ── */
-type NavChild = { href: string; key: string; highlight?: boolean };
+type NavChild = { href: string; key: string; descKey: string; icon: IconType; highlight?: boolean };
 type NavItem = {
   href?: string;
   key: string;
@@ -23,9 +27,9 @@ const navItems: NavItem[] = [
   {
     key: "aboutUs",
     children: [
-      { href: "/quienes-somos", key: "about" },
-      { href: "/equipo", key: "team" },
-      { href: "/himno", key: "anthem" },
+      { href: "/quienes-somos", key: "about", descKey: "aboutDesc", icon: HiUserGroup },
+      { href: "/equipo", key: "team", descKey: "teamDesc", icon: HiUsers },
+      { href: "/himno", key: "anthem", descKey: "anthemDesc", icon: HiMusicNote },
     ],
   },
   { href: "/programas", key: "programs" },
@@ -34,16 +38,16 @@ const navItems: NavItem[] = [
     key: "getInvolved",
     featured: true,
     children: [
-      { href: "/como-ayudar", key: "howToHelp" },
-      { href: "/plan-padrino", key: "planPadrino" },
-      { href: "/voluntariado", key: "volunteer" },
+      { href: "/como-ayudar", key: "howToHelp", descKey: "howToHelpDesc", icon: HiLightBulb },
+      { href: "/plan-padrino", key: "planPadrino", descKey: "planPadrinoDesc", icon: HiGift },
+      { href: "/voluntariado", key: "volunteer", descKey: "volunteerDesc", icon: HiHand },
     ],
   },
   { href: "/noticias", key: "news" },
   { href: "/contacto", key: "contact" },
 ];
 
-/* ── Dropdown component ── */
+/* ── Dropdown component (charity:water style with hover descriptions) ── */
 function DesktopDropdown({
   label,
   children,
@@ -60,22 +64,26 @@ function DesktopDropdown({
   featured?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const closeTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const isActive = children.some((c) => pathWithoutLocale === c.href || pathWithoutLocale.startsWith(c.href + "/"));
 
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const handleMouseEnter = () => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    setOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeout.current = setTimeout(() => {
+      setOpen(false);
+      setHoveredKey(null);
+    }, 150);
+  };
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <button
         onClick={() => setOpen(!open)}
         className={cn(
@@ -84,7 +92,7 @@ function DesktopDropdown({
             ? scrolled
               ? "bg-accent-50 text-accent-700 hover:bg-accent-100"
               : "bg-white/15 text-white hover:bg-white/25"
-            : isActive
+            : isActive || open
               ? scrolled
                 ? "bg-primary-50 text-primary-600"
                 : "bg-white/20 text-white"
@@ -113,31 +121,89 @@ function DesktopDropdown({
             initial={{ opacity: 0, y: 8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
-            transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute left-0 top-full mt-1 z-50 min-w-[220px] overflow-hidden rounded-xl border border-gray-100 bg-white/95 backdrop-blur-xl py-2 shadow-xl"
+            transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="absolute left-0 top-full mt-1 z-50 min-w-[320px] overflow-hidden rounded-xl border border-gray-100 bg-white backdrop-blur-xl shadow-2xl shadow-black/10"
           >
-            {children.map((child) => (
-              <Link
-                key={child.key}
-                href={child.href}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all duration-300",
-                  child.highlight && "border-l-2 border-accent-500",
-                  pathWithoutLocale === child.href
-                    ? "bg-primary-50 text-primary-600"
-                    : child.highlight
-                      ? "text-gray-700 hover:bg-accent-50 hover:text-accent-700"
-                      : "text-gray-700 hover:bg-gray-50 hover:text-primary-600",
-                )}
-              >
-                {child.highlight && <HiBriefcase className="h-4 w-4 text-accent-500" />}
-                {t(child.key)}
-                {child.highlight && (
-                  <span className="ml-auto rounded-full bg-accent-100 px-2 py-0.5 text-[10px] font-semibold text-accent-700">{t("companies")}</span>
-                )}
-              </Link>
-            ))}
+            {children.map((child, i) => {
+              const isHovered = hoveredKey === child.key;
+              const isChildActive = pathWithoutLocale === child.href;
+              return (
+                <div key={child.key}>
+                  <Link
+                    href={child.href}
+                    onClick={() => {
+                      setOpen(false);
+                      setHoveredKey(null);
+                    }}
+                    onMouseEnter={() => setHoveredKey(child.key)}
+                    onMouseLeave={() => setHoveredKey(null)}
+                    className={cn(
+                      "group block px-5 py-4 transition-all duration-200",
+                      isChildActive
+                        ? "bg-primary-50"
+                        : isHovered
+                          ? "bg-gray-50"
+                          : "bg-white",
+                    )}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="flex items-center gap-2.5">
+                        <child.icon
+                          className={cn(
+                            "h-5 w-5 shrink-0 transition-colors duration-200",
+                            isChildActive
+                              ? "text-primary-500"
+                              : isHovered
+                                ? featured ? "text-accent-500" : "text-primary-500"
+                                : "text-gray-400",
+                          )}
+                        />
+                        <span
+                          className={cn(
+                            "text-[15px] font-semibold transition-colors duration-200",
+                            isChildActive
+                              ? "text-primary-600"
+                              : isHovered
+                                ? "text-gray-900"
+                                : "text-gray-700",
+                          )}
+                        >
+                          {t(child.key)}
+                        </span>
+                      </span>
+                      <motion.span
+                        initial={false}
+                        animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -6 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <HiArrowRight
+                          className={cn(
+                            "h-4 w-4",
+                            featured ? "text-accent-500" : "text-primary-500",
+                          )}
+                        />
+                      </motion.span>
+                    </div>
+                    <AnimatePresence mode="wait">
+                      {isHovered && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="mt-1.5 ml-[30px] text-[13px] leading-relaxed text-gray-500"
+                        >
+                          {t(child.descKey)}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </Link>
+                  {i < children.length - 1 && (
+                    <div className="mx-5 border-t border-gray-100" />
+                  )}
+                </div>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
@@ -336,21 +402,35 @@ export default function Navbar() {
                                 key={child.key}
                                 href={child.href}
                                 className={cn(
-                                  "flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300",
+                                  "flex items-start gap-3 rounded-lg px-4 py-2.5 transition-all duration-300",
                                   pathWithoutLocale === child.href
-                                    ? "bg-primary-50 text-primary-600"
-                                    : child.highlight
-                                      ? "text-accent-700 hover:bg-accent-50"
-                                      : "text-gray-600 hover:bg-gray-50 hover:text-primary-600",
+                                    ? "bg-primary-50"
+                                    : "hover:bg-gray-50",
                                 )}
                               >
-                                {child.highlight && <HiBriefcase className="h-4 w-4 text-accent-500" />}
-                                {t(child.key)}
-                                {child.highlight && (
-                                  <span className="ml-auto rounded-full bg-accent-100 px-2 py-0.5 text-[10px] font-semibold text-accent-700">
-                                    {t("companies")}
+                                <child.icon
+                                  className={cn(
+                                    "mt-0.5 h-4 w-4 shrink-0",
+                                    pathWithoutLocale === child.href
+                                      ? "text-primary-500"
+                                      : "text-gray-400",
+                                  )}
+                                />
+                                <div>
+                                  <span
+                                    className={cn(
+                                      "text-sm font-medium",
+                                      pathWithoutLocale === child.href
+                                        ? "text-primary-600"
+                                        : "text-gray-700",
+                                    )}
+                                  >
+                                    {t(child.key)}
                                   </span>
-                                )}
+                                  <p className="mt-0.5 text-xs leading-relaxed text-gray-400">
+                                    {t(child.descKey)}
+                                  </p>
+                                </div>
                               </Link>
                             ))}
                           </div>

@@ -19,7 +19,13 @@
     "corporateImpact": "Corporate Impact",
     "aboutUs": "About",
     "getInvolved": "Get Involved",
-    "companies": "Corporate"
+    "companies": "Corporate",
+    "aboutDesc": "Learn about our story, mission, and how we've been transforming lives in Ciudad Bolívar since 2002.",
+    "teamDesc": "Meet the passionate people who make our work possible every single day.",
+    "anthemDesc": "Listen to the anthem that inspires our community and represents our values.",
+    "howToHelpDesc": "Explore the different ways you can contribute to changing a child's life.",
+    "planPadrinoDesc": "Sponsor a child and support their education with a monthly donation.",
+    "volunteerDesc": "Join as a volunteer and bring your talent directly to our programs."
   },
   "hero": {
     "tagline": "501(c)(3) Tax-Deductible — Every Dollar Goes Directly to Children",
@@ -1111,7 +1117,89 @@
     },
     "verifyTitle": "Verify Our Status",
     "verifyIRS": "Search IRS.gov",
-    "verifyPropublica": "View on ProPublica"
+    "verifyPropublica": "View on ProPublica",
+    "verifyCharityNav": "View on Charity Navigator",
+    "verifyGuideStar": "View on GuideStar",
+    "trustBadges": {
+      "charityNav": "Charity Navigator",
+      "charityNavDesc": "Verified organization",
+      "guideStar": "GuideStar / Candid",
+      "guideStarDesc": "Transparency seal"
+    },
+    "applicationForm": {
+      "badge": "Corporate Application",
+      "title": "Apply for a",
+      "highlight": "corporate partnership",
+      "subtitle": "Fill out the form and our team will contact you within 24 hours with a proposal tailored to your company.",
+      "companyName": "Company name",
+      "companyNamePlaceholder": "e.g. Acme Corporation",
+      "contactPerson": "Contact person",
+      "contactPersonPlaceholder": "Full name",
+      "email": "Corporate email",
+      "emailPlaceholder": "contact@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "partnershipType": "Partnership type of interest",
+      "types": {
+        "donation": "Corporate donation",
+        "volunteering": "Corporate volunteering",
+        "sponsorship": "Program sponsorship",
+        "inKind": "In-kind donation",
+        "cobranding": "Co-branding & partnerships",
+        "planPadrino": "Corporate Sponsorship Plan",
+        "other": "Other / Not sure yet"
+      },
+      "budget": "Estimated annual budget",
+      "budgets": {
+        "under5m": "Under $1,000 USD",
+        "5to25m": "$1,000 - $5,000 USD",
+        "25to100m": "$5,000 - $25,000 USD",
+        "over100m": "Over $25,000 USD",
+        "undecided": "To be determined"
+      },
+      "message": "Tell us about your company and CSR goals",
+      "messagePlaceholder": "What motivates your company to seek a social partnership? Is there a specific program you're interested in?",
+      "submit": "Submit application",
+      "sending": "Sending...",
+      "success": "Application sent! We'll contact you within 24 hours.",
+      "error": "There was an error sending. Please try again or write us on WhatsApp."
+    },
+    "matchingGifts": {
+      "badge": "Matching Gifts",
+      "title": "Double the impact of",
+      "highlight": "your donation",
+      "subtitle": "Many companies match their employees' donations. Check if your employer has a matching gift program and double your impact at no extra cost.",
+      "checkTitle": "Does your company match donations?",
+      "checkDescription": "Thousands of companies in the U.S. match donations their employees make to 501(c)(3) organizations like the Cigarra Foundation. This means your donation could be worth double or even triple.",
+      "stat": "$4-7 billion",
+      "statLabel": "in matching gifts go unclaimed every year in the U.S.",
+      "howItWorks": "How does it work?",
+      "step1": "Donate to the Cigarra Foundation",
+      "step2": "Check with HR if your company has a matching program",
+      "step3": "Submit the request — your company matches your donation",
+      "searchPlaceholder": "Search your company...",
+      "searchCta": "Check on Double the Donation",
+      "popularCompanies": "Companies with matching gifts: Microsoft, Google, Apple, GE, Johnson & Johnson, and thousands more."
+    },
+    "roiCalculator": {
+      "badge": "Value Calculator",
+      "title": "Brand exposure value of",
+      "highlight": "your partnership",
+      "subtitle": "Calculate the estimated visibility value your company receives by partnering with the Cigarra Foundation.",
+      "donationAmount": "Annual donation amount",
+      "results": "Estimated exposure value",
+      "socialMedia": "Social media",
+      "socialMediaDesc": "Mentions across our channels (5,000+ followers)",
+      "events": "Events & activities",
+      "eventsDesc": "Logo at 12+ annual events (800+ attendees)",
+      "reports": "Impact reports",
+      "reportsDesc": "Logo in quarterly reports (circulation: 500+)",
+      "website": "Website",
+      "websiteDesc": "Logo on our partners page (10,000+ visits/year)",
+      "totalValue": "Total estimated exposure value",
+      "roi": "Estimated return on social investment",
+      "disclaimer": "Estimated values based on average digital advertising and event rates. Actual value may vary."
+    }
   },
   "seo": {
     "home": {
@@ -1161,6 +1249,34 @@
     "corporateImpact": {
       "title": "Corporate Giving — Tax-Deductible 501(c)(3) Partnership | Cigarra Foundation",
       "description": "Maximize your CSR impact. Corporate donations are fully tax-deductible. Sponsor programs, organize team volunteer days, or fund education for 1,800+ children in Colombia."
+    }
+  },
+  "cookies": {
+    "title": "This website uses cookies",
+    "description": "We use cookies to improve your experience, analyze site traffic, and personalize content. By using our website you consent to all cookies in accordance with our Cookie Policy.",
+    "acceptAll": "Accept all",
+    "declineAll": "Decline all",
+    "savePreferences": "Save preferences",
+    "showDetails": "Show details",
+    "hideDetails": "Hide details",
+    "alwaysOn": "Always on",
+    "categories": {
+      "necessary": {
+        "title": "Strictly necessary",
+        "description": "Essential for the website to function. These cannot be disabled."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Help us understand how you interact with the site through anonymous data collection (Google Analytics)."
+      },
+      "targeting": {
+        "title": "Targeting",
+        "description": "Allow us to show you relevant content and ads based on your interests."
+      },
+      "functionality": {
+        "title": "Functionality",
+        "description": "Remember your preferences such as language, region, and personalized settings."
+      }
     }
   },
   "notFound": {

@@ -19,7 +19,13 @@
     "corporateImpact": "Impacto Empresarial",
     "aboutUs": "Nosotros",
     "getInvolved": "Participa",
-    "companies": "Empresas"
+    "companies": "Empresas",
+    "aboutDesc": "Conoce nuestra historia, misión y cómo desde 2002 transformamos vidas en Ciudad Bolívar.",
+    "teamDesc": "Descubre al equipo de personas apasionadas que hacen posible nuestra labor cada día.",
+    "anthemDesc": "Escucha el himno que inspira a nuestra comunidad y representa nuestros valores.",
+    "howToHelpDesc": "Explora las diferentes formas en que puedes contribuir a cambiar la vida de un niño.",
+    "planPadrinoDesc": "Apadrina a un niño y acompáñalo en su proceso educativo con una donación mensual.",
+    "volunteerDesc": "Únete como voluntario y aporta tu talento directamente en nuestros programas."
   },
   "hero": {
     "tagline": "Desde 2002 transformando vidas",
@@ -1001,7 +1007,89 @@
     },
     "verifyTitle": "Verifica Nuestro Estatus",
     "verifyIRS": "Buscar en IRS.gov",
-    "verifyPropublica": "Ver en ProPublica"
+    "verifyPropublica": "Ver en ProPublica",
+    "verifyCharityNav": "Ver en Charity Navigator",
+    "verifyGuideStar": "Ver en GuideStar",
+    "trustBadges": {
+      "charityNav": "Charity Navigator",
+      "charityNavDesc": "Organización verificada",
+      "guideStar": "GuideStar / Candid",
+      "guideStarDesc": "Sello de transparencia"
+    },
+    "applicationForm": {
+      "badge": "Formulario Corporativo",
+      "title": "Solicita tu",
+      "highlight": "alianza corporativa",
+      "subtitle": "Completa el formulario y nuestro equipo te contactará en menos de 24 horas con una propuesta a la medida de tu empresa.",
+      "companyName": "Nombre de la empresa",
+      "companyNamePlaceholder": "Ej: Acme Corporation",
+      "contactPerson": "Persona de contacto",
+      "contactPersonPlaceholder": "Nombre completo",
+      "email": "Correo electrónico corporativo",
+      "emailPlaceholder": "contacto@empresa.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+57 300 000 0000",
+      "partnershipType": "Tipo de alianza de interés",
+      "types": {
+        "donation": "Donación corporativa",
+        "volunteering": "Voluntariado corporativo",
+        "sponsorship": "Patrocinio de programa",
+        "inKind": "Donación en especie",
+        "cobranding": "Co-branding y alianzas",
+        "planPadrino": "Plan Padrino Empresarial",
+        "other": "Otro / No estoy seguro"
+      },
+      "budget": "Presupuesto estimado anual",
+      "budgets": {
+        "under5m": "Menos de $5.000.000 COP",
+        "5to25m": "$5.000.000 - $25.000.000 COP",
+        "25to100m": "$25.000.000 - $100.000.000 COP",
+        "over100m": "Más de $100.000.000 COP",
+        "undecided": "Por definir"
+      },
+      "message": "Cuéntanos sobre tu empresa y objetivos RSE",
+      "messagePlaceholder": "¿Qué motiva a tu empresa a buscar una alianza social? ¿Hay algún programa en particular que les interese?",
+      "submit": "Enviar solicitud",
+      "sending": "Enviando...",
+      "success": "¡Solicitud enviada! Te contactaremos en menos de 24 horas.",
+      "error": "Hubo un error al enviar. Intenta de nuevo o escríbenos por WhatsApp."
+    },
+    "matchingGifts": {
+      "badge": "Matching Gifts",
+      "title": "Duplica el impacto de",
+      "highlight": "tu donación",
+      "subtitle": "Muchas empresas igualan las donaciones de sus empleados. Verifica si tu empresa tiene un programa de matching gifts y duplica tu impacto sin costo adicional.",
+      "checkTitle": "¿Tu empresa iguala donaciones?",
+      "checkDescription": "Miles de empresas en EE.UU. y el mundo igualan las donaciones que sus empleados hacen a organizaciones 501(c)(3) como la Fundación Cigarra. Esto significa que tu donación puede valer el doble o incluso el triple.",
+      "stat": "$4-7 mil millones",
+      "statLabel": "en matching gifts no reclamados cada año en EE.UU.",
+      "howItWorks": "¿Cómo funciona?",
+      "step1": "Dona a la Fundación Cigarra",
+      "step2": "Consulta con RRHH si tu empresa tiene programa de matching",
+      "step3": "Envía la solicitud — tu empresa iguala tu donación",
+      "searchPlaceholder": "Busca tu empresa...",
+      "searchCta": "Verificar en Double the Donation",
+      "popularCompanies": "Empresas con matching gifts: Microsoft, Google, Apple, GE, Johnson & Johnson, y miles más."
+    },
+    "roiCalculator": {
+      "badge": "Calculadora de Valor",
+      "title": "Valor de exposición de",
+      "highlight": "tu marca",
+      "subtitle": "Calcula el valor estimado de la visibilidad que tu empresa recibe al aliarse con la Fundación Cigarra.",
+      "donationAmount": "Monto de donación anual",
+      "results": "Valor estimado de exposición",
+      "socialMedia": "Redes sociales",
+      "socialMediaDesc": "Menciones en nuestras redes (5,000+ seguidores)",
+      "events": "Eventos y actividades",
+      "eventsDesc": "Logo en 12+ eventos anuales (800+ asistentes)",
+      "reports": "Reportes de impacto",
+      "reportsDesc": "Logo en reportes trimestrales (circulación: 500+)",
+      "website": "Sitio web",
+      "websiteDesc": "Logo en nuestra página de aliados (10,000+ visitas/año)",
+      "totalValue": "Valor total estimado de exposición",
+      "roi": "Retorno estimado sobre inversión social",
+      "disclaimer": "Valores estimados basados en tarifas promedio de publicidad digital y eventos en Colombia. El valor real puede variar."
+    }
   },
   "seo": {
     "home": {
@@ -1051,6 +1139,34 @@
     "corporateImpact": {
       "title": "Impacto Empresarial",
       "description": "Alianzas corporativas con la Fundación Cigarra. Responsabilidad social empresarial en Ciudad Bolívar."
+    }
+  },
+  "cookies": {
+    "title": "Este sitio usa cookies",
+    "description": "Usamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y personalizar contenido. Al usar nuestro sitio, aceptas el uso de cookies de acuerdo con nuestra Política de Cookies.",
+    "acceptAll": "Aceptar todas",
+    "declineAll": "Rechazar todas",
+    "savePreferences": "Guardar preferencias",
+    "showDetails": "Mostrar detalles",
+    "hideDetails": "Ocultar detalles",
+    "alwaysOn": "Siempre activas",
+    "categories": {
+      "necessary": {
+        "title": "Estrictamente necesarias",
+        "description": "Esenciales para el funcionamiento del sitio. No se pueden desactivar."
+      },
+      "performance": {
+        "title": "Rendimiento",
+        "description": "Nos ayudan a entender cómo interactúas con el sitio mediante recopilación de datos anónimos (Google Analytics)."
+      },
+      "targeting": {
+        "title": "Segmentación",
+        "description": "Permiten mostrarte contenido y anuncios relevantes basados en tus intereses."
+      },
+      "functionality": {
+        "title": "Funcionalidad",
+        "description": "Recuerdan tus preferencias como idioma, región y configuraciones personalizadas."
+      }
     }
   },
   "notFound": {
