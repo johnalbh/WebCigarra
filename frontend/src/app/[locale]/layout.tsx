@@ -87,7 +87,7 @@ export default async function LocaleLayout({
       <body
         className={`${inter.variable} ${poppins.variable} ${playfair.variable} font-body antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar />
             <main className="min-h-screen">{children}</main>
             <Footer />
