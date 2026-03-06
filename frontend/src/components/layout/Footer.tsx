@@ -218,7 +218,7 @@ export default function Footer() {
             </p>
             <span className="hidden text-primary-700 lg:inline">|</span>
             <a
-              href="https://apps.irs.gov/app/eos/detailsPage?ein=680505337&name=Cigarra%20Foundation%20Inc&city=&state=All&countryAbbr=US&dba=&type=determinationLetterOnly&orgTags=&orgTags="
+              href="https://www.irs.gov/charities-non-profits/tax-exempt-organization-search"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-xs font-medium text-accent-400 transition-colors hover:text-accent-300"
@@ -228,13 +228,13 @@ export default function Footer() {
             </a>
             <span className="hidden text-primary-700 lg:inline">|</span>
             <a
-              href="https://www.guidestar.org/profile/68-0505337"
+              href="https://projects.propublica.org/nonprofits/organizations/680505337"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-xs font-medium text-primary-400 transition-colors hover:text-primary-300"
             >
               <HiExternalLink className="h-3 w-3" />
-              {t('verifyGuidestar')}
+              {t('verifyPropublica')}
             </a>
           </div>
         </div>

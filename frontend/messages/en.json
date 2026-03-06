@@ -501,8 +501,8 @@
     "description": "Feeding, educating, and empowering 1,877 children in Ciudad Bolívar, Bogotá since 2002.",
     "taxExempt": "501(c)(3) Tax-Exempt Organization",
     "einNumber": "EIN: 68-0505337",
-    "verifyIRS": "Verify on IRS.gov",
-    "verifyGuidestar": "View on GuideStar"
+    "verifyIRS": "Search on IRS.gov",
+    "verifyPropublica": "View on ProPublica"
   },
   "common": {
     "loading": "Loading...",
@@ -737,7 +737,7 @@
       },
       "isLegit": {
         "q": "How can I verify the Cigarra Foundation is a real nonprofit?",
-        "a": "We're fully transparent. You can verify our 501(c)(3) status on the IRS Tax Exempt Organization Search (EIN: 68-0505337) at apps.irs.gov/app/eos, or view our profile on GuideStar/Candid. We've been serving children in Bogotá since 2002."
+        "a": "We're fully transparent. You can verify our 501(c)(3) status on the IRS Tax Exempt Organization Search (EIN: 68-0505337) at irs.gov, or view our full financial history on ProPublica Nonprofit Explorer. We've been serving children in Bogotá since 2002."
       }
     },
     "volunteerAreas": {
@@ -1207,9 +1207,9 @@
     "legalTitle": "Your Gift Is Tax-Deductible",
     "legalDescription": "The Cigarra Foundation (EIN: 68-0505337) is an IRS-recognized 501(c)(3) nonprofit. Your donation is fully tax-deductible under U.S. law. You'll receive a tax receipt by email within 24 hours.",
     "verifyTitle": "Verify We're Real",
-    "verifyDescription": "Look us up on the IRS website or GuideStar to confirm our 501(c)(3) status.",
-    "verifyIRS": "Check IRS Tax-Exempt Status →",
-    "verifyGuidestar": "View GuideStar Profile →",
+    "verifyDescription": "Look us up on the IRS website (search EIN 68-0505337) or on ProPublica Nonprofit Explorer to confirm our 501(c)(3) status.",
+    "verifyIRS": "Search on IRS.gov →",
+    "verifyPropublica": "View on ProPublica →",
     "seeAllWays": "See all ways to help →"
   }
 }

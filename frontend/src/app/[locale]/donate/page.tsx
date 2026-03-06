@@ -169,7 +169,7 @@ export default function DonatePage() {
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <a
-                  href="https://apps.irs.gov/app/eos/detailsPage?ein=680505337&name=Cigarra%20Foundation%20Inc&city=&state=All&countryAbbr=US&dba=&type=determinationLetterOnly&orgTags=&orgTags="
+                  href="https://www.irs.gov/charities-non-profits/tax-exempt-organization-search"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 rounded-lg border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-100"
@@ -178,13 +178,13 @@ export default function DonatePage() {
                   {t('verifyIRS')}
                 </a>
                 <a
-                  href="https://www.guidestar.org/profile/68-0505337"
+                  href="https://projects.propublica.org/nonprofits/organizations/680505337"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100"
                 >
                   <HiExternalLink className="h-4 w-4" />
-                  {t('verifyGuidestar')}
+                  {t('verifyPropublica')}
                 </a>
               </div>
             </div>
