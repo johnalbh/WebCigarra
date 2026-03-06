@@ -2,226 +2,196 @@
 
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { motion, AnimatePresence } from 'motion/react';
-import { HiCalculator, HiCurrencyDollar, HiShieldCheck, HiArrowRight } from 'react-icons/hi';
+import { motion } from 'motion/react';
+import { HiCalculator, HiShieldCheck } from 'react-icons/hi';
 
 const US_CORPORATE_TAX_RATE = 0.21;
 const US_DEDUCTION_LIMIT = 0.10;
 const CO_TAX_DISCOUNT_RATE = 0.25;
+
+const SLIDER_STEPS_USD = [1000, 2500, 5000, 10000, 25000, 50000, 75000, 100000];
+const SLIDER_STEPS_COP = [1000000, 5000000, 10000000, 25000000, 50000000, 100000000, 200000000, 500000000];
 
 function formatCOP(value: number): string {
   return '$' + value.toLocaleString('es-CO');
 }
 
 function formatUSD(value: number): string {
-  return '$' + value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  return '$' + value.toLocaleString('en-US');
 }
 
-function parseInput(value: string): number {
-  return parseInt(value.replace(/\D/g, '')) || 0;
+interface TaxDeductionCalculatorProps {
+  variant?: 'full' | 'compact';
 }
 
-export default function TaxDeductionCalculator() {
-  const t = useTranslations('corporateImpact.taxCalc');
+export default function TaxDeductionCalculator({ variant = 'full' }: TaxDeductionCalculatorProps) {
+  const t = useTranslations('corporate.taxCalc');
   const locale = useLocale();
   const isUS = locale === 'en';
 
-  const [donationInput, setDonationInput] = useState('');
-  const [incomeInput, setIncomeInput] = useState('');
-  const [showResults, setShowResults] = useState(false);
+  const steps = isUS ? SLIDER_STEPS_USD : SLIDER_STEPS_COP;
+  const defaultIndex = 3; // $10,000 USD or $25,000,000 COP
+  const fmt = isUS ? formatUSD : formatCOP;
 
-  const donation = parseInput(donationInput);
-  const taxableIncome = parseInput(incomeInput);
+  const [sliderIndex, setSliderIndex] = useState(defaultIndex);
+  const [taxableIncome, setTaxableIncome] = useState(isUS ? 500000 : 0);
 
-  const handleDonationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const raw = e.target.value.replace(/\D/g, '');
-    if (!raw) { setDonationInput(''); return; }
-    setDonationInput(
-      isUS
-        ? new Intl.NumberFormat('en-US').format(parseInt(raw))
-        : new Intl.NumberFormat('es-CO').format(parseInt(raw))
-    );
-    setShowResults(false);
-  };
+  const donation = steps[sliderIndex];
 
-  const handleIncomeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const raw = e.target.value.replace(/\D/g, '');
-    if (!raw) { setIncomeInput(''); return; }
-    setIncomeInput(new Intl.NumberFormat('en-US').format(parseInt(raw)));
-    setShowResults(false);
-  };
-
-  const canCalculate = isUS ? donation > 0 && taxableIncome > 0 : donation > 0;
-
-  const calculate = () => {
-    if (!canCalculate) return;
-    setShowResults(true);
-  };
-
-  // US: deduction limited to 10% of taxable income, tax savings = deductible × 21%
+  // US calculations
   const usDeductionLimit = taxableIncome * US_DEDUCTION_LIMIT;
   const usDeductibleAmount = Math.min(donation, usDeductionLimit);
   const usExceeds = donation > usDeductionLimit && taxableIncome > 0;
   const usTaxSavings = usDeductibleAmount * US_CORPORATE_TAX_RATE;
   const usRealCost = donation - usTaxSavings;
 
-  // Colombia: 25% tax discount on donation amount
+  // Colombia calculations
   const coTaxDiscount = donation * CO_TAX_DISCOUNT_RATE;
   const coRealCost = donation - coTaxDiscount;
 
-  const fmt = isUS ? formatUSD : formatCOP;
+  const taxSavings = isUS ? usTaxSavings : coTaxDiscount;
+  const realCost = isUS ? usRealCost : coRealCost;
+  const savingsPercent = isUS ? Math.round((usTaxSavings / donation) * 100) : 25;
+
+  const isCompact = variant === 'compact';
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+    <div className={`rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden ${isCompact ? '' : ''}`}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary-600 to-primary-800 px-6 py-5 sm:px-8">
+      <div className="bg-gradient-to-r from-primary-600 to-primary-800 px-5 py-4 sm:px-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/20">
             <HiCalculator className="h-5 w-5 text-white" />
           </div>
           <div>
-            <h3 className="font-heading text-lg font-bold text-white">
+            <h3 className="font-heading text-base font-bold text-white">
               {t('title')} <span className="text-accent-300">{t('heading')}</span>
             </h3>
-            <p className="mt-0.5 text-sm text-primary-200">{t('description')}</p>
+            {!isCompact && (
+              <p className="mt-0.5 text-xs text-primary-200">{t('description')}</p>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Form */}
-      <div className="px-6 py-6 sm:px-8">
-        <div className={`grid gap-4 ${isUS ? 'sm:grid-cols-2' : ''}`}>
-          {/* Donation amount */}
-          <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">
-              {t('donationAmount')}
-            </label>
-            <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">$</span>
-              <input
-                type="text"
-                inputMode="numeric"
-                value={donationInput}
-                onChange={handleDonationChange}
-                placeholder={isUS ? 'e.g. 10,000' : 'ej. 10.000.000'}
-                className="w-full rounded-lg border border-gray-300 py-3 pl-8 pr-4 text-sm text-gray-900 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
-              />
+      <div className="px-5 py-5 sm:px-6">
+        {/* Donation slider */}
+        <div>
+          <div className="flex items-center justify-between mb-2">
+            <label className="text-sm font-medium text-gray-700">{t('donationAmount')}</label>
+            <motion.span
+              key={donation}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="font-heading text-lg font-bold text-primary-700"
+            >
+              {fmt(donation)}
+            </motion.span>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={steps.length - 1}
+            value={sliderIndex}
+            onChange={(e) => setSliderIndex(parseInt(e.target.value))}
+            className="w-full h-2 rounded-full appearance-none cursor-pointer bg-gray-200 accent-primary-600"
+          />
+          <div className="flex justify-between mt-1">
+            <span className="text-[10px] text-gray-400">{fmt(steps[0])}</span>
+            <span className="text-[10px] text-gray-400">{fmt(steps[steps.length - 1])}</span>
+          </div>
+        </div>
+
+        {/* Taxable income slider (US only) */}
+        {isUS && (
+          <div className="mt-4">
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-sm font-medium text-gray-700">{t('taxableIncome')}</label>
+              <span className="font-heading text-sm font-bold text-gray-600">
+                {formatUSD(taxableIncome)}
+              </span>
+            </div>
+            <input
+              type="range"
+              min={50000}
+              max={5000000}
+              step={50000}
+              value={taxableIncome}
+              onChange={(e) => setTaxableIncome(parseInt(e.target.value))}
+              className="w-full h-2 rounded-full appearance-none cursor-pointer bg-gray-200 accent-primary-600"
+            />
+            <div className="flex justify-between mt-1">
+              <span className="text-[10px] text-gray-400">$50,000</span>
+              <span className="text-[10px] text-gray-400">$5,000,000</span>
+            </div>
+          </div>
+        )}
+
+        {/* Live results */}
+        <motion.div
+          key={`${donation}-${taxableIncome}`}
+          initial={{ opacity: 0.5 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+          className="mt-5 rounded-xl bg-gradient-to-br from-green-50 to-primary-50 border border-green-100 p-4"
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <HiShieldCheck className="h-4 w-4 text-green-600" />
+            <span className="text-sm font-bold text-gray-800">{t('results')}</span>
+          </div>
+
+          {/* Big savings number */}
+          <div className="text-center py-2">
+            <p className="text-xs text-gray-500 mb-1">{t('taxSavings')}</p>
+            <motion.p
+              key={taxSavings}
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              className="font-heading text-3xl font-bold text-green-600"
+            >
+              {fmt(Math.round(taxSavings))}
+            </motion.p>
+            <p className="text-xs text-green-600 font-medium mt-1">
+              {savingsPercent}% {isUS ? 'savings' : 'descuento'}
+            </p>
+          </div>
+
+          {/* Details */}
+          <div className="mt-3 space-y-2 text-sm">
+            {isUS && (
+              <div className="flex justify-between">
+                <span className="text-gray-500">{t('deductibleAmount')}</span>
+                <span className="font-medium text-gray-800">{formatUSD(usDeductibleAmount)}</span>
+              </div>
+            )}
+            <div className="flex justify-between">
+              <span className="text-gray-500">{t('taxRate')}</span>
+              <span className="font-medium text-gray-800">{isUS ? '21%' : '25%'}</span>
+            </div>
+            <div className="h-px bg-green-200" />
+            <div className="flex justify-between">
+              <span className="font-medium text-gray-700">{t('realCost')}</span>
+              <span className="font-bold text-gray-900">{fmt(Math.round(realCost))}</span>
             </div>
           </div>
 
-          {/* Taxable income (US only) */}
-          {isUS && (
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-gray-700">
-                {t('taxableIncome')}
-              </label>
-              <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">$</span>
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  value={incomeInput}
-                  onChange={handleIncomeChange}
-                  placeholder={t('taxableIncomePlaceholder')}
-                  className="w-full rounded-lg border border-gray-300 py-3 pl-8 pr-4 text-sm text-gray-900 transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
-                />
-              </div>
+          {/* Limit warning (US) */}
+          {isUS && usExceeds && (
+            <div className="mt-3 rounded-lg bg-amber-50 border border-amber-200 p-2.5">
+              <p className="text-xs text-amber-800">
+                {t('limitWarning')
+                  .replace('{limit}', formatUSD(usDeductionLimit))
+                  .replace('{excess}', formatUSD(donation - usDeductionLimit))}
+              </p>
             </div>
           )}
-        </div>
+        </motion.div>
 
-        <button
-          onClick={calculate}
-          disabled={!canCalculate}
-          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed cursor-pointer"
-        >
-          <HiCalculator className="h-4 w-4" />
-          {t('calculate')}
-        </button>
-
-        {/* Results */}
-        <AnimatePresence>
-          {showResults && donation > 0 && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden"
-            >
-              <div className="mt-6 rounded-xl border border-primary-100 bg-primary-50/50 p-5">
-                <h4 className="mb-4 flex items-center gap-2 text-sm font-bold text-primary-800">
-                  <HiShieldCheck className="h-4 w-4 text-primary-600" />
-                  {t('results')}
-                </h4>
-
-                <div className="space-y-3">
-                  {isUS ? (
-                    <>
-                      {/* US Results */}
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">{t('donationAmount').replace(' (USD)', '')}</span>
-                        <span className="font-semibold text-gray-900">{formatUSD(donation)}</span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">{t('deductibleAmount')}</span>
-                        <span className="font-semibold text-gray-900">{formatUSD(usDeductibleAmount)}</span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">{t('taxRate')}</span>
-                        <span className="font-semibold text-gray-900">21%</span>
-                      </div>
-                      <div className="h-px bg-primary-200" />
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-bold text-green-700">{t('taxSavings')}</span>
-                        <span className="font-heading text-xl font-bold text-green-600">{formatUSD(usTaxSavings)}</span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">{t('realCost')}</span>
-                        <span className="font-semibold text-gray-900">{formatUSD(usRealCost)}</span>
-                      </div>
-
-                      {usExceeds && (
-                        <div className="mt-3 rounded-lg bg-amber-50 border border-amber-200 p-3">
-                          <p className="text-xs text-amber-800">
-                            {t('limitWarning')
-                              .replace('{limit}', formatUSD(usDeductionLimit))
-                              .replace('{excess}', formatUSD(donation - usDeductionLimit))}
-                          </p>
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      {/* Colombia Results */}
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">{t('donationAmount').replace(' (COP)', '')}</span>
-                        <span className="font-semibold text-gray-900">{formatCOP(donation)}</span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">{t('taxRate')}</span>
-                        <span className="font-semibold text-gray-900">25%</span>
-                      </div>
-                      <div className="h-px bg-primary-200" />
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-bold text-green-700">{t('deductibleAmount')}</span>
-                        <span className="font-heading text-xl font-bold text-green-600">{formatCOP(coTaxDiscount)}</span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">{t('realCost')}</span>
-                        <span className="font-semibold text-gray-900">{formatCOP(coRealCost)}</span>
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                <p className="mt-4 text-xs text-gray-500">{t('limitNote')}</p>
-              </div>
-
-              <p className="mt-3 text-center text-xs text-gray-400">{t('disclaimer')}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Legal note */}
+        <p className="mt-3 text-[11px] text-gray-400 leading-relaxed">
+          {t('limitNote')}
+        </p>
+        <p className="mt-1 text-[11px] text-gray-400 italic">{t('disclaimer')}</p>
       </div>
     </div>
   );
