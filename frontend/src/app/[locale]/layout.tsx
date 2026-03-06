@@ -12,6 +12,7 @@ import FloatingSocialBar from '@/components/shared/FloatingSocialBar';
 import DonationFloatingCTA from '@/components/layout/DonationFloatingCTA';
 import AnnouncementPopupServer from '@/components/layout/AnnouncementPopupServer';
 import GoogleAnalytics from '@/components/shared/GoogleAnalytics';
+import CookieConsent from '@/components/shared/CookieConsent';
 
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
@@ -164,6 +165,7 @@ export default async function LocaleLayout({
             <WhatsAppButton />
             <FloatingSocialBar />
             <DonationFloatingCTA />
+            <CookieConsent />
             <Suspense fallback={null}>
               <AnnouncementPopupServer locale={locale} />
             </Suspense>

@@ -4,7 +4,8 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
-import { HiMail, HiPhone, HiLocationMarker, HiShieldCheck, HiExternalLink } from 'react-icons/hi';
+import { HiMail, HiPhone, HiLocationMarker, HiShieldCheck, HiExternalLink, HiCog } from 'react-icons/hi';
+import { reopenCookieBanner } from '@/components/shared/CookieConsent';
 import { motion } from 'motion/react';
 
 const socialLinks = [
@@ -239,6 +240,34 @@ export default function Footer() {
           </div>
         </div>
       )}
+
+      {/* Legal links bar */}
+      <div className="border-t border-primary-800">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-4 lg:px-8">
+          <Link
+            href="/privacidad"
+            className="text-xs text-primary-400 transition-colors hover:text-primary-200"
+          >
+            {t('privacyPolicy')}
+          </Link>
+          <span className="hidden text-primary-700 sm:inline">|</span>
+          <Link
+            href="/politica-de-cookies"
+            className="text-xs text-primary-400 transition-colors hover:text-primary-200"
+          >
+            {t('cookiePolicy')}
+          </Link>
+          <span className="hidden text-primary-700 sm:inline">|</span>
+          <button
+            type="button"
+            onClick={reopenCookieBanner}
+            className="inline-flex items-center gap-1 text-xs text-primary-400 transition-colors hover:text-primary-200"
+          >
+            <HiCog className="h-3 w-3" />
+            {t('cookiePreferences')}
+          </button>
+        </div>
+      </div>
 
       {/* Copyright bar */}
       <div className="border-t border-primary-800">
