@@ -59,7 +59,7 @@ export default function FeaturedNewsBanner({ articles }: { articles?: NewsItem[]
               return (
                 <Link
                   key={`${item.slug}-${i}`}
-                  href={{ pathname: '/noticias/[slug]' as '/noticias/[slug]', params: { slug: item.slug } }}
+                  href={`/noticias/${item.slug}`}
                   className={`group inline-flex shrink-0 items-center gap-2.5 px-5 ${isLatest ? 'rounded-full bg-white/10 py-1' : ''}`}
                 >
                   {/* Thumbnail */}

@@ -467,7 +467,7 @@ export default function PlanPadrinoPage() {
                         </a>
                       ) : isPayPal ? (
                         <Link
-                          href={"/contacto" as "/contacto"}
+                          href="/contacto"
                           className={`flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 font-heading font-semibold text-white transition-all duration-300 ${
                             tier.highlighted
                               ? "bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20"
@@ -675,7 +675,7 @@ export default function PlanPadrinoPage() {
                 </a>
               )}
               <Link
-                href={"/contacto" as "/contacto"}
+                href="/contacto"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 {tContact("contactUs")}

@@ -691,7 +691,7 @@ export default function DonationCheckout({
                       }}
                       onApprove={({ referenceCode }) => {
                         router.push(
-                          `/donacion/respuesta?ref=${referenceCode}&gateway=paypal` as '/donacion/respuesta'
+                          `/donacion/respuesta?ref=${referenceCode}&gateway=paypal`
                         );
                       }}
                       onError={(err) => setError(err)}

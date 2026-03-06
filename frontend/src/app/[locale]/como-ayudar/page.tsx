@@ -407,7 +407,7 @@ export default function HowToHelpPage() {
                     <span className="text-sm font-bold text-accent-300">{t('sponsorStarting')}</span>
                   </div>
                   <Link
-                    href={'/plan-padrino' as '/plan-padrino'}
+                    href={'/plan-padrino'}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 font-heading font-semibold text-primary-700 transition-all duration-300 hover:bg-primary-50"
                   >
                     {t('learnPlanPadrino')}
@@ -446,7 +446,7 @@ export default function HowToHelpPage() {
                     {t('volunteerDescription')}
                   </p>
                   <Link
-                    href={'/voluntariado' as '/voluntariado'}
+                    href={'/voluntariado'}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-green-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-green-400"
                   >
                     {t('wantToVolunteer')}
@@ -532,7 +532,7 @@ export default function HowToHelpPage() {
                     {t('plansFromMonthly')}
                   </p>
                   <Link
-                    href={'/plan-padrino' as '/plan-padrino'}
+                    href={'/plan-padrino'}
                     className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700"
                   >
                     {t('viewDetailedPlans')}
@@ -632,7 +632,7 @@ export default function HowToHelpPage() {
                       </a>
                     ) : locale === 'en' ? (
                       <Link
-                        href={'/plan-padrino' as '/plan-padrino'}
+                        href={'/plan-padrino'}
                         className={`inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 ${
                           tier.highlighted
                             ? 'bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20'
@@ -880,7 +880,7 @@ export default function HowToHelpPage() {
                 {tDonation('donateUSD')}
               </a>
               <Link
-                href={'/contacto' as '/contacto'}
+                href={'/contacto'}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 {tContact('contactUs')}

@@ -95,7 +95,7 @@ function BottomArticlesBar({ currentSlug, readingLabel }: { currentSlug: string;
           {otherArticles.map((a) => (
             <Link
               key={a.slug}
-              href={{ pathname: '/noticias/[slug]', params: { slug: a.slug } }}
+              href={`/noticias/${a.slug}`}
               data-active={a.slug === currentSlug}
               className="flex flex-shrink-0 items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-200"
             >
@@ -199,7 +199,7 @@ export default function ArticleDetailClient() {
           >
             {prevArticle && (
               <Link
-                href={{ pathname: '/noticias/[slug]', params: { slug: prevArticle.slug } }}
+                href={`/noticias/${prevArticle.slug}`}
                 className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/25"
               >
                 <HiChevronLeft className="h-4 w-4" />
@@ -208,7 +208,7 @@ export default function ArticleDetailClient() {
             )}
             {nextArticle && (
               <Link
-                href={{ pathname: '/noticias/[slug]', params: { slug: nextArticle.slug } }}
+                href={`/noticias/${nextArticle.slug}`}
                 className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/25"
               >
                 <span className="max-w-[200px] truncate">{nextArticle.title}</span>
@@ -264,7 +264,7 @@ export default function ArticleDetailClient() {
               <ScrollReveal mode="scroll" scaleFrom={0.95}>
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {prevArticle && (
-                    <Link href={{ pathname: '/noticias/[slug]', params: { slug: prevArticle.slug } }} className="group flex items-center gap-3 rounded-xl border border-gray-100 p-4 transition-colors hover:border-gray-200">
+                    <Link href={`/noticias/${prevArticle.slug}`} className="group flex items-center gap-3 rounded-xl border border-gray-100 p-4 transition-colors hover:border-gray-200">
                       <HiChevronLeft className="h-5 w-5 flex-shrink-0 text-gray-400" />
                       <div className="min-w-0">
                         <p className="text-xs text-gray-400">{t('previous')}</p>
@@ -273,7 +273,7 @@ export default function ArticleDetailClient() {
                     </Link>
                   )}
                   {nextArticle && (
-                    <Link href={{ pathname: '/noticias/[slug]', params: { slug: nextArticle.slug } }} className="group flex items-center justify-end gap-3 rounded-xl border border-gray-100 p-4 text-right transition-colors hover:border-gray-200">
+                    <Link href={`/noticias/${nextArticle.slug}`} className="group flex items-center justify-end gap-3 rounded-xl border border-gray-100 p-4 text-right transition-colors hover:border-gray-200">
                       <div className="min-w-0">
                         <p className="text-xs text-gray-400">{t('next')}</p>
                         <p className="truncate text-sm font-medium text-gray-900 group-hover:text-primary-600">{nextArticle.title}</p>
@@ -299,7 +299,7 @@ export default function ArticleDetailClient() {
                   return card.external ? (
                     <a key={card.key} href={card.href} target="_blank" rel="noopener noreferrer">{content}</a>
                   ) : (
-                    <Link key={card.key} href={card.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}>{content}</Link>
+                    <Link key={card.key} href={card.href}>{content}</Link>
                   );
                 })}
               </div>
@@ -328,7 +328,7 @@ export default function ArticleDetailClient() {
                     return card.external ? (
                       <a key={card.key} href={card.href} target="_blank" rel="noopener noreferrer">{inner}</a>
                     ) : (
-                      <Link key={card.key} href={card.href as '/como-ayudar' | '/contacto' | '/plan-padrino' | '/voluntariado'}>{inner}</Link>
+                      <Link key={card.key} href={card.href}>{inner}</Link>
                     );
                   })}
 
@@ -338,7 +338,7 @@ export default function ArticleDetailClient() {
                       {articles
                         .filter((a) => a.slug !== slug)
                         .map((a) => (
-                          <Link key={a.slug} href={{ pathname: '/noticias/[slug]', params: { slug: a.slug } }} className="group flex items-start gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-gray-50">
+                          <Link key={a.slug} href={`/noticias/${a.slug}`} className="group flex items-start gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-gray-50">
                             <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg">
                               <Image src={a.image} alt={a.title} fill sizes="48px" className="object-cover" />
                             </div>

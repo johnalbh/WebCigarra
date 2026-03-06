@@ -198,7 +198,7 @@ export default function AnnouncementPopup({ data }: { data: AnnouncementData }) 
                 >
                   {data.slug ? (
                     <Link
-                      href={{ pathname: '/noticias/[slug]' as const, params: { slug: data.slug } }}
+                      href={`/noticias/${data.slug}`}
                       onClick={handleClose}
                       className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent-500/25 transition-all hover:bg-accent-400 hover:shadow-xl hover:shadow-accent-500/35"
                     >
@@ -302,7 +302,7 @@ export default function AnnouncementPopup({ data }: { data: AnnouncementData }) 
                   <div className="mt-4 flex flex-col gap-2.5">
                     {data.slug ? (
                       <Link
-                        href={{ pathname: '/noticias/[slug]' as const, params: { slug: data.slug } }}
+                        href={`/noticias/${data.slug}`}
                         onClick={handleClose}
                         className="inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-accent-500/25 transition-all hover:bg-accent-400"
                       >

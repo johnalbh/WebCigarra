@@ -144,7 +144,7 @@ export default function Footer() {
               {programSlugs.map((slug) => (
                 <li key={slug}>
                   <Link
-                    href={{ pathname: '/programas/[slug]', params: { slug } }}
+                    href={`/programas/${slug}`}
                     className="text-sm text-primary-300 transition-all duration-300 hover:text-white"
                   >
                     {tPrograms(`names.${slug}`)}

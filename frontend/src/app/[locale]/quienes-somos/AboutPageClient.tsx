@@ -454,7 +454,7 @@ export default function AboutPageClient({
                     {t('teamSection.description')}
                   </p>
                   <Link
-                    href={'/equipo' as '/equipo'}
+                    href={'/equipo'}
                     className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-primary-600"
                   >
                     <HiUserGroup className="h-5 w-5" />
@@ -502,14 +502,14 @@ export default function AboutPageClient({
                 {t('ctaDonate')}
               </a>
               <Link
-                href={'/voluntariado' as '/voluntariado'}
+                href={'/voluntariado'}
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 <HiUserGroup className="h-5 w-5" />
                 {t('ctaVolunteer')}
               </Link>
               <Link
-                href={'/equipo' as '/equipo'}
+                href={'/equipo'}
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 {t('ctaTeam')}

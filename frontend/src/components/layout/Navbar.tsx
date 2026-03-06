@@ -119,7 +119,7 @@ function DesktopDropdown({
             {children.map((child) => (
               <Link
                 key={child.key}
-                href={child.href as "/"}
+                href={child.href}
                 onClick={() => setOpen(false)}
                 className={cn(
                   "flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all duration-300",
@@ -224,7 +224,7 @@ export default function Navbar() {
             ) : (
               <Link
                 key={item.key}
-                href={item.href as "/"}
+                href={item.href!}
                 className={cn(
                   "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-500 ease-out",
                   item.featured
@@ -250,7 +250,7 @@ export default function Navbar() {
         {/* Right side: Language + Donate */}
         <div className="hidden items-center gap-2 lg:flex">
           <Link
-            href={intlPathname as "/"}
+            href={intlPathname}
             locale={otherLocale}
             className={cn(
               "rounded-lg px-3 py-1.5 text-2xl leading-none transition-all duration-500 ease-out hover:scale-110",
@@ -334,7 +334,7 @@ export default function Navbar() {
                             {item.children.map((child) => (
                               <Link
                                 key={child.key}
-                                href={child.href as "/"}
+                                href={child.href}
                                 className={cn(
                                   "flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300",
                                   pathWithoutLocale === child.href
@@ -361,7 +361,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     key={item.key}
-                    href={item.href as "/"}
+                    href={item.href!}
                     className={cn(
                       "flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-300",
                       item.featured
@@ -380,7 +380,7 @@ export default function Navbar() {
               <div className="border-t pt-4 mt-2">
                 <div className="flex items-center gap-3">
                   <Link
-                    href={intlPathname as "/"}
+                    href={intlPathname}
                     locale={otherLocale}
                     className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300"
                   >

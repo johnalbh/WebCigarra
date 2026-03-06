@@ -273,7 +273,7 @@ export default function DonationResponsePage() {
             </h2>
             <p className="mb-6 text-neutral-600">{error}</p>
             <Link
-              href={'/como-ayudar' as '/como-ayudar'}
+              href={'/como-ayudar'}
               className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600"
             >
               <HiArrowPath className="h-4 w-4" />
@@ -325,7 +325,7 @@ export default function DonationResponsePage() {
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
               {(txStatus.status === 'Rejected' || txStatus.status === 'Failed') && (
                 <Link
-                  href={'/como-ayudar' as '/como-ayudar'}
+                  href={'/como-ayudar'}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600"
                 >
                   <HiArrowPath className="h-4 w-4" />

@@ -160,7 +160,7 @@ export default function ProgramsPage() {
           <StaggerContainer scaleUp staggerDelay={0.06} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {programs.map((program) => (
               <StaggerItem scaleUp key={program.slug}>
-                <Link href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}>
+                <Link href={`/programas/${program.slug}`}>
                   <motion.article
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}

@@ -69,7 +69,7 @@ export default function ProgramsGrid() {
         <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
           {/* Featured program - spans 2 rows */}
           <ScrollReveal mode="scroll" scaleFrom={0.92} className="md:col-span-1 md:row-span-2">
-            <Link href={{ pathname: '/programas/[slug]', params: { slug: featuredPrograms[0].slug } }}>
+            <Link href={`/programas/${featuredPrograms[0].slug}`}>
               <motion.div
                 whileHover={{ scale: SCALE_HOVER, boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}
                 transition={{ duration: DURATION_HOVER, ease: easeApple }}
@@ -102,7 +102,7 @@ export default function ProgramsGrid() {
           {/* Remaining 4 programs — scale-up reveal */}
           {featuredPrograms.slice(1).map((program) => (
             <ScrollReveal key={program.slug} mode="scroll" scaleFrom={0.92}>
-              <Link href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}>
+              <Link href={`/programas/${program.slug}`}>
                 <motion.div
                   whileHover={{ scale: SCALE_HOVER, boxShadow: '0 16px 48px rgba(0,0,0,0.12)' }}
                   transition={{ duration: DURATION_HOVER, ease: easeApple }}
@@ -156,7 +156,7 @@ export default function ProgramsGrid() {
                   return (
                     <Link
                       key={`${program.slug}-${i}`}
-                      href={{ pathname: '/programas/[slug]', params: { slug: program.slug } }}
+                      href={`/programas/${program.slug}`}
                       className="mx-2 flex-shrink-0"
                     >
                       <div className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-5 py-3 opacity-80 transition-all duration-300 hover:border-gray-200 hover:bg-white hover:opacity-100 hover:shadow-sm">

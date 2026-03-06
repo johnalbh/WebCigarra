@@ -483,7 +483,7 @@ export default function VoluntariadoPage() {
                 {t('writeWhatsApp')}
               </a>
               <Link
-                href={'/contacto' as '/contacto'}
+                href={'/contacto'}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
                 {t('goToContact')}

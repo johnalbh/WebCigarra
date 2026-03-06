@@ -87,7 +87,7 @@ export default function NewsListClient() {
       <section className="relative bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal mode="scroll" scaleFrom={0.95}>
-            <Link href={{ pathname: '/noticias/[slug]', params: { slug: featured.slug } }}>
+            <Link href={`/noticias/${featured.slug}`}>
               <motion.article
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -157,7 +157,7 @@ export default function NewsListClient() {
           <StaggerContainer scaleUp staggerDelay={0.08} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((article) => (
               <StaggerItem scaleUp key={article.slug}>
-                <Link href={{ pathname: '/noticias/[slug]', params: { slug: article.slug } }}>
+                <Link href={`/noticias/${article.slug}`}>
                   <motion.article
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}

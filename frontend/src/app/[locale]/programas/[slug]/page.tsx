@@ -134,7 +134,7 @@ function BottomProgramsBar({ currentSlug }: { currentSlug: string }) {
             return (
               <Link
                 key={p.slug}
-                href={{ pathname: '/programas/[slug]', params: { slug: p.slug } }}
+                href={`/programas/${p.slug}`}
                 data-active={isActive}
                 className={`flex flex-shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all ${
                   isActive
@@ -226,7 +226,7 @@ export default function ProgramDetailPage() {
           >
             {currentIndex > 0 && (
               <Link
-                href={{ pathname: '/programas/[slug]', params: { slug: allPrograms[currentIndex - 1].slug } }}
+                href={`/programas/${allPrograms[currentIndex - 1].slug}`}
                 className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/25"
               >
                 <HiChevronLeft className="h-4 w-4" />
@@ -235,7 +235,7 @@ export default function ProgramDetailPage() {
             )}
             {currentIndex < allPrograms.length - 1 && currentIndex >= 0 && (
               <Link
-                href={{ pathname: '/programas/[slug]', params: { slug: allPrograms[currentIndex + 1].slug } }}
+                href={`/programas/${allPrograms[currentIndex + 1].slug}`}
                 className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/25"
               >
                 {t(`names.${allPrograms[currentIndex + 1].slug}`)}
@@ -342,7 +342,7 @@ export default function ProgramDetailPage() {
                         return (
                           <Link
                             key={p.slug}
-                            href={{ pathname: '/programas/[slug]', params: { slug: p.slug } }}
+                            href={`/programas/${p.slug}`}
                             className="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-gray-50"
                           >
                             <span
