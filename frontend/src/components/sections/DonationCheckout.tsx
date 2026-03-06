@@ -55,6 +55,7 @@ interface DonationCheckoutProps {
   preselectedAmount?: number;
   variant?: 'page' | 'modal';
   onClose?: () => void;
+  forceUSD?: boolean;
 }
 
 function formatCurrency(amount: number, currency: 'COP' | 'USD'): string {
@@ -97,11 +98,12 @@ export default function DonationCheckout({
   preselectedAmount,
   variant = 'page',
   onClose,
+  forceUSD = false,
 }: DonationCheckoutProps) {
   const t = useTranslations('donationCheckout');
   const locale = useLocale();
   const router = useRouter();
-  const isPayPal = locale === 'en';
+  const isPayPal = locale === 'en' || forceUSD;
   const currency: 'COP' | 'USD' = isPayPal ? 'USD' : 'COP';
   const presets = isPayPal ? PRESET_AMOUNTS_USD : PRESET_AMOUNTS_COP;
   const MIN_AMOUNT = isPayPal ? 1 : 1000;

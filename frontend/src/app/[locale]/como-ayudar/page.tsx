@@ -27,9 +27,6 @@ import { FaWhatsapp, FaPaintBrush, FaRunning, FaBriefcase, FaPaypal } from 'reac
 import HeroWaves from '@/components/shared/HeroWaves';
 import DonationCheckout from '@/components/sections/DonationCheckout';
 
-const DONATION_LINK_COP = '#donar';
-const DONATION_LINK_USD = '#donar';
-
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
 /* ── Donation tiers config (Plan Padrino real pricing) ── */
@@ -225,6 +222,17 @@ export default function HowToHelpPage() {
   const tContact = useTranslations('contact');
   const locale = useLocale();
   const numberLocale = locale === 'en' ? 'en-US' : 'es-CO';
+  const [forceUSD, setForceUSD] = useState(false);
+
+  const handleDonateUSD = () => {
+    setForceUSD(true);
+    document.getElementById('donar')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleDonateCOP = () => {
+    setForceUSD(false);
+    document.getElementById('donar')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -274,13 +282,13 @@ export default function HowToHelpPage() {
             transition={{ duration: 0.7, delay: 0.35, ease: smoothEase }}
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
           >
-            <a
-              href={DONATION_LINK_COP}
-              className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-lg font-semibold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
+            <button
+              onClick={handleDonateCOP}
+              className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-lg font-semibold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40 cursor-pointer"
             >
               <HiHeart className="h-5 w-5" />
               {t('donateNow')}
-            </a>
+            </button>
             <a
               href="#plan-padrino"
               className="inline-flex items-center gap-2 rounded-full border-2 border-white/20 px-8 py-4 font-heading text-lg font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
@@ -313,10 +321,10 @@ export default function HowToHelpPage() {
       {/* ═══════════════════════════════════════════════════════
           2. DONATION CHECKOUT (ePayco)
           ═══════════════════════════════════════════════════════ */}
-      <section className="relative section-padding overflow-hidden bg-gray-50">
+      <section id="donar" className="relative section-padding overflow-hidden bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal>
-            <DonationCheckout />
+            <DonationCheckout key={forceUSD ? 'usd' : 'cop'} forceUSD={forceUSD} />
           </ScrollReveal>
         </div>
       </section>
@@ -364,13 +372,13 @@ export default function HowToHelpPage() {
                   <p className="mb-6 text-sm leading-relaxed text-white/90">
                     {t('donateDescription')}
                   </p>
-                  <a
-                    href={DONATION_LINK_COP}
-                    className="inline-flex w-fit items-center gap-2 rounded-full bg-accent-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-accent-400"
+                  <button
+                    onClick={handleDonateCOP}
+                    className="inline-flex w-fit items-center gap-2 rounded-full bg-accent-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-accent-400 cursor-pointer"
                   >
                     {t('donateNowBtn')}
                     <HiArrowRight className="h-4 w-4" />
-                  </a>
+                  </button>
                 </div>
               </motion.div>
             </ScrollReveal>
@@ -666,15 +674,15 @@ export default function HowToHelpPage() {
           {/* USD link */}
           <ScrollReveal>
             <div className="mt-10 text-center">
-              <a
-                href={DONATION_LINK_USD}
-                className="group inline-flex items-center gap-3 rounded-full border border-primary-200 bg-white px-10 py-4 font-heading text-lg font-semibold text-primary-700 transition-colors duration-300 hover:border-primary-400 hover:bg-primary-50"
+              <button
+                onClick={handleDonateUSD}
+                className="group inline-flex items-center gap-3 rounded-full border border-primary-200 bg-white px-10 py-4 font-heading text-lg font-semibold text-primary-700 transition-colors duration-300 hover:border-primary-400 hover:bg-primary-50 cursor-pointer"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100 transition-colors group-hover:bg-primary-200">
                   <HiCurrencyDollar className="h-6 w-6 text-primary-600" />
                 </div>
                 {tDonation('donateUSD')}
-              </a>
+              </button>
             </div>
           </ScrollReveal>
         </div>
@@ -730,13 +738,13 @@ export default function HowToHelpPage() {
 
           <ScrollReveal>
             <div className="mt-12 text-center">
-              <a
-                href={DONATION_LINK_COP}
-                className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400"
+              <button
+                onClick={handleDonateCOP}
+                className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 cursor-pointer"
               >
                 <HiHeart className="h-5 w-5" />
                 {t('donateForNutrition')}
-              </a>
+              </button>
               <p className="mt-4 text-sm text-primary-400/60">
                 {t('feedChildDaily')}
               </p>
@@ -865,20 +873,20 @@ export default function HowToHelpPage() {
 
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <a
-                href={DONATION_LINK_COP}
-                className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl"
+              <button
+                onClick={handleDonateCOP}
+                className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl cursor-pointer"
               >
                 <HiHeart className="h-5 w-5" />
                 {tDonation('donateCOP')}
-              </a>
-              <a
-                href={DONATION_LINK_USD}
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
+              </button>
+              <button
+                onClick={handleDonateUSD}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50 cursor-pointer"
               >
                 <HiCurrencyDollar className="h-5 w-5" />
                 {tDonation('donateUSD')}
-              </a>
+              </button>
               <Link
                 href={'/contacto'}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
