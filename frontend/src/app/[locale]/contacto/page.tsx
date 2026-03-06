@@ -253,195 +253,243 @@ export default function ContactPage() {
               </ScrollReveal>
             </div>
 
-            {/* ===== RIGHT: Contact Form ===== */}
+            {/* ===== RIGHT: Contact Form or Success ===== */}
             <div className="lg:col-span-3">
               <ScrollReveal direction="right">
-                <div className="rounded-3xl bg-white shadow-xl shadow-gray-200/60">
-                  <form onSubmit={handleSubmit} className="px-8 py-10 md:px-12 md:py-12">
-                    {/* Header */}
-                    <div className="mb-10">
-                      <h3 className="font-heading text-[28px] font-bold tracking-tight text-gray-900">
-                        {t('formTitle')}
-                      </h3>
-                      <p className="mt-2 text-[15px] text-gray-400 leading-relaxed">
-                        {t('formSubtitle')}
-                      </p>
-                    </div>
+                <AnimatePresence mode="wait">
+                  {formState === 'success' ? (
+                    <motion.div
+                      key="success-card"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, ease: smoothEase }}
+                      className="rounded-3xl bg-white shadow-xl shadow-gray-200/60"
+                    >
+                      <div className="flex flex-col items-center px-8 py-16 text-center md:px-16 md:py-20">
+                        {/* Animated check */}
+                        <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+                          <HiCheckCircle className="h-10 w-10 text-green-500" />
+                        </div>
 
-                    {/* Row 1: Name + Email */}
-                    <div className="grid gap-5 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-700">
-                          {t('name')} <span className="text-red-400">*</span>
-                        </label>
-                        <input
-                          id="name"
-                          type="text"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder={t('namePlaceholder')}
-                          className={inputClasses}
-                        />
+                        <h3 className="font-heading text-2xl font-bold text-gray-900 md:text-3xl">
+                          {t('successTitle')}
+                        </h3>
+
+                        <p className="mt-4 max-w-md text-[15px] leading-relaxed text-gray-500">
+                          {t('successMessage')}
+                        </p>
+
+                        {/* Divider */}
+                        <div className="my-8 h-px w-full max-w-xs bg-gray-100" />
+
+                        {/* Contact info */}
+                        <p className="text-sm font-medium text-gray-400 uppercase tracking-wide">
+                          {t('successAlternative')}
+                        </p>
+
+                        <div className="mt-5 flex flex-col items-center gap-4 sm:flex-row">
+                          <a
+                            href="tel:+573212465421"
+                            className="inline-flex items-center gap-2.5 rounded-full border border-gray-200 px-6 py-3 text-sm font-semibold text-gray-700 transition-all duration-200 hover:border-primary-300 hover:text-primary-600"
+                          >
+                            <HiPhone className="h-4 w-4" />
+                            +57 321 246 5421
+                          </a>
+                          <a
+                            href="https://wa.me/573212465421"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2.5 rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-green-600"
+                          >
+                            <FaWhatsapp className="h-4 w-4" />
+                            WhatsApp
+                          </a>
+                        </div>
+
+                        <p className="mt-5 text-xs text-gray-300">
+                          {t('successHours')}
+                        </p>
                       </div>
-                      <div>
-                        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700">
-                          {t('email')} <span className="text-red-400">*</span>
-                        </label>
-                        <div className="relative">
-                          <HiMail className="pointer-events-none absolute left-3.5 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-400" />
-                          <input
-                            id="email"
-                            type="email"
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="form-card"
+                      initial={{ opacity: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      className="rounded-3xl bg-white shadow-xl shadow-gray-200/60"
+                    >
+                      <form onSubmit={handleSubmit} className="px-8 py-10 md:px-12 md:py-12">
+                        {/* Header */}
+                        <div className="mb-10">
+                          <h3 className="font-heading text-[28px] font-bold tracking-tight text-gray-900">
+                            {t('formTitle')}
+                          </h3>
+                          <p className="mt-2 text-[15px] text-gray-400 leading-relaxed">
+                            {t('formSubtitle')}
+                          </p>
+                        </div>
+
+                        {/* Row 1: Name + Email */}
+                        <div className="grid gap-5 md:grid-cols-2">
+                          <div>
+                            <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-700">
+                              {t('name')} <span className="text-red-400">*</span>
+                            </label>
+                            <input
+                              id="name"
+                              type="text"
+                              required
+                              value={formData.name}
+                              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                              placeholder={t('namePlaceholder')}
+                              className={inputClasses}
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700">
+                              {t('email')} <span className="text-red-400">*</span>
+                            </label>
+                            <div className="relative">
+                              <HiMail className="pointer-events-none absolute left-3.5 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-400" />
+                              <input
+                                id="email"
+                                type="email"
+                                required
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                placeholder={t('emailPlaceholder')}
+                                className={`${inputClasses} pl-10`}
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Row 2: Phone + Subject */}
+                        <div className="mt-5 grid gap-5 md:grid-cols-2">
+                          <div>
+                            <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-gray-700">
+                              {t('phone')}
+                            </label>
+                            <div className="relative">
+                              <HiPhone className="pointer-events-none absolute left-3.5 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-400" />
+                              <input
+                                id="phone"
+                                type="tel"
+                                value={formData.phone}
+                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                placeholder={t('phonePlaceholder')}
+                                className={`${inputClasses} pl-10`}
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <label htmlFor="subject" className="mb-1.5 block text-sm font-medium text-gray-700">
+                              {t('subject')} <span className="text-red-400">*</span>
+                            </label>
+                            <input
+                              id="subject"
+                              type="text"
+                              required
+                              value={formData.subject}
+                              onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                              placeholder={t('subjectPlaceholder')}
+                              className={inputClasses}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Row 3: Message */}
+                        <div className="mt-5">
+                          <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-700">
+                            {t('message')} <span className="text-red-400">*</span>
+                          </label>
+                          <textarea
+                            id="message"
                             required
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            placeholder={t('emailPlaceholder')}
-                            className={`${inputClasses} pl-10`}
+                            rows={5}
+                            value={formData.message}
+                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                            placeholder={t('messagePlaceholder')}
+                            className={`${inputClasses} resize-none`}
                           />
                         </div>
-                      </div>
-                    </div>
 
-                    {/* Row 2: Phone + Subject */}
-                    <div className="mt-5 grid gap-5 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-gray-700">
-                          {t('phone')}
-                        </label>
-                        <div className="relative">
-                          <HiPhone className="pointer-events-none absolute left-3.5 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-400" />
+                        {/* Honeypot */}
+                        <div className="absolute -left-[9999px]" aria-hidden="true">
+                          <label htmlFor="website">Website</label>
                           <input
-                            id="phone"
-                            type="tel"
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            placeholder={t('phonePlaceholder')}
-                            className={`${inputClasses} pl-10`}
+                            type="text"
+                            id="website"
+                            name="website"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={honeypot}
+                            onChange={(e) => setHoneypot(e.target.value)}
                           />
                         </div>
-                      </div>
-                      <div>
-                        <label htmlFor="subject" className="mb-1.5 block text-sm font-medium text-gray-700">
-                          {t('subject')} <span className="text-red-400">*</span>
-                        </label>
-                        <input
-                          id="subject"
-                          type="text"
-                          required
-                          value={formData.subject}
-                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                          placeholder={t('subjectPlaceholder')}
-                          className={inputClasses}
-                        />
-                      </div>
-                    </div>
 
-                    {/* Row 3: Message */}
-                    <div className="mt-5">
-                      <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-700">
-                        {t('message')} <span className="text-red-400">*</span>
-                      </label>
-                      <textarea
-                        id="message"
-                        required
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder={t('messagePlaceholder')}
-                        className={`${inputClasses} resize-none`}
-                      />
-                    </div>
+                        {/* Turnstile CAPTCHA */}
+                        <div className="mt-6">
+                          <Turnstile
+                            siteKey={TURNSTILE_SITE_KEY}
+                            onSuccess={setTurnstileToken}
+                            options={{ theme: 'light', size: 'normal' }}
+                          />
+                        </div>
 
-                    {/* Honeypot */}
-                    <div className="absolute -left-[9999px]" aria-hidden="true">
-                      <label htmlFor="website">Website</label>
-                      <input
-                        type="text"
-                        id="website"
-                        name="website"
-                        tabIndex={-1}
-                        autoComplete="off"
-                        value={honeypot}
-                        onChange={(e) => setHoneypot(e.target.value)}
-                      />
-                    </div>
+                        {/* Submit */}
+                        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                          <button
+                            type="submit"
+                            disabled={formState === 'sending'}
+                            className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary-600 px-8 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:bg-primary-700 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed sm:w-auto"
+                          >
+                            {formState === 'sending' ? (
+                              <>
+                                <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                </svg>
+                                {t('sending')}
+                              </>
+                            ) : (
+                              <>
+                                {t('send')}
+                                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                              </>
+                            )}
+                          </button>
+                          <p className="text-xs text-gray-300">
+                            {t('requiredFields')}
+                          </p>
+                        </div>
 
-                    {/* Turnstile CAPTCHA */}
-                    <div className="mt-6">
-                      <Turnstile
-                        siteKey={TURNSTILE_SITE_KEY}
-                        onSuccess={setTurnstileToken}
-                        options={{ theme: 'light', size: 'normal' }}
-                      />
-                    </div>
-
-                    {/* Submit */}
-                    <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                      <button
-                        type="submit"
-                        disabled={formState === 'sending'}
-                        className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-primary-600 px-8 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:bg-primary-700 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed sm:w-auto"
-                      >
-                        {formState === 'sending' ? (
-                          <>
-                            <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                            </svg>
-                            {t('sending')}
-                          </>
-                        ) : (
-                          <>
-                            {t('send')}
-                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                          </>
-                        )}
-                      </button>
-                      <p className="text-xs text-gray-300">
-                        {t('requiredFields')}
-                      </p>
-                    </div>
-
-                    {/* Status */}
-                    <AnimatePresence mode="wait">
-                      {formState === 'success' && (
-                        <motion.div
-                          key="success"
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -12 }}
-                          transition={{ duration: 0.35, ease: smoothEase }}
-                          className="mt-8 flex items-start gap-4 rounded-xl bg-green-50 p-5"
-                        >
-                          <HiCheckCircle className="mt-0.5 h-6 w-6 shrink-0 text-green-500" />
-                          <div>
-                            <p className="font-semibold text-green-800">{t('successTitle')}</p>
-                            <p className="mt-1 text-sm text-green-600 leading-relaxed">{t('success')}</p>
-                          </div>
-                        </motion.div>
-                      )}
-                      {formState === 'error' && (
-                        <motion.div
-                          key="error"
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -12 }}
-                          transition={{ duration: 0.35, ease: smoothEase }}
-                          className="mt-8 flex items-start gap-4 rounded-xl bg-red-50 p-5"
-                        >
-                          <HiXCircle className="mt-0.5 h-6 w-6 shrink-0 text-red-500" />
-                          <div>
-                            <p className="font-semibold text-red-800">{t('errorTitle')}</p>
-                            <p className="mt-1 text-sm text-red-600 leading-relaxed">{t('error')}</p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </form>
-                </div>
+                        {/* Error */}
+                        <AnimatePresence mode="wait">
+                          {formState === 'error' && (
+                            <motion.div
+                              key="error"
+                              initial={{ opacity: 0, y: 12 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -12 }}
+                              transition={{ duration: 0.35, ease: smoothEase }}
+                              className="mt-8 flex items-start gap-4 rounded-xl bg-red-50 p-5"
+                            >
+                              <HiXCircle className="mt-0.5 h-6 w-6 shrink-0 text-red-500" />
+                              <div>
+                                <p className="font-semibold text-red-800">{t('errorTitle')}</p>
+                                <p className="mt-1 text-sm text-red-600 leading-relaxed">{t('error')}</p>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </form>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </ScrollReveal>
             </div>
           </div>
