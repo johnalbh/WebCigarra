@@ -7,6 +7,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
 import HeroWaves from '@/components/shared/HeroWaves';
+import TaxDeductionCalculator from '@/components/sections/TaxDeductionCalculator';
 import {
   HiShieldCheck,
   HiCurrencyDollar,
@@ -554,6 +555,17 @@ export default function ImpactoEmpresarialPage() {
               })}
             </StaggerContainer>
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          4b. TAX DEDUCTION CALCULATOR
+          ═══════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden bg-gray-50">
+        <div className="mx-auto max-w-2xl px-4 lg:px-8">
+          <ScrollReveal>
+            <TaxDeductionCalculator />
+          </ScrollReveal>
         </div>
       </section>
 

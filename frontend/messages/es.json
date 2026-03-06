@@ -881,6 +881,23 @@
       "transparent": { "label": "Finanzas Transparentes", "description": "Auditorías anuales" },
       "deductible": { "label": "Donaciones Deducibles", "description": "Estatuto Tributario" }
     },
+    "taxCalc": {
+      "title": "Ahorro Tributario",
+      "heading": "Calculadora",
+      "description": "Calcula el descuento tributario de tu empresa al donar a la Fundación Cigarra. Las donaciones generan un descuento del 25% en el impuesto de renta (Art. 257 E.T.).",
+      "donationAmount": "Monto de la donación (COP)",
+      "taxableIncome": "",
+      "taxableIncomePlaceholder": "",
+      "calculate": "Calcular ahorro",
+      "results": "Tu ahorro tributario",
+      "deductibleAmount": "Descuento tributario (25%)",
+      "taxRate": "Tasa de descuento",
+      "taxSavings": "Ahorro en impuestos",
+      "realCost": "Costo real de la donación",
+      "limitNote": "El descuento tributario del 25% aplica sobre el valor donado y se descuenta directamente del impuesto de renta (Art. 257 del Estatuto Tributario).",
+      "limitWarning": "",
+      "disclaimer": "Este es un estimado. Consulta con tu contador o asesor tributario para tu caso específico."
+    },
     "impactTitle": "Nuestro Impacto en Cifras",
     "impactHeading": "Resultados que",
     "impactHighlight": "hablan por sí solos",
