@@ -2,13 +2,9 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { buildPageMetadata, SITE_URL } from '@/lib/seo';
 import { getArticleSchema, getBreadcrumbSchema } from '@/lib/structured-data';
-import { articles, getArticleBySlug, getFullImageUrl } from '@/lib/articles-data';
+import { getArticleBySlug, getFullImageUrl } from '@/lib/articles-data';
 import JsonLd from '@/components/seo/JsonLd';
 import ArticleDetailClient from '@/components/news/ArticleDetailClient';
-
-export async function generateStaticParams() {
-  return articles.map((article) => ({ slug: article.slug }));
-}
 
 export async function generateMetadata({
   params,
