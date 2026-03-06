@@ -22,15 +22,16 @@ export default function DonatePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero strip */}
-      <section className="relative overflow-hidden bg-primary-900 py-16">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-primary-900 pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary-800 to-primary-950" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.05)_0%,transparent_70%)]" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE_APPLE }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent-500/20 px-4 py-1.5 text-sm font-semibold text-accent-400"
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-accent-500/20 px-5 py-2 text-sm font-semibold text-accent-400"
           >
             <HiShieldCheck className="h-4 w-4" />
             {t('badge')}
@@ -40,7 +41,7 @@ export default function DonatePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: EASE_APPLE }}
-            className="mx-auto max-w-3xl font-heading text-3xl font-bold text-white md:text-5xl"
+            className="mx-auto max-w-3xl font-heading text-4xl font-bold leading-tight text-white md:text-6xl md:leading-tight"
           >
             {t('title')}{' '}
             <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">
@@ -52,7 +53,7 @@ export default function DonatePage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: EASE_APPLE }}
-            className="mx-auto mt-4 max-w-2xl text-lg text-primary-200/80"
+            className="mx-auto mt-6 max-w-2xl text-lg text-primary-200/80 md:text-xl"
           >
             {t('subtitle')}
           </motion.p>
@@ -62,7 +63,7 @@ export default function DonatePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.4, ease: EASE_APPLE }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-6"
+            className="mt-10 flex flex-wrap items-center justify-center gap-6"
           >
             <div className="flex items-center gap-2 text-sm text-primary-300/80">
               <HiShieldCheck className="h-4 w-4 text-accent-400" />

@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Cigarra Foundation — 501(c)(3) Nonprofit Transforming Lives in Bogotá, Colombia",
-    "description": "The Cigarra Foundation is a U.S.-registered 501(c)(3) nonprofit serving 180+ children in Ciudad Bolívar, Bogotá with education, art, nutrition, and culture programs since 2002. All donations are tax-deductible."
+    "title": "Cigarra Foundation — 501(c)(3) Nonprofit | Feed & Educate Children in Colombia",
+    "description": "For $1.80/day, feed and educate a child in Bogotá. IRS-recognized 501(c)(3) nonprofit serving 180+ children since 2002. 100% tax-deductible — every dollar goes directly to kids. EIN: 68-0505337."
   },
   "nav": {
     "home": "Home",
@@ -22,25 +22,25 @@
     "companies": "Corporate"
   },
   "hero": {
-    "tagline": "501(c)(3) nonprofit — Transforming lives since 2002",
-    "title": "We transform lives through",
-    "titleHighlight": "art, education",
-    "titleSuffix": "and culture",
-    "description": "1,877 children and youth in Ciudad Bolívar, Bogotá have found a path to a better future through our 13 programs. Your tax-deductible donation makes it possible.",
-    "cta_donate": "Donate Now — Tax-Deductible",
-    "cta_programs": "Explore Our Programs",
-    "scroll": "Discover more",
-    "statsChildren": "Children",
-    "statsYears": "Years",
-    "statsPrograms": "Programs",
+    "tagline": "501(c)(3) Tax-Deductible — Every Dollar Goes Directly to Children",
+    "title": "Give a child in Colombia",
+    "titleHighlight": "education, meals",
+    "titleSuffix": "and a future",
+    "description": "For just $1.80 a day, you can feed and educate a child in Bogotá. 1,877 children served across 13 programs since 2002. 100% tax-deductible.",
+    "cta_donate": "Donate Now — It's Tax-Deductible",
+    "cta_programs": "See How We Use Your Gift",
+    "scroll": "See our impact",
+    "statsChildren": "Children Served",
+    "statsYears": "Years of Impact",
+    "statsPrograms": "Free Programs",
     "imageAlt": "Children from the Cigarra Foundation in Bogotá, Colombia"
   },
   "impact": {
-    "title": "Our Impact",
-    "subtitle": "Our impact",
+    "title": "Where Your Money Goes",
+    "subtitle": "Real, measurable results",
     "children": "Children Served",
     "childrenHelped": "Children Helped",
-    "years": "Years of Service",
+    "years": "Years of Impact",
     "programs": "Active Programs",
     "families": "Families Benefited",
     "jobsGenerated": "Jobs Generated",
@@ -64,10 +64,10 @@
     "gridTitleHighlight": "Programs",
     "gridSubtitle": "Each program is an open door to knowledge, creativity, and the comprehensive development of our beneficiaries.",
     "heroImageAlt": "Children in Cigarra Foundation programs",
-    "ctaTitle": "Share your talent with those who need it most",
-    "ctaDescription": "Our programs need passionate people willing to share their knowledge. Your time and talent can open doors that change lives.",
-    "beVolunteer": "Be a Volunteer",
-    "howToHelpLink": "Learn how to help",
+    "ctaTitle": "Help fund these programs",
+    "ctaDescription": "Every program is 100% free for children — funded entirely by donors like you. Your tax-deductible gift keeps these doors open.",
+    "beVolunteer": "Give Now",
+    "howToHelpLink": "See all ways to help",
     "information": "Information",
     "supportProgram": "Support this program with your donation",
     "donateNow": "Donate Now",
@@ -190,16 +190,16 @@
     "statsCommitment": "Commitment",
     "gridTitle": "Discover their stories",
     "gridSubtitle": "Each one came through the Foundation and today they are examples of perseverance and commitment.",
-    "donationNudge": "These stories are possible thanks to people like you.",
-    "donateNow": "Donate now",
-    "donationNudgeSuffix": "and help write more success stories.",
+    "donationNudge": "Stories like these are only possible because of donors like you.",
+    "donateNow": "Give now",
+    "donationNudgeSuffix": "and help write the next success story.",
     "galleryTagline": "Inspiring moments",
     "galleryTitle": "Impact in images",
     "impactAlt": "Impact",
-    "ctaTitle": "Sponsor a child and write the next chapter",
-    "ctaDescription": "With the Sponsorship Plan, you support a child's growth, ensuring their access to education, art, and life-changing opportunities.",
-    "ctaSponsor": "Sponsor a Child",
-    "ctaVolunteer": "Be a Volunteer",
+    "ctaTitle": "You can write the next chapter",
+    "ctaDescription": "For $25/month, sponsor a child's education, daily meals, and access to 13 programs. 100% tax-deductible.",
+    "ctaSponsor": "Sponsor a Child — $25/mo",
+    "ctaVolunteer": "Volunteer",
     "ctaLabels": {
       "planPadrino": "Sponsorship Plan",
       "volunteering": "Volunteering",
@@ -225,48 +225,48 @@
     }
   },
   "donation": {
-    "title": "Your Donation Transforms Lives",
-    "subtitle": "For just $1.80 a day, you can provide a child with nutritious daily meals — and every dollar is tax-deductible",
+    "title": "Your Gift Changes a Child's Life",
+    "subtitle": "$1.80/day feeds a child — $25/month covers education + meals. Every dollar is tax-deductible.",
     "donateCOP": "Donate in USD",
     "donateUSD": "Donate in USD",
     "monthly": "monthly",
     "impact": "Your impact",
-    "sponsorTitle": "Sponsorship Plan",
-    "sponsorDescription": "Sponsor a child and follow their progress throughout the year",
+    "sponsorTitle": "Sponsor a Child",
+    "sponsorDescription": "From $25/month — covers education + daily meals. You get progress reports & photos.",
     "volunteerTitle": "Volunteer",
-    "volunteerDescription": "Donate your time and talent. We need volunteers in education, art, and sports",
+    "volunteerDescription": "Teach, mentor, or help remotely from the U.S. — no travel required",
     "nutritionTitle": "Nutrition Program",
     "nutritionCost": "Daily cost per child",
-    "headlinePrefix": "There are many ways to",
-    "headlineHighlight": "change lives",
-    "headlineDescription": "It's not just about money. Your time, skills, and voice also transform communities.",
+    "headlinePrefix": "3 easy ways to",
+    "headlineHighlight": "make a difference",
+    "headlineDescription": "Donate, sponsor a child, or volunteer — every option is tax-deductible and 100% goes to the kids.",
     "raised": "raised",
     "goal": "Goal",
     "ofMonthlyGoal": "of monthly goal",
-    "internationalDonors": "International donors",
+    "internationalDonors": "U.S. & international donors",
     "trustSecure": "256-bit SSL encrypted",
     "trustTaxDeductible": "501(c)(3) tax-deductible",
-    "trustTransparency": "100% transparent reporting",
+    "trustTransparency": "100% goes to programs — $0 overhead",
     "paths": {
       "donate": {
-        "title": "Donate",
-        "description": "Every dollar is tax-deductible and directly funds education, meals, and supplies for children in need.",
-        "cta": "Donate Now"
+        "title": "Make a Gift",
+        "description": "One-time or monthly — pay with PayPal or any credit card. 100% tax-deductible. Tax receipt emailed instantly.",
+        "cta": "Give Now"
       },
       "sponsor": {
         "title": "Sponsor a Child",
-        "description": "The Sponsorship Plan covers a child's education + meals. Receive personalized progress reports.",
-        "cta": "Learn About the Plan"
+        "description": "From $25/month — covers education + daily meals for one child. You receive photos & progress reports.",
+        "cta": "Start Sponsoring"
       },
       "volunteer": {
-        "title": "Be a Volunteer",
-        "description": "Share your time and talent. We're looking for teachers, artists, mentors, and organizers.",
-        "cta": "I Want to Help"
+        "title": "Volunteer",
+        "description": "Help remotely from the U.S. — teach English, mentor, fundraise, or manage social media.",
+        "cta": "Get Involved"
       },
       "share": {
-        "title": "Share",
-        "description": "Spread the word on social media. One more voice can open new doors.",
-        "cta": "Share"
+        "title": "Spread the Word",
+        "description": "Share our story on social media. Your voice helps us reach more people who want to help.",
+        "cta": "Share Now"
       }
     }
   },
@@ -289,10 +289,10 @@
     "newBadge": "Latest",
     "specialEvent": "Special event",
     "ctaCards": {
-      "donate": { "title": "Donate", "description": "Every dollar transforms a life.", "cta": "Donate Now" },
-      "sponsor": { "title": "Sponsor", "description": "Support a child on their journey.", "cta": "Sponsorship Plan" },
-      "volunteer": { "title": "Volunteer", "description": "Share your time and talent.", "cta": "Be a Volunteer" },
-      "contact": { "title": "Contact Us", "description": "We want to hear from you.", "cta": "Write" }
+      "donate": { "title": "Give Now", "description": "100% tax-deductible. Every dollar goes to kids.", "cta": "Give Now" },
+      "sponsor": { "title": "Sponsor a Child", "description": "$25/mo — education + meals. Get progress reports.", "cta": "Start Sponsoring" },
+      "volunteer": { "title": "Volunteer", "description": "Help remotely from the U.S.", "cta": "Get Involved" },
+      "contact": { "title": "Questions?", "description": "We'd love to hear from you.", "cta": "Contact Us" }
     },
     "heroTagline": "Latest News",
     "newsletter": {
@@ -312,7 +312,7 @@
     "team": "Our Team",
     "gallery": "Gallery",
     "foundedIn": "Founded in",
-    "heroDescription": "A U.S.-registered 501(c)(3) nonprofit with over two decades dedicated to transforming lives through art, education, and culture in one of Bogotá's most underserved communities.",
+    "heroDescription": "An IRS-recognized 501(c)(3) nonprofit with 23+ years of proven impact — educating, feeding, and empowering children in one of Bogotá's most underserved communities.",
     "missionStatement": "To provide comprehensive care to children and youth in vulnerable conditions in Ciudad Bolivar, through education, art, culture, and recreation programs, promoting their personal and social development as agents of change in their community.",
     "missionBadge": "More than 180 children currently served",
     "visionStatement": "To be a leading organization in the social transformation of vulnerable communities in Colombia, recognized for the quality and impact of its educational, artistic, and cultural programs, and for the formation of citizens committed to social change.",
@@ -436,10 +436,10 @@
       "description": "More than 33 professionals committed to social transformation. Educators, artists, psychologists, and administrators who make our 13 programs possible.",
       "cta": "See the Full Team"
     },
-    "ctaTitle": "Join the Cigarra family",
-    "ctaDescription": "There are many ways to be part of this community that transforms lives. Donate, share your time, or simply join us on this journey.",
-    "ctaDonate": "Donate Now",
-    "ctaVolunteer": "Be a Volunteer",
+    "ctaTitle": "Ready to make a difference?",
+    "ctaDescription": "Give a tax-deductible gift, sponsor a child, or volunteer your time — every action helps a child in Bogotá build a better future.",
+    "ctaDonate": "Give Now — Tax-Deductible",
+    "ctaVolunteer": "Volunteer",
     "ctaTeam": "Our Team"
   },
   "contact": {
@@ -495,10 +495,10 @@
     "navigation": "Navigation",
     "programs": "Programs",
     "contact": "Contact",
-    "support": "Support Us",
-    "supportDescription": "The Cigarra Foundation is a U.S.-registered 501(c)(3) nonprofit. Your donation is 100% tax-deductible and directly supports 180+ children in Bogotá, Colombia.",
+    "support": "Give Today",
+    "supportDescription": "The Cigarra Foundation is an IRS-recognized 501(c)(3) nonprofit (EIN: 68-0505337). 100% of your tax-deductible donation goes directly to 180+ children in Bogotá. $0 admin overhead.",
     "slogan": "The resurgence of hope",
-    "description": "We build real opportunities for more than 1,877 children and youth in Ciudad Bolívar, Bogotá.",
+    "description": "Feeding, educating, and empowering 1,877 children in Ciudad Bolívar, Bogotá since 2002.",
     "taxExempt": "501(c)(3) Tax-Exempt Organization",
     "einNumber": "EIN: 68-0505337"
   },
@@ -516,54 +516,54 @@
     "home": "Home"
   },
   "planPadrino": {
-    "heroTagline": "501(c)(3) Nonprofit — Tax-Deductible Sponsorship",
+    "heroTagline": "501(c)(3) Tax-Deductible — EIN: 68-0505337",
     "heroTitle": "Sponsor a Child",
-    "heroDescription": "For as little as $25/month, you can provide a child in Bogotá with education, daily meals, and the chance to dream big. 100% tax-deductible.",
-    "viewPlans": "View Plans",
+    "heroDescription": "For just $25/month, give a child in Bogotá education, daily meals, and the chance to dream big. 100% tax-deductible. Cancel anytime.",
+    "viewPlans": "See Plans & Pricing",
     "howItWorks": "How It Works",
-    "stepByStep": "Step by Step",
+    "stepByStep": "3 Simple Steps",
     "howItWorksTitle": "How the",
-    "howItWorksSubtitle": "In three simple steps, you can change a child's life forever.",
-    "sponsorshipPlans": "Sponsorship Plans",
-    "chooseLevel": "Choose your level of",
-    "commitment": "commitment",
-    "chooseLevelSubtitle": "Every plan includes education, meals, and personalized follow-up. Choose the one that best fits you.",
+    "howItWorksSubtitle": "It takes less than 5 minutes to change a child's life.",
+    "sponsorshipPlans": "Choose Your Plan",
+    "chooseLevel": "Pick the plan that",
+    "commitment": "works for you",
+    "chooseLevelSubtitle": "Every plan includes education, daily meals, and personal progress reports. Cancel or change anytime.",
     "mostPopular": "Most Popular",
     "child": "child",
     "children": "children",
     "includes": "Includes",
     "sponsorNow": "Sponsor Now",
-    "subscribePayPal": "Subscribe with PayPal",
-    "contactToSubscribe": "Contact to Subscribe",
-    "donateUSD": "Donate in USD (dollars)",
-    "planBenefits": "Plan Benefits",
+    "subscribePayPal": "Pay with PayPal",
+    "contactToSubscribe": "Contact Us to Start",
+    "donateUSD": "Pay in USD",
+    "planBenefits": "What You Get",
     "whatIncludes": "What your",
-    "sponsorship": "sponsorship includes",
-    "whatIncludesSubtitle": "Every sponsorship covers the child's comprehensive needs, ensuring their educational development and well-being.",
-    "testimonials": "Testimonials",
+    "sponsorship": "gift provides",
+    "whatIncludesSubtitle": "Your sponsorship covers everything a child needs to learn, grow, and thrive.",
+    "testimonials": "From a Parent",
     "testimonialQuote": "Thanks to the Sponsorship Plan, my son now dreams of becoming an engineer. The foundation gave him the tools and love he needed to believe in himself.",
     "testimonialAuthor": "María Fernanda",
-    "testimonialRole": "Mother of beneficiary, Ciudad Bolívar",
+    "testimonialRole": "Mother of sponsored child, Ciudad Bolívar",
     "childrenHelped": "children helped",
-    "yearsTrajectory": "years of experience",
-    "activePrograms": "active programs",
+    "yearsTrajectory": "years of proven results",
+    "activePrograms": "free programs included",
     "costPerChildPerDay": "USD/day per child",
-    "faqTitle": "We answer your",
+    "faqTitle": "Common",
     "faqHighlight": "questions",
-    "faqSubtitle": "Everything you need to know about the Sponsorship Plan before taking the step.",
-    "changeLifeToday": "Change a life today",
-    "changeLifeDescription": "A child in Ciudad Bolívar is waiting for you. Your tax-deductible sponsorship gives them access to education, daily meals, and the chance for a better future.",
-    "sponsorCOP": "Sponsor Now — Tax-Deductible",
-    "donateDollars": "Donate in USD",
+    "faqSubtitle": "Everything U.S. donors ask before sponsoring.",
+    "changeLifeToday": "Ready to sponsor a child?",
+    "changeLifeDescription": "Right now, a child in Bogotá is waiting for someone like you. Your tax-deductible sponsorship gives them education, daily meals, and a real chance at a better future. Cancel anytime.",
+    "sponsorCOP": "Start Sponsoring — Tax-Deductible",
+    "donateDollars": "Pay in USD",
     "steps": {
-      "choose": { "title": "Choose your plan", "description": "Select the sponsorship plan that best fits your possibilities." },
+      "choose": { "title": "Pick a plan", "description": "Choose monthly, semester, or annual — starting at $25/month. Pay securely with PayPal." },
       "meet": {
-        "title": "Meet your sponsored child",
-        "description": "We introduce you to the child you'll support throughout their educational journey."
+        "title": "Meet your child",
+        "description": "Within a week, you'll receive your sponsored child's photo, name, and story."
       },
       "follow": {
-        "title": "Follow their progress",
-        "description": "Receive personalized reports on your sponsored child's academic progress and development."
+        "title": "See your impact",
+        "description": "Get regular progress reports with photos, grades, and personal letters from your child."
       }
     },
     "tiers": {
@@ -618,28 +618,28 @@
     },
     "faqs": {
       "taxDeductible": {
-        "q": "Is my sponsorship donation tax-deductible?",
-        "a": "Yes! The Cigarra Foundation is a 501(c)(3) tax-exempt organization recognized by the IRS (EIN: 68-0505337). Your sponsorship payments are fully tax-deductible to the extent allowed by U.S. law. You'll receive an annual tax receipt for your records."
+        "q": "Is my sponsorship tax-deductible?",
+        "a": "Yes — the Cigarra Foundation is an IRS-recognized 501(c)(3) nonprofit (EIN: 68-0505337). Your sponsorship is fully tax-deductible. You'll receive a tax receipt by email for your IRS filing."
       },
       "cancel": {
-        "q": "Can I cancel or change my plan at any time?",
-        "a": "Absolutely. You can cancel or change your sponsorship plan at any time with no penalties. Simply contact us by email or WhatsApp, and we'll process the change immediately. If you cancel, the child will continue to be served through other resources."
+        "q": "Can I cancel anytime?",
+        "a": "Yes, no questions asked. Cancel or change your plan anytime by email or WhatsApp. No penalties, no commitments. If you cancel, the child continues to be served through other funding."
       },
       "graduation": {
-        "q": "What happens if my sponsored child graduates or leaves?",
-        "a": "If your sponsored child graduates or leaves the foundation, we'll notify you and introduce you to a new child so you can continue your impact. You can also choose to redirect your contribution to another program."
+        "q": "What if my child graduates or leaves?",
+        "a": "We'll let you know and match you with a new child so your impact continues. You can also redirect your contribution to a different program if you prefer."
       },
       "payment": {
-        "q": "How do I pay from the United States?",
-        "a": "You can pay securely through PayPal using any major credit card, debit card, or your PayPal balance. All transactions are in U.S. dollars. You can set up automatic recurring payments for your convenience."
+        "q": "How do I pay from the U.S.?",
+        "a": "Securely through PayPal — use any credit card (Visa, Mastercard, Amex, Discover), debit card, or PayPal balance. All amounts are in USD. Set up automatic monthly payments in under 2 minutes."
       },
       "visit": {
-        "q": "Can I visit the foundation and meet my sponsored child?",
-        "a": "Yes! We welcome sponsors to visit us in Bogotá. We organize annual events where sponsors can meet their children, and you can also arrange a visit on weekdays by contacting us in advance. Many U.S.-based sponsors visit during their trips to Colombia."
+        "q": "Can I visit and meet my sponsored child?",
+        "a": "Absolutely! We host annual events for sponsors, and you can arrange a visit on any weekday. Many U.S. sponsors visit during trips to Colombia. We'll plan everything for you."
       },
       "percentage": {
-        "q": "What percentage of my donation goes directly to the children?",
-        "a": "100% of your donation goes directly to our programs. Administrative costs are covered by corporate partners. We publish annual audited financial reports and are fully transparent about how every dollar is spent."
+        "q": "Does 100% of my money really go to the kids?",
+        "a": "Yes — 100% goes directly to programs. Administrative costs are fully covered by corporate partners. We publish annual audited financial reports so you can see exactly where every dollar goes."
       }
     },
     "trustBadges": {
@@ -649,89 +649,89 @@
     }
   },
   "howToHelp": {
-    "heroTagline": "501(c)(3) Tax-Exempt Nonprofit",
-    "heroTitle": "Every Gift",
+    "heroTagline": "501(c)(3) Nonprofit — EIN: 68-0505337",
+    "heroTitle": "Every Dollar",
     "heroHighlight": "Changes a Life",
-    "donateNow": "Donate Now — Tax-Deductible",
-    "sponsorChild": "Sponsor a Child",
-    "impactCalculator": "Impact Calculator",
-    "impactTitle": "Your contribution today",
-    "impactHighlight": "transforms lives",
-    "impactSubtitle": "Select an amount and discover the real impact of your donation.",
+    "donateNow": "Give Now — Tax-Deductible",
+    "sponsorChild": "Sponsor a Child — $25/mo",
+    "impactCalculator": "See What Your Gift Does",
+    "impactTitle": "See exactly where",
+    "impactHighlight": "your money goes",
+    "impactSubtitle": "Pick an amount and see the real impact on a child's life.",
     "customAmount": "Enter a custom amount",
-    "presetAmount": "Choose a preset amount",
-    "customPlaceholder": "e.g. 20",
-    "customImpact": "With ${amount} USD you can support the Cigarra Foundation's programs",
-    "presetImpact": "With {label} USD you can cover {impact}",
+    "presetAmount": "Choose an amount",
+    "customPlaceholder": "e.g. 25",
+    "customImpact": "${amount} supports education, meals, and programs for children in Bogotá",
+    "presetImpact": "${label} covers {impact}",
     "impactOptions": {
       "8": "nutritious snacks for 4 children for a week",
-      "13": "school supplies for 1 child for 1 month",
-      "26": "nutritious meals for 1 child for a full month",
-      "51": "complete education + meals program for 1 child"
+      "13": "a full month of school supplies for 1 child",
+      "26": "daily meals for 1 child for an entire month",
+      "51": "a complete month of education + meals for 1 child"
     },
-    "donateNowBtn": "Donate Now",
-    "donateUSD": "Donate in USD — Tax-Deductible",
-    "threeWays": "3 ways to",
-    "changeLives": "change lives",
-    "threeWaysSubtitle": "All donations are tax-deductible under our 501(c)(3) status. Choose the way that fits you best.",
+    "donateNowBtn": "Give Now",
+    "donateUSD": "Give in USD — Tax-Deductible",
+    "threeWays": "3 easy ways to",
+    "changeLives": "help a child today",
+    "threeWaysSubtitle": "All donations are 100% tax-deductible. Pay securely with PayPal or any major credit card.",
     "option": "Option",
-    "donate": "Donate",
-    "donateDescription": "100% of your tax-deductible donation funds education, meals, and supplies for children in Ciudad Bolívar.",
+    "donate": "Make a Gift",
+    "donateDescription": "One-time or monthly — 100% of your gift funds education, meals, and supplies. Tax receipt emailed instantly.",
     "sponsorTitle": "Sponsor a Child",
-    "sponsorDescription": "The Sponsorship Plan covers a child's education + meals. You receive progress reports.",
-    "sponsorStarting": "From $15 USD/month",
-    "learnPlanPadrino": "Learn About Sponsorship",
-    "beVolunteer": "Be a Volunteer",
-    "volunteerDescription": "Share your time and talent. We're looking for teachers, artists, mentors, and more.",
-    "wantToVolunteer": "I Want to Volunteer",
-    "planPadrinoSection": "Sponsorship Plan",
+    "sponsorDescription": "From $25/month — covers education + daily meals. You get progress reports, photos & letters.",
+    "sponsorStarting": "Starting at $25/month",
+    "learnPlanPadrino": "Start Sponsoring",
+    "beVolunteer": "Volunteer",
+    "volunteerDescription": "Help remotely from the U.S. — teach English, mentor kids, manage social media, or fundraise.",
+    "wantToVolunteer": "Get Involved",
+    "planPadrinoSection": "Child Sponsorship",
     "changeChildLife": "Change a child's life",
-    "forever": "forever",
-    "changeChildDescription": "By sponsoring a child, you cover their education and daily nutritious meals throughout the year. You'll receive personalized progress reports with photos. Your sponsorship is 100% tax-deductible.",
+    "forever": "starting today",
+    "changeChildDescription": "Your sponsorship covers a child's education and daily meals for the entire year. You'll receive personalized progress reports with photos and letters — so you can see the impact of your generosity firsthand. 100% tax-deductible.",
     "yearsTransforming": "years transforming lives in Ciudad Bolívar",
-    "plansFromMonthly": "Plans from monthly to annual. View all plans.",
-    "viewDetailedPlans": "View detailed plans",
+    "plansFromMonthly": "Flexible plans from $25/month to annual. See all options.",
+    "viewDetailedPlans": "See all sponsorship plans",
     "sponsorChildToday": "Sponsor a Child Today",
     "chooseImpact": "Choose your level of",
     "impactLevel": "impact",
-    "chooseImpactSubtitle": "Every contribution transforms lives. Choose the plan that best fits you.",
-    "donateBtn": "Donate",
+    "chooseImpactSubtitle": "Every plan includes education, meals, and personalized reports. Choose what works for you.",
+    "donateBtn": "Give Now",
     "popularBadge": "Most Popular",
     "nutritionFuture": "Nutrition that",
-    "feedsFuture": "feeds the future",
+    "feedsFuture": "fuels learning",
     "costPerChildPerDay": "USD per child per day",
-    "realCostMeal": "Real cost of a complete nutritious meal",
-    "snacksServed": "snacks served",
-    "thisQuarter": "This quarter in our nutrition programs",
-    "donateForNutrition": "Donate for Nutrition",
-    "feedChildDaily": "With just $1.80 USD per day you can feed a child",
+    "realCostMeal": "That's all it costs to feed a child a complete, nutritious meal",
+    "snacksServed": "meals served",
+    "thisQuarter": "this quarter across our nutrition programs",
+    "donateForNutrition": "Fund a Child's Meals",
+    "feedChildDaily": "Just $1.80/day feeds a hungry child — that's less than a cup of coffee",
     "shareYour": "Share your",
-    "talent": "talent",
-    "volunteerWhatsApp": "I Want to Volunteer",
-    "volunteerWhatsAppDescription": "Message us on WhatsApp and we'll tell you how to participate",
-    "faqSubtitle": "We answer your questions so you can help with confidence.",
-    "finalCtaTitle": "A child is waiting for you today",
-    "finalCtaDescription": "Every day without action is one less opportunity in a child's life. Your 100% tax-deductible gift today builds a brighter tomorrow.",
+    "talent": "skills",
+    "volunteerWhatsApp": "Sign Up to Volunteer",
+    "volunteerWhatsAppDescription": "Message us on WhatsApp — we'll match you with the right opportunity",
+    "faqSubtitle": "Common questions from U.S. donors — answered.",
+    "finalCtaTitle": "A child is counting on you",
+    "finalCtaDescription": "Right now, a child in Bogotá needs your help. Your 100% tax-deductible gift today gives them education, meals, and hope for a better future.",
     "faqs": {
       "howDonate": {
-        "q": "How can I donate from the United States?",
-        "a": "You can donate securely online using PayPal or any major credit/debit card. All transactions are processed in U.S. dollars. You can make a one-time gift or set up a recurring monthly donation."
+        "q": "How do I donate from the U.S.?",
+        "a": "It's easy — click 'Give Now' and pay securely with PayPal or any major credit/debit card (Visa, Mastercard, Amex, Discover). All transactions are in U.S. dollars. You can make a one-time gift or set up automatic monthly donations."
       },
       "taxDeductible": {
         "q": "Is my donation tax-deductible?",
-        "a": "Yes! The Cigarra Foundation is a registered 501(c)(3) tax-exempt organization recognized by the IRS (EIN: 68-0505337). Your donation is fully tax-deductible to the extent allowed by U.S. law. You will receive a tax receipt for your records."
+        "a": "Yes! The Cigarra Foundation is an IRS-recognized 501(c)(3) tax-exempt nonprofit (EIN: 68-0505337). Your donation is fully tax-deductible. You'll receive a tax receipt by email within 24 hours — keep it for your IRS filing."
       },
       "transparency": {
-        "q": "How do I know my donation is used correctly?",
-        "a": "We publish annual financial reports and undergo independent audits. 100% of your donation goes directly to our programs — administrative costs are covered by corporate partners. Sponsors also receive personalized progress reports on their sponsored child."
+        "q": "How do I know my money actually reaches the children?",
+        "a": "100% of your donation goes directly to programs — $0 goes to admin overhead (administrative costs are covered by corporate partners). We publish annual audited financial reports. If you sponsor a child, you'll receive personal progress reports with photos showing exactly how your gift helps."
       },
       "canVolunteer": {
-        "q": "Can I volunteer from the U.S.?",
-        "a": "Yes! We welcome remote volunteers for translation, social media, fundraising, and mentoring. You can also visit us in Bogotá for in-person volunteering. Contact us via email or WhatsApp to learn about available opportunities."
+        "q": "Can I help from the U.S. without donating money?",
+        "a": "Absolutely! We need remote volunteers for English tutoring (via Zoom), social media management, fundraising, translation, and mentoring. No travel required. You can also visit us in Bogotá if you'd like. Email or WhatsApp us to get started."
       },
       "whatIsPlanPadrino": {
-        "q": "What is the Child Sponsorship Plan?",
-        "a": "The Sponsorship Plan allows you to sponsor a specific child, covering their education, daily meals, and access to all 13 of our programs. Starting at just $25/month, you'll receive personalized progress reports and photos throughout the year."
+        "q": "What does 'Sponsor a Child' mean?",
+        "a": "For $25/month, you're paired with a specific child whose education, daily meals, and access to all 13 programs you fund. You'll receive their photo, progress reports, and personal letters throughout the year. You can cancel anytime — no commitments."
       }
     },
     "volunteerAreas": {
@@ -759,8 +759,8 @@
     "heroTagline": "Cigarra Foundation",
     "heroTitle": "Be a",
     "heroHighlight": "Volunteer",
-    "heroDescription": "Share your time and talent with the children of Ciudad Bolívar. Your presence can change a child's life forever.",
-    "wantToVolunteer": "I Want to Volunteer",
+    "heroDescription": "Help children in Colombia from your home in the U.S. — teach English, mentor, fundraise, or manage social media. No travel required.",
+    "wantToVolunteer": "Sign Up to Volunteer",
     "howToApply": "How to Apply",
     "activeVolunteers": "50+ active volunteers",
     "yearsExperience": "23+ years of experience",
@@ -862,16 +862,16 @@
         "description": "You participate in an orientation session where you'll learn about the foundation, the programs, and the children. Then, let's get to work!"
       }
     },
-    "ctaTitle": "Your time can change a life",
-    "ctaDescription": "Every hour you share with the children of Ciudad Bolívar is a seed of hope. Join our team of volunteers and be part of the change.",
-    "writeWhatsApp": "Write us on WhatsApp",
-    "goToContact": "Go to Contact"
+    "ctaTitle": "Your time can change a child's life",
+    "ctaDescription": "Whether you volunteer for an hour a week or an hour a month — every moment makes a difference. Join 50+ volunteers making an impact.",
+    "writeWhatsApp": "Message Us on WhatsApp",
+    "goToContact": "Contact Us"
   },
   "corporate": {
     "heroTagline": "Corporate Partnerships",
     "heroTitle": "Corporate",
     "heroHighlight": "Impact",
-    "heroDescription": "Your company can be part of the change. Together we build real opportunities for more than 1,877 children and youth in Ciudad Bolívar, Bogotá. Corporate social responsibility gains meaning when it transforms lives.",
+    "heroDescription": "Partner with a 501(c)(3) nonprofit to create real impact. Your corporate donation is fully tax-deductible and directly funds education, meals, and arts programs for 1,877 children in Bogotá.",
     "becomeAlly": "Become a Partner",
     "allianceModels": "Partnership Models",
     "esalRegistered": "501(c)(3) Nonprofit",
@@ -879,7 +879,7 @@
     "benefitsTitle": "Benefits for Your Company",
     "whyPartner": "Why become a",
     "ally": "partner",
-    "whyPartnerSubtitle": "Investing in social impact is investing in the future of your company and Colombia.",
+    "whyPartnerSubtitle": "Maximize your CSR impact with a proven 501(c)(3) partner — every corporate gift is tax-deductible.",
     "benefits": {
       "csr": {
         "title": "Corporate Social Responsibility",
@@ -1041,32 +1041,32 @@
   },
   "seo": {
     "home": {
-      "title": "Cigarra Foundation — 501(c)(3) Nonprofit | Donate to Help Children in Colombia",
-      "description": "The Cigarra Foundation is an IRS-recognized 501(c)(3) nonprofit serving 180+ children in Bogotá, Colombia since 2002. Tax-deductible donations fund education, nutrition, and arts programs."
+      "title": "Cigarra Foundation — 501(c)(3) Nonprofit | Feed & Educate Children in Colombia",
+      "description": "For $1.80/day, feed a child in Bogotá. 501(c)(3) tax-deductible. 1,877 children served, 13 free programs, 23 years of impact. 100% goes to kids — $0 overhead. EIN: 68-0505337."
     },
     "about": {
-      "title": "About the Cigarra Foundation — 23 Years Transforming Lives in Colombia",
-      "description": "Since 2002, the Cigarra Foundation has served 1,877 children and 1,090 families in Ciudad Bolívar, Bogotá through 13 education, art, and culture programs. 501(c)(3) nonprofit."
+      "title": "About the Cigarra Foundation — 23 Years, 1,877 Children, 13 Programs",
+      "description": "Since 2002, the Cigarra Foundation has served 1,877 children in Bogotá with free education, daily meals, and arts programs. IRS-recognized 501(c)(3) nonprofit. EIN: 68-0505337."
     },
     "programs": {
-      "title": "Our 13 Programs — Education, Arts & Nutrition for Children in Colombia",
-      "description": "13 free programs for children in Bogotá: academic tutoring, music, dance, arts, technology, library, psychology, and nutrition. Funded by tax-deductible donations."
+      "title": "13 Free Programs for Children — Education, Music, Arts & Meals | Cigarra Foundation",
+      "description": "13 free programs: tutoring, music, dance, arts, technology, library, psychology, and daily meals for children in Bogotá. Funded by tax-deductible donations. 501(c)(3)."
     },
     "howToHelp": {
-      "title": "Donate to Children in Colombia — Tax-Deductible 501(c)(3) | Cigarra Foundation",
-      "description": "Make a tax-deductible donation via PayPal. Sponsor a child from $25/month. 100% of your gift funds education and meals for children in Bogotá. 501(c)(3) EIN: 68-0505337."
+      "title": "Donate Now — Tax-Deductible 501(c)(3) | Feed & Educate Children in Colombia",
+      "description": "Give via PayPal or credit card. Sponsor a child from $25/month. 100% of your gift funds education + meals. Tax receipt emailed instantly. EIN: 68-0505337."
     },
     "news": {
       "title": "News & Updates — Cigarra Foundation",
       "description": "The latest news, events, and achievements from the Cigarra Foundation in Ciudad Bolívar, Bogotá, Colombia."
     },
     "successStories": {
-      "title": "Success Stories — Lives Transformed by the Cigarra Foundation",
-      "description": "Read real stories of children whose lives have been transformed through education, art, and community support at the Cigarra Foundation."
+      "title": "Success Stories — See the Real Impact of Your Donation",
+      "description": "Meet children whose lives have been transformed by donors like you. Education, art, and daily meals gave them a real future. Read their stories."
     },
     "contact": {
-      "title": "Contact Us — Cigarra Foundation",
-      "description": "Get in touch with the Cigarra Foundation. We're based in Ciudad Bolívar, Bogotá, Colombia and serve donors worldwide."
+      "title": "Contact the Cigarra Foundation — We're Here to Help",
+      "description": "Questions about donating, sponsoring, or volunteering? Reach out — we respond within 24 hours. Based in Bogotá, serving U.S. donors nationwide."
     },
     "anthem": {
       "title": "Foundation Anthem — Cigarra Foundation",
@@ -1077,16 +1077,16 @@
       "description": "Meet the educators, artists, psychologists, and administrators behind the Cigarra Foundation's 13 programs serving children in Bogotá."
     },
     "planPadrino": {
-      "title": "Sponsor a Child in Colombia — From $25/Month | Tax-Deductible 501(c)(3)",
-      "description": "Sponsor a child's education and daily meals from $25/month. Receive progress reports and photos. 100% tax-deductible — Cigarra Foundation is a 501(c)(3) nonprofit."
+      "title": "Sponsor a Child — $25/Month | 100% Tax-Deductible 501(c)(3)",
+      "description": "Sponsor a child's education + daily meals from $25/month. Get photos, progress reports & letters. Cancel anytime. 501(c)(3) tax-deductible. EIN: 68-0505337."
     },
     "volunteer": {
-      "title": "Volunteer With Us — Cigarra Foundation",
-      "description": "Volunteer remotely or in person with the Cigarra Foundation. Share your skills in education, arts, technology, or communications to help children in Colombia."
+      "title": "Volunteer Remotely from the U.S. — Cigarra Foundation",
+      "description": "Help children in Colombia from home. Teach English via Zoom, manage social media, fundraise, or mentor. No travel required. Join 50+ active volunteers."
     },
     "corporateImpact": {
-      "title": "Corporate Partnerships — Cigarra Foundation 501(c)(3)",
-      "description": "Partner with a 501(c)(3) nonprofit. Corporate donations are tax-deductible. Sponsor programs, organize volunteer days, or fund education for children in Colombia."
+      "title": "Corporate Giving — Tax-Deductible 501(c)(3) Partnership | Cigarra Foundation",
+      "description": "Maximize your CSR impact. Corporate donations are fully tax-deductible. Sponsor programs, organize team volunteer days, or fund education for 180+ children in Colombia."
     }
   },
   "notFound": {
@@ -1111,95 +1111,95 @@
     "aboutUs": "About Us"
   },
   "donationCheckout": {
-    "title": "Make a tax-deductible gift",
-    "subtitle": "100% of your donation feeds, educates, and protects a child in Ciudad Bolívar. We are a 501(c)(3) nonprofit.",
-    "selectAmount": "Choose your gift amount",
+    "title": "Make your tax-deductible gift",
+    "subtitle": "100% goes directly to children — $0 admin overhead. You'll get a tax receipt by email.",
+    "selectAmount": "How much would you like to give?",
     "customAmount": "Other amount",
-    "enterAmount": "Enter amount in dollars",
-    "minAmount": "Minimum: $1 USD",
-    "yourInfo": "Your information",
+    "enterAmount": "Enter amount in USD",
+    "minAmount": "Minimum: $1",
+    "yourInfo": "Your details (for your tax receipt)",
     "identificationType": "ID type",
     "identificationNumber": "ID number",
     "firstName": "First name",
     "lastName": "Last name",
-    "email": "Email address",
+    "email": "Email (for tax receipt)",
     "phone": "Phone (optional)",
     "city": "City (optional)",
-    "confirmDonation": "Continue",
-    "donateButton": "Complete my {amount} gift",
-    "processing": "Processing your gift...",
-    "errorCreating": "There was an error processing your donation. Please try again or contact us.",
+    "confirmDonation": "Continue to Payment",
+    "donateButton": "Complete My ${amount} Gift",
+    "processing": "Processing your gift securely...",
+    "errorCreating": "Something went wrong. Please try again or email us at info@cigarra.org for help.",
     "securePayment": "Secure payment with ePayco",
     "step": "Step {current} of {total}",
-    "impact30000": "Nutritious snacks for 4 children for a week",
-    "impact50000": "School supplies for 1 child for 1 month",
-    "impact100000": "Nutritious meals for 1 child for a full month",
-    "impact200000": "Complete education + meals program for 1 child",
-    "impact500000": "Full educational scholarship for 1 child for a semester",
-    "impactCustom": "Every dollar counts to transform a life",
-    "impact5": "a day of nutritious snacks for a child",
-    "impact10": "a week of school supplies for a child",
-    "impact25": "a week of nutritious meals for a child",
-    "impact50": "a full week of education + meals for a child",
-    "impact100": "a complete month of education + meals for a child",
-    "impactCustomUSD": "Every dollar you give transforms a child's life",
-    "securePaymentPayPal": "Secure payment via PayPal — 501(c)(3) tax-deductible",
-    "paypalCancelled": "Payment was cancelled. You can try again whenever you're ready.",
+    "impact30000": "Feeds 4 children nutritious snacks for a week",
+    "impact50000": "Provides school supplies for 1 child for a month",
+    "impact100000": "Feeds 1 child nutritious meals for an entire month",
+    "impact200000": "Covers education + meals for 1 child for a full month",
+    "impact500000": "Funds a full semester of education for 1 child",
+    "impactCustom": "Every dollar feeds, educates, and protects a child",
+    "impact5": "feeds a child nutritious snacks for a day",
+    "impact10": "provides a week of school supplies",
+    "impact25": "feeds a child for an entire week",
+    "impact50": "covers a full week of education + meals",
+    "impact100": "covers a complete month of education + meals for 1 child",
+    "impactCustomUSD": "Every dollar you give goes directly to a child in need",
+    "securePaymentPayPal": "Secure PayPal checkout — 501(c)(3) tax-deductible",
+    "paypalCancelled": "No worries — your payment was cancelled. You can try again anytime.",
     "maxAmountLabel": "Maximum amount",
-    "minAmountUSD": "Minimum: $1 USD",
-    "enterAmountUSD": "Enter amount in dollars",
+    "minAmountUSD": "Minimum: $1",
+    "enterAmountUSD": "Enter amount in USD",
     "reviewTitle": "Review your gift",
     "editAmount": "Change amount",
     "editInfo": "Edit info",
-    "taxReceipt": "You will receive a tax receipt by email for your records."
+    "taxReceipt": "A tax receipt will be emailed to you within 24 hours. Keep it for your IRS filing."
   },
   "donationResponse": {
     "pageTitle": "Donation Status",
-    "pageDescription": "Check the status of your donation to Fundación Cigarra.",
-    "approved": "Thank you for your donation!",
-    "approvedMessage": "Your donation of {amount} has been received successfully. You will receive a confirmation email.",
-    "rejected": "Payment rejected",
-    "rejectedMessage": "Your payment could not be processed. Please try a different payment method.",
-    "pending": "Payment in progress",
-    "pendingMessage": "Your payment is being verified. We will notify you by email when confirmed.",
-    "failed": "Payment error",
-    "failedMessage": "There was an error processing your payment. Please try again.",
+    "pageDescription": "Check the status of your donation to the Cigarra Foundation.",
+    "approved": "Thank you — your gift makes a real difference!",
+    "approvedMessage": "Your generous gift of {amount} has been received. A tax receipt is on its way to your email. Thank you for helping children in Bogotá!",
+    "rejected": "Payment could not be processed",
+    "rejectedMessage": "Your payment was declined. Please try a different card or payment method, or contact your bank.",
+    "pending": "Payment processing",
+    "pendingMessage": "Your payment is being verified. You'll receive a confirmation email once it's complete — usually within a few minutes.",
+    "failed": "Something went wrong",
+    "failedMessage": "We couldn't process your payment. Please try again or email info@cigarra.org for assistance.",
     "reference": "Reference: {ref}",
-    "tryAgain": "Try again",
-    "backHome": "Back to home",
+    "tryAgain": "Try Again",
+    "backHome": "Back to Home",
     "verifyingPayment": "Verifying your payment...",
     "transactionId": "Transaction ID: {id}"
   },
   "donateLanding": {
-    "badge": "501(c)(3) Tax-Exempt — EIN: 68-0505337",
-    "title": "Your gift changes",
-    "titleHighlight": "a child's future",
-    "subtitle": "100% of your tax-deductible donation goes directly to education, daily meals, and arts programs for 180+ children in Bogotá, Colombia.",
+    "badge": "IRS-Verified 501(c)(3) — EIN: 68-0505337",
+    "title": "Give a child",
+    "titleHighlight": "a real future",
+    "subtitle": "$1.80/day feeds a child. $25/month covers education + meals. 100% tax-deductible — every dollar goes directly to kids in Bogotá.",
     "statsChildren": "Children Served",
-    "statsYears": "Years of Impact",
-    "statsPrograms": "Active Programs",
-    "whatFundsTitle": "What your donation funds",
+    "statsYears": "Years of Results",
+    "statsPrograms": "Free Programs",
+    "whatFundsTitle": "Here's exactly where your money goes",
     "funds": {
       "education": {
-        "title": "Education & Academic Tutoring",
-        "description": "Homework help, exam prep, and personalized academic support so children stay in school and thrive."
+        "title": "Education & Tutoring",
+        "description": "Homework help, exam prep, English classes, and technology training — keeping kids in school and on track."
       },
       "nutrition": {
-        "title": "Daily Nutritious Meals",
-        "description": "Breakfast, lunch, and afternoon snacks for just $1.80/day per child — fueling growing minds and bodies."
+        "title": "3 Meals a Day",
+        "description": "Breakfast, lunch, and afternoon snack for just $1.80/day — because a hungry child can't learn."
       },
       "arts": {
-        "title": "Music, Dance & Arts Programs",
-        "description": "String, wind, and percussion instruments, folk dance, visual arts — creativity as a vehicle for healing and growth."
+        "title": "Music, Dance & Arts",
+        "description": "Orchestra instruments, folk dance, visual arts — proven to boost confidence, discipline, and emotional health."
       },
       "psychology": {
-        "title": "Psychology & Family Support",
-        "description": "Psychosocial support for children and families, strengthening emotional well-being and family bonds."
+        "title": "Counseling & Family Support",
+        "description": "Professional psychologists support children and families — building resilience and emotional well-being."
       }
     },
     "photoCaption": "Children learning music at the Cigarra Foundation — Ciudad Bolívar, Bogotá",
-    "legalTitle": "IRS-Recognized 501(c)(3) Nonprofit",
-    "legalDescription": "The Cigarra Foundation (EIN: 68-0505337) is a tax-exempt organization under IRS Section 501(c)(3). Your donation is fully tax-deductible to the extent allowed by U.S. law. You will receive a tax receipt by email.",
+    "legalTitle": "Your Gift Is Tax-Deductible",
+    "legalDescription": "The Cigarra Foundation (EIN: 68-0505337) is an IRS-recognized 501(c)(3) nonprofit. Your donation is fully tax-deductible under U.S. law. You'll receive a tax receipt by email within 24 hours.",
     "seeAllWays": "See all ways to help →"
   }
 }

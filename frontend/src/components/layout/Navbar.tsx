@@ -261,10 +261,10 @@ export default function Navbar() {
             {locale === "es" ? "🇬🇧" : "🇨🇴"}
           </Link>
           <Link
-            href="/como-ayudar"
+            href={locale === "en" ? "/donate" : "/como-ayudar"}
             className="rounded-full bg-accent-500 px-5 py-2 text-sm font-semibold text-white transition-all duration-500 ease-out hover:bg-accent-600 hover:shadow-lg hover:shadow-accent-500/25"
           >
-            {t("donate")}
+            {locale === "en" ? "Donate Now" : t("donate")}
           </Link>
         </div>
 
@@ -388,10 +388,10 @@ export default function Navbar() {
                     {locale === "es" ? "English" : "Español"}
                   </Link>
                   <Link
-                    href="/como-ayudar"
+                    href={locale === "en" ? "/donate" : "/como-ayudar"}
                     className="flex-1 rounded-full bg-accent-500 py-2.5 text-center text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-600"
                   >
-                    {t("donate")}
+                    {locale === "en" ? "Donate Now" : t("donate")}
                   </Link>
                 </div>
               </div>
