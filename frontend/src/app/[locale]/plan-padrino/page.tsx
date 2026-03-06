@@ -657,7 +657,7 @@ export default function PlanPadrinoPage() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               {isPayPal ? (
                 <Link
-                  href="/como-ayudar"
+                  href="/como-ayudar?currency=usd#donar"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl"
                 >
                   <FaPaypal className="h-5 w-5" />

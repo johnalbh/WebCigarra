@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
@@ -222,7 +223,17 @@ export default function HowToHelpPage() {
   const tContact = useTranslations('contact');
   const locale = useLocale();
   const numberLocale = locale === 'en' ? 'en-US' : 'es-CO';
+  const searchParams = useSearchParams();
   const [forceUSD, setForceUSD] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get('currency') === 'usd') {
+      setForceUSD(true);
+      setTimeout(() => {
+        document.getElementById('donar')?.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    }
+  }, [searchParams]);
 
   const handleDonateUSD = () => {
     setForceUSD(true);

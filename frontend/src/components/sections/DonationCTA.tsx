@@ -165,7 +165,7 @@ export default function DonationCTA() {
             <div className="mt-10 text-center">
               <p className="mb-3 text-sm text-gray-400">{t('internationalDonors')}</p>
               <Link
-                href={'/como-ayudar'}
+                href="/como-ayudar?currency=usd#donar"
                 className="inline-flex items-center gap-2 rounded-full border border-primary-200 px-6 py-3 text-sm font-semibold text-primary-600 transition-colors hover:bg-primary-50"
               >
                 {t('donateUSD')}
