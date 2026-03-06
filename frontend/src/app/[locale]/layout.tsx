@@ -12,6 +12,8 @@ import FloatingSocialBar from '@/components/shared/FloatingSocialBar';
 import DonationFloatingCTA from '@/components/layout/DonationFloatingCTA';
 import AnnouncementPopupServer from '@/components/layout/AnnouncementPopupServer';
 
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
 import { SITE_URL, SITE_NAME } from '@/lib/seo';
 
 const inter = Inter({
@@ -80,6 +82,11 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
+  if (!routing.locales.includes(locale as 'es' | 'en')) {
+    notFound();
+  }
+
   const messages = (await import(`../../../messages/${locale}.json`)).default;
 
   return (
