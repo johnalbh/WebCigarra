@@ -312,11 +312,11 @@
     "team": "Our Team",
     "gallery": "Gallery",
     "foundedIn": "Founded in",
-    "heroDescription": "An IRS-recognized 501(c)(3) nonprofit with 23+ years of proven impact — educating, feeding, and empowering children in one of Bogotá's most underserved communities.",
+    "heroDescription": "An IRS-recognized 501(c)(3) nonprofit with 24+ years of proven impact — educating, feeding, and empowering children in one of Bogotá's most underserved communities.",
     "missionStatement": "To provide comprehensive care to children and youth in vulnerable conditions in Ciudad Bolivar, through education, art, culture, and recreation programs, promoting their personal and social development as agents of change in their community.",
-    "missionBadge": "More than 180 children currently served",
+    "missionBadge": "More than 1,800 children currently served",
     "visionStatement": "To be a leading organization in the social transformation of vulnerable communities in Colombia, recognized for the quality and impact of its educational, artistic, and cultural programs, and for the formation of citizens committed to social change.",
-    "visionBadge": "23 years and 13 programs transforming communities",
+    "visionBadge": "24 years and 13 programs transforming communities",
     "timeline": {
       "title": "Our Journey",
       "subtitle": "More than two decades of history building dreams and transforming realities in Ciudad Bolívar.",
@@ -393,8 +393,8 @@
         "item1": "The first orchestra concert takes place (June 2023), an institutional milestone."
       },
       "2025": {
-        "title": "23 Years of Impact",
-        "item1": "The Foundation reports over 23 years of service.",
+        "title": "24 Years of Impact",
+        "item1": "The Foundation reports over 24 years of service.",
         "item2": "It has benefited 1,090 families and 1,877 children and adolescents.",
         "item3": "It is consolidated as a benchmark for comprehensive care, education, art, sports, technology, and psychosocial support."
       },
@@ -769,7 +769,7 @@
     "wantToVolunteer": "Sign Up to Volunteer",
     "howToApply": "How to Apply",
     "activeVolunteers": "50+ active volunteers",
-    "yearsExperience": "23+ years of experience",
+    "yearsExperience": "24+ years of experience",
     "programsCount": "13 programs",
     "whyVolunteer": "Why volunteer",
     "reasonsToJoin": "Reasons to",
@@ -889,7 +889,7 @@
     "benefits": {
       "csr": {
         "title": "Corporate Social Responsibility",
-        "description": "Strengthen your company's CSR strategy with a partner that has over 23 years of real impact in one of Bogotá's most vulnerable communities."
+        "description": "Strengthen your company's CSR strategy with a partner that has over 24 years of real impact in one of Bogotá's most vulnerable communities."
       },
       "tax": {
         "title": "Tax Benefits",
@@ -987,7 +987,7 @@
     "esalLegalDescription": "As a 501(c)(3) organization, the Cigarra Foundation meets all IRS requirements for tax-exempt status. Donors can deduct their contributions on their federal tax returns under IRS Section 170. We provide official tax receipts for all donations. Our EIN (Employer Identification Number) is 68-0505337.",
     "esalBadges": {
       "registered": { "label": "501(c)(3) Nonprofit", "description": "IRS Tax-Exempt" },
-      "active": { "label": "23+ Years Active", "description": "Since 2002 in Ciudad Bolívar" },
+      "active": { "label": "24+ Years Active", "description": "Since 2002 in Ciudad Bolívar" },
       "transparent": { "label": "Audited Financials", "description": "Annual independent audits" },
       "deductible": { "label": "Tax-Deductible", "description": "IRS Section 170" }
     },
@@ -1011,7 +1011,7 @@
     "goldAllies": "Gold Partners",
     "silverAllies": "Silver Partners",
     "transformingAlliances": "Transforming Partnerships",
-    "transformingDescription": "Over more than 23 years, we have built strong partnerships with private sector companies, international organizations, and government institutions. Each partner contributes uniquely to the well-being of our beneficiaries.",
+    "transformingDescription": "Over more than 24 years, we have built strong partnerships with private sector companies, international organizations, and government institutions. Each partner contributes uniquely to the well-being of our beneficiaries.",
     "alliancesList": {
       "corporateAllies": "More than 8 active corporate partners",
       "nationalInternational": "Partnerships with national and international organizations",
@@ -1039,7 +1039,7 @@
     "esalLegal": {
       "nit": "EIN: 68-0505337 | Colombia Tax ID: 830.114.318-9",
       "registeredChamber": "501(c)(3) registered with the IRS",
-      "activeSince": "Active since 2002 — Over 23 years of continuous service",
+      "activeSince": "Active since 2002 — Over 24 years of continuous service",
       "annualAudits": "Annual independent audits and full financial transparency",
       "taxDeductible": "Donations are tax-deductible under IRS Section 170",
       "compliance": "Full compliance with U.S. and Colombian nonprofit regulations"
@@ -1048,10 +1048,10 @@
   "seo": {
     "home": {
       "title": "Cigarra Foundation — 501(c)(3) Nonprofit | Feed & Educate Children in Colombia",
-      "description": "For $1.80/day, feed a child in Bogotá. 501(c)(3) tax-deductible. 1,877 children served, 13 free programs, 23 years of impact. 100% goes to kids — $0 overhead. EIN: 68-0505337."
+      "description": "For $1.80/day, feed a child in Bogotá. 501(c)(3) tax-deductible. 1,877 children served, 13 free programs, 24 years of impact. 100% goes to kids — $0 overhead. EIN: 68-0505337."
     },
     "about": {
-      "title": "About the Cigarra Foundation — 23 Years, 1,877 Children, 13 Programs",
+      "title": "About the Cigarra Foundation — 24 Years, 1,877 Children, 13 Programs",
       "description": "Since 2002, the Cigarra Foundation has served 1,877 children in Bogotá with free education, daily meals, and arts programs. IRS-recognized 501(c)(3) nonprofit. EIN: 68-0505337."
     },
     "programs": {

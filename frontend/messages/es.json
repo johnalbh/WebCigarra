@@ -314,9 +314,9 @@
     "foundedIn": "Fundada en",
     "heroDescription": "Más de dos décadas dedicadas a transformar vidas a través del arte, la educación y la cultura en una de las comunidades más necesitadas de Bogotá.",
     "missionStatement": "Brindar atención integral a niños, niñas y jóvenes en condición de vulnerabilidad de Ciudad Bolívar, a través de programas de educación, arte, cultura y recreación, promoviendo su desarrollo personal y social como agentes de cambio en su comunidad.",
-    "missionBadge": "Más de 180 niños atendidos actualmente",
+    "missionBadge": "Más de 1.800 niños atendidos actualmente",
     "visionStatement": "Ser una organización referente en la transformación social de comunidades vulnerables en Colombia, reconocida por la calidad e impacto de sus programas educativos, artísticos y culturales, y por la formación de ciudadanos comprometidos con el cambio social.",
-    "visionBadge": "23 años y 13 programas transformando comunidades",
+    "visionBadge": "24 años y 13 programas transformando comunidades",
     "timeline": {
       "title": "Nuestra Trayectoria",
       "subtitle": "Más de dos décadas de historia construyendo sueños y transformando realidades en Ciudad Bolívar.",
@@ -393,8 +393,8 @@
         "item1": "Se realiza el primer concierto de la orquesta (junio de 2023), un hito institucional."
       },
       "2025": {
-        "title": "23 años de impacto",
-        "item1": "La Fundación reporta más de 23 años de servicio.",
+        "title": "24 años de impacto",
+        "item1": "La Fundación reporta más de 24 años de servicio.",
         "item2": "Ha beneficiado a 1.090 familias y 1.877 niños, niñas y adolescentes.",
         "item3": "Se consolida como referente de cuidado integral, educación, arte, deporte, tecnología y acompañamiento psicosocial."
       },
@@ -676,7 +676,7 @@
       "transparency": { "q": "¿Cómo sé que mi donación se usa correctamente?", "a": "Publicamos informes anuales de gestión y financieros. Los padrinos reciben reportes periódicos del progreso de su apadrinado. Estamos comprometidos con la transparencia total." },
       "canVolunteer": { "q": "¿Puedo ser voluntario?", "a": "Sí, buscamos voluntarios en áreas de educación, arte, deportes, tecnología y gestión administrativa. Contáctanos por WhatsApp o correo electrónico para conocer las oportunidades disponibles." },
       "whatIsPlanPadrino": { "q": "¿Qué es el Plan Padrino?", "a": "El Plan Padrino te permite apadrinar a un niño específico, cubrir sus necesidades educativas y de alimentación, y seguir su progreso durante todo el año académico con reportes personalizados." },
-      "isLegit": { "q": "¿Cómo puedo verificar que la fundación es real?", "a": "Somos una entidad sin ánimo de lucro registrada ante la Cámara de Comercio de Bogotá (NIT: 830.114.318-9) y reconocida como 501(c)(3) en Estados Unidos (EIN: 68-0505337). Puedes verificar nuestro estado en la página del IRS o en ProPublica Nonprofit Explorer. Llevamos más de 23 años sirviendo a la comunidad de Ciudad Bolívar." }
+      "isLegit": { "q": "¿Cómo puedo verificar que la fundación es real?", "a": "Somos una entidad sin ánimo de lucro registrada ante la Cámara de Comercio de Bogotá (NIT: 830.114.318-9) y reconocida como 501(c)(3) en Estados Unidos (EIN: 68-0505337). Puedes verificar nuestro estado en la página del IRS o en ProPublica Nonprofit Explorer. Llevamos más de 24 años sirviendo a la comunidad de Ciudad Bolívar." }
     },
     "volunteerAreas": {
       "education": { "title": "Educación", "description": "Refuerzo escolar, talleres de lectura, apoyo en tareas y preparación de exámenes." },
@@ -707,7 +707,7 @@
     "wantToVolunteer": "Quiero Ser Voluntario",
     "howToApply": "Cómo Aplicar",
     "activeVolunteers": "+50 voluntarios activos",
-    "yearsExperience": "+23 años de experiencia",
+    "yearsExperience": "+24 años de experiencia",
     "programsCount": "13 programas",
     "whyVolunteer": "Por qué ser voluntario",
     "reasonsToJoin": "Razones para",
@@ -807,7 +807,7 @@
     "ally": "aliado",
     "whyPartnerSubtitle": "Invertir en impacto social es invertir en el futuro de tu empresa y de Colombia.",
     "benefits": {
-      "csr": { "title": "Responsabilidad Social Empresarial", "description": "Fortalece la estrategia RSE de tu empresa con un aliado que lleva más de 23 años generando impacto real en una de las comunidades más vulnerables de Bogotá." },
+      "csr": { "title": "Responsabilidad Social Empresarial", "description": "Fortalece la estrategia RSE de tu empresa con un aliado que lleva más de 24 años generando impacto real en una de las comunidades más vulnerables de Bogotá." },
       "tax": { "title": "Beneficios Tributarios", "description": "Las donaciones a la Fundación Cigarra son deducibles de impuestos según el Estatuto Tributario colombiano. NIT: 830.114.318-9. Certificado de donación incluido." },
       "measurable": { "title": "Impacto Medible y Reportable", "description": "Recibe informes detallados del impacto de tu inversión social: número de beneficiarios, indicadores de resultado y evidencia fotográfica." },
       "brand": { "title": "Fortalecimiento de Marca", "description": "Asocia tu marca con una causa de alto impacto social. Visibilidad en nuestros canales, eventos y reportes anuales ante más de 1.877 beneficiarios y sus familias." }
@@ -877,7 +877,7 @@
     "esalLegalDescription": "Las Entidades Sin Ánimo de Lucro en Colombia están reguladas por el Decreto 2150 de 1995, la Ley 22 de 1987 y el Estatuto Tributario. La Fundación Cigarra cumple con todos los requisitos de permanencia, renovación y reporte ante la Cámara de Comercio de Bogotá y la DIAN, garantizando la plena legalidad de las donaciones realizadas por empresas y personas naturales.",
     "esalBadges": {
       "registered": { "label": "ESAL Registrada", "description": "Entidad Sin Ánimo de Lucro" },
-      "active": { "label": "23+ Años Activa", "description": "Desde 2002 en Ciudad Bolívar" },
+      "active": { "label": "24+ Años Activa", "description": "Desde 2002 en Ciudad Bolívar" },
       "transparent": { "label": "Finanzas Transparentes", "description": "Auditorías anuales" },
       "deductible": { "label": "Donaciones Deducibles", "description": "Estatuto Tributario" }
     },
@@ -901,7 +901,7 @@
     "goldAllies": "Aliados Gold",
     "silverAllies": "Aliados Silver",
     "transformingAlliances": "Alianzas que Transforman",
-    "transformingDescription": "A lo largo de más de 23 años, hemos construido alianzas sólidas con empresas del sector privado, organizaciones internacionales e instituciones gubernamentales. Cada aliado aporta de manera única al bienestar de nuestros beneficiarios.",
+    "transformingDescription": "A lo largo de más de 24 años, hemos construido alianzas sólidas con empresas del sector privado, organizaciones internacionales e instituciones gubernamentales. Cada aliado aporta de manera única al bienestar de nuestros beneficiarios.",
     "alliancesList": {
       "corporateAllies": "Más de 8 aliados corporativos activos",
       "nationalInternational": "Alianzas con organizaciones nacionales e internacionales",
@@ -929,7 +929,7 @@
     "esalLegal": {
       "nit": "NIT: 830.114.318-9",
       "registeredChamber": "Registrada en la Cámara de Comercio de Bogotá",
-      "activeSince": "Activa desde 2002 - Más de 23 años de servicio continuo",
+      "activeSince": "Activa desde 2002 - Más de 24 años de servicio continuo",
       "annualAudits": "Auditorías anuales y transparencia financiera completa",
       "taxDeductible": "Donaciones deducibles bajo el Estatuto Tributario colombiano",
       "compliance": "Cumplimiento de regulaciones colombianas para entidades sin ánimo de lucro"
@@ -942,7 +942,7 @@
     },
     "about": {
       "title": "Quiénes Somos",
-      "description": "Conoce la misión, visión e historia de la Fundación Cigarra. Más de 23 años transformando vidas en Ciudad Bolívar."
+      "description": "Conoce la misión, visión e historia de la Fundación Cigarra. Más de 24 años transformando vidas en Ciudad Bolívar."
     },
     "programs": {
       "title": "Programas",

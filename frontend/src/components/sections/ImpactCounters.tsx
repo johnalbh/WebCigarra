@@ -11,7 +11,7 @@ import { EASE_APPLE, SCALE_INITIAL, STAGGER, DURATION_REVEAL } from '@/lib/anima
 
 const stats = [
   { key: 'childrenHelped', value: 1877, suffix: '+' },
-  { key: 'years', value: 23, suffix: '' },
+  { key: 'years', value: 24, suffix: '' },
   { key: 'jobsGenerated', value: 100, suffix: '+' },
   { key: 'families', value: 1800, suffix: '+' },
 ];

@@ -91,7 +91,7 @@ export default function DonatePage() {
             <div className="mb-10 grid grid-cols-3 gap-4">
               {[
                 { value: '1,877', label: t('statsChildren'), icon: HiUserGroup },
-                { value: '23+', label: t('statsYears'), icon: HiHeart },
+                { value: '24+', label: t('statsYears'), icon: HiHeart },
                 { value: '13', label: t('statsPrograms'), icon: HiAcademicCap },
               ].map((stat) => (
                 <div
