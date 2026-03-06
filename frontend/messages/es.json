@@ -819,7 +819,7 @@
     "models": {
       "donation": { "title": "Donación Corporativa", "description": "Aportes monetarios con certificado de donación oficial para deducción tributaria. Montos flexibles según la capacidad de tu empresa." },
       "volunteering": { "title": "Voluntariado Corporativo", "description": "Organiza jornadas de voluntariado para tus empleados. Actividades de team building con impacto social real en educación, arte y recreación." },
-      "sponsorship": { "title": "Patrocinio de Programas", "description": "Patrocina uno de nuestros 13 programas activos: educación, música, danza, artes, tecnología, biblioteca y más." },
+      "sponsorship": { "title": "Patrocinio de Programas", "description": "Patrocina uno de nuestros 14 programas activos: educación, música, danza, artes, tecnología, biblioteca y más." },
       "inKind": { "title": "Donación en Especie", "description": "Aporta materiales escolares, equipos tecnológicos, instrumentos musicales, alimentos, mobiliario o implementos deportivos." },
       "cobranding": { "title": "Co-branding y Alianzas", "description": "Alianzas estratégicas para visibilidad mutua. Tu marca presente en nuestros eventos, redes sociales, material impreso y reportes de impacto." },
       "planPadrino": { "title": "Plan Padrino Empresarial", "description": "Tu empresa apadrina a uno o más niños durante un año completo. Incluye educación, alimentación, acceso a todos los programas y reportes personalizados del progreso de cada beneficiario." }
@@ -898,6 +898,16 @@
       "limitWarning": "",
       "disclaimer": "Este es un estimado. Consulta con tu contador o asesor tributario para tu caso específico."
     },
+    "calcSection": {
+      "badge": "Calculadora Tributaria",
+      "title": "Conoce exactamente cuánto",
+      "highlight": "ahorra tu empresa",
+      "description": "Usa nuestra calculadora para ver el costo real de tu donación corporativa. Las donaciones a la Fundación Cigarra generan un descuento del 25% en el impuesto de renta (Art. 257 E.T.).",
+      "benefit1": "Cálculo instantáneo — ve tu ahorro tributario en tiempo real",
+      "benefit2": "Descuento del 25% directo sobre el impuesto de renta",
+      "benefit3": "Ingresa cualquier monto o usa el slider para estimados rápidos",
+      "calcCta": "Calcula tu ahorro tributario"
+    },
     "impactTitle": "Nuestro Impacto en Cifras",
     "impactHeading": "Resultados que",
     "impactHighlight": "hablan por sí solos",
@@ -920,7 +930,7 @@
     "transformingAlliances": "Alianzas que Transforman",
     "transformingDescription": "A lo largo de más de 24 años, hemos construido alianzas sólidas con empresas del sector privado, organizaciones internacionales e instituciones gubernamentales. Cada aliado aporta de manera única al bienestar de nuestros beneficiarios.",
     "alliancesList": {
-      "corporateAllies": "Más de 8 aliados corporativos activos",
+      "corporateAllies": "Más de 15 aliados corporativos activos",
       "nationalInternational": "Alianzas con organizaciones nacionales e internacionales",
       "educationalAgreements": "Convenios con instituciones educativas",
       "governmentCollaboration": "Colaboración con entidades gubernamentales locales"
@@ -937,6 +947,44 @@
     "writeNow": "Escribe ahora",
     "writeWhatsApp": "Escríbenos por WhatsApp",
     "responseGuarantee": "Respuesta garantizada en menos de 24 horas hábiles",
+    "heroCalcCta": "Calcula tu ahorro",
+    "heroDonate": "Donar Ahora",
+    "howItWorks": {
+      "badge": "Proceso Simple",
+      "title": "Cómo",
+      "highlight": "funciona",
+      "subtitle": "Del primer contacto al impacto medible en 4 simples pasos.",
+      "steps": {
+        "contact": { "title": "Contacto Inicial", "description": "Escríbenos por WhatsApp, email o nuestro formulario. Nuestro equipo corporativo responde en menos de 24 horas." },
+        "proposal": { "title": "Propuesta a tu Medida", "description": "Diseñamos una alianza alineada con los objetivos RSE de tu empresa, presupuesto y área de impacto preferida." },
+        "agreement": { "title": "Acuerdo de Alianza", "description": "Firma un convenio sencillo. Expedimos tu certificado de donación para deducción tributaria de inmediato." },
+        "impact": { "title": "Reportes de Impacto", "description": "Recibe reportes trimestrales con fotos, métricas e historias. Ve exactamente cómo tu inversión transforma vidas." }
+      }
+    },
+    "testimonials": {
+      "badge": "Lo que Dicen Nuestros Aliados",
+      "title": "Voces reales de",
+      "highlight": "aliados reales",
+      "subtitle": "Empresas que se han aliado con nosotros comparten su experiencia.",
+      "items": {
+        "saintGeorge": { "quote": "Aliarnos con la Fundación Cigarra ha sido una de las iniciativas RSE más gratificantes para nuestra comunidad escolar. La transparencia y dedicación de su equipo es notable.", "author": "Colegio Saint George", "role": "Aliado Platinum desde 2018" },
+        "karelsie": { "quote": "La Fundación Cigarra entrega reportes de impacto detallados que compartimos con nuestra junta directiva. Su trabajo con los niños de Ciudad Bolívar realmente transforma vidas.", "author": "Fundación Karelsie", "role": "Aliado Platinum" },
+        "microsoft": { "quote": "Tecnología para el bien social. Estamos orgullosos de apoyar una organización que lleva alfabetización digital y educación STEM a comunidades vulnerables.", "author": "Microsoft Colombia", "role": "Aliado Gold" }
+      }
+    },
+    "faq": {
+      "badge": "Preguntas Frecuentes",
+      "title": "Preguntas comunes de",
+      "highlight": "donantes corporativos",
+      "items": {
+        "taxDeduction": { "question": "¿Cuánto puede deducir mi empresa?", "answer": "Las donaciones generan un descuento tributario del 25% sobre el valor donado, que se descuenta directamente del impuesto de renta (Art. 257 del Estatuto Tributario). Si este año no aplicas todo el descuento, puedes usarlo en los próximos 4 periodos gravables." },
+        "certificate": { "question": "¿Recibo certificado de donación?", "answer": "Sí. Expedimos un certificado de donación oficial por email dentro de las 48 horas siguientes a tu aporte. Este certificado es válido como soporte para tu declaración de renta ante la DIAN." },
+        "minimumDonation": { "question": "¿Hay un monto mínimo de donación?", "answer": "No hay mínimo. Recibimos aportes de cualquier monto. Para alianzas corporativas, la mayoría de empresas inician con $5.000.000-$25.000.000 COP anuales, pero cualquier monto hace la diferencia." },
+        "howFundsUsed": { "question": "¿Cómo se usan los fondos?", "answer": "El 100% de las donaciones va directamente a nuestros programas: educación, alimentación diaria (desayuno, almuerzo, media tarde), música, artes, tecnología, deportes y apoyo psicológico para 192 niños en Ciudad Bolívar." },
+        "reporting": { "question": "¿Qué tipo de reportes recibo?", "answer": "Los aliados corporativos reciben reportes trimestrales de impacto con número de beneficiarios, resultados de programas, fotos e historias. Los donantes anuales también reciben una carta de impacto personalizada e invitación a eventos." },
+        "verify": { "question": "¿Cómo verifico que son una entidad legítima?", "answer": "Somos ESAL registrada en la Cámara de Comercio de Bogotá (NIT: 830.114.318-9) con más de 24 años de operación continua. También somos 501(c)(3) en EE.UU. (EIN: 68-0505337). Nuestras finanzas son auditadas anualmente." }
+      }
+    },
     "ctaTitle": "Tu empresa puede cambiar la historia de un niño",
     "ctaDescription": "Cada alianza corporativa multiplica el impacto. Con el respaldo de tu empresa, más niños y jóvenes de Ciudad Bolívar pueden acceder a educación, arte, cultura y oportunidades reales de desarrollo.",
     "contactWhatsApp": "Contactar por WhatsApp",
@@ -950,7 +998,10 @@
       "annualAudits": "Auditorías anuales y transparencia financiera completa",
       "taxDeductible": "Donaciones deducibles bajo el Estatuto Tributario colombiano",
       "compliance": "Cumplimiento de regulaciones colombianas para entidades sin ánimo de lucro"
-    }
+    },
+    "verifyTitle": "Verifica Nuestro Estatus",
+    "verifyIRS": "Buscar en IRS.gov",
+    "verifyPropublica": "Ver en ProPublica"
   },
   "seo": {
     "home": {

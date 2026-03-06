@@ -919,7 +919,7 @@
       },
       "sponsorship": {
         "title": "Program Sponsorship",
-        "description": "Sponsor one of our 13 active programs: education, music, dance, arts, technology, library, and more."
+        "description": "Sponsor one of our 14 active programs: education, music, dance, arts, technology, library, and more."
       },
       "inKind": {
         "title": "In-Kind Donation",
@@ -1008,6 +1008,16 @@
       "limitWarning": "Your donation exceeds 10% of taxable income. Only {limit} is deductible this year. The remaining {excess} can be carried forward up to 5 years.",
       "disclaimer": "This is an estimate only. Consult a CPA or tax advisor for your specific situation."
     },
+    "calcSection": {
+      "badge": "Tax Savings Calculator",
+      "title": "Know exactly how much",
+      "highlight": "your company saves",
+      "description": "Use our calculator to see the real cost of your corporate donation. Donations to Fundacion Cigarra are tax-deductible under IRS Section 170 — your generosity costs less than you think.",
+      "benefit1": "Instant calculation — see your tax savings in real time",
+      "benefit2": "Corporate deductions up to 10% of taxable income (IRC §170)",
+      "benefit3": "Enter any amount or use the slider for quick estimates",
+      "calcCta": "Calculate your tax savings"
+    },
     "impactTitle": "Our Impact in Numbers",
     "impactHeading": "Results that",
     "impactHighlight": "speak for themselves",
@@ -1030,7 +1040,7 @@
     "transformingAlliances": "Transforming Partnerships",
     "transformingDescription": "Over more than 24 years, we have built strong partnerships with private sector companies, international organizations, and government institutions. Each partner contributes uniquely to the well-being of our beneficiaries.",
     "alliancesList": {
-      "corporateAllies": "More than 8 active corporate partners",
+      "corporateAllies": "More than 15 active corporate partners",
       "nationalInternational": "Partnerships with national and international organizations",
       "educationalAgreements": "Agreements with educational institutions",
       "governmentCollaboration": "Collaboration with local government entities"
@@ -1047,6 +1057,44 @@
     "writeNow": "Write now",
     "writeWhatsApp": "Write us on WhatsApp",
     "responseGuarantee": "Guaranteed response within 24 business hours",
+    "heroCalcCta": "Calculate your savings",
+    "heroDonate": "Donate Now",
+    "howItWorks": {
+      "badge": "Simple Process",
+      "title": "How",
+      "highlight": "it works",
+      "subtitle": "From first contact to measurable impact in 4 simple steps.",
+      "steps": {
+        "contact": { "title": "Initial Contact", "description": "Reach out via WhatsApp, email, or our form. Our corporate team responds within 24 hours." },
+        "proposal": { "title": "Custom Proposal", "description": "We design a partnership tailored to your company's CSR goals, budget, and preferred impact area." },
+        "agreement": { "title": "Partnership Agreement", "description": "Sign a simple partnership agreement. We issue your tax-deductible donation receipt immediately." },
+        "impact": { "title": "Impact Reports", "description": "Receive quarterly reports with photos, metrics, and stories. See exactly how your investment transforms lives." }
+      }
+    },
+    "testimonials": {
+      "badge": "What Our Partners Say",
+      "title": "Real voices from",
+      "highlight": "real partners",
+      "subtitle": "Companies that have partnered with us share their experience.",
+      "items": {
+        "saintGeorge": { "quote": "Partnering with Fundacion Cigarra has been one of the most rewarding CSR initiatives for our school community. The transparency and dedication of their team is remarkable.", "author": "Saint George School", "role": "Platinum Partner since 2018" },
+        "karelsie": { "quote": "The Cigarra Foundation provides detailed impact reports that we share with our board. Their work with children in Ciudad Bolivar is truly transforming lives.", "author": "Karelsie Foundation", "role": "Platinum Partner" },
+        "microsoft": { "quote": "Technology for social good. We are proud to support an organization that brings digital literacy and STEM education to underserved communities.", "author": "Microsoft Colombia", "role": "Gold Partner" }
+      }
+    },
+    "faq": {
+      "badge": "Frequently Asked Questions",
+      "title": "Common questions from",
+      "highlight": "corporate donors",
+      "items": {
+        "taxDeduction": { "question": "How much can my company deduct?", "answer": "U.S. corporations can deduct charitable contributions up to 10% of taxable income (IRC §170(b)(2)). At the 21% corporate tax rate, a $10,000 donation saves $2,100 in federal taxes. Excess amounts carry forward for 5 years." },
+        "certificate": { "question": "Do I receive a tax receipt?", "answer": "Yes. We issue an official 501(c)(3) donation receipt via email within 48 hours of your contribution. This receipt is valid for your federal tax filing." },
+        "minimumDonation": { "question": "Is there a minimum donation amount?", "answer": "No minimum. We welcome contributions of any size. For corporate partnerships, most companies start with $1,000-$5,000 annually, but any amount makes a difference." },
+        "howFundsUsed": { "question": "How are funds used?", "answer": "100% of donations go directly to our programs: education, daily meals (breakfast, lunch, snack), music, arts, technology, sports, and psychological support for 192 children in Ciudad Bolivar." },
+        "reporting": { "question": "What kind of reporting do I receive?", "answer": "Corporate partners receive quarterly impact reports with number of beneficiaries, program outcomes, photos, and stories. Annual donors also receive a personalized impact letter and event invitation." },
+        "verify": { "question": "How can I verify your nonprofit status?", "answer": "Search our EIN 68-0505337 on the IRS Tax Exempt Organization Search or ProPublica Nonprofit Explorer. We are a registered 501(c)(3) and ESAL in Colombia (NIT: 830.114.318-9)." }
+      }
+    },
     "ctaTitle": "Your company can change a child's story",
     "ctaDescription": "Every corporate partnership multiplies the impact. With your company's support, more children and youth in Ciudad Bolívar can access education, art, culture, and real development opportunities.",
     "contactWhatsApp": "Contact via WhatsApp",
@@ -1060,7 +1108,10 @@
       "annualAudits": "Annual independent audits and full financial transparency",
       "taxDeductible": "Donations are tax-deductible under IRS Section 170",
       "compliance": "Full compliance with U.S. and Colombian nonprofit regulations"
-    }
+    },
+    "verifyTitle": "Verify Our Status",
+    "verifyIRS": "Search IRS.gov",
+    "verifyPropublica": "View on ProPublica"
   },
   "seo": {
     "home": {

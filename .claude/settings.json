@@ -7,7 +7,26 @@
       "Bash(grep -E '^\\\\$[0-9]')",
       "Bash(grep -o '\\\\$[0-9,.]*\\\\s*USD')",
       "Bash(grep -oE '\\\\$[0-9,.]+ \\(USD|COP\\)')",
-      "Bash(cwebp -q 85 /Users/johnalbh/PersonalProjects/WebCigarra/frontend/public/images/bingo-marzo-2026.jpg -o /Users/johnalbh/PersonalProjects/WebCigarra/frontend/public/images/bingo-marzo-2026.webp)"
+      "Bash(cwebp -q 85 /Users/johnalbh/PersonalProjects/WebCigarra/frontend/public/images/bingo-marzo-2026.jpg -o /Users/johnalbh/PersonalProjects/WebCigarra/frontend/public/images/bingo-marzo-2026.webp)",
+      "Bash(vercel ls --limit 3)",
+      "Bash(vercel ls)",
+      "Bash(vercel inspect https://frontend-fs950h0e5-johnalbhs-projects.vercel.app)",
+      "WebFetch(domain:www.fundacioncigarra.org)",
+      "Bash(vercel logs https://frontend-fs950h0e5-johnalbhs-projects.vercel.app)",
+      "Bash(vercel inspect dpl_7pZyvv6RVhVriatYWhGtyumZRPJ3)",
+      "Bash(vercel logs dpl_7pZyvv6RVhVriatYWhGtyumZRPJ3)",
+      "Bash(vercel --prod --yes)",
+      "Bash(vercel env ls)",
+      "Bash(grep -rn 'as \"\"/' src/)",
+      "Bash(grep -rn \"as ''/\" src/)",
+      "Bash(pkill -f \"next start -p 3099\")",
+      "Bash(git commit:*)",
+      "WebFetch(domain:www.irs.gov)"
+    ],
+    "additionalDirectories": [
+      "/Users/johnalbh/PersonalProjects/WebCigarra/frontend/src/app/[locale]/noticias/[slug]",
+      "/Users/johnalbh/PersonalProjects/WebCigarra/frontend/src/components/sections",
+      "/Users/johnalbh/PersonalProjects/WebCigarra/frontend/src/app/[locale]"
     ]
   }
 }

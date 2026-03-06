@@ -27,6 +27,8 @@ import {
   HiTruck,
   HiSpeakerphone,
   HiSparkles,
+  HiCalculator,
+  HiExternalLink,
 } from 'react-icons/hi';
 import { FaWhatsapp, FaHandshake, FaBuilding, FaBalanceScale, FaChild } from 'react-icons/fa';
 
@@ -84,11 +86,11 @@ const esalBadgeConfig = [
 /* ── Impact number config (keys only) ── */
 const impactNumberConfig = [
   { key: 'children', number: '1,877+', icon: HiHeart },
-  { key: 'years', number: '23', icon: HiStar },
+  { key: 'years', number: '24', icon: HiStar },
   { key: 'programs', number: '14', icon: HiAcademicCap },
   { key: 'jobs', number: '100+', icon: HiBriefcase },
   { key: 'families', number: '1,800+', icon: HiUserGroup },
-  { key: 'allies', number: '8+', icon: FaHandshake },
+  { key: 'allies', number: '15+', icon: FaHandshake },
 ];
 
 /* ── ESAL legal config (keys only) ── */
@@ -191,6 +193,13 @@ export default function ImpactoEmpresarialPage() {
               <HiBriefcase className="h-5 w-5" />
               {t('allianceModels')}
             </a>
+            <a
+              href="#calculadora"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-green-400/30 bg-green-500/10 px-8 py-4 font-heading text-lg font-semibold text-green-300 transition-all duration-300 hover:border-green-400/50 hover:bg-green-500/20"
+            >
+              <HiCalculator className="h-5 w-5" />
+              {t('heroCalcCta')}
+            </a>
           </motion.div>
 
           {/* Trust indicators */}
@@ -255,11 +264,59 @@ export default function ImpactoEmpresarialPage() {
                     <p className="flex-1 text-sm leading-relaxed text-gray-600">
                       {t(`benefits.${benefit.key}.description`)}
                     </p>
+                    {benefit.key === 'tax' && (
+                      <a
+                        href="#calculadora"
+                        className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-accent-600 hover:text-accent-700 transition-colors"
+                      >
+                        <HiCalculator className="h-3.5 w-3.5" />
+                        {t('calcSection.calcCta')}
+                        <HiArrowRight className="h-3 w-3" />
+                      </a>
+                    )}
                   </motion.div>
                 </StaggerItem>
               );
             })}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          2b. TAX DEDUCTION CALCULATOR (Prominent)
+          ═══════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            {/* Left: CTA copy */}
+            <ScrollReveal>
+              <div>
+                <span className="inline-block rounded-full bg-green-100 px-5 py-2 font-heading text-sm font-semibold text-green-700 mb-4">
+                  <HiCalculator className="inline h-4 w-4 mr-1 -mt-0.5" />
+                  {t('calcSection.badge')}
+                </span>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+                  {t('calcSection.title')} <span className="text-green-600">{t('calcSection.highlight')}</span>
+                </h2>
+                <p className="mt-4 text-lg text-gray-500 leading-relaxed">
+                  {t('calcSection.description')}
+                </p>
+                <ul className="mt-6 space-y-3">
+                  {['benefit1', 'benefit2', 'benefit3'].map((key) => (
+                    <li key={key} className="flex items-start gap-3">
+                      <HiCheckCircle className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
+                      <span className="text-sm text-gray-600">{t(`calcSection.${key}`)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </ScrollReveal>
+
+            {/* Right: Calculator */}
+            <ScrollReveal>
+              <TaxDeductionCalculator />
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -322,7 +379,58 @@ export default function ImpactoEmpresarialPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          3.5 PLAN PADRINO EMPRESARIAL (Detailed)
+          3.5 HOW IT WORKS (Process)
+          ═══════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden">
+        <div className="mx-auto max-w-5xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-14 text-center">
+              <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
+                {t('howItWorks.badge')}
+              </span>
+              <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
+                {t('howItWorks.title')}{' '}
+                <span className="text-primary-600">{t('howItWorks.highlight')}</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
+                {t('howItWorks.subtitle')}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <StaggerContainer scaleUp className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
+            {[
+              { key: 'contact', icon: FaWhatsapp, num: '1', color: 'bg-green-100 text-green-600' },
+              { key: 'proposal', icon: HiDocumentReport, num: '2', color: 'bg-accent-100 text-accent-600' },
+              { key: 'agreement', icon: HiClipboardCheck, num: '3', color: 'bg-primary-100 text-primary-600' },
+              { key: 'impact', icon: HiStar, num: '4', color: 'bg-amber-100 text-amber-600' },
+            ].map((step) => {
+              const Icon = step.icon;
+              return (
+                <StaggerItem scaleUp key={step.key}>
+                  <div className="relative flex flex-col items-center text-center p-6">
+                    <div className="absolute -top-2 -left-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 font-heading text-sm font-bold text-white">
+                      {step.num}
+                    </div>
+                    <div className={`mb-4 flex h-16 w-16 items-center justify-center rounded-2xl ${step.color}`}>
+                      <Icon className="h-8 w-8" />
+                    </div>
+                    <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">
+                      {t(`howItWorks.steps.${step.key}.title`)}
+                    </h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      {t(`howItWorks.steps.${step.key}.description`)}
+                    </p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          3.6 PLAN PADRINO EMPRESARIAL (Detailed)
           ═══════════════════════════════════════════════════════ */}
       <section id="plan-padrino-empresarial" className="relative section-padding overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -526,6 +634,31 @@ export default function ImpactoEmpresarialPage() {
                     {t('esalLegalDescription')}
                   </p>
                 </div>
+
+                {/* Verification links */}
+                <div className="mt-6">
+                  <p className="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">{t('verifyTitle')}</p>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href="https://www.irs.gov/charities-non-profits/tax-exempt-organization-search"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:border-primary-300 hover:text-primary-700 transition-colors"
+                    >
+                      <HiExternalLink className="h-3.5 w-3.5" />
+                      {t('verifyIRS')}
+                    </a>
+                    <a
+                      href="https://projects.propublica.org/nonprofits/organizations/680505337"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:border-primary-300 hover:text-primary-700 transition-colors"
+                    >
+                      <HiExternalLink className="h-3.5 w-3.5" />
+                      {t('verifyPropublica')}
+                    </a>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
           </div>
@@ -558,16 +691,6 @@ export default function ImpactoEmpresarialPage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════
-          4b. TAX DEDUCTION CALCULATOR
-          ═══════════════════════════════════════════════════════ */}
-      <section className="relative section-padding overflow-hidden bg-gray-50">
-        <div className="mx-auto max-w-2xl px-4 lg:px-8">
-          <ScrollReveal>
-            <TaxDeductionCalculator />
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════════════
           5. IMPACT NUMBERS
@@ -758,6 +881,112 @@ export default function ImpactoEmpresarialPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
+          6b. TESTIMONIALS
+          ═══════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-14 text-center">
+              <span className="inline-block rounded-full bg-accent-100 px-5 py-2 font-heading text-sm font-semibold text-accent-700 mb-4">
+                {t('testimonials.badge')}
+              </span>
+              <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
+                {t('testimonials.title')}{' '}
+                <span className="text-primary-600">{t('testimonials.highlight')}</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
+                {t('testimonials.subtitle')}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <StaggerContainer scaleUp className="grid gap-8 md:grid-cols-3" staggerDelay={0.12}>
+            {[
+              { key: 'saintGeorge', logo: '/images/partners/san-jorge.webp' },
+              { key: 'karelsie', logo: '/images/partners/karelsie.webp' },
+              { key: 'microsoft', logo: '/images/partners/microsoft.webp' },
+            ].map((item) => (
+              <StaggerItem scaleUp key={item.key}>
+                <div className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+                  <div className="mb-6 flex gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <HiStar key={star} className="h-5 w-5 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="flex-1 text-gray-600 leading-relaxed italic">
+                    &ldquo;{t(`testimonials.items.${item.key}.quote`)}&rdquo;
+                  </p>
+                  <div className="mt-6 flex items-center gap-4 border-t border-gray-100 pt-6">
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full bg-gray-100">
+                      <Image src={item.logo} alt={t(`testimonials.items.${item.key}.author`)} fill className="object-contain p-1" sizes="48px" />
+                    </div>
+                    <div>
+                      <p className="font-heading text-sm font-bold text-gray-900">
+                        {t(`testimonials.items.${item.key}.author`)}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {t(`testimonials.items.${item.key}.role`)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          6c. FAQ FOR CORPORATE DONORS
+          ═══════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden bg-gray-50">
+        <div className="mx-auto max-w-3xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-14 text-center">
+              <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
+                {t('faq.badge')}
+              </span>
+              <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
+                {t('faq.title')}{' '}
+                <span className="text-primary-600">{t('faq.highlight')}</span>
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <StaggerContainer scaleUp className="space-y-4" staggerDelay={0.08}>
+            {['taxDeduction', 'certificate', 'minimumDonation', 'howFundsUsed', 'reporting', 'verify'].map((key) => (
+              <StaggerItem scaleUp key={key}>
+                <details className="group rounded-xl border border-gray-200 bg-white overflow-hidden">
+                  <summary className="flex cursor-pointer items-center justify-between px-6 py-5 font-heading text-sm font-bold text-gray-900 hover:bg-gray-50 transition-colors">
+                    {t(`faq.items.${key}.question`)}
+                    <HiArrowRight className="h-4 w-4 shrink-0 text-gray-400 transition-transform group-open:rotate-90" />
+                  </summary>
+                  <div className="px-6 pb-5 text-sm text-gray-600 leading-relaxed">
+                    {t(`faq.items.${key}.answer`)}
+                  </div>
+                </details>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          {/* Calculator CTA after FAQ */}
+          <ScrollReveal>
+            <div className="mt-10 text-center">
+              <p className="text-sm text-gray-500 mb-3">{t('calcSection.description')}</p>
+              <a
+                href="#calculadora"
+                className="inline-flex items-center gap-2 rounded-full bg-green-600 px-8 py-3.5 font-heading font-bold text-white shadow-lg shadow-green-600/25 transition-all duration-300 hover:bg-green-500"
+              >
+                <HiCalculator className="h-5 w-5" />
+                {t('calcSection.calcCta')}
+                <HiArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
           7. CONTACT FOR COMPANIES
           ═══════════════════════════════════════════════════════ */}
       <section id="contacto-empresarial" className="relative section-padding overflow-hidden">
@@ -889,8 +1118,18 @@ export default function ImpactoEmpresarialPage() {
               {t('ctaDescription')}
             </p>
 
+            {/* Calculator mini CTA */}
+            <a
+              href="#calculadora"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/15 px-6 py-2.5 text-sm font-bold text-white backdrop-blur-sm border border-white/20 hover:bg-white/25 transition-all"
+            >
+              <HiCalculator className="h-4 w-4" />
+              {t('calcSection.calcCta')}
+              <HiArrowRight className="h-3.5 w-3.5" />
+            </a>
+
             {/* CTA Buttons */}
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <a
                 href="https://wa.me/573212465421?text=Hola%2C%20me%20interesa%20una%20alianza%20corporativa%20con%20la%20Fundacion%20Cigarra."
                 target="_blank"
