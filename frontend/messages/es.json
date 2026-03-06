@@ -1063,5 +1063,37 @@
     "backHome": "Volver al inicio",
     "verifyingPayment": "Verificando tu pago...",
     "transactionId": "ID transacción: {id}"
+  },
+  "donateLanding": {
+    "badge": "Organización sin ánimo de lucro — NIT: 830.114.318-9",
+    "title": "Tu donación cambia",
+    "titleHighlight": "el futuro de un niño",
+    "subtitle": "El 100% de tu donación va directamente a educación, alimentación diaria y programas de arte para más de 180 niños en Ciudad Bolívar, Bogotá.",
+    "statsChildren": "Niños Atendidos",
+    "statsYears": "Años de Impacto",
+    "statsPrograms": "Programas Activos",
+    "whatFundsTitle": "¿En qué se usa tu donación?",
+    "funds": {
+      "education": {
+        "title": "Educación y Refuerzo Escolar",
+        "description": "Apoyo con tareas, preparación de exámenes y acompañamiento académico personalizado."
+      },
+      "nutrition": {
+        "title": "Alimentación Nutritiva Diaria",
+        "description": "Desayuno, almuerzo y merienda por solo $7.045 COP/día por niño — nutriendo mentes y cuerpos."
+      },
+      "arts": {
+        "title": "Música, Danza y Artes",
+        "description": "Instrumentos de cuerda, viento y percusión, danza folclórica, artes visuales — la creatividad como vehículo de sanación."
+      },
+      "psychology": {
+        "title": "Psicología y Apoyo Familiar",
+        "description": "Atención psicosocial para niños y familias, fortaleciendo el bienestar emocional y los vínculos familiares."
+      }
+    },
+    "photoCaption": "Niños aprendiendo música en la Fundación Cigarra — Ciudad Bolívar, Bogotá",
+    "legalTitle": "Organización Sin Ánimo de Lucro Registrada",
+    "legalDescription": "La Fundación Cigarra (NIT: 830.114.318-9) es una entidad sin ánimo de lucro registrada ante la Cámara de Comercio de Bogotá. Todas las donaciones son deducibles de impuestos según la normativa tributaria colombiana vigente.",
+    "seeAllWays": "Ver todas las formas de ayudar →"
   }
 }

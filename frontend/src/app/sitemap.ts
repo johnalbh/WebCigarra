@@ -17,6 +17,7 @@ const staticPages: { path: string; priority: number; changeFrequency: MetadataRo
   { path: '/plan-padrino', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/voluntariado', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/impacto-empresarial', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/donate', priority: 1, changeFrequency: 'monthly' },
 ];
 
 interface StrapiItem {

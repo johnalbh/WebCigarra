@@ -13,6 +13,7 @@ import {
 import { useEpayco } from '@/hooks/useEpayco';
 import PayPalButtonWrapper from '@/components/sections/PayPalButtonWrapper';
 import { EASE_APPLE, STAGGER } from '@/lib/animation-config';
+import { trackDonation, trackDonationStep } from '@/lib/analytics';
 
 // ── Amount presets per currency ──
 const PRESET_AMOUNTS_COP = [
@@ -197,8 +198,10 @@ export default function DonationCheckout({
 
   const handleNextStep = () => {
     if (step === 1 && validateStep1()) {
+      trackDonationStep(2, currentAmount);
       setStep(2);
     } else if (step === 2 && validateStep2()) {
+      trackDonationStep(3, currentAmount);
       setStep(3);
     }
   };
@@ -241,6 +244,7 @@ export default function DonationCheckout({
         throw new Error(result.errorMessage || 'Error al crear donacion');
       }
 
+      trackDonation(currentAmount, 'COP', 'ePayco');
       openCheckout({ sessionId: result.sessionId, test: result.test });
     } catch (err) {
       setError(err instanceof Error ? err.message : t('errorCreating'));
@@ -690,6 +694,7 @@ export default function DonationCheckout({
                         campaignId,
                       }}
                       onApprove={({ referenceCode }) => {
+                        trackDonation(currentAmount, 'USD', 'PayPal');
                         router.push(
                           `/donacion/respuesta?ref=${referenceCode}&gateway=paypal`
                         );

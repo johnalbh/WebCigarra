@@ -1,10 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
-import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
+import { HiMail, HiPhone, HiLocationMarker, HiShieldCheck } from 'react-icons/hi';
 import { motion } from 'motion/react';
 
 const socialLinks = [
@@ -50,6 +50,7 @@ export default function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
   const tPrograms = useTranslations('programs');
+  const locale = useLocale();
 
   return (
     <footer className="bg-primary-900 text-white">
@@ -203,6 +204,26 @@ export default function Footer() {
         </motion.div>
       </div>
 
+      {/* 501(c)(3) trust bar — only shown in English */}
+      {locale === 'en' && (
+        <div className="border-t border-primary-800 bg-primary-950/50">
+          <div className="mx-auto flex max-w-7xl items-center justify-center gap-6 px-4 py-4 lg:px-8">
+            <div className="flex items-center gap-2 text-xs font-medium text-accent-400">
+              <HiShieldCheck className="h-4 w-4" />
+              <span>{t('taxExempt')}</span>
+            </div>
+            <span className="text-primary-700">|</span>
+            <p className="text-xs font-medium text-primary-300">
+              {t('einNumber')}
+            </p>
+            <span className="text-primary-700">|</span>
+            <p className="text-xs text-primary-400">
+              All donations are tax-deductible
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Copyright bar */}
       <div className="border-t border-primary-800">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 lg:px-8">
@@ -210,7 +231,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Fundación Cigarra. {t('rights')}.
           </p>
           <p className="text-xs text-primary-300">
-            NIT: 830.114.318-9
+            {locale === 'en' ? 'EIN: 68-0505337' : 'NIT: 830.114.318-9'}
           </p>
         </div>
       </div>
