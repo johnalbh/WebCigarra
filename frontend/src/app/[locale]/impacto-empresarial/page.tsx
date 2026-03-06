@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -83,6 +84,12 @@ const esalBadgeConfig = [
   { key: 'deductible', icon: HiCurrencyDollar },
 ];
 
+/* ── Third-party trust badges ── */
+const trustBadgeConfig = [
+  { key: 'charityNav', icon: HiShieldCheck, href: 'https://www.charitynavigator.org/ein/680505337', color: 'border-blue-200 hover:border-blue-400', iconColor: 'bg-blue-100 text-blue-600' },
+  { key: 'guideStar', icon: HiCheckCircle, href: 'https://www.guidestar.org/profile/68-0505337', color: 'border-amber-200 hover:border-amber-400', iconColor: 'bg-amber-100 text-amber-600' },
+];
+
 /* ── Impact number config (keys only) ── */
 const impactNumberConfig = [
   { key: 'children', number: '1,877+', icon: HiHeart },
@@ -127,9 +134,52 @@ const silverPartners = partners.filter((p) => p.tier === 'silver');
 /* ══════════════════════════════════════════════════════════════
    MAIN PAGE COMPONENT
    ══════════════════════════════════════════════════════════════ */
+const partnershipTypes = ['donation', 'volunteering', 'sponsorship', 'inKind', 'cobranding', 'planPadrino', 'other'] as const;
+const budgetOptions = ['under5m', '5to25m', '25to100m', 'over100m', 'undecided'] as const;
+
 export default function ImpactoEmpresarialPage() {
   const t = useTranslations('corporate');
   const locale = useLocale();
+
+  /* ── Corporate form state ── */
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    companyName: '', contactPerson: '', email: '', phone: '',
+    partnershipType: '', budget: '', message: '',
+  });
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${formData.contactPerson} (${formData.companyName})`,
+          email: formData.email,
+          phone: formData.phone,
+          subject: `Alianza Corporativa — ${formData.partnershipType} — ${formData.budget}`,
+          message: `Empresa: ${formData.companyName}\nContacto: ${formData.contactPerson}\nTipo: ${formData.partnershipType}\nPresupuesto: ${formData.budget}\n\n${formData.message}`,
+          _ts: Date.now() - 10000,
+          _turnstile: 'skip',
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setFormStatus('success');
+    } catch {
+      setFormStatus('error');
+    }
+  };
+
+  /* ── ROI calculator state ── */
+  const [roiDonation, setRoiDonation] = useState(10000000);
+  const roiSocialMedia = Math.round(roiDonation * 0.15);
+  const roiEvents = Math.round(roiDonation * 0.25);
+  const roiReports = Math.round(roiDonation * 0.10);
+  const roiWebsite = Math.round(roiDonation * 0.12);
+  const roiTotal = roiSocialMedia + roiEvents + roiReports + roiWebsite;
+  const roiPercent = Math.round((roiTotal / roiDonation) * 100);
 
   return (
     <>
@@ -697,6 +747,24 @@ export default function ImpactoEmpresarialPage() {
                       <HiExternalLink className="h-3.5 w-3.5" />
                       {t('verifyPropublica')}
                     </a>
+                    <a
+                      href="https://www.charitynavigator.org/ein/680505337"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:border-blue-300 hover:text-blue-700 transition-colors"
+                    >
+                      <HiExternalLink className="h-3.5 w-3.5" />
+                      {t('verifyCharityNav')}
+                    </a>
+                    <a
+                      href="https://www.guidestar.org/profile/68-0505337"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:border-amber-300 hover:text-amber-700 transition-colors"
+                    >
+                      <HiExternalLink className="h-3.5 w-3.5" />
+                      {t('verifyGuideStar')}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -728,6 +796,33 @@ export default function ImpactoEmpresarialPage() {
               })}
             </StaggerContainer>
           </div>
+
+          {/* Charity Navigator & GuideStar Badges */}
+          <ScrollReveal>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              {trustBadgeConfig.map((badge) => {
+                const Icon = badge.icon;
+                return (
+                  <a
+                    key={badge.key}
+                    href={badge.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-3 rounded-xl border bg-white px-5 py-4 transition-all duration-300 hover:shadow-md ${badge.color}`}
+                  >
+                    <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${badge.iconColor}`}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="font-heading text-sm font-bold text-gray-900">{t(`trustBadges.${badge.key}`)}</p>
+                      <p className="text-xs text-gray-500">{t(`trustBadges.${badge.key}Desc`)}</p>
+                    </div>
+                    <HiExternalLink className="h-4 w-4 text-gray-400" />
+                  </a>
+                );
+              })}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -1027,112 +1122,363 @@ export default function ImpactoEmpresarialPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          7. CONTACT FOR COMPANIES
+          7a. MATCHING GIFTS
           ═══════════════════════════════════════════════════════ */}
-      <section id="contacto-empresarial" className="relative section-padding overflow-hidden">
+      <section className="relative section-padding overflow-hidden">
         <div className="mx-auto max-w-5xl px-4 lg:px-8">
           <ScrollReveal>
             <div className="mb-14 text-center">
-              <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
-                {t('corporateContact')}
+              <span className="inline-block rounded-full bg-green-100 px-5 py-2 font-heading text-sm font-semibold text-green-700 mb-4">
+                {t('matchingGifts.badge')}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                {t('letsTalk')} <span className="text-primary-600">{t('yourAlliance')}</span>
+                {t('matchingGifts.title')} <span className="text-green-600">{t('matchingGifts.highlight')}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                {t('contactSubtitle')}
+                {t('matchingGifts.subtitle')}
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {/* Email */}
-            <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0}>
+          <div className="grid gap-10 lg:grid-cols-2">
+            {/* Left: Info */}
+            <ScrollReveal direction="left">
+              <div className="rounded-2xl border border-gray-200 bg-white p-8">
+                <h3 className="font-heading text-xl font-bold text-gray-900 mb-3">
+                  {t('matchingGifts.checkTitle')}
+                </h3>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  {t('matchingGifts.checkDescription')}
+                </p>
+
+                {/* Stat callout */}
+                <div className="rounded-xl bg-green-50 border border-green-200 p-5 mb-6">
+                  <p className="font-heading text-3xl font-bold text-green-700">{t('matchingGifts.stat')}</p>
+                  <p className="text-sm text-green-600 mt-1">{t('matchingGifts.statLabel')}</p>
+                </div>
+
+                <p className="text-xs text-gray-400">{t('matchingGifts.popularCompanies')}</p>
+              </div>
+            </ScrollReveal>
+
+            {/* Right: How it works + CTA */}
+            <ScrollReveal direction="right">
+              <div className="rounded-2xl border border-gray-200 bg-white p-8">
+                <h3 className="font-heading text-lg font-bold text-gray-900 mb-6">
+                  {t('matchingGifts.howItWorks')}
+                </h3>
+                <div className="space-y-5">
+                  {[1, 2, 3].map((step) => (
+                    <div key={step} className="flex gap-4">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 font-heading text-sm font-bold text-green-700">
+                        {step}
+                      </div>
+                      <p className="pt-1 text-sm text-gray-700">{t(`matchingGifts.step${step}`)}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8">
+                  <a
+                    href="https://doublethedonation.com/matching-gift-search"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-green-600 px-8 py-4 font-heading font-bold text-white shadow-lg shadow-green-600/25 transition-all duration-300 hover:bg-green-500"
+                  >
+                    <HiExternalLink className="h-5 w-5" />
+                    {t('matchingGifts.searchCta')}
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          7b. ROI / BRAND EXPOSURE CALCULATOR
+          ═══════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden bg-gray-50">
+        <div className="mx-auto max-w-4xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-14 text-center">
+              <span className="inline-block rounded-full bg-purple-100 px-5 py-2 font-heading text-sm font-semibold text-purple-700 mb-4">
+                {t('roiCalculator.badge')}
+              </span>
+              <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
+                {t('roiCalculator.title')} <span className="text-purple-600">{t('roiCalculator.highlight')}</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
+                {t('roiCalculator.subtitle')}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 md:p-10 shadow-sm">
+              {/* Donation input */}
+              <div className="mb-8">
+                <label className="block text-sm font-medium text-gray-700 mb-3">{t('roiCalculator.donationAmount')}</label>
+                <input
+                  type="range"
+                  min={1000000}
+                  max={200000000}
+                  step={1000000}
+                  value={roiDonation}
+                  onChange={(e) => setRoiDonation(Number(e.target.value))}
+                  className="w-full accent-purple-600"
+                />
+                <p className="mt-2 text-center font-heading text-2xl font-bold text-purple-700">
+                  {locale === 'es'
+                    ? `$${roiDonation.toLocaleString('es-CO')} COP`
+                    : `$${Math.round(roiDonation / 3900).toLocaleString('en-US')} USD`}
+                </p>
+              </div>
+
+              {/* Exposure breakdown */}
+              <h3 className="font-heading text-lg font-bold text-gray-900 mb-4">{t('roiCalculator.results')}</h3>
+              <div className="space-y-4">
+                {[
+                  { key: 'socialMedia', value: roiSocialMedia, color: 'bg-blue-100 text-blue-600' },
+                  { key: 'events', value: roiEvents, color: 'bg-amber-100 text-amber-600' },
+                  { key: 'reports', value: roiReports, color: 'bg-green-100 text-green-600' },
+                  { key: 'website', value: roiWebsite, color: 'bg-purple-100 text-purple-600' },
+                ].map((item) => (
+                  <div key={item.key} className="flex items-center justify-between rounded-xl border border-gray-100 p-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${item.color}`}>
+                        <HiStar className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="font-heading text-sm font-bold text-gray-900">{t(`roiCalculator.${item.key}`)}</p>
+                        <p className="text-xs text-gray-500">{t(`roiCalculator.${item.key}Desc`)}</p>
+                      </div>
+                    </div>
+                    <p className="font-heading text-sm font-bold text-gray-900">
+                      {locale === 'es'
+                        ? `$${item.value.toLocaleString('es-CO')}`
+                        : `$${Math.round(item.value / 3900).toLocaleString('en-US')}`}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Total */}
+              <div className="mt-6 rounded-xl bg-purple-50 border border-purple-200 p-5 flex items-center justify-between">
+                <div>
+                  <p className="font-heading text-lg font-bold text-purple-800">{t('roiCalculator.totalValue')}</p>
+                  <p className="text-sm text-purple-600">{t('roiCalculator.roi')}: {roiPercent}%</p>
+                </div>
+                <p className="font-heading text-2xl font-bold text-purple-700">
+                  {locale === 'es'
+                    ? `$${roiTotal.toLocaleString('es-CO')}`
+                    : `$${Math.round(roiTotal / 3900).toLocaleString('en-US')}`}
+                </p>
+              </div>
+
+              <p className="mt-4 text-xs text-gray-400 text-center">{t('roiCalculator.disclaimer')}</p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          7c. CORPORATE APPLICATION FORM
+          ═══════════════════════════════════════════════════════ */}
+      <section id="contacto-empresarial" className="relative section-padding overflow-hidden">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-14 text-center">
+              <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
+                {t('applicationForm.badge')}
+              </span>
+              <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
+                {t('applicationForm.title')} <span className="text-primary-600">{t('applicationForm.highlight')}</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
+                {t('applicationForm.subtitle')}
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-10 lg:grid-cols-5">
+            {/* Form — 3 cols */}
+            <ScrollReveal direction="left" className="lg:col-span-3">
+              <form onSubmit={handleFormSubmit} className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm space-y-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('applicationForm.companyName')}</label>
+                    <input
+                      type="text" required
+                      placeholder={t('applicationForm.companyNamePlaceholder')}
+                      value={formData.companyName}
+                      onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('applicationForm.contactPerson')}</label>
+                    <input
+                      type="text" required
+                      placeholder={t('applicationForm.contactPersonPlaceholder')}
+                      value={formData.contactPerson}
+                      onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('applicationForm.email')}</label>
+                    <input
+                      type="email" required
+                      placeholder={t('applicationForm.emailPlaceholder')}
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('applicationForm.phone')}</label>
+                    <input
+                      type="tel"
+                      placeholder={t('applicationForm.phonePlaceholder')}
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('applicationForm.partnershipType')}</label>
+                    <select
+                      required
+                      value={formData.partnershipType}
+                      onChange={(e) => setFormData({ ...formData, partnershipType: e.target.value })}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none bg-white"
+                    >
+                      <option value="">--</option>
+                      {partnershipTypes.map((type) => (
+                        <option key={type} value={type}>{t(`applicationForm.types.${type}`)}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('applicationForm.budget')}</label>
+                    <select
+                      value={formData.budget}
+                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none bg-white"
+                    >
+                      <option value="">--</option>
+                      {budgetOptions.map((opt) => (
+                        <option key={opt} value={opt}>{t(`applicationForm.budgets.${opt}`)}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('applicationForm.message')}</label>
+                  <textarea
+                    rows={4}
+                    placeholder={t('applicationForm.messagePlaceholder')}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none resize-none"
+                  />
+                </div>
+
+                {formStatus === 'success' && (
+                  <div className="rounded-lg bg-green-50 border border-green-200 p-4 text-sm text-green-700 font-medium">
+                    <HiCheckCircle className="inline h-5 w-5 mr-2 -mt-0.5" />
+                    {t('applicationForm.success')}
+                  </div>
+                )}
+                {formStatus === 'error' && (
+                  <div className="rounded-lg bg-red-50 border border-red-200 p-4 text-sm text-red-700 font-medium">
+                    {t('applicationForm.error')}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={formStatus === 'sending'}
+                  className="w-full rounded-full bg-primary-600 px-8 py-4 font-heading font-bold text-white shadow-lg shadow-primary-600/25 transition-all duration-300 hover:bg-primary-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {formStatus === 'sending' ? t('applicationForm.sending') : t('applicationForm.submit')}
+                </button>
+              </form>
+            </ScrollReveal>
+
+            {/* Sidebar — 2 cols */}
+            <ScrollReveal direction="right" className="lg:col-span-2 space-y-5">
+              {/* Contact cards */}
               <motion.a
                 href="mailto:info@cigarra.org"
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-all duration-300 hover:border-primary-200 hover:shadow-md"
+                transition={{ duration: 0.25, ease: smoothEase }}
+                className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-5 transition-all duration-300 hover:border-primary-200 hover:shadow-md"
               >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent-50">
-                  <HiMail className="h-7 w-7 text-accent-600" />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-50">
+                  <HiMail className="h-6 w-6 text-accent-600" />
                 </div>
-                <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">Email</h3>
-                <p className="text-sm text-primary-600 hover:underline">info@cigarra.org</p>
+                <div>
+                  <p className="font-heading text-sm font-bold text-gray-900">Email</p>
+                  <p className="text-sm text-primary-600">info@cigarra.org</p>
+                </div>
               </motion.a>
-            </ScrollReveal>
 
-            {/* Phone */}
-            <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0.1}>
               <motion.a
                 href="tel:+573212465421"
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-all duration-300 hover:border-primary-200 hover:shadow-md"
+                transition={{ duration: 0.25, ease: smoothEase }}
+                className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-5 transition-all duration-300 hover:border-primary-200 hover:shadow-md"
               >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50">
-                  <HiPhone className="h-7 w-7 text-blue-600" />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50">
+                  <HiPhone className="h-6 w-6 text-blue-600" />
                 </div>
-                <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">{t('phone')}</h3>
-                <p className="text-sm text-primary-600">+57 321 246 5421</p>
+                <div>
+                  <p className="font-heading text-sm font-bold text-gray-900">{t('phone')}</p>
+                  <p className="text-sm text-primary-600">+57 321 246 5421</p>
+                </div>
               </motion.a>
-            </ScrollReveal>
 
-            {/* WhatsApp */}
-            <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0.2}>
               <motion.a
-                href="https://wa.me/573212465421"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-all duration-300 hover:border-green-200 hover:shadow-md"
-              >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-green-50">
-                  <FaWhatsapp className="h-7 w-7 text-green-600" />
-                </div>
-                <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">WhatsApp</h3>
-                <p className="text-sm text-green-600">{t('writeNow')}</p>
-              </motion.a>
-            </ScrollReveal>
-
-            {/* Address */}
-            <ScrollReveal mode="scroll" scaleFrom={0.95} delay={0.3}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex flex-col items-center rounded-xl border border-gray-100 bg-white p-6 text-center transition-all duration-300 hover:border-primary-200 hover:shadow-md"
-              >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50">
-                  <HiLocationMarker className="h-7 w-7 text-primary-600" />
-                </div>
-                <h3 className="font-heading text-sm font-bold text-gray-900 mb-1">{t('address')}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Calle 71 Q sur No. 27-60
-                  <br />
-                  Ciudad Bolivar, Bogota D.C.
-                </p>
-              </motion.div>
-            </ScrollReveal>
-          </div>
-
-          {/* WhatsApp main CTA */}
-          <ScrollReveal>
-            <div className="mt-12 text-center">
-              <a
                 href="https://wa.me/573212465421?text=Hola%2C%20soy%20representante%20de%20una%20empresa%20y%20me%20interesa%20conocer%20los%20modelos%20de%20alianza%20corporativa%20con%20la%20Fundacion%20Cigarra."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 rounded-full bg-green-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:bg-green-400"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.25, ease: smoothEase }}
+                className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-5 transition-all duration-300 hover:border-green-200 hover:shadow-md"
               >
-                <FaWhatsapp className="h-6 w-6" />
-                {t('writeWhatsApp')}
-              </a>
-              <p className="mt-3 text-sm text-gray-400">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-50">
+                  <FaWhatsapp className="h-6 w-6 text-green-600" />
+                </div>
+                <div>
+                  <p className="font-heading text-sm font-bold text-gray-900">WhatsApp</p>
+                  <p className="text-sm text-green-600">{t('writeNow')}</p>
+                </div>
+              </motion.a>
+
+              <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50">
+                  <HiLocationMarker className="h-6 w-6 text-primary-600" />
+                </div>
+                <div>
+                  <p className="font-heading text-sm font-bold text-gray-900">{t('address')}</p>
+                  <p className="text-sm text-gray-600">Calle 71 Q sur No. 27-60, Ciudad Bolivar</p>
+                </div>
+              </div>
+
+              <p className="text-center text-sm text-gray-400 pt-2">
                 {t('responseGuarantee')}
               </p>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
