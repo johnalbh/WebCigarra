@@ -13,7 +13,7 @@ const stats = [
   { key: 'childrenHelped', value: 1877, suffix: '+' },
   { key: 'years', value: 23, suffix: '' },
   { key: 'jobsGenerated', value: 100, suffix: '+' },
-  { key: 'families', value: 190, suffix: '+' },
+  { key: 'families', value: 1800, suffix: '+' },
 ];
 
 const easeApple = EASE_APPLE;

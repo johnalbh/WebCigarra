@@ -131,7 +131,7 @@ const volunteerAreas = [
 ];
 
 /* ── FAQ keys ── */
-const faqKeys = ['howDonate', 'taxDeductible', 'transparency', 'canVolunteer', 'whatIsPlanPadrino'] as const;
+const faqKeys = ['howDonate', 'taxDeductible', 'transparency', 'canVolunteer', 'whatIsPlanPadrino', 'isLegit'] as const;
 
 /* ── Trust badges config ── */
 const trustBadges = [

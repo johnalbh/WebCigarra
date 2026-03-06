@@ -675,7 +675,8 @@
       "taxDeductible": { "q": "¿Mi donación es deducible de impuestos?", "a": "Sí, la Fundación Cigarra es una entidad sin ánimo de lucro registrada con NIT 830.114.318-9. Las donaciones son deducibles de impuestos según la normativa colombiana vigente." },
       "transparency": { "q": "¿Cómo sé que mi donación se usa correctamente?", "a": "Publicamos informes anuales de gestión y financieros. Los padrinos reciben reportes periódicos del progreso de su apadrinado. Estamos comprometidos con la transparencia total." },
       "canVolunteer": { "q": "¿Puedo ser voluntario?", "a": "Sí, buscamos voluntarios en áreas de educación, arte, deportes, tecnología y gestión administrativa. Contáctanos por WhatsApp o correo electrónico para conocer las oportunidades disponibles." },
-      "whatIsPlanPadrino": { "q": "¿Qué es el Plan Padrino?", "a": "El Plan Padrino te permite apadrinar a un niño específico, cubrir sus necesidades educativas y de alimentación, y seguir su progreso durante todo el año académico con reportes personalizados." }
+      "whatIsPlanPadrino": { "q": "¿Qué es el Plan Padrino?", "a": "El Plan Padrino te permite apadrinar a un niño específico, cubrir sus necesidades educativas y de alimentación, y seguir su progreso durante todo el año académico con reportes personalizados." },
+      "isLegit": { "q": "¿Cómo puedo verificar que la fundación es real?", "a": "Somos una entidad sin ánimo de lucro registrada ante la Cámara de Comercio de Bogotá (NIT: 830.114.318-9) y reconocida como 501(c)(3) en Estados Unidos (EIN: 68-0505337). Puedes verificar nuestro estado en la página del IRS o en GuideStar. Llevamos más de 23 años sirviendo a la comunidad de Ciudad Bolívar." }
     },
     "volunteerAreas": {
       "education": { "title": "Educación", "description": "Refuerzo escolar, talleres de lectura, apoyo en tareas y preparación de exámenes." },

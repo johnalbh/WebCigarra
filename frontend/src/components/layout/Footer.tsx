@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
-import { HiMail, HiPhone, HiLocationMarker, HiShieldCheck } from 'react-icons/hi';
+import { HiMail, HiPhone, HiLocationMarker, HiShieldCheck, HiExternalLink } from 'react-icons/hi';
 import { motion } from 'motion/react';
 
 const socialLinks = [
@@ -207,19 +207,35 @@ export default function Footer() {
       {/* 501(c)(3) trust bar — only shown in English */}
       {locale === 'en' && (
         <div className="border-t border-primary-800 bg-primary-950/50">
-          <div className="mx-auto flex max-w-7xl items-center justify-center gap-6 px-4 py-4 lg:px-8">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-4 px-4 py-4 lg:gap-6 lg:px-8">
             <div className="flex items-center gap-2 text-xs font-medium text-accent-400">
               <HiShieldCheck className="h-4 w-4" />
               <span>{t('taxExempt')}</span>
             </div>
-            <span className="text-primary-700">|</span>
+            <span className="hidden text-primary-700 lg:inline">|</span>
             <p className="text-xs font-medium text-primary-300">
               {t('einNumber')}
             </p>
-            <span className="text-primary-700">|</span>
-            <p className="text-xs text-primary-400">
-              All donations are tax-deductible
-            </p>
+            <span className="hidden text-primary-700 lg:inline">|</span>
+            <a
+              href="https://apps.irs.gov/app/eos/detailsPage?ein=680505337&name=Cigarra%20Foundation%20Inc&city=&state=All&countryAbbr=US&dba=&type=determinationLetterOnly&orgTags=&orgTags="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-medium text-accent-400 transition-colors hover:text-accent-300"
+            >
+              <HiExternalLink className="h-3 w-3" />
+              {t('verifyIRS')}
+            </a>
+            <span className="hidden text-primary-700 lg:inline">|</span>
+            <a
+              href="https://www.guidestar.org/profile/68-0505337"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-medium text-primary-400 transition-colors hover:text-primary-300"
+            >
+              <HiExternalLink className="h-3 w-3" />
+              {t('verifyGuidestar')}
+            </a>
           </div>
         </div>
       )}

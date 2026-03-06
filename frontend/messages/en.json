@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Cigarra Foundation — 501(c)(3) Nonprofit | Feed & Educate Children in Colombia",
-    "description": "For $1.80/day, feed and educate a child in Bogotá. IRS-recognized 501(c)(3) nonprofit serving 180+ children since 2002. 100% tax-deductible — every dollar goes directly to kids. EIN: 68-0505337."
+    "description": "For $1.80/day, feed and educate a child in Bogotá. IRS-recognized 501(c)(3) nonprofit serving 1,800+ children since 2002. 100% tax-deductible — every dollar goes directly to kids. EIN: 68-0505337."
   },
   "nav": {
     "home": "Home",
@@ -496,11 +496,13 @@
     "programs": "Programs",
     "contact": "Contact",
     "support": "Give Today",
-    "supportDescription": "The Cigarra Foundation is an IRS-recognized 501(c)(3) nonprofit (EIN: 68-0505337). 100% of your tax-deductible donation goes directly to 180+ children in Bogotá. $0 admin overhead.",
+    "supportDescription": "The Cigarra Foundation is an IRS-recognized 501(c)(3) nonprofit (EIN: 68-0505337). 100% of your tax-deductible donation goes directly to 1,800+ children in Bogotá. $0 admin overhead.",
     "slogan": "The resurgence of hope",
     "description": "Feeding, educating, and empowering 1,877 children in Ciudad Bolívar, Bogotá since 2002.",
     "taxExempt": "501(c)(3) Tax-Exempt Organization",
-    "einNumber": "EIN: 68-0505337"
+    "einNumber": "EIN: 68-0505337",
+    "verifyIRS": "Verify on IRS.gov",
+    "verifyGuidestar": "View on GuideStar"
   },
   "common": {
     "loading": "Loading...",
@@ -732,6 +734,10 @@
       "whatIsPlanPadrino": {
         "q": "What does 'Sponsor a Child' mean?",
         "a": "For $25/month, you're paired with a specific child whose education, daily meals, and access to all 13 programs you fund. You'll receive their photo, progress reports, and personal letters throughout the year. You can cancel anytime — no commitments."
+      },
+      "isLegit": {
+        "q": "How can I verify the Cigarra Foundation is a real nonprofit?",
+        "a": "We're fully transparent. You can verify our 501(c)(3) status on the IRS Tax Exempt Organization Search (EIN: 68-0505337) at apps.irs.gov/app/eos, or view our profile on GuideStar/Candid. We've been serving children in Bogotá since 2002."
       }
     },
     "volunteerAreas": {
@@ -1086,7 +1092,7 @@
     },
     "corporateImpact": {
       "title": "Corporate Giving — Tax-Deductible 501(c)(3) Partnership | Cigarra Foundation",
-      "description": "Maximize your CSR impact. Corporate donations are fully tax-deductible. Sponsor programs, organize team volunteer days, or fund education for 180+ children in Colombia."
+      "description": "Maximize your CSR impact. Corporate donations are fully tax-deductible. Sponsor programs, organize team volunteer days, or fund education for 1,800+ children in Colombia."
     }
   },
   "notFound": {
@@ -1200,6 +1206,10 @@
     "photoCaption": "Children learning music at the Cigarra Foundation — Ciudad Bolívar, Bogotá",
     "legalTitle": "Your Gift Is Tax-Deductible",
     "legalDescription": "The Cigarra Foundation (EIN: 68-0505337) is an IRS-recognized 501(c)(3) nonprofit. Your donation is fully tax-deductible under U.S. law. You'll receive a tax receipt by email within 24 hours.",
+    "verifyTitle": "Verify We're Real",
+    "verifyDescription": "Look us up on the IRS website or GuideStar to confirm our 501(c)(3) status.",
+    "verifyIRS": "Check IRS Tax-Exempt Status →",
+    "verifyGuidestar": "View GuideStar Profile →",
     "seeAllWays": "See all ways to help →"
   }
 }

@@ -113,8 +113,8 @@ export default async function LocaleLayout({
     logo: `${SITE_URL}/images/logo.webp`,
     description:
       locale === 'en'
-        ? 'IRS-recognized 501(c)(3) nonprofit serving 180+ children in Ciudad Bolívar, Bogotá with education, nutrition, and arts programs since 2002.'
-        : 'Fundación sin ánimo de lucro que atiende a más de 180 niños en Ciudad Bolívar, Bogotá con programas de educación, nutrición y arte desde 2002.',
+        ? 'IRS-recognized 501(c)(3) nonprofit serving 1,800+ children in Ciudad Bolívar, Bogotá with education, nutrition, and arts programs since 2002.'
+        : 'Fundación sin ánimo de lucro que atiende a más de 1.800 niños en Ciudad Bolívar, Bogotá con programas de educación, nutrición y arte desde 2002.',
     foundingDate: '2002',
     taxID: locale === 'en' ? '68-0505337' : '830.114.318-9',
     nonprofitStatus: '501c3',

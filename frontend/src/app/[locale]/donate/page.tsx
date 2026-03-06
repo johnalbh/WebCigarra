@@ -11,6 +11,7 @@ import {
   HiCheckCircle,
   HiUserGroup,
   HiAcademicCap,
+  HiExternalLink,
 } from 'react-icons/hi';
 import DonationCheckout from '@/components/sections/DonationCheckout';
 
@@ -155,6 +156,36 @@ export default function DonatePage() {
                     {t('legalDescription')}
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Verify our status */}
+            <div className="mt-4 rounded-xl border border-gray-200 bg-white p-6">
+              <p className="text-sm font-semibold text-gray-900">
+                {t('verifyTitle')}
+              </p>
+              <p className="mt-1 text-sm text-gray-500">
+                {t('verifyDescription')}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a
+                  href="https://apps.irs.gov/app/eos/detailsPage?ein=680505337&name=Cigarra%20Foundation%20Inc&city=&state=All&countryAbbr=US&dba=&type=determinationLetterOnly&orgTags=&orgTags="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-100"
+                >
+                  <HiExternalLink className="h-4 w-4" />
+                  {t('verifyIRS')}
+                </a>
+                <a
+                  href="https://www.guidestar.org/profile/68-0505337"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100"
+                >
+                  <HiExternalLink className="h-4 w-4" />
+                  {t('verifyGuidestar')}
+                </a>
               </div>
             </div>
 
