@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Inter, Poppins, Playfair_Display } from 'next/font/google';
@@ -9,6 +10,7 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import FloatingSocialBar from '@/components/shared/FloatingSocialBar';
 import DonationFloatingCTA from '@/components/layout/DonationFloatingCTA';
+import AnnouncementPopupServer from '@/components/layout/AnnouncementPopupServer';
 
 import { SITE_URL, SITE_NAME } from '@/lib/seo';
 
@@ -92,6 +94,9 @@ export default async function LocaleLayout({
             <WhatsAppButton />
             <FloatingSocialBar />
             <DonationFloatingCTA />
+            <Suspense fallback={null}>
+              <AnnouncementPopupServer locale={locale} />
+            </Suspense>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -18,6 +18,15 @@ const DONATION_LINK = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora'
 
 const articles = [
   {
+    slug: 'bingo-virtual-marzo-2026',
+    title: 'Bingo Virtual Marzo 2026',
+    excerpt: 'Participa en nuestro Bingo Virtual a beneficio de la Fundación Cigarra. Premios increíbles, mucha diversión y toda la recaudación va directamente a nuestros programas para los niños de Ciudad Bolívar.',
+    date: '2026-03-15',
+    author: 'Fundación Cigarra',
+    image: '/images/bingo-marzo-2026.webp',
+    content: '¡Participa en nuestro gran Bingo Virtual a beneficio de la Fundación Cigarra!\n\nEste evento especial se realizará en marzo de 2026 y contará con premios increíbles para todos los participantes. Toda la recaudación irá directamente a nuestros programas de educación, arte y cultura para los niños y jóvenes de Ciudad Bolívar.\n\nEl bingo se jugará de forma virtual, así que puedes participar desde cualquier lugar. Solo necesitas conexión a internet y muchas ganas de divertirte mientras apoyas una gran causa.\n\nNo te pierdas esta oportunidad de pasar un rato increíble y contribuir al futuro de cientos de niños. ¡Te esperamos!\n\nPara más información sobre cómo participar, contáctanos a través de nuestras redes sociales o escríbenos directamente.',
+  },
+  {
     slug: 'celebramos-22-anos',
     title: 'Celebramos 23 años transformando vidas en Ciudad Bolívar',
     excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes de la localidad.',

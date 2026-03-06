@@ -286,6 +286,8 @@
     "stayInformed": "Stay informed",
     "more": "More",
     "featured": "Featured",
+    "newBadge": "Latest",
+    "specialEvent": "Special event",
     "ctaCards": {
       "donate": { "title": "Donate", "description": "Every dollar transforms a life.", "cta": "Donate Now" },
       "sponsor": { "title": "Sponsor", "description": "Support a child on their journey.", "cta": "Sponsorship Plan" },
@@ -504,7 +506,8 @@
     "language": "Language",
     "learnMore": "Learn more",
     "viewAll": "View all",
-    "close": "Close"
+    "close": "Close",
+    "dontShowAgain": "Don't show again"
   },
   "breadcrumb": {
     "home": "Home"

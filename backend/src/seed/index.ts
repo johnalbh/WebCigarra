@@ -663,6 +663,19 @@ async function seedArticles(strapi: Core.Strapi) {
 
   const articles = [
     {
+      title: 'Bingo Virtual Marzo 2026',
+      slug: 'bingo-virtual-marzo-2026',
+      excerpt:
+        'Participa en nuestro Bingo Virtual a beneficio de la Fundación Cigarra. Premios increíbles, mucha diversión y toda la recaudación va directamente a nuestros programas.',
+      content:
+        'La Fundación Cigarra te invita a participar en nuestro Bingo Virtual de marzo 2026, un evento lleno de diversión, premios increíbles y solidaridad.\n\nToda la recaudación será destinada directamente a nuestros programas de educación, alimentación y bienestar para los niños y jóvenes de Ciudad Bolívar.\n\n## Detalles del evento\n\n- **Fecha:** Marzo 2026\n- **Modalidad:** Virtual\n- **Premios:** Múltiples premios para los ganadores\n\n¡No te lo pierdas! Comparte con familia y amigos y ayúdanos a transformar vidas mientras te diviertes.',
+      publishDate: '2026-03-15',
+      author: 'Fundación Cigarra',
+      tags: ['eventos', 'bingo', 'recaudación'],
+      featured: true,
+      seo: { metaTitle: 'Bingo Virtual Marzo 2026 | Fundación Cigarra', metaDescription: 'Participa en el Bingo Virtual de la Fundación Cigarra. Premios increíbles y toda la recaudación va a nuestros programas.' },
+    },
+    {
       title: 'Inauguramos nueva aula de música',
       slug: 'inauguramos-nueva-aula-de-musica',
       excerpt:
@@ -744,6 +757,14 @@ async function seedArticles(strapi: Core.Strapi) {
 
   // English translations keyed by slug (localized: slug, title, excerpt, content, tags, seo)
   const articlesEN: Record<string, { slug: string; title: string; excerpt: string; content: string; tags: string[]; seo: { metaTitle: string; metaDescription: string } }> = {
+    'bingo-virtual-marzo-2026': {
+      slug: 'bingo-virtual-marzo-2026',
+      title: 'Virtual Bingo March 2026',
+      excerpt: 'Join our Virtual Bingo to benefit Fundación Cigarra. Amazing prizes, lots of fun, and all proceeds go directly to our programs.',
+      content: 'Fundación Cigarra invites you to participate in our March 2026 Virtual Bingo, an event full of fun, amazing prizes, and solidarity.\n\nAll proceeds will go directly to our education, nutrition, and well-being programs for children and youth in Ciudad Bolívar.\n\n## Event Details\n\n- **Date:** March 2026\n- **Format:** Virtual\n- **Prizes:** Multiple prizes for winners\n\nDon\'t miss it! Share with family and friends and help us transform lives while having fun.',
+      tags: ['events', 'bingo', 'fundraising'],
+      seo: { metaTitle: 'Virtual Bingo March 2026 | Fundación Cigarra', metaDescription: 'Join Fundación Cigarra\'s Virtual Bingo. Amazing prizes and all proceeds go to our programs.' },
+    },
     'inauguramos-nueva-aula-de-musica': {
       slug: 'inauguramos-nueva-aula-de-musica',
       title: 'We Inaugurate a New Music Classroom',

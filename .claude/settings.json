@@ -6,7 +6,8 @@
       "Bash(NODE_OPTIONS='--inspect' npx next info)",
       "Bash(grep -E '^\\\\$[0-9]')",
       "Bash(grep -o '\\\\$[0-9,.]*\\\\s*USD')",
-      "Bash(grep -oE '\\\\$[0-9,.]+ \\(USD|COP\\)')"
+      "Bash(grep -oE '\\\\$[0-9,.]+ \\(USD|COP\\)')",
+      "Bash(cwebp -q 85 /Users/johnalbh/PersonalProjects/WebCigarra/frontend/public/images/bingo-marzo-2026.jpg -o /Users/johnalbh/PersonalProjects/WebCigarra/frontend/public/images/bingo-marzo-2026.webp)"
     ]
   }
 }

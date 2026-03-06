@@ -10,8 +10,9 @@ import PartnersMarquee from '@/components/sections/PartnersMarquee';
 import { buildPageMetadata } from '@/lib/seo';
 import { getOrganizationSchema, getWebSiteSchema } from '@/lib/structured-data';
 import JsonLd from '@/components/seo/JsonLd';
-import { getHero } from '@/lib/queries';
+import { getHero, getHomepageFeaturedArticles } from '@/lib/queries';
 import { getStrapiMedia } from '@/lib/strapi';
+import FeaturedNewsBanner from '@/components/sections/FeaturedNewsBanner';
 
 export async function generateMetadata({
   params,
@@ -36,6 +37,8 @@ export default async function HomePage({
   const { locale } = await params;
 
   let heroImages: string[] | undefined;
+  let featuredArticles: { title: string; slug: string; date?: string }[] | undefined;
+
   try {
     const heroData = await getHero(locale) as any;
     const images = heroData?.data?.backgroundImage;
@@ -48,11 +51,26 @@ export default async function HomePage({
     // Fallback to local images if Strapi is unavailable
   }
 
+  try {
+    const articlesData = await getHomepageFeaturedArticles(locale) as any;
+    const items = articlesData?.data;
+    if (Array.isArray(items) && items.length > 0) {
+      featuredArticles = items.map((a: any) => ({
+        title: a.title,
+        slug: a.slug,
+        date: a.publishDate,
+      }));
+    }
+  } catch {
+    // Fallback to dummy data in the component
+  }
+
   return (
     <>
       <JsonLd data={getOrganizationSchema()} />
       <JsonLd data={getWebSiteSchema()} />
       <HeroSection images={heroImages} />
+      <FeaturedNewsBanner articles={featuredArticles} />
       <ImpactCounters />
       <ProgramsGrid />
       <StoriesCarousel />

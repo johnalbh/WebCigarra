@@ -38,8 +38,8 @@ export async function fetchAPI<T>({
   });
 
   if (!res.ok) {
-    console.error(`Strapi API error: ${res.status} ${res.statusText} - ${url}`);
-    throw new Error(`Failed to fetch from Strapi: ${res.status}`);
+    console.warn(`Strapi API warning: ${res.status} ${res.statusText} - ${url}`);
+    return { data: null } as T;
   }
 
   const json = await res.json();

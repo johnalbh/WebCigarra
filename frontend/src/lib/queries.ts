@@ -156,6 +156,22 @@ export async function getFeaturedArticles(locale: string, limit = 6) {
   });
 }
 
+export async function getHomepageFeaturedArticles(locale: string) {
+  return fetchAPI({
+    path: '/articles',
+    locale,
+    query: {
+      filters: { featured: { $eq: true } },
+      populate: {
+        coverImage: { fields: ['url', 'alternativeText', 'width', 'height'] },
+      },
+      sort: ['publishDate:desc'],
+      pagination: { pageSize: 5 },
+    },
+    revalidate: 30,
+  });
+}
+
 export async function getSuccessStories(locale: string) {
   return fetchAPI({
     path: '/success-stories',
@@ -193,6 +209,19 @@ export async function getTeamMembers(locale: string) {
         seo: { populate: '*' },
       },
       sort: ['order:asc'],
+    },
+  });
+}
+
+export async function getPopupAnnouncement(locale: string) {
+  return fetchAPI({
+    path: '/popup-announcement',
+    locale,
+    revalidate: 30,
+    query: {
+      populate: {
+        image: { fields: ['url', 'alternativeText', 'width', 'height'] },
+      },
     },
   });
 }

@@ -286,6 +286,8 @@
     "stayInformed": "Mantente informado",
     "more": "Más",
     "featured": "Destacado",
+    "newBadge": "Reciente",
+    "specialEvent": "Evento especial",
     "ctaCards": {
       "donate": { "title": "Dona", "description": "Cada peso transforma una vida.", "cta": "Donar Ahora" },
       "sponsor": { "title": "Apadrina", "description": "Acompaña a un niño en su camino.", "cta": "Plan Padrino" },
@@ -504,7 +506,8 @@
     "language": "Idioma",
     "learnMore": "Saber más",
     "viewAll": "Ver todos",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "dontShowAgain": "No volver a mostrar"
   },
   "breadcrumb": {
     "home": "Inicio"
