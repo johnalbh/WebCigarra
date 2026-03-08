@@ -13,6 +13,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import { getHero, getHomepageFeaturedArticles } from '@/lib/queries';
 import { getStrapiMedia } from '@/lib/strapi';
 import FeaturedNewsBanner from '@/components/sections/FeaturedNewsBanner';
+import IntroVideoModalLoader from '@/components/IntroVideoModalLoader';
 
 export async function generateMetadata({
   params,
@@ -67,6 +68,7 @@ export default async function HomePage({
 
   return (
     <>
+      <IntroVideoModalLoader />
       <JsonLd data={getOrganizationSchema()} />
       <JsonLd data={getWebSiteSchema()} />
       <HeroSection images={heroImages} />
