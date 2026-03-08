@@ -27,6 +27,16 @@
     "planPadrinoDesc": "Apadrina a un niño y acompáñalo en su proceso educativo con una donación mensual.",
     "volunteerDesc": "Únete como voluntario y aporta tu talento directamente en nuestros programas."
   },
+  "intro": {
+    "label": "Intro",
+    "timeLeft": "{time} restante",
+    "playing": "Reproduciendo intro",
+    "unmute": "Activar sonido",
+    "mute": "Silenciar",
+    "skip": "Saltar",
+    "title": "Fundación Cigarra",
+    "subtitle": "Transformando vidas desde 2002"
+  },
   "hero": {
     "tagline": "Desde 2002 transformando vidas",
     "title": "Transformamos vidas a través del",

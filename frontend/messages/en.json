@@ -27,6 +27,16 @@
     "planPadrinoDesc": "Sponsor a child and support their education with a monthly donation.",
     "volunteerDesc": "Join as a volunteer and bring your talent directly to our programs."
   },
+  "intro": {
+    "label": "Intro",
+    "timeLeft": "{time} remaining",
+    "playing": "Playing intro",
+    "unmute": "Enable sound",
+    "mute": "Mute",
+    "skip": "Skip",
+    "title": "Cigarra Foundation",
+    "subtitle": "Transforming lives since 2002"
+  },
   "hero": {
     "tagline": "501(c)(3) Tax-Deductible — Every Dollar Goes Directly to Children",
     "title": "Give a child in Colombia",
