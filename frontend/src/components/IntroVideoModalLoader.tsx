@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
 const IntroVideoModal = dynamic(() => import('./IntroVideoModal'), { ssr: false });
@@ -9,6 +9,11 @@ const SESSION_KEY = 'cigarra_intro_shown';
 
 export default function IntroVideoModalLoader() {
   const [modalKey, setModalKey] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 1024);
+  }, []);
 
   const reopen = () => {
     localStorage.removeItem(SESSION_KEY);
@@ -19,7 +24,7 @@ export default function IntroVideoModalLoader() {
     <>
       <IntroVideoModal key={modalKey} />
 
-      <button
+      {isDesktop && <button
         onClick={reopen}
         title="Ver intro"
         style={{
@@ -58,7 +63,7 @@ export default function IntroVideoModalLoader() {
           <polygon points="5 3 19 12 5 21 5 3" />
         </svg>
         Ver intro
-      </button>
+      </button>}
     </>
   );
 }
