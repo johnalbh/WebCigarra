@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { useTranslations, useLocale } from 'next-intl';
-import { motion, AnimatePresence } from 'motion/react';
-import Image from 'next/image';
-import { Link } from '@/i18n/routing';
-import ScrollReveal from '@/components/shared/ScrollReveal';
-import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
+import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
+import { Link } from "@/i18n/routing";
+import ScrollReveal from "@/components/shared/ScrollReveal";
+import StaggerContainer, { StaggerItem } from "@/components/shared/StaggerContainer";
 import {
   HiHeart,
   HiUserGroup,
@@ -23,127 +23,127 @@ import {
   HiArrowRight,
   HiClipboardCheck,
   HiDocumentReport,
-} from 'react-icons/hi';
-import { FaWhatsapp, FaPaintBrush, FaRunning, FaBriefcase, FaPaypal } from 'react-icons/fa';
-import HeroWaves from '@/components/shared/HeroWaves';
-import DonationCheckout from '@/components/sections/DonationCheckout';
+} from "react-icons/hi";
+import { FaWhatsapp, FaPaintBrush, FaRunning, FaBriefcase, FaPaypal } from "react-icons/fa";
+import HeroWaves from "@/components/shared/HeroWaves";
+import DonationCheckout from "@/components/sections/DonationCheckout";
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
 /* ── Donation tiers config (Plan Padrino real pricing) ── */
 const donationTiers = [
   {
-    key: 'monthly',
+    key: "monthly",
     amountCOP: 65000,
     amountUSD: 25,
     highlighted: false,
     icon: HiHeart,
-    color: 'border-primary-200 hover:border-primary-400',
-    iconBg: 'bg-primary-100 text-primary-600',
-    ePaycoLink: 'https://subscription-landing.epayco.co/plan/9993771eb5d4c1974062db2',
-    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_MONTHLY || '',
+    color: "border-primary-200 hover:border-primary-400",
+    iconBg: "bg-primary-100 text-primary-600",
+    ePaycoLink: "https://subscription-landing.epayco.co/plan/9993771eb5d4c1974062db2",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_MONTHLY || "",
   },
   {
-    key: 'semester',
+    key: "semester",
     amountCOP: 330000,
     amountUSD: 85,
     highlighted: false,
     icon: HiShieldCheck,
-    color: 'border-primary-200 hover:border-primary-400',
-    iconBg: 'bg-primary-100 text-primary-600',
-    ePaycoLink: 'https://subscription-landing.epayco.co/plan/99937a3eea2b9882807efb0',
-    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_SEMESTER || '',
+    color: "border-primary-200 hover:border-primary-400",
+    iconBg: "bg-primary-100 text-primary-600",
+    ePaycoLink: "https://subscription-landing.epayco.co/plan/99937a3eea2b9882807efb0",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_SEMESTER || "",
   },
   {
-    key: 'annual',
+    key: "annual",
     amountCOP: 650000,
     amountUSD: 170,
     highlighted: true,
     icon: HiStar,
-    color: 'border-accent-300 ring-2 ring-accent-200',
-    iconBg: 'bg-accent-100 text-accent-600',
-    ePaycoLink: 'https://subscription-landing.epayco.co/plan/99937be6d46e7149f0f5292',
-    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ANNUAL || '',
+    color: "border-accent-300 ring-2 ring-accent-200",
+    iconBg: "bg-accent-100 text-accent-600",
+    ePaycoLink: "https://subscription-landing.epayco.co/plan/99937be6d46e7149f0f5292",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ANNUAL || "",
   },
   {
-    key: 'gold',
+    key: "gold",
     amountCOP: 1200000,
     amountUSD: 300,
     highlighted: false,
     icon: HiSparkles,
-    color: 'border-primary-200 hover:border-primary-400',
-    iconBg: 'bg-accent-100 text-accent-600',
-    ePaycoLink: 'https://subscription-landing.epayco.co/plan/99937daa95cda6af90e37f2',
-    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_GOLD || '',
+    color: "border-primary-200 hover:border-primary-400",
+    iconBg: "bg-accent-100 text-accent-600",
+    ePaycoLink: "https://subscription-landing.epayco.co/plan/99937daa95cda6af90e37f2",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_GOLD || "",
   },
   {
-    key: 'platinum',
+    key: "platinum",
     amountCOP: 1650000,
     amountUSD: 450,
     highlighted: false,
     icon: HiGlobeAlt,
-    color: 'border-primary-200 hover:border-primary-400',
-    iconBg: 'bg-primary-100 text-primary-600',
-    ePaycoLink: 'https://subscription-landing.epayco.co/plan/999380649eb24bc4e0c3f52',
-    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_PLATINUM || '',
+    color: "border-primary-200 hover:border-primary-400",
+    iconBg: "bg-primary-100 text-primary-600",
+    ePaycoLink: "https://subscription-landing.epayco.co/plan/999380649eb24bc4e0c3f52",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_PLATINUM || "",
   },
   {
-    key: 'ultra',
+    key: "ultra",
     amountCOP: 2100000,
     amountUSD: 550,
     highlighted: false,
     icon: HiStar,
-    color: 'border-primary-200 hover:border-primary-400',
-    iconBg: 'bg-primary-100 text-primary-600',
-    ePaycoLink: 'https://subscription-landing.epayco.co/plan/999382045fa92aa320e4d12',
-    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ULTRA || '',
+    color: "border-primary-200 hover:border-primary-400",
+    iconBg: "bg-primary-100 text-primary-600",
+    ePaycoLink: "https://subscription-landing.epayco.co/plan/999382045fa92aa320e4d12",
+    paypalPlanId: process.env.NEXT_PUBLIC_PAYPAL_PLAN_ULTRA || "",
   },
 ];
 
 /* ── Volunteer areas config ── */
 const volunteerAreas = [
   {
-    key: 'education',
+    key: "education",
     icon: HiAcademicCap,
-    color: 'bg-primary-50 text-primary-600 border-primary-200',
-    iconBg: 'bg-primary-100',
+    color: "bg-primary-50 text-primary-600 border-primary-200",
+    iconBg: "bg-primary-100",
   },
   {
-    key: 'artsCulture',
+    key: "artsCulture",
     icon: FaPaintBrush,
-    color: 'bg-accent-50 text-accent-600 border-accent-200',
-    iconBg: 'bg-accent-100',
+    color: "bg-accent-50 text-accent-600 border-accent-200",
+    iconBg: "bg-accent-100",
   },
   {
-    key: 'sports',
+    key: "sports",
     icon: FaRunning,
-    color: 'bg-green-50 text-green-600 border-green-200',
-    iconBg: 'bg-green-100',
+    color: "bg-green-50 text-green-600 border-green-200",
+    iconBg: "bg-green-100",
   },
   {
-    key: 'management',
+    key: "management",
     icon: FaBriefcase,
-    color: 'bg-purple-50 text-purple-600 border-purple-200',
-    iconBg: 'bg-purple-100',
+    color: "bg-purple-50 text-purple-600 border-purple-200",
+    iconBg: "bg-purple-100",
   },
 ];
 
 /* ── FAQ keys ── */
-const faqKeys = ['howDonate', 'taxDeductible', 'transparency', 'canVolunteer', 'whatIsPlanPadrino', 'isLegit'] as const;
+const faqKeys = ["howDonate", "taxDeductible", "transparency", "canVolunteer", "whatIsPlanPadrino", "isLegit"] as const;
 
 /* ── Trust badges config ── */
 const trustBadges = [
-  { key: 'trustSecure', icon: HiShieldCheck },
-  { key: 'trustTaxDeductible', icon: HiDocumentReport },
-  { key: 'trustTransparency', icon: HiCheckCircle },
+  { key: "trustSecure", icon: HiShieldCheck },
+  { key: "trustTaxDeductible", icon: HiDocumentReport },
+  { key: "trustTransparency", icon: HiCheckCircle },
 ];
 
 /* ── Plan Padrino includes config ── */
 const planPadrinoIncludes = [
-  { key: 'education', icon: HiAcademicCap },
-  { key: 'nutrition', icon: HiHeart },
-  { key: 'reports', icon: HiDocumentReport },
-  { key: 'certificate', icon: HiClipboardCheck },
+  { key: "education", icon: HiAcademicCap },
+  { key: "nutrition", icon: HiHeart },
+  { key: "reports", icon: HiDocumentReport },
+  { key: "certificate", icon: HiClipboardCheck },
 ];
 
 /* ── FAQ Accordion item ── */
@@ -154,49 +154,31 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
     <ScrollReveal delay={index * 0.05}>
       <div
         className={`mb-4 overflow-hidden rounded-xl border transition-all duration-300 ${
-          open
-            ? 'border-primary-200 bg-primary-50/50'
-            : 'border-gray-100 bg-white hover:border-gray-200'
+          open ? "border-primary-200 bg-primary-50/50" : "border-gray-100 bg-white hover:border-gray-200"
         }`}
       >
-        <button
-          onClick={() => setOpen(!open)}
-          className="flex w-full items-center justify-between px-6 py-5 text-left"
-        >
+        <button onClick={() => setOpen(!open)} className="flex w-full items-center justify-between px-6 py-5 text-left">
           <div className="flex items-center gap-4">
             <div
               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
-                open
-                  ? 'bg-primary-500 text-white'
-                  : 'bg-primary-50 text-primary-600'
+                open ? "bg-primary-500 text-white" : "bg-primary-50 text-primary-600"
               }`}
             >
               <HiSparkles className="h-5 w-5" />
             </div>
-            <span
-              className={`font-heading text-lg font-semibold transition-colors duration-300 ${
-                open ? 'text-primary-800' : 'text-gray-900'
-              }`}
-            >
+            <span className={`font-heading text-lg font-semibold transition-colors duration-300 ${open ? "text-primary-800" : "text-gray-900"}`}>
               {question}
             </span>
           </div>
-          <motion.div
-            animate={{ rotate: open ? 180 : 0 }}
-            transition={{ duration: 0.3, ease: smoothEase }}
-          >
-            <HiChevronDown
-              className={`h-5 w-5 shrink-0 transition-colors duration-300 ${
-                open ? 'text-primary-600' : 'text-gray-400'
-              }`}
-            />
+          <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.3, ease: smoothEase }}>
+            <HiChevronDown className={`h-5 w-5 shrink-0 transition-colors duration-300 ${open ? "text-primary-600" : "text-gray-400"}`} />
           </motion.div>
         </button>
         <AnimatePresence initial={false}>
           {open && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
+              animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: smoothEase }}
               className="overflow-hidden"
@@ -216,33 +198,33 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
    MAIN PAGE COMPONENT
    ══════════════════════════════════════════════════════════════ */
 export default function HowToHelpPage() {
-  const t = useTranslations('howToHelp');
-  const tDonation = useTranslations('donation');
-  const tPlan = useTranslations('planPadrino');
-  const tFaq = useTranslations('faq');
-  const tContact = useTranslations('contact');
+  const t = useTranslations("howToHelp");
+  const tDonation = useTranslations("donation");
+  const tPlan = useTranslations("planPadrino");
+  const tFaq = useTranslations("faq");
+  const tContact = useTranslations("contact");
   const locale = useLocale();
-  const numberLocale = locale === 'en' ? 'en-US' : 'es-CO';
+  const numberLocale = locale === "en" ? "en-US" : "es-CO";
   const searchParams = useSearchParams();
   const [forceUSD, setForceUSD] = useState(false);
 
   useEffect(() => {
-    if (searchParams.get('currency') === 'usd') {
+    if (searchParams.get("currency") === "usd") {
       setForceUSD(true);
       setTimeout(() => {
-        document.getElementById('donar')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("donar")?.scrollIntoView({ behavior: "smooth" });
       }, 500);
     }
   }, [searchParams]);
 
   const handleDonateUSD = () => {
     setForceUSD(true);
-    document.getElementById('donar')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("donar")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleDonateCOP = () => {
     setForceUSD(false);
-    document.getElementById('donar')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("donar")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -262,7 +244,7 @@ export default function HowToHelpPage() {
             transition={{ duration: 0.6, ease: smoothEase }}
             className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-400"
           >
-            {t('heroTagline')}
+            {t("heroTagline")}
           </motion.p>
 
           <motion.h1
@@ -271,10 +253,8 @@ export default function HowToHelpPage() {
             transition={{ duration: 0.7, delay: 0.1, ease: smoothEase }}
             className="mx-auto max-w-4xl font-heading text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
           >
-            {t('heroTitle')}{' '}
-            <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">
-              {t('heroHighlight')}
-            </span>
+            {t("heroTitle")}{" "}
+            <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">{t("heroHighlight")}</span>
           </motion.h1>
 
           <motion.p
@@ -283,7 +263,7 @@ export default function HowToHelpPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: smoothEase }}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-200/80"
           >
-            {tDonation('subtitle')}
+            {tDonation("subtitle")}
           </motion.p>
 
           {/* CTA buttons */}
@@ -298,14 +278,14 @@ export default function HowToHelpPage() {
               className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 font-heading text-lg font-semibold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40 cursor-pointer"
             >
               <HiHeart className="h-5 w-5" />
-              {t('donateNow')}
+              {t("donateNow")}
             </button>
             <a
               href="#plan-padrino"
               className="inline-flex items-center gap-2 rounded-full border-2 border-white/20 px-8 py-4 font-heading text-lg font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
             >
               <HiUserGroup className="h-5 w-5" />
-              {t('sponsorChild')}
+              {t("sponsorChild")}
             </a>
           </motion.div>
 
@@ -317,10 +297,7 @@ export default function HowToHelpPage() {
             className="mt-10 flex flex-wrap items-center justify-center gap-6"
           >
             {trustBadges.map((badge) => (
-              <div
-                key={badge.key}
-                className="flex items-center gap-2 text-sm text-primary-300/70"
-              >
+              <div key={badge.key} className="flex items-center gap-2 text-sm text-primary-300/70">
                 <badge.icon className="h-4 w-4 text-accent-400" />
                 <span>{tDonation(badge.key)}</span>
               </div>
@@ -335,7 +312,7 @@ export default function HowToHelpPage() {
       <section id="donar" className="relative section-padding overflow-hidden bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <ScrollReveal>
-            <DonationCheckout key={forceUSD ? 'usd' : 'cop'} forceUSD={forceUSD} />
+            <DonationCheckout key={forceUSD ? "usd" : "cop"} forceUSD={forceUSD} />
           </ScrollReveal>
         </div>
       </section>
@@ -348,11 +325,9 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                {t('threeWays')} <span className="text-primary-600">{t('changeLives')}</span>
+                {t("threeWays")} <span className="text-primary-600">{t("changeLives")}</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                {t('threeWaysSubtitle')}
-              </p>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">{t("threeWaysSubtitle")}</p>
             </div>
           </ScrollReveal>
 
@@ -376,18 +351,14 @@ export default function HowToHelpPage() {
                   <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-500/30 border border-red-400/40">
                     <HiHeart className="h-7 w-7 text-white" />
                   </div>
-                  <span className="mb-1 text-xs font-bold uppercase tracking-widest text-red-300">
-                    {t('option')} 1
-                  </span>
-                  <h3 className="mb-2 font-heading text-3xl font-bold text-white">{t('donate')}</h3>
-                  <p className="mb-6 text-sm leading-relaxed text-white/90">
-                    {t('donateDescription')}
-                  </p>
+                  <span className="mb-1 text-xs font-bold uppercase tracking-widest text-red-300">{t("option")} 1</span>
+                  <h3 className="mb-2 font-heading text-3xl font-bold text-white">{t("donate")}</h3>
+                  <p className="mb-6 text-sm leading-relaxed text-white/90">{t("donateDescription")}</p>
                   <button
                     onClick={handleDonateCOP}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-accent-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-accent-400 cursor-pointer"
                   >
-                    {t('donateNowBtn')}
+                    {t("donateNowBtn")}
                     <HiArrowRight className="h-4 w-4" />
                   </button>
                 </div>
@@ -413,23 +384,17 @@ export default function HowToHelpPage() {
                   <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-500/30 border border-primary-400/40">
                     <HiUserGroup className="h-7 w-7 text-white" />
                   </div>
-                  <span className="mb-1 text-xs font-bold uppercase tracking-widest text-primary-300">
-                    {t('option')} 2
-                  </span>
-                  <h3 className="mb-2 font-heading text-3xl font-bold text-white">
-                    {t('sponsorTitle')}
-                  </h3>
-                  <p className="mb-2 text-sm leading-relaxed text-white/90">
-                    {t('sponsorDescription')}
-                  </p>
+                  <span className="mb-1 text-xs font-bold uppercase tracking-widest text-primary-300">{t("option")} 2</span>
+                  <h3 className="mb-2 font-heading text-3xl font-bold text-white">{t("sponsorTitle")}</h3>
+                  <p className="mb-2 text-sm leading-relaxed text-white/90">{t("sponsorDescription")}</p>
                   <div className="mb-5 inline-flex w-fit items-center gap-1 rounded-full bg-white/15 px-3 py-1.5">
-                    <span className="text-sm font-bold text-accent-300">{t('sponsorStarting')}</span>
+                    <span className="text-sm font-bold text-accent-300">{t("sponsorStarting")}</span>
                   </div>
                   <Link
-                    href={'/plan-padrino'}
+                    href={"/plan-padrino"}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 font-heading font-semibold text-primary-700 transition-all duration-300 hover:bg-primary-50"
                   >
-                    {t('learnPlanPadrino')}
+                    {t("learnPlanPadrino")}
                     <HiArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -455,20 +420,14 @@ export default function HowToHelpPage() {
                   <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-green-500/30 border border-green-400/40">
                     <HiHand className="h-7 w-7 text-white" />
                   </div>
-                  <span className="mb-1 text-xs font-bold uppercase tracking-widest text-green-300">
-                    {t('option')} 3
-                  </span>
-                  <h3 className="mb-2 font-heading text-3xl font-bold text-white">
-                    {t('beVolunteer')}
-                  </h3>
-                  <p className="mb-6 text-sm leading-relaxed text-white/90">
-                    {t('volunteerDescription')}
-                  </p>
+                  <span className="mb-1 text-xs font-bold uppercase tracking-widest text-green-300">{t("option")} 3</span>
+                  <h3 className="mb-2 font-heading text-3xl font-bold text-white">{t("beVolunteer")}</h3>
+                  <p className="mb-6 text-sm leading-relaxed text-white/90">{t("volunteerDescription")}</p>
                   <Link
-                    href={'/voluntariado'}
+                    href={"/voluntariado"}
                     className="inline-flex w-fit items-center gap-2 rounded-full bg-green-500 px-6 py-3 font-heading font-semibold text-white transition-all duration-300 hover:bg-green-400"
                   >
-                    {t('wantToVolunteer')}
+                    {t("wantToVolunteer")}
                     <HiArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -481,10 +440,7 @@ export default function HowToHelpPage() {
       {/* ═══════════════════════════════════════════════════════
           4. PLAN PADRINO DETAIL SECTION
           ═══════════════════════════════════════════════════════ */}
-      <section
-        id="plan-padrino"
-        className="relative section-padding overflow-hidden bg-primary-50"
-      >
+      <section id="plan-padrino" className="relative section-padding overflow-hidden bg-primary-50">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left: Image */}
@@ -504,7 +460,7 @@ export default function HowToHelpPage() {
                       <HiHeart className="h-5 w-5 text-accent-600" />
                     </div>
                     <p className="text-sm font-medium text-gray-700">
-                      <span className="font-bold text-primary-700">+23</span> {t('yearsTransforming')}
+                      <span className="font-bold text-primary-700">+23</span> {t("yearsTransforming")}
                     </p>
                   </div>
                 </div>
@@ -515,15 +471,12 @@ export default function HowToHelpPage() {
             <ScrollReveal direction="right">
               <div>
                 <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-6">
-                  {t('planPadrinoSection')}
+                  {t("planPadrinoSection")}
                 </span>
                 <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                  {t('changeChildLife')}{' '}
-                  <span className="text-primary-600">{t('forever')}</span>
+                  {t("changeChildLife")} <span className="text-primary-600">{t("forever")}</span>
                 </h2>
-                <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                  {t('changeChildDescription')}
-                </p>
+                <p className="mt-4 text-lg leading-relaxed text-gray-600">{t("changeChildDescription")}</p>
 
                 {/* What it includes */}
                 <div className="mt-8 space-y-4">
@@ -540,21 +493,15 @@ export default function HowToHelpPage() {
                 {/* Price */}
                 <div className="mt-8 rounded-xl border border-accent-200 bg-accent-50 p-6">
                   <div className="flex items-baseline gap-2">
-                    <span className="font-heading text-4xl font-bold text-accent-700">
-                      {locale === 'en' ? '$25' : '$65.000'}
-                    </span>
-                    <span className="text-lg font-medium text-accent-600">
-                      {locale === 'en' ? 'USD/month' : 'COP/mes'}
-                    </span>
+                    <span className="font-heading text-4xl font-bold text-accent-700">{locale === "en" ? "$25" : "$65.000"}</span>
+                    <span className="text-lg font-medium text-accent-600">{locale === "en" ? "USD/month" : "COP/mes"}</span>
                   </div>
-                  <p className="mt-1 text-sm text-accent-600/70">
-                    {t('plansFromMonthly')}
-                  </p>
+                  <p className="mt-1 text-sm text-accent-600/70">{t("plansFromMonthly")}</p>
                   <Link
-                    href={'/plan-padrino'}
+                    href={"/plan-padrino"}
                     className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700"
                   >
-                    {t('viewDetailedPlans')}
+                    {t("viewDetailedPlans")}
                     <HiArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -565,7 +512,7 @@ export default function HowToHelpPage() {
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 hover:shadow-accent-500/40"
                 >
                   <HiHeart className="h-5 w-5" />
-                  {t('sponsorChildToday')}
+                  {t("sponsorChildToday")}
                 </a>
               </div>
             </ScrollReveal>
@@ -581,14 +528,12 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-accent-100 px-5 py-2 font-heading text-sm font-semibold text-accent-700 mb-4">
-                {tDonation('impact')}
+                {tDonation("impact")}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                {t('chooseImpact')} <span className="text-primary-600">{t('impactLevel')}</span>
+                {t("chooseImpact")} <span className="text-primary-600">{t("impactLevel")}</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                {t('chooseImpactSubtitle')}
-              </p>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">{t("chooseImpactSubtitle")}</p>
             </div>
           </ScrollReveal>
 
@@ -607,7 +552,7 @@ export default function HowToHelpPage() {
                       <div className="absolute top-0 right-0 rounded-bl-xl bg-accent-500 px-4 py-1.5">
                         <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white">
                           <HiStar className="h-3.5 w-3.5" />
-                          {t('popularBadge')}
+                          {t("popularBadge")}
                         </span>
                       </div>
                     )}
@@ -619,27 +564,21 @@ export default function HowToHelpPage() {
 
                     {/* Name & impact */}
                     <div className="flex-1 text-center md:text-left">
-                      <h3 className="font-heading text-2xl font-bold text-gray-900">
-                        {tPlan(`tiers.${tier.key}.name`)}
-                      </h3>
+                      <h3 className="font-heading text-2xl font-bold text-gray-900">{tPlan(`tiers.${tier.key}.name`)}</h3>
                       <p className="mt-1 text-gray-500">{t(`tierImpacts.${tier.key}`)}</p>
                     </div>
 
                     {/* Price */}
                     <div className="text-center md:text-right shrink-0">
                       <div className="font-heading text-2xl font-bold text-gray-900">
-                        ${locale === 'en'
-                          ? tier.amountUSD.toLocaleString(numberLocale)
-                          : tier.amountCOP.toLocaleString(numberLocale)}
-                        <span className="text-sm font-medium text-gray-400"> {locale === 'en' ? 'USD' : 'COP'}</span>
+                        ${locale === "en" ? tier.amountUSD.toLocaleString(numberLocale) : tier.amountCOP.toLocaleString(numberLocale)}
+                        <span className="text-sm font-medium text-gray-400"> {locale === "en" ? "USD" : "COP"}</span>
                       </div>
-                      <p className="text-xs text-gray-400">
-                        / {tPlan(`tiers.${tier.key}.period`)}
-                      </p>
+                      <p className="text-xs text-gray-400">/ {tPlan(`tiers.${tier.key}.period`)}</p>
                     </div>
 
                     {/* Donate button */}
-                    {locale === 'en' && tier.paypalPlanId ? (
+                    {locale === "en" && tier.paypalPlanId ? (
                       <a
                         href={`https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=${tier.paypalPlanId}`}
                         target="_blank"
@@ -647,18 +586,18 @@ export default function HowToHelpPage() {
                         className="inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 bg-[#0070ba] hover:bg-[#005ea6]"
                       >
                         <FaPaypal className="h-4 w-4" />
-                        {t('donateBtn')}
+                        {t("donateBtn")}
                       </a>
-                    ) : locale === 'en' ? (
+                    ) : locale === "en" ? (
                       <Link
-                        href={'/plan-padrino'}
+                        href={"/plan-padrino"}
                         className={`inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 ${
                           tier.highlighted
-                            ? 'bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20'
-                            : 'bg-primary-500 hover:bg-primary-400'
+                            ? "bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20"
+                            : "bg-primary-500 hover:bg-primary-400"
                         }`}
                       >
-                        {t('donateBtn')}
+                        {t("donateBtn")}
                         <HiArrowRight className="h-4 w-4" />
                       </Link>
                     ) : (
@@ -668,11 +607,11 @@ export default function HowToHelpPage() {
                         rel="noopener noreferrer"
                         className={`inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-white transition-all duration-300 ${
                           tier.highlighted
-                            ? 'bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20'
-                            : 'bg-primary-500 hover:bg-primary-400'
+                            ? "bg-accent-500 hover:bg-accent-400 shadow-md shadow-accent-500/20"
+                            : "bg-primary-500 hover:bg-primary-400"
                         }`}
                       >
-                        {t('donateBtn')}
+                        {t("donateBtn")}
                         <HiArrowRight className="h-4 w-4" />
                       </a>
                     )}
@@ -692,7 +631,7 @@ export default function HowToHelpPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-100 transition-colors group-hover:bg-primary-200">
                   <HiCurrencyDollar className="h-6 w-6 text-primary-600" />
                 </div>
-                {tDonation('donateUSD')}
+                {tDonation("donateUSD")}
               </button>
             </div>
           </ScrollReveal>
@@ -708,13 +647,11 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="text-center">
               <span className="inline-block rounded-full bg-white/10 px-5 py-2 font-heading text-sm font-semibold text-accent-400 mb-6">
-                {tDonation('nutritionTitle')}
+                {tDonation("nutritionTitle")}
               </span>
               <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">
-                {t('nutritionFuture')}{' '}
-                <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">
-                  {t('feedsFuture')}
-                </span>
+                {t("nutritionFuture")}{" "}
+                <span className="bg-gradient-to-r from-accent-400 to-accent-300 bg-clip-text text-transparent">{t("feedsFuture")}</span>
               </h2>
             </div>
           </ScrollReveal>
@@ -725,11 +662,9 @@ export default function HowToHelpPage() {
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/20">
                   <HiCurrencyDollar className="h-8 w-8 text-accent-400" />
                 </div>
-                <p className="font-heading text-5xl font-bold text-white">{locale === 'en' ? '$1.81' : '$7.045'}</p>
-                <p className="mt-2 text-lg font-medium text-primary-300">{t('costPerChildPerDay')}</p>
-                <p className="mt-3 text-sm text-primary-400/70">
-                  {t('realCostMeal')}
-                </p>
+                <p className="font-heading text-5xl font-bold text-white">{locale === "en" ? "$2.90" : "$11.292"}</p>
+                <p className="mt-2 text-lg font-medium text-primary-300">{t("costPerChildPerDay")}</p>
+                <p className="mt-3 text-sm text-primary-400/70">{t("realCostMeal")}</p>
               </div>
             </ScrollReveal>
 
@@ -739,10 +674,8 @@ export default function HowToHelpPage() {
                   <HiHeart className="h-8 w-8 text-green-400" />
                 </div>
                 <p className="font-heading text-5xl font-bold text-white">2,000+</p>
-                <p className="mt-2 text-lg font-medium text-primary-300">{t('snacksServed')}</p>
-                <p className="mt-3 text-sm text-primary-400/70">
-                  {t('thisQuarter')}
-                </p>
+                <p className="mt-2 text-lg font-medium text-primary-300">{t("snacksServed")}</p>
+                <p className="mt-3 text-sm text-primary-400/70">{t("thisQuarter")}</p>
               </div>
             </ScrollReveal>
           </div>
@@ -754,11 +687,9 @@ export default function HowToHelpPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-400 cursor-pointer"
               >
                 <HiHeart className="h-5 w-5" />
-                {t('donateForNutrition')}
+                {t("donateForNutrition")}
               </button>
-              <p className="mt-4 text-sm text-primary-400/60">
-                {t('feedChildDaily')}
-              </p>
+              <p className="mt-4 text-sm text-primary-400/60">{t("feedChildDaily")}</p>
             </div>
           </ScrollReveal>
         </div>
@@ -772,14 +703,12 @@ export default function HowToHelpPage() {
           <ScrollReveal>
             <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-green-100 px-5 py-2 font-heading text-sm font-semibold text-green-700 mb-4">
-                {tDonation('volunteerTitle')}
+                {tDonation("volunteerTitle")}
               </span>
               <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                {t('shareYour')} <span className="text-green-600">{t('talent')}</span>
+                {t("shareYour")} <span className="text-green-600">{t("talent")}</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
-                {tDonation('volunteerDescription')}
-              </p>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">{tDonation("volunteerDescription")}</p>
             </div>
           </ScrollReveal>
 
@@ -796,12 +725,8 @@ export default function HowToHelpPage() {
                     <div className={`mb-5 flex h-14 w-14 items-center justify-center rounded-xl ${area.iconBg}`}>
                       <Icon className="h-7 w-7" />
                     </div>
-                    <h3 className="mb-2 font-heading text-xl font-bold text-gray-900">
-                      {t(`volunteerAreas.${area.key}.title`)}
-                    </h3>
-                    <p className="flex-1 text-sm leading-relaxed text-gray-600">
-                      {t(`volunteerAreas.${area.key}.description`)}
-                    </p>
+                    <h3 className="mb-2 font-heading text-xl font-bold text-gray-900">{t(`volunteerAreas.${area.key}.title`)}</h3>
+                    <p className="flex-1 text-sm leading-relaxed text-gray-600">{t(`volunteerAreas.${area.key}.description`)}</p>
                   </motion.div>
                 </StaggerItem>
               );
@@ -818,11 +743,9 @@ export default function HowToHelpPage() {
                 className="inline-flex items-center gap-3 rounded-full bg-green-500 px-10 py-4 font-heading text-lg font-bold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:bg-green-400"
               >
                 <FaWhatsapp className="h-6 w-6" />
-                {t('volunteerWhatsApp')}
+                {t("volunteerWhatsApp")}
               </a>
-              <p className="mt-3 text-sm text-gray-400">
-                {t('volunteerWhatsAppDescription')}
-              </p>
+              <p className="mt-3 text-sm text-gray-400">{t("volunteerWhatsAppDescription")}</p>
             </div>
           </ScrollReveal>
         </div>
@@ -835,26 +758,15 @@ export default function HowToHelpPage() {
         <div className="mx-auto max-w-3xl px-4 lg:px-8">
           <ScrollReveal>
             <div className="mb-12 text-center">
-              <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">
-                FAQ
-              </span>
-              <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">
-                {tFaq('title')}
-              </h2>
-              <p className="mx-auto mt-4 max-w-lg text-gray-500">
-                {t('faqSubtitle')}
-              </p>
+              <span className="inline-block rounded-full bg-primary-100 px-5 py-2 font-heading text-sm font-semibold text-primary-700 mb-4">FAQ</span>
+              <h2 className="font-heading text-4xl font-bold text-gray-900 md:text-5xl">{tFaq("title")}</h2>
+              <p className="mx-auto mt-4 max-w-lg text-gray-500">{t("faqSubtitle")}</p>
             </div>
           </ScrollReveal>
 
           <div>
             {faqKeys.map((faqKey, index) => (
-              <FAQItem
-                key={faqKey}
-                question={t(`faqs.${faqKey}.q`)}
-                answer={t(`faqs.${faqKey}.a`)}
-                index={index}
-              />
+              <FAQItem key={faqKey} question={t(`faqs.${faqKey}.q`)} answer={t(`faqs.${faqKey}.a`)} index={index} />
             ))}
           </div>
         </div>
@@ -875,12 +787,8 @@ export default function HowToHelpPage() {
               <HiHeart className="h-8 w-8 text-white" />
             </div>
 
-            <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">
-              {t('finalCtaTitle')}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-              {t('finalCtaDescription')}
-            </p>
+            <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">{t("finalCtaTitle")}</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">{t("finalCtaDescription")}</p>
 
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -889,20 +797,20 @@ export default function HowToHelpPage() {
                 className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 font-heading font-bold text-accent-700 shadow-lg transition-all duration-300 hover:bg-gray-50 hover:shadow-xl cursor-pointer"
               >
                 <HiHeart className="h-5 w-5" />
-                {tDonation('donateCOP')}
+                {tDonation("donateCOP")}
               </button>
               <button
                 onClick={handleDonateUSD}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50 cursor-pointer"
               >
                 <HiCurrencyDollar className="h-5 w-5" />
-                {tDonation('donateUSD')}
+                {tDonation("donateUSD")}
               </button>
               <Link
-                href={'/contacto'}
+                href={"/contacto"}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-10 py-4 font-heading font-bold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/50"
               >
-                {tContact('contactUs')}
+                {tContact("contactUs")}
                 <HiArrowRight className="h-5 w-5" />
               </Link>
             </div>
@@ -910,10 +818,7 @@ export default function HowToHelpPage() {
             {/* Trust badges */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
               {trustBadges.map((badge) => (
-                <div
-                  key={badge.key}
-                  className="flex items-center gap-2 text-sm text-white/70"
-                >
+                <div key={badge.key} className="flex items-center gap-2 text-sm text-white/70">
                   <badge.icon className="h-4 w-4 text-white/90" />
                   <span>{tDonation(badge.key)}</span>
                 </div>

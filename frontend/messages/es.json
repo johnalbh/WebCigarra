@@ -245,13 +245,13 @@
   },
   "donation": {
     "title": "Tu Donación Transforma Vidas",
-    "subtitle": "Con tan solo $7.045 COP al día, un niño recibe alimentación nutritiva",
+    "subtitle": "Con tan solo $11.292 COP al día, garantizas que un niño reciba la alimentación nutritiva necesaria para su crecimiento y aprendizaje. Tu apoyo asegura que nuestros niños puedan soñar, crear y construir su propio futuro.",
     "donateCOP": "Donar en Pesos (COP)",
     "donateUSD": "Donar en Dólares (USD)",
     "monthly": "mensual",
     "impact": "Tu impacto",
     "sponsorTitle": "Plan Padrino",
-    "sponsorDescription": "Apadrina a un niño y sigue su progreso durante todo el año",
+    "sponsorDescription": "Apadrina a un niño en Ciudad Bolívar y transforma su vida con educación, alimentación y bienestar. Tu compromiso mensual les brinda la oportunidad de soñar en grande y crecer en un entorno lleno de posibilidades para su desarrollo integral",
     "volunteerTitle": "Voluntariado",
     "volunteerDescription": "Dona tu tiempo y talento. Buscamos voluntarios en educación, arte y deportes",
     "nutritionTitle": "Programa de Nutrición",
@@ -547,7 +547,7 @@
   "planPadrino": {
     "heroTagline": "Fundación Cigarra — Ciudad Bolívar, Bogotá",
     "heroTitle": "Padrino",
-    "heroDescription": "Apadrina a un niño en Ciudad Bolívar y transforma su vida con educación, alimentación y amor. Tu compromiso les da la oportunidad de soñar en grande.",
+    "heroDescription": "Apadrina a un niño en Ciudad Bolívar y transforma su vida con educación, alimentación y bienestar. Tu compromiso mensual les brinda la oportunidad de soñar en grande y crecer en un entorno lleno de posibilidades para su desarrollo integral.",
     "viewPlans": "Ver Planes",
     "howItWorks": "Cómo Funciona",
     "stepByStep": "Paso a Paso",
@@ -587,7 +587,10 @@
     "steps": {
       "choose": { "title": "Elige tu plan", "description": "Selecciona el plan de apadrinamiento que mejor se adapte a tus posibilidades." },
       "meet": { "title": "Conoce a tu apadrinado", "description": "Te presentamos al niño o niña que acompañarás en su proceso educativo." },
-      "follow": { "title": "Sigue su progreso", "description": "Recibe reportes personalizados con el avance académico y desarrollo de tu apadrinado." }
+      "follow": {
+        "title": "Sigue su progreso",
+        "description": "Recibe reportes personalizados con el avance académico y desarrollo de tu apadrinado."
+      }
     },
     "tiers": {
       "monthly": { "name": "Plan Mensual", "period": "mes", "description": "Apadrina 1 niño con educación y alimentación por un mes." },
@@ -617,20 +620,53 @@
       "socialMediaRecognition": "Reconocimiento en nuestras redes sociales"
     },
     "includedItems": {
-      "education": { "title": "Programa educativo", "description": "Refuerzo escolar, talleres y apoyo pedagógico integral para su formación académica." },
-      "nutrition": { "title": "Alimentación nutritiva diaria", "description": "Comida balanceada y nutritiva cada día por $7.045 COP, garantizando su bienestar." },
-      "reports": { "title": "Reportes personalizados de progreso", "description": "Informes detallados sobre el avance académico y desarrollo integral del niño." },
-      "certificate": { "title": "Certificado anual de impacto", "description": "Documento oficial que certifica tu aporte y el impacto generado en la vida del niño." },
+      "education": {
+        "title": "Programa educativo",
+        "description": "Refuerzo escolar, talleres y apoyo pedagógico integral para su formación académica."
+      },
+      "nutrition": {
+        "title": "Alimentación nutritiva diaria",
+        "description": "Comida balanceada y nutritiva cada día por $11.292 COP, garantizando su bienestar."
+      },
+      "reports": {
+        "title": "Reportes personalizados de progreso",
+        "description": "Informes detallados sobre el avance académico y desarrollo integral del niño."
+      },
+      "certificate": {
+        "title": "Certificado anual de impacto",
+        "description": "Documento oficial que certifica tu aporte y el impacto generado en la vida del niño."
+      },
       "photos": { "title": "Fotos y actualizaciones", "description": "Imágenes y noticias del día a día de tu apadrinado en la fundación." },
-      "letter": { "title": "Carta personalizada del niño", "description": "Una carta escrita por tu apadrinado donde comparte sus sueños y agradecimiento." }
+      "letter": {
+        "title": "Carta personalizada del niño",
+        "description": "Una carta escrita por tu apadrinado donde comparte sus sueños y agradecimiento."
+      }
     },
     "faqs": {
-      "taxDeductible": { "q": "¿Mi donación al Plan Padrino es deducible de impuestos?", "a": "Sí. La Fundación Cigarra es una entidad sin ánimo de lucro registrada con NIT 830.114.318-9. Todas las donaciones son deducibles de impuestos de acuerdo con la normativa tributaria colombiana vigente. Emitimos el certificado correspondiente para tu declaración de renta." },
-      "cancel": { "q": "¿Puedo cancelar o cambiar mi plan en cualquier momento?", "a": "Sí, puedes cancelar o cambiar tu plan en cualquier momento. Solo contáctanos por correo electrónico o WhatsApp y procesaremos el cambio. Si cancelas, el niño continuará siendo atendido por la fundación con otros recursos disponibles." },
-      "graduation": { "q": "¿Qué sucede si el niño que apadrino se gradúa o deja la fundación?", "a": "Si tu apadrinado se gradúa o deja la fundación, te notificamos y te asignamos un nuevo niño para que puedas continuar con tu apadrinamiento. También puedes elegir redirigir tu aporte a otro programa de la fundación." },
-      "payment": { "q": "¿Cómo puedo pagar?", "a": "Puedes pagar a través de nuestra plataforma segura DonarOnline, que acepta tarjetas de crédito, débito y transferencias bancarias. También ofrecemos la opción de donación en dólares americanos para padrinos internacionales." },
-      "visit": { "q": "¿Puedo conocer personalmente al niño que apadrino?", "a": "Sí, organizamos eventos anuales donde los padrinos pueden visitar la fundación y conocer a sus apadrinados. También puedes coordinar una visita en días hábiles contactándonos previamente." },
-      "percentage": { "q": "¿Qué porcentaje de mi donación llega directamente al niño?", "a": "El 100% de tu donación se destina directamente a los programas de la fundación. Los gastos administrativos son cubiertos por alianzas corporativas. Publicamos informes anuales de gestión financiera para total transparencia." }
+      "taxDeductible": {
+        "q": "¿Mi donación al Plan Padrino es deducible de impuestos?",
+        "a": "Sí. La Fundación Cigarra es una entidad sin ánimo de lucro registrada con NIT 830.114.318-9. Todas las donaciones son deducibles de impuestos de acuerdo con la normativa tributaria colombiana vigente. Emitimos el certificado correspondiente para tu declaración de renta."
+      },
+      "cancel": {
+        "q": "¿Puedo cancelar o cambiar mi plan en cualquier momento?",
+        "a": "Sí, puedes cancelar o cambiar tu plan en cualquier momento. Solo contáctanos por correo electrónico o WhatsApp y procesaremos el cambio. Si cancelas, el niño continuará siendo atendido por la fundación con otros recursos disponibles."
+      },
+      "graduation": {
+        "q": "¿Qué sucede si el niño que apadrino se gradúa o deja la fundación?",
+        "a": "Si tu apadrinado se gradúa o deja la fundación, te notificamos y te asignamos un nuevo niño para que puedas continuar con tu apadrinamiento. También puedes elegir redirigir tu aporte a otro programa de la fundación."
+      },
+      "payment": {
+        "q": "¿Cómo puedo pagar?",
+        "a": "Puedes pagar a través de nuestra plataforma segura DonarOnline, que acepta tarjetas de crédito, débito y transferencias bancarias. También ofrecemos la opción de donación en dólares americanos para padrinos internacionales."
+      },
+      "visit": {
+        "q": "¿Puedo conocer personalmente al niño que apadrino?",
+        "a": "Sí, organizamos eventos anuales donde los padrinos pueden visitar la fundación y conocer a sus apadrinados. También puedes coordinar una visita en días hábiles contactándonos previamente."
+      },
+      "percentage": {
+        "q": "¿Qué porcentaje de mi donación llega directamente al niño?",
+        "a": "El 100% de tu donación se destina directamente a los programas de la fundación. Los gastos administrativos son cubiertos por alianzas corporativas. Publicamos informes anuales de gestión financiera para total transparencia."
+      }
     },
     "trustBadges": {
       "nit": "NIT 830.114.318-9",
@@ -668,7 +704,7 @@
     "donate": "Dona",
     "donateDescription": "Tu donación financia educación, alimentación y materiales para niños en Ciudad Bolívar.",
     "sponsorTitle": "Apadrina un Niño",
-    "sponsorDescription": "El Plan Padrino cubre educación + alimentación de un niño. Recibes reportes de su progreso.",
+    "sponsorDescription": "Apadrina a un niño en Ciudad Bolívar y transforma su vida con educación, alimentación y bienestar. Tu compromiso mensual les brinda la oportunidad de soñar en grande y crecer en un entorno lleno de posibilidades para su desarrollo integral",
     "sponsorStarting": "Desde $65.000 COP/mes",
     "learnPlanPadrino": "Conocer el Plan Padrino",
     "beVolunteer": "Sé Voluntario",
@@ -694,7 +730,7 @@
     "snacksServed": "refrigerios servidos",
     "thisQuarter": "Este trimestre en nuestras jornadas de nutrición",
     "donateForNutrition": "Dona para Nutrición",
-    "feedChildDaily": "Con solo $7.045 COP al día puedes alimentar a un niño",
+    "feedChildDaily": "Con solo $11.292 COP al día puedes alimentar a un niño",
     "shareYour": "Comparte tu",
     "talent": "talento",
     "volunteerWhatsApp": "Quiero Ser Voluntario",
@@ -703,22 +739,60 @@
     "finalCtaTitle": "No dejes para mañana lo que puedes hacer hoy",
     "finalCtaDescription": "Cada día sin actuar es un día menos en la vida de un niño. Tu aporte de hoy construye el futuro de mañana.",
     "faqs": {
-      "howDonate": { "q": "¿Cómo puedo donar?", "a": "Puedes donar en línea a través de nuestra plataforma segura DonarOnline, en pesos colombianos o dólares americanos. También aceptamos transferencias bancarias directas." },
-      "taxDeductible": { "q": "¿Mi donación es deducible de impuestos?", "a": "Sí, la Fundación Cigarra es una entidad sin ánimo de lucro registrada con NIT 830.114.318-9. Las donaciones son deducibles de impuestos según la normativa colombiana vigente." },
-      "transparency": { "q": "¿Cómo sé que mi donación se usa correctamente?", "a": "Publicamos informes anuales de gestión y financieros. Los padrinos reciben reportes periódicos del progreso de su apadrinado. Estamos comprometidos con la transparencia total." },
-      "canVolunteer": { "q": "¿Puedo ser voluntario?", "a": "Sí, buscamos voluntarios en áreas de educación, arte, deportes, tecnología y gestión administrativa. Contáctanos por WhatsApp o correo electrónico para conocer las oportunidades disponibles." },
-      "whatIsPlanPadrino": { "q": "¿Qué es el Plan Padrino?", "a": "El Plan Padrino te permite apadrinar a un niño específico, cubrir sus necesidades educativas y de alimentación, y seguir su progreso durante todo el año académico con reportes personalizados." },
-      "isLegit": { "q": "¿Cómo puedo verificar que la fundación es real?", "a": "Somos una entidad sin ánimo de lucro registrada ante la Cámara de Comercio de Bogotá (NIT: 830.114.318-9) y reconocida como 501(c)(3) en Estados Unidos (EIN: 68-0505337). Puedes verificar nuestro estado en la página del IRS o en ProPublica Nonprofit Explorer. Llevamos más de 24 años sirviendo a la comunidad de Ciudad Bolívar." }
+      "howDonate": {
+        "q": "¿Cómo puedo donar?",
+        "a": "Puedes donar en línea a través de nuestra plataforma segura DonarOnline, en pesos colombianos o dólares americanos. También aceptamos transferencias bancarias directas."
+      },
+      "taxDeductible": {
+        "q": "¿Mi donación es deducible de impuestos?",
+        "a": "Sí, la Fundación Cigarra es una entidad sin ánimo de lucro registrada con NIT 830.114.318-9. Las donaciones son deducibles de impuestos según la normativa colombiana vigente."
+      },
+      "transparency": {
+        "q": "¿Cómo sé que mi donación se usa correctamente?",
+        "a": "Publicamos informes anuales de gestión y financieros. Los padrinos reciben reportes periódicos del progreso de su apadrinado. Estamos comprometidos con la transparencia total."
+      },
+      "canVolunteer": {
+        "q": "¿Puedo ser voluntario?",
+        "a": "Sí, buscamos voluntarios en áreas de educación, arte, deportes, tecnología y gestión administrativa. Contáctanos por WhatsApp o correo electrónico para conocer las oportunidades disponibles."
+      },
+      "whatIsPlanPadrino": {
+        "q": "¿Qué es el Plan Padrino?",
+        "a": "El Plan Padrino te permite apadrinar a un niño específico, cubrir sus necesidades educativas y de alimentación, y seguir su progreso durante todo el año académico con reportes personalizados."
+      },
+      "isLegit": {
+        "q": "¿Cómo puedo verificar que la fundación es real?",
+        "a": "Somos una entidad sin ánimo de lucro registrada ante la Cámara de Comercio de Bogotá (NIT: 830.114.318-9) y reconocida como 501(c)(3) en Estados Unidos (EIN: 68-0505337). Puedes verificar nuestro estado en la página del IRS o en ProPublica Nonprofit Explorer. Llevamos más de 24 años sirviendo a la comunidad de Ciudad Bolívar."
+      }
     },
     "volunteerAreas": {
-      "education": { "title": "Educación", "description": "Refuerzo escolar, talleres de lectura, apoyo en tareas y preparación de exámenes." },
-      "artsCulture": { "title": "Arte y Cultura", "description": "Música, danza y teatro. Creatividad y expresión artística." },
-      "sports": { "title": "Deportes y Recreación", "description": "Actividades deportivas, juegos cooperativos y desarrollo motriz." },
-      "management": { "title": "Gestión y Administración", "description": "Comunicaciones, diseño, contabilidad, asesoría legal y tecnología." }
+      "education": {
+        "title": "Educación y Capacitación",
+        "description": "Brinda refuerzo escolar, talleres de arte, música o tecnología, y apoya programas de alfabetización o preparación de exámenes."
+      },
+      "health": {
+        "title": "Salud y Bienestar",
+        "description": "Acompaña procesos psicológicos y emocionales, lidera talleres de hábitos saludables o dirige actividades deportivas y recreativas."
+      },
+      "community": {
+        "title": "Desarrollo Comunitario",
+        "description": "Apoya en la logística de eventos, proyectos de infraestructura y campañas de concienciación social en Ciudad Bolívar."
+      },
+      "nutrition": {
+        "title": "Seguridad Alimentaria",
+        "description": "Participa en la distribución de alimentos, apoya en la cocina o colabora en programas de agricultura urbana y huertos comunitarios."
+      },
+      "inclusion": {
+        "title": "Inclusión Social y Laboral",
+        "description": "Orienta en la búsqueda de empleo y dicta talleres de formación laboral o habilidades sociales para jóvenes y adultos."
+      },
+      "management": {
+        "title": "Gestión y Back-Office",
+        "description": "Pon tu talento profesional en diseño, contabilidad, asesoría legal o tecnología al servicio de la operación administrativa de la fundación."
+      }
     },
     "planPadrinoIncludes": {
       "education": "Programa educativo mensual completo",
-      "nutrition": "Alimentación nutritiva diaria ($7.045 COP/día)",
+      "nutrition": "Alimentación nutritiva diaria ($11.292 COP/día)",
       "reports": "Reportes personalizados de progreso",
       "certificate": "Certificado anual de impacto"
     },
@@ -735,10 +809,9 @@
     "heroTagline": "Fundación Cigarra",
     "heroTitle": "Sé",
     "heroHighlight": "Voluntario",
-    "heroDescription": "Comparte tu tiempo y talento con los niños de Ciudad Bolívar. Tu presencia puede cambiar la vida de un niño para siempre.",
+    "heroDescription": "Tu tiempo es el regalo más valioso. Únete a nuestra comunidad en Ciudad Bolívar y comparte tu talento para inspirar a niños y jóvenes. Con tu apoyo, ayudamos a construir nuevas historias, abrir nuevos horizontes y fortalecer el camino de nuestros pequeños.",
     "wantToVolunteer": "Quiero Ser Voluntario",
     "howToApply": "Cómo Aplicar",
-    "activeVolunteers": "+50 voluntarios activos",
     "yearsExperience": "+24 años de experiencia",
     "programsCount": "13 programas",
     "whyVolunteer": "Por qué ser voluntario",
@@ -746,9 +819,18 @@
     "joinHighlight": "unirte",
     "reasonsSubtitle": "Ser voluntario no solo transforma la vida de los niños, sino también la tuya.",
     "benefits": {
-      "impact": { "title": "Impacto real en la comunidad", "description": "Trabajas directamente con los niños y familias de Ciudad Bolívar, transformando vidas de forma tangible y duradera." },
-      "skills": { "title": "Desarrollo de habilidades", "description": "Fortalece tus competencias de liderazgo, comunicación y trabajo en equipo mientras compartes tu conocimiento." },
-      "network": { "title": "Red de personas comprometidas", "description": "Conecta con una comunidad de voluntarios y profesionales apasionados por la educación y el cambio social." }
+      "impact": {
+        "title": "Impacto real en la comunidad",
+        "description": "Trabaja directamente con los niños y familias de Ciudad Bolívar, transformando vidas de forma tangible y duradera."
+      },
+      "skills": {
+        "title": "Desarrollo de habilidades",
+        "description": "Fortalece tus competencias de liderazgo, comunicación y trabajo en equipo mientras compartes tu conocimiento y talento."
+      },
+      "network": {
+        "title": "Red de personas comprometidas",
+        "description": "Conecta con una comunidad de voluntarios y profesionales apasionados por la educación, el arte y el cambio social."
+      }
     },
     "areasTitle": "Áreas de Voluntariado",
     "findYour": "Encuentra tu",
@@ -756,24 +838,34 @@
     "areasSubtitle": "Tenemos espacio para todo tipo de talentos. Elige el área que más te apasione.",
     "areas": {
       "education": {
-        "title": "Educación",
-        "description": "Refuerzo escolar, talleres de lectura, apoyo en tareas y preparación de exámenes. Ayuda a los niños a alcanzar su máximo potencial académico.",
-        "activities": ["Refuerzo escolar", "Talleres de lectura", "Apoyo en tareas", "Preparación de exámenes"]
+        "title": "Educación y Capacitación",
+        "description": "Brinda refuerzo escolar, talleres de arte, música o tecnología, y apoya programas de alfabetización o preparación de exámenes.",
+        "activities": ["Refuerzo escolar", "Talleres de arte y música", "Apoyo en tecnología", "Preparación de exámenes"]
       },
-      "arts": {
-        "title": "Arte y Cultura",
-        "description": "Música, danza y teatro. Despierta la creatividad y el talento artístico de los niños.",
-        "activities": ["Música", "Danza", "Teatro"]
+      "health": {
+        "title": "Salud y Bienestar",
+        "description": "Acompaña procesos psicológicos y emocionales, lidera talleres de hábitos saludables o dirige actividades deportivas y recreativas.",
+        "activities": ["Acompañamiento psicológico", "Talleres de hábitos saludables", "Actividades deportivas", "Recreación"]
       },
-      "sports": {
-        "title": "Deportes y Recreación",
-        "description": "Actividades deportivas, juegos cooperativos y desarrollo motriz. Promueve la salud física y la sana convivencia.",
-        "activities": ["Actividades deportivas", "Juegos cooperativos", "Desarrollo motriz"]
+      "community": {
+        "title": "Desarrollo Comunitario",
+        "description": "Apoya en la logística de eventos, proyectos de infraestructura y campañas de concienciación social en Ciudad Bolívar.",
+        "activities": ["Logística de eventos", "Proyectos de infraestructura", "Campañas sociales", "Jornadas comunitarias"]
+      },
+      "nutrition": {
+        "title": "Seguridad Alimentaria",
+        "description": "Participa en la distribución de alimentos, apoya en la cocina o colabora en programas de agricultura urbana y huertos comunitarios.",
+        "activities": ["Distribución de alimentos", "Apoyo en cocina", "Agricultura urbana", "Huertos comunitarios"]
+      },
+      "inclusion": {
+        "title": "Inclusión Social y Laboral",
+        "description": "Orienta en la búsqueda de empleo y dicta talleres de formación laboral o habilidades sociales para jóvenes y adultos.",
+        "activities": ["Orientación laboral", "Talleres de formación", "Habilidades sociales", "Mentoría"]
       },
       "management": {
-        "title": "Gestión y Administración",
-        "description": "Comunicaciones, diseño, contabilidad, asesoría legal y tecnología. Apoya desde el back-office para que todo funcione.",
-        "activities": ["Comunicaciones", "Diseño", "Contabilidad", "Asesoría legal", "Tecnología"]
+        "title": "Gestión y Back-Office",
+        "description": "Pon tu talento profesional en diseño, contabilidad, asesoría legal o tecnología al servicio de la operación administrativa de la fundación.",
+        "activities": ["Diseño", "Contabilidad", "Asesoría legal", "Tecnología"]
       }
     },
     "requirementsTitle": "Requisitos",
@@ -782,7 +874,7 @@
     "requirementsSubtitle": "Solo necesitas ganas de ayudar y cumplir estos requisitos básicos.",
     "requirements": {
       "age": "Ser mayor de 18 años",
-      "availability": "Disponibilidad mínima de 4 horas semanales",
+      "availability": "Disponibilidad mínima de 2 horas semanales",
       "passion": "Pasión por la educación y el trabajo social",
       "background": "Certificado de antecedentes (requerido por ley)"
     },
@@ -816,9 +908,18 @@
     "apply": "aplicar",
     "processSubtitle": "En 3 sencillos pasos puedes unirte a nuestro equipo de voluntarios.",
     "applicationSteps": {
-      "contact": { "title": "Contáctanos", "description": "Escríbenos por WhatsApp o correo electrónico para contarnos tu interés y disponibilidad. Te responderemos en menos de 24 horas." },
-      "interview": { "title": "Entrevista", "description": "Agendamos una breve entrevista para conocerte mejor, entender tus motivaciones y asignarte el área más adecuada." },
-      "start": { "title": "Inducción y arranque", "description": "Participas en una jornada de inducción donde conocerás la fundación, los programas y los niños. ¡Luego, a trabajar!" }
+      "contact": {
+        "title": "Contáctanos",
+        "description": "Escríbenos por WhatsApp o correo electrónico para contarnos tu interés y disponibilidad. Te responderemos en menos de 24 horas."
+      },
+      "interview": {
+        "title": "Entrevista",
+        "description": "Agendamos una breve entrevista para conocerte mejor, entender tus motivaciones y asignarte el área más adecuada."
+      },
+      "start": {
+        "title": "Inducción y arranque",
+        "description": "Participas en una jornada de inducción donde conocerás la fundación, los programas y los niños. ¡Luego, a trabajar!"
+      }
     },
     "ctaTitle": "Tu tiempo puede cambiar una vida",
     "ctaDescription": "Cada hora que compartes con los niños de Ciudad Bolívar es una semilla de esperanza. Únete a nuestro equipo de voluntarios y sé parte del cambio.",
@@ -839,22 +940,52 @@
     "ally": "aliado",
     "whyPartnerSubtitle": "Invertir en impacto social es invertir en el futuro de tu empresa y de Colombia.",
     "benefits": {
-      "csr": { "title": "Responsabilidad Social Empresarial", "description": "Fortalece la estrategia RSE de tu empresa con un aliado que lleva más de 24 años generando impacto real en una de las comunidades más vulnerables de Bogotá." },
-      "tax": { "title": "Beneficios Tributarios", "description": "Las donaciones a la Fundación Cigarra son deducibles de impuestos según el Estatuto Tributario colombiano. NIT: 830.114.318-9. Certificado de donación incluido." },
-      "measurable": { "title": "Impacto Medible y Reportable", "description": "Recibe informes detallados del impacto de tu inversión social: número de beneficiarios, indicadores de resultado y evidencia fotográfica." },
-      "brand": { "title": "Fortalecimiento de Marca", "description": "Asocia tu marca con una causa de alto impacto social. Visibilidad en nuestros canales, eventos y reportes anuales ante más de 1.877 beneficiarios y sus familias." }
+      "csr": {
+        "title": "Responsabilidad Social Empresarial",
+        "description": "Fortalece la estrategia RSE de tu empresa con un aliado que lleva más de 24 años generando impacto real en una de las comunidades más vulnerables de Bogotá."
+      },
+      "tax": {
+        "title": "Beneficios Tributarios",
+        "description": "Las donaciones a la Fundación Cigarra son deducibles de impuestos según el Estatuto Tributario colombiano. NIT: 830.114.318-9. Certificado de donación incluido."
+      },
+      "measurable": {
+        "title": "Impacto Medible y Reportable",
+        "description": "Recibe informes detallados del impacto de tu inversión social: número de beneficiarios, indicadores de resultado y evidencia fotográfica."
+      },
+      "brand": {
+        "title": "Fortalecimiento de Marca",
+        "description": "Asocia tu marca con una causa de alto impacto social. Visibilidad en nuestros canales, eventos y reportes anuales ante más de 1.877 beneficiarios y sus familias."
+      }
     },
     "modelsTitle": "Modelos de Alianza",
     "waysTo": "Formas de",
     "collaborate": "colaborar",
     "modelsSubtitle": "Ofrecemos diferentes modelos de alianza para adaptarnos a las necesidades y objetivos de cada empresa.",
     "models": {
-      "donation": { "title": "Donación Corporativa", "description": "Aportes monetarios con certificado de donación oficial para deducción tributaria. Montos flexibles según la capacidad de tu empresa." },
-      "volunteering": { "title": "Voluntariado Corporativo", "description": "Organiza jornadas de voluntariado para tus empleados. Actividades de team building con impacto social real en educación, arte y recreación." },
-      "sponsorship": { "title": "Patrocinio de Programas", "description": "Patrocina uno de nuestros 14 programas activos: educación, música, danza, artes, tecnología, biblioteca y más." },
-      "inKind": { "title": "Donación en Especie", "description": "Aporta materiales escolares, equipos tecnológicos, instrumentos musicales, alimentos, mobiliario o implementos deportivos." },
-      "cobranding": { "title": "Co-branding y Alianzas", "description": "Alianzas estratégicas para visibilidad mutua. Tu marca presente en nuestros eventos, redes sociales, material impreso y reportes de impacto." },
-      "planPadrino": { "title": "Plan Padrino Empresarial", "description": "Tu empresa apadrina a uno o más niños durante un año completo. Incluye educación, alimentación, acceso a todos los programas y reportes personalizados del progreso de cada beneficiario." }
+      "donation": {
+        "title": "Donación Corporativa",
+        "description": "Aportes monetarios con certificado de donación oficial para deducción tributaria. Montos flexibles según la capacidad de tu empresa."
+      },
+      "volunteering": {
+        "title": "Voluntariado Corporativo",
+        "description": "Organiza jornadas de voluntariado para tus empleados. Actividades de team building con impacto social real en educación, arte y recreación."
+      },
+      "sponsorship": {
+        "title": "Patrocinio de Programas",
+        "description": "Patrocina uno de nuestros 14 programas activos: educación, música, danza, artes, tecnología, biblioteca y más."
+      },
+      "inKind": {
+        "title": "Donación en Especie",
+        "description": "Aporta materiales escolares, equipos tecnológicos, instrumentos musicales, alimentos, mobiliario o implementos deportivos."
+      },
+      "cobranding": {
+        "title": "Co-branding y Alianzas",
+        "description": "Alianzas estratégicas para visibilidad mutua. Tu marca presente en nuestros eventos, redes sociales, material impreso y reportes de impacto."
+      },
+      "planPadrino": {
+        "title": "Plan Padrino Empresarial",
+        "description": "Tu empresa apadrina a uno o más niños durante un año completo. Incluye educación, alimentación, acceso a todos los programas y reportes personalizados del progreso de cada beneficiario."
+      }
     },
     "consult": "Consultar",
     "padrinoSection": {
@@ -987,10 +1118,22 @@
       "highlight": "funciona",
       "subtitle": "Del primer contacto al impacto medible en 4 simples pasos.",
       "steps": {
-        "contact": { "title": "Contacto Inicial", "description": "Escríbenos por WhatsApp, email o nuestro formulario. Nuestro equipo corporativo responde en menos de 24 horas." },
-        "proposal": { "title": "Propuesta a tu Medida", "description": "Diseñamos una alianza alineada con los objetivos RSE de tu empresa, presupuesto y área de impacto preferida." },
-        "agreement": { "title": "Acuerdo de Alianza", "description": "Firma un convenio sencillo. Expedimos tu certificado de donación para deducción tributaria de inmediato." },
-        "impact": { "title": "Reportes de Impacto", "description": "Recibe reportes trimestrales con fotos, métricas e historias. Ve exactamente cómo tu inversión transforma vidas." }
+        "contact": {
+          "title": "Contacto Inicial",
+          "description": "Escríbenos por WhatsApp, email o nuestro formulario. Nuestro equipo corporativo responde en menos de 24 horas."
+        },
+        "proposal": {
+          "title": "Propuesta a tu Medida",
+          "description": "Diseñamos una alianza alineada con los objetivos RSE de tu empresa, presupuesto y área de impacto preferida."
+        },
+        "agreement": {
+          "title": "Acuerdo de Alianza",
+          "description": "Firma un convenio sencillo. Expedimos tu certificado de donación para deducción tributaria de inmediato."
+        },
+        "impact": {
+          "title": "Reportes de Impacto",
+          "description": "Recibe reportes trimestrales con fotos, métricas e historias. Ve exactamente cómo tu inversión transforma vidas."
+        }
       }
     },
     "testimonials": {
@@ -999,9 +1142,21 @@
       "highlight": "aliados reales",
       "subtitle": "Empresas que se han aliado con nosotros comparten su experiencia.",
       "items": {
-        "saintGeorge": { "quote": "Aliarnos con la Fundación Cigarra ha sido una de las iniciativas RSE más gratificantes para nuestra comunidad escolar. La transparencia y dedicación de su equipo es notable.", "author": "Colegio Saint George", "role": "Aliado Platinum desde 2018" },
-        "karelsie": { "quote": "La Fundación Cigarra entrega reportes de impacto detallados que compartimos con nuestra junta directiva. Su trabajo con los niños de Ciudad Bolívar realmente transforma vidas.", "author": "Fundación Karelsie", "role": "Aliado Platinum" },
-        "microsoft": { "quote": "Tecnología para el bien social. Estamos orgullosos de apoyar una organización que lleva alfabetización digital y educación STEM a comunidades vulnerables.", "author": "Microsoft Colombia", "role": "Aliado Gold" }
+        "saintGeorge": {
+          "quote": "Aliarnos con la Fundación Cigarra ha sido una de las iniciativas RSE más gratificantes para nuestra comunidad escolar. La transparencia y dedicación de su equipo es notable.",
+          "author": "Colegio Saint George",
+          "role": "Aliado Platinum desde 2018"
+        },
+        "karelsie": {
+          "quote": "La Fundación Cigarra entrega reportes de impacto detallados que compartimos con nuestra junta directiva. Su trabajo con los niños de Ciudad Bolívar realmente transforma vidas.",
+          "author": "Fundación Karelsie",
+          "role": "Aliado Platinum"
+        },
+        "microsoft": {
+          "quote": "Tecnología para el bien social. Estamos orgullosos de apoyar una organización que lleva alfabetización digital y educación STEM a comunidades vulnerables.",
+          "author": "Microsoft Colombia",
+          "role": "Aliado Gold"
+        }
       }
     },
     "faq": {
@@ -1009,12 +1164,30 @@
       "title": "Preguntas comunes de",
       "highlight": "donantes corporativos",
       "items": {
-        "taxDeduction": { "question": "¿Cuánto puede deducir mi empresa?", "answer": "Las donaciones generan un descuento tributario del 25% sobre el valor donado, que se descuenta directamente del impuesto de renta (Art. 257 del Estatuto Tributario). Si este año no aplicas todo el descuento, puedes usarlo en los próximos 4 periodos gravables." },
-        "certificate": { "question": "¿Recibo certificado de donación?", "answer": "Sí. Expedimos un certificado de donación oficial por email dentro de las 48 horas siguientes a tu aporte. Este certificado es válido como soporte para tu declaración de renta ante la DIAN." },
-        "minimumDonation": { "question": "¿Hay un monto mínimo de donación?", "answer": "No hay mínimo. Recibimos aportes de cualquier monto. Para alianzas corporativas, la mayoría de empresas inician con $5.000.000-$25.000.000 COP anuales, pero cualquier monto hace la diferencia." },
-        "howFundsUsed": { "question": "¿Cómo se usan los fondos?", "answer": "El 100% de las donaciones va directamente a nuestros programas: educación, alimentación diaria (desayuno, almuerzo, media tarde), música, artes, tecnología, deportes y apoyo psicológico para 192 niños en Ciudad Bolívar." },
-        "reporting": { "question": "¿Qué tipo de reportes recibo?", "answer": "Los aliados corporativos reciben reportes trimestrales de impacto con número de beneficiarios, resultados de programas, fotos e historias. Los donantes anuales también reciben una carta de impacto personalizada e invitación a eventos." },
-        "verify": { "question": "¿Cómo verifico que son una entidad legítima?", "answer": "Somos ESAL registrada en la Cámara de Comercio de Bogotá (NIT: 830.114.318-9) con más de 24 años de operación continua. También somos 501(c)(3) en EE.UU. (EIN: 68-0505337). Nuestras finanzas son auditadas anualmente." }
+        "taxDeduction": {
+          "question": "¿Cuánto puede deducir mi empresa?",
+          "answer": "Las donaciones generan un descuento tributario del 25% sobre el valor donado, que se descuenta directamente del impuesto de renta (Art. 257 del Estatuto Tributario). Si este año no aplicas todo el descuento, puedes usarlo en los próximos 4 periodos gravables."
+        },
+        "certificate": {
+          "question": "¿Recibo certificado de donación?",
+          "answer": "Sí. Expedimos un certificado de donación oficial por email dentro de las 48 horas siguientes a tu aporte. Este certificado es válido como soporte para tu declaración de renta ante la DIAN."
+        },
+        "minimumDonation": {
+          "question": "¿Hay un monto mínimo de donación?",
+          "answer": "No hay mínimo. Recibimos aportes de cualquier monto. Para alianzas corporativas, la mayoría de empresas inician con $5.000.000-$25.000.000 COP anuales, pero cualquier monto hace la diferencia."
+        },
+        "howFundsUsed": {
+          "question": "¿Cómo se usan los fondos?",
+          "answer": "El 100% de las donaciones va directamente a nuestros programas: educación, alimentación diaria (desayuno, almuerzo, media tarde), música, artes, tecnología, deportes y apoyo psicológico para 192 niños en Ciudad Bolívar."
+        },
+        "reporting": {
+          "question": "¿Qué tipo de reportes recibo?",
+          "answer": "Los aliados corporativos reciben reportes trimestrales de impacto con número de beneficiarios, resultados de programas, fotos e historias. Los donantes anuales también reciben una carta de impacto personalizada e invitación a eventos."
+        },
+        "verify": {
+          "question": "¿Cómo verifico que son una entidad legítima?",
+          "answer": "Somos ESAL registrada en la Cámara de Comercio de Bogotá (NIT: 830.114.318-9) con más de 24 años de operación continua. También somos 501(c)(3) en EE.UU. (EIN: 68-0505337). Nuestras finanzas son auditadas anualmente."
+        }
       }
     },
     "ctaTitle": "Tu empresa puede cambiar la historia de un niño",
@@ -1293,7 +1466,7 @@
       },
       "nutrition": {
         "title": "Alimentación Nutritiva Diaria",
-        "description": "Desayuno, almuerzo y merienda por solo $7.045 COP/día por niño — nutriendo mentes y cuerpos."
+        "description": "Desayuno, almuerzo y merienda por solo $11.292 COP/día por niño — nutriendo mentes y cuerpos."
       },
       "arts": {
         "title": "Música, Danza y Artes",

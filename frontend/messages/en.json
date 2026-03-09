@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Cigarra Foundation — 501(c)(3) Nonprofit | Feed & Educate Children in Colombia",
-    "description": "For $1.80/day, feed and educate a child in Bogotá. IRS-recognized 501(c)(3) nonprofit serving 1,800+ children since 2002. 100% tax-deductible — every dollar goes directly to kids. EIN: 68-0505337."
+    "description": "For $2.90/day, feed and educate a child in Bogotá. IRS-recognized 501(c)(3) nonprofit serving 1,800+ children since 2002. 100% tax-deductible — every dollar goes directly to kids. EIN: 68-0505337."
   },
   "nav": {
     "home": "Home",
@@ -42,7 +42,7 @@
     "title": "Give a child in Colombia",
     "titleHighlight": "education, meals",
     "titleSuffix": "and a future",
-    "description": "For just $1.80 a day, you can feed and educate a child in Bogotá. 1,877 children served across 13 programs since 2002. 100% tax-deductible.",
+    "description": "For just $2.90 a day, you can feed and educate a child in Bogotá. 1,877 children served across 13 programs since 2002. 100% tax-deductible.",
     "cta_donate": "Donate Now — It's Tax-Deductible",
     "cta_programs": "See How We Use Your Gift",
     "scroll": "See our impact",
@@ -245,13 +245,13 @@
   },
   "donation": {
     "title": "Your Gift Changes a Child's Life",
-    "subtitle": "$1.80/day feeds a child — $25/month covers education + meals. Every dollar is tax-deductible.",
+    "subtitle": "$2.90/day feeds a child — $25/month covers education + meals. Every dollar is tax-deductible.",
     "donateCOP": "Donate in USD",
     "donateUSD": "Donate in USD",
     "monthly": "monthly",
     "impact": "Your impact",
     "sponsorTitle": "Sponsor a Child",
-    "sponsorDescription": "From $25/month — covers education + daily meals. You get progress reports & photos.",
+    "sponsorDescription": "Sponsor a child in Ciudad Bolívar and transform their life with education, meals, and well-being. Your monthly commitment gives them the opportunity to dream big and grow in an environment full of possibilities for their integral development.",
     "volunteerTitle": "Volunteer",
     "volunteerDescription": "Teach, mentor, or help remotely from the U.S. — no travel required",
     "nutritionTitle": "Nutrition Program",
@@ -634,7 +634,7 @@
       },
       "nutrition": {
         "title": "Daily nutritious meals",
-        "description": "Balanced and nutritious food every day for $1.80 USD, ensuring their well-being."
+        "description": "Balanced and nutritious food every day for $2.90 USD, ensuring their well-being."
       },
       "reports": {
         "title": "Personalized progress reports",
@@ -712,7 +712,7 @@
     "donate": "Make a Gift",
     "donateDescription": "One-time or monthly — 100% of your gift funds education, meals, and supplies. Tax receipt emailed instantly.",
     "sponsorTitle": "Sponsor a Child",
-    "sponsorDescription": "From $25/month — covers education + daily meals. You get progress reports, photos & letters.",
+    "sponsorDescription": "Sponsor a child in Ciudad Bolívar and transform their life with education, meals, and well-being. Your monthly commitment gives them the opportunity to dream big and grow in an environment full of possibilities for their integral development.",
     "sponsorStarting": "Starting at $25/month",
     "learnPlanPadrino": "Start Sponsoring",
     "beVolunteer": "Volunteer",
@@ -738,7 +738,7 @@
     "snacksServed": "meals served",
     "thisQuarter": "this quarter across our nutrition programs",
     "donateForNutrition": "Fund a Child's Meals",
-    "feedChildDaily": "Just $1.80/day feeds a hungry child — that's less than a cup of coffee",
+    "feedChildDaily": "Just $2.90/day feeds a hungry child — that's less than a cup of coffee",
     "shareYour": "Share your",
     "talent": "skills",
     "volunteerWhatsApp": "Sign Up to Volunteer",
@@ -773,14 +773,34 @@
       }
     },
     "volunteerAreas": {
-      "education": { "title": "Education", "description": "Academic tutoring, reading workshops, homework help, and exam preparation." },
-      "artsCulture": { "title": "Arts & Culture", "description": "Music, dance, and theater. Creativity and artistic expression." },
-      "sports": { "title": "Sports & Recreation", "description": "Sports activities, cooperative games, and motor development." },
-      "management": { "title": "Management & Administration", "description": "Communications, design, accounting, legal advice, and technology." }
+      "education": {
+        "title": "Education & Training",
+        "description": "Provide academic tutoring, art, music or technology workshops, and support literacy or exam preparation programs."
+      },
+      "health": {
+        "title": "Health & Well-being",
+        "description": "Support psychological and emotional processes, lead healthy habits workshops, or direct sports and recreational activities."
+      },
+      "community": {
+        "title": "Community Development",
+        "description": "Help with event logistics, infrastructure projects, and social awareness campaigns in Ciudad Bolívar."
+      },
+      "nutrition": {
+        "title": "Food Security",
+        "description": "Participate in food distribution, help in the kitchen, or collaborate in urban agriculture and community garden programs."
+      },
+      "inclusion": {
+        "title": "Social & Job Inclusion",
+        "description": "Guide job searches and lead vocational training or social skills workshops for youth and adults."
+      },
+      "management": {
+        "title": "Management & Back-Office",
+        "description": "Put your professional talent in design, accounting, legal advice, or technology at the service of the foundation's operations."
+      }
     },
     "planPadrinoIncludes": {
       "education": "Complete monthly educational program",
-      "nutrition": "Daily nutritious meals ($1.80 USD/day)",
+      "nutrition": "Daily nutritious meals ($2.90 USD/day)",
       "reports": "Personalized progress reports",
       "certificate": "Annual impact certificate"
     },
@@ -800,7 +820,7 @@
     "heroDescription": "Help children in Colombia from your home in the U.S. — teach English, mentor, fundraise, or manage social media. No travel required.",
     "wantToVolunteer": "Sign Up to Volunteer",
     "howToApply": "How to Apply",
-    "activeVolunteers": "50+ active volunteers",
+
     "yearsExperience": "24+ years of experience",
     "programsCount": "13 programs",
     "whyVolunteer": "Why volunteer",
@@ -810,15 +830,15 @@
     "benefits": {
       "impact": {
         "title": "Real community impact",
-        "description": "You work directly with the children and families of Ciudad Bolívar, transforming lives in a tangible and lasting way."
+        "description": "Work directly with the children and families of Ciudad Bolívar, transforming lives in a tangible and lasting way."
       },
       "skills": {
         "title": "Skill development",
-        "description": "Strengthen your leadership, communication, and teamwork skills while sharing your knowledge."
+        "description": "Strengthen your leadership, communication, and teamwork skills while sharing your knowledge and talent."
       },
       "network": {
         "title": "Network of committed people",
-        "description": "Connect with a community of volunteers and professionals passionate about education and social change."
+        "description": "Connect with a community of volunteers and professionals passionate about education, art, and social change."
       }
     },
     "areasTitle": "Volunteer Areas",
@@ -827,24 +847,34 @@
     "areasSubtitle": "We have room for all kinds of talents. Choose the area you're most passionate about.",
     "areas": {
       "education": {
-        "title": "Education",
-        "description": "Academic tutoring, reading workshops, homework help, and exam preparation. Help children reach their full academic potential.",
-        "activities": ["Academic tutoring", "Reading workshops", "Homework help", "Exam preparation"]
+        "title": "Education & Training",
+        "description": "Provide academic tutoring, art, music or technology workshops, and support literacy or exam preparation programs.",
+        "activities": ["Academic tutoring", "Art & music workshops", "Technology support", "Exam preparation"]
       },
-      "arts": {
-        "title": "Arts & Culture",
-        "description": "Music, dance, and theater. Awaken children's creativity and artistic talent.",
-        "activities": ["Music", "Dance", "Theater"]
+      "health": {
+        "title": "Health & Well-being",
+        "description": "Support psychological and emotional processes, lead healthy habits workshops, or direct sports and recreational activities.",
+        "activities": ["Psychological support", "Healthy habits workshops", "Sports activities", "Recreation"]
       },
-      "sports": {
-        "title": "Sports & Recreation",
-        "description": "Sports activities, cooperative games, and motor development. Promote physical health and healthy coexistence.",
-        "activities": ["Sports activities", "Cooperative games", "Motor development"]
+      "community": {
+        "title": "Community Development",
+        "description": "Help with event logistics, infrastructure projects, and social awareness campaigns in Ciudad Bolívar.",
+        "activities": ["Event logistics", "Infrastructure projects", "Social campaigns", "Community outreach"]
+      },
+      "nutrition": {
+        "title": "Food Security",
+        "description": "Participate in food distribution, help in the kitchen, or collaborate in urban agriculture and community garden programs.",
+        "activities": ["Food distribution", "Kitchen support", "Urban agriculture", "Community gardens"]
+      },
+      "inclusion": {
+        "title": "Social & Job Inclusion",
+        "description": "Guide job searches and lead vocational training or social skills workshops for youth and adults.",
+        "activities": ["Job counseling", "Vocational training", "Social skills", "Mentoring"]
       },
       "management": {
-        "title": "Management & Administration",
-        "description": "Communications, design, accounting, legal advice, and technology. Support from behind the scenes to keep everything running.",
-        "activities": ["Communications", "Design", "Accounting", "Legal advice", "Technology"]
+        "title": "Management & Back-Office",
+        "description": "Put your professional talent in design, accounting, legal advice, or technology at the service of the foundation's operations.",
+        "activities": ["Design", "Accounting", "Legal advice", "Technology"]
       }
     },
     "requirementsTitle": "Requirements",
@@ -853,7 +883,7 @@
     "requirementsSubtitle": "You just need the desire to help and meet these basic requirements.",
     "requirements": {
       "age": "Be at least 18 years old",
-      "availability": "Minimum availability of 4 hours per week",
+      "availability": "Minimum availability of 2 hours per week",
       "passion": "Passion for education and social work",
       "background": "Background check certificate (required by law)"
     },
@@ -1097,10 +1127,22 @@
       "highlight": "it works",
       "subtitle": "From first contact to measurable impact in 4 simple steps.",
       "steps": {
-        "contact": { "title": "Initial Contact", "description": "Reach out via WhatsApp, email, or our form. Our corporate team responds within 24 hours." },
-        "proposal": { "title": "Custom Proposal", "description": "We design a partnership tailored to your company's CSR goals, budget, and preferred impact area." },
-        "agreement": { "title": "Partnership Agreement", "description": "Sign a simple partnership agreement. We issue your tax-deductible donation receipt immediately." },
-        "impact": { "title": "Impact Reports", "description": "Receive quarterly reports with photos, metrics, and stories. See exactly how your investment transforms lives." }
+        "contact": {
+          "title": "Initial Contact",
+          "description": "Reach out via WhatsApp, email, or our form. Our corporate team responds within 24 hours."
+        },
+        "proposal": {
+          "title": "Custom Proposal",
+          "description": "We design a partnership tailored to your company's CSR goals, budget, and preferred impact area."
+        },
+        "agreement": {
+          "title": "Partnership Agreement",
+          "description": "Sign a simple partnership agreement. We issue your tax-deductible donation receipt immediately."
+        },
+        "impact": {
+          "title": "Impact Reports",
+          "description": "Receive quarterly reports with photos, metrics, and stories. See exactly how your investment transforms lives."
+        }
       }
     },
     "testimonials": {
@@ -1109,9 +1151,21 @@
       "highlight": "real partners",
       "subtitle": "Companies that have partnered with us share their experience.",
       "items": {
-        "saintGeorge": { "quote": "Partnering with Fundacion Cigarra has been one of the most rewarding CSR initiatives for our school community. The transparency and dedication of their team is remarkable.", "author": "Saint George School", "role": "Platinum Partner since 2018" },
-        "karelsie": { "quote": "The Cigarra Foundation provides detailed impact reports that we share with our board. Their work with children in Ciudad Bolivar is truly transforming lives.", "author": "Karelsie Foundation", "role": "Platinum Partner" },
-        "microsoft": { "quote": "Technology for social good. We are proud to support an organization that brings digital literacy and STEM education to underserved communities.", "author": "Microsoft Colombia", "role": "Gold Partner" }
+        "saintGeorge": {
+          "quote": "Partnering with Fundacion Cigarra has been one of the most rewarding CSR initiatives for our school community. The transparency and dedication of their team is remarkable.",
+          "author": "Saint George School",
+          "role": "Platinum Partner since 2018"
+        },
+        "karelsie": {
+          "quote": "The Cigarra Foundation provides detailed impact reports that we share with our board. Their work with children in Ciudad Bolivar is truly transforming lives.",
+          "author": "Karelsie Foundation",
+          "role": "Platinum Partner"
+        },
+        "microsoft": {
+          "quote": "Technology for social good. We are proud to support an organization that brings digital literacy and STEM education to underserved communities.",
+          "author": "Microsoft Colombia",
+          "role": "Gold Partner"
+        }
       }
     },
     "faq": {
@@ -1119,12 +1173,30 @@
       "title": "Common questions from",
       "highlight": "corporate donors",
       "items": {
-        "taxDeduction": { "question": "How much can my company deduct?", "answer": "U.S. corporations can deduct charitable contributions up to 10% of taxable income (IRC §170(b)(2)). At the 21% corporate tax rate, a $10,000 donation saves $2,100 in federal taxes. Excess amounts carry forward for 5 years." },
-        "certificate": { "question": "Do I receive a tax receipt?", "answer": "Yes. We issue an official 501(c)(3) donation receipt via email within 48 hours of your contribution. This receipt is valid for your federal tax filing." },
-        "minimumDonation": { "question": "Is there a minimum donation amount?", "answer": "No minimum. We welcome contributions of any size. For corporate partnerships, most companies start with $1,000-$5,000 annually, but any amount makes a difference." },
-        "howFundsUsed": { "question": "How are funds used?", "answer": "100% of donations go directly to our programs: education, daily meals (breakfast, lunch, snack), music, arts, technology, sports, and psychological support for 192 children in Ciudad Bolivar." },
-        "reporting": { "question": "What kind of reporting do I receive?", "answer": "Corporate partners receive quarterly impact reports with number of beneficiaries, program outcomes, photos, and stories. Annual donors also receive a personalized impact letter and event invitation." },
-        "verify": { "question": "How can I verify your nonprofit status?", "answer": "Search our EIN 68-0505337 on the IRS Tax Exempt Organization Search or ProPublica Nonprofit Explorer. We are a registered 501(c)(3) and ESAL in Colombia (NIT: 830.114.318-9)." }
+        "taxDeduction": {
+          "question": "How much can my company deduct?",
+          "answer": "U.S. corporations can deduct charitable contributions up to 10% of taxable income (IRC §170(b)(2)). At the 21% corporate tax rate, a $10,000 donation saves $2,100 in federal taxes. Excess amounts carry forward for 5 years."
+        },
+        "certificate": {
+          "question": "Do I receive a tax receipt?",
+          "answer": "Yes. We issue an official 501(c)(3) donation receipt via email within 48 hours of your contribution. This receipt is valid for your federal tax filing."
+        },
+        "minimumDonation": {
+          "question": "Is there a minimum donation amount?",
+          "answer": "No minimum. We welcome contributions of any size. For corporate partnerships, most companies start with $1,000-$5,000 annually, but any amount makes a difference."
+        },
+        "howFundsUsed": {
+          "question": "How are funds used?",
+          "answer": "100% of donations go directly to our programs: education, daily meals (breakfast, lunch, snack), music, arts, technology, sports, and psychological support for 192 children in Ciudad Bolivar."
+        },
+        "reporting": {
+          "question": "What kind of reporting do I receive?",
+          "answer": "Corporate partners receive quarterly impact reports with number of beneficiaries, program outcomes, photos, and stories. Annual donors also receive a personalized impact letter and event invitation."
+        },
+        "verify": {
+          "question": "How can I verify your nonprofit status?",
+          "answer": "Search our EIN 68-0505337 on the IRS Tax Exempt Organization Search or ProPublica Nonprofit Explorer. We are a registered 501(c)(3) and ESAL in Colombia (NIT: 830.114.318-9)."
+        }
       }
     },
     "ctaTitle": "Your company can change a child's story",
@@ -1230,7 +1302,7 @@
   "seo": {
     "home": {
       "title": "Cigarra Foundation — 501(c)(3) Nonprofit | Feed & Educate Children in Colombia",
-      "description": "For $1.80/day, feed a child in Bogotá. 501(c)(3) tax-deductible. 1,877 children served, 13 free programs, 24 years of impact. 100% goes to kids — $0 overhead. EIN: 68-0505337."
+      "description": "For $2.90/day, feed a child in Bogotá. 501(c)(3) tax-deductible. 1,877 children served, 13 free programs, 24 years of impact. 100% goes to kids — $0 overhead. EIN: 68-0505337."
     },
     "about": {
       "title": "About the Cigarra Foundation — 24 Years, 1,877 Children, 13 Programs",
@@ -1392,7 +1464,7 @@
     "badge": "IRS-Verified 501(c)(3) — EIN: 68-0505337",
     "title": "Give a child",
     "titleHighlight": "a real future",
-    "subtitle": "$1.80/day feeds a child. $25/month covers education + meals. 100% tax-deductible — every dollar goes directly to kids in Bogotá.",
+    "subtitle": "$2.90/day feeds a child. $25/month covers education + meals. 100% tax-deductible — every dollar goes directly to kids in Bogotá.",
     "statsChildren": "Children Served",
     "statsYears": "Years of Results",
     "statsPrograms": "Free Programs",
@@ -1404,7 +1476,7 @@
       },
       "nutrition": {
         "title": "3 Meals a Day",
-        "description": "Breakfast, lunch, and afternoon snack for just $1.80/day — because a hungry child can't learn."
+        "description": "Breakfast, lunch, and afternoon snack for just $2.90/day — because a hungry child can't learn."
       },
       "arts": {
         "title": "Music, Dance & Arts",

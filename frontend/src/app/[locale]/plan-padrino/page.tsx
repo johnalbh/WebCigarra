@@ -27,7 +27,6 @@ import {
 } from "react-icons/hi";
 import { FaChild, FaHandHoldingHeart, FaChartLine, FaPaypal } from "react-icons/fa";
 
-
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
 /* ── Pricing tier config ── */
@@ -322,30 +321,30 @@ export default function PlanPadrinoPage() {
               const isClickable = index === 0;
               const cardContent = (
                 <>
-                    <div className="absolute -top-4 right-6">
-                      <span className="font-accent text-7xl italic text-primary-100/60 transition-colors duration-300 group-hover:text-primary-200/80">
-                        {step.number}
-                      </span>
+                  <div className="absolute -top-4 right-6">
+                    <span className="font-accent text-7xl italic text-primary-100/60 transition-colors duration-300 group-hover:text-primary-200/80">
+                      {step.number}
+                    </span>
+                  </div>
+
+                  <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${step.color} shadow-md`}>
+                    <Icon className="h-8 w-8 text-white" />
+                  </div>
+
+                  <h3 className="mb-3 font-heading text-xl font-bold text-gray-900">{t(`steps.${step.key}.title`)}</h3>
+                  <p className="text-gray-500 leading-relaxed">{t(`steps.${step.key}.description`)}</p>
+
+                  {isClickable && (
+                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 transition-colors group-hover:text-primary-700">
+                      {t(`steps.${step.key}.title`)} <HiArrowRight className="h-4 w-4" />
+                    </span>
+                  )}
+
+                  {index < stepConfig.length - 1 && (
+                    <div className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 md:block">
+                      <HiArrowRight className="h-8 w-8 text-primary-200" />
                     </div>
-
-                    <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${step.color} shadow-md`}>
-                      <Icon className="h-8 w-8 text-white" />
-                    </div>
-
-                    <h3 className="mb-3 font-heading text-xl font-bold text-gray-900">{t(`steps.${step.key}.title`)}</h3>
-                    <p className="text-gray-500 leading-relaxed">{t(`steps.${step.key}.description`)}</p>
-
-                    {isClickable && (
-                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 transition-colors group-hover:text-primary-700">
-                        {t(`steps.${step.key}.title`)} <HiArrowRight className="h-4 w-4" />
-                      </span>
-                    )}
-
-                    {index < stepConfig.length - 1 && (
-                      <div className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 md:block">
-                        <HiArrowRight className="h-8 w-8 text-primary-200" />
-                      </div>
-                    )}
+                  )}
                 </>
               );
               return (
@@ -353,13 +352,17 @@ export default function PlanPadrinoPage() {
                   <motion.div
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.3, ease: smoothEase }}
-                    className={`group relative flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-8 text-center transition-all duration-300 hover:shadow-lg ${isClickable ? 'cursor-pointer' : ''}`}
-                    {...(isClickable ? {
-                      onClick: () => document.getElementById('planes')?.scrollIntoView({ behavior: 'smooth' }),
-                      role: 'button',
-                      tabIndex: 0,
-                      onKeyDown: (e: React.KeyboardEvent) => { if (e.key === 'Enter') document.getElementById('planes')?.scrollIntoView({ behavior: 'smooth' }); },
-                    } : {})}
+                    className={`group relative flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-8 text-center transition-all duration-300 hover:shadow-lg ${isClickable ? "cursor-pointer" : ""}`}
+                    {...(isClickable
+                      ? {
+                          onClick: () => document.getElementById("planes")?.scrollIntoView({ behavior: "smooth" }),
+                          role: "button",
+                          tabIndex: 0,
+                          onKeyDown: (e: React.KeyboardEvent) => {
+                            if (e.key === "Enter") document.getElementById("planes")?.scrollIntoView({ behavior: "smooth" });
+                          },
+                        }
+                      : {})}
                   >
                     {cardContent}
                   </motion.div>
@@ -457,9 +460,7 @@ export default function PlanPadrinoPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className={`flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 font-heading font-semibold text-white transition-all duration-300 ${
-                            tier.highlighted
-                              ? "bg-[#0070ba] hover:bg-[#005ea6] shadow-md shadow-[#0070ba]/20"
-                              : "bg-[#0070ba] hover:bg-[#005ea6]"
+                            tier.highlighted ? "bg-[#0070ba] hover:bg-[#005ea6] shadow-md shadow-[#0070ba]/20" : "bg-[#0070ba] hover:bg-[#005ea6]"
                           }`}
                         >
                           <FaPaypal className="h-4 w-4" />
@@ -498,7 +499,6 @@ export default function PlanPadrinoPage() {
               );
             })}
           </StaggerContainer>
-
         </div>
       </section>
 
@@ -603,7 +603,7 @@ export default function PlanPadrinoPage() {
                   <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-rose-500/20">
                     <HiHeart className="h-7 w-7 text-rose-400" />
                   </div>
-                  <p className="font-heading text-4xl font-bold text-white md:text-5xl">{isPayPal ? '$1.81' : '$7.045'}</p>
+                  <p className="font-heading text-4xl font-bold text-white md:text-5xl">{isPayPal ? "$2.90" : "$11.292"}</p>
                   <p className="mt-2 text-sm font-medium text-primary-300">{t("costPerChildPerDay")}</p>
                 </div>
               </div>
