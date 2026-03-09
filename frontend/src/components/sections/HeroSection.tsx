@@ -64,7 +64,7 @@ export default function HeroSection({ images }: HeroSectionProps) {
             <div className="mt-14 flex gap-10">
               {[
                 { number: '1.877+', label: t('statsChildren') },
-                { number: '23', label: t('statsYears') },
+                { number: '24', label: t('statsYears') },
                 { number: '14', label: t('statsPrograms') },
               ].map((stat) => (
                 <div key={stat.label}>

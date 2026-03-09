@@ -62,7 +62,7 @@ export default function ProgramsPage() {
   const stats = [
     { value: '13', label: t('stats.programs') },
     { value: '1.877+', label: t('stats.children') },
-    { value: '23', label: t('stats.years') },
+    { value: '24', label: t('stats.years') },
   ];
 
   return (

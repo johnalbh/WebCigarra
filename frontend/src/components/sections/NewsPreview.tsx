@@ -19,7 +19,7 @@ const defaultArticles = [
     image: '/images/bingo-marzo-2026.webp',
   },
   {
-    title: 'Celebramos 23 anos transformando vidas en Ciudad Bolivar',
+    title: 'Celebramos 24 anos transformando vidas en Ciudad Bolivar',
     excerpt: 'Nuestra fundacion cumple mas de dos decadas de labor ininterrumpida con los ninos y jovenes de la comunidad, brindando esperanza y oportunidades a cientos de familias.',
     date: '2024-06-15',
     slug: 'celebramos-22-anos',

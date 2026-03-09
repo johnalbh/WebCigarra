@@ -200,7 +200,7 @@ export default function SuccessStoriesPage() {
               {/* Mini stats */}
               <motion.div variants={itemVariants} className="mt-12 flex gap-10">
                 {[
-                  { n: '23', l: t('statsYears') },
+                  { n: '24', l: t('statsYears') },
                   { n: '1.877+', l: t('statsChildren') },
                   { n: '100%', l: t('statsCommitment') },
                 ].map((s) => (

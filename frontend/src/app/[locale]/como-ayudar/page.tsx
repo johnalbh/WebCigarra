@@ -460,7 +460,7 @@ export default function HowToHelpPage() {
                       <HiHeart className="h-5 w-5 text-accent-600" />
                     </div>
                     <p className="text-sm font-medium text-gray-700">
-                      <span className="font-bold text-primary-700">+23</span> {t("yearsTransforming")}
+                      <span className="font-bold text-primary-700">+24</span> {t("yearsTransforming")}
                     </p>
                   </div>
                 </div>

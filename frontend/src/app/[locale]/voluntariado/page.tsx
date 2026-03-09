@@ -22,6 +22,47 @@ import {
 import { FaWhatsapp, FaPaintBrush, FaRunning, FaBriefcase, FaHandHoldingHeart, FaUsers, FaUtensils, FaHandsHelping } from "react-icons/fa";
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
+const springEase = [0.16, 1, 0.3, 1] as const;
+const bounceEase = [0.34, 1.56, 0.64, 1] as const;
+
+/* ── Area card motion variants ── */
+const cardVariants = {
+  hidden: { opacity: 0, y: 56, scale: 0.97 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.75, ease: springEase, delay: i * 0.1 },
+  }),
+  hover: {
+    y: -8,
+    transition: { duration: 0.38, ease: smoothEase },
+  },
+};
+
+const iconVariants = {
+  rest: { scale: 1, rotate: 0 },
+  hover: {
+    scale: 1.18,
+    rotate: -8,
+    transition: { duration: 0.45, ease: bounceEase },
+  },
+};
+
+const sheenVariants = {
+  rest: { x: "-120%", skewX: -12, opacity: 0 },
+  hover: {
+    x: "220%",
+    skewX: -12,
+    opacity: 1,
+    transition: { duration: 0.65, ease: smoothEase },
+  },
+};
+
+const imageVariants = {
+  rest: { scale: 1 },
+  hover: { scale: 1.06, transition: { duration: 0.7, ease: smoothEase } },
+};
 
 /* ── Why volunteer benefits (config only) ── */
 const benefitConfig = [
@@ -241,7 +282,7 @@ export default function VoluntariadoPage() {
             </div>
           </ScrollReveal>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {areaConfig.map((area, index) => {
               const Icon = area.icon;
               const isReversed = index % 2 !== 0;
@@ -249,45 +290,78 @@ export default function VoluntariadoPage() {
               const activities = t.raw(`areas.${area.key}.activities`) as string[];
 
               return (
-                <ScrollReveal mode="scroll" scaleFrom={0.95} key={area.key} delay={index * 0.1}>
+                <motion.div
+                  key={area.key}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true, margin: "-80px" }}
+                  className={`relative overflow-hidden rounded-2xl border-2 bg-white cursor-default
+                    shadow-[0_2px_16px_0_rgba(0,0,0,0.06)]
+                    hover:shadow-[0_16px_48px_0_rgba(0,0,0,0.13)]
+                    transition-shadow duration-500 ${area.color}`}
+                >
+                  {/* Sheen sweep on hover */}
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className={`overflow-hidden rounded-2xl border-2 bg-white transition-all duration-300 hover:shadow-lg ${area.color}`}
+                    variants={sheenVariants}
+                    className="pointer-events-none absolute inset-y-0 w-1/3 bg-linear-to-r from-transparent via-white/30 to-transparent z-10"
+                    aria-hidden
+                  />
+
+                  <div
+                    className={`grid items-center gap-0 ${
+                      area.image ? "md:grid-cols-2" : "md:grid-cols-1"
+                    } ${isReversed && area.image ? "md:[direction:rtl]" : ""}`}
                   >
-                    <div
-                      className={`grid items-center gap-0 ${
-                        area.image ? "md:grid-cols-2" : "md:grid-cols-1"
-                      } ${isReversed && area.image ? "md:[direction:rtl]" : ""}`}
-                    >
-                      {/* Image */}
-                      {area.image && (
-                        <div className="relative h-64 md:h-full md:min-h-[320px]">
-                          <Image src={area.image} alt={areaTitle} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-transparent" />
-                        </div>
-                      )}
+                    {/* Image */}
+                    {area.image && (
+                      <div className="relative h-64 md:h-full md:min-h-[320px] overflow-hidden">
+                        <motion.div variants={imageVariants} className="absolute inset-0">
+                          <Image
+                            src={area.image}
+                            alt={areaTitle}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </motion.div>
+                        <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent md:bg-linear-to-r md:from-transparent md:to-transparent" />
+                      </div>
+                    )}
 
-                      {/* Content */}
-                      <div className={`p-8 md:p-10 ${isReversed && area.image ? "md:[direction:ltr]" : ""}`}>
-                        <div className={`mb-5 flex h-14 w-14 items-center justify-center rounded-xl ${area.iconBg}`}>
-                          <Icon className="h-7 w-7" />
-                        </div>
-                        <h3 className="mb-3 font-heading text-2xl font-bold text-gray-900">{areaTitle}</h3>
-                        <p className="mb-5 leading-relaxed text-gray-600">{t(`areas.${area.key}.description`)}</p>
+                    {/* Content */}
+                    <div className={`p-8 md:p-10 ${isReversed && area.image ? "md:[direction:ltr]" : ""}`}>
+                      {/* Icon */}
+                      <motion.div
+                        variants={iconVariants}
+                        className={`mb-5 flex h-14 w-14 items-center justify-center rounded-xl ${area.iconBg} origin-center`}
+                      >
+                        <Icon className="h-7 w-7" />
+                      </motion.div>
 
-                        {/* Activity tags */}
-                        <div className="flex flex-wrap gap-2">
-                          {activities.map((activity) => (
-                            <span key={activity} className="inline-block rounded-full bg-gray-100 px-4 py-1.5 text-sm font-medium text-gray-700">
-                              {activity}
-                            </span>
-                          ))}
-                        </div>
+                      <h3 className="mb-3 font-heading text-2xl font-bold text-gray-900">{areaTitle}</h3>
+                      <p className="mb-6 leading-relaxed text-gray-600">{t(`areas.${area.key}.description`)}</p>
+
+                      {/* Activity tags — staggered entrance */}
+                      <div className="flex flex-wrap gap-2">
+                        {activities.map((activity, tagIdx) => (
+                          <motion.span
+                            key={activity}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, ease: springEase, delay: index * 0.1 + tagIdx * 0.06 }}
+                            className="inline-block rounded-full bg-gray-100 px-4 py-1.5 text-sm font-medium text-gray-700"
+                          >
+                            {activity}
+                          </motion.span>
+                        ))}
                       </div>
                     </div>
-                  </motion.div>
-                </ScrollReveal>
+                  </div>
+                </motion.div>
               );
             })}
           </div>

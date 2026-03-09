@@ -26,7 +26,7 @@ const articleImages: Record<string, string> = {
 /* Dummy data — remove once Strapi is connected */
 const DUMMY_NEWS: NewsItem[] = [
   { title: 'Bingo Virtual Marzo 2026 - Participa y gana premios increibles', slug: 'bingo-virtual-marzo-2026', date: '2026-03-15' },
-  { title: 'Celebramos 23 anos transformando vidas en Ciudad Bolivar', slug: 'celebramos-22-anos', date: '2024-06-15' },
+  { title: 'Celebramos 24 anos transformando vidas en Ciudad Bolivar', slug: 'celebramos-24-anos', date: '2024-06-15' },
   { title: 'Nuevos talleres de musica abiertos para la comunidad', slug: 'nuevos-talleres-musica', date: '2024-05-20' },
 ];
 
