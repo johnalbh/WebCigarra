@@ -82,7 +82,7 @@ export default function IntroVideoModal() {
         onClick={(e) => e.stopPropagation()}
         style={{
           width: '100%',
-          maxWidth: '1100px',
+          maxWidth: '800px',
           background: '#0a0a0a',
           borderRadius: '16px',
           overflow: 'hidden',
