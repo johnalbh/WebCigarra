@@ -228,19 +228,31 @@
       "juanDavid": "Líder comunitario",
       "andrey": "Líder comunitario",
       "yuri": "Educadora",
-      "anyie": "Profesional"
+      "anyie": "Profesional",
+      "alisson": "Estudiante de Artes Escénicas",
+      "edwin": "Estudiante de Bellas Artes",
+      "yorlandis": "Auxiliar de enfermería",
+      "joseDavid": "Exintegrante de Malala"
     },
     "quotes": {
       "juanDavid": "En la Fundación descubrí que el arte puede cambiar comunidades enteras.",
       "andrey": "Los valores que aprendí en la Fundación guían mi trabajo cada día.",
       "yuri": "Hoy regreso a la comunidad como educadora para abrir las mismas puertas.",
-      "anyie": "Con esfuerzo y dedicación todo es posible. La Fundación me lo demostró."
+      "anyie": "Con esfuerzo y dedicación todo es posible. La Fundación me lo demostró.",
+      "alisson": "La Fundación no solo fue mi primer espacio de aprendizaje, sino el lugar donde nació mi amor por el arte y mi confianza en mí misma.",
+      "edwin": "Cigarra sembró en mí valores, talentos y sueños que hoy sigo cultivando. Siempre llevaré en el corazón cada momento vivido.",
+      "yorlandis": "Cigarra fue, es y seguirá siendo parte fundamental de mi historia. El día que tenga hijos, también los llevaré a Cigarra.",
+      "joseDavid": "Al ver cuánto ha progresado la Fundación, siento orgullo y gratitud por haber sido parte de ella desde sus inicios."
     },
     "achievements": {
       "juanDavid": "Gestor cultural, líder de proyectos sociales",
       "andrey": "Líder comunitario, mentor de jóvenes",
       "yuri": "Licenciada en educación, voluntaria activa",
-      "anyie": "Profesional en administración, mentora"
+      "anyie": "Profesional en administración, mentora",
+      "alisson": "Becada en Artes Escénicas, Universidad Sergio Arboleda — 2025",
+      "edwin": "Estudiante de Bellas Artes en UNIMINUTO, ex-pianista de la orquesta sinfónica de Cigarra",
+      "yorlandis": "Auxiliar de enfermería en hospitalización, primera generación en el sector salud",
+      "joseDavid": "Exalumno del programa Malala, sigue vinculado como voluntario en la Fundación"
     }
   },
   "donation": {

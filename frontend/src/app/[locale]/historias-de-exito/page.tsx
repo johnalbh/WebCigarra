@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import ScrollReveal from '@/components/shared/ScrollReveal';
@@ -42,6 +43,34 @@ const storiesConfig = [
     accentColor: '#a18cd1',
     icon: HiSparkles,
   },
+  {
+    key: 'alisson',
+    name: 'Alisson Damara Zapata Melgar',
+    image: '/images/stories/alisson.webp',
+    accentColor: '#f9a825',
+    icon: HiStar,
+  },
+  {
+    key: 'edwin',
+    name: 'Edwin Santiago Chavez Romero',
+    image: '/images/stories/edwin.webp',
+    accentColor: '#26c6da',
+    icon: HiAcademicCap,
+  },
+  {
+    key: 'yorlandis',
+    name: 'Yorlandis Paredes Garcia',
+    image: '/images/stories/yorlandis.webp',
+    accentColor: '#ef5350',
+    icon: HiHeart,
+  },
+  {
+    key: 'joseDavid',
+    name: 'Jose David Paredes Garcia',
+    image: '/images/stories/jose-david.webp',
+    accentColor: '#66bb6a',
+    icon: HiSparkles,
+  },
 ];
 
 /* ---------- impact gallery images ---------- */
@@ -58,6 +87,8 @@ const impactImages = [
 function StoryCard({ story }: { story: { key: string; name: string; image: string; accentColor: string; icon: IconType } }) {
   const t = useTranslations('stories');
   const Icon = story.icon;
+  const [imgError, setImgError] = useState(false);
+  const initials = story.name.split(' ').slice(0, 2).map((w) => w[0]).join('');
 
   return (
     <motion.article
@@ -67,17 +98,29 @@ function StoryCard({ story }: { story: { key: string; name: string; image: strin
     >
       {/* Image */}
       <div className="relative h-64 overflow-hidden">
+        {imgError ? (
+          <div
+            className="flex h-full w-full items-center justify-center"
+            style={{ backgroundColor: `${story.accentColor}22` }}
+          >
+            <span className="font-heading text-5xl font-bold" style={{ color: story.accentColor }}>
+              {initials}
+            </span>
+          </div>
+        ) : (
         <Image
           src={story.image}
           alt={story.name}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          onError={() => setImgError(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-5 right-5">
-          <h3 className="font-heading text-lg font-bold text-white">{story.name}</h3>
-          <p className="text-sm text-white/80">{t(`roles.${story.key}`)}</p>
+        )}
+        {!imgError && <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />}
+        <div className={`absolute bottom-4 left-5 right-5 ${imgError ? 'bottom-0 left-0 right-0 bg-white/90 px-5 py-3' : ''}`}>
+          <h3 className={`font-heading text-lg font-bold ${imgError ? 'text-gray-900' : 'text-white'}`}>{story.name}</h3>
+          <p className={`text-sm ${imgError ? 'text-gray-500' : 'text-white/80'}`}>{t(`roles.${story.key}`)}</p>
         </div>
       </div>
 

@@ -228,19 +228,31 @@
       "juanDavid": "Community leader",
       "andrey": "Community leader",
       "yuri": "Educator",
-      "anyie": "Professional"
+      "anyie": "Professional",
+      "alisson": "Performing Arts Student",
+      "edwin": "Fine Arts Student",
+      "yorlandis": "Nursing Assistant",
+      "joseDavid": "Malala Program Alumnus"
     },
     "quotes": {
       "juanDavid": "At the Foundation, I discovered that art can change entire communities.",
       "andrey": "The values I learned at the Foundation guide my work every day.",
       "yuri": "Today I return to the community as an educator to open the same doors.",
-      "anyie": "With effort and dedication, everything is possible. The Foundation showed me that."
+      "anyie": "With effort and dedication, everything is possible. The Foundation showed me that.",
+      "alisson": "The Foundation was not only my first learning space — it's where my love for art and my confidence in myself were born.",
+      "edwin": "Cigarra planted values, talents, and dreams in me that I continue to nurture today. I will always carry every moment lived in my heart.",
+      "yorlandis": "Cigarra was, is, and will always be a fundamental part of my story. When I have children, I will bring them to Cigarra too.",
+      "joseDavid": "Seeing how far the Foundation has come fills me with pride and gratitude for having been part of it from the beginning."
     },
     "achievements": {
       "juanDavid": "Cultural manager, social project leader",
       "andrey": "Community leader, youth mentor",
       "yuri": "Education graduate, active volunteer",
-      "anyie": "Business administration professional, mentor"
+      "anyie": "Business administration professional, mentor",
+      "alisson": "Scholarship recipient — Performing Arts, Universidad Sergio Arboleda, 2025",
+      "edwin": "Fine Arts student at UNIMINUTO, former symphonic orchestra pianist at Cigarra",
+      "yorlandis": "Hospital nursing assistant, first in her family to work in healthcare",
+      "joseDavid": "Malala program graduate, continues volunteering at the Foundation"
     }
   },
   "donation": {
