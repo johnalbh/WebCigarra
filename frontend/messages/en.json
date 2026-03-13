@@ -28,6 +28,19 @@
     "volunteerDesc": "Join as a volunteer and bring your talent directly to our programs.",
     "videos": "Videos"
   },
+  "drawer": {
+    "foundation": "Our Foundation",
+    "programs": "Programs",
+    "help": "How to Help",
+    "corporate": "Corporate",
+    "content": "Content",
+    "allPrograms": "View all programs",
+    "primeraInfancia": "Early Childhood",
+    "danzaMusica": "Dance & Music",
+    "refuerzoEscolar": "School Support",
+    "tecnologia": "Technology",
+    "psicologia": "Psychology"
+  },
   "intro": {
     "label": "Intro",
     "timeLeft": "{time} remaining",

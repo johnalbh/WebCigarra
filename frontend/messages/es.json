@@ -28,6 +28,19 @@
     "volunteerDesc": "Únete como voluntario y aporta tu talento directamente en nuestros programas.",
     "videos": "Videos"
   },
+  "drawer": {
+    "foundation": "Conoce la Fundación",
+    "programs": "Programas",
+    "help": "Cómo Ayudar",
+    "corporate": "Empresas",
+    "content": "Contenido",
+    "allPrograms": "Ver todos los programas",
+    "primeraInfancia": "Primera Infancia",
+    "danzaMusica": "Danza & Música",
+    "refuerzoEscolar": "Refuerzo Escolar",
+    "tecnologia": "Tecnología",
+    "psicologia": "Psicología"
+  },
   "intro": {
     "label": "Intro",
     "timeLeft": "{time} restante",
