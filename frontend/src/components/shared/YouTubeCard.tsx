@@ -31,7 +31,8 @@ export default function YouTubeCard({
   const description =
     locale === 'en' ? video.descriptionEn : video.descriptionEs;
 
-  const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+  // hqdefault (480×360) always exists for every YouTube video
+  const thumbnailUrl = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
   const embedUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1`;
 
   const aspectClass =
@@ -56,7 +57,7 @@ export default function YouTubeCard({
         ) : (
           <button
             onClick={() => setPlaying(true)}
-            className="absolute inset-0 h-full w-full cursor-pointer"
+            className="absolute inset-0 cursor-pointer"
             aria-label={`Reproducir: ${title}`}
           >
             {/* Thumbnail */}
@@ -66,17 +67,17 @@ export default function YouTubeCard({
                 src={thumbnailUrl}
                 alt={title}
                 onError={() => setThumbError(true)}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             ) : (
-              /* Fallback gradient when thumbnail fails (placeholder IDs) */
-              <div className="h-full w-full bg-gradient-to-br from-primary-700 via-primary-600 to-accent-500 flex items-center justify-center">
+              /* Fallback gradient if thumbnail fails */
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-700 via-primary-600 to-accent-500 flex items-center justify-center">
                 <svg
                   className="h-12 w-12 text-white/30"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.84a8.27 8.27 0 0 0 4.84 1.55V6.95a4.85 4.85 0 0 1-1.07-.26z" />
+                  <path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.8 5 12 5 12 5s-4.8 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9C6.8 19 12 19 12 19s4.8 0 7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM10 14.5v-5l5.5 2.5-5.5 2.5z" />
                 </svg>
               </div>
             )}

@@ -23,10 +23,8 @@ export const youtubeVideos: YouTubeVideo[] = [
     id: 'zv2LXjPTUxg',
     titleEs: 'Bingo Solidario 2026',
     titleEn: 'Solidarity Bingo 2026',
-    descriptionEs:
-      'Participa en nuestro Bingo Solidario 2026. ¡Premios increíbles y toda la recaudación va a los niños de Ciudad Bolívar!',
-    descriptionEn:
-      'Join our Solidarity Bingo 2026. Amazing prizes — all proceeds go directly to the children of Ciudad Bolívar!',
+    descriptionEs: 'Únete a nuestro Bingo virtual el próximo 14 de marzo.',
+    descriptionEn: 'Join our virtual Bingo on March 14th.',
     category: 'event',
     featured: true,
   },
@@ -36,10 +34,8 @@ export const youtubeVideos: YouTubeVideo[] = [
     id: 'RE70AtGQ6x4',
     titleEs: 'Emprendimientos Cigarra 2025',
     titleEn: 'Cigarra Entrepreneurship 2025',
-    descriptionEs:
-      'Conoce los proyectos de emprendimiento que nuestros jóvenes desarrollaron durante 2025.',
-    descriptionEn:
-      'Meet the entrepreneurship projects our youth developed throughout 2025.',
+    descriptionEs: 'Nuestros emprendimientos Cigarra.',
+    descriptionEn: 'Our Cigarra entrepreneurship projects.',
     category: 'program',
     featured: true,
   },
@@ -48,9 +44,9 @@ export const youtubeVideos: YouTubeVideo[] = [
     titleEs: 'Filarmónica Cigarra — Cierre de Temporada New Philharmonia',
     titleEn: 'Cigarra Philharmonic — New Philharmonia Season Closing',
     descriptionEs:
-      'La Filarmónica de la Fundación Cigarra se presentó en el cierre de temporada de la New Philharmonia Orchestra.',
+      'El 24 de agosto, 10 jóvenes músicos de la Fundación Cigarra participaron en el concierto de cierre de temporada de la New Philharmonia Orchestra, dirigida por Ricardo Jaramillo y nuestro docente Yezid Barbosa.',
     descriptionEn:
-      'The Cigarra Foundation Philharmonic performed at the New Philharmonia Orchestra season closing.',
+      'On August 24, 10 young musicians from the Cigarra Foundation performed at the New Philharmonia Orchestra season closing concert, directed by Ricardo Jaramillo and our teacher Yezid Barbosa.',
     category: 'program',
     featured: true,
   },
@@ -58,20 +54,16 @@ export const youtubeVideos: YouTubeVideo[] = [
     id: 'pm8dm3cF5nA',
     titleEs: 'Concierto Solidario SGS 2025',
     titleEn: 'SGS Solidarity Concert 2025',
-    descriptionEs:
-      'Nuestro concierto solidario 2025 reunió a la comunidad en apoyo de los programas de la Fundación Cigarra.',
-    descriptionEn:
-      'Our 2025 solidarity concert brought the community together in support of Cigarra Foundation programs.',
     category: 'event',
   },
   {
     id: 'DhJeNisgezA',
-    titleEs: 'Bingo Bazar',
-    titleEn: 'Bingo Bazaar',
+    titleEs: 'Bingo Bazar y Presentaciones Infantiles',
+    titleEn: 'Bingo Bazaar and Children\'s Performances',
     descriptionEs:
-      'Nuestro Bingo Bazar, un evento especial para recaudar fondos y compartir con la comunidad.',
+      '¡Gran Evento de Bingo Bazar y Presentaciones Infantiles! ¡No te pierdas nuestro emocionante stream que combina el divertido juego de bingo con el talento de nuestros pequeños artistas!',
     descriptionEn:
-      'Our Bingo Bazaar — a special fundraising event to share with the community.',
+      'Great Bingo Bazaar and Children\'s Performances Event! Don\'t miss our exciting stream combining bingo with the talent of our young artists!',
     category: 'event',
   },
   {
@@ -79,9 +71,9 @@ export const youtubeVideos: YouTubeVideo[] = [
     titleEs: 'Bingo Bazar — En Vivo',
     titleEn: 'Bingo Bazaar — Live',
     descriptionEs:
-      'Transmisión en vivo de nuestro Bingo Bazar solidario.',
+      '¡No te pierdas el Bingo Bazar de la Fundación Cigarra! Este domingo 15 de septiembre, te invitamos a un evento lleno de diversión y solidaridad.',
     descriptionEn:
-      'Live broadcast of our solidarity Bingo Bazaar.',
+      'Don\'t miss the Cigarra Foundation Bingo Bazaar! This Sunday, September 15, join us for an event full of fun and solidarity.',
     category: 'event',
   },
 
@@ -91,9 +83,9 @@ export const youtubeVideos: YouTubeVideo[] = [
     titleEs: 'Mes del Niño y Deporte',
     titleEn: "Children's Month & Sports",
     descriptionEs:
-      'Celebramos el Mes del Niño con actividades deportivas, arte y cultura para los niños de Ciudad Bolívar.',
+      'Capturamos algunos de los momentos más especiales de nuestro reciente cierre del Mes del Deporte y del Niño.',
     descriptionEn:
-      "We celebrate Children's Month with sports, art and culture for children from Ciudad Bolívar.",
+      'We captured some of the most special moments from our recent Sports and Children\'s Month closing.',
     category: 'event',
   },
   {
@@ -101,9 +93,9 @@ export const youtubeVideos: YouTubeVideo[] = [
     titleEs: 'Fútbol en Casa',
     titleEn: 'Football at Home',
     descriptionEs:
-      'Los niños de la Fundación Cigarra disfrutan de una jornada de fútbol en casa.',
+      'En abril, combinamos la alegría del deporte y el Día del Niño en una sola celebración: nuestro primer torneo de fútbol.',
     descriptionEn:
-      'The children of Cigarra Foundation enjoy a home football day.',
+      'In April, we combined the joy of sport and Children\'s Day in one celebration: our first football tournament.',
     category: 'program',
   },
 
@@ -112,10 +104,6 @@ export const youtubeVideos: YouTubeVideo[] = [
     id: '-7dX7oBPyGk',
     titleEs: 'Concierto Solidario 2023',
     titleEn: 'Solidarity Concert 2023',
-    descriptionEs:
-      'Los mejores momentos del Concierto Solidario 2023, donde la música une a la comunidad.',
-    descriptionEn:
-      'The best moments of the 2023 Solidarity Concert, where music unites the community.',
     category: 'event',
   },
   {
@@ -123,19 +111,15 @@ export const youtubeVideos: YouTubeVideo[] = [
     titleEs: 'Serenata de Amor',
     titleEn: 'Serenade of Love',
     descriptionEs:
-      'Una emotiva serenata interpretada por los niños y jóvenes músicos de la Fundación Cigarra.',
+      '¡Explora con nosotros una jornada única en Cigarra! En este video especial, llevamos serenatas llenas de amor y gratitud a los comerciantes.',
     descriptionEn:
-      'A moving serenade performed by the young musicians of the Cigarra Foundation.',
+      'Explore a unique day at Cigarra with us! In this special video, we bring serenades full of love and gratitude to local merchants.',
     category: 'program',
   },
   {
     id: 'qvVL6m1AOds',
     titleEs: 'Himno Fundación Cigarra',
     titleEn: 'Cigarra Foundation Anthem',
-    descriptionEs:
-      'El himno que representa los valores y el espíritu de la Fundación Cigarra.',
-    descriptionEn:
-      'The anthem that represents the values and spirit of the Cigarra Foundation.',
     category: 'highlight',
   },
 
@@ -145,9 +129,9 @@ export const youtubeVideos: YouTubeVideo[] = [
     titleEs: 'Detrás del Telón — Concierto Solidario SGS 2022',
     titleEn: 'Behind the Curtain — SGS Solidarity Concert 2022',
     descriptionEs:
-      'Un vistazo detrás de escena de la preparación de nuestros niños para el Concierto Solidario 2022.',
+      'Presentamos un vistazo exclusivo de cómo nuestros talentosos niños se prepararon para el Concierto Solidario 2022.',
     descriptionEn:
-      'A behind-the-scenes look at how our children prepared for the 2022 Solidarity Concert.',
+      'An exclusive look at how our talented children prepared for the 2022 Solidarity Concert.',
     category: 'story',
   },
   {
@@ -155,9 +139,9 @@ export const youtubeVideos: YouTubeVideo[] = [
     titleEs: 'Debut Orquesta Sinfónica La Cigarra — Concierto Solidario SGS',
     titleEn: 'La Cigarra Symphony Orchestra Debut — SGS Solidarity Concert',
     descriptionEs:
-      'El debut histórico de la Orquesta Sinfónica La Cigarra en el Concierto Solidario SGS.',
+      'El esperado Concierto Solidario SGS 2023 trae el debut de la Orquesta Sinfónica La Cigarra, un sueño hecho realidad desde 2015.',
     descriptionEn:
-      'The historic debut of the La Cigarra Symphony Orchestra at the SGS Solidarity Concert.',
+      'The long-awaited SGS 2023 Solidarity Concert brings the debut of the La Cigarra Symphony Orchestra — a dream realized since 2015.',
     category: 'event',
   },
   {
@@ -165,9 +149,9 @@ export const youtubeVideos: YouTubeVideo[] = [
     titleEs: 'Carolina Gaitán — Pepa Madrigal visita a los niños de Cigarra',
     titleEn: 'Carolina Gaitán — Pepa Madrigal visits Cigarra Foundation children',
     descriptionEs:
-      'La estrella de Encanto, Carolina Gaitán, sorprendió a los niños de la Fundación Cigarra con una visita especial.',
+      'Este año nuestros niñas y niños recibieron una sorpresa ENCANTADORA. Carolina Gaitán (Pepa Madrigal en "Encanto") les envió un saludo de navidad.',
     descriptionEn:
-      'Encanto star Carolina Gaitán surprised the Cigarra Foundation children with a very special visit.',
+      'This year our children received an ENCHANTING surprise. Carolina Gaitán (Pepa Madrigal in "Encanto") sent them a Christmas greeting.',
     category: 'highlight',
   },
 ];
