@@ -28,7 +28,7 @@ export default function HeroSection({ images }: HeroSectionProps) {
       <div className="pointer-events-none absolute -top-32 right-0 hidden h-[500px] w-[500px] rounded-full bg-primary-500/10 blur-[120px] md:block" />
 
       <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl items-center px-6 lg:min-h-screen lg:px-8">
-        <div className="grid w-full items-center gap-8 py-20 lg:grid-cols-2 lg:gap-16 lg:py-24">
+        <div className="grid w-full items-center gap-8 pb-20 pt-32 lg:grid-cols-2 lg:gap-16 lg:pb-24 lg:pt-40">
           {/* Text */}
           <div>
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-primary-300">
