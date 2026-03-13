@@ -25,7 +25,8 @@
     "anthemDesc": "Escucha el himno que inspira a nuestra comunidad y representa nuestros valores.",
     "howToHelpDesc": "Explora las diferentes formas en que puedes contribuir a cambiar la vida de un niño.",
     "planPadrinoDesc": "Apadrina a un niño y acompáñalo en su proceso educativo con una donación mensual.",
-    "volunteerDesc": "Únete como voluntario y aporta tu talento directamente en nuestros programas."
+    "volunteerDesc": "Únete como voluntario y aporta tu talento directamente en nuestros programas.",
+    "videos": "Videos"
   },
   "intro": {
     "label": "Intro",
@@ -334,6 +335,27 @@
       "noSpam": "Sin spam. Puedes cancelar cuando quieras."
     },
     "fallbackContent": "Contenido del artículo próximamente disponible. Estamos trabajando para traerte la información más actualizada sobre nuestras actividades y logros."
+  },
+  "videos": {
+    "pageTitle": "Nuestros Videos",
+    "pageSubtitle": "Conoce de cerca la labor de la Fundación Cigarra a través de nuestros videos. Historias reales, programas en acción y momentos que transforman vidas.",
+    "sectionTitle": "Videos",
+    "sectionSubtitle": "Mira nuestra labor en acción a través de historias, programas y eventos.",
+    "watchAll": "Ver todos los videos",
+    "channelLink": "Visitar canal de YouTube",
+    "channelHandle": "@fundacioncigarra",
+    "noVideos": "No hay videos en esta categoría.",
+    "categories": {
+      "all": "Todos",
+      "highlight": "Destacados",
+      "program": "Programas",
+      "event": "Eventos",
+      "story": "Historias"
+    },
+    "seo": {
+      "title": "Videos - Fundación Cigarra",
+      "description": "Conoce el trabajo de la Fundación Cigarra en Ciudad Bolívar a través de nuestros videos en YouTube. Historias de vida, programas educativos y eventos especiales."
+    }
   },
   "about": {
     "title": "Quiénes Somos",

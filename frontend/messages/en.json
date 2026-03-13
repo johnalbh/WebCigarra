@@ -25,7 +25,8 @@
     "anthemDesc": "Listen to the anthem that inspires our community and represents our values.",
     "howToHelpDesc": "Explore the different ways you can contribute to changing a child's life.",
     "planPadrinoDesc": "Sponsor a child and support their education with a monthly donation.",
-    "volunteerDesc": "Join as a volunteer and bring your talent directly to our programs."
+    "volunteerDesc": "Join as a volunteer and bring your talent directly to our programs.",
+    "videos": "Videos"
   },
   "intro": {
     "label": "Intro",
@@ -334,6 +335,27 @@
       "noSpam": "No spam. You can unsubscribe at any time."
     },
     "fallbackContent": "Article content coming soon. We are working to bring you the most up-to-date information about our activities and achievements."
+  },
+  "videos": {
+    "pageTitle": "Our Videos",
+    "pageSubtitle": "Discover the work of the Cigarra Foundation through our videos. Real stories, programs in action, and moments that transform lives.",
+    "sectionTitle": "Videos",
+    "sectionSubtitle": "See our work in action through stories, programs, and events.",
+    "watchAll": "See all videos",
+    "channelLink": "Visit our YouTube channel",
+    "channelHandle": "@fundacioncigarra",
+    "noVideos": "No videos in this category.",
+    "categories": {
+      "all": "All",
+      "highlight": "Highlights",
+      "program": "Programs",
+      "event": "Events",
+      "story": "Stories"
+    },
+    "seo": {
+      "title": "Videos - Cigarra Foundation",
+      "description": "Discover the work of the Cigarra Foundation in Ciudad Bolívar through our YouTube videos. Life stories, educational programs, and special events."
+    }
   },
   "about": {
     "title": "About Us",

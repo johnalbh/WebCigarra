@@ -44,6 +44,7 @@ const navItems: NavItem[] = [
     ],
   },
   { href: "/noticias", key: "news" },
+  { href: "/videos", key: "videos" },
   { href: "/contacto", key: "contact" },
 ];
 

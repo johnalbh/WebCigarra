@@ -6,6 +6,7 @@ import ProgramsGrid from '@/components/sections/ProgramsGrid';
 import StoriesCarousel from '@/components/sections/StoriesCarousel';
 import DonationCTA from '@/components/sections/DonationCTA';
 import NewsPreview from '@/components/sections/NewsPreview';
+import VideosPreview from '@/components/sections/VideosPreview';
 import PartnersMarquee from '@/components/sections/PartnersMarquee';
 import { buildPageMetadata } from '@/lib/seo';
 import { getOrganizationSchema, getWebSiteSchema } from '@/lib/structured-data';
@@ -78,6 +79,7 @@ export default async function HomePage({
       <StoriesCarousel />
       <DonationCTA />
       <NewsPreview />
+      <VideosPreview />
       <PartnersMarquee />
     </>
   );
