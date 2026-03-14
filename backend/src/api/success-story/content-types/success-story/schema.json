@@ -63,6 +63,18 @@
         "i18n": { "localized": true }
       }
     },
+    "accentColor": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
+    "icon": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": { "localized": false }
+      }
+    },
     "featured": {
       "type": "boolean",
       "default": false,

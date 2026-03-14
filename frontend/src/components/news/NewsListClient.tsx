@@ -8,22 +8,59 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/shared/StaggerContainer';
 import { HiCalendar, HiArrowRight, HiMail } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
-import { articles, articleImages } from '@/lib/articles-data';
+import { getStrapiMedia } from '@/lib/strapi';
+
+interface ArticleItem {
+  slug: string;
+  title: string;
+  excerpt: string;
+  publishDate?: string;
+  date?: string;
+  coverImage?: { url: string; alternativeText?: string } | null;
+  image?: string;
+  featured?: boolean;
+}
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 
-export default function NewsListClient() {
+const FALLBACK_IMAGE = '/images/news/celebramos-22-anos.webp';
+
+function getArticleImage(article: ArticleItem): string {
+  if (article.coverImage?.url) {
+    return getStrapiMedia(article.coverImage.url) ?? FALLBACK_IMAGE;
+  }
+  return article.image ?? FALLBACK_IMAGE;
+}
+
+function getArticleDate(article: ArticleItem): string {
+  return article.publishDate ?? article.date ?? '';
+}
+
+export default function NewsListClient({ articles }: { articles: ArticleItem[] }) {
   const t = useTranslations('news');
   const locale = useLocale();
-  const featured = articles.find((a) => a.featured)!;
-  const rest = articles.filter((a) => !a.featured);
+
+  const featured = articles.find((a) => a.featured) ?? articles[0];
+  const rest = articles.filter((a) => a !== featured);
 
   function formatDate(dateStr: string) {
+    if (!dateStr) return '';
     return new Date(dateStr).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-CO', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     });
+  }
+
+  if (!featured) {
+    return (
+      <section className="relative overflow-hidden bg-primary-900 py-32">
+        <HeroWaves />
+        <div className="relative z-10 text-center text-white">
+          <p className="text-lg text-primary-200/70">{t('subtitle')}</p>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -71,7 +108,7 @@ export default function NewsListClient() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
-                src="/images/news/celebramos-22-anos.webp"
+                src={getArticleImage(featured)}
                 alt="Fundación Cigarra"
                 fill
                 className="object-cover"
@@ -95,7 +132,7 @@ export default function NewsListClient() {
               >
                 <div className="relative h-72 overflow-hidden md:h-auto md:w-3/5">
                   <Image
-                    src={articleImages[featured.slug]}
+                    src={getArticleImage(featured)}
                     alt={featured.title}
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -116,7 +153,7 @@ export default function NewsListClient() {
                 <div className="relative flex flex-col justify-center p-8 md:w-2/5 md:p-12">
                   <div className="mb-4 inline-flex items-center gap-2 text-sm text-gray-400">
                     <HiCalendar className="h-4 w-4 text-accent-400" />
-                    <time className="font-medium">{formatDate(featured.date)}</time>
+                    <time className="font-medium">{formatDate(getArticleDate(featured))}</time>
                   </div>
 
                   <h2 className="font-heading text-2xl font-bold leading-snug text-white transition-colors duration-300 group-hover:text-accent-300 md:text-3xl lg:text-4xl">
@@ -141,66 +178,68 @@ export default function NewsListClient() {
       </section>
 
       {/* Articles Grid */}
-      <section className="relative bg-gradient-to-b from-gray-50 to-white py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <ScrollReveal>
-            <div className="mb-12 text-center">
-              <span className="mb-3 inline-block rounded-full bg-primary-100 px-4 py-1 text-sm font-semibold text-primary-700">
-                {t('stayInformed')}
-              </span>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                {t('more')} <span className="text-primary-600">{t('title')}</span>
-              </h2>
-            </div>
-          </ScrollReveal>
+      {rest.length > 0 && (
+        <section className="relative bg-gradient-to-b from-gray-50 to-white py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-4 lg:px-8">
+            <ScrollReveal>
+              <div className="mb-12 text-center">
+                <span className="mb-3 inline-block rounded-full bg-primary-100 px-4 py-1 text-sm font-semibold text-primary-700">
+                  {t('stayInformed')}
+                </span>
+                <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+                  {t('more')} <span className="text-primary-600">{t('title')}</span>
+                </h2>
+              </div>
+            </ScrollReveal>
 
-          <StaggerContainer scaleUp staggerDelay={0.08} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {rest.map((article) => (
-              <StaggerItem scaleUp key={article.slug}>
-                <Link href={`/noticias/${article.slug}`}>
-                  <motion.article
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="group h-full overflow-hidden rounded-lg border border-gray-100 bg-white transition-colors duration-300 hover:border-gray-200"
-                  >
-                    <div className="relative h-52 overflow-hidden">
-                      <Image
-                        src={articleImages[article.slug]}
-                        alt={article.title}
-                        fill
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <StaggerContainer scaleUp staggerDelay={0.08} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {rest.map((article) => (
+                <StaggerItem scaleUp key={article.slug}>
+                  <Link href={`/noticias/${article.slug}`}>
+                    <motion.article
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="group h-full overflow-hidden rounded-lg border border-gray-100 bg-white transition-colors duration-300 hover:border-gray-200"
+                    >
+                      <div className="relative h-52 overflow-hidden">
+                        <Image
+                          src={getArticleImage(article)}
+                          alt={article.title}
+                          fill
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-                      <div className="absolute bottom-3 left-4">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-sm">
-                          <HiCalendar className="h-3.5 w-3.5 text-primary-500" />
-                          {formatDate(article.date)}
-                        </span>
+                        <div className="absolute bottom-3 left-4">
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-sm">
+                            <HiCalendar className="h-3.5 w-3.5 text-primary-500" />
+                            {formatDate(getArticleDate(article))}
+                          </span>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="p-6">
-                      <h3 className="mb-3 font-heading text-lg font-bold leading-snug text-gray-900 transition-colors duration-300 group-hover:text-primary-600">
-                        {article.title}
-                      </h3>
-                      <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">
-                        {article.excerpt}
-                      </p>
+                      <div className="p-6">
+                        <h3 className="mb-3 font-heading text-lg font-bold leading-snug text-gray-900 transition-colors duration-300 group-hover:text-primary-600">
+                          {article.title}
+                        </h3>
+                        <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">
+                          {article.excerpt}
+                        </p>
 
-                      <div className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 transition-all duration-300 group-hover:gap-3">
-                        {t('readMore')}
-                        <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        <div className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 transition-all duration-300 group-hover:gap-3">
+                          {t('readMore')}
+                          <HiArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </div>
                       </div>
-                    </div>
-                  </motion.article>
-                </Link>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
+                    </motion.article>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+      )}
 
       {/* Newsletter CTA */}
       <section className="relative overflow-hidden bg-primary-500 py-24">

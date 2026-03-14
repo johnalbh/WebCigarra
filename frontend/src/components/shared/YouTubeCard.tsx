@@ -1,14 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { useLocale } from 'next-intl';
-import type { YouTubeVideo } from '@/lib/youtube-data';
 import { motion, AnimatePresence } from 'motion/react';
 import { EASE_APPLE, SCALE_HOVER, DURATION_HOVER } from '@/lib/animation-config';
 import VideoModal from '@/components/shared/VideoModal';
 
+export interface VideoCardItem {
+  /** YouTube video ID (e.g. "dQw4w9WgXcQ") */
+  youtubeId: string;
+  title: string;
+  description?: string;
+  category?: 'highlight' | 'program' | 'event' | 'story';
+  featured?: boolean;
+}
+
 interface YouTubeCardProps {
-  video: YouTubeVideo;
+  video: VideoCardItem;
   className?: string;
   /** Render title and description below the video thumbnail */
   showMeta?: boolean;
@@ -26,14 +33,12 @@ export default function YouTubeCard({
 }: YouTubeCardProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [thumbError, setThumbError] = useState(false);
-  const locale = useLocale();
 
-  const title = locale === 'en' ? video.titleEn : video.titleEs;
-  const description =
-    locale === 'en' ? video.descriptionEn : video.descriptionEs;
+  const title = video.title;
+  const description = video.description;
 
   // hqdefault (480×360) always exists for every YouTube video
-  const thumbnailUrl = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+  const thumbnailUrl = `https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`;
 
   const aspectClass = 'aspect-video';
 
@@ -111,7 +116,7 @@ export default function YouTubeCard({
       <AnimatePresence>
         {modalOpen && (
           <VideoModal
-            videoId={video.id}
+            videoId={video.youtubeId}
             title={title}
             onClose={() => setModalOpen(false)}
           />

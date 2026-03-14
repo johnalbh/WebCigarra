@@ -5,6 +5,8 @@ import { getBreadcrumbSchema } from '@/lib/structured-data';
 import { SITE_URL } from '@/lib/seo';
 import JsonLd from '@/components/seo/JsonLd';
 import NewsListClient from '@/components/news/NewsListClient';
+import { getArticles } from '@/lib/queries';
+import { articles as fallbackArticles } from '@/lib/articles-data';
 
 export async function generateMetadata({
   params,
@@ -41,10 +43,24 @@ export default async function NewsPage({
     { name: t('title'), url: `${SITE_URL}/${locale}/noticias` },
   ]);
 
+  let articles: any[] = [];
+  try {
+    const data = await getArticles(locale, 1, 50) as any;
+    if (Array.isArray(data?.data) && data.data.length > 0) {
+      articles = data.data;
+    }
+  } catch {
+    // Fallback to hardcoded articles
+  }
+
+  if (articles.length === 0) {
+    articles = fallbackArticles;
+  }
+
   return (
     <>
       <JsonLd data={breadcrumbData} />
-      <NewsListClient />
+      <NewsListClient articles={articles} />
     </>
   );
 }

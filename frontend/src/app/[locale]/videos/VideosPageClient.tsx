@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import { HiPlay, HiArrowRight } from 'react-icons/hi';
 import ScrollReveal from '@/components/shared/ScrollReveal';
-import YouTubeCard from '@/components/shared/YouTubeCard';
-import { youtubeVideos, YOUTUBE_CHANNEL_URL } from '@/lib/youtube-data';
+import YouTubeCard, { type VideoCardItem } from '@/components/shared/YouTubeCard';
+import { YOUTUBE_CHANNEL_URL } from '@/lib/youtube-data';
 import {
   EASE_APPLE,
   STAGGER,
@@ -37,14 +37,18 @@ const cardVariants = {
   },
 };
 
-export default function VideosPageClient() {
+interface VideosPageClientProps {
+  videos: VideoCardItem[];
+}
+
+export default function VideosPageClient({ videos }: VideosPageClientProps) {
   const t = useTranslations('videos');
   const [activeCategory, setActiveCategory] = useState<Category>('all');
 
   const filtered =
     activeCategory === 'all'
-      ? youtubeVideos
-      : youtubeVideos.filter((v) => v.category === activeCategory);
+      ? videos
+      : videos.filter((v) => v.category === activeCategory);
 
   return (
     <>
@@ -112,7 +116,7 @@ export default function VideosPageClient() {
             className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
           >
             {filtered.map((video) => (
-              <motion.div key={video.id} variants={cardVariants}>
+              <motion.div key={video.youtubeId} variants={cardVariants}>
                 <YouTubeCard
                   video={video}
                   showMeta

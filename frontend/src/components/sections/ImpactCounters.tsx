@@ -9,11 +9,21 @@ import { HiArrowRight } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
 import { EASE_APPLE, SCALE_INITIAL, STAGGER, DURATION_REVEAL } from '@/lib/animation-config';
 
-const stats = [
-  { key: 'childrenHelped', value: 1877, suffix: '+' },
-  { key: 'years', value: 24, suffix: '' },
-  { key: 'jobsGenerated', value: 100, suffix: '+' },
-  { key: 'families', value: 1800, suffix: '+' },
+interface StatItem {
+  value: number;
+  suffix: string;
+  label: string;
+}
+
+interface ImpactCountersProps {
+  stats?: StatItem[];
+}
+
+const FALLBACK_STATS: StatItem[] = [
+  { value: 1877, suffix: '+', label: 'childrenHelped' },
+  { value: 24, suffix: '', label: 'years' },
+  { value: 100, suffix: '+', label: 'jobsGenerated' },
+  { value: 1800, suffix: '+', label: 'families' },
 ];
 
 const easeApple = EASE_APPLE;
@@ -23,9 +33,15 @@ function Counter({ end, suffix, enabled }: { end: number; suffix: string; enable
   return <span>{count}{suffix}</span>;
 }
 
-export default function ImpactCounters() {
+export default function ImpactCounters({ stats }: ImpactCountersProps) {
   const t = useTranslations('impact');
   const { ref, isInView } = useInView({ threshold: 0.2 });
+
+  // If stats come from Strapi (label is already translated), use as-is.
+  // If using fallback, use translation keys.
+  const items = stats && stats.length > 0
+    ? stats
+    : FALLBACK_STATS.map((s) => ({ ...s, label: t(s.label) }));
 
   return (
     <section id="impact" className="relative overflow-hidden bg-primary-900 py-20 md:py-28">
@@ -48,9 +64,9 @@ export default function ImpactCounters() {
 
         {/* Stats — scale-up reveal */}
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
-          {stats.map((stat, i) => (
+          {items.map((stat, i) => (
             <motion.div
-              key={stat.key}
+              key={i}
               initial={{ opacity: 0, y: 20, scale: SCALE_INITIAL }}
               animate={
                 isInView
@@ -68,7 +84,7 @@ export default function ImpactCounters() {
                 <Counter end={stat.value} suffix={stat.suffix} enabled={isInView} />
               </p>
               <p className="mt-2 text-sm font-medium text-primary-300">
-                {t(stat.key)}
+                {stat.label}
               </p>
             </motion.div>
           ))}

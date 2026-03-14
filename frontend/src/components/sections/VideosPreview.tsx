@@ -1,15 +1,25 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { HiArrowRight, HiPlay } from 'react-icons/hi';
 import ScrollReveal from '@/components/shared/ScrollReveal';
-import YouTubeCard from '@/components/shared/YouTubeCard';
+import YouTubeCard, { type VideoCardItem } from '@/components/shared/YouTubeCard';
 import { featuredVideos, YOUTUBE_CHANNEL_URL } from '@/lib/youtube-data';
 
 export default function VideosPreview() {
   const t = useTranslations('videos');
-  const [featured, ...rest] = featuredVideos;
+  const locale = useLocale();
+
+  const mapped: VideoCardItem[] = featuredVideos.map((v) => ({
+    youtubeId: v.id,
+    title: locale === 'en' ? v.titleEn : v.titleEs,
+    description: locale === 'en' ? v.descriptionEn : v.descriptionEs,
+    category: v.category,
+    featured: v.featured,
+  }));
+
+  const [featured, ...rest] = mapped;
   const sideVideos = rest.slice(0, 2);
 
   return (
@@ -50,7 +60,7 @@ export default function VideosPreview() {
           {/* Side videos */}
           <div className="flex flex-col gap-6 lg:col-span-2">
             {sideVideos.map((video) => (
-              <ScrollReveal key={video.id} mode="scroll" scaleFrom={0.95}>
+              <ScrollReveal key={video.youtubeId} mode="scroll" scaleFrom={0.95}>
                 <YouTubeCard video={video} size="sm" showMeta />
               </ScrollReveal>
             ))}

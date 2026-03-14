@@ -109,6 +109,7 @@ export default async function seed(strapi: Core.Strapi) {
   await seedGlobalSettings(strapi);
   await seedWaysToHelp(strapi);
   await seedAboutPage(strapi);
+  await seedVideos(strapi);
 
   strapi.log.info('🌱 Seed script completed successfully.');
 }
@@ -128,6 +129,7 @@ async function clearAllContent(strapi: Core.Strapi) {
     'api::global-setting.global-setting',
     'api::ways-to-help.ways-to-help',
     'api::about-page.about-page',
+    'api::video.video',
   ];
 
   for (const uid of uids) {
@@ -482,32 +484,13 @@ async function seedSuccessStories(strapi: Core.Strapi) {
 
   const stories = [
     {
-      name: 'Alison Zapata',
-      slug: 'alison-zapata',
-      currentRole: 'Estudiante de Licenciatura en Música',
-      quote:
-        'La Fundación Cigarra me dio las bases musicales que hoy me permiten estudiar lo que amo en la universidad.',
-      achievement: 'Admitida en la Universidad Pedagógica Nacional en el programa de Licenciatura en Música',
-      featured: true,
-      seo: { metaTitle: 'Alison Zapata | Historias de Éxito', metaDescription: 'Alison Zapata, egresada de la Fundación Cigarra, hoy estudia Licenciatura en Música en la Universidad Pedagógica.' },
-    },
-    {
-      name: 'Leider Quiñones',
-      slug: 'leider-quinones',
-      currentRole: 'Instructor de danza folclórica',
-      quote:
-        'Gracias a la Cigarra descubrí mi pasión por la danza y hoy puedo enseñarle a otros niños lo que a mí me enseñaron.',
-      achievement: 'Fundó su propia escuela de danza en Ciudad Bolívar',
-      featured: true,
-      seo: { metaTitle: 'Leider Quiñones | Historias de Éxito', metaDescription: 'Leider Quiñones fundó su propia escuela de danza en Ciudad Bolívar gracias a la Fundación Cigarra.' },
-    },
-    {
       name: 'Juan David Hernández',
       slug: 'juan-david-hernandez',
       currentRole: 'Ingeniero de Sistemas',
-      quote:
-        'En la Cigarra aprendí que la tecnología puede transformar comunidades. Hoy trabajo para hacer eso realidad.',
+      quote: 'En la Cigarra aprendí que la tecnología puede transformar comunidades. Hoy trabajo para hacer eso realidad.',
       achievement: 'Graduado como Ingeniero de Sistemas con beca completa',
+      accentColor: '#4facfe',
+      icon: 'HiHeart',
       featured: true,
       seo: { metaTitle: 'Juan David Hernández | Historias de Éxito', metaDescription: 'Juan David Hernández, egresado de la Cigarra, se graduó como Ingeniero de Sistemas con beca completa.' },
     },
@@ -515,50 +498,83 @@ async function seedSuccessStories(strapi: Core.Strapi) {
       name: 'Andrey Ruíz',
       slug: 'andrey-ruiz',
       currentRole: 'Líder comunitario',
-      quote:
-        'La Fundación Cigarra me enseñó a soñar en grande y a trabajar con disciplina para lograr mis metas.',
+      quote: 'La Fundación Cigarra me enseñó a soñar en grande y a trabajar con disciplina para lograr mis metas.',
       achievement: 'Creó una empresa de servicios tecnológicos que emplea a jóvenes de la comunidad',
-      featured: false,
+      accentColor: '#43e97b',
+      icon: 'HiStar',
+      featured: true,
       seo: { metaTitle: 'Andrey Ruíz | Historias de Éxito', metaDescription: 'Andrey Ruíz creó una empresa de servicios tecnológicos que emplea a jóvenes de Ciudad Bolívar.' },
     },
     {
       name: 'Yuri Karina Poveda',
       slug: 'yuri-karina-poveda',
       currentRole: 'Educadora',
-      quote:
-        'Cada enseñanza que comparto con mis estudiantes lleva un poco de lo que la Cigarra sembró en mí.',
+      quote: 'Cada enseñanza que comparto con mis estudiantes lleva un poco de lo que la Cigarra sembró en mí.',
       achievement: 'Licenciada en Educación y docente en colegio público de Bogotá',
+      accentColor: '#fa709a',
+      icon: 'HiAcademicCap',
       featured: true,
       seo: { metaTitle: 'Yuri Karina Poveda | Historias de Éxito', metaDescription: 'Yuri Karina Poveda es Licenciada en Educación y docente en colegio público de Bogotá.' },
     },
     {
-      name: 'Angie Tatiana Poveda',
-      slug: 'angie-tatiana-poveda',
+      name: 'Anyie Tatiana Poveda',
+      slug: 'anyie-tatiana-poveda',
       currentRole: 'Profesional en administración',
-      quote:
-        'Con esfuerzo y dedicación todo es posible. La Fundación Cigarra me lo demostró.',
+      quote: 'Con esfuerzo y dedicación todo es posible. La Fundación Cigarra me lo demostró.',
       achievement: 'Profesional en administración y mentora de jóvenes en la comunidad',
+      accentColor: '#a18cd1',
+      icon: 'HiSparkles',
       featured: false,
-      seo: { metaTitle: 'Angie Tatiana Poveda | Historias de Éxito', metaDescription: 'Angie Tatiana Poveda es profesional en administración y mentora de jóvenes en Ciudad Bolívar.' },
+      seo: { metaTitle: 'Anyie Tatiana Poveda | Historias de Éxito', metaDescription: 'Anyie Tatiana Poveda es profesional en administración y mentora de jóvenes en Ciudad Bolívar.' },
+    },
+    {
+      name: 'Alisson Damara Zapata Melgar',
+      slug: 'alisson-zapata',
+      currentRole: 'Estudiante de Licenciatura en Música',
+      quote: 'La Fundación Cigarra me dio las bases musicales que hoy me permiten estudiar lo que amo en la universidad.',
+      achievement: 'Admitida en la Universidad Pedagógica Nacional en el programa de Licenciatura en Música',
+      accentColor: '#f9a825',
+      icon: 'HiStar',
+      featured: true,
+      seo: { metaTitle: 'Alisson Zapata | Historias de Éxito', metaDescription: 'Alisson Zapata, egresada de la Fundación Cigarra, hoy estudia Licenciatura en Música en la Universidad Pedagógica.' },
+    },
+    {
+      name: 'Edwin Santiago Chavez Romero',
+      slug: 'edwin-chavez',
+      currentRole: 'Músico profesional',
+      quote: 'La Cigarra me enseñó que la música es un lenguaje universal que abre puertas y transforma corazones.',
+      achievement: 'Becado en el Conservatorio de Música de Bogotá',
+      accentColor: '#26c6da',
+      icon: 'HiAcademicCap',
+      featured: false,
+      seo: { metaTitle: 'Edwin Chavez | Historias de Éxito', metaDescription: 'Edwin Santiago Chavez Romero, egresado del programa de música de la Fundación Cigarra.' },
+    },
+    {
+      name: 'Yorlandis Paredes Garcia',
+      slug: 'yorlandis-paredes',
+      currentRole: 'Artista y gestora cultural',
+      quote: 'Gracias a la Cigarra descubrí mi voz y mi arte. Ahora trabajo para que otros niños también la descubran.',
+      achievement: 'Gestora cultural reconocida en Ciudad Bolívar',
+      accentColor: '#ef5350',
+      icon: 'HiHeart',
+      featured: false,
+      seo: { metaTitle: 'Yorlandis Paredes | Historias de Éxito', metaDescription: 'Yorlandis Paredes Garcia, egresada y gestora cultural en Ciudad Bolívar.' },
+    },
+    {
+      name: 'Jose David Paredes Garcia',
+      slug: 'jose-david-paredes',
+      currentRole: 'Estudiante de Ingeniería',
+      quote: 'En la Cigarra aprendí que con disciplina y amor todo es posible. Ese es el legado que llevo conmigo.',
+      achievement: 'Primer miembro de su familia en acceder a la educación universitaria',
+      accentColor: '#66bb6a',
+      icon: 'HiSparkles',
+      featured: false,
+      seo: { metaTitle: 'Jose David Paredes | Historias de Éxito', metaDescription: 'Jose David Paredes Garcia, primer universitario de su familia gracias a la Fundación Cigarra.' },
     },
   ];
 
   // English translations keyed by slug (localized fields + slug for uid)
   const storiesEN: Record<string, { slug: string; currentRole: string; quote: string; achievement: string; seo: { metaTitle: string; metaDescription: string } }> = {
-    'alison-zapata': {
-      slug: 'alison-zapata',
-      currentRole: 'Music Education Student',
-      quote: 'Fundación Cigarra gave me the musical foundations that today allow me to study what I love at university.',
-      achievement: 'Admitted to the National Pedagogical University in the Music Education program',
-      seo: { metaTitle: 'Alison Zapata | Success Stories', metaDescription: 'Alison Zapata, a Fundación Cigarra graduate, now studies Music Education at the National Pedagogical University.' },
-    },
-    'leider-quinones': {
-      slug: 'leider-quinones',
-      currentRole: 'Folk Dance Instructor',
-      quote: 'Thanks to La Cigarra I discovered my passion for dance and today I can teach other children what I was taught.',
-      achievement: 'Founded his own dance school in Ciudad Bolívar',
-      seo: { metaTitle: 'Leider Quiñones | Success Stories', metaDescription: 'Leider Quiñones founded his own dance school in Ciudad Bolívar thanks to Fundación Cigarra.' },
-    },
     'juan-david-hernandez': {
       slug: 'juan-david-hernandez',
       currentRole: 'Systems Engineer',
@@ -580,12 +596,40 @@ async function seedSuccessStories(strapi: Core.Strapi) {
       achievement: 'Education graduate and public school teacher in Bogotá',
       seo: { metaTitle: 'Yuri Karina Poveda | Success Stories', metaDescription: 'Yuri Karina Poveda is an Education graduate and public school teacher in Bogotá.' },
     },
-    'angie-tatiana-poveda': {
-      slug: 'angie-tatiana-poveda',
+    'anyie-tatiana-poveda': {
+      slug: 'anyie-tatiana-poveda',
       currentRole: 'Business Administration Professional',
       quote: 'With effort and dedication, everything is possible. Fundación Cigarra proved it to me.',
       achievement: 'Business administration professional and youth mentor in the community',
-      seo: { metaTitle: 'Angie Tatiana Poveda | Success Stories', metaDescription: 'Angie Tatiana Poveda is a business administration professional and youth mentor in Ciudad Bolívar.' },
+      seo: { metaTitle: 'Anyie Tatiana Poveda | Success Stories', metaDescription: 'Anyie Tatiana Poveda is a business administration professional and youth mentor in Ciudad Bolívar.' },
+    },
+    'alisson-zapata': {
+      slug: 'alisson-zapata',
+      currentRole: 'Music Education Student',
+      quote: 'Fundación Cigarra gave me the musical foundations that today allow me to study what I love at university.',
+      achievement: 'Admitted to the National Pedagogical University in the Music Education program',
+      seo: { metaTitle: 'Alisson Zapata | Success Stories', metaDescription: 'Alisson Zapata, a Fundación Cigarra graduate, now studies Music Education at the National Pedagogical University.' },
+    },
+    'edwin-chavez': {
+      slug: 'edwin-chavez',
+      currentRole: 'Professional Musician',
+      quote: 'La Cigarra taught me that music is a universal language that opens doors and transforms hearts.',
+      achievement: 'Scholarship recipient at the Bogotá Music Conservatory',
+      seo: { metaTitle: 'Edwin Chavez | Success Stories', metaDescription: 'Edwin Santiago Chavez Romero, graduate of the Fundación Cigarra music program.' },
+    },
+    'yorlandis-paredes': {
+      slug: 'yorlandis-paredes',
+      currentRole: 'Artist and Cultural Manager',
+      quote: 'Thanks to La Cigarra I discovered my voice and my art. Now I work so other children can discover theirs.',
+      achievement: 'Recognized cultural manager in Ciudad Bolívar',
+      seo: { metaTitle: 'Yorlandis Paredes | Success Stories', metaDescription: 'Yorlandis Paredes Garcia, graduate and cultural manager in Ciudad Bolívar.' },
+    },
+    'jose-david-paredes': {
+      slug: 'jose-david-paredes',
+      currentRole: 'Engineering Student',
+      quote: 'At La Cigarra I learned that with discipline and love anything is possible. That is the legacy I carry with me.',
+      achievement: 'First member of his family to access university education',
+      seo: { metaTitle: 'Jose David Paredes | Success Stories', metaDescription: 'Jose David Paredes Garcia, the first in his family to attend university, thanks to Fundación Cigarra.' },
     },
   };
 
@@ -848,120 +892,66 @@ async function seedTeamMembers(strapi: Core.Strapi) {
   }
 
   const members = [
-    {
-      name: 'Martha Lucía Gómez',
-      role: 'Directora General',
-      bio: 'Fundadora de la Cigarra con más de 23 años dedicados a la transformación social en Ciudad Bolívar.',
-      department: 'direction',
-      order: 1,
-    },
-    {
-      name: 'Carlos Andrés Ruiz',
-      role: 'Coordinador de Programas',
-      bio: 'Licenciado en educación con experiencia en gestión de proyectos sociales y comunitarios.',
-      department: 'direction',
-      order: 2,
-    },
-    {
-      name: 'Ana María Torres',
-      role: 'Coordinadora Académica',
-      bio: 'Pedagoga especialista en innovación educativa y desarrollo infantil.',
-      department: 'education',
-      order: 3,
-    },
-    {
-      name: 'Diego Alejandro Vargas',
-      role: 'Director de Música',
-      bio: 'Músico profesional egresado de la Universidad Nacional. Dirige el programa de música desde 2010.',
-      department: 'arts',
-      order: 4,
-    },
-    {
-      name: 'Paola Andrea Méndez',
-      role: 'Trabajadora Social',
-      bio: 'Acompaña a las familias beneficiarias y gestiona la red de apoyo comunitario.',
-      department: 'administration',
-      order: 5,
-    },
-    {
-      name: 'Julián Esteban Peña',
-      role: 'Instructor de Teatro',
-      bio: 'Artista escénico con énfasis en pedagogía del arte para comunidades vulnerables.',
-      department: 'arts',
-      order: 6,
-    },
-    {
-      name: 'Sandra Milena Castillo',
-      role: 'Psicóloga',
-      bio: 'Brinda acompañamiento psicosocial a los niños, jóvenes y sus familias.',
-      department: 'administration',
-      order: 7,
-    },
-    {
-      name: 'Roberto Carlos Díaz',
-      role: 'Instructor de Danza',
-      bio: 'Bailarín profesional especializado en danzas folclóricas colombianas.',
-      department: 'arts',
-      order: 8,
-    },
-    {
-      name: 'Luisa Fernanda Ospina',
-      role: 'Coordinadora de Voluntariado',
-      bio: 'Gestiona la red de más de 50 voluntarios que apoyan los programas de la fundación.',
-      department: 'volunteers',
-      order: 9,
-    },
-    {
-      name: 'Andrés Felipe Moreno',
-      role: 'Instructor de Tecnología',
-      bio: 'Ingeniero de sistemas que lidera los programas de tecnología y alfabetización digital.',
-      department: 'education',
-      order: 10,
-    },
+    // Dirección y Administración
+    { name: 'Carolyn Acosta', role: 'Fundadora y Directora', bio: 'Visionaria y líder de la Fundación Cigarra desde sus inicios en 2002. Su dedicación y amor por los niños de Ciudad Bolívar ha transformado la vida de miles de familias a través de la educación, el arte y la cultura.', department: 'direction', order: 1 },
+    { name: 'Esperanza Duque Castro', role: 'Administradora', bio: null, department: 'direction', order: 2 },
+    { name: 'Karol Vanessa Gonzalez Rocha', role: 'Auxiliar Administrativa', bio: null, department: 'direction', order: 3 },
+    { name: 'Cristina Rocio Parra Lamprea', role: 'Trabajadora Social', bio: null, department: 'direction', order: 4 },
+    { name: 'Rubiela Pinzon', role: 'Contadora', bio: null, department: 'direction', order: 5 },
+    { name: 'Zulma Rodriguez', role: 'Revisora Fiscal', bio: null, department: 'direction', order: 6 },
+    { name: 'Erika Tatiana Santamaria Hernandez', role: 'Asistente de Informacion', bio: null, department: 'direction', order: 7 },
+    { name: 'Maritzabel Escobar Meneses', role: 'Nutricionista', bio: null, department: 'direction', order: 8 },
+    // Equipo Docente
+    { name: 'Yeimi Rocio Forero Medina', role: 'Coordinadora Pedagogica', bio: null, department: 'education', order: 9 },
+    { name: 'Elvin Yezid Barbos Silva', role: 'Docente de Musica', bio: null, department: 'education', order: 10 },
+    { name: 'Sandra Lenith Beltran Suarez', role: 'Docente', bio: null, department: 'education', order: 11 },
+    { name: 'Andrea Liliana Capera Prada', role: 'Docente', bio: null, department: 'education', order: 12 },
+    { name: 'Ruth Correa Millan', role: 'Docente', bio: null, department: 'education', order: 13 },
+    { name: 'Luz Dary Corredor Lemus', role: 'Docente', bio: null, department: 'education', order: 14 },
+    { name: 'Paola Andrea Delgadillo Lucas', role: 'Docente', bio: null, department: 'education', order: 15 },
+    { name: 'Durbys Yineth Parra Castaneda', role: 'Docente', bio: null, department: 'education', order: 16 },
+    { name: 'Yeimy Lucrecia Quiroga Quitian', role: 'Docente', bio: null, department: 'education', order: 17 },
+    { name: 'Andres Fernando Quitian Ovalle', role: 'Docente', bio: null, department: 'education', order: 18 },
+    { name: 'Yuri Consuelo Salinas Hernandez', role: 'Docente', bio: null, department: 'education', order: 19 },
+    { name: 'Jonnatan Villegas Huertas', role: 'Docente', bio: null, department: 'education', order: 20 },
+    { name: 'Venjy Alejandra Castillo Gavilan', role: 'Docente', bio: null, department: 'education', order: 21 },
+    // Servicios Generales
+    { name: 'Maritza Fuquen Ramirez', role: 'Servicios Generales', bio: null, department: 'general_services', order: 22 },
+    { name: 'John Fredy Perez Pineda', role: 'Servicios Generales', bio: null, department: 'general_services', order: 23 },
+    { name: 'Yulieth Rojas Salinas', role: 'Economa', bio: null, department: 'general_services', order: 24 },
+    // Mantenimiento
+    { name: 'Fanny Marin Luz', role: 'Almacenista', bio: null, department: 'maintenance', order: 25 },
+    { name: 'Orlando Callejas Valencia', role: 'Mantenimiento', bio: null, department: 'maintenance', order: 26 },
   ];
 
   // English translations keyed by name (localized: role, bio)
-  const membersEN: Record<string, { role: string; bio: string }> = {
-    'Martha Lucía Gómez': {
-      role: 'Executive Director',
-      bio: 'Founder of La Cigarra with over 23 years dedicated to social transformation in Ciudad Bolívar.',
-    },
-    'Carlos Andrés Ruiz': {
-      role: 'Programs Coordinator',
-      bio: 'Education graduate with experience in social and community project management.',
-    },
-    'Ana María Torres': {
-      role: 'Academic Coordinator',
-      bio: 'Pedagogue specializing in educational innovation and child development.',
-    },
-    'Diego Alejandro Vargas': {
-      role: 'Music Director',
-      bio: 'Professional musician and National University graduate. Has led the music program since 2010.',
-    },
-    'Paola Andrea Méndez': {
-      role: 'Social Worker',
-      bio: 'Supports beneficiary families and manages the community support network.',
-    },
-    'Julián Esteban Peña': {
-      role: 'Theater Instructor',
-      bio: 'Performing artist with a focus on art pedagogy for vulnerable communities.',
-    },
-    'Sandra Milena Castillo': {
-      role: 'Psychologist',
-      bio: 'Provides psychosocial support to children, youth, and their families.',
-    },
-    'Roberto Carlos Díaz': {
-      role: 'Dance Instructor',
-      bio: 'Professional dancer specializing in Colombian folk dances.',
-    },
-    'Luisa Fernanda Ospina': {
-      role: 'Volunteer Coordinator',
-      bio: 'Manages the network of over 50 volunteers who support the foundation\'s programs.',
-    },
-    'Andrés Felipe Moreno': {
-      role: 'Technology Instructor',
-      bio: 'Systems engineer who leads the technology and digital literacy programs.',
-    },
+  const membersEN: Record<string, { role: string; bio?: string }> = {
+    'Carolyn Acosta': { role: 'Founder and Director', bio: 'Visionary leader of Fundación Cigarra since its founding in 2002. Her dedication and love for the children of Ciudad Bolívar has transformed thousands of families through education, art, and culture.' },
+    'Esperanza Duque Castro': { role: 'Administrator' },
+    'Karol Vanessa Gonzalez Rocha': { role: 'Administrative Assistant' },
+    'Cristina Rocio Parra Lamprea': { role: 'Social Worker' },
+    'Rubiela Pinzon': { role: 'Accountant' },
+    'Zulma Rodriguez': { role: 'Fiscal Auditor' },
+    'Erika Tatiana Santamaria Hernandez': { role: 'Information Assistant' },
+    'Maritzabel Escobar Meneses': { role: 'Nutritionist' },
+    'Yeimi Rocio Forero Medina': { role: 'Pedagogical Coordinator' },
+    'Elvin Yezid Barbos Silva': { role: 'Music Teacher' },
+    'Sandra Lenith Beltran Suarez': { role: 'Teacher' },
+    'Andrea Liliana Capera Prada': { role: 'Teacher' },
+    'Ruth Correa Millan': { role: 'Teacher' },
+    'Luz Dary Corredor Lemus': { role: 'Teacher' },
+    'Paola Andrea Delgadillo Lucas': { role: 'Teacher' },
+    'Durbys Yineth Parra Castaneda': { role: 'Teacher' },
+    'Yeimy Lucrecia Quiroga Quitian': { role: 'Teacher' },
+    'Andres Fernando Quitian Ovalle': { role: 'Teacher' },
+    'Yuri Consuelo Salinas Hernandez': { role: 'Teacher' },
+    'Jonnatan Villegas Huertas': { role: 'Teacher' },
+    'Venjy Alejandra Castillo Gavilan': { role: 'Teacher' },
+    'Maritza Fuquen Ramirez': { role: 'General Services' },
+    'John Fredy Perez Pineda': { role: 'General Services' },
+    'Yulieth Rojas Salinas': { role: 'Stewardess' },
+    'Fanny Marin Luz': { role: 'Warehouse Manager' },
+    'Orlando Callejas Valencia': { role: 'Maintenance' },
   };
 
   for (const member of members) {
@@ -1549,4 +1539,64 @@ async function seedAboutPage(strapi: Core.Strapi) {
   });
 
   strapi.log.info('Seeded about page with gallery and 16 timeline entries (ES + EN).');
+}
+
+// ---------------------------------------------------------------------------
+// Videos
+// ---------------------------------------------------------------------------
+async function seedVideos(strapi: Core.Strapi) {
+  const existing = await strapi.documents('api::video.video').findMany();
+  if (existing.length > 0) {
+    strapi.log.info('Videos already seeded, skipping.');
+    return;
+  }
+
+  const videos = [
+    { youtubeId: 'zv2LXjPTUxg', title: 'Bingo Solidario 2026', description: 'Únete a nuestro Bingo virtual el próximo 14 de marzo.', category: 'event', featured: true, order: 1 },
+    { youtubeId: 'RE70AtGQ6x4', title: 'Emprendimientos Cigarra 2025', description: 'Nuestros emprendimientos Cigarra.', category: 'program', featured: true, order: 2 },
+    { youtubeId: 'b01VrjBE8aA', title: 'Filarmónica Cigarra — Cierre de Temporada New Philharmonia', description: 'El 24 de agosto, 10 jóvenes músicos de la Fundación Cigarra participaron en el concierto de cierre de temporada de la New Philharmonia Orchestra, dirigida por Ricardo Jaramillo y nuestro docente Yezid Barbosa.', category: 'program', featured: true, order: 3 },
+    { youtubeId: 'pm8dm3cF5nA', title: 'Concierto Solidario SGS 2025', description: null, category: 'event', featured: false, order: 4 },
+    { youtubeId: 'DhJeNisgezA', title: 'Bingo Bazar y Presentaciones Infantiles', description: '¡Gran Evento de Bingo Bazar y Presentaciones Infantiles! ¡No te pierdas nuestro emocionante stream que combina el divertido juego de bingo con el talento de nuestros pequeños artistas!', category: 'event', featured: false, order: 5 },
+    { youtubeId: 'ie-Z3ibcJwo', title: 'Bingo Bazar — En Vivo', description: '¡No te pierdas el Bingo Bazar de la Fundación Cigarra! Este domingo 15 de septiembre, te invitamos a un evento lleno de diversión y solidaridad.', category: 'event', featured: false, order: 6 },
+    { youtubeId: 'l7RHznZnktg', title: 'Mes del Niño y Deporte', description: 'Capturamos algunos de los momentos más especiales de nuestro reciente cierre del Mes del Deporte y del Niño.', category: 'event', featured: false, order: 7 },
+    { youtubeId: 'srNTa6XSn8k', title: 'Fútbol en Casa', description: 'En abril, combinamos la alegría del deporte y el Día del Niño en una sola celebración: nuestro primer torneo de fútbol.', category: 'program', featured: false, order: 8 },
+    { youtubeId: '-7dX7oBPyGk', title: 'Concierto Solidario 2023', description: null, category: 'event', featured: false, order: 9 },
+    { youtubeId: 'BHyuFTQzdTY', title: 'Serenata de Amor', description: '¡Explora con nosotros una jornada única en Cigarra! En este video especial, llevamos serenatas llenas de amor y gratitud a los comerciantes.', category: 'program', featured: false, order: 10 },
+    { youtubeId: 'qvVL6m1AOds', title: 'Himno Fundación Cigarra', description: null, category: 'highlight', featured: false, order: 11 },
+    { youtubeId: 'b9oUKjnNvZE', title: 'Detrás del Telón — Concierto Solidario SGS 2022', description: 'Presentamos un vistazo exclusivo de cómo nuestros talentosos niños se prepararon para el Concierto Solidario 2022.', category: 'story', featured: false, order: 12 },
+    { youtubeId: '0JbzvLdrxns', title: 'Debut Orquesta Sinfónica La Cigarra — Concierto Solidario SGS', description: 'El esperado Concierto Solidario SGS 2023 trae el debut de la Orquesta Sinfónica La Cigarra, un sueño hecho realidad desde 2015.', category: 'event', featured: false, order: 13 },
+    { youtubeId: '8X7KFvEsPNA', title: 'Carolina Gaitán — Pepa Madrigal visita a los niños de Cigarra', description: 'Este año nuestros niñas y niños recibieron una sorpresa ENCANTADORA. Carolina Gaitán (Pepa Madrigal en "Encanto") les envió un saludo de navidad.', category: 'highlight', featured: false, order: 14 },
+  ];
+
+  const videosEN: Record<string, { title: string; description?: string }> = {
+    'zv2LXjPTUxg': { title: 'Solidarity Bingo 2026', description: 'Join our virtual Bingo on March 14th.' },
+    'RE70AtGQ6x4': { title: 'Cigarra Entrepreneurship 2025', description: 'Our Cigarra entrepreneurship projects.' },
+    'b01VrjBE8aA': { title: 'Cigarra Philharmonic — New Philharmonia Season Closing', description: 'On August 24, 10 young musicians from the Cigarra Foundation performed at the New Philharmonia Orchestra season closing concert, directed by Ricardo Jaramillo and our teacher Yezid Barbosa.' },
+    'pm8dm3cF5nA': { title: 'SGS Solidarity Concert 2025' },
+    'DhJeNisgezA': { title: 'Bingo Bazaar and Children\'s Performances', description: 'Great Bingo Bazaar and Children\'s Performances Event! Don\'t miss our exciting stream combining bingo with the talent of our young artists!' },
+    'ie-Z3ibcJwo': { title: 'Bingo Bazaar — Live', description: 'Don\'t miss the Cigarra Foundation Bingo Bazaar! This Sunday, September 15, join us for an event full of fun and solidarity.' },
+    'l7RHznZnktg': { title: "Children's Month & Sports", description: "We captured some of the most special moments from our recent Sports and Children's Month closing." },
+    'srNTa6XSn8k': { title: 'Football at Home', description: "In April, we combined the joy of sport and Children's Day in one celebration: our first football tournament." },
+    '-7dX7oBPyGk': { title: 'Solidarity Concert 2023' },
+    'BHyuFTQzdTY': { title: 'Serenade of Love', description: 'Explore a unique day at Cigarra with us! In this special video, we bring serenades full of love and gratitude to local merchants.' },
+    'qvVL6m1AOds': { title: 'Cigarra Foundation Anthem' },
+    'b9oUKjnNvZE': { title: 'Behind the Curtain — SGS Solidarity Concert 2022', description: 'An exclusive look at how our talented children prepared for the 2022 Solidarity Concert.' },
+    '0JbzvLdrxns': { title: 'La Cigarra Symphony Orchestra Debut — SGS Solidarity Concert', description: 'The long-awaited SGS 2023 Solidarity Concert brings the debut of the La Cigarra Symphony Orchestra — a dream realized since 2015.' },
+    '8X7KFvEsPNA': { title: 'Carolina Gaitán — Pepa Madrigal visits Cigarra Foundation children', description: 'This year our children received an ENCHANTING surprise. Carolina Gaitán (Pepa Madrigal in "Encanto") sent them a Christmas greeting.' },
+  };
+
+  for (const video of videos) {
+    const doc = await strapi.documents('api::video.video').create({
+      data: video as any,
+      locale: 'es',
+      status: 'published',
+    });
+
+    const en = videosEN[video.youtubeId];
+    if (en) {
+      await addEnglishLocale(strapi, 'api::video.video', doc.documentId, en);
+    }
+  }
+
+  strapi.log.info(`Seeded ${videos.length} videos (ES + EN).`);
 }

@@ -11,7 +11,7 @@ import PartnersMarquee from '@/components/sections/PartnersMarquee';
 import { buildPageMetadata } from '@/lib/seo';
 import { getOrganizationSchema, getWebSiteSchema } from '@/lib/structured-data';
 import JsonLd from '@/components/seo/JsonLd';
-import { getHero, getHomepageFeaturedArticles } from '@/lib/queries';
+import { getHero, getHomepageFeaturedArticles, getImpactStatistics } from '@/lib/queries';
 import { getStrapiMedia } from '@/lib/strapi';
 import FeaturedNewsBanner from '@/components/sections/FeaturedNewsBanner';
 import IntroVideoModalLoader from '@/components/IntroVideoModalLoader';
@@ -40,6 +40,7 @@ export default async function HomePage({
 
   let heroImages: string[] | undefined;
   let featuredArticles: { title: string; slug: string; date?: string }[] | undefined;
+  let impactStats: { value: number; suffix: string; label: string }[] | undefined;
 
   try {
     const heroData = await getHero(locale) as any;
@@ -51,6 +52,22 @@ export default async function HomePage({
     }
   } catch {
     // Fallback to local images if Strapi is unavailable
+  }
+
+  try {
+    const statsData = await getImpactStatistics(locale) as any;
+    const statsArr = statsData?.data?.stats;
+    if (Array.isArray(statsArr) && statsArr.length > 0) {
+      impactStats = statsArr
+        .sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0))
+        .map((s: any) => ({
+          value: s.value ?? 0,
+          suffix: s.suffix ?? '',
+          label: s.label ?? '',
+        }));
+    }
+  } catch {
+    // Fallback to hardcoded values in the component
   }
 
   try {
@@ -74,7 +91,7 @@ export default async function HomePage({
       <JsonLd data={getWebSiteSchema()} />
       <HeroSection images={heroImages} />
       <FeaturedNewsBanner articles={featuredArticles} />
-      <ImpactCounters />
+      <ImpactCounters stats={impactStats} />
       <ProgramsGrid />
       <StoriesCarousel />
       <DonationCTA />

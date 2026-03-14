@@ -226,6 +226,17 @@ export async function getPopupAnnouncement(locale: string) {
   });
 }
 
+export async function getVideos(locale: string) {
+  return fetchAPI({
+    path: '/videos',
+    locale,
+    query: {
+      sort: ['order:asc'],
+      pagination: { pageSize: 100 },
+    },
+  });
+}
+
 export async function submitContactMessage(data: {
   name: string;
   email: string;
