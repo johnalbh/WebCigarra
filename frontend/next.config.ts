@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'strapi-cms-production-84f9.up.railway.app',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'i.ytimg.com',
         pathname: '/vi/**',
       },

@@ -705,169 +705,156 @@ async function seedArticles(strapi: Core.Strapi) {
     return;
   }
 
+  const FRONTEND_URL = 'https://frontend-three-chi-15.vercel.app';
+
   const articles = [
     {
-      title: 'Bingo Virtual Marzo 2026',
+      title: 'Bingo Virtual Marzo 2026 — ¡Un éxito gracias a su apoyo!',
       slug: 'bingo-virtual-marzo-2026',
-      excerpt:
-        'Participa en nuestro Bingo Virtual a beneficio de la Fundación Cigarra. Premios increíbles, mucha diversión y toda la recaudación va directamente a nuestros programas.',
-      content:
-        'La Fundación Cigarra te invita a participar en nuestro Bingo Virtual de marzo 2026, un evento lleno de diversión, premios increíbles y solidaridad.\n\nToda la recaudación será destinada directamente a nuestros programas de educación, alimentación y bienestar para los niños y jóvenes de Ciudad Bolívar.\n\n## Detalles del evento\n\n- **Fecha:** Marzo 2026\n- **Modalidad:** Virtual\n- **Premios:** Múltiples premios para los ganadores\n\n¡No te lo pierdas! Comparte con familia y amigos y ayúdanos a transformar vidas mientras te diviertes.',
+      excerpt: '¡Gracias a todos los que participaron! El Bingo Virtual ya se realizó y fue un éxito gracias a su apoyo. Los fondos recaudados van directamente a nuestros programas para los niños de Ciudad Bolívar.',
+      content: '¡El Bingo Virtual Marzo 2026 ya se llevó a cabo y fue un éxito rotundo gracias a la generosidad de todos ustedes!\n\nAgradecemos profundamente a cada persona que participó, compró cartones y difundió el evento. Su apoyo hace posible que sigamos transformando vidas en Ciudad Bolívar.\n\nToda la recaudación obtenida irá directamente a nuestros programas de educación, arte y cultura para los niños y jóvenes de nuestra comunidad.\n\nEste tipo de eventos nos recuerda la fuerza que tiene nuestra comunidad cuando se une por una causa. ¡Nos vemos en el próximo evento!\n\nSi quieres seguir apoyando nuestra labor, puedes hacer una donación en cualquier momento desde nuestra página de donaciones o contactarnos a través de nuestras redes sociales.',
       publishDate: '2026-03-15',
       author: 'Fundación Cigarra',
       tags: ['eventos', 'bingo', 'recaudación'],
-      featured: true,
-      seo: { metaTitle: 'Bingo Virtual Marzo 2026 | Fundación Cigarra', metaDescription: 'Participa en el Bingo Virtual de la Fundación Cigarra. Premios increíbles y toda la recaudación va a nuestros programas.' },
-    },
-    {
-      title: 'Inauguramos nueva aula de música',
-      slug: 'inauguramos-nueva-aula-de-musica',
-      excerpt:
-        'Gracias a la alianza con Microsoft y Saint George School, contamos con un espacio renovado para nuestras clases de música.',
-      content:
-        'La Fundación Cigarra inauguró su nueva aula de música, un espacio completamente renovado que cuenta con instrumentos nuevos y equipos de sonido de alta calidad. Este logro fue posible gracias a la generosa donación de Microsoft y el apoyo constante de Saint George School.\n\nEl aula beneficiará a más de 60 niños y jóvenes que participan en nuestro programa de música, ofreciéndoles un ambiente óptimo para desarrollar sus habilidades musicales.\n\n"Este espacio representa una nueva oportunidad para que nuestros estudiantes sueñen más grande", expresó la directora de la fundación durante la ceremonia de inauguración.',
-      publishDate: '2025-11-15',
-      author: 'Fundación Cigarra',
-      tags: ['música', 'infraestructura', 'alianzas'],
-      featured: true,
-      seo: { metaTitle: 'Nueva Aula de Música | Fundación Cigarra', metaDescription: 'Gracias a Microsoft y Saint George School, la Fundación Cigarra inaugura un espacio renovado para clases de música.' },
-    },
-    {
-      title: 'Biblioteca Cigarra: más de 500 libros disponibles',
-      slug: 'biblioteca-cigarra-500-libros',
-      excerpt:
-        'Nuestra biblioteca comunitaria alcanza los 500 libros gracias a donaciones de aliados y la comunidad.',
-      content:
-        'La Biblioteca de la Fundación Cigarra ha alcanzado un hito importante: más de 500 libros disponibles para préstamo y consulta por parte de los niños, jóvenes y familias de Ciudad Bolívar.\n\nEste logro es posible gracias a las generosas donaciones de nuestros aliados corporativos y de la comunidad. La biblioteca es un espacio seguro donde los beneficiarios pueden explorar el mundo a través de la lectura.\n\nEl programa de biblioteca incluye talleres de lectura, clubes de libro y actividades de fomento lector que han impactado positivamente en el rendimiento escolar de los participantes.',
-      publishDate: '2025-10-20',
-      author: 'Equipo Académico',
-      tags: ['biblioteca', 'lectura', 'educación'],
       featured: false,
-      seo: { metaTitle: 'Biblioteca Cigarra | Fundación Cigarra', metaDescription: 'La biblioteca comunitaria de la Fundación Cigarra alcanza los 500 libros para niños y jóvenes de Ciudad Bolívar.' },
+      seo: { metaTitle: 'Bingo Virtual Marzo 2026 | Fundación Cigarra', metaDescription: 'El Bingo Virtual de marzo 2026 fue un éxito. Los fondos recaudados van a los programas de la Fundación Cigarra.' },
+      imageUrl: `${FRONTEND_URL}/images/bingo-marzo-2026.webp`,
     },
     {
-      title: 'Festival de Danza Folclórica 2025',
-      slug: 'festival-danza-folclorica-2025',
-      excerpt:
-        'Más de 80 niños participaron en nuestro festival anual de danza, celebrando la riqueza cultural colombiana.',
-      content:
-        'El pasado sábado se llevó a cabo el Festival de Danza Folclórica 2025 en las instalaciones de la Fundación Cigarra. Más de 80 niños y jóvenes de nuestro programa de danza presentaron coreografías de cumbia, bambuco, currulao y salsa.\n\nEl evento contó con la asistencia de más de 200 familiares y miembros de la comunidad, quienes disfrutaron de una jornada llena de color, música y alegría.\n\n"La danza es un vehículo para que nuestros niños se conecten con sus raíces y fortalezcan su identidad cultural", comentó el coordinador del programa.',
-      publishDate: '2025-09-10',
+      title: 'Celebramos 24 años transformando vidas en Ciudad Bolívar',
+      slug: 'celebramos-22-anos',
+      excerpt: 'Nuestra fundación cumple más de dos décadas de labor ininterrumpida con los niños y jóvenes de la localidad, brindando esperanza y oportunidades a cientos de familias.',
+      content: 'Este año marca un hito especial para nuestra fundación: 24 años de labor ininterrumpida al servicio de los niños y jóvenes de Ciudad Bolívar en Bogotá.\n\nDesde nuestros humildes comienzos en 2002, hemos crecido hasta ayudar a más de 1.877 niños y jóvenes a través de 13 programas de educación, arte y cultura, generando más de 100 empleos y beneficiando a más de 1.800 familias.\n\nNuestro compromiso sigue siendo el mismo: brindar oportunidades de desarrollo integral a quienes más lo necesitan, creando un espacio seguro donde los sueños de nuestros niños puedan florecer.\n\nAgradecemos a todos nuestros donantes, voluntarios y aliados que hacen posible esta labor. Juntos, seguiremos transformando vidas.',
+      publishDate: '2024-06-15',
       author: 'Fundación Cigarra',
-      tags: ['danza', 'cultura', 'eventos'],
+      tags: ['aniversario', 'impacto', 'comunidad'],
       featured: true,
-      seo: { metaTitle: 'Festival de Danza 2025 | Fundación Cigarra', metaDescription: '80 niños celebran la cultura colombiana en el Festival de Danza Folclórica 2025 de la Fundación Cigarra.' },
+      seo: { metaTitle: '24 Años Transformando Vidas | Fundación Cigarra', metaDescription: 'La Fundación Cigarra celebra 24 años de labor ininterrumpida al servicio de los niños de Ciudad Bolívar.' },
+      imageUrl: `${FRONTEND_URL}/images/news/celebramos-22-anos.webp`,
     },
     {
-      title: 'Nuevo programa de psicología para familias',
-      slug: 'nuevo-programa-psicologia-familias',
-      excerpt:
-        'Lanzamos nuestro programa de acompañamiento psicosocial para fortalecer el bienestar emocional de niños y familias.',
-      content:
-        'La Fundación Cigarra lanzó su programa de Psicología, un servicio de acompañamiento psicosocial dirigido a los niños, jóvenes y familias de Ciudad Bolívar.\n\nEl programa ofrece atención individual, talleres grupales y orientación familiar para fortalecer las habilidades socioemocionales de los beneficiarios.\n\n"El bienestar emocional es la base para que nuestros niños puedan aprender y crecer", expresó la psicóloga coordinadora del programa.\n\nActualmente, más de 40 familias ya se han beneficiado de este importante servicio.',
-      publishDate: '2025-08-05',
-      author: 'Dirección',
-      tags: ['psicología', 'bienestar', 'familias'],
-      featured: false,
-      seo: { metaTitle: 'Programa de Psicología | Fundación Cigarra', metaDescription: 'Acompañamiento psicosocial para fortalecer el bienestar emocional de niños y familias en Ciudad Bolívar.' },
-    },
-    {
-      title: 'Ropero Comunitario: campaña de donación de ropa',
-      slug: 'ropero-comunitario-campana-donacion',
-      excerpt:
-        'Nuestro programa Ropero realizó una exitosa campaña de recolección de ropa y calzado para más de 100 familias.',
-      content:
-        'El programa Ropero de la Fundación Cigarra realizó una exitosa campaña de recolección y distribución de ropa y calzado para las familias más vulnerables de Ciudad Bolívar.\n\nGracias a la generosidad de donantes individuales y aliados corporativos, se recolectaron más de 500 prendas en buen estado que fueron clasificadas y entregadas a más de 100 familias.\n\nEl Ropero es un programa permanente que opera durante todo el año, recibiendo donaciones y distribuyéndolas a quienes más lo necesitan.',
-      publishDate: '2025-07-18',
+      title: 'Nuevos talleres de música abiertos para la comunidad',
+      slug: 'nuevos-talleres-musica',
+      excerpt: 'Ampliamos nuestra oferta de programas musicales con nuevos instrumentos y profesores calificados.',
+      content: 'Nos complace anunciar la apertura de nuevos talleres de música para nuestra comunidad.\n\nGracias al apoyo de nuestros donantes, hemos adquirido nuevos instrumentos musicales y contamos con profesores calificados para ofrecer formación en guitarra, flauta, percusión y canto.\n\nLos talleres están abiertos para niños y jóvenes entre 6 y 17 años y se realizan de lunes a viernes en horario de la tarde.\n\nLa música es una herramienta poderosa para el desarrollo integral de los niños. Les enseña disciplina, trabajo en equipo y les abre puertas a nuevas oportunidades.',
+      publishDate: '2024-05-20',
       author: 'Fundación Cigarra',
-      tags: ['ropero', 'donaciones', 'comunidad'],
-      featured: true,
-      seo: { metaTitle: 'Ropero Comunitario | Fundación Cigarra', metaDescription: 'Campaña de donación de ropa y calzado para familias vulnerables de Ciudad Bolívar.' },
+      tags: ['música', 'talleres', 'comunidad'],
+      featured: false,
+      seo: { metaTitle: 'Talleres de Música | Fundación Cigarra', metaDescription: 'Nuevos talleres de música para niños y jóvenes de Ciudad Bolívar. Guitarra, flauta, percusión y canto.' },
+      imageUrl: `${FRONTEND_URL}/images/news/talleres-musica.webp`,
     },
     {
-      title: 'Escuela de Padres: crianza positiva en tiempos digitales',
-      slug: 'escuela-de-padres-crianza-positiva-digital',
-      excerpt:
-        'Nuestro taller abordó los retos de la crianza en la era digital y cómo acompañar a los hijos en el uso responsable de la tecnología.',
-      content:
-        'La Escuela de Padres de la Fundación Cigarra realizó el taller "Crianza positiva en tiempos digitales", que contó con la participación de 45 padres y madres de familia.\n\nDurante la sesión, los asistentes aprendieron sobre los riesgos y oportunidades del mundo digital para los niños y adolescentes, así como estrategias para establecer límites saludables y fomentar el uso responsable de la tecnología.\n\nEl taller fue facilitado por una psicóloga especialista en desarrollo infantil y contó con actividades prácticas que permitieron a los padres reflexionar sobre sus propios hábitos digitales.',
-      publishDate: '2025-06-22',
-      author: 'Programa Escuela de Padres',
-      tags: ['padres', 'tecnología', 'crianza'],
+      title: 'Alianza con Microsoft para formación en tecnología',
+      slug: 'alianza-microsoft',
+      excerpt: 'Nuestros jóvenes acceden a programas de formación tecnológica gracias a esta alianza.',
+      content: 'Estamos orgullosos de anunciar nuestra alianza con Microsoft para ofrecer programas de formación en tecnología a nuestros jóvenes beneficiarios.\n\nA través de esta alianza, los participantes tendrán acceso a cursos de programación, diseño digital y herramientas ofimáticas que les permitirán desarrollar habilidades para el siglo XXI.\n\nEsta alianza refuerza nuestro compromiso de brindar oportunidades de formación integral y preparar a nuestros jóvenes para un futuro con mayores oportunidades laborales y profesionales.',
+      publishDate: '2024-04-10',
+      author: 'Fundación Cigarra',
+      tags: ['tecnología', 'alianzas', 'microsoft'],
       featured: false,
-      seo: { metaTitle: 'Crianza Positiva Digital | Fundación Cigarra', metaDescription: 'Taller sobre retos de crianza en la era digital y uso responsable de tecnología para familias.' },
+      seo: { metaTitle: 'Alianza con Microsoft | Fundación Cigarra', metaDescription: 'Alianza con Microsoft para formación en tecnología, programación y herramientas digitales para jóvenes.' },
+      imageUrl: `${FRONTEND_URL}/images/news/alianza-microsoft.webp`,
+    },
+    {
+      title: 'Jornada de recreación y deportes para toda la comunidad',
+      slug: 'jornada-recreacion-deportes',
+      excerpt: 'Más de 120 niños y jóvenes participaron en nuestra jornada deportiva con actividades al aire libre.',
+      content: 'Con gran entusiasmo realizamos una jornada de recreación y deportes que reunió a más de 120 niños y jóvenes de Ciudad Bolívar.\n\nLa jornada incluyó torneos de fútbol, baloncesto, juegos cooperativos y actividades de desarrollo motriz, todo en un ambiente de sana convivencia y diversión.\n\nNuestro programa de Recreación y Deportes busca promover el bienestar físico y emocional de los participantes, fortaleciendo valores como el trabajo en equipo, el respeto y la disciplina deportiva.',
+      publishDate: '2024-03-15',
+      author: 'Fundación Cigarra',
+      tags: ['deportes', 'recreación', 'comunidad'],
+      featured: false,
+      seo: { metaTitle: 'Jornada Deportiva | Fundación Cigarra', metaDescription: 'Más de 120 niños y jóvenes participaron en la jornada de recreación y deportes de la Fundación Cigarra.' },
+      imageUrl: `${FRONTEND_URL}/images/programs/recreacion-y-deportes.webp`,
+    },
+    {
+      title: 'Festival de Arte y Cultura Cigarra 2024',
+      slug: 'festival-arte-cultura',
+      excerpt: 'Nuestro festival anual reunió a más de 300 personas de la comunidad.',
+      content: 'El Festival de Arte y Cultura Cigarra 2024 fue un éxito rotundo, reuniendo a más de 300 personas de la comunidad en una jornada llena de arte, música, danza y cultura.\n\nLos niños y jóvenes de todos nuestros programas presentaron sus trabajos artísticos, interpretaciones musicales, coreografías de danza y obras de teatro que dejaron asombrados a los asistentes.\n\nEl festival también contó con la participación de nuestros aliados y padrinos, quienes pudieron ver de primera mano el impacto de su apoyo en la vida de los beneficiarios.\n\nEste evento anual es una muestra del talento, la dedicación y el espíritu transformador que caracteriza a la Fundación Cigarra.',
+      publishDate: '2024-02-20',
+      author: 'Fundación Cigarra',
+      tags: ['arte', 'cultura', 'festival'],
+      featured: false,
+      seo: { metaTitle: 'Festival de Arte y Cultura 2024 | Fundación Cigarra', metaDescription: 'El Festival de Arte y Cultura Cigarra 2024 reunió a más de 300 personas en una jornada de arte, música y danza.' },
+      imageUrl: `${FRONTEND_URL}/images/news/festival-arte.webp`,
+    },
+    {
+      title: 'Campaña de nutrición: Resultados del primer trimestre',
+      slug: 'campana-nutricion',
+      excerpt: 'Compartimos los avances de nuestro programa de alimentación nutritiva.',
+      content: 'Compartimos con alegría los resultados del primer trimestre de nuestra campaña de nutrición, un programa que busca garantizar una alimentación saludable para los niños y jóvenes que asisten a nuestros programas.\n\nDurante estos tres meses, hemos proporcionado más de 2.000 refrigerios nutritivos y meriendas equilibradas a los participantes de nuestros programas diarios.\n\nGracias al apoyo de donantes y aliados, hemos logrado mejorar los indicadores nutricionales de los beneficiarios, contribuyendo a su bienestar físico y rendimiento académico.\n\nLa buena alimentación es fundamental para que nuestros niños puedan aprender, crear y soñar con un futuro mejor.',
+      publishDate: '2024-01-30',
+      author: 'Fundación Cigarra',
+      tags: ['nutrición', 'salud', 'bienestar'],
+      featured: false,
+      seo: { metaTitle: 'Campaña de Nutrición | Fundación Cigarra', metaDescription: 'Resultados del primer trimestre de la campaña de nutrición de la Fundación Cigarra para niños de Ciudad Bolívar.' },
+      imageUrl: `${FRONTEND_URL}/images/news/campana-nutricion.webp`,
     },
   ];
 
-  // English translations keyed by slug (localized: slug, title, excerpt, content, tags, seo)
-  const articlesEN: Record<string, { slug: string; title: string; excerpt: string; content: string; tags: string[]; seo: { metaTitle: string; metaDescription: string } }> = {
+  const articlesEN: Record<string, { title: string; excerpt: string; content: string; tags: string[]; seo: { metaTitle: string; metaDescription: string } }> = {
     'bingo-virtual-marzo-2026': {
-      slug: 'bingo-virtual-marzo-2026',
-      title: 'Virtual Bingo March 2026',
-      excerpt: 'Join our Virtual Bingo to benefit Fundación Cigarra. Amazing prizes, lots of fun, and all proceeds go directly to our programs.',
-      content: 'Fundación Cigarra invites you to participate in our March 2026 Virtual Bingo, an event full of fun, amazing prizes, and solidarity.\n\nAll proceeds will go directly to our education, nutrition, and well-being programs for children and youth in Ciudad Bolívar.\n\n## Event Details\n\n- **Date:** March 2026\n- **Format:** Virtual\n- **Prizes:** Multiple prizes for winners\n\nDon\'t miss it! Share with family and friends and help us transform lives while having fun.',
+      title: 'Virtual Bingo March 2026 — A Success Thanks to Your Support!',
+      excerpt: 'Thank you to everyone who participated! The Virtual Bingo was a success thanks to your support. All funds raised go directly to our programs for children in Ciudad Bolívar.',
+      content: 'The March 2026 Virtual Bingo was a resounding success thanks to the generosity of all of you!\n\nWe are deeply grateful to everyone who participated, bought cards, and spread the word about the event. Your support makes it possible for us to keep transforming lives in Ciudad Bolívar.\n\nAll proceeds will go directly to our education, arts, and culture programs for the children and youth of our community.\n\nEvents like this remind us of the strength our community has when it unites for a cause. See you at the next event!\n\nIf you want to continue supporting our work, you can make a donation at any time from our donations page or contact us through our social media.',
       tags: ['events', 'bingo', 'fundraising'],
-      seo: { metaTitle: 'Virtual Bingo March 2026 | Fundación Cigarra', metaDescription: 'Join Fundación Cigarra\'s Virtual Bingo. Amazing prizes and all proceeds go to our programs.' },
+      seo: { metaTitle: 'Virtual Bingo March 2026 | Fundación Cigarra', metaDescription: 'The March 2026 Virtual Bingo was a success. All funds raised go to Fundación Cigarra programs.' },
     },
-    'inauguramos-nueva-aula-de-musica': {
-      slug: 'inauguramos-nueva-aula-de-musica',
-      title: 'We Inaugurate a New Music Classroom',
-      excerpt: 'Thanks to the partnership with Microsoft and Saint George School, we have a renovated space for our music classes.',
-      content: 'Fundación Cigarra inaugurated its new music classroom, a fully renovated space featuring new instruments and high-quality sound equipment. This achievement was made possible by the generous donation from Microsoft and the constant support of Saint George School.\n\nThe classroom will benefit more than 60 children and young people who participate in our music program, providing them with an optimal environment to develop their musical skills.\n\n"This space represents a new opportunity for our students to dream bigger," said the foundation\'s director during the inauguration ceremony.',
-      tags: ['music', 'infrastructure', 'partnerships'],
-      seo: { metaTitle: 'New Music Classroom | Fundación Cigarra', metaDescription: 'Thanks to Microsoft and Saint George School, Fundación Cigarra inaugurates a renovated space for music classes.' },
+    'celebramos-22-anos': {
+      title: 'We Celebrate 24 Years Transforming Lives in Ciudad Bolívar',
+      excerpt: 'Our foundation completes more than two decades of uninterrupted work with the children and youth of the locality, providing hope and opportunities to hundreds of families.',
+      content: 'This year marks a special milestone for our foundation: 24 years of uninterrupted service to the children and youth of Ciudad Bolívar in Bogotá.\n\nFrom our humble beginnings in 2002, we have grown to help more than 1,877 children and young people through 13 programs in education, art, and culture, generating more than 100 jobs and benefiting more than 1,800 families.\n\nOur commitment remains the same: to provide comprehensive development opportunities to those who need it most, creating a safe space where our children\'s dreams can flourish.\n\nWe thank all our donors, volunteers, and allies who make this work possible. Together, we will continue transforming lives.',
+      tags: ['anniversary', 'impact', 'community'],
+      seo: { metaTitle: '24 Years Transforming Lives | Fundación Cigarra', metaDescription: 'Fundación Cigarra celebrates 24 years of uninterrupted service to the children of Ciudad Bolívar.' },
     },
-    'biblioteca-cigarra-500-libros': {
-      slug: 'biblioteca-cigarra-500-libros',
-      title: 'Cigarra Library: Over 500 Books Available',
-      excerpt: 'Our community library reaches 500 books thanks to donations from partners and the community.',
-      content: 'The Fundación Cigarra Library has reached an important milestone: more than 500 books available for lending and consultation by children, youth, and families in Ciudad Bolívar.\n\nThis achievement is possible thanks to the generous donations from our corporate partners and the community. The library is a safe space where beneficiaries can explore the world through reading.\n\nThe library program includes reading workshops, book clubs, and reading promotion activities that have positively impacted the academic performance of participants.',
-      tags: ['library', 'reading', 'education'],
-      seo: { metaTitle: 'Cigarra Library | Fundación Cigarra', metaDescription: 'The Fundación Cigarra community library reaches 500 books for children and youth in Ciudad Bolívar.' },
+    'nuevos-talleres-musica': {
+      title: 'New Music Workshops Open to the Community',
+      excerpt: 'We expand our musical programs with new instruments and qualified teachers.',
+      content: 'We are pleased to announce the opening of new music workshops for our community.\n\nThanks to the support of our donors, we have acquired new musical instruments and have qualified teachers to offer training in guitar, flute, percussion, and singing.\n\nThe workshops are open to children and young people between 6 and 17 years old and take place Monday through Friday in the afternoon.\n\nMusic is a powerful tool for the comprehensive development of children. It teaches discipline, teamwork, and opens doors to new opportunities.',
+      tags: ['music', 'workshops', 'community'],
+      seo: { metaTitle: 'Music Workshops | Fundación Cigarra', metaDescription: 'New music workshops for children and youth in Ciudad Bolívar. Guitar, flute, percussion, and singing.' },
     },
-    'festival-danza-folclorica-2025': {
-      slug: 'festival-danza-folclorica-2025',
-      title: 'Folk Dance Festival 2025',
-      excerpt: 'More than 80 children participated in our annual dance festival, celebrating Colombia\'s cultural richness.',
-      content: 'Last Saturday, the 2025 Folk Dance Festival took place at the Fundación Cigarra facilities. More than 80 children and young people from our dance program performed choreographies of cumbia, bambuco, currulao, and salsa.\n\nThe event was attended by more than 200 family members and community members, who enjoyed a day full of color, music, and joy.\n\n"Dance is a vehicle for our children to connect with their roots and strengthen their cultural identity," commented the program coordinator.',
-      tags: ['dance', 'culture', 'events'],
-      seo: { metaTitle: 'Dance Festival 2025 | Fundación Cigarra', metaDescription: '80 children celebrate Colombian culture at the 2025 Folk Dance Festival by Fundación Cigarra.' },
+    'alianza-microsoft': {
+      title: 'Partnership with Microsoft for Technology Training',
+      excerpt: 'Our youth access technology training programs thanks to this partnership.',
+      content: 'We are proud to announce our partnership with Microsoft to offer technology training programs to our young beneficiaries.\n\nThrough this partnership, participants will have access to programming courses, digital design, and office tools that will allow them to develop skills for the 21st century.\n\nThis partnership reinforces our commitment to providing comprehensive training opportunities and preparing our youth for a future with greater employment and professional opportunities.',
+      tags: ['technology', 'partnerships', 'microsoft'],
+      seo: { metaTitle: 'Partnership with Microsoft | Fundación Cigarra', metaDescription: 'Partnership with Microsoft for technology, programming, and digital tools training for youth.' },
     },
-    'nuevo-programa-psicologia-familias': {
-      slug: 'nuevo-programa-psicologia-familias',
-      title: 'New Psychology Program for Families',
-      excerpt: 'We launched our psychosocial support program to strengthen the emotional well-being of children and families.',
-      content: 'Fundación Cigarra launched its Psychology program, a psychosocial support service aimed at children, youth, and families in Ciudad Bolívar.\n\nThe program offers individual care, group workshops, and family counseling to strengthen the socio-emotional skills of beneficiaries.\n\n"Emotional well-being is the foundation for our children to learn and grow," said the program\'s coordinating psychologist.\n\nCurrently, more than 40 families have already benefited from this important service.',
-      tags: ['psychology', 'well-being', 'families'],
-      seo: { metaTitle: 'Psychology Program | Fundación Cigarra', metaDescription: 'Psychosocial support to strengthen emotional well-being of children and families in Ciudad Bolívar.' },
+    'jornada-recreacion-deportes': {
+      title: 'Recreation and Sports Day for the Whole Community',
+      excerpt: 'More than 120 children and youth participated in our sports day with outdoor activities.',
+      content: 'With great enthusiasm, we held a recreation and sports day that brought together more than 120 children and young people from Ciudad Bolívar.\n\nThe day included soccer and basketball tournaments, cooperative games, and motor development activities, all in an atmosphere of healthy coexistence and fun.\n\nOur Recreation and Sports program seeks to promote the physical and emotional well-being of participants, strengthening values such as teamwork, respect, and sports discipline.',
+      tags: ['sports', 'recreation', 'community'],
+      seo: { metaTitle: 'Sports Day | Fundación Cigarra', metaDescription: 'More than 120 children and youth participated in the Fundación Cigarra recreation and sports day.' },
     },
-    'ropero-comunitario-campana-donacion': {
-      slug: 'ropero-comunitario-campana-donacion',
-      title: 'Community Clothing Bank: Clothing Donation Drive',
-      excerpt: 'Our Clothing Bank program held a successful clothing and footwear collection drive for over 100 families.',
-      content: 'The Fundación Cigarra Clothing Bank program held a successful collection and distribution drive of clothing and footwear for the most vulnerable families in Ciudad Bolívar.\n\nThanks to the generosity of individual donors and corporate partners, more than 500 items in good condition were collected, sorted, and delivered to over 100 families.\n\nThe Clothing Bank is a permanent program that operates year-round, receiving donations and distributing them to those who need them most.',
-      tags: ['clothing bank', 'donations', 'community'],
-      seo: { metaTitle: 'Community Clothing Bank | Fundación Cigarra', metaDescription: 'Clothing and footwear donation drive for vulnerable families in Ciudad Bolívar.' },
+    'festival-arte-cultura': {
+      title: 'Cigarra Arts and Culture Festival 2024',
+      excerpt: 'Our annual festival brought together more than 300 people from the community.',
+      content: 'The 2024 Cigarra Arts and Culture Festival was a resounding success, bringing together more than 300 people from the community for a day full of art, music, dance, and culture.\n\nChildren and youth from all our programs presented their artistic works, musical performances, dance choreographies, and theatrical plays that amazed the attendees.\n\nThe festival also featured the participation of our allies and sponsors, who were able to see firsthand the impact of their support on the lives of beneficiaries.\n\nThis annual event is a showcase of the talent, dedication, and transformative spirit that characterizes Fundación Cigarra.',
+      tags: ['arts', 'culture', 'festival'],
+      seo: { metaTitle: 'Arts and Culture Festival 2024 | Fundación Cigarra', metaDescription: 'The 2024 Cigarra Arts and Culture Festival brought together 300 people in a day of art, music, and dance.' },
     },
-    'escuela-de-padres-crianza-positiva-digital': {
-      slug: 'escuela-de-padres-crianza-positiva-digital',
-      title: 'Parent School: Positive Parenting in the Digital Age',
-      excerpt: 'Our workshop addressed the challenges of parenting in the digital era and how to guide children in responsible technology use.',
-      content: 'The Fundación Cigarra Parent School held the workshop "Positive Parenting in the Digital Age," attended by 45 mothers and fathers.\n\nDuring the session, attendees learned about the risks and opportunities of the digital world for children and adolescents, as well as strategies for setting healthy boundaries and encouraging responsible technology use.\n\nThe workshop was facilitated by a psychologist specializing in child development and included practical activities that allowed parents to reflect on their own digital habits.',
-      tags: ['parents', 'technology', 'parenting'],
-      seo: { metaTitle: 'Positive Digital Parenting | Fundación Cigarra', metaDescription: 'Workshop on parenting challenges in the digital age and responsible technology use for families.' },
+    'campana-nutricion': {
+      title: 'Nutrition Campaign: First Quarter Results',
+      excerpt: 'We share the progress of our nutritious food program.',
+      content: 'We joyfully share the results of the first quarter of our nutrition campaign, a program that seeks to ensure healthy eating for the children and youth who attend our programs.\n\nDuring these three months, we have provided more than 2,000 nutritious snacks and balanced refreshments to participants in our daily programs.\n\nThanks to the support of donors and allies, we have managed to improve the nutritional indicators of beneficiaries, contributing to their physical well-being and academic performance.\n\nGood nutrition is essential for our children to be able to learn, create, and dream of a better future.',
+      tags: ['nutrition', 'health', 'well-being'],
+      seo: { metaTitle: 'Nutrition Campaign | Fundación Cigarra', metaDescription: 'First quarter results of the Fundación Cigarra nutrition campaign for children in Ciudad Bolívar.' },
     },
   };
 
   for (const article of articles) {
+    const { imageUrl, ...articleData } = article;
     const doc = await strapi.documents('api::article.article').create({
-      data: article as any,
+      data: articleData as any,
       locale: 'es',
       status: 'published',
     });
 
-    // Upload cover image
-    const cover = await uploadImage(strapi, `https://picsum.photos/seed/article-${article.slug}/1200/630`, `article-${article.slug}.jpg`);
+    const cover = await uploadImage(strapi, imageUrl, `article-${article.slug}.webp`);
     await linkMedia(strapi, 'api::article.article', doc.documentId, 'coverImage', cover, 'es');
 
     const en = articlesEN[article.slug];

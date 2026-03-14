@@ -1,6 +1,5 @@
 'use client';
 
-import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
@@ -13,7 +12,7 @@ import {
   HiChevronLeft, HiChevronRight,
 } from 'react-icons/hi';
 import HeroWaves from '@/components/shared/HeroWaves';
-import { articles } from '@/lib/articles-data';
+import type { ArticleData } from '@/lib/articles-data';
 
 const DONATION_LINK = 'https://www.donaronline.org/fundacion-cigarra/dona-ahora';
 
@@ -24,7 +23,7 @@ const ctaCardConfig = [
   { key: 'contact' as const, icon: HiPhone, href: '/contacto', external: false, color: 'bg-green-50 text-green-600', iconBg: 'bg-green-100' },
 ] as const;
 
-function BottomArticlesBar({ currentSlug, readingLabel }: { currentSlug: string; readingLabel: string }) {
+function BottomArticlesBar({ currentSlug, allArticles, readingLabel }: { currentSlug: string; allArticles: ArticleData[]; readingLabel: string }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -50,7 +49,7 @@ function BottomArticlesBar({ currentSlug, readingLabel }: { currentSlug: string;
     scrollRef.current?.scrollBy({ left: dir === 'left' ? -240 : 240, behavior: 'smooth' });
   };
 
-  const otherArticles = articles.filter((a) => a.slug !== currentSlug);
+  const otherArticles = allArticles.filter((a) => a.slug !== currentSlug);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-sm">
@@ -109,11 +108,14 @@ function BottomArticlesBar({ currentSlug, readingLabel }: { currentSlug: string;
   );
 }
 
-export default function ArticleDetailClient() {
+interface Props {
+  article: ArticleData;
+  allArticles: ArticleData[];
+}
+
+export default function ArticleDetailClient({ article, allArticles }: Props) {
   const t = useTranslations('news');
   const locale = useLocale();
-  const params = useParams();
-  const slug = params.slug as string;
 
   function formatDate(dateStr: string) {
     return new Date(dateStr).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-CO', {
@@ -123,21 +125,9 @@ export default function ArticleDetailClient() {
     });
   }
 
-  const currentIndex = articles.findIndex((a) => a.slug === slug);
-  const article = currentIndex >= 0
-    ? articles[currentIndex]
-    : {
-        slug,
-        title: slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
-        excerpt: '',
-        date: '2024-01-01',
-        author: 'Fundación Cigarra',
-        image: '/images/news/celebramos-22-anos.webp',
-        content: t('fallbackContent'),
-      };
-
-  const prevArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
-  const nextArticle = currentIndex < articles.length - 1 && currentIndex >= 0 ? articles[currentIndex + 1] : null;
+  const currentIndex = allArticles.findIndex((a) => a.slug === article.slug);
+  const prevArticle = currentIndex > 0 ? allArticles[currentIndex - 1] : null;
+  const nextArticle = currentIndex < allArticles.length - 1 && currentIndex >= 0 ? allArticles[currentIndex + 1] : null;
 
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
   const shareText = encodeURIComponent(article.title);
@@ -335,8 +325,8 @@ export default function ArticleDetailClient() {
                   <div className="rounded-xl border border-gray-100 bg-white p-6">
                     <h3 className="mb-4 font-heading text-base font-semibold text-gray-900">{t('moreNews')}</h3>
                     <nav className="space-y-1">
-                      {articles
-                        .filter((a) => a.slug !== slug)
+                      {allArticles
+                        .filter((a) => a.slug !== article.slug)
                         .map((a) => (
                           <Link key={a.slug} href={`/noticias/${a.slug}`} className="group flex items-start gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-gray-50">
                             <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg">
@@ -357,7 +347,7 @@ export default function ArticleDetailClient() {
         </div>
       </section>
 
-      <BottomArticlesBar currentSlug={slug} readingLabel={t('reading')} />
+      <BottomArticlesBar currentSlug={article.slug} allArticles={allArticles} readingLabel={t('reading')} />
     </>
   );
 }
