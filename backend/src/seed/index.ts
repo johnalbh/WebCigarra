@@ -133,7 +133,7 @@ async function clearAllContent(strapi: Core.Strapi) {
   ];
 
   for (const uid of uids) {
-    const docs = await (strapi.documents(uid as any) as any).findMany({ locale: 'all' });
+    const docs = await (strapi.documents(uid as any) as any).findMany({ locale: 'es', pagination: { limit: -1 } });
     for (const doc of docs) {
       await (strapi.documents(uid as any) as any).delete({ documentId: doc.documentId });
     }
