@@ -1319,6 +1319,47 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiVideoVideo extends Struct.CollectionTypeSchema {
+  collectionName: 'videos';
+  info: {
+    description: 'YouTube videos published by Fundación Cigarra';
+    displayName: 'Video';
+    pluralName: 'videos';
+    singularName: 'video';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['highlight', 'program', 'event', 'story']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::video.video'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    youtubeId: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiWaysToHelpWaysToHelp extends Struct.SingleTypeSchema {
   collectionName: 'ways_to_helps';
   info: {
@@ -1941,6 +1982,7 @@ declare module '@strapi/strapi' {
       'api::program.program': ApiProgramProgram;
       'api::success-story.success-story': ApiSuccessStorySuccessStory;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
+      'api::video.video': ApiVideoVideo;
       'api::ways-to-help.ways-to-help': ApiWaysToHelpWaysToHelp;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

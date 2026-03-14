@@ -18,6 +18,7 @@ backend/.cache/
 backend/dist/
 backend/export/
 backend/.strapi-updater.json
+backend/.env.railway
 
 # IDE
 .vscode/
