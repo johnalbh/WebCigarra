@@ -15,6 +15,9 @@ RUN npm ci
 # Copy source code
 COPY . .
 
+# Regenerate TypeScript types from schema files (no DB needed)
+RUN npx strapi ts:generate-types
+
 # Build Strapi with production optimizations
 ENV NODE_ENV=production
 RUN npm run build
