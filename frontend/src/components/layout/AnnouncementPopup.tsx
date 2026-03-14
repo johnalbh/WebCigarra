@@ -24,7 +24,10 @@ export default function AnnouncementPopup({ data }: { data: AnnouncementData }) 
   const locale = useLocale();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [permanentlyDismissed, setPermanentlyDismissed] = useState(false);
+  // Initialize as dismissed if the event has already passed
+  const [permanentlyDismissed, setPermanentlyDismissed] = useState(
+    data.slug === 'bingo-virtual-marzo-2026'
+  );
   const closedForThisVisitRef = useRef(false);
 
   // Check localStorage on mount

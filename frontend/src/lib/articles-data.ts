@@ -24,13 +24,13 @@ export const articleImages: Record<string, string> = {
 export const articles: ArticleData[] = [
   {
     slug: 'bingo-virtual-marzo-2026',
-    title: 'Bingo Virtual Marzo 2026',
-    excerpt: 'Participa en nuestro Bingo Virtual a beneficio de la Fundación Cigarra. Premios increíbles, mucha diversión y toda la recaudación va directamente a nuestros programas para los niños de Ciudad Bolívar.',
+    title: 'Bingo Virtual Marzo 2026 — ¡Un éxito gracias a su apoyo!',
+    excerpt: '¡Gracias a todos los que participaron! El Bingo Virtual ya se realizó y fue un éxito gracias a su apoyo. Los fondos recaudados van directamente a nuestros programas para los niños de Ciudad Bolívar.',
     date: '2026-03-15',
     author: 'Fundación Cigarra',
     image: '/images/bingo-marzo-2026.webp',
-    featured: true,
-    content: '¡Participa en nuestro gran Bingo Virtual a beneficio de la Fundación Cigarra!\n\nEste evento especial se realizará en marzo de 2026 y contará con premios increíbles para todos los participantes. Toda la recaudación irá directamente a nuestros programas de educación, arte y cultura para los niños y jóvenes de Ciudad Bolívar.\n\nEl bingo se jugará de forma virtual, así que puedes participar desde cualquier lugar. Solo necesitas conexión a internet y muchas ganas de divertirte mientras apoyas una gran causa.\n\nNo te pierdas esta oportunidad de pasar un rato increíble y contribuir al futuro de cientos de niños. ¡Te esperamos!\n\nPara más información sobre cómo participar, contáctanos a través de nuestras redes sociales o escríbenos directamente.',
+    featured: false,
+    content: '¡El Bingo Virtual Marzo 2026 ya se llevó a cabo y fue un éxito rotundo gracias a la generosidad de todos ustedes!\n\nAgradecemos profundamente a cada persona que participó, compró cartones y difundió el evento. Su apoyo hace posible que sigamos transformando vidas en Ciudad Bolívar.\n\nToda la recaudación obtenida irá directamente a nuestros programas de educación, arte y cultura para los niños y jóvenes de nuestra comunidad.\n\nEste tipo de eventos nos recuerda la fuerza que tiene nuestra comunidad cuando se une por una causa. ¡Nos vemos en el próximo evento!\n\nSi quieres seguir apoyando nuestra labor, puedes hacer una donación en cualquier momento desde nuestra página de donaciones o contactarnos a través de nuestras redes sociales.',
   },
   {
     slug: 'celebramos-22-anos',
@@ -39,6 +39,7 @@ export const articles: ArticleData[] = [
     date: '2024-06-15',
     author: 'Fundación Cigarra',
     image: '/images/news/celebramos-22-anos.webp',
+    featured: true,
     content: 'Este año marca un hito especial para nuestra fundación: 24 años de labor ininterrumpida al servicio de los niños y jóvenes de Ciudad Bolívar en Bogotá.\n\nDesde nuestros humildes comienzos en 2002, hemos crecido hasta ayudar a más de 1.877 niños y jóvenes a través de 13 programas de educación, arte y cultura, generando más de 100 empleos y beneficiando a más de 1.800 familias.\n\nNuestro compromiso sigue siendo el mismo: brindar oportunidades de desarrollo integral a quienes más lo necesitan, creando un espacio seguro donde los sueños de nuestros niños puedan florecer.\n\nAgradecemos a todos nuestros donantes, voluntarios y aliados que hacen posible esta labor. Juntos, seguiremos transformando vidas.',
   },
   {

@@ -30,7 +30,11 @@ const DUMMY_DATA = {
 };
 
 export default async function AnnouncementPopupServer({ locale }: { locale: string }) {
+  // No active announcement — return null to disable popup
+  return null;
+
   // Try fetching from Strapi first
+  // eslint-disable-next-line no-unreachable
   try {
     const response = await getPopupAnnouncement(locale) as StrapiResponse;
     const d = response?.data;
@@ -57,6 +61,6 @@ export default async function AnnouncementPopupServer({ locale }: { locale: stri
     // Strapi not available — fall back to dummy data
   }
 
-  // Fallback: show dummy announcement
-  return <AnnouncementPopup data={DUMMY_DATA} />;
+  // Fallback: no active announcement
+  return null;
 }

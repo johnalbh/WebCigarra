@@ -13,10 +13,11 @@ const easeApple = EASE_APPLE;
 const defaultArticles = [
   {
     title: 'Bingo Virtual Marzo 2026',
-    excerpt: 'Participa en nuestro Bingo Virtual a beneficio de la Fundacion Cigarra. Premios increibles, mucha diversion y toda la recaudacion va directamente a nuestros programas para los ninos de Ciudad Bolivar.',
+    excerpt: '¡Gracias a todos los que participaron! El Bingo Virtual ya se realizó y fue un éxito gracias a su apoyo. Los fondos recaudados van directamente a nuestros programas para los niños de Ciudad Bolívar.',
     date: '2026-03-15',
     slug: 'bingo-virtual-marzo-2026',
     image: '/images/bingo-marzo-2026.webp',
+    pastEvent: true,
   },
   {
     title: 'Celebramos 24 anos transformando vidas en Ciudad Bolivar',
@@ -44,7 +45,7 @@ function formatDate(dateStr: string) {
 
 export default function NewsPreview() {
   const t = useTranslations('news');
-  const featured = defaultArticles[0];
+    const featured = defaultArticles[0] as typeof defaultArticles[0] & { pastEvent?: boolean };
   const rest = defaultArticles.slice(1);
 
   return (
@@ -91,10 +92,16 @@ export default function NewsPreview() {
 
                 {/* Badge */}
                 <div className="absolute top-5 left-5">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
-                    Destacado
-                  </span>
+                  {featured.pastEvent ? (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-600/80 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                      Evento pasado
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
+                      Destacado
+                    </span>
+                  )}
                 </div>
 
                 {/* Content */}
